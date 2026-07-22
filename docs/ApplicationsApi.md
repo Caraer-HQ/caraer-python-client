@@ -1,0 +1,2061 @@
+# caraer_client.ApplicationsApi
+
+All URIs are relative to *https://v2.api.caraer.com*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**create_app_webhook_for_app**](ApplicationsApi.md#create_app_webhook_for_app) | **POST** /api/v2/apps/{appUuid}/webhooks | Create a webhook for an app (app-scoped path)
+[**create_private_app**](ApplicationsApi.md#create_private_app) | **POST** /api/v2/apps/private | Create a private app
+[**create_public_app**](ApplicationsApi.md#create_public_app) | **POST** /api/v2/apps/public | Create a public app
+[**delete_app_webhook**](ApplicationsApi.md#delete_app_webhook) | **DELETE** /api/v2/apps/{appUuid}/webhooks/{webhookUuid} | Delete a webhook for an app
+[**get_app**](ApplicationsApi.md#get_app) | **GET** /api/v2/apps/{uuid} | Retrieve application details by UUID
+[**get_app_webhooks**](ApplicationsApi.md#get_app_webhooks) | **POST** /api/v2/apps/{appUuid}/webhooks/index | Retrieve a paginated list of webhooks for an app
+[**get_apps**](ApplicationsApi.md#get_apps) | **POST** /api/v2/apps/index | Retrieve a paginated list of applications
+[**get_company_information**](ApplicationsApi.md#get_company_information) | **GET** /api/v2/apps/{appUuid}/me | Get current user&#39;s company information
+[**get_my_created_apps**](ApplicationsApi.md#get_my_created_apps) | **POST** /api/v2/apps/my/index | Retrieve apps created by the logged-in user&#39;s selected company
+[**get_public_app**](ApplicationsApi.md#get_public_app) | **GET** /api/v2/apps/public/{uuid} | Get a public app (creator view)
+[**get_webhook_events**](ApplicationsApi.md#get_webhook_events) | **GET** /api/v2/apps/{appUuid}/webhooks/events | Get available webhook record events
+[**get_webhook_formats**](ApplicationsApi.md#get_webhook_formats) | **GET** /api/v2/apps/{appUuid}/webhooks/formats | Get available webhook formats
+[**get_webhook_property_topics**](ApplicationsApi.md#get_webhook_property_topics) | **GET** /api/v2/apps/{appUuid}/webhooks/property-topics | Get webhook property topic options
+[**install_app**](ApplicationsApi.md#install_app) | **POST** /api/v2/apps/{uuid}/install | Install an application
+[**list_app_categories**](ApplicationsApi.md#list_app_categories) | **GET** /api/v2/apps/categories | List predefined marketplace app categories
+[**load_setting_options**](ApplicationsApi.md#load_setting_options) | **POST** /api/v2/apps/{uuid}/settings-schema/options | Load dynamic options for a setting select field
+[**review_public_app**](ApplicationsApi.md#review_public_app) | **POST** /api/v2/apps/public/{uuid}/review | Review a public app
+[**rotate_app**](ApplicationsApi.md#rotate_app) | **POST** /api/v2/apps/{uuid}/rotate | Rotate application configurations
+[**submit_public_app**](ApplicationsApi.md#submit_public_app) | **POST** /api/v2/apps/public/{uuid}/submit | Submit a public app for review
+[**test_app_webhook**](ApplicationsApi.md#test_app_webhook) | **POST** /api/v2/apps/{appUuid}/webhooks/test/{webhookUuid}/{recordUuid}/{eventType} | Test a webhook for an app
+[**test_app_webhook_auto**](ApplicationsApi.md#test_app_webhook_auto) | **POST** /api/v2/apps/{appUuid}/webhooks/test/{webhookUuid} | Test a webhook for an app (auto-resolve)
+[**test_app_webhook_unsaved**](ApplicationsApi.md#test_app_webhook_unsaved) | **POST** /api/v2/apps/{appUuid}/webhooks/test | Test an unsaved webhook for an app
+[**uninstall_app**](ApplicationsApi.md#uninstall_app) | **POST** /api/v2/apps/{uuid}/uninstall | Uninstall an application
+[**update_app_webhook_for_app**](ApplicationsApi.md#update_app_webhook_for_app) | **PUT** /api/v2/apps/{appUuid}/webhooks/{webhookUuid} | Update a webhook for an app
+[**update_public_app**](ApplicationsApi.md#update_public_app) | **PUT** /api/v2/apps/public/{uuid} | Update a public app (creator edit)
+
+
+# **create_app_webhook_for_app**
+> CreateResponse create_app_webhook_for_app(app_uuid, subscribe_webhook_dto)
+
+Create a webhook for an app (app-scoped path)
+
+Creates a new webhook for the specified app using normal bearer authentication. The app must be installed for the authenticated user's selected company. This endpoint is an app-scoped equivalent of the generic webhook creation endpoint.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.create_response import CreateResponse
+from caraer_client.models.subscribe_webhook_dto import SubscribeWebhookDTO
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the app to create the webhook for
+    subscribe_webhook_dto = caraer_client.SubscribeWebhookDTO() # SubscribeWebhookDTO | Webhook details
+
+    try:
+        # Create a webhook for an app (app-scoped path)
+        api_response = api_instance.create_app_webhook_for_app(app_uuid, subscribe_webhook_dto)
+        print("The response of ApplicationsApi->create_app_webhook_for_app:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->create_app_webhook_for_app: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the app to create the webhook for | 
+ **subscribe_webhook_dto** | [**SubscribeWebhookDTO**](SubscribeWebhookDTO.md)| Webhook details | 
+
+### Return type
+
+[**CreateResponse**](CreateResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Webhook created successfully |  -  |
+**400** | Invalid input provided or app not installed |  -  |
+**404** | App not found |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_private_app**
+> CreateResponse create_private_app(create_private_app_request)
+
+Create a private app
+
+Creates a new private app with the provided label and optional description. Private apps are automatically installed for the creating user's company. Returns the created app details as a CreateResponse wrapping an AppDTO.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.create_private_app_request import CreatePrivateAppRequest
+from caraer_client.models.create_response import CreateResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    create_private_app_request = caraer_client.CreatePrivateAppRequest() # CreatePrivateAppRequest | 
+
+    try:
+        # Create a private app
+        api_response = api_instance.create_private_app(create_private_app_request)
+        print("The response of ApplicationsApi->create_private_app:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->create_private_app: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_private_app_request** | [**CreatePrivateAppRequest**](CreatePrivateAppRequest.md)|  | 
+
+### Return type
+
+[**CreateResponse**](CreateResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully created the private app |  -  |
+**400** | Invalid request data |  -  |
+**401** | Unauthorized access |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_public_app**
+> CreateResponse create_public_app(app_dto)
+
+Create a public app
+
+Creates a new public app with the provided label and optional description. Public apps are automatically published for the creating user's company. Returns the created app details as a CreateResponse wrapping an AppDTO.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.app_dto import AppDTO
+from caraer_client.models.create_response import CreateResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_dto = caraer_client.AppDTO() # AppDTO | 
+
+    try:
+        # Create a public app
+        api_response = api_instance.create_public_app(app_dto)
+        print("The response of ApplicationsApi->create_public_app:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->create_public_app: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_dto** | [**AppDTO**](AppDTO.md)|  | 
+
+### Return type
+
+[**CreateResponse**](CreateResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully created the public app |  -  |
+**400** | Invalid request data |  -  |
+**401** | Unauthorized access |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_app_webhook**
+> DeleteResponse delete_app_webhook(app_uuid, webhook_uuid)
+
+Delete a webhook for an app
+
+Deletes a webhook that belongs to the specified app and the authenticated user's selected company.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.delete_response import DeleteResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the app that owns the webhook
+    webhook_uuid = 'webhook_uuid_example' # str | UUID of the webhook to delete
+
+    try:
+        # Delete a webhook for an app
+        api_response = api_instance.delete_app_webhook(app_uuid, webhook_uuid)
+        print("The response of ApplicationsApi->delete_app_webhook:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->delete_app_webhook: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the app that owns the webhook | 
+ **webhook_uuid** | **str**| UUID of the webhook to delete | 
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Webhook deleted successfully |  -  |
+**404** | Webhook not found for the specified app or company |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_app**
+> ShowResponse get_app(uuid)
+
+Retrieve application details by UUID
+
+Fetches details about an application specified by its UUID. Returns the application details as a ShowResponse wrapping an AppDetailDTO.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response import ShowResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    uuid = 'uuid_example' # str | UUID of the application to retrieve
+
+    try:
+        # Retrieve application details by UUID
+        api_response = api_instance.get_app(uuid)
+        print("The response of ApplicationsApi->get_app:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->get_app: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**| UUID of the application to retrieve | 
+
+### Return type
+
+[**ShowResponse**](ShowResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully retrieved application details |  -  |
+**404** | Application not found |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_app_webhooks**
+> PaginationResponse get_app_webhooks(app_uuid, body)
+
+Retrieve a paginated list of webhooks for an app
+
+Fetches a paginated and optionally filtered list of webhooks associated with the specified app and the authenticated user's selected company.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the application for which to retrieve webhooks
+    body = None # object | 
+
+    try:
+        # Retrieve a paginated list of webhooks for an app
+        api_response = api_instance.get_app_webhooks(app_uuid, body)
+        print("The response of ApplicationsApi->get_app_webhooks:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->get_app_webhooks: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the application for which to retrieve webhooks | 
+ **body** | **object**|  | 
+
+### Return type
+
+[**PaginationResponse**](PaginationResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully retrieved the list of webhooks for the app |  -  |
+**400** | Invalid request data or app not installed for company |  -  |
+**401** | Unauthorized access |  -  |
+**404** | Application not found |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_apps**
+> PaginationResponse get_apps(body, type=type, installed_only=installed_only)
+
+Retrieve a paginated list of applications
+
+Fetches a paginated and optionally filtered list of applications. The list is sorted alphabetically by category and name. On success, returns a PaginationResponse containing AppSummaryDTO objects.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    body = None # object | 
+    type = '' # str |  (optional) (default to '')
+    installed_only = False # bool |  (optional) (default to False)
+
+    try:
+        # Retrieve a paginated list of applications
+        api_response = api_instance.get_apps(body, type=type, installed_only=installed_only)
+        print("The response of ApplicationsApi->get_apps:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->get_apps: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **object**|  | 
+ **type** | **str**|  | [optional] [default to &#39;&#39;]
+ **installed_only** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+[**PaginationResponse**](PaginationResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully retrieved the list of applications |  -  |
+**400** | Invalid request data |  -  |
+**401** | Unauthorized access |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_company_information**
+> SimplePublicCompanyDTO get_company_information(app_uuid)
+
+Get current user's company information
+
+Retrieves the company information of the authenticated user. The response includes public details of the user's selected company.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.simple_public_company_dto import SimplePublicCompanyDTO
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the app to get the company information for
+
+    try:
+        # Get current user's company information
+        api_response = api_instance.get_company_information(app_uuid)
+        print("The response of ApplicationsApi->get_company_information:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->get_company_information: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the app to get the company information for | 
+
+### Return type
+
+[**SimplePublicCompanyDTO**](SimplePublicCompanyDTO.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully retrieved company information |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_my_created_apps**
+> PaginationResponse get_my_created_apps(body)
+
+Retrieve apps created by the logged-in user's selected company
+
+Fetches a paginated and optionally filtered list of apps where the selected company is the creator. Returns a PaginationResponse containing AppDTO objects.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    body = None # object | 
+
+    try:
+        # Retrieve apps created by the logged-in user's selected company
+        api_response = api_instance.get_my_created_apps(body)
+        print("The response of ApplicationsApi->get_my_created_apps:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->get_my_created_apps: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **object**|  | 
+
+### Return type
+
+[**PaginationResponse**](PaginationResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully retrieved creator apps |  -  |
+**400** | Invalid request data |  -  |
+**401** | Unauthorized access |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_public_app**
+> ShowResponse get_public_app(uuid)
+
+Get a public app (creator view)
+
+Gets the full app for the creator, including appPublish, appBars, details, and pricing. Returns AppCreatorDTO with everything under App.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response import ShowResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    uuid = 'uuid_example' # str | UUID of the public app to retrieve
+
+    try:
+        # Get a public app (creator view)
+        api_response = api_instance.get_public_app(uuid)
+        print("The response of ApplicationsApi->get_public_app:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->get_public_app: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**| UUID of the public app to retrieve | 
+
+### Return type
+
+[**ShowResponse**](ShowResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully retrieved the public app |  -  |
+**404** | Public app not found |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_webhook_events**
+> get_webhook_events(app_uuid)
+
+Get available webhook record events
+
+Returns all supported record webhook events with their details.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the app to get the webhook events for
+
+    try:
+        # Get available webhook record events
+        api_instance.get_webhook_events(app_uuid)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->get_webhook_events: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the app to get the webhook events for | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of available webhook record events |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_webhook_formats**
+> get_webhook_formats(app_uuid)
+
+Get available webhook formats
+
+Returns all supported webhook payload formats with their details.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the app to get the webhook formats for
+
+    try:
+        # Get available webhook formats
+        api_instance.get_webhook_formats(app_uuid)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->get_webhook_formats: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the app to get the webhook formats for | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of available webhook formats |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_webhook_property_topics**
+> get_webhook_property_topics(app_uuid, object)
+
+Get webhook property topic options
+
+Returns property names on an object that can be used in 4-part property_changed webhook topics.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the app
+    object = 'object_example' # str | Object name (e.g. contact)
+
+    try:
+        # Get webhook property topic options
+        api_instance.get_webhook_property_topics(app_uuid, object)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->get_webhook_property_topics: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the app | 
+ **object** | **str**| Object name (e.g. contact) | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of property names |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **install_app**
+> ShowResponse install_app(uuid, install_app_request=install_app_request)
+
+Install an application
+
+Installs the application specified by its UUID with optional initial configuration settings. Returns the updated application details as a ShowResponse wrapping an AppDTO.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.install_app_request import InstallAppRequest
+from caraer_client.models.show_response import ShowResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    uuid = 'uuid_example' # str | UUID of the application to install
+    install_app_request = caraer_client.InstallAppRequest() # InstallAppRequest |  (optional)
+
+    try:
+        # Install an application
+        api_response = api_instance.install_app(uuid, install_app_request=install_app_request)
+        print("The response of ApplicationsApi->install_app:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->install_app: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**| UUID of the application to install | 
+ **install_app_request** | [**InstallAppRequest**](InstallAppRequest.md)|  | [optional] 
+
+### Return type
+
+[**ShowResponse**](ShowResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully installed the application |  -  |
+**404** | Application not found |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_app_categories**
+> list_app_categories()
+
+List predefined marketplace app categories
+
+Returns the allowed category keys and labels for public app marketplace listings.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+
+    try:
+        # List predefined marketplace app categories
+        api_instance.list_app_categories()
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->list_app_categories: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully retrieved app categories |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **load_setting_options**
+> ShowResponse load_setting_options(uuid, load_app_setting_options_request)
+
+Load dynamic options for a setting select field
+
+Invokes the app serverless function configured on the field's optionsSource and returns options for SINGLE_SELECT / MULTI_SELECT fields. Uses the draft settingsSchema from the installer UI so credentials entered in other fields are available to the loader.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.load_app_setting_options_request import LoadAppSettingOptionsRequest
+from caraer_client.models.show_response import ShowResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    uuid = 'uuid_example' # str | UUID of the application
+    load_app_setting_options_request = caraer_client.LoadAppSettingOptionsRequest() # LoadAppSettingOptionsRequest | Field name, optional query, and draft settings schema
+
+    try:
+        # Load dynamic options for a setting select field
+        api_response = api_instance.load_setting_options(uuid, load_app_setting_options_request)
+        print("The response of ApplicationsApi->load_setting_options:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->load_setting_options: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**| UUID of the application | 
+ **load_app_setting_options_request** | [**LoadAppSettingOptionsRequest**](LoadAppSettingOptionsRequest.md)| Field name, optional query, and draft settings schema | 
+
+### Return type
+
+[**ShowResponse**](ShowResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Options loaded successfully |  -  |
+**400** | Invalid request or dependsOn not satisfied |  -  |
+**403** | App not accessible |  -  |
+**404** | App, field, or serverless function not found |  -  |
+**502** | Serverless function failed or returned invalid response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **review_public_app**
+> ShowResponse review_public_app(uuid, review_request)
+
+Review a public app
+
+Sets review outcome (approve/reject/changes requested), feedback, and optional reviewer notes. Returns the updated app details as a ShowResponse wrapping an AppDTO.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.review_request import ReviewRequest
+from caraer_client.models.show_response import ShowResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    uuid = 'uuid_example' # str | UUID of the public app to review
+    review_request = caraer_client.ReviewRequest() # ReviewRequest | 
+
+    try:
+        # Review a public app
+        api_response = api_instance.review_public_app(uuid, review_request)
+        print("The response of ApplicationsApi->review_public_app:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->review_public_app: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**| UUID of the public app to review | 
+ **review_request** | [**ReviewRequest**](ReviewRequest.md)|  | 
+
+### Return type
+
+[**ShowResponse**](ShowResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully reviewed the public app |  -  |
+**404** | Public app not found |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rotate_app**
+> ShowResponse rotate_app(uuid)
+
+Rotate application configurations
+
+Rotates the configuration or settings for the specified application by UUID. On success, returns the updated application details as a ShowResponse wrapping an AppDTO.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response import ShowResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    uuid = 'uuid_example' # str | UUID of the application to rotate configurations
+
+    try:
+        # Rotate application configurations
+        api_response = api_instance.rotate_app(uuid)
+        print("The response of ApplicationsApi->rotate_app:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->rotate_app: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**| UUID of the application to rotate configurations | 
+
+### Return type
+
+[**ShowResponse**](ShowResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully rotated application configurations |  -  |
+**404** | Application not found |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **submit_public_app**
+> ShowResponse submit_public_app(uuid)
+
+Submit a public app for review
+
+Submits a public app specified by its UUID for review. Returns the submitted app details as a ShowResponse wrapping an AppDTO.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response import ShowResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    uuid = 'uuid_example' # str | UUID of the public app to submit for review
+
+    try:
+        # Submit a public app for review
+        api_response = api_instance.submit_public_app(uuid)
+        print("The response of ApplicationsApi->submit_public_app:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->submit_public_app: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**| UUID of the public app to submit for review | 
+
+### Return type
+
+[**ShowResponse**](ShowResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully submitted the public app for review |  -  |
+**404** | Public app not found |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_app_webhook**
+> test_app_webhook(app_uuid, webhook_uuid, record_uuid, event_type, property_name=property_name)
+
+Test a webhook for an app
+
+Generates a test webhook payload for a specific record and event type. Uses the same payload generation logic as live webhook delivery.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the app that owns the webhook
+    webhook_uuid = 'webhook_uuid_example' # str | UUID of the webhook to test
+    record_uuid = 'record_uuid_example' # str | UUID of the record to include in the webhook payload
+    event_type = 'event_type_example' # str | Type of event to simulate. Supported values are the entries returned by /webhooks/events, or property_changed for property webhooks.
+    property_name = 'property_name_example' # str | Property name when simulating property_changed (optional)
+
+    try:
+        # Test a webhook for an app
+        api_instance.test_app_webhook(app_uuid, webhook_uuid, record_uuid, event_type, property_name=property_name)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->test_app_webhook: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the app that owns the webhook | 
+ **webhook_uuid** | **str**| UUID of the webhook to test | 
+ **record_uuid** | **str**| UUID of the record to include in the webhook payload | 
+ **event_type** | **str**| Type of event to simulate. Supported values are the entries returned by /webhooks/events, or property_changed for property webhooks. | 
+ **property_name** | **str**| Property name when simulating property_changed | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Webhook test payload generated successfully |  -  |
+**400** | Invalid event type or app not installed |  -  |
+**404** | Webhook not found for the specified app or company |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_app_webhook_auto**
+> test_app_webhook_auto(app_uuid, webhook_uuid)
+
+Test a webhook for an app (auto-resolve)
+
+Generates a test webhook payload using the latest updated record for the webhook topic object and the event type from the webhook topic (uses updated when the topic action is all).
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the app that owns the webhook
+    webhook_uuid = 'webhook_uuid_example' # str | UUID of the webhook to test
+
+    try:
+        # Test a webhook for an app (auto-resolve)
+        api_instance.test_app_webhook_auto(app_uuid, webhook_uuid)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->test_app_webhook_auto: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the app that owns the webhook | 
+ **webhook_uuid** | **str**| UUID of the webhook to test | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Webhook test payload generated successfully |  -  |
+**400** | Webhook topic cannot be used for record testing |  -  |
+**404** | Webhook not found or no records available for the topic object |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_app_webhook_unsaved**
+> test_app_webhook_unsaved(app_uuid, test_webhook_request)
+
+Test an unsaved webhook for an app
+
+Generates a test webhook payload from webhook configuration supplied in the request body without persisting the webhook. When recordUuid is omitted, auto-resolves the record and event from the webhook topic (same as the saved-webhook auto test endpoint).
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.test_webhook_request import TestWebhookRequest
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the app the webhook belongs to
+    test_webhook_request = caraer_client.TestWebhookRequest() # TestWebhookRequest | Webhook configuration and optional test event parameters
+
+    try:
+        # Test an unsaved webhook for an app
+        api_instance.test_app_webhook_unsaved(app_uuid, test_webhook_request)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->test_app_webhook_unsaved: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the app the webhook belongs to | 
+ **test_webhook_request** | [**TestWebhookRequest**](TestWebhookRequest.md)| Webhook configuration and optional test event parameters | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Webhook test payload generated successfully |  -  |
+**400** | Invalid webhook configuration or event parameters |  -  |
+**404** | App not found or no records available for auto-resolve |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **uninstall_app**
+> ShowResponse uninstall_app(uuid, app_request)
+
+Uninstall an application
+
+Removes the installed application specified by its UUID using the provided settings. The request body should contain an AppRequest with the uninstallation settings. Returns the updated application details as a ShowResponse wrapping an AppDTO.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.app_request import AppRequest
+from caraer_client.models.show_response import ShowResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    uuid = 'uuid_example' # str | UUID of the application to uninstall
+    app_request = caraer_client.AppRequest() # AppRequest | 
+
+    try:
+        # Uninstall an application
+        api_response = api_instance.uninstall_app(uuid, app_request)
+        print("The response of ApplicationsApi->uninstall_app:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->uninstall_app: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**| UUID of the application to uninstall | 
+ **app_request** | [**AppRequest**](AppRequest.md)|  | 
+
+### Return type
+
+[**ShowResponse**](ShowResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully uninstalled the application |  -  |
+**404** | Application not found |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_app_webhook_for_app**
+> CreateResponse update_app_webhook_for_app(app_uuid, webhook_uuid, subscribe_webhook_dto)
+
+Update a webhook for an app
+
+Updates an existing webhook that belongs to the specified app and the authenticated user's selected company.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.create_response import CreateResponse
+from caraer_client.models.subscribe_webhook_dto import SubscribeWebhookDTO
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the app that owns the webhook
+    webhook_uuid = 'webhook_uuid_example' # str | UUID of the webhook to update
+    subscribe_webhook_dto = caraer_client.SubscribeWebhookDTO() # SubscribeWebhookDTO | 
+
+    try:
+        # Update a webhook for an app
+        api_response = api_instance.update_app_webhook_for_app(app_uuid, webhook_uuid, subscribe_webhook_dto)
+        print("The response of ApplicationsApi->update_app_webhook_for_app:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->update_app_webhook_for_app: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the app that owns the webhook | 
+ **webhook_uuid** | **str**| UUID of the webhook to update | 
+ **subscribe_webhook_dto** | [**SubscribeWebhookDTO**](SubscribeWebhookDTO.md)|  | 
+
+### Return type
+
+[**CreateResponse**](CreateResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Webhook updated successfully |  -  |
+**400** | Invalid input provided or app not installed |  -  |
+**404** | Webhook not found for the specified app or company |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_public_app**
+> ShowResponse update_public_app(uuid, app_dto)
+
+Update a public app (creator edit)
+
+Updates a public app with the full creator payload (label, description, details, pricing, settingsSchema, appBars). Send the entire AppCreatorDTO as returned by GET. Returns the updated app as AppCreatorDTO.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.app_dto import AppDTO
+from caraer_client.models.show_response import ShowResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    uuid = 'uuid_example' # str | UUID of the public app to update
+    app_dto = caraer_client.AppDTO() # AppDTO | 
+
+    try:
+        # Update a public app (creator edit)
+        api_response = api_instance.update_public_app(uuid, app_dto)
+        print("The response of ApplicationsApi->update_public_app:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->update_public_app: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**| UUID of the public app to update | 
+ **app_dto** | [**AppDTO**](AppDTO.md)|  | 
+
+### Return type
+
+[**ShowResponse**](ShowResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully updated the public app |  -  |
+**404** | Public app not found |  -  |
+**403** | You are not allowed to update this app |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
