@@ -12,7 +12,7 @@ pip install caraer-client
 
 ## Docs
 
-- API reference: https://docs.caraer.com (or your Redocly Realm docs site)
+- API reference: https://developer.caraer.com
 - OpenAPI: https://v2.api.caraer.com/api-docs.yaml
 
 ## Auth
