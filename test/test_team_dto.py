@@ -90,17 +90,6 @@ class TestTeamDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -130,7 +119,29 @@ class TestTeamDTO(unittest.TestCase):
                             index = 56, 
                             deleted = True, 
                             complete = True, 
-                            uuid = '0', ), ), ),
+                            uuid = '0', 
+                            properties = [
+                                caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
+                                    name = '', 
+                                    value = null, 
+                                    type = '', 
+                                    label = '', )
+                                ], 
+                            objects = {
+                                'key' : null
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -145,17 +156,6 @@ class TestTeamDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -185,7 +185,29 @@ class TestTeamDTO(unittest.TestCase):
                             index = 56, 
                             deleted = True, 
                             complete = True, 
-                            uuid = '0', ), ), ),
+                            uuid = '0', 
+                            properties = [
+                                caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
+                                    name = '', 
+                                    value = null, 
+                                    type = '', 
+                                    label = '', )
+                                ], 
+                            objects = {
+                                'key' : null
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -200,17 +222,6 @@ class TestTeamDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -240,7 +251,29 @@ class TestTeamDTO(unittest.TestCase):
                             index = 56, 
                             deleted = True, 
                             complete = True, 
-                            uuid = '0', ), ), ),
+                            uuid = '0', 
+                            properties = [
+                                caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
+                                    name = '', 
+                                    value = null, 
+                                    type = '', 
+                                    label = '', )
+                                ], 
+                            objects = {
+                                'key' : null
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 index = 56
             )
         else:
