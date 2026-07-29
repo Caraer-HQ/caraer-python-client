@@ -1130,7 +1130,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show1**
-> ShowResponse show1(uuid, object=object, record_return_format=record_return_format, parse=parse)
+> ShowResponse show1(uuid, object=object, record_return_format=record_return_format, parse=parse, fields=fields)
 
 Get record details
 
@@ -1170,10 +1170,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     object = 'object_example' # str | Optional object name to resolve the record in a specific object context. (optional)
     record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. (optional) (default to 'LEGACY')
     parse = True # bool | Whether to parse the record before returning it. (optional)
+    fields = 'fields_example' # str | Comma-separated property names to include (for example: name,status). When omitted, all properties are returned. (optional)
 
     try:
         # Get record details
-        api_response = api_instance.show1(uuid, object=object, record_return_format=record_return_format, parse=parse)
+        api_response = api_instance.show1(uuid, object=object, record_return_format=record_return_format, parse=parse, fields=fields)
         print("The response of RecordsApi->show1:\n")
         pprint(api_response)
     except Exception as e:
@@ -1191,6 +1192,7 @@ Name | Type | Description  | Notes
  **object** | **str**| Optional object name to resolve the record in a specific object context. | [optional] 
  **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. | [optional] [default to &#39;LEGACY&#39;]
  **parse** | **bool**| Whether to parse the record before returning it. | [optional] 
+ **fields** | **str**| Comma-separated property names to include (for example: name,status). When omitted, all properties are returned. | [optional] 
 
 ### Return type
 

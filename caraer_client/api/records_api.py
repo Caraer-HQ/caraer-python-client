@@ -4199,6 +4199,7 @@ class RecordsApi:
         object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
+        fields: Annotated[Optional[StrictStr], Field(description="Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4224,6 +4225,8 @@ class RecordsApi:
         :type record_return_format: str
         :param parse: Whether to parse the record before returning it.
         :type parse: bool
+        :param fields: Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.
+        :type fields: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4251,6 +4254,7 @@ class RecordsApi:
             object=object,
             record_return_format=record_return_format,
             parse=parse,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4279,6 +4283,7 @@ class RecordsApi:
         object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
+        fields: Annotated[Optional[StrictStr], Field(description="Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4304,6 +4309,8 @@ class RecordsApi:
         :type record_return_format: str
         :param parse: Whether to parse the record before returning it.
         :type parse: bool
+        :param fields: Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.
+        :type fields: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4331,6 +4338,7 @@ class RecordsApi:
             object=object,
             record_return_format=record_return_format,
             parse=parse,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4359,6 +4367,7 @@ class RecordsApi:
         object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
+        fields: Annotated[Optional[StrictStr], Field(description="Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4384,6 +4393,8 @@ class RecordsApi:
         :type record_return_format: str
         :param parse: Whether to parse the record before returning it.
         :type parse: bool
+        :param fields: Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.
+        :type fields: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4411,6 +4422,7 @@ class RecordsApi:
             object=object,
             record_return_format=record_return_format,
             parse=parse,
+            fields=fields,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4434,6 +4446,7 @@ class RecordsApi:
         object,
         record_return_format,
         parse,
+        fields,
         _request_auth,
         _content_type,
         _headers,
@@ -4469,6 +4482,10 @@ class RecordsApi:
         if parse is not None:
             
             _query_params.append(('parse', parse))
+            
+        if fields is not None:
+            
+            _query_params.append(('fields', fields))
             
         # process the header parameters
         # process the form parameters

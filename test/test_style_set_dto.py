@@ -280,9 +280,9 @@ class TestStyleSetDTO(unittest.TestCase):
                 hyperlink_letter_spacing = None,
                 hyperlink_color_light = '',
                 hyperlink_color_dark = '',
+                zindex = 56,
                 xlarge_font_size = None,
-                xsmall_font_size = None,
-                zindex = 56
+                xsmall_font_size = None
             )
         else:
             return StyleSetDTO(
