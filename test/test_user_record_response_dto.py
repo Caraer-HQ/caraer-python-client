@@ -54,10 +54,10 @@ class TestUserRecordResponseDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -109,10 +109,10 @@ class TestUserRecordResponseDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -164,10 +164,10 @@ class TestUserRecordResponseDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -207,10 +207,10 @@ class TestUserRecordResponseDTO(unittest.TestCase):
                 deleted = True,
                 properties = [
                     caraer_client.models.filled_property.FilledProperty(
-                        icon = '', 
                         name = '', 
                         value = null, 
                         type = '', 
+                        icon = '', 
                         label = '', )
                     ],
                 objects = {
@@ -248,10 +248,10 @@ class TestUserRecordResponseDTO(unittest.TestCase):
                         uuid = '0', 
                         properties = [
                             caraer_client.models.filled_property.FilledProperty(
-                                icon = '', 
                                 name = '', 
                                 value = null, 
                                 type = '', 
+                                icon = '', 
                                 label = '', )
                             ], 
                         objects = {
