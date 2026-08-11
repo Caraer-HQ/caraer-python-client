@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **object** | [**CaraerObjectDTO**](CaraerObjectDTO.md) | The Caraer object associated with this preview | [optional] 
 **record_uuid** | **str** | UUID of the associated record | [optional] 
 **primary** | **bool** | Indicates whether this preview is the primary one | [optional] 
+**edge_properties** | **Dict[str, Optional[object]]** | Values stored on the relation edge for properties declared on the relation schema. Only present when the preview was loaded through such a relation. | [optional] 
 **grid** | **List[List[PreviewItemDTO]]** | Rows of the preview grid | [optional] 
 **preview_type** | **str** | Preview type | [optional] 
 **profile_image** | [**PropertyDTO**](PropertyDTO.md) | Profile image property | [optional] 

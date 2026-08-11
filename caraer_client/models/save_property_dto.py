@@ -20,6 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from caraer_client.models.filter import Filter
 from caraer_client.models.property_option import PropertyOption
 from caraer_client.models.record import Record
 from typing import Optional, Set
@@ -48,6 +49,7 @@ class SavePropertyDTO(BaseModel):
     rules: Optional[List[StrictStr]] = Field(default=None, description="Collection of rules applied to the property")
     hidden: Optional[StrictBool] = Field(default=None, description="Indicates if the property is hidden by default", json_schema_extra={"examples": [False]})
     lifecycle_active: Optional[StrictBool] = Field(default=None, description="When true, property value changes are tracked as lifecycle records", alias="lifecycleActive", json_schema_extra={"examples": [False]})
+    required_filter: Optional[Filter] = Field(default=None, description="When this filter matches the record being saved, the property becomes required", alias="requiredFilter")
     non_public: Optional[StrictBool] = Field(default=None, description="Indicates if the property is not accessible publicly", alias="nonPublic", json_schema_extra={"examples": [False]})
     indexed: Optional[StrictBool] = Field(default=None, description="Indicates if the property is indexed", json_schema_extra={"examples": [False]})
     format_settings: Optional[Dict[str, Any]] = Field(default=None, description="Settings to configure the format of the property", alias="formatSettings")
@@ -55,8 +57,9 @@ class SavePropertyDTO(BaseModel):
     editable: Optional[StrictBool] = Field(default=None, description="Indicates if the property can be edited", json_schema_extra={"examples": [True]})
     icon: Optional[StrictStr] = Field(default=None, description="The icon associated with the property", json_schema_extra={"examples": ["icon_name"]})
     webpage_public: Optional[StrictBool] = Field(default=None, description="Indicates if the property is webpage public", alias="webpagePublic", json_schema_extra={"examples": [False]})
-    embeddable: Optional[StrictBool] = Field(default=None, description="Indicates if the property is embeddable", json_schema_extra={"examples": [False]})
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "description", "type", "options", "group", "format", "rules", "hidden", "lifecycleActive", "nonPublic", "indexed", "formatSettings", "immutable", "editable", "icon", "webpagePublic", "embeddable"]
+    embeddable: Optional[StrictBool] = Field(default=None, description="Deprecated. Use sensitive instead.", json_schema_extra={"examples": [False]})
+    sensitive: Optional[StrictBool] = Field(default=None, description="When true, exclude from advanced query evidence", json_schema_extra={"examples": [False]})
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "description", "type", "options", "group", "format", "rules", "hidden", "lifecycleActive", "requiredFilter", "nonPublic", "indexed", "formatSettings", "immutable", "editable", "icon", "webpagePublic", "embeddable", "sensitive"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -113,6 +116,9 @@ class SavePropertyDTO(BaseModel):
                 if _item_options:
                     _items.append(_item_options.to_dict())
             _dict['options'] = _items
+        # override the default output from pydantic by calling `to_dict()` of required_filter
+        if self.required_filter:
+            _dict['requiredFilter'] = self.required_filter.to_dict()
         return _dict
 
     @classmethod
@@ -143,6 +149,7 @@ class SavePropertyDTO(BaseModel):
             "rules": obj.get("rules"),
             "hidden": obj.get("hidden"),
             "lifecycleActive": obj.get("lifecycleActive"),
+            "requiredFilter": Filter.from_dict(obj["requiredFilter"]) if obj.get("requiredFilter") is not None else None,
             "nonPublic": obj.get("nonPublic"),
             "indexed": obj.get("indexed"),
             "formatSettings": obj.get("formatSettings"),
@@ -150,7 +157,8 @@ class SavePropertyDTO(BaseModel):
             "editable": obj.get("editable"),
             "icon": obj.get("icon"),
             "webpagePublic": obj.get("webpagePublic"),
-            "embeddable": obj.get("embeddable")
+            "embeddable": obj.get("embeddable"),
+            "sensitive": obj.get("sensitive")
         })
         return _obj
 

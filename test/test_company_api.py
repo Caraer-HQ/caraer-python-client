@@ -54,6 +54,20 @@ class TestCompanyApi(unittest.TestCase):
         """
         pass
 
+    def test_get_suite_dashboard(self) -> None:
+        """Test case for get_suite_dashboard
+
+        Get suite dashboard
+        """
+        pass
+
+    def test_get_suite_dashboards(self) -> None:
+        """Test case for get_suite_dashboards
+
+        List suite dashboards
+        """
+        pass
+
     def test_get_website_settings(self) -> None:
         """Test case for get_website_settings
 
@@ -79,6 +93,13 @@ class TestCompanyApi(unittest.TestCase):
         """Test case for update_digital_identity
 
         Update digital identity
+        """
+        pass
+
+    def test_update_suite_dashboard(self) -> None:
+        """Test case for update_suite_dashboard
+
+        Update suite dashboard
         """
         pass
 

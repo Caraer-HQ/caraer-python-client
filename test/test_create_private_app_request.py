@@ -40,7 +40,9 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                 auth_method = 'API_KEY',
                 oauth_redirect_uris = [
                     ''
-                    ]
+                    ],
+                platform_version = 56,
+                runtime = ''
             )
         else:
             return CreatePrivateAppRequest(

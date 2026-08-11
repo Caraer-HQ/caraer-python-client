@@ -37,6 +37,7 @@ class TestShowItem(unittest.TestCase):
             return ShowItem(
                 object = 'User',
                 relation = 'hasProperty',
+                relation_direction = 'outgoing',
                 var_property = 'email',
                 separator = '|',
                 sticky = True,

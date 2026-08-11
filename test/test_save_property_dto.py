@@ -49,8 +49,8 @@ class TestSavePropertyDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -90,8 +90,8 @@ class TestSavePropertyDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', ), ), ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
@@ -104,8 +104,8 @@ class TestSavePropertyDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -145,8 +145,8 @@ class TestSavePropertyDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', ), ), ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
@@ -159,8 +159,8 @@ class TestSavePropertyDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -200,8 +200,8 @@ class TestSavePropertyDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', ), ), ),
                 index = 56,
                 description = 'This is a sample property description',
@@ -213,6 +213,7 @@ class TestSavePropertyDTO(unittest.TestCase):
                         icon = '', 
                         color = '', 
                         disabled = True, 
+                        completed = True, 
                         used_in = caraer_client.models.used_in_result.UsedInResult(
                             record_uuids = [
                                 ''
@@ -226,6 +227,11 @@ class TestSavePropertyDTO(unittest.TestCase):
                     ],
                 hidden = False,
                 lifecycle_active = False,
+                required_filter = caraer_client.models.filter.Filter(
+                    groups = [
+                        caraer_client.models.filter_group.FilterGroup(
+                            items = null, )
+                        ], ),
                 non_public = False,
                 indexed = False,
                 format_settings = {
@@ -235,7 +241,8 @@ class TestSavePropertyDTO(unittest.TestCase):
                 editable = True,
                 icon = 'icon_name',
                 webpage_public = False,
-                embeddable = False
+                embeddable = False,
+                sensitive = False
             )
         else:
             return SavePropertyDTO(

@@ -40,8 +40,10 @@ class AppSettingFieldSchema(BaseModel):
     default_value: Optional[Any] = Field(default=None, alias="defaultValue")
     hidden: Optional[StrictBool] = None
     value: Optional[Any] = None
+    has_value: Optional[StrictBool] = Field(default=None, alias="hasValue")
     mapping_value: Optional[AppSettingFieldMappingStructure] = Field(default=None, alias="mappingValue")
-    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "options", "optionsSource", "defaultValue", "hidden", "value", "mappingValue"]
+    value_scope: Optional[StrictStr] = Field(default=None, alias="valueScope")
+    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "options", "optionsSource", "defaultValue", "hidden", "value", "hasValue", "mappingValue", "valueScope"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -127,7 +129,9 @@ class AppSettingFieldSchema(BaseModel):
             "defaultValue": obj.get("defaultValue"),
             "hidden": obj.get("hidden"),
             "value": obj.get("value"),
-            "mappingValue": AppSettingFieldMappingStructure.from_dict(obj["mappingValue"]) if obj.get("mappingValue") is not None else None
+            "hasValue": obj.get("hasValue"),
+            "mappingValue": AppSettingFieldMappingStructure.from_dict(obj["mappingValue"]) if obj.get("mappingValue") is not None else None,
+            "valueScope": obj.get("valueScope")
         })
         return _obj
 

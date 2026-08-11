@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **filters** | **List[str]** |  | [optional] 
 **rules** | **List[str]** |  | [optional] 
 **linked_property** | [**PropertyDTO**](PropertyDTO.md) |  | [optional] 
+**checkbox_property** | [**PropertyDTO**](PropertyDTO.md) |  | [optional] 
 
 ## Example
 

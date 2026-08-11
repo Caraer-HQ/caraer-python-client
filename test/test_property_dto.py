@@ -49,8 +49,8 @@ class TestPropertyDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -90,8 +90,8 @@ class TestPropertyDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', ), ), ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
@@ -104,8 +104,8 @@ class TestPropertyDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -145,8 +145,8 @@ class TestPropertyDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', ), ), ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
@@ -159,8 +159,8 @@ class TestPropertyDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -200,8 +200,8 @@ class TestPropertyDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', ), ), ),
                 index = 56,
                 description = '',
@@ -213,6 +213,7 @@ class TestPropertyDTO(unittest.TestCase):
                         icon = '', 
                         color = '', 
                         disabled = True, 
+                        completed = True, 
                         used_in = caraer_client.models.used_in_result.UsedInResult(
                             record_uuids = [
                                 ''
@@ -227,6 +228,11 @@ class TestPropertyDTO(unittest.TestCase):
                 immutable = True,
                 hidden = True,
                 lifecycle_active = True,
+                required_filter = caraer_client.models.filter.Filter(
+                    groups = [
+                        caraer_client.models.filter_group.FilterGroup(
+                            items = null, )
+                        ], ),
                 non_public = True,
                 indexed = True,
                 editable = True,
@@ -241,6 +247,7 @@ class TestPropertyDTO(unittest.TestCase):
                 icon = '',
                 webpage_public = True,
                 embeddable = True,
+                sensitive = True,
                 min_and_max_value = caraer_client.models.tuple2_long_long.Tuple2LongLong(
                     t1 = 56, 
                     t2 = 56, ),

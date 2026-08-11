@@ -20,6 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from caraer_client.models.analytics_dashboard_config import AnalyticsDashboardConfig
 from caraer_client.models.filter import Filter
 from caraer_client.models.record import Record
 from caraer_client.models.show_item import ShowItem
@@ -57,9 +58,15 @@ class ViewDTO(BaseModel):
     icon: Optional[StrictStr] = None
     flow_property: Optional[StrictStr] = Field(default=None, alias="flowProperty")
     flow_preview: Optional[StrictStr] = Field(default=None, alias="flowPreview")
+    task_progress_property: Optional[StrictStr] = Field(default=None, alias="taskProgressProperty")
+    task_group_property: Optional[StrictStr] = Field(default=None, alias="taskGroupProperty")
+    task_expand_subtasks: Optional[StrictBool] = Field(default=None, alias="taskExpandSubtasks")
+    task_collapsed_group_keys: Optional[List[StrictStr]] = Field(default=None, alias="taskCollapsedGroupKeys")
+    task_expanded_task_uuids: Optional[List[StrictStr]] = Field(default=None, alias="taskExpandedTaskUuids")
     default_view: Optional[StrictBool] = Field(default=None, alias="defaultView")
     is_internally_public: Optional[StrictBool] = Field(default=None, alias="isInternallyPublic")
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "favorite", "team", "shared", "personal", "trait", "filters", "shows", "sorts", "limit", "showIcons", "rowHeight", "query", "icon", "flowProperty", "flowPreview", "defaultView", "isInternallyPublic"]
+    analytics: Optional[AnalyticsDashboardConfig] = None
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "favorite", "team", "shared", "personal", "trait", "filters", "shows", "sorts", "limit", "showIcons", "rowHeight", "query", "icon", "flowProperty", "flowPreview", "taskProgressProperty", "taskGroupProperty", "taskExpandSubtasks", "taskCollapsedGroupKeys", "taskExpandedTaskUuids", "defaultView", "isInternallyPublic", "analytics"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -126,6 +133,9 @@ class ViewDTO(BaseModel):
                 if _item_sorts:
                     _items.append(_item_sorts.to_dict())
             _dict['sorts'] = _items
+        # override the default output from pydantic by calling `to_dict()` of analytics
+        if self.analytics:
+            _dict['analytics'] = self.analytics.to_dict()
         return _dict
 
     @classmethod
@@ -163,8 +173,14 @@ class ViewDTO(BaseModel):
             "icon": obj.get("icon"),
             "flowProperty": obj.get("flowProperty"),
             "flowPreview": obj.get("flowPreview"),
+            "taskProgressProperty": obj.get("taskProgressProperty"),
+            "taskGroupProperty": obj.get("taskGroupProperty"),
+            "taskExpandSubtasks": obj.get("taskExpandSubtasks"),
+            "taskCollapsedGroupKeys": obj.get("taskCollapsedGroupKeys"),
+            "taskExpandedTaskUuids": obj.get("taskExpandedTaskUuids"),
             "defaultView": obj.get("defaultView"),
-            "isInternallyPublic": obj.get("isInternallyPublic")
+            "isInternallyPublic": obj.get("isInternallyPublic"),
+            "analytics": AnalyticsDashboardConfig.from_dict(obj["analytics"]) if obj.get("analytics") is not None else None
         })
         return _obj
 

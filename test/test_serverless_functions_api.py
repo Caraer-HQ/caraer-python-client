@@ -26,10 +26,17 @@ class TestServerlessFunctionsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_create1(self) -> None:
-        """Test case for create1
+    def test_create3(self) -> None:
+        """Test case for create3
 
         Create a serverless function
+        """
+        pass
+
+    def test_delete1(self) -> None:
+        """Test case for delete1
+
+        Delete a serverless function
         """
         pass
 
@@ -40,8 +47,22 @@ class TestServerlessFunctionsApi(unittest.TestCase):
         """
         pass
 
-    def test_show(self) -> None:
-        """Test case for show
+    def test_logs(self) -> None:
+        """Test case for logs
+
+        Get serverless function logs
+        """
+        pass
+
+    def test_sample_payload(self) -> None:
+        """Test case for sample_payload
+
+        Generate a sample webhook payload
+        """
+        pass
+
+    def test_show1(self) -> None:
+        """Test case for show1
 
         Get a serverless function
         """

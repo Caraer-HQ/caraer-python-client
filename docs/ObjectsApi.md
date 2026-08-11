@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**grant_object_access**](ObjectsApi.md#grant_object_access) | **POST** /api/v2/objects/{objectUuid}/access-grant | Grant object record access
 [**permanently_delete_archived_object**](ObjectsApi.md#permanently_delete_archived_object) | **DELETE** /api/v2/objects/{uuid}/permanent | Permanently delete archived object
 [**save_preview**](ObjectsApi.md#save_preview) | **POST** /api/v2/objects/{uuid}/previews/{name} | Save object preview
-[**sync_morph_objects**](ObjectsApi.md#sync_morph_objects) | **POST** /api/v2/objects/{uuid}/syncMorphObjects | Sync morph objects for existing records
+[**sync_extended_objects**](ObjectsApi.md#sync_extended_objects) | **POST** /api/v2/objects/{uuid}/syncExtendedObjects | Sync extended objects for existing records
 [**update_indices3**](ObjectsApi.md#update_indices3) | **PUT** /api/v2/objects/updateIndices | Update object indices
 [**update_lifecycle_properties**](ObjectsApi.md#update_lifecycle_properties) | **PUT** /api/v2/objects/{objectUuid}/lifecycle-properties | Configure lifecycle property tracking
 [**update_object**](ObjectsApi.md#update_object) | **PUT** /api/v2/objects/{uuid} | Update object by UUID
@@ -925,12 +925,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sync_morph_objects**
-> SuccessResponse sync_morph_objects(uuid)
+# **sync_extended_objects**
+> SuccessResponse sync_extended_objects(uuid)
 
-Sync morph objects for existing records
+Sync extended objects for existing records
 
-Synchronizes existing records for an object after morph configuration changes. The object path variable accepts UUID or object name. Records that reference the object as primary object, morph object, or label are re-morphed.
+Synchronizes existing records for an object after extended configuration changes. The object path variable accepts UUID or object name. Records that reference the object as primary object, extended object, or label are re-extended.
 
 ### Example
 
@@ -965,12 +965,12 @@ with caraer_client.ApiClient(configuration) as api_client:
     uuid = 'uuid_example' # str | 
 
     try:
-        # Sync morph objects for existing records
-        api_response = api_instance.sync_morph_objects(uuid)
-        print("The response of ObjectsApi->sync_morph_objects:\n")
+        # Sync extended objects for existing records
+        api_response = api_instance.sync_extended_objects(uuid)
+        print("The response of ObjectsApi->sync_extended_objects:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ObjectsApi->sync_morph_objects: %s\n" % e)
+        print("Exception when calling ObjectsApi->sync_extended_objects: %s\n" % e)
 ```
 
 
@@ -999,7 +999,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Morph objects synchronized successfully |  -  |
+**200** | Extended objects synchronized successfully |  -  |
 **404** | Object not found |  -  |
 **500** | Internal server error |  -  |
 

@@ -24,11 +24,11 @@ from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class MorphRecordRequest(BaseModel):
+class ExtendRecordRequest(BaseModel):
     """
-    Request to morph a record
+    Request to extend a record
     """ # noqa: E501
-    objects: Optional[List[CaraerObjectDTO]] = Field(default=None, description="The objects to morph the record into")
+    objects: Optional[List[CaraerObjectDTO]] = Field(default=None, description="The objects to extend the record into")
     __properties: ClassVar[List[str]] = ["objects"]
 
     model_config = ConfigDict(
@@ -49,7 +49,7 @@ class MorphRecordRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of MorphRecordRequest from a JSON string"""
+        """Create an instance of ExtendRecordRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,7 +81,7 @@ class MorphRecordRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of MorphRecordRequest from a dict"""
+        """Create an instance of ExtendRecordRequest from a dict"""
         if obj is None:
             return None
 

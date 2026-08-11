@@ -29,9 +29,10 @@ class SortItem(BaseModel):
     """ # noqa: E501
     object: Optional[StrictStr] = Field(default=None, description="The name of the object to which this pagination item belongs.", json_schema_extra={"examples": ["User"]})
     relation: Optional[StrictStr] = Field(default=None, description="The relationship between objects.", json_schema_extra={"examples": ["hasProperty"]})
+    relation_direction: Optional[StrictStr] = Field(default=None, description="Optional relation direction: outgoing (related→main), incoming (main→related), or omit for undirected.", alias="relationDirection", json_schema_extra={"examples": ["outgoing"]})
     var_property: Optional[StrictStr] = Field(default=None, description="The name of the property within the object.", alias="property", json_schema_extra={"examples": ["email"]})
     direction: Optional[StrictStr] = Field(default=None, description="The direction for sorting. Can be ASC (ascending) or DESC (descending).", json_schema_extra={"examples": ["ASC"]})
-    __properties: ClassVar[List[str]] = ["object", "relation", "property", "direction"]
+    __properties: ClassVar[List[str]] = ["object", "relation", "relationDirection", "property", "direction"]
 
     @field_validator('direction')
     def direction_validate_enum(cls, value):
@@ -96,6 +97,7 @@ class SortItem(BaseModel):
         _obj = cls.model_validate({
             "object": obj.get("object"),
             "relation": obj.get("relation"),
+            "relationDirection": obj.get("relationDirection"),
             "property": obj.get("property"),
             "direction": obj.get("direction")
         })

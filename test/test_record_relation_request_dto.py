@@ -40,6 +40,7 @@ class TestRecordRelationRequestDTO(unittest.TestCase):
                 properties = {
                     'key' : null
                     },
+                edge_properties = {partstat=ACCEPTED},
                 record = caraer_client.models.record_dto.RecordDTO(
                     uuid = '0', 
                     name = '0', 
@@ -60,6 +61,7 @@ class TestRecordRelationRequestDTO(unittest.TestCase):
                             properties = {
                                 'key' : null
                                 }, 
+                            edge_properties = {partstat=ACCEPTED}, 
                             record = null, 
                             object_name = '', 
                             primary = False, 

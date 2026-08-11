@@ -39,6 +39,8 @@ if TYPE_CHECKING:
     from caraer_client.models.number import Number
     from caraer_client.models.number_range import NumberRange
     from caraer_client.models.phone import Phone
+    from caraer_client.models.progress import Progress
+    from caraer_client.models.recurrence import Recurrence
     from caraer_client.models.single_checkbox import SingleCheckbox
     from caraer_client.models.single_line import SingleLine
     from caraer_client.models.single_select import SingleSelect
@@ -72,7 +74,7 @@ class PropertyFormat(BaseModel):
 
     # discriminator mappings
     __discriminator_value_class_map: ClassVar[Dict[str, str]] = {
-        'Currency': 'Currency','CurrencyRange': 'CurrencyRange','Date': 'ModelDate','Duration': 'Duration','Email': 'Email','File': 'File','LinkedProperty': 'LinkedProperty','MultiLine': 'MultiLine','MultiSelect': 'MultiSelect','Number': 'Number','NumberRange': 'NumberRange','Phone': 'Phone','SingleCheckbox': 'SingleCheckbox','SingleLine': 'SingleLine','SingleSelect': 'SingleSelect','Structure': 'Structure','Tag': 'Tag','Url': 'Url'
+        'Currency': 'Currency','CurrencyRange': 'CurrencyRange','Date': 'ModelDate','Duration': 'Duration','Email': 'Email','File': 'File','LinkedProperty': 'LinkedProperty','MultiLine': 'MultiLine','MultiSelect': 'MultiSelect','Number': 'Number','NumberRange': 'NumberRange','Phone': 'Phone','Progress': 'Progress','Recurrence': 'Recurrence','SingleCheckbox': 'SingleCheckbox','SingleLine': 'SingleLine','SingleSelect': 'SingleSelect','Structure': 'Structure','Tag': 'Tag','Url': 'Url'
     }
 
     @classmethod
@@ -93,7 +95,7 @@ class PropertyFormat(BaseModel):
         return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Union[Currency, CurrencyRange, ModelDate, Duration, Email, File, LinkedProperty, MultiLine, MultiSelect, Number, NumberRange, Phone, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url]]:
+    def from_json(cls, json_str: str) -> Optional[Union[Currency, CurrencyRange, ModelDate, Duration, Email, File, LinkedProperty, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url]]:
         """Create an instance of PropertyFormat from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -125,7 +127,7 @@ class PropertyFormat(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict[str, Any]) -> Optional[Union[Currency, CurrencyRange, ModelDate, Duration, Email, File, LinkedProperty, MultiLine, MultiSelect, Number, NumberRange, Phone, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url]]:
+    def from_dict(cls, obj: Dict[str, Any]) -> Optional[Union[Currency, CurrencyRange, ModelDate, Duration, Email, File, LinkedProperty, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url]]:
         """Create an instance of PropertyFormat from a dict"""
         # look up the object type based on discriminator mapping
         object_type = cls.get_discriminator_value(obj)
@@ -153,6 +155,10 @@ class PropertyFormat(BaseModel):
             return import_module("caraer_client.models.number_range").NumberRange.from_dict(obj)
         if object_type ==  'Phone':
             return import_module("caraer_client.models.phone").Phone.from_dict(obj)
+        if object_type ==  'Progress':
+            return import_module("caraer_client.models.progress").Progress.from_dict(obj)
+        if object_type ==  'Recurrence':
+            return import_module("caraer_client.models.recurrence").Recurrence.from_dict(obj)
         if object_type ==  'SingleCheckbox':
             return import_module("caraer_client.models.single_checkbox").SingleCheckbox.from_dict(obj)
         if object_type ==  'SingleLine':

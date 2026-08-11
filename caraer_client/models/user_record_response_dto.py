@@ -43,7 +43,7 @@ class UserRecordResponseDTO(BaseModel):
     index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
     deleted: Optional[StrictBool] = Field(default=None, description="Whether the record is soft-deleted.")
     properties: Optional[List[FilledProperty]] = Field(default=None, description="Record properties for display.")
-    objects: Optional[Dict[str, Any]] = Field(default=None, description="Primary and morph object metadata for this record.")
+    objects: Optional[Dict[str, Any]] = Field(default=None, description="Primary and extended object metadata for this record.")
     user: Optional[PublicUserDTO] = Field(default=None, description="The user linked to this record when the user trait is enabled.")
     __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "deleted", "properties", "objects", "user"]
 

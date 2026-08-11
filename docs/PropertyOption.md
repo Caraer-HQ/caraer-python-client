@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **icon** | **str** |  | [optional] 
 **color** | **str** |  | [optional] 
 **disabled** | **bool** |  | [optional] 
+**completed** | **bool** |  | [optional] 
 **used_in** | [**UsedInResult**](UsedInResult.md) |  | [optional] 
 
 ## Example

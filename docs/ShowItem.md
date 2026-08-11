@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** | The name of the object to which this pagination item belongs. | [optional] 
 **relation** | **str** | The relationship between objects. | [optional] 
+**relation_direction** | **str** | Optional relation direction: outgoing (related→main), incoming (main→related), or omit for undirected. | [optional] 
 **var_property** | **str** | The name of the property within the object. | [optional] 
 **separator** | **str** | Separator string used to visually separate this item. | [optional] 
 **sticky** | **bool** | Flag indicating whether this item is sticky and will stay fixed in the list. | [optional] [default to False]

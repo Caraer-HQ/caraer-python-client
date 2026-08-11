@@ -41,8 +41,9 @@ class ServerlessFunctionDTO(BaseModel):
     index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
     runtime: Optional[StrictStr] = Field(default=None, description="Runtime identifier (e.g. javascript, python)")
     code: Optional[StrictStr] = Field(default=None, description="Function source code")
+    source_files: Optional[Dict[str, StrictStr]] = Field(default=None, description="Additional source files relative to the function folder (e.g. shared.js)", alias="sourceFiles")
     description: Optional[StrictStr] = Field(default=None, description="Optional description of the serverless function")
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "runtime", "code", "description"]
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "runtime", "code", "sourceFiles", "description"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -116,6 +117,7 @@ class ServerlessFunctionDTO(BaseModel):
             "index": obj.get("index"),
             "runtime": obj.get("runtime"),
             "code": obj.get("code"),
+            "sourceFiles": obj.get("sourceFiles"),
             "description": obj.get("description")
         })
         return _obj

@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,7 +31,9 @@ class CreatePrivateAppRequest(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="Optional description text for the app.", json_schema_extra={"examples": ["A custom app for internal use"]})
     auth_method: Optional[StrictStr] = Field(default=None, description="Authentication method (API_KEY default, OAUTH2 for OAuth 2.0)", alias="authMethod")
     oauth_redirect_uris: Optional[List[StrictStr]] = Field(default=None, description="Registered OAuth redirect URIs (required when authMethod is OAUTH2)", alias="oauthRedirectUris")
-    __properties: ClassVar[List[str]] = ["label", "description", "authMethod", "oauthRedirectUris"]
+    platform_version: Optional[StrictInt] = Field(default=None, description="Ignored; new private apps are always platform version 2 (async container runtime).", alias="platformVersion")
+    runtime: Optional[StrictStr] = Field(default=None, description="Serverless runtime for the app: nodejs22 or python312. Defaults to nodejs22.")
+    __properties: ClassVar[List[str]] = ["label", "description", "authMethod", "oauthRedirectUris", "platformVersion", "runtime"]
 
     @field_validator('auth_method')
     def auth_method_validate_enum(cls, value):
@@ -97,7 +99,9 @@ class CreatePrivateAppRequest(BaseModel):
             "label": obj.get("label"),
             "description": obj.get("description"),
             "authMethod": obj.get("authMethod"),
-            "oauthRedirectUris": obj.get("oauthRedirectUris")
+            "oauthRedirectUris": obj.get("oauthRedirectUris"),
+            "platformVersion": obj.get("platformVersion"),
+            "runtime": obj.get("runtime")
         })
         return _obj
 

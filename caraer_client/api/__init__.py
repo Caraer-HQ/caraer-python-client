@@ -3,9 +3,13 @@
 # import apis into api package
 from caraer_client.api.app_bar_iframe_sessions_api import AppBarIframeSessionsApi
 from caraer_client.api.app_bars_api import AppBarsApi
+from caraer_client.api.app_installation_runtime_api import AppInstallationRuntimeApi
 from caraer_client.api.applications_api import ApplicationsApi
 from caraer_client.api.automations_api import AutomationsApi
+from caraer_client.api.billing_api import BillingApi
 from caraer_client.api.company_api import CompanyApi
+from caraer_client.api.developer_projects_api import DeveloperProjectsApi
+from caraer_client.api.developer_sandboxes_api import DeveloperSandboxesApi
 from caraer_client.api.feeds_api import FeedsApi
 from caraer_client.api.file_management_api import FileManagementApi
 from caraer_client.api.filter_api import FilterApi

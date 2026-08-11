@@ -37,6 +37,7 @@ class TestAppSettingOptionsSource(unittest.TestCase):
             return AppSettingOptionsSource(
                 type = '',
                 serverless_function_uuid = '',
+                serverless_function_name = '',
                 depends_on = [
                     ''
                     ],

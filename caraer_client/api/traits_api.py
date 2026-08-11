@@ -16,11 +16,14 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
+from typing import Optional
 from typing_extensions import Annotated
 from caraer_client.models.create_response import CreateResponse
 from caraer_client.models.delete_response import DeleteResponse
+from caraer_client.models.event_rsvp_request import EventRsvpRequest
 from caraer_client.models.pagination_response import PaginationResponse
 from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.update_response import UpdateResponse
 
 from caraer_client.api_client import ApiClient, RequestSerialized
 from caraer_client.api_response import ApiResponse
@@ -1173,6 +1176,1375 @@ class TraitsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/api/v2/traits/{objectUuid}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def rsvp_browser_get(
+        self,
+        company_uuid: StrictStr,
+        event_uuid: StrictStr,
+        attendee_uuid: StrictStr,
+        partstat: Optional[StrictStr] = None,
+        scope: Optional[StrictStr] = None,
+        switch_account: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Respond to an event invitation (email link)
+
+        Public browser RSVP. Without partstat shows a choice page; with partstat applies after login when the attendee has a user trait. Non-user-trait attendees need no login.
+
+        :param company_uuid: (required)
+        :type company_uuid: str
+        :param event_uuid: (required)
+        :type event_uuid: str
+        :param attendee_uuid: (required)
+        :type attendee_uuid: str
+        :param partstat:
+        :type partstat: str
+        :param scope:
+        :type scope: str
+        :param switch_account:
+        :type switch_account: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._rsvp_browser_get_serialize(
+            company_uuid=company_uuid,
+            event_uuid=event_uuid,
+            attendee_uuid=attendee_uuid,
+            partstat=partstat,
+            scope=scope,
+            switch_account=switch_account,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def rsvp_browser_get_with_http_info(
+        self,
+        company_uuid: StrictStr,
+        event_uuid: StrictStr,
+        attendee_uuid: StrictStr,
+        partstat: Optional[StrictStr] = None,
+        scope: Optional[StrictStr] = None,
+        switch_account: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Respond to an event invitation (email link)
+
+        Public browser RSVP. Without partstat shows a choice page; with partstat applies after login when the attendee has a user trait. Non-user-trait attendees need no login.
+
+        :param company_uuid: (required)
+        :type company_uuid: str
+        :param event_uuid: (required)
+        :type event_uuid: str
+        :param attendee_uuid: (required)
+        :type attendee_uuid: str
+        :param partstat:
+        :type partstat: str
+        :param scope:
+        :type scope: str
+        :param switch_account:
+        :type switch_account: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._rsvp_browser_get_serialize(
+            company_uuid=company_uuid,
+            event_uuid=event_uuid,
+            attendee_uuid=attendee_uuid,
+            partstat=partstat,
+            scope=scope,
+            switch_account=switch_account,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def rsvp_browser_get_without_preload_content(
+        self,
+        company_uuid: StrictStr,
+        event_uuid: StrictStr,
+        attendee_uuid: StrictStr,
+        partstat: Optional[StrictStr] = None,
+        scope: Optional[StrictStr] = None,
+        switch_account: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Respond to an event invitation (email link)
+
+        Public browser RSVP. Without partstat shows a choice page; with partstat applies after login when the attendee has a user trait. Non-user-trait attendees need no login.
+
+        :param company_uuid: (required)
+        :type company_uuid: str
+        :param event_uuid: (required)
+        :type event_uuid: str
+        :param attendee_uuid: (required)
+        :type attendee_uuid: str
+        :param partstat:
+        :type partstat: str
+        :param scope:
+        :type scope: str
+        :param switch_account:
+        :type switch_account: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._rsvp_browser_get_serialize(
+            company_uuid=company_uuid,
+            event_uuid=event_uuid,
+            attendee_uuid=attendee_uuid,
+            partstat=partstat,
+            scope=scope,
+            switch_account=switch_account,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _rsvp_browser_get_serialize(
+        self,
+        company_uuid,
+        event_uuid,
+        attendee_uuid,
+        partstat,
+        scope,
+        switch_account,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if company_uuid is not None:
+            _path_params['companyUuid'] = company_uuid
+        if event_uuid is not None:
+            _path_params['eventUuid'] = event_uuid
+        if attendee_uuid is not None:
+            _path_params['attendeeUuid'] = attendee_uuid
+        # process the query parameters
+        if partstat is not None:
+            
+            _query_params.append(('partstat', partstat))
+            
+        if scope is not None:
+            
+            _query_params.append(('scope', scope))
+            
+        if switch_account is not None:
+            
+            _query_params.append(('switchAccount', switch_account))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'text/html'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/traits/event/{companyUuid}/{eventUuid}/rsvp/{attendeeUuid}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def rsvp_browser_login(
+        self,
+        company_uuid: StrictStr,
+        event_uuid: StrictStr,
+        attendee_uuid: StrictStr,
+        email: StrictStr,
+        password: StrictStr,
+        partstat: Optional[StrictStr] = None,
+        scope: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Email/password login for RSVP
+
+
+        :param company_uuid: (required)
+        :type company_uuid: str
+        :param event_uuid: (required)
+        :type event_uuid: str
+        :param attendee_uuid: (required)
+        :type attendee_uuid: str
+        :param email: (required)
+        :type email: str
+        :param password: (required)
+        :type password: str
+        :param partstat:
+        :type partstat: str
+        :param scope:
+        :type scope: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._rsvp_browser_login_serialize(
+            company_uuid=company_uuid,
+            event_uuid=event_uuid,
+            attendee_uuid=attendee_uuid,
+            email=email,
+            password=password,
+            partstat=partstat,
+            scope=scope,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def rsvp_browser_login_with_http_info(
+        self,
+        company_uuid: StrictStr,
+        event_uuid: StrictStr,
+        attendee_uuid: StrictStr,
+        email: StrictStr,
+        password: StrictStr,
+        partstat: Optional[StrictStr] = None,
+        scope: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Email/password login for RSVP
+
+
+        :param company_uuid: (required)
+        :type company_uuid: str
+        :param event_uuid: (required)
+        :type event_uuid: str
+        :param attendee_uuid: (required)
+        :type attendee_uuid: str
+        :param email: (required)
+        :type email: str
+        :param password: (required)
+        :type password: str
+        :param partstat:
+        :type partstat: str
+        :param scope:
+        :type scope: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._rsvp_browser_login_serialize(
+            company_uuid=company_uuid,
+            event_uuid=event_uuid,
+            attendee_uuid=attendee_uuid,
+            email=email,
+            password=password,
+            partstat=partstat,
+            scope=scope,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def rsvp_browser_login_without_preload_content(
+        self,
+        company_uuid: StrictStr,
+        event_uuid: StrictStr,
+        attendee_uuid: StrictStr,
+        email: StrictStr,
+        password: StrictStr,
+        partstat: Optional[StrictStr] = None,
+        scope: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Email/password login for RSVP
+
+
+        :param company_uuid: (required)
+        :type company_uuid: str
+        :param event_uuid: (required)
+        :type event_uuid: str
+        :param attendee_uuid: (required)
+        :type attendee_uuid: str
+        :param email: (required)
+        :type email: str
+        :param password: (required)
+        :type password: str
+        :param partstat:
+        :type partstat: str
+        :param scope:
+        :type scope: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._rsvp_browser_login_serialize(
+            company_uuid=company_uuid,
+            event_uuid=event_uuid,
+            attendee_uuid=attendee_uuid,
+            email=email,
+            password=password,
+            partstat=partstat,
+            scope=scope,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _rsvp_browser_login_serialize(
+        self,
+        company_uuid,
+        event_uuid,
+        attendee_uuid,
+        email,
+        password,
+        partstat,
+        scope,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if company_uuid is not None:
+            _path_params['companyUuid'] = company_uuid
+        if event_uuid is not None:
+            _path_params['eventUuid'] = event_uuid
+        if attendee_uuid is not None:
+            _path_params['attendeeUuid'] = attendee_uuid
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        if email is not None:
+            _form_params.append(('email', email))
+        if password is not None:
+            _form_params.append(('password', password))
+        if partstat is not None:
+            _form_params.append(('partstat', partstat))
+        if scope is not None:
+            _form_params.append(('scope', scope))
+        # process the body parameter
+
+
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/x-www-form-urlencoded'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/traits/event/{companyUuid}/{eventUuid}/rsvp/{attendeeUuid}/login',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def rsvp_browser_social(
+        self,
+        company_uuid: StrictStr,
+        event_uuid: StrictStr,
+        attendee_uuid: StrictStr,
+        provider: StrictStr,
+        partstat: Optional[StrictStr] = None,
+        scope: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Start social login for RSVP
+
+
+        :param company_uuid: (required)
+        :type company_uuid: str
+        :param event_uuid: (required)
+        :type event_uuid: str
+        :param attendee_uuid: (required)
+        :type attendee_uuid: str
+        :param provider: (required)
+        :type provider: str
+        :param partstat:
+        :type partstat: str
+        :param scope:
+        :type scope: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._rsvp_browser_social_serialize(
+            company_uuid=company_uuid,
+            event_uuid=event_uuid,
+            attendee_uuid=attendee_uuid,
+            provider=provider,
+            partstat=partstat,
+            scope=scope,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def rsvp_browser_social_with_http_info(
+        self,
+        company_uuid: StrictStr,
+        event_uuid: StrictStr,
+        attendee_uuid: StrictStr,
+        provider: StrictStr,
+        partstat: Optional[StrictStr] = None,
+        scope: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Start social login for RSVP
+
+
+        :param company_uuid: (required)
+        :type company_uuid: str
+        :param event_uuid: (required)
+        :type event_uuid: str
+        :param attendee_uuid: (required)
+        :type attendee_uuid: str
+        :param provider: (required)
+        :type provider: str
+        :param partstat:
+        :type partstat: str
+        :param scope:
+        :type scope: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._rsvp_browser_social_serialize(
+            company_uuid=company_uuid,
+            event_uuid=event_uuid,
+            attendee_uuid=attendee_uuid,
+            provider=provider,
+            partstat=partstat,
+            scope=scope,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def rsvp_browser_social_without_preload_content(
+        self,
+        company_uuid: StrictStr,
+        event_uuid: StrictStr,
+        attendee_uuid: StrictStr,
+        provider: StrictStr,
+        partstat: Optional[StrictStr] = None,
+        scope: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Start social login for RSVP
+
+
+        :param company_uuid: (required)
+        :type company_uuid: str
+        :param event_uuid: (required)
+        :type event_uuid: str
+        :param attendee_uuid: (required)
+        :type attendee_uuid: str
+        :param provider: (required)
+        :type provider: str
+        :param partstat:
+        :type partstat: str
+        :param scope:
+        :type scope: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._rsvp_browser_social_serialize(
+            company_uuid=company_uuid,
+            event_uuid=event_uuid,
+            attendee_uuid=attendee_uuid,
+            provider=provider,
+            partstat=partstat,
+            scope=scope,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _rsvp_browser_social_serialize(
+        self,
+        company_uuid,
+        event_uuid,
+        attendee_uuid,
+        provider,
+        partstat,
+        scope,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if company_uuid is not None:
+            _path_params['companyUuid'] = company_uuid
+        if event_uuid is not None:
+            _path_params['eventUuid'] = event_uuid
+        if attendee_uuid is not None:
+            _path_params['attendeeUuid'] = attendee_uuid
+        if provider is not None:
+            _path_params['provider'] = provider
+        # process the query parameters
+        if partstat is not None:
+            
+            _query_params.append(('partstat', partstat))
+            
+        if scope is not None:
+            
+            _query_params.append(('scope', scope))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/traits/event/{companyUuid}/{eventUuid}/rsvp/{attendeeUuid}/social/{provider}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def rsvp_json(
+        self,
+        company_uuid: StrictStr,
+        event_uuid: StrictStr,
+        attendee_uuid: StrictStr,
+        event_rsvp_request: Annotated[EventRsvpRequest, Field(description="RSVP payload")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> UpdateResponse:
+        """Update event RSVP (JSON)
+
+        Patches partstat on the attendees edge. No tools @AccessControl — auth is bearer/session + self-only / partner login rules.
+
+        :param company_uuid: (required)
+        :type company_uuid: str
+        :param event_uuid: (required)
+        :type event_uuid: str
+        :param attendee_uuid: (required)
+        :type attendee_uuid: str
+        :param event_rsvp_request: RSVP payload (required)
+        :type event_rsvp_request: EventRsvpRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._rsvp_json_serialize(
+            company_uuid=company_uuid,
+            event_uuid=event_uuid,
+            attendee_uuid=attendee_uuid,
+            event_rsvp_request=event_rsvp_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "UpdateResponse",
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def rsvp_json_with_http_info(
+        self,
+        company_uuid: StrictStr,
+        event_uuid: StrictStr,
+        attendee_uuid: StrictStr,
+        event_rsvp_request: Annotated[EventRsvpRequest, Field(description="RSVP payload")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[UpdateResponse]:
+        """Update event RSVP (JSON)
+
+        Patches partstat on the attendees edge. No tools @AccessControl — auth is bearer/session + self-only / partner login rules.
+
+        :param company_uuid: (required)
+        :type company_uuid: str
+        :param event_uuid: (required)
+        :type event_uuid: str
+        :param attendee_uuid: (required)
+        :type attendee_uuid: str
+        :param event_rsvp_request: RSVP payload (required)
+        :type event_rsvp_request: EventRsvpRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._rsvp_json_serialize(
+            company_uuid=company_uuid,
+            event_uuid=event_uuid,
+            attendee_uuid=attendee_uuid,
+            event_rsvp_request=event_rsvp_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "UpdateResponse",
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def rsvp_json_without_preload_content(
+        self,
+        company_uuid: StrictStr,
+        event_uuid: StrictStr,
+        attendee_uuid: StrictStr,
+        event_rsvp_request: Annotated[EventRsvpRequest, Field(description="RSVP payload")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update event RSVP (JSON)
+
+        Patches partstat on the attendees edge. No tools @AccessControl — auth is bearer/session + self-only / partner login rules.
+
+        :param company_uuid: (required)
+        :type company_uuid: str
+        :param event_uuid: (required)
+        :type event_uuid: str
+        :param attendee_uuid: (required)
+        :type attendee_uuid: str
+        :param event_rsvp_request: RSVP payload (required)
+        :type event_rsvp_request: EventRsvpRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._rsvp_json_serialize(
+            company_uuid=company_uuid,
+            event_uuid=event_uuid,
+            attendee_uuid=attendee_uuid,
+            event_rsvp_request=event_rsvp_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "UpdateResponse",
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _rsvp_json_serialize(
+        self,
+        company_uuid,
+        event_uuid,
+        attendee_uuid,
+        event_rsvp_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if company_uuid is not None:
+            _path_params['companyUuid'] = company_uuid
+        if event_uuid is not None:
+            _path_params['eventUuid'] = event_uuid
+        if attendee_uuid is not None:
+            _path_params['attendeeUuid'] = attendee_uuid
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if event_rsvp_request is not None:
+            _body_params = event_rsvp_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/traits/event/{companyUuid}/{eventUuid}/rsvp/{attendeeUuid}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

@@ -15,15 +15,26 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictStr
+from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Any, Dict, Optional
 from typing_extensions import Annotated
+from caraer_client.models.advanced_record_query_request import AdvancedRecordQueryRequest
+from caraer_client.models.advanced_record_query_response import AdvancedRecordQueryResponse
+from caraer_client.models.aggregate_batch_request import AggregateBatchRequest
+from caraer_client.models.aggregate_request import AggregateRequest
+from caraer_client.models.bulk_delete_records_request import BulkDeleteRecordsRequest
+from caraer_client.models.bulk_delete_records_response import BulkDeleteRecordsResponse
+from caraer_client.models.bulk_edit_records_request import BulkEditRecordsRequest
+from caraer_client.models.bulk_edit_records_response import BulkEditRecordsResponse
 from caraer_client.models.create_response import CreateResponse
-from caraer_client.models.morph_record_request import MorphRecordRequest
+from caraer_client.models.cross_object_record_search_request import CrossObjectRecordSearchRequest
+from caraer_client.models.extend_record_request import ExtendRecordRequest
 from caraer_client.models.pagination_response import PaginationResponse
 from caraer_client.models.record_dto import RecordDTO
+from caraer_client.models.relation_edge_request_dto import RelationEdgeRequestDTO
 from caraer_client.models.show_response import ShowResponse
 from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.suggest_analytics_widgets_request import SuggestAnalyticsWidgetsRequest
 from caraer_client.models.update_response import UpdateResponse
 
 from caraer_client.api_client import ApiClient, RequestSerialized
@@ -45,11 +56,1169 @@ class RecordsApi:
 
 
     @validate_call
+    def aggregate(
+        self,
+        aggregate_request: AggregateRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SuccessResponse:
+        """Aggregate records for analytics charts
+
+        Groups Neo4j records by property or time bucket and returns series points with optional drilldown filters.
+
+        :param aggregate_request: (required)
+        :type aggregate_request: AggregateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._aggregate_serialize(
+            aggregate_request=aggregate_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def aggregate_with_http_info(
+        self,
+        aggregate_request: AggregateRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SuccessResponse]:
+        """Aggregate records for analytics charts
+
+        Groups Neo4j records by property or time bucket and returns series points with optional drilldown filters.
+
+        :param aggregate_request: (required)
+        :type aggregate_request: AggregateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._aggregate_serialize(
+            aggregate_request=aggregate_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def aggregate_without_preload_content(
+        self,
+        aggregate_request: AggregateRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Aggregate records for analytics charts
+
+        Groups Neo4j records by property or time bucket and returns series points with optional drilldown filters.
+
+        :param aggregate_request: (required)
+        :type aggregate_request: AggregateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._aggregate_serialize(
+            aggregate_request=aggregate_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _aggregate_serialize(
+        self,
+        aggregate_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if aggregate_request is not None:
+            _body_params = aggregate_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/records/aggregate',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def aggregate_batch(
+        self,
+        aggregate_batch_request: AggregateBatchRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SuccessResponse:
+        """Batch aggregate records for analytics dashboards
+
+        Runs multiple aggregation requests for dashboard widgets.
+
+        :param aggregate_batch_request: (required)
+        :type aggregate_batch_request: AggregateBatchRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._aggregate_batch_serialize(
+            aggregate_batch_request=aggregate_batch_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def aggregate_batch_with_http_info(
+        self,
+        aggregate_batch_request: AggregateBatchRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SuccessResponse]:
+        """Batch aggregate records for analytics dashboards
+
+        Runs multiple aggregation requests for dashboard widgets.
+
+        :param aggregate_batch_request: (required)
+        :type aggregate_batch_request: AggregateBatchRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._aggregate_batch_serialize(
+            aggregate_batch_request=aggregate_batch_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def aggregate_batch_without_preload_content(
+        self,
+        aggregate_batch_request: AggregateBatchRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Batch aggregate records for analytics dashboards
+
+        Runs multiple aggregation requests for dashboard widgets.
+
+        :param aggregate_batch_request: (required)
+        :type aggregate_batch_request: AggregateBatchRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._aggregate_batch_serialize(
+            aggregate_batch_request=aggregate_batch_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _aggregate_batch_serialize(
+        self,
+        aggregate_batch_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if aggregate_batch_request is not None:
+            _body_params = aggregate_batch_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/records/aggregate/batch',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def bulk_delete(
+        self,
+        object_name: StrictStr,
+        bulk_delete_records_request: BulkDeleteRecordsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> BulkDeleteRecordsResponse:
+        """Bulk delete records
+
+        Archives, anonymizes, or permanently deletes multiple records in one request. Returns HTTP 200 when every item succeeds. Returns HTTP 200 with per-record errors when one or more items fail; successful items are still applied and listed in data.uuids.
+
+        :param object_name: (required)
+        :type object_name: str
+        :param bulk_delete_records_request: (required)
+        :type bulk_delete_records_request: BulkDeleteRecordsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._bulk_delete_serialize(
+            object_name=object_name,
+            bulk_delete_records_request=bulk_delete_records_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "BulkDeleteRecordsResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def bulk_delete_with_http_info(
+        self,
+        object_name: StrictStr,
+        bulk_delete_records_request: BulkDeleteRecordsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[BulkDeleteRecordsResponse]:
+        """Bulk delete records
+
+        Archives, anonymizes, or permanently deletes multiple records in one request. Returns HTTP 200 when every item succeeds. Returns HTTP 200 with per-record errors when one or more items fail; successful items are still applied and listed in data.uuids.
+
+        :param object_name: (required)
+        :type object_name: str
+        :param bulk_delete_records_request: (required)
+        :type bulk_delete_records_request: BulkDeleteRecordsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._bulk_delete_serialize(
+            object_name=object_name,
+            bulk_delete_records_request=bulk_delete_records_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "BulkDeleteRecordsResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def bulk_delete_without_preload_content(
+        self,
+        object_name: StrictStr,
+        bulk_delete_records_request: BulkDeleteRecordsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Bulk delete records
+
+        Archives, anonymizes, or permanently deletes multiple records in one request. Returns HTTP 200 when every item succeeds. Returns HTTP 200 with per-record errors when one or more items fail; successful items are still applied and listed in data.uuids.
+
+        :param object_name: (required)
+        :type object_name: str
+        :param bulk_delete_records_request: (required)
+        :type bulk_delete_records_request: BulkDeleteRecordsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._bulk_delete_serialize(
+            object_name=object_name,
+            bulk_delete_records_request=bulk_delete_records_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "BulkDeleteRecordsResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _bulk_delete_serialize(
+        self,
+        object_name,
+        bulk_delete_records_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if object_name is not None:
+            _path_params['objectName'] = object_name
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if bulk_delete_records_request is not None:
+            _body_params = bulk_delete_records_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/records/{objectName}/bulk-delete',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def bulk_edit(
+        self,
+        object_name: StrictStr,
+        bulk_edit_records_request: BulkEditRecordsRequest,
+        ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows each save to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> BulkEditRecordsResponse:
+        """Bulk create or update records
+
+        Creates or updates multiple records in one request. Returns HTTP 201 when every item succeeds (no per-record errors). Returns HTTP 200 when one or more items fail validation; successful items are still persisted and listed in data.records, with failures in errors.
+
+        :param object_name: (required)
+        :type object_name: str
+        :param bulk_edit_records_request: (required)
+        :type bulk_edit_records_request: BulkEditRecordsRequest
+        :param ignore_errors: If 'true', allows each save to proceed while ignoring certain non-critical validation errors, when supported.
+        :type ignore_errors: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._bulk_edit_serialize(
+            object_name=object_name,
+            bulk_edit_records_request=bulk_edit_records_request,
+            ignore_errors=ignore_errors,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "BulkEditRecordsResponse",
+            '200': "BulkEditRecordsResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def bulk_edit_with_http_info(
+        self,
+        object_name: StrictStr,
+        bulk_edit_records_request: BulkEditRecordsRequest,
+        ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows each save to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[BulkEditRecordsResponse]:
+        """Bulk create or update records
+
+        Creates or updates multiple records in one request. Returns HTTP 201 when every item succeeds (no per-record errors). Returns HTTP 200 when one or more items fail validation; successful items are still persisted and listed in data.records, with failures in errors.
+
+        :param object_name: (required)
+        :type object_name: str
+        :param bulk_edit_records_request: (required)
+        :type bulk_edit_records_request: BulkEditRecordsRequest
+        :param ignore_errors: If 'true', allows each save to proceed while ignoring certain non-critical validation errors, when supported.
+        :type ignore_errors: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._bulk_edit_serialize(
+            object_name=object_name,
+            bulk_edit_records_request=bulk_edit_records_request,
+            ignore_errors=ignore_errors,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "BulkEditRecordsResponse",
+            '200': "BulkEditRecordsResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def bulk_edit_without_preload_content(
+        self,
+        object_name: StrictStr,
+        bulk_edit_records_request: BulkEditRecordsRequest,
+        ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows each save to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Bulk create or update records
+
+        Creates or updates multiple records in one request. Returns HTTP 201 when every item succeeds (no per-record errors). Returns HTTP 200 when one or more items fail validation; successful items are still persisted and listed in data.records, with failures in errors.
+
+        :param object_name: (required)
+        :type object_name: str
+        :param bulk_edit_records_request: (required)
+        :type bulk_edit_records_request: BulkEditRecordsRequest
+        :param ignore_errors: If 'true', allows each save to proceed while ignoring certain non-critical validation errors, when supported.
+        :type ignore_errors: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._bulk_edit_serialize(
+            object_name=object_name,
+            bulk_edit_records_request=bulk_edit_records_request,
+            ignore_errors=ignore_errors,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "BulkEditRecordsResponse",
+            '200': "BulkEditRecordsResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _bulk_edit_serialize(
+        self,
+        object_name,
+        bulk_edit_records_request,
+        ignore_errors,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if object_name is not None:
+            _path_params['objectName'] = object_name
+        # process the query parameters
+        if ignore_errors is not None:
+            
+            _query_params.append(('ignoreErrors', ignore_errors))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if bulk_edit_records_request is not None:
+            _body_params = bulk_edit_records_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/api/v2/records/{objectName}/bulk',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def create(
         self,
         object_name: StrictStr,
         record_dto: Annotated[RecordDTO, Field(description="Record data to create")],
-        parse: Annotated[Optional[StrictBool], Field(description="If 'true', parses the created record to human-readable values before returning.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         _request_timeout: Union[
@@ -73,8 +1242,8 @@ class RecordsApi:
         :type object_name: str
         :param record_dto: Record data to create (required)
         :type record_dto: RecordDTO
-        :param parse: If 'true', parses the created record to human-readable values before returning.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param ignore_errors: If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
         :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
@@ -134,7 +1303,7 @@ class RecordsApi:
         self,
         object_name: StrictStr,
         record_dto: Annotated[RecordDTO, Field(description="Record data to create")],
-        parse: Annotated[Optional[StrictBool], Field(description="If 'true', parses the created record to human-readable values before returning.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         _request_timeout: Union[
@@ -158,8 +1327,8 @@ class RecordsApi:
         :type object_name: str
         :param record_dto: Record data to create (required)
         :type record_dto: RecordDTO
-        :param parse: If 'true', parses the created record to human-readable values before returning.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param ignore_errors: If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
         :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
@@ -219,7 +1388,7 @@ class RecordsApi:
         self,
         object_name: StrictStr,
         record_dto: Annotated[RecordDTO, Field(description="Record data to create")],
-        parse: Annotated[Optional[StrictBool], Field(description="If 'true', parses the created record to human-readable values before returning.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         _request_timeout: Union[
@@ -243,8 +1412,8 @@ class RecordsApi:
         :type object_name: str
         :param record_dto: Record data to create (required)
         :type record_dto: RecordDTO
-        :param parse: If 'true', parses the created record to human-readable values before returning.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param ignore_errors: If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
         :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
@@ -395,7 +1564,7 @@ class RecordsApi:
         self,
         object_name: StrictStr,
         record_dto: Annotated[RecordDTO, Field(description="Record data to create or update")],
-        parse: Optional[StrictBool] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Optional[StrictBool] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         _request_timeout: Union[
@@ -419,8 +1588,8 @@ class RecordsApi:
         :type object_name: str
         :param record_dto: Record data to create or update (required)
         :type record_dto: RecordDTO
-        :param parse:
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param ignore_errors:
         :type ignore_errors: bool
         :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
@@ -481,7 +1650,7 @@ class RecordsApi:
         self,
         object_name: StrictStr,
         record_dto: Annotated[RecordDTO, Field(description="Record data to create or update")],
-        parse: Optional[StrictBool] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Optional[StrictBool] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         _request_timeout: Union[
@@ -505,8 +1674,8 @@ class RecordsApi:
         :type object_name: str
         :param record_dto: Record data to create or update (required)
         :type record_dto: RecordDTO
-        :param parse:
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param ignore_errors:
         :type ignore_errors: bool
         :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
@@ -567,7 +1736,7 @@ class RecordsApi:
         self,
         object_name: StrictStr,
         record_dto: Annotated[RecordDTO, Field(description="Record data to create or update")],
-        parse: Optional[StrictBool] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Optional[StrictBool] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         _request_timeout: Union[
@@ -591,8 +1760,8 @@ class RecordsApi:
         :type object_name: str
         :param record_dto: Record data to create or update (required)
         :type record_dto: RecordDTO
-        :param parse:
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param ignore_errors:
         :type ignore_errors: bool
         :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
@@ -746,6 +1915,7 @@ class RecordsApi:
         relation_name: StrictStr,
         to_uuid: StrictStr,
         primary: Annotated[Optional[Dict[str, Any]], Field(description="When 'true', marks the created relation as primary. Defaults to 'false'.")] = None,
+        relation_edge_request_dto: Optional[RelationEdgeRequestDTO] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -771,6 +1941,8 @@ class RecordsApi:
         :type to_uuid: str
         :param primary: When 'true', marks the created relation as primary. Defaults to 'false'.
         :type primary: object
+        :param relation_edge_request_dto:
+        :type relation_edge_request_dto: RelationEdgeRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -798,6 +1970,7 @@ class RecordsApi:
             relation_name=relation_name,
             to_uuid=to_uuid,
             primary=primary,
+            relation_edge_request_dto=relation_edge_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -827,6 +2000,7 @@ class RecordsApi:
         relation_name: StrictStr,
         to_uuid: StrictStr,
         primary: Annotated[Optional[Dict[str, Any]], Field(description="When 'true', marks the created relation as primary. Defaults to 'false'.")] = None,
+        relation_edge_request_dto: Optional[RelationEdgeRequestDTO] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -852,6 +2026,8 @@ class RecordsApi:
         :type to_uuid: str
         :param primary: When 'true', marks the created relation as primary. Defaults to 'false'.
         :type primary: object
+        :param relation_edge_request_dto:
+        :type relation_edge_request_dto: RelationEdgeRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -879,6 +2055,7 @@ class RecordsApi:
             relation_name=relation_name,
             to_uuid=to_uuid,
             primary=primary,
+            relation_edge_request_dto=relation_edge_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -908,6 +2085,7 @@ class RecordsApi:
         relation_name: StrictStr,
         to_uuid: StrictStr,
         primary: Annotated[Optional[Dict[str, Any]], Field(description="When 'true', marks the created relation as primary. Defaults to 'false'.")] = None,
+        relation_edge_request_dto: Optional[RelationEdgeRequestDTO] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -933,6 +2111,8 @@ class RecordsApi:
         :type to_uuid: str
         :param primary: When 'true', marks the created relation as primary. Defaults to 'false'.
         :type primary: object
+        :param relation_edge_request_dto:
+        :type relation_edge_request_dto: RelationEdgeRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -960,6 +2140,7 @@ class RecordsApi:
             relation_name=relation_name,
             to_uuid=to_uuid,
             primary=primary,
+            relation_edge_request_dto=relation_edge_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -984,6 +2165,7 @@ class RecordsApi:
         relation_name,
         to_uuid,
         primary,
+        relation_edge_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -1019,6 +2201,8 @@ class RecordsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if relation_edge_request_dto is not None:
+            _body_params = relation_edge_request_dto
 
 
         # set the HTTP header `Accept`
@@ -1029,6 +2213,19 @@ class RecordsApi:
                 ]
             )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -1635,10 +2832,339 @@ class RecordsApi:
 
 
     @validate_call
+    def extend(
+        self,
+        uuid: StrictStr,
+        extend_record_request: ExtendRecordRequest,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SuccessResponse:
+        """Extend a record
+
+        Extends a record identified by its UUID to one or more objects. You can use this to move a record or add it to another object so it'll be visible in the new object.Returns a SuccessResponse confirming that the record has been extended.
+
+        :param uuid: (required)
+        :type uuid: str
+        :param extend_record_request: (required)
+        :type extend_record_request: ExtendRecordRequest
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :type record_return_format: str
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._extend_serialize(
+            uuid=uuid,
+            extend_record_request=extend_record_request,
+            record_return_format=record_return_format,
+            parse=parse,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def extend_with_http_info(
+        self,
+        uuid: StrictStr,
+        extend_record_request: ExtendRecordRequest,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SuccessResponse]:
+        """Extend a record
+
+        Extends a record identified by its UUID to one or more objects. You can use this to move a record or add it to another object so it'll be visible in the new object.Returns a SuccessResponse confirming that the record has been extended.
+
+        :param uuid: (required)
+        :type uuid: str
+        :param extend_record_request: (required)
+        :type extend_record_request: ExtendRecordRequest
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :type record_return_format: str
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._extend_serialize(
+            uuid=uuid,
+            extend_record_request=extend_record_request,
+            record_return_format=record_return_format,
+            parse=parse,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def extend_without_preload_content(
+        self,
+        uuid: StrictStr,
+        extend_record_request: ExtendRecordRequest,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Extend a record
+
+        Extends a record identified by its UUID to one or more objects. You can use this to move a record or add it to another object so it'll be visible in the new object.Returns a SuccessResponse confirming that the record has been extended.
+
+        :param uuid: (required)
+        :type uuid: str
+        :param extend_record_request: (required)
+        :type extend_record_request: ExtendRecordRequest
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :type record_return_format: str
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._extend_serialize(
+            uuid=uuid,
+            extend_record_request=extend_record_request,
+            record_return_format=record_return_format,
+            parse=parse,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _extend_serialize(
+        self,
+        uuid,
+        extend_record_request,
+        record_return_format,
+        parse,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if uuid is not None:
+            _path_params['uuid'] = uuid
+        # process the query parameters
+        if record_return_format is not None:
+            
+            _query_params.append(('recordReturnFormat', record_return_format))
+            
+        if parse is not None:
+            
+            _query_params.append(('parse', parse))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if extend_record_request is not None:
+            _body_params = extend_record_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/records/{uuid}/extend',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def index(
         self,
         body: Annotated[StrictStr, Field(description="Pagination request for records")],
-        parse: Annotated[Optional[StrictBool], Field(description="If set to 'true', records are parsed to human-readable values (for example, unix timestamps are formatted as dates).")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         archived: Annotated[Optional[StrictBool], Field(description="When 'true', archived records are returned instead of active records. Defaults to 'false'.")] = None,
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
@@ -1661,8 +3187,8 @@ class RecordsApi:
 
         :param body: Pagination request for records (required)
         :type body: str
-        :param parse: If set to 'true', records are parsed to human-readable values (for example, unix timestamps are formatted as dates).
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param archived: When 'true', archived records are returned instead of active records. Defaults to 'false'.
         :type archived: bool
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
@@ -1723,7 +3249,7 @@ class RecordsApi:
     def index_with_http_info(
         self,
         body: Annotated[StrictStr, Field(description="Pagination request for records")],
-        parse: Annotated[Optional[StrictBool], Field(description="If set to 'true', records are parsed to human-readable values (for example, unix timestamps are formatted as dates).")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         archived: Annotated[Optional[StrictBool], Field(description="When 'true', archived records are returned instead of active records. Defaults to 'false'.")] = None,
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
@@ -1746,8 +3272,8 @@ class RecordsApi:
 
         :param body: Pagination request for records (required)
         :type body: str
-        :param parse: If set to 'true', records are parsed to human-readable values (for example, unix timestamps are formatted as dates).
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param archived: When 'true', archived records are returned instead of active records. Defaults to 'false'.
         :type archived: bool
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
@@ -1808,7 +3334,7 @@ class RecordsApi:
     def index_without_preload_content(
         self,
         body: Annotated[StrictStr, Field(description="Pagination request for records")],
-        parse: Annotated[Optional[StrictBool], Field(description="If set to 'true', records are parsed to human-readable values (for example, unix timestamps are formatted as dates).")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         archived: Annotated[Optional[StrictBool], Field(description="When 'true', archived records are returned instead of active records. Defaults to 'false'.")] = None,
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
@@ -1831,8 +3357,8 @@ class RecordsApi:
 
         :param body: Pagination request for records (required)
         :type body: str
-        :param parse: If set to 'true', records are parsed to human-readable values (for example, unix timestamps are formatted as dates).
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param archived: When 'true', archived records are returned instead of active records. Defaults to 'false'.
         :type archived: bool
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
@@ -1987,7 +3513,7 @@ class RecordsApi:
         self,
         body: Annotated[StrictStr, Field(description="Pagination request for flow view")],
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2009,8 +3535,8 @@ class RecordsApi:
         :type body: str
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
         :type related_record_uuid: str
-        :param parse: Whether to parse the record before returning it.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2064,7 +3590,7 @@ class RecordsApi:
         self,
         body: Annotated[StrictStr, Field(description="Pagination request for flow view")],
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2086,8 +3612,8 @@ class RecordsApi:
         :type body: str
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
         :type related_record_uuid: str
-        :param parse: Whether to parse the record before returning it.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2141,7 +3667,7 @@ class RecordsApi:
         self,
         body: Annotated[StrictStr, Field(description="Pagination request for flow view")],
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2163,8 +3689,8 @@ class RecordsApi:
         :type body: str
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
         :type related_record_uuid: str
-        :param parse: Whether to parse the record before returning it.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2953,341 +4479,12 @@ class RecordsApi:
 
 
     @validate_call
-    def morph(
-        self,
-        uuid: StrictStr,
-        morph_record_request: MorphRecordRequest,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
-        """Morph a record
-
-        Morphs a record identified by its UUID to one or more objects. You can use this to move a record or add it to another object so it'll be visible in the new object.Returns a SuccessResponse confirming that the record has been morphed.
-
-        :param uuid: (required)
-        :type uuid: str
-        :param morph_record_request: (required)
-        :type morph_record_request: MorphRecordRequest
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
-        :type record_return_format: str
-        :param parse: Whether to parse the record before returning it.
-        :type parse: bool
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._morph_serialize(
-            uuid=uuid,
-            morph_record_request=morph_record_request,
-            record_return_format=record_return_format,
-            parse=parse,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
-            '404': "ErrorResponse",
-            '500': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def morph_with_http_info(
-        self,
-        uuid: StrictStr,
-        morph_record_request: MorphRecordRequest,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
-        """Morph a record
-
-        Morphs a record identified by its UUID to one or more objects. You can use this to move a record or add it to another object so it'll be visible in the new object.Returns a SuccessResponse confirming that the record has been morphed.
-
-        :param uuid: (required)
-        :type uuid: str
-        :param morph_record_request: (required)
-        :type morph_record_request: MorphRecordRequest
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
-        :type record_return_format: str
-        :param parse: Whether to parse the record before returning it.
-        :type parse: bool
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._morph_serialize(
-            uuid=uuid,
-            morph_record_request=morph_record_request,
-            record_return_format=record_return_format,
-            parse=parse,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
-            '404': "ErrorResponse",
-            '500': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def morph_without_preload_content(
-        self,
-        uuid: StrictStr,
-        morph_record_request: MorphRecordRequest,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Morph a record
-
-        Morphs a record identified by its UUID to one or more objects. You can use this to move a record or add it to another object so it'll be visible in the new object.Returns a SuccessResponse confirming that the record has been morphed.
-
-        :param uuid: (required)
-        :type uuid: str
-        :param morph_record_request: (required)
-        :type morph_record_request: MorphRecordRequest
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
-        :type record_return_format: str
-        :param parse: Whether to parse the record before returning it.
-        :type parse: bool
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._morph_serialize(
-            uuid=uuid,
-            morph_record_request=morph_record_request,
-            record_return_format=record_return_format,
-            parse=parse,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
-            '404': "ErrorResponse",
-            '500': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _morph_serialize(
-        self,
-        uuid,
-        morph_record_request,
-        record_return_format,
-        parse,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if uuid is not None:
-            _path_params['uuid'] = uuid
-        # process the query parameters
-        if record_return_format is not None:
-            
-            _query_params.append(('recordReturnFormat', record_return_format))
-            
-        if parse is not None:
-            
-            _query_params.append(('parse', parse))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if morph_record_request is not None:
-            _body_params = morph_record_request
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/api/v2/records/{uuid}/morph',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def preview(
         self,
         uuid: StrictStr,
         name: StrictStr,
         object: Annotated[Optional[StrictStr], Field(description="Optional object name used to resolve the record before building the preview.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3311,8 +4508,8 @@ class RecordsApi:
         :type name: str
         :param object: Optional object name used to resolve the record before building the preview.
         :type object: str
-        :param parse: Whether to parse the record before returning it.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3367,7 +4564,7 @@ class RecordsApi:
         uuid: StrictStr,
         name: StrictStr,
         object: Annotated[Optional[StrictStr], Field(description="Optional object name used to resolve the record before building the preview.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3391,8 +4588,8 @@ class RecordsApi:
         :type name: str
         :param object: Optional object name used to resolve the record before building the preview.
         :type object: str
-        :param parse: Whether to parse the record before returning it.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3447,7 +4644,7 @@ class RecordsApi:
         uuid: StrictStr,
         name: StrictStr,
         object: Annotated[Optional[StrictStr], Field(description="Optional object name used to resolve the record before building the preview.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3471,8 +4668,8 @@ class RecordsApi:
         :type name: str
         :param object: Optional object name used to resolve the record before building the preview.
         :type object: str
-        :param parse: Whether to parse the record before returning it.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3579,6 +4776,283 @@ class RecordsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/api/v2/records/{uuid}/previews/{name}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def query(
+        self,
+        advanced_record_query_request: AdvancedRecordQueryRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> AdvancedRecordQueryResponse:
+        """Advanced graph-aware record query
+
+        Executes a two-pass GraphRAG query using natural language or a declarative plan. Returns records with scores and graph evidence.
+
+        :param advanced_record_query_request: (required)
+        :type advanced_record_query_request: AdvancedRecordQueryRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._query_serialize(
+            advanced_record_query_request=advanced_record_query_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "AdvancedRecordQueryResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def query_with_http_info(
+        self,
+        advanced_record_query_request: AdvancedRecordQueryRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[AdvancedRecordQueryResponse]:
+        """Advanced graph-aware record query
+
+        Executes a two-pass GraphRAG query using natural language or a declarative plan. Returns records with scores and graph evidence.
+
+        :param advanced_record_query_request: (required)
+        :type advanced_record_query_request: AdvancedRecordQueryRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._query_serialize(
+            advanced_record_query_request=advanced_record_query_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "AdvancedRecordQueryResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def query_without_preload_content(
+        self,
+        advanced_record_query_request: AdvancedRecordQueryRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Advanced graph-aware record query
+
+        Executes a two-pass GraphRAG query using natural language or a declarative plan. Returns records with scores and graph evidence.
+
+        :param advanced_record_query_request: (required)
+        :type advanced_record_query_request: AdvancedRecordQueryRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._query_serialize(
+            advanced_record_query_request=advanced_record_query_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "AdvancedRecordQueryResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _query_serialize(
+        self,
+        advanced_record_query_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if advanced_record_query_request is not None:
+            _body_params = advanced_record_query_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/records/query',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3866,7 +5340,7 @@ class RecordsApi:
         self,
         body: Annotated[StrictStr, Field(description="Search criteria")],
         archived: Annotated[Optional[StrictBool], Field(description="When set to 'true', includes soft-deleted records in the search results.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="If 'true', parses returned records to human-readable values.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         _request_timeout: Union[
             None,
@@ -3889,8 +5363,8 @@ class RecordsApi:
         :type body: str
         :param archived: When set to 'true', includes soft-deleted records in the search results.
         :type archived: bool
-        :param parse: If 'true', parses returned records to human-readable values.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3947,7 +5421,7 @@ class RecordsApi:
         self,
         body: Annotated[StrictStr, Field(description="Search criteria")],
         archived: Annotated[Optional[StrictBool], Field(description="When set to 'true', includes soft-deleted records in the search results.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="If 'true', parses returned records to human-readable values.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         _request_timeout: Union[
             None,
@@ -3970,8 +5444,8 @@ class RecordsApi:
         :type body: str
         :param archived: When set to 'true', includes soft-deleted records in the search results.
         :type archived: bool
-        :param parse: If 'true', parses returned records to human-readable values.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4028,7 +5502,7 @@ class RecordsApi:
         self,
         body: Annotated[StrictStr, Field(description="Search criteria")],
         archived: Annotated[Optional[StrictBool], Field(description="When set to 'true', includes soft-deleted records in the search results.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="If 'true', parses returned records to human-readable values.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         _request_timeout: Union[
             None,
@@ -4051,8 +5525,8 @@ class RecordsApi:
         :type body: str
         :param archived: When set to 'true', includes soft-deleted records in the search results.
         :type archived: bool
-        :param parse: If 'true', parses returned records to human-readable values.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4193,12 +5667,323 @@ class RecordsApi:
 
 
     @validate_call
-    def show1(
+    def search_cross_object(
+        self,
+        cross_object_record_search_request: CrossObjectRecordSearchRequest,
+        archived: Annotated[Optional[StrictBool], Field(description="When true, includes archived records.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Parse property values for display.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> PaginationResponse:
+        """Search records across objects
+
+        Searches records across multiple object types in one request. Use fromObjectUuid + relationName to limit to relation target objects (e.g. event attendees), or objectUuids for an explicit list, or omit both to search all company objects (capped). Returns preview-shaped results suitable for relation pickers.
+
+        :param cross_object_record_search_request: (required)
+        :type cross_object_record_search_request: CrossObjectRecordSearchRequest
+        :param archived: When true, includes archived records.
+        :type archived: bool
+        :param parse: Parse property values for display.
+        :type parse: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_cross_object_serialize(
+            cross_object_record_search_request=cross_object_record_search_request,
+            archived=archived,
+            parse=parse,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PaginationResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def search_cross_object_with_http_info(
+        self,
+        cross_object_record_search_request: CrossObjectRecordSearchRequest,
+        archived: Annotated[Optional[StrictBool], Field(description="When true, includes archived records.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Parse property values for display.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[PaginationResponse]:
+        """Search records across objects
+
+        Searches records across multiple object types in one request. Use fromObjectUuid + relationName to limit to relation target objects (e.g. event attendees), or objectUuids for an explicit list, or omit both to search all company objects (capped). Returns preview-shaped results suitable for relation pickers.
+
+        :param cross_object_record_search_request: (required)
+        :type cross_object_record_search_request: CrossObjectRecordSearchRequest
+        :param archived: When true, includes archived records.
+        :type archived: bool
+        :param parse: Parse property values for display.
+        :type parse: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_cross_object_serialize(
+            cross_object_record_search_request=cross_object_record_search_request,
+            archived=archived,
+            parse=parse,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PaginationResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def search_cross_object_without_preload_content(
+        self,
+        cross_object_record_search_request: CrossObjectRecordSearchRequest,
+        archived: Annotated[Optional[StrictBool], Field(description="When true, includes archived records.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Parse property values for display.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Search records across objects
+
+        Searches records across multiple object types in one request. Use fromObjectUuid + relationName to limit to relation target objects (e.g. event attendees), or objectUuids for an explicit list, or omit both to search all company objects (capped). Returns preview-shaped results suitable for relation pickers.
+
+        :param cross_object_record_search_request: (required)
+        :type cross_object_record_search_request: CrossObjectRecordSearchRequest
+        :param archived: When true, includes archived records.
+        :type archived: bool
+        :param parse: Parse property values for display.
+        :type parse: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_cross_object_serialize(
+            cross_object_record_search_request=cross_object_record_search_request,
+            archived=archived,
+            parse=parse,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PaginationResponse",
+            '400': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _search_cross_object_serialize(
+        self,
+        cross_object_record_search_request,
+        archived,
+        parse,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if archived is not None:
+            
+            _query_params.append(('archived', archived))
+            
+        if parse is not None:
+            
+            _query_params.append(('parse', parse))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if cross_object_record_search_request is not None:
+            _body_params = cross_object_record_search_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/records/search/cross-object',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def show(
         self,
         uuid: StrictStr,
         object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         fields: Annotated[Optional[StrictStr], Field(description="Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.")] = None,
         _request_timeout: Union[
             None,
@@ -4215,7 +6000,7 @@ class RecordsApi:
     ) -> ShowResponse:
         """Get record details
 
-        Retrieves detailed information about a record by its UUID. Returns a ShowResponse containing the record details.
+        Retrieves detailed information about a record by its UUID. Returns a ShowResponse containing the record details. Prefer GET /{objectName}/{uuid} when the object context is known.
 
         :param uuid: (required)
         :type uuid: str
@@ -4223,8 +6008,8 @@ class RecordsApi:
         :type object: str
         :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
         :type record_return_format: str
-        :param parse: Whether to parse the record before returning it.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param fields: Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.
         :type fields: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4249,7 +6034,7 @@ class RecordsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._show1_serialize(
+        _param = self._show_serialize(
             uuid=uuid,
             object=object,
             record_return_format=record_return_format,
@@ -4277,12 +6062,12 @@ class RecordsApi:
 
 
     @validate_call
-    def show1_with_http_info(
+    def show_with_http_info(
         self,
         uuid: StrictStr,
         object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         fields: Annotated[Optional[StrictStr], Field(description="Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.")] = None,
         _request_timeout: Union[
             None,
@@ -4299,7 +6084,7 @@ class RecordsApi:
     ) -> ApiResponse[ShowResponse]:
         """Get record details
 
-        Retrieves detailed information about a record by its UUID. Returns a ShowResponse containing the record details.
+        Retrieves detailed information about a record by its UUID. Returns a ShowResponse containing the record details. Prefer GET /{objectName}/{uuid} when the object context is known.
 
         :param uuid: (required)
         :type uuid: str
@@ -4307,8 +6092,8 @@ class RecordsApi:
         :type object: str
         :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
         :type record_return_format: str
-        :param parse: Whether to parse the record before returning it.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param fields: Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.
         :type fields: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4333,7 +6118,7 @@ class RecordsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._show1_serialize(
+        _param = self._show_serialize(
             uuid=uuid,
             object=object,
             record_return_format=record_return_format,
@@ -4361,12 +6146,12 @@ class RecordsApi:
 
 
     @validate_call
-    def show1_without_preload_content(
+    def show_without_preload_content(
         self,
         uuid: StrictStr,
         object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
-        parse: Annotated[Optional[StrictBool], Field(description="Whether to parse the record before returning it.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         fields: Annotated[Optional[StrictStr], Field(description="Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.")] = None,
         _request_timeout: Union[
             None,
@@ -4383,7 +6168,7 @@ class RecordsApi:
     ) -> RESTResponseType:
         """Get record details
 
-        Retrieves detailed information about a record by its UUID. Returns a ShowResponse containing the record details.
+        Retrieves detailed information about a record by its UUID. Returns a ShowResponse containing the record details. Prefer GET /{objectName}/{uuid} when the object context is known.
 
         :param uuid: (required)
         :type uuid: str
@@ -4391,8 +6176,8 @@ class RecordsApi:
         :type object: str
         :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
         :type record_return_format: str
-        :param parse: Whether to parse the record before returning it.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param fields: Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.
         :type fields: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4417,7 +6202,7 @@ class RecordsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._show1_serialize(
+        _param = self._show_serialize(
             uuid=uuid,
             object=object,
             record_return_format=record_return_format,
@@ -4440,7 +6225,7 @@ class RecordsApi:
         return response_data.response
 
 
-    def _show1_serialize(
+    def _show_serialize(
         self,
         uuid,
         object,
@@ -4525,12 +6310,605 @@ class RecordsApi:
 
 
     @validate_call
+    def show_by_object(
+        self,
+        object_name: StrictStr,
+        uuid: StrictStr,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ShowResponse:
+        """Get record details by object
+
+        Retrieves a record by object name and UUID. Same response as GET /{uuid}?object={objectName}.
+
+        :param object_name: (required)
+        :type object_name: str
+        :param uuid: (required)
+        :type uuid: str
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :type record_return_format: str
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._show_by_object_serialize(
+            object_name=object_name,
+            uuid=uuid,
+            record_return_format=record_return_format,
+            parse=parse,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ShowResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def show_by_object_with_http_info(
+        self,
+        object_name: StrictStr,
+        uuid: StrictStr,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ShowResponse]:
+        """Get record details by object
+
+        Retrieves a record by object name and UUID. Same response as GET /{uuid}?object={objectName}.
+
+        :param object_name: (required)
+        :type object_name: str
+        :param uuid: (required)
+        :type uuid: str
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :type record_return_format: str
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._show_by_object_serialize(
+            object_name=object_name,
+            uuid=uuid,
+            record_return_format=record_return_format,
+            parse=parse,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ShowResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def show_by_object_without_preload_content(
+        self,
+        object_name: StrictStr,
+        uuid: StrictStr,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get record details by object
+
+        Retrieves a record by object name and UUID. Same response as GET /{uuid}?object={objectName}.
+
+        :param object_name: (required)
+        :type object_name: str
+        :param uuid: (required)
+        :type uuid: str
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :type record_return_format: str
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._show_by_object_serialize(
+            object_name=object_name,
+            uuid=uuid,
+            record_return_format=record_return_format,
+            parse=parse,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ShowResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _show_by_object_serialize(
+        self,
+        object_name,
+        uuid,
+        record_return_format,
+        parse,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if object_name is not None:
+            _path_params['objectName'] = object_name
+        if uuid is not None:
+            _path_params['uuid'] = uuid
+        # process the query parameters
+        if record_return_format is not None:
+            
+            _query_params.append(('recordReturnFormat', record_return_format))
+            
+        if parse is not None:
+            
+            _query_params.append(('parse', parse))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/records/{objectName}/{uuid}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def suggest_analytics_widgets(
+        self,
+        suggest_analytics_widgets_request: SuggestAnalyticsWidgetsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SuccessResponse:
+        """Suggest analytics widgets with AI
+
+        Uses structured OpenAI output plus schema validation to propose dashboard charts for an object. Returns an empty list when AI is unavailable.
+
+        :param suggest_analytics_widgets_request: (required)
+        :type suggest_analytics_widgets_request: SuggestAnalyticsWidgetsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._suggest_analytics_widgets_serialize(
+            suggest_analytics_widgets_request=suggest_analytics_widgets_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '400': "ErrorResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def suggest_analytics_widgets_with_http_info(
+        self,
+        suggest_analytics_widgets_request: SuggestAnalyticsWidgetsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SuccessResponse]:
+        """Suggest analytics widgets with AI
+
+        Uses structured OpenAI output plus schema validation to propose dashboard charts for an object. Returns an empty list when AI is unavailable.
+
+        :param suggest_analytics_widgets_request: (required)
+        :type suggest_analytics_widgets_request: SuggestAnalyticsWidgetsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._suggest_analytics_widgets_serialize(
+            suggest_analytics_widgets_request=suggest_analytics_widgets_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '400': "ErrorResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def suggest_analytics_widgets_without_preload_content(
+        self,
+        suggest_analytics_widgets_request: SuggestAnalyticsWidgetsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Suggest analytics widgets with AI
+
+        Uses structured OpenAI output plus schema validation to propose dashboard charts for an object. Returns an empty list when AI is unavailable.
+
+        :param suggest_analytics_widgets_request: (required)
+        :type suggest_analytics_widgets_request: SuggestAnalyticsWidgetsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._suggest_analytics_widgets_serialize(
+            suggest_analytics_widgets_request=suggest_analytics_widgets_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '400': "ErrorResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _suggest_analytics_widgets_serialize(
+        self,
+        suggest_analytics_widgets_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if suggest_analytics_widgets_request is not None:
+            _body_params = suggest_analytics_widgets_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/records/analytics/suggest-widgets',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def update(
         self,
         uuid: StrictStr,
         object_name: StrictStr,
         record_dto: Annotated[RecordDTO, Field(description="Record data to update")],
-        parse: Annotated[Optional[StrictBool], Field(description="If 'true', parses the updated record to human-readable values before returning.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         _request_timeout: Union[
@@ -4556,8 +6934,8 @@ class RecordsApi:
         :type object_name: str
         :param record_dto: Record data to update (required)
         :type record_dto: RecordDTO
-        :param parse: If 'true', parses the updated record to human-readable values before returning.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param ignore_errors: If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
         :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
@@ -4620,7 +6998,7 @@ class RecordsApi:
         uuid: StrictStr,
         object_name: StrictStr,
         record_dto: Annotated[RecordDTO, Field(description="Record data to update")],
-        parse: Annotated[Optional[StrictBool], Field(description="If 'true', parses the updated record to human-readable values before returning.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         _request_timeout: Union[
@@ -4646,8 +7024,8 @@ class RecordsApi:
         :type object_name: str
         :param record_dto: Record data to update (required)
         :type record_dto: RecordDTO
-        :param parse: If 'true', parses the updated record to human-readable values before returning.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param ignore_errors: If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
         :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
@@ -4710,7 +7088,7 @@ class RecordsApi:
         uuid: StrictStr,
         object_name: StrictStr,
         record_dto: Annotated[RecordDTO, Field(description="Record data to update")],
-        parse: Annotated[Optional[StrictBool], Field(description="If 'true', parses the updated record to human-readable values before returning.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
         _request_timeout: Union[
@@ -4736,8 +7114,8 @@ class RecordsApi:
         :type object_name: str
         :param record_dto: Record data to update (required)
         :type record_dto: RecordDTO
-        :param parse: If 'true', parses the updated record to human-readable values before returning.
-        :type parse: bool
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
         :param ignore_errors: If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
         :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
@@ -4873,6 +7251,697 @@ class RecordsApi:
         return self.api_client.param_serialize(
             method='PUT',
             resource_path='/api/v2/records/{objectName}/{uuid}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_by_uuid(
+        self,
+        uuid: StrictStr,
+        record_dto: RecordDTO,
+        object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
+        ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> UpdateResponse:
+        """Update a record by UUID
+
+        Updates a record identified by UUID. Optional object query param resolves the object context (same as GET /{uuid}?object=...). When omitted, the record's current/primary object is used. Prefer PUT /{objectName}/{uuid} when the object context is known.
+
+        :param uuid: (required)
+        :type uuid: str
+        :param record_dto: (required)
+        :type record_dto: RecordDTO
+        :param object: Optional object name to resolve the record in a specific object context.
+        :type object: str
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
+        :param ignore_errors: If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.
+        :type ignore_errors: bool
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :type record_return_format: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_by_uuid_serialize(
+            uuid=uuid,
+            record_dto=record_dto,
+            object=object,
+            parse=parse,
+            ignore_errors=ignore_errors,
+            record_return_format=record_return_format,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "UpdateResponse",
+            '400': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_by_uuid_with_http_info(
+        self,
+        uuid: StrictStr,
+        record_dto: RecordDTO,
+        object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
+        ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[UpdateResponse]:
+        """Update a record by UUID
+
+        Updates a record identified by UUID. Optional object query param resolves the object context (same as GET /{uuid}?object=...). When omitted, the record's current/primary object is used. Prefer PUT /{objectName}/{uuid} when the object context is known.
+
+        :param uuid: (required)
+        :type uuid: str
+        :param record_dto: (required)
+        :type record_dto: RecordDTO
+        :param object: Optional object name to resolve the record in a specific object context.
+        :type object: str
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
+        :param ignore_errors: If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.
+        :type ignore_errors: bool
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :type record_return_format: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_by_uuid_serialize(
+            uuid=uuid,
+            record_dto=record_dto,
+            object=object,
+            parse=parse,
+            ignore_errors=ignore_errors,
+            record_return_format=record_return_format,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "UpdateResponse",
+            '400': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_by_uuid_without_preload_content(
+        self,
+        uuid: StrictStr,
+        record_dto: RecordDTO,
+        object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
+        parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
+        ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update a record by UUID
+
+        Updates a record identified by UUID. Optional object query param resolves the object context (same as GET /{uuid}?object=...). When omitted, the record's current/primary object is used. Prefer PUT /{objectName}/{uuid} when the object context is known.
+
+        :param uuid: (required)
+        :type uuid: str
+        :param record_dto: (required)
+        :type record_dto: RecordDTO
+        :param object: Optional object name to resolve the record in a specific object context.
+        :type object: str
+        :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
+        :type parse: str
+        :param ignore_errors: If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.
+        :type ignore_errors: bool
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :type record_return_format: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_by_uuid_serialize(
+            uuid=uuid,
+            record_dto=record_dto,
+            object=object,
+            parse=parse,
+            ignore_errors=ignore_errors,
+            record_return_format=record_return_format,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "UpdateResponse",
+            '400': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_by_uuid_serialize(
+        self,
+        uuid,
+        record_dto,
+        object,
+        parse,
+        ignore_errors,
+        record_return_format,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if uuid is not None:
+            _path_params['uuid'] = uuid
+        # process the query parameters
+        if object is not None:
+            
+            _query_params.append(('object', object))
+            
+        if parse is not None:
+            
+            _query_params.append(('parse', parse))
+            
+        if ignore_errors is not None:
+            
+            _query_params.append(('ignoreErrors', ignore_errors))
+            
+        if record_return_format is not None:
+            
+            _query_params.append(('recordReturnFormat', record_return_format))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if record_dto is not None:
+            _body_params = record_dto
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/api/v2/records/{uuid}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_relation_edge(
+        self,
+        from_uuid: StrictStr,
+        relation_name: StrictStr,
+        to_uuid: StrictStr,
+        relation_edge_request_dto: RelationEdgeRequestDTO,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SuccessResponse:
+        """Update relation edge properties
+
+        Patches values stored on an existing relation edge. Only keys present in edgeProperties are written; a null value clears a key.
+
+        :param from_uuid: (required)
+        :type from_uuid: str
+        :param relation_name: (required)
+        :type relation_name: str
+        :param to_uuid: (required)
+        :type to_uuid: str
+        :param relation_edge_request_dto: (required)
+        :type relation_edge_request_dto: RelationEdgeRequestDTO
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_relation_edge_serialize(
+            from_uuid=from_uuid,
+            relation_name=relation_name,
+            to_uuid=to_uuid,
+            relation_edge_request_dto=relation_edge_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '400': "ErrorResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_relation_edge_with_http_info(
+        self,
+        from_uuid: StrictStr,
+        relation_name: StrictStr,
+        to_uuid: StrictStr,
+        relation_edge_request_dto: RelationEdgeRequestDTO,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SuccessResponse]:
+        """Update relation edge properties
+
+        Patches values stored on an existing relation edge. Only keys present in edgeProperties are written; a null value clears a key.
+
+        :param from_uuid: (required)
+        :type from_uuid: str
+        :param relation_name: (required)
+        :type relation_name: str
+        :param to_uuid: (required)
+        :type to_uuid: str
+        :param relation_edge_request_dto: (required)
+        :type relation_edge_request_dto: RelationEdgeRequestDTO
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_relation_edge_serialize(
+            from_uuid=from_uuid,
+            relation_name=relation_name,
+            to_uuid=to_uuid,
+            relation_edge_request_dto=relation_edge_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '400': "ErrorResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_relation_edge_without_preload_content(
+        self,
+        from_uuid: StrictStr,
+        relation_name: StrictStr,
+        to_uuid: StrictStr,
+        relation_edge_request_dto: RelationEdgeRequestDTO,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update relation edge properties
+
+        Patches values stored on an existing relation edge. Only keys present in edgeProperties are written; a null value clears a key.
+
+        :param from_uuid: (required)
+        :type from_uuid: str
+        :param relation_name: (required)
+        :type relation_name: str
+        :param to_uuid: (required)
+        :type to_uuid: str
+        :param relation_edge_request_dto: (required)
+        :type relation_edge_request_dto: RelationEdgeRequestDTO
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_relation_edge_serialize(
+            from_uuid=from_uuid,
+            relation_name=relation_name,
+            to_uuid=to_uuid,
+            relation_edge_request_dto=relation_edge_request_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SuccessResponse",
+            '400': "ErrorResponse",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_relation_edge_serialize(
+        self,
+        from_uuid,
+        relation_name,
+        to_uuid,
+        relation_edge_request_dto,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if from_uuid is not None:
+            _path_params['fromUuid'] = from_uuid
+        if relation_name is not None:
+            _path_params['relationName'] = relation_name
+        if to_uuid is not None:
+            _path_params['toUuid'] = to_uuid
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if relation_edge_request_dto is not None:
+            _body_params = relation_edge_request_dto
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/api/v2/records/relations/{fromUuid}/{relationName}/{toUuid}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

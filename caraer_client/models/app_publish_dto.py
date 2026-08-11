@@ -44,7 +44,7 @@ class AppPublishDTO(BaseModel):
     reviewed_at: Optional[StrictInt] = Field(default=None, description="Timestamp when review was completed", alias="reviewedAt")
     published_at: Optional[StrictInt] = Field(default=None, description="Timestamp when app went live in marketplace", alias="publishedAt")
     feedback: Optional[StrictStr] = Field(default=None, description="Feedback shown to developer (e.g. rejection reason)")
-    reviewer_notes: Optional[StrictStr] = Field(default=None, description="Internal reviewer notes (admin only, not exposed to developer)", alias="reviewerNotes")
+    reviewer_notes: Optional[StrictStr] = Field(default=None, description="Internal reviewer notes. Only returned for SUPER_ADMIN callers; never exposed to app creators.", alias="reviewerNotes")
     __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "publishState", "submittedAt", "reviewedAt", "publishedAt", "feedback", "reviewerNotes"]
 
     model_config = ConfigDict(

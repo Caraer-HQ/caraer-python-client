@@ -29,14 +29,16 @@ class Leadscore(BaseModel):
     """ # noqa: E501
     object: Optional[StrictStr] = Field(default=None, description="The name of the object to which this pagination item belongs.", json_schema_extra={"examples": ["User"]})
     relation: Optional[StrictStr] = Field(default=None, description="The relationship between objects.", json_schema_extra={"examples": ["hasProperty"]})
+    relation_direction: Optional[StrictStr] = Field(default=None, description="Optional relation direction: outgoing (related→main), incoming (main→related), or omit for undirected.", alias="relationDirection", json_schema_extra={"examples": ["outgoing"]})
     var_property: Optional[StrictStr] = Field(default=None, description="The name of the property within the object.", alias="property", json_schema_extra={"examples": ["email"]})
     relation_included: Optional[StrictBool] = Field(default=None, description="Specifies whether the relation is included.", alias="relationIncluded", json_schema_extra={"examples": [True]})
     operator: Optional[StrictStr] = Field(default=None, description="Defines the operator used in the filter. Available operators are defined in the API documentation.", json_schema_extra={"examples": ["EQUALS"]})
     value: Optional[Any] = None
     smart_content: Optional[StrictBool] = Field(default=None, description="When true, filter fields contain smart content placeholders resolved at runtime.", alias="smartContent", json_schema_extra={"examples": [True]})
+    edge_property: Optional[StrictBool] = Field(default=None, description="When true, propertyName refers to a property stored on the relation edge itself (declared on the relation schema, e.g. partstat on attendees) instead of a property of the related record. Requires relation and propertyName.", alias="edgeProperty", json_schema_extra={"examples": [False]})
     smart_value: Optional[StrictBool] = Field(default=None, description="Whether the value is a smart value", json_schema_extra={"examples": [True]})
     score: Optional[StrictInt] = Field(default=None, description="The score to assign if the rule is met", json_schema_extra={"examples": [10]})
-    __properties: ClassVar[List[str]] = ["object", "relation", "property", "relationIncluded", "operator", "value", "smartContent", "smart_value", "score"]
+    __properties: ClassVar[List[str]] = ["object", "relation", "relationDirection", "property", "relationIncluded", "operator", "value", "smartContent", "edgeProperty", "smart_value", "score"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -96,11 +98,13 @@ class Leadscore(BaseModel):
         _obj = cls.model_validate({
             "object": obj.get("object"),
             "relation": obj.get("relation"),
+            "relationDirection": obj.get("relationDirection"),
             "property": obj.get("property"),
             "relationIncluded": obj.get("relationIncluded"),
             "operator": obj.get("operator"),
             "value": obj.get("value"),
             "smartContent": obj.get("smartContent"),
+            "edgeProperty": obj.get("edgeProperty"),
             "smart_value": obj.get("smart_value"),
             "score": obj.get("score")
         })

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **index** | **int** | Index number for ordering entities | [optional] 
 **deleted** | **bool** | Whether the record is soft-deleted. | [optional] 
 **properties** | [**List[FilledProperty]**](FilledProperty.md) | Record properties for display. | [optional] 
-**objects** | **Dict[str, Optional[object]]** | Primary and morph object metadata for this record. | [optional] 
+**objects** | **Dict[str, Optional[object]]** | Primary and extended object metadata for this record. | [optional] 
 **user** | [**PublicUserDTO**](PublicUserDTO.md) | The user linked to this record when the user trait is enabled. | [optional] 
 
 ## Example

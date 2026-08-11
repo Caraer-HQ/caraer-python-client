@@ -84,6 +84,7 @@ class TestPropertyDTOFormat(unittest.TestCase):
                             icon = '', 
                             color = '', 
                             disabled = True, 
+                            completed = True, 
                             used_in = caraer_client.models.used_in_result.UsedInResult(
                                 record_uuids = [
                                     ''
@@ -98,6 +99,7 @@ class TestPropertyDTOFormat(unittest.TestCase):
                     immutable = True, 
                     hidden = True, 
                     lifecycle_active = True, 
+                    required_filter = null, 
                     non_public = True, 
                     indexed = True, 
                     editable = True, 
@@ -108,6 +110,56 @@ class TestPropertyDTOFormat(unittest.TestCase):
                     icon = '', 
                     webpage_public = True, 
                     embeddable = True, 
+                    sensitive = True, 
+                    min_and_max_value = null, 
+                    pinned = True, ),
+                checkbox_property = caraer_client.models.property_dto.PropertyDTO(
+                    uuid = '0', 
+                    name = '', 
+                    label = '', 
+                    created_at = 56, 
+                    created_by = null, 
+                    updated_at = 56, 
+                    updated_by = null, 
+                    deleted_at = 56, 
+                    deleted_by = null, 
+                    index = 56, 
+                    description = '', 
+                    type = '', 
+                    options = [
+                        caraer_client.models.property_option.PropertyOption(
+                            name = '', 
+                            label = '', 
+                            icon = '', 
+                            color = '', 
+                            disabled = True, 
+                            completed = True, 
+                            used_in = caraer_client.models.used_in_result.UsedInResult(
+                                record_uuids = [
+                                    ''
+                                    ], 
+                                count = 56, ), )
+                        ], 
+                    group = '', 
+                    format = null, 
+                    rules = [
+                        ''
+                        ], 
+                    immutable = True, 
+                    hidden = True, 
+                    lifecycle_active = True, 
+                    required_filter = null, 
+                    non_public = True, 
+                    indexed = True, 
+                    editable = True, 
+                    format_settings = {
+                        'key' : null
+                        }, 
+                    used_in = null, 
+                    icon = '', 
+                    webpage_public = True, 
+                    embeddable = True, 
+                    sensitive = True, 
                     min_and_max_value = null, 
                     pinned = True, )
             )

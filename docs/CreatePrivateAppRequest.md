@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **description** | **str** | Optional description text for the app. | [optional] 
 **auth_method** | **str** | Authentication method (API_KEY default, OAUTH2 for OAuth 2.0) | [optional] 
 **oauth_redirect_uris** | **List[str]** | Registered OAuth redirect URIs (required when authMethod is OAUTH2) | [optional] 
+**platform_version** | **int** | Ignored; new private apps are always platform version 2 (async container runtime). | [optional] 
+**runtime** | **str** | Serverless runtime for the app: nodejs22 or python312. Defaults to nodejs22. | [optional] 
 
 ## Example
 

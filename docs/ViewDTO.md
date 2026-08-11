@@ -30,8 +30,14 @@ Name | Type | Description | Notes
 **icon** | **str** |  | [optional] 
 **flow_property** | **str** |  | [optional] 
 **flow_preview** | **str** |  | [optional] 
+**task_progress_property** | **str** |  | [optional] 
+**task_group_property** | **str** |  | [optional] 
+**task_expand_subtasks** | **bool** |  | [optional] 
+**task_collapsed_group_keys** | **List[str]** |  | [optional] 
+**task_expanded_task_uuids** | **List[str]** |  | [optional] 
 **default_view** | **bool** |  | [optional] 
 **is_internally_public** | **bool** |  | [optional] 
+**analytics** | [**AnalyticsDashboardConfig**](AnalyticsDashboardConfig.md) |  | [optional] 
 
 ## Example
 

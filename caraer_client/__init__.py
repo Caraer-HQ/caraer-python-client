@@ -14,15 +14,19 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.381"
+__version__ = "2.0.382"
 
 # Define package exports
 __all__ = [
     "AppBarIframeSessionsApi",
     "AppBarsApi",
+    "AppInstallationRuntimeApi",
     "ApplicationsApi",
     "AutomationsApi",
+    "BillingApi",
     "CompanyApi",
+    "DeveloperProjectsApi",
+    "DeveloperSandboxesApi",
     "FeedsApi",
     "FileManagementApi",
     "FilterApi",
@@ -49,22 +53,52 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "AccessGrantTargetDTO",
+    "AdvancedRecordQueryPlan",
+    "AdvancedRecordQueryRequest",
+    "AdvancedRecordQueryResponse",
+    "AdvancedRecordQueryResultItem",
+    "AggregateBatchRequest",
+    "AggregateRequest",
+    "AnalyticsAxisConfig",
+    "AnalyticsComparisonMetric",
+    "AnalyticsDashboardConfig",
+    "AnalyticsPropertyRef",
+    "AnalyticsReferenceLine",
+    "AnalyticsSeriesConfig",
+    "AnalyticsTrendConfig",
+    "AnalyticsWidgetConfig",
+    "AnalyticsWidgetStyle",
     "AppBarDTO",
     "AppBarIframeSessionRequest",
     "AppBarIframeSessionValidateRequest",
     "AppBarTriggerRequest",
     "AppBarVisibilityEntry",
+    "AppConnectionStatusDTO",
     "AppDTO",
     "AppDetailsDTO",
+    "AppExternalOAuthProviderDTO",
+    "AppExternalOAuthProviderSummaryDTO",
+    "AppInboundRouteDTO",
+    "AppOAuthStartResponseDTO",
     "AppPricingDTO",
     "AppPublishDTO",
     "AppRequest",
+    "AppScheduleDTO",
     "AppSettingFieldMappingStructure",
     "AppSettingFieldMappingStructureItem",
     "AppSettingFieldSchema",
     "AppSettingOptionsSource",
     "AppTierDTO",
     "BillingSettingsDTO",
+    "BulkDeleteRecordsData",
+    "BulkDeleteRecordsRequest",
+    "BulkDeleteRecordsResponse",
+    "BulkEditRecordErrorItem",
+    "BulkEditRecordItem",
+    "BulkEditRecordResultItem",
+    "BulkEditRecordsData",
+    "BulkEditRecordsRequest",
+    "BulkEditRecordsResponse",
     "CaraerErrorType",
     "CaraerObjectDTO",
     "CompanyDTO",
@@ -72,22 +106,37 @@ __all__ = [
     "CopyPropertiesToObjectRequest",
     "CopyPropertyToEnvironmentsRequest",
     "CreateCompanyRequest",
+    "CreateDeveloperProjectRequest",
+    "CreateDeveloperSandboxRequest",
     "CreateOrUpdateEnvironmentRequest",
     "CreatePrivateAppRequest",
+    "CreateProjectBuildRequest",
     "CreateResponse",
+    "CreateResponseAppExternalOAuthProviderDTO",
+    "CreateResponseAppInboundRouteDTO",
+    "CreateResponseAppScheduleDTO",
     "CreateResponseSignedUrlResultDTO",
     "CreateSignedUrlRequest",
+    "CriterionScore",
+    "CrossObjectRecordSearchRequest",
     "Currency",
     "CurrencyRange",
     "CursorLocation",
     "CustomFontDTO",
     "DeleteResponse",
     "DeleteResponseString",
+    "DeleteResponseVoid",
+    "DeployBuildRequest",
+    "DeviceApproveRequest",
+    "DevicePollRequest",
     "DigitalIdentityDTO",
     "Duration",
     "Email",
     "EngagementBatchRequest",
     "ErrorResponse",
+    "EventRsvpRequest",
+    "ExistingWidgetSummary",
+    "ExtendRecordRequest",
     "FeedDTO",
     "File",
     "FilledProperty",
@@ -99,6 +148,8 @@ __all__ = [
     "FormItemDTO",
     "FormRelationDTO",
     "FormWithAiPromptDTO",
+    "GraphPathEvidence",
+    "GraphTraversalSpec",
     "GridItemDTO",
     "GridItemSettingsDTO",
     "HasAppDTO",
@@ -109,8 +160,8 @@ __all__ = [
     "LoginRequest",
     "MappingDTO",
     "MappingItemDTO",
+    "MigrateAppToV2Request",
     "ModelDate",
-    "MorphRecordRequest",
     "MultiLine",
     "MultiSelect",
     "MultiValueMapStringString",
@@ -133,17 +184,22 @@ __all__ = [
     "PreviewItemDTO",
     "PreviewItemSettingsDTO",
     "PreviewRelatedObjectDTO",
+    "Progress",
     "PropertyDTO",
     "PropertyDTOFormat",
     "PropertyFormat",
     "PropertyOption",
     "PublicUserDTO",
+    "QueryEvidence",
     "Record",
     "RecordDTO",
     "RecordRelationRequestDTO",
+    "Recurrence",
     "Reference",
+    "RefreshTokenRequest",
     "RegisterRequest",
     "RelationDTO",
+    "RelationEdgeRequestDTO",
     "ResetPasswordRequest",
     "RestoreResponse",
     "RestoreResponseCaraerObjectDTO",
@@ -151,14 +207,25 @@ __all__ = [
     "RestoreResponseTeamDTO",
     "RestoreResponseViewDTO",
     "ReviewRequest",
+    "SamplePayloadRequest",
     "SavePropertyDTO",
     "SavedFilterDTO",
+    "ScoreBreakdown",
     "SendNotificationRequest",
     "ServerlessFunctionDTO",
+    "ServerlessFunctionRefDTO",
     "SettingField",
     "SettingOption",
     "ShowItem",
     "ShowResponse",
+    "ShowResponseAppExternalOAuthProviderDTO",
+    "ShowResponseAppInboundRouteDTO",
+    "ShowResponseAppOAuthStartResponseDTO",
+    "ShowResponseAppScheduleDTO",
+    "ShowResponseListAppConnectionStatusDTO",
+    "ShowResponseListString",
+    "ShowResponseMapStringObject",
+    "ShowResponseObject",
     "ShowResponseObjectAccessGrantCandidatesDTO",
     "ShowResponseWebpageProtectionInfoDTO",
     "SignedUrlResultDTO",
@@ -172,8 +239,12 @@ __all__ = [
     "StyleSetDTO",
     "SubscribeWebhookDTO",
     "SuccessResponse",
+    "SuccessResponseListAppExternalOAuthProviderDTO",
+    "SuccessResponseListAppInboundRouteDTO",
+    "SuccessResponseListAppScheduleDTO",
     "SuccessResponseString",
     "SuccessResponseVoid",
+    "SuggestAnalyticsWidgetsRequest",
     "SyncDTO",
     "Tag",
     "Team",
@@ -203,14 +274,29 @@ __all__ = [
     "WebpagePublicRecordDTO",
     "WebpageUnlockRequest",
     "WebsiteSettingsDTO",
+    "ApiSuccess",
+    "EnqueueJobRequest",
+    "InboundPayload",
+    "InstallationJob",
+    "InstallationSecrets",
+    "InstallationState",
+    "JobPayload",
+    "LifecyclePayload",
+    "SchedulePayload",
+    "SettingFieldValue",
+    "WebhookPayload",
 ]
 
 # import apis into sdk package
 from caraer_client.api.app_bar_iframe_sessions_api import AppBarIframeSessionsApi as AppBarIframeSessionsApi
 from caraer_client.api.app_bars_api import AppBarsApi as AppBarsApi
+from caraer_client.api.app_installation_runtime_api import AppInstallationRuntimeApi as AppInstallationRuntimeApi
 from caraer_client.api.applications_api import ApplicationsApi as ApplicationsApi
 from caraer_client.api.automations_api import AutomationsApi as AutomationsApi
+from caraer_client.api.billing_api import BillingApi as BillingApi
 from caraer_client.api.company_api import CompanyApi as CompanyApi
+from caraer_client.api.developer_projects_api import DeveloperProjectsApi as DeveloperProjectsApi
+from caraer_client.api.developer_sandboxes_api import DeveloperSandboxesApi as DeveloperSandboxesApi
 from caraer_client.api.feeds_api import FeedsApi as FeedsApi
 from caraer_client.api.file_management_api import FileManagementApi as FileManagementApi
 from caraer_client.api.filter_api import FilterApi as FilterApi
@@ -241,22 +327,52 @@ from caraer_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from caraer_client.models.access_grant_target_dto import AccessGrantTargetDTO as AccessGrantTargetDTO
+from caraer_client.models.advanced_record_query_plan import AdvancedRecordQueryPlan as AdvancedRecordQueryPlan
+from caraer_client.models.advanced_record_query_request import AdvancedRecordQueryRequest as AdvancedRecordQueryRequest
+from caraer_client.models.advanced_record_query_response import AdvancedRecordQueryResponse as AdvancedRecordQueryResponse
+from caraer_client.models.advanced_record_query_result_item import AdvancedRecordQueryResultItem as AdvancedRecordQueryResultItem
+from caraer_client.models.aggregate_batch_request import AggregateBatchRequest as AggregateBatchRequest
+from caraer_client.models.aggregate_request import AggregateRequest as AggregateRequest
+from caraer_client.models.analytics_axis_config import AnalyticsAxisConfig as AnalyticsAxisConfig
+from caraer_client.models.analytics_comparison_metric import AnalyticsComparisonMetric as AnalyticsComparisonMetric
+from caraer_client.models.analytics_dashboard_config import AnalyticsDashboardConfig as AnalyticsDashboardConfig
+from caraer_client.models.analytics_property_ref import AnalyticsPropertyRef as AnalyticsPropertyRef
+from caraer_client.models.analytics_reference_line import AnalyticsReferenceLine as AnalyticsReferenceLine
+from caraer_client.models.analytics_series_config import AnalyticsSeriesConfig as AnalyticsSeriesConfig
+from caraer_client.models.analytics_trend_config import AnalyticsTrendConfig as AnalyticsTrendConfig
+from caraer_client.models.analytics_widget_config import AnalyticsWidgetConfig as AnalyticsWidgetConfig
+from caraer_client.models.analytics_widget_style import AnalyticsWidgetStyle as AnalyticsWidgetStyle
 from caraer_client.models.app_bar_dto import AppBarDTO as AppBarDTO
 from caraer_client.models.app_bar_iframe_session_request import AppBarIframeSessionRequest as AppBarIframeSessionRequest
 from caraer_client.models.app_bar_iframe_session_validate_request import AppBarIframeSessionValidateRequest as AppBarIframeSessionValidateRequest
 from caraer_client.models.app_bar_trigger_request import AppBarTriggerRequest as AppBarTriggerRequest
 from caraer_client.models.app_bar_visibility_entry import AppBarVisibilityEntry as AppBarVisibilityEntry
+from caraer_client.models.app_connection_status_dto import AppConnectionStatusDTO as AppConnectionStatusDTO
 from caraer_client.models.app_dto import AppDTO as AppDTO
 from caraer_client.models.app_details_dto import AppDetailsDTO as AppDetailsDTO
+from caraer_client.models.app_external_o_auth_provider_dto import AppExternalOAuthProviderDTO as AppExternalOAuthProviderDTO
+from caraer_client.models.app_external_o_auth_provider_summary_dto import AppExternalOAuthProviderSummaryDTO as AppExternalOAuthProviderSummaryDTO
+from caraer_client.models.app_inbound_route_dto import AppInboundRouteDTO as AppInboundRouteDTO
+from caraer_client.models.app_o_auth_start_response_dto import AppOAuthStartResponseDTO as AppOAuthStartResponseDTO
 from caraer_client.models.app_pricing_dto import AppPricingDTO as AppPricingDTO
 from caraer_client.models.app_publish_dto import AppPublishDTO as AppPublishDTO
 from caraer_client.models.app_request import AppRequest as AppRequest
+from caraer_client.models.app_schedule_dto import AppScheduleDTO as AppScheduleDTO
 from caraer_client.models.app_setting_field_mapping_structure import AppSettingFieldMappingStructure as AppSettingFieldMappingStructure
 from caraer_client.models.app_setting_field_mapping_structure_item import AppSettingFieldMappingStructureItem as AppSettingFieldMappingStructureItem
 from caraer_client.models.app_setting_field_schema import AppSettingFieldSchema as AppSettingFieldSchema
 from caraer_client.models.app_setting_options_source import AppSettingOptionsSource as AppSettingOptionsSource
 from caraer_client.models.app_tier_dto import AppTierDTO as AppTierDTO
 from caraer_client.models.billing_settings_dto import BillingSettingsDTO as BillingSettingsDTO
+from caraer_client.models.bulk_delete_records_data import BulkDeleteRecordsData as BulkDeleteRecordsData
+from caraer_client.models.bulk_delete_records_request import BulkDeleteRecordsRequest as BulkDeleteRecordsRequest
+from caraer_client.models.bulk_delete_records_response import BulkDeleteRecordsResponse as BulkDeleteRecordsResponse
+from caraer_client.models.bulk_edit_record_error_item import BulkEditRecordErrorItem as BulkEditRecordErrorItem
+from caraer_client.models.bulk_edit_record_item import BulkEditRecordItem as BulkEditRecordItem
+from caraer_client.models.bulk_edit_record_result_item import BulkEditRecordResultItem as BulkEditRecordResultItem
+from caraer_client.models.bulk_edit_records_data import BulkEditRecordsData as BulkEditRecordsData
+from caraer_client.models.bulk_edit_records_request import BulkEditRecordsRequest as BulkEditRecordsRequest
+from caraer_client.models.bulk_edit_records_response import BulkEditRecordsResponse as BulkEditRecordsResponse
 from caraer_client.models.caraer_error_type import CaraerErrorType as CaraerErrorType
 from caraer_client.models.caraer_object_dto import CaraerObjectDTO as CaraerObjectDTO
 from caraer_client.models.company_dto import CompanyDTO as CompanyDTO
@@ -264,22 +380,37 @@ from caraer_client.models.company_details_dto import CompanyDetailsDTO as Compan
 from caraer_client.models.copy_properties_to_object_request import CopyPropertiesToObjectRequest as CopyPropertiesToObjectRequest
 from caraer_client.models.copy_property_to_environments_request import CopyPropertyToEnvironmentsRequest as CopyPropertyToEnvironmentsRequest
 from caraer_client.models.create_company_request import CreateCompanyRequest as CreateCompanyRequest
+from caraer_client.models.create_developer_project_request import CreateDeveloperProjectRequest as CreateDeveloperProjectRequest
+from caraer_client.models.create_developer_sandbox_request import CreateDeveloperSandboxRequest as CreateDeveloperSandboxRequest
 from caraer_client.models.create_or_update_environment_request import CreateOrUpdateEnvironmentRequest as CreateOrUpdateEnvironmentRequest
 from caraer_client.models.create_private_app_request import CreatePrivateAppRequest as CreatePrivateAppRequest
+from caraer_client.models.create_project_build_request import CreateProjectBuildRequest as CreateProjectBuildRequest
 from caraer_client.models.create_response import CreateResponse as CreateResponse
+from caraer_client.models.create_response_app_external_o_auth_provider_dto import CreateResponseAppExternalOAuthProviderDTO as CreateResponseAppExternalOAuthProviderDTO
+from caraer_client.models.create_response_app_inbound_route_dto import CreateResponseAppInboundRouteDTO as CreateResponseAppInboundRouteDTO
+from caraer_client.models.create_response_app_schedule_dto import CreateResponseAppScheduleDTO as CreateResponseAppScheduleDTO
 from caraer_client.models.create_response_signed_url_result_dto import CreateResponseSignedUrlResultDTO as CreateResponseSignedUrlResultDTO
 from caraer_client.models.create_signed_url_request import CreateSignedUrlRequest as CreateSignedUrlRequest
+from caraer_client.models.criterion_score import CriterionScore as CriterionScore
+from caraer_client.models.cross_object_record_search_request import CrossObjectRecordSearchRequest as CrossObjectRecordSearchRequest
 from caraer_client.models.currency import Currency as Currency
 from caraer_client.models.currency_range import CurrencyRange as CurrencyRange
 from caraer_client.models.cursor_location import CursorLocation as CursorLocation
 from caraer_client.models.custom_font_dto import CustomFontDTO as CustomFontDTO
 from caraer_client.models.delete_response import DeleteResponse as DeleteResponse
 from caraer_client.models.delete_response_string import DeleteResponseString as DeleteResponseString
+from caraer_client.models.delete_response_void import DeleteResponseVoid as DeleteResponseVoid
+from caraer_client.models.deploy_build_request import DeployBuildRequest as DeployBuildRequest
+from caraer_client.models.device_approve_request import DeviceApproveRequest as DeviceApproveRequest
+from caraer_client.models.device_poll_request import DevicePollRequest as DevicePollRequest
 from caraer_client.models.digital_identity_dto import DigitalIdentityDTO as DigitalIdentityDTO
 from caraer_client.models.duration import Duration as Duration
 from caraer_client.models.email import Email as Email
 from caraer_client.models.engagement_batch_request import EngagementBatchRequest as EngagementBatchRequest
 from caraer_client.models.error_response import ErrorResponse as ErrorResponse
+from caraer_client.models.event_rsvp_request import EventRsvpRequest as EventRsvpRequest
+from caraer_client.models.existing_widget_summary import ExistingWidgetSummary as ExistingWidgetSummary
+from caraer_client.models.extend_record_request import ExtendRecordRequest as ExtendRecordRequest
 from caraer_client.models.feed_dto import FeedDTO as FeedDTO
 from caraer_client.models.file import File as File
 from caraer_client.models.filled_property import FilledProperty as FilledProperty
@@ -291,6 +422,8 @@ from caraer_client.models.form_dto import FormDTO as FormDTO
 from caraer_client.models.form_item_dto import FormItemDTO as FormItemDTO
 from caraer_client.models.form_relation_dto import FormRelationDTO as FormRelationDTO
 from caraer_client.models.form_with_ai_prompt_dto import FormWithAiPromptDTO as FormWithAiPromptDTO
+from caraer_client.models.graph_path_evidence import GraphPathEvidence as GraphPathEvidence
+from caraer_client.models.graph_traversal_spec import GraphTraversalSpec as GraphTraversalSpec
 from caraer_client.models.grid_item_dto import GridItemDTO as GridItemDTO
 from caraer_client.models.grid_item_settings_dto import GridItemSettingsDTO as GridItemSettingsDTO
 from caraer_client.models.has_app_dto import HasAppDTO as HasAppDTO
@@ -301,8 +434,8 @@ from caraer_client.models.load_app_setting_options_request import LoadAppSetting
 from caraer_client.models.login_request import LoginRequest as LoginRequest
 from caraer_client.models.mapping_dto import MappingDTO as MappingDTO
 from caraer_client.models.mapping_item_dto import MappingItemDTO as MappingItemDTO
+from caraer_client.models.migrate_app_to_v2_request import MigrateAppToV2Request as MigrateAppToV2Request
 from caraer_client.models.model_date import ModelDate as ModelDate
-from caraer_client.models.morph_record_request import MorphRecordRequest as MorphRecordRequest
 from caraer_client.models.multi_line import MultiLine as MultiLine
 from caraer_client.models.multi_select import MultiSelect as MultiSelect
 from caraer_client.models.multi_value_map_string_string import MultiValueMapStringString as MultiValueMapStringString
@@ -325,17 +458,22 @@ from caraer_client.models.preview_dto import PreviewDTO as PreviewDTO
 from caraer_client.models.preview_item_dto import PreviewItemDTO as PreviewItemDTO
 from caraer_client.models.preview_item_settings_dto import PreviewItemSettingsDTO as PreviewItemSettingsDTO
 from caraer_client.models.preview_related_object_dto import PreviewRelatedObjectDTO as PreviewRelatedObjectDTO
+from caraer_client.models.progress import Progress as Progress
 from caraer_client.models.property_dto import PropertyDTO as PropertyDTO
 from caraer_client.models.property_dto_format import PropertyDTOFormat as PropertyDTOFormat
 from caraer_client.models.property_format import PropertyFormat as PropertyFormat
 from caraer_client.models.property_option import PropertyOption as PropertyOption
 from caraer_client.models.public_user_dto import PublicUserDTO as PublicUserDTO
+from caraer_client.models.query_evidence import QueryEvidence as QueryEvidence
 from caraer_client.models.record import Record as Record
 from caraer_client.models.record_dto import RecordDTO as RecordDTO
 from caraer_client.models.record_relation_request_dto import RecordRelationRequestDTO as RecordRelationRequestDTO
+from caraer_client.models.recurrence import Recurrence as Recurrence
 from caraer_client.models.reference import Reference as Reference
+from caraer_client.models.refresh_token_request import RefreshTokenRequest as RefreshTokenRequest
 from caraer_client.models.register_request import RegisterRequest as RegisterRequest
 from caraer_client.models.relation_dto import RelationDTO as RelationDTO
+from caraer_client.models.relation_edge_request_dto import RelationEdgeRequestDTO as RelationEdgeRequestDTO
 from caraer_client.models.reset_password_request import ResetPasswordRequest as ResetPasswordRequest
 from caraer_client.models.restore_response import RestoreResponse as RestoreResponse
 from caraer_client.models.restore_response_caraer_object_dto import RestoreResponseCaraerObjectDTO as RestoreResponseCaraerObjectDTO
@@ -343,14 +481,25 @@ from caraer_client.models.restore_response_saved_filter_dto import RestoreRespon
 from caraer_client.models.restore_response_team_dto import RestoreResponseTeamDTO as RestoreResponseTeamDTO
 from caraer_client.models.restore_response_view_dto import RestoreResponseViewDTO as RestoreResponseViewDTO
 from caraer_client.models.review_request import ReviewRequest as ReviewRequest
+from caraer_client.models.sample_payload_request import SamplePayloadRequest as SamplePayloadRequest
 from caraer_client.models.save_property_dto import SavePropertyDTO as SavePropertyDTO
 from caraer_client.models.saved_filter_dto import SavedFilterDTO as SavedFilterDTO
+from caraer_client.models.score_breakdown import ScoreBreakdown as ScoreBreakdown
 from caraer_client.models.send_notification_request import SendNotificationRequest as SendNotificationRequest
 from caraer_client.models.serverless_function_dto import ServerlessFunctionDTO as ServerlessFunctionDTO
+from caraer_client.models.serverless_function_ref_dto import ServerlessFunctionRefDTO as ServerlessFunctionRefDTO
 from caraer_client.models.setting_field import SettingField as SettingField
 from caraer_client.models.setting_option import SettingOption as SettingOption
 from caraer_client.models.show_item import ShowItem as ShowItem
 from caraer_client.models.show_response import ShowResponse as ShowResponse
+from caraer_client.models.show_response_app_external_o_auth_provider_dto import ShowResponseAppExternalOAuthProviderDTO as ShowResponseAppExternalOAuthProviderDTO
+from caraer_client.models.show_response_app_inbound_route_dto import ShowResponseAppInboundRouteDTO as ShowResponseAppInboundRouteDTO
+from caraer_client.models.show_response_app_o_auth_start_response_dto import ShowResponseAppOAuthStartResponseDTO as ShowResponseAppOAuthStartResponseDTO
+from caraer_client.models.show_response_app_schedule_dto import ShowResponseAppScheduleDTO as ShowResponseAppScheduleDTO
+from caraer_client.models.show_response_list_app_connection_status_dto import ShowResponseListAppConnectionStatusDTO as ShowResponseListAppConnectionStatusDTO
+from caraer_client.models.show_response_list_string import ShowResponseListString as ShowResponseListString
+from caraer_client.models.show_response_map_string_object import ShowResponseMapStringObject as ShowResponseMapStringObject
+from caraer_client.models.show_response_object import ShowResponseObject as ShowResponseObject
 from caraer_client.models.show_response_object_access_grant_candidates_dto import ShowResponseObjectAccessGrantCandidatesDTO as ShowResponseObjectAccessGrantCandidatesDTO
 from caraer_client.models.show_response_webpage_protection_info_dto import ShowResponseWebpageProtectionInfoDTO as ShowResponseWebpageProtectionInfoDTO
 from caraer_client.models.signed_url_result_dto import SignedUrlResultDTO as SignedUrlResultDTO
@@ -364,8 +513,12 @@ from caraer_client.models.structure import Structure as Structure
 from caraer_client.models.style_set_dto import StyleSetDTO as StyleSetDTO
 from caraer_client.models.subscribe_webhook_dto import SubscribeWebhookDTO as SubscribeWebhookDTO
 from caraer_client.models.success_response import SuccessResponse as SuccessResponse
+from caraer_client.models.success_response_list_app_external_o_auth_provider_dto import SuccessResponseListAppExternalOAuthProviderDTO as SuccessResponseListAppExternalOAuthProviderDTO
+from caraer_client.models.success_response_list_app_inbound_route_dto import SuccessResponseListAppInboundRouteDTO as SuccessResponseListAppInboundRouteDTO
+from caraer_client.models.success_response_list_app_schedule_dto import SuccessResponseListAppScheduleDTO as SuccessResponseListAppScheduleDTO
 from caraer_client.models.success_response_string import SuccessResponseString as SuccessResponseString
 from caraer_client.models.success_response_void import SuccessResponseVoid as SuccessResponseVoid
+from caraer_client.models.suggest_analytics_widgets_request import SuggestAnalyticsWidgetsRequest as SuggestAnalyticsWidgetsRequest
 from caraer_client.models.sync_dto import SyncDTO as SyncDTO
 from caraer_client.models.tag import Tag as Tag
 from caraer_client.models.team import Team as Team
@@ -396,3 +549,18 @@ from caraer_client.models.webpage_public_record_dto import WebpagePublicRecordDT
 from caraer_client.models.webpage_unlock_request import WebpageUnlockRequest as WebpageUnlockRequest
 from caraer_client.models.website_settings_dto import WebsiteSettingsDTO as WebsiteSettingsDTO
 
+
+# Hand-written serverless / installation payload helpers (not OpenAPI-generated).
+from caraer_client.apps import (
+    ApiSuccess as ApiSuccess,
+    EnqueueJobRequest as EnqueueJobRequest,
+    InboundPayload as InboundPayload,
+    InstallationJob as InstallationJob,
+    InstallationSecrets as InstallationSecrets,
+    InstallationState as InstallationState,
+    JobPayload as JobPayload,
+    LifecyclePayload as LifecyclePayload,
+    SchedulePayload as SchedulePayload,
+    SettingFieldValue as SettingFieldValue,
+    WebhookPayload as WebhookPayload,
+)

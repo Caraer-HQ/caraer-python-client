@@ -37,6 +37,7 @@ class PreviewDTO(BaseModel):
     object: Optional[CaraerObjectDTO] = Field(default=None, description="The Caraer object associated with this preview")
     record_uuid: Optional[StrictStr] = Field(default=None, description="UUID of the associated record", alias="recordUuid", json_schema_extra={"examples": ["abcdef12-3456-7890-abcd-ef1234567890"]})
     primary: Optional[StrictBool] = Field(default=None, description="Indicates whether this preview is the primary one", json_schema_extra={"examples": [True]})
+    edge_properties: Optional[Dict[str, Any]] = Field(default=None, description="Values stored on the relation edge for properties declared on the relation schema. Only present when the preview was loaded through such a relation.", alias="edgeProperties", json_schema_extra={"examples": [{"partstat": "ACCEPTED"}]})
     grid: Optional[Annotated[List[List[PreviewItemDTO]], Field(max_length=2147483647)]] = Field(default=None, description="Rows of the preview grid")
     preview_type: Optional[StrictStr] = Field(default=None, description="Preview type", alias="previewType", json_schema_extra={"examples": ["detail"]})
     profile_image: Optional[PropertyDTO] = Field(default=None, description="Profile image property", alias="profileImage")
@@ -62,7 +63,7 @@ class PreviewDTO(BaseModel):
     deleted_at: Optional[StrictInt] = Field(default=None, description="Unix timestamp when the entity was deleted (null if not deleted)", alias="deletedAt")
     deleted_by: Optional[Record] = Field(default=None, description="Identifier of the user who deleted the entity", alias="deletedBy")
     index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
-    __properties: ClassVar[List[str]] = ["description", "object", "recordUuid", "primary", "grid", "previewType", "profileImage", "profileImagePosition", "profileImageStyling", "firstInitialProperty", "secondInitialProperty", "profileImageValue", "firstInitialPropertyValue", "secondInitialPropertyValue", "customCss", "url", "styling", "sortProperty", "sortValue", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index"]
+    __properties: ClassVar[List[str]] = ["description", "object", "recordUuid", "primary", "edgeProperties", "grid", "previewType", "profileImage", "profileImagePosition", "profileImageStyling", "firstInitialProperty", "secondInitialProperty", "profileImageValue", "firstInitialPropertyValue", "secondInitialPropertyValue", "customCss", "url", "styling", "sortProperty", "sortValue", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -160,6 +161,7 @@ class PreviewDTO(BaseModel):
             "object": CaraerObjectDTO.from_dict(obj["object"]) if obj.get("object") is not None else None,
             "recordUuid": obj.get("recordUuid"),
             "primary": obj.get("primary"),
+            "edgeProperties": obj.get("edgeProperties"),
             "grid": [
                     [PreviewItemDTO.from_dict(_inner_item) for _inner_item in _item]
                     for _item in obj["grid"]

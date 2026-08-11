@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **deleted_by** | [**Record**](Record.md) | Identifier of the user who deleted the entity | [optional] 
 **index** | **int** | Index number for ordering entities | [optional] 
 **private_app** | **bool** | Indicates whether this app is private (only available to the creator&#39;s company) | [optional] 
-**hide_api_key_field** | **bool** | Whether to hide the API token field in app settings UI | [optional] 
+**hide_api_key_field** | **bool** | Whether to hide the API token field in app settings UI. Defaults to true when omitted. | [optional] 
 **details** | [**AppDetailsDTO**](AppDetailsDTO.md) | Additional details and specifications about the application | [optional] 
 **pricing_plans** | [**List[AppPricingDTO]**](AppPricingDTO.md) | Pricing information for the application | [optional] 
 **app_bars** | [**List[AppBarDTO]**](AppBarDTO.md) | App bars (location-specific configuration and actions) | [optional] 
@@ -27,7 +27,9 @@ Name | Type | Description | Notes
 **rotate_webhook** | [**SubscribeWebhookDTO**](SubscribeWebhookDTO.md) | Webhook triggered when the app installation token is rotated | [optional] 
 **update_webhook** | [**SubscribeWebhookDTO**](SubscribeWebhookDTO.md) | Webhook triggered when an already installed app is saved again | [optional] 
 **settings_schema** | [**List[AppSettingFieldSchema]**](AppSettingFieldSchema.md) | JSON array of AppSettingFieldSchema (app-level setting field definitions) | [optional] 
+**external_o_auth_providers** | [**List[AppExternalOAuthProviderSummaryDTO]**](AppExternalOAuthProviderSummaryDTO.md) | External OAuth providers installers can Connect (name/logo only; no secrets) | [optional] 
 **webhook_rate_limit_per_minute** | **int** | Webhook rate limit per minute | [optional] 
+**job_rate_limit_per_minute** | **int** | App job enqueue rate limit per minute per installation | [optional] 
 **bill_failed_webhook_requests** | **bool** | Whether failed webhook requests are considered billable for this app | [optional] 
 **app_publish** | [**AppPublishDTO**](AppPublishDTO.md) | Publish and review state for the app in the marketplace (creator view) | [optional] 
 **has_app** | [**HasAppDTO**](HasAppDTO.md) | Installation link (company–app) with token, scopes, and per-installation settingsValues; present when includeSettings is true | [optional] 
@@ -47,6 +49,13 @@ Name | Type | Description | Notes
 **install_url** | **str** | External URL where end users install this app (e.g. ChatGPT connector page) | [optional] 
 **brandmark** | **str** | Square brandmark URL used in compact app surfaces | [optional] 
 **description** | **str** | Internal app description used in Caraer admin views | [optional] 
+**platform_version** | **int** | App platform version: 1 &#x3D; legacy per-function Cloud Functions; 2 &#x3D; one container per app | [optional] 
+**runtime** | **str** | Serverless runtime for platform V2 apps (nodejs22 or python312) | [optional] 
+**runtime_base_url** | **str** | Base HTTPS URL of the V2 app container runtime | [optional] 
+**runtime_revision** | **str** | Last deployed runtime revision id | [optional] 
+**runtime_status** | **str** | V2 runtime status: PENDING, PROVISIONING, READY, FAILED | [optional] 
+**runtime_error** | **str** | Last V2 runtime error message when FAILED | [optional] 
+**runtime_generation** | **int** | Monotonic generation for async runtime jobs | [optional] 
 
 ## Example
 

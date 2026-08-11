@@ -54,6 +54,34 @@ class TestTraitsApi(unittest.TestCase):
         """
         pass
 
+    def test_rsvp_browser_get(self) -> None:
+        """Test case for rsvp_browser_get
+
+        Respond to an event invitation (email link)
+        """
+        pass
+
+    def test_rsvp_browser_login(self) -> None:
+        """Test case for rsvp_browser_login
+
+        Email/password login for RSVP
+        """
+        pass
+
+    def test_rsvp_browser_social(self) -> None:
+        """Test case for rsvp_browser_social
+
+        Start social login for RSVP
+        """
+        pass
+
+    def test_rsvp_json(self) -> None:
+        """Test case for rsvp_json
+
+        Update event RSVP (JSON)
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

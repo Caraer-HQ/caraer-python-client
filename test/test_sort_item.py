@@ -37,6 +37,7 @@ class TestSortItem(unittest.TestCase):
             return SortItem(
                 object = 'User',
                 relation = 'hasProperty',
+                relation_direction = 'outgoing',
                 var_property = 'email',
                 direction = 'ASC'
             )

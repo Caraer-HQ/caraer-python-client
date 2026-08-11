@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **immutable** | **bool** | Indicates if the property value cannot be modified after initial creation | [optional] 
 **hidden** | **bool** | Indicates if the property should be hidden from view | [optional] 
 **lifecycle_active** | **bool** | When true, property value changes are tracked as lifecycle records | [optional] 
+**required_filter** | [**Filter**](Filter.md) | When this filter matches the record being saved, the property becomes required | [optional] 
 **non_public** | **bool** | Indicates if the property should be excluded from public APIs | [optional] 
 **indexed** | **bool** | Indicates if the property should be indexed for searching | [optional] 
 **editable** | **bool** | Indicates if the property value can be modified | [optional] 
@@ -33,6 +34,7 @@ Name | Type | Description | Notes
 **icon** | **str** | Icon identifier for visual representation of the property | [optional] 
 **webpage_public** | **bool** | Indicates if the property can be used in webpages | [optional] 
 **embeddable** | **bool** | Indicates if the property can be embedded in other properties | [optional] 
+**sensitive** | **bool** | When true, exclude from advanced query evidence | [optional] 
 **min_and_max_value** | [**Tuple2LongLong**](Tuple2LongLong.md) | The minimum and maximum value of the property | [optional] 
 **pinned** | **bool** | Indicates if the property is pinned by the logged-in user | [optional] 
 

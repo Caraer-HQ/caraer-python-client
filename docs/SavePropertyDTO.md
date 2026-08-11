@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **rules** | **List[str]** | Collection of rules applied to the property | [optional] 
 **hidden** | **bool** | Indicates if the property is hidden by default | [optional] 
 **lifecycle_active** | **bool** | When true, property value changes are tracked as lifecycle records | [optional] 
+**required_filter** | [**Filter**](Filter.md) | When this filter matches the record being saved, the property becomes required | [optional] 
 **non_public** | **bool** | Indicates if the property is not accessible publicly | [optional] 
 **indexed** | **bool** | Indicates if the property is indexed | [optional] 
 **format_settings** | **Dict[str, Optional[object]]** | Settings to configure the format of the property | [optional] 
@@ -31,7 +32,8 @@ Name | Type | Description | Notes
 **editable** | **bool** | Indicates if the property can be edited | [optional] 
 **icon** | **str** | The icon associated with the property | [optional] 
 **webpage_public** | **bool** | Indicates if the property is webpage public | [optional] 
-**embeddable** | **bool** | Indicates if the property is embeddable | [optional] 
+**embeddable** | **bool** | Deprecated. Use sensitive instead. | [optional] 
+**sensitive** | **bool** | When true, exclude from advanced query evidence | [optional] 
 
 ## Example
 

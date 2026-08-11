@@ -9,19 +9,23 @@ Method | HTTP request | Description
 [**create_public_app**](ApplicationsApi.md#create_public_app) | **POST** /api/v2/apps/public | Create a public app
 [**delete_app_webhook**](ApplicationsApi.md#delete_app_webhook) | **DELETE** /api/v2/apps/{appUuid}/webhooks/{webhookUuid} | Delete a webhook for an app
 [**get_app**](ApplicationsApi.md#get_app) | **GET** /api/v2/apps/{uuid} | Retrieve application details by UUID
+[**get_app_webhook**](ApplicationsApi.md#get_app_webhook) | **GET** /api/v2/apps/{appUuid}/webhooks/{webhookUuid} | Get a webhook for an app
 [**get_app_webhooks**](ApplicationsApi.md#get_app_webhooks) | **POST** /api/v2/apps/{appUuid}/webhooks/index | Retrieve a paginated list of webhooks for an app
 [**get_apps**](ApplicationsApi.md#get_apps) | **POST** /api/v2/apps/index | Retrieve a paginated list of applications
 [**get_company_information**](ApplicationsApi.md#get_company_information) | **GET** /api/v2/apps/{appUuid}/me | Get current user&#39;s company information
 [**get_my_created_apps**](ApplicationsApi.md#get_my_created_apps) | **POST** /api/v2/apps/my/index | Retrieve apps created by the logged-in user&#39;s selected company
 [**get_public_app**](ApplicationsApi.md#get_public_app) | **GET** /api/v2/apps/public/{uuid} | Get a public app (creator view)
+[**get_runtime_logs**](ApplicationsApi.md#get_runtime_logs) | **GET** /api/v2/apps/{appUuid}/runtime/logs | Get app runtime logs
 [**get_webhook_events**](ApplicationsApi.md#get_webhook_events) | **GET** /api/v2/apps/{appUuid}/webhooks/events | Get available webhook record events
 [**get_webhook_formats**](ApplicationsApi.md#get_webhook_formats) | **GET** /api/v2/apps/{appUuid}/webhooks/formats | Get available webhook formats
 [**get_webhook_property_topics**](ApplicationsApi.md#get_webhook_property_topics) | **GET** /api/v2/apps/{appUuid}/webhooks/property-topics | Get webhook property topic options
 [**install_app**](ApplicationsApi.md#install_app) | **POST** /api/v2/apps/{uuid}/install | Install an application
 [**list_app_categories**](ApplicationsApi.md#list_app_categories) | **GET** /api/v2/apps/categories | List predefined marketplace app categories
 [**load_setting_options**](ApplicationsApi.md#load_setting_options) | **POST** /api/v2/apps/{uuid}/settings-schema/options | Load dynamic options for a setting select field
+[**migrate_to_v2**](ApplicationsApi.md#migrate_to_v2) | **POST** /api/v2/apps/{uuid}/migrate-v2 | Migrate an app from platform V1 to V2
 [**review_public_app**](ApplicationsApi.md#review_public_app) | **POST** /api/v2/apps/public/{uuid}/review | Review a public app
 [**rotate_app**](ApplicationsApi.md#rotate_app) | **POST** /api/v2/apps/{uuid}/rotate | Rotate application configurations
+[**stream_runtime_logs**](ApplicationsApi.md#stream_runtime_logs) | **GET** /api/v2/apps/{appUuid}/runtime/logs/stream | Stream app runtime logs (SSE)
 [**submit_public_app**](ApplicationsApi.md#submit_public_app) | **POST** /api/v2/apps/public/{uuid}/submit | Submit a public app for review
 [**test_app_webhook**](ApplicationsApi.md#test_app_webhook) | **POST** /api/v2/apps/{appUuid}/webhooks/test/{webhookUuid}/{recordUuid}/{eventType} | Test a webhook for an app
 [**test_app_webhook_auto**](ApplicationsApi.md#test_app_webhook_auto) | **POST** /api/v2/apps/{appUuid}/webhooks/test/{webhookUuid} | Test a webhook for an app (auto-resolve)
@@ -441,6 +445,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_app_webhook**
+> ShowResponse get_app_webhook(app_uuid, webhook_uuid)
+
+Get a webhook for an app
+
+Fetches a single webhook that belongs to the specified app.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response import ShowResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the app that owns the webhook
+    webhook_uuid = 'webhook_uuid_example' # str | UUID of the webhook to fetch
+
+    try:
+        # Get a webhook for an app
+        api_response = api_instance.get_app_webhook(app_uuid, webhook_uuid)
+        print("The response of ApplicationsApi->get_app_webhook:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->get_app_webhook: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the app that owns the webhook | 
+ **webhook_uuid** | **str**| UUID of the webhook to fetch | 
+
+### Return type
+
+[**ShowResponse**](ShowResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Webhook retrieved successfully |  -  |
+**404** | Webhook not found for the specified app or company |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_app_webhooks**
 > PaginationResponse get_app_webhooks(app_uuid, body)
 
@@ -847,6 +933,89 @@ Name | Type | Description  | Notes
 **200** | Successfully retrieved the public app |  -  |
 **404** | Public app not found |  -  |
 **500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_runtime_logs**
+> SuccessResponse get_runtime_logs(app_uuid, since=since, limit=limit)
+
+Get app runtime logs
+
+Queries Cloud Logging for the shared V2 app container (app-{uuid}) without filtering to a single function.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.success_response import SuccessResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the app
+    since = '1h' # str | Lookback window, e.g. 15m, 1h, 24h (optional) (default to '1h')
+    limit = 100 # int | Maximum number of log entries to return (optional) (default to 100)
+
+    try:
+        # Get app runtime logs
+        api_response = api_instance.get_runtime_logs(app_uuid, since=since, limit=limit)
+        print("The response of ApplicationsApi->get_runtime_logs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->get_runtime_logs: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the app | 
+ **since** | **str**| Lookback window, e.g. 15m, 1h, 24h | [optional] [default to &#39;1h&#39;]
+ **limit** | **int**| Maximum number of log entries to return | [optional] [default to 100]
+
+### Return type
+
+[**SuccessResponse**](SuccessResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully retrieved logs (may be empty if logging is unavailable) |  -  |
+**404** | App not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1316,6 +1485,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **migrate_to_v2**
+> SuccessResponse migrate_to_v2(uuid, migrate_app_to_v2_request=migrate_app_to_v2_request)
+
+Migrate an app from platform V1 to V2
+
+Opt-in in-place migration to the shared container runtime. Validates a single runtime, sets platformVersion=2, schedules an async rebuild, and keeps invoking via legacy gcpReference until runtimeStatus is READY.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.migrate_app_to_v2_request import MigrateAppToV2Request
+from caraer_client.models.success_response import SuccessResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    uuid = 'uuid_example' # str | UUID of the app to migrate
+    migrate_app_to_v2_request = caraer_client.MigrateAppToV2Request() # MigrateAppToV2Request |  (optional)
+
+    try:
+        # Migrate an app from platform V1 to V2
+        api_response = api_instance.migrate_to_v2(uuid, migrate_app_to_v2_request=migrate_app_to_v2_request)
+        print("The response of ApplicationsApi->migrate_to_v2:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->migrate_to_v2: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**| UUID of the app to migrate | 
+ **migrate_app_to_v2_request** | [**MigrateAppToV2Request**](MigrateAppToV2Request.md)|  | [optional] 
+
+### Return type
+
+[**SuccessResponse**](SuccessResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Migration started or already in progress |  -  |
+**400** | Mixed/missing runtimes or invalid request |  -  |
+**403** | Not allowed to migrate this app |  -  |
+**404** | App not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **review_public_app**
 > ShowResponse review_public_app(uuid, review_request)
 
@@ -1476,6 +1729,85 @@ Name | Type | Description  | Notes
 **200** | Successfully rotated application configurations |  -  |
 **404** | Application not found |  -  |
 **500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **stream_runtime_logs**
+> SseEmitter stream_runtime_logs(app_uuid)
+
+Stream app runtime logs (SSE)
+
+Server-Sent Events stream of Cloud Logging entries for the shared V2 app container. Polls every ~2.5s and stops after 5 minutes or client disconnect.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.sse_emitter import SseEmitter
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | UUID of the app
+
+    try:
+        # Stream app runtime logs (SSE)
+        api_response = api_instance.stream_runtime_logs(app_uuid)
+        print("The response of ApplicationsApi->stream_runtime_logs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->stream_runtime_logs: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**| UUID of the app | 
+
+### Return type
+
+[**SseEmitter**](SseEmitter.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/event-stream
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | SSE stream of log entries |  -  |
+**404** | App not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

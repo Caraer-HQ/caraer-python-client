@@ -29,13 +29,14 @@ class ShowItem(BaseModel):
     """ # noqa: E501
     object: Optional[StrictStr] = Field(default=None, description="The name of the object to which this pagination item belongs.", json_schema_extra={"examples": ["User"]})
     relation: Optional[StrictStr] = Field(default=None, description="The relationship between objects.", json_schema_extra={"examples": ["hasProperty"]})
+    relation_direction: Optional[StrictStr] = Field(default=None, description="Optional relation direction: outgoing (related→main), incoming (main→related), or omit for undirected.", alias="relationDirection", json_schema_extra={"examples": ["outgoing"]})
     var_property: Optional[StrictStr] = Field(default=None, description="The name of the property within the object.", alias="property", json_schema_extra={"examples": ["email"]})
     separator: Optional[StrictStr] = Field(default=None, description="Separator string used to visually separate this item.", json_schema_extra={"examples": ["|"]})
     sticky: Optional[StrictBool] = Field(default=False, description="Flag indicating whether this item is sticky and will stay fixed in the list.")
     width: Optional[StrictInt] = Field(default=None, description="Width of the item in pixels.", json_schema_extra={"examples": [100]})
     calculation_function: Optional[StrictStr] = Field(default=None, description="Calculation function used to calculate the value of the item.", alias="calculationFunction", json_schema_extra={"examples": ["max"]})
     calculation_result: Optional[Any] = Field(default=None, alias="calculationResult")
-    __properties: ClassVar[List[str]] = ["object", "relation", "property", "separator", "sticky", "width", "calculationFunction", "calculationResult"]
+    __properties: ClassVar[List[str]] = ["object", "relation", "relationDirection", "property", "separator", "sticky", "width", "calculationFunction", "calculationResult"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -95,6 +96,7 @@ class ShowItem(BaseModel):
         _obj = cls.model_validate({
             "object": obj.get("object"),
             "relation": obj.get("relation"),
+            "relationDirection": obj.get("relationDirection"),
             "property": obj.get("property"),
             "separator": obj.get("separator"),
             "sticky": obj.get("sticky") if obj.get("sticky") is not None else False,

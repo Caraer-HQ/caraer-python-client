@@ -38,11 +38,13 @@ class TestFilterGroup(unittest.TestCase):
                 items = caraer_client.models.filter_item.FilterItem(
                     object = 'User', 
                     relation = 'hasProperty', 
+                    relation_direction = 'outgoing', 
                     property = 'email', 
                     relation_included = True, 
                     operator = 'EQUALS', 
                     value = null, 
-                    smart_content = True, )
+                    smart_content = True, 
+                    edge_property = False, )
             )
         else:
             return FilterGroup(

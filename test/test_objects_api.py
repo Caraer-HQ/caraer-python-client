@@ -103,10 +103,10 @@ class TestObjectsApi(unittest.TestCase):
         """
         pass
 
-    def test_sync_morph_objects(self) -> None:
-        """Test case for sync_morph_objects
+    def test_sync_extended_objects(self) -> None:
+        """Test case for sync_extended_objects
 
-        Sync morph objects for existing records
+        Sync extended objects for existing records
         """
         pass
 

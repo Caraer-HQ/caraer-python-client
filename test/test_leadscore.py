@@ -37,11 +37,13 @@ class TestLeadscore(unittest.TestCase):
             return Leadscore(
                 object = 'User',
                 relation = 'hasProperty',
+                relation_direction = 'outgoing',
                 var_property = 'email',
                 relation_included = True,
                 operator = 'EQUALS',
                 value = None,
                 smart_content = True,
+                edge_property = False,
                 smart_value = True,
                 score = 10
             )

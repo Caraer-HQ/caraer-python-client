@@ -40,7 +40,7 @@ class RecordDTO(BaseModel):
     deleted_at: Optional[StrictInt] = Field(default=None, description="Unix timestamp when the entity was deleted (null if not deleted)", alias="deletedAt")
     deleted_by: Optional[Record] = Field(default=None, description="Identifier of the user who deleted the entity", alias="deletedBy")
     index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
-    properties: Optional[Dict[str, Any]] = Field(default=None, description="A map of property names to their corresponding values for this record.", json_schema_extra={"examples": [{"key1": "value1", "key2": 123}]})
+    properties: Optional[Dict[str, Any]] = Field(default=None, description="Property values as a name→value map, or a LEGACY array of {name,type,value} objects (same shape as LEGACY GET responses).", json_schema_extra={"examples": [{"key1": "value1", "key2": 123}]})
     user: Optional[PublicUserDTO] = Field(default=None, description="The user of the record if the user trait is enabled.")
     relations: Optional[List[RecordRelationRequestDTO]] = Field(default=None, description="Relations to create or merge after the record is saved. Each item links to an existing record (uuid) or creates a nested record first.")
     __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "properties", "user", "relations"]

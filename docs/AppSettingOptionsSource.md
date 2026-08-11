@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | [optional] 
 **serverless_function_uuid** | **str** |  | [optional] 
+**serverless_function_name** | **str** |  | [optional] 
 **depends_on** | **List[str]** |  | [optional] 
 **searchable** | **bool** |  | [optional] 
 **min_query_length** | **int** |  | [optional] 

@@ -20,6 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from caraer_client.models.filter import Filter
 from caraer_client.models.property_option import PropertyOption
 from caraer_client.models.record import Record
 from caraer_client.models.tuple2_long_long import Tuple2LongLong
@@ -51,6 +52,7 @@ class PropertyDTO(BaseModel):
     immutable: Optional[StrictBool] = Field(default=None, description="Indicates if the property value cannot be modified after initial creation")
     hidden: Optional[StrictBool] = Field(default=None, description="Indicates if the property should be hidden from view")
     lifecycle_active: Optional[StrictBool] = Field(default=None, description="When true, property value changes are tracked as lifecycle records", alias="lifecycleActive")
+    required_filter: Optional[Filter] = Field(default=None, description="When this filter matches the record being saved, the property becomes required", alias="requiredFilter")
     non_public: Optional[StrictBool] = Field(default=None, description="Indicates if the property should be excluded from public APIs", alias="nonPublic")
     indexed: Optional[StrictBool] = Field(default=None, description="Indicates if the property should be indexed for searching")
     editable: Optional[StrictBool] = Field(default=None, description="Indicates if the property value can be modified")
@@ -59,9 +61,10 @@ class PropertyDTO(BaseModel):
     icon: Optional[StrictStr] = Field(default=None, description="Icon identifier for visual representation of the property")
     webpage_public: Optional[StrictBool] = Field(default=None, description="Indicates if the property can be used in webpages", alias="webpagePublic")
     embeddable: Optional[StrictBool] = Field(default=None, description="Indicates if the property can be embedded in other properties")
+    sensitive: Optional[StrictBool] = Field(default=None, description="When true, exclude from advanced query evidence")
     min_and_max_value: Optional[Tuple2LongLong] = Field(default=None, description="The minimum and maximum value of the property", alias="minAndMaxValue")
     pinned: Optional[StrictBool] = Field(default=None, description="Indicates if the property is pinned by the logged-in user")
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "description", "type", "options", "group", "format", "rules", "immutable", "hidden", "lifecycleActive", "nonPublic", "indexed", "editable", "formatSettings", "usedIn", "icon", "webpagePublic", "embeddable", "minAndMaxValue", "pinned"]
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "description", "type", "options", "group", "format", "rules", "immutable", "hidden", "lifecycleActive", "requiredFilter", "nonPublic", "indexed", "editable", "formatSettings", "usedIn", "icon", "webpagePublic", "embeddable", "sensitive", "minAndMaxValue", "pinned"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -121,6 +124,9 @@ class PropertyDTO(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of format
         if self.format:
             _dict['format'] = self.format.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of required_filter
+        if self.required_filter:
+            _dict['requiredFilter'] = self.required_filter.to_dict()
         # override the default output from pydantic by calling `to_dict()` of used_in
         if self.used_in:
             _dict['usedIn'] = self.used_in.to_dict()
@@ -158,6 +164,7 @@ class PropertyDTO(BaseModel):
             "immutable": obj.get("immutable"),
             "hidden": obj.get("hidden"),
             "lifecycleActive": obj.get("lifecycleActive"),
+            "requiredFilter": Filter.from_dict(obj["requiredFilter"]) if obj.get("requiredFilter") is not None else None,
             "nonPublic": obj.get("nonPublic"),
             "indexed": obj.get("indexed"),
             "editable": obj.get("editable"),
@@ -166,6 +173,7 @@ class PropertyDTO(BaseModel):
             "icon": obj.get("icon"),
             "webpagePublic": obj.get("webpagePublic"),
             "embeddable": obj.get("embeddable"),
+            "sensitive": obj.get("sensitive"),
             "minAndMaxValue": Tuple2LongLong.from_dict(obj["minAndMaxValue"]) if obj.get("minAndMaxValue") is not None else None,
             "pinned": obj.get("pinned")
         })

@@ -15,7 +15,9 @@ Name | Type | Description | Notes
 **default_value** | **object** |  | [optional] 
 **hidden** | **bool** |  | [optional] 
 **value** | **object** |  | [optional] 
+**has_value** | **bool** |  | [optional] 
 **mapping_value** | [**AppSettingFieldMappingStructure**](AppSettingFieldMappingStructure.md) |  | [optional] 
+**value_scope** | **str** |  | [optional] 
 
 ## Example
 

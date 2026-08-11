@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **relation_name** | **str** | Name of the relation type | 
 **uuid** | **str** | UUID of an existing record to link to | [optional] 
 **properties** | **Dict[str, Optional[object]]** | Properties to update on the existing record referenced by uuid before linking | [optional] 
+**edge_properties** | **Dict[str, Optional[object]]** | Values for properties declared on the relation schema, stored on the relation edge itself (not on either record). Omit to leave existing edge values untouched; a null value clears a key. | [optional] 
 **record** | [**RecordDTO**](RecordDTO.md) | Nested record to create before linking, or update first when record.uuid is provided | [optional] 
 **object_name** | **str** | Object name for nested record create when relation allows multiple target types | [optional] 
 **primary** | **bool** | When true, marks this relation edge as primary | [optional] 

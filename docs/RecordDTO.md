@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **deleted_at** | **int** | Unix timestamp when the entity was deleted (null if not deleted) | [optional] 
 **deleted_by** | [**Record**](Record.md) | Identifier of the user who deleted the entity | [optional] 
 **index** | **int** | Index number for ordering entities | [optional] 
-**properties** | **Dict[str, Optional[object]]** | A map of property names to their corresponding values for this record. | [optional] 
+**properties** | **Dict[str, Optional[object]]** | Property values as a name→value map, or a LEGACY array of {name,type,value} objects (same shape as LEGACY GET responses). | [optional] 
 **user** | [**PublicUserDTO**](PublicUserDTO.md) | The user of the record if the user trait is enabled. | [optional] 
 **relations** | [**List[RecordRelationRequestDTO]**](RecordRelationRequestDTO.md) | Relations to create or merge after the record is saved. Each item links to an existing record (uuid) or creates a nested record first. | [optional] 
 

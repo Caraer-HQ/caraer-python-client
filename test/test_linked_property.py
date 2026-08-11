@@ -55,6 +55,7 @@ class TestLinkedProperty(unittest.TestCase):
                             icon = '', 
                             color = '', 
                             disabled = True, 
+                            completed = True, 
                             used_in = caraer_client.models.used_in_result.UsedInResult(
                                 record_uuids = [
                                     ''
@@ -69,6 +70,7 @@ class TestLinkedProperty(unittest.TestCase):
                     immutable = True, 
                     hidden = True, 
                     lifecycle_active = True, 
+                    required_filter = null, 
                     non_public = True, 
                     indexed = True, 
                     editable = True, 
@@ -79,6 +81,7 @@ class TestLinkedProperty(unittest.TestCase):
                     icon = '', 
                     webpage_public = True, 
                     embeddable = True, 
+                    sensitive = True, 
                     min_and_max_value = null, 
                     pinned = True, )
             )

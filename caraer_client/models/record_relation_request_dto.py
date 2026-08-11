@@ -30,11 +30,12 @@ class RecordRelationRequestDTO(BaseModel):
     relation_name: StrictStr = Field(description="Name of the relation type", alias="relationName", json_schema_extra={"examples": ["works_at"]})
     uuid: Optional[StrictStr] = Field(default=None, description="UUID of an existing record to link to")
     properties: Optional[Dict[str, Any]] = Field(default=None, description="Properties to update on the existing record referenced by uuid before linking")
+    edge_properties: Optional[Dict[str, Any]] = Field(default=None, description="Values for properties declared on the relation schema, stored on the relation edge itself (not on either record). Omit to leave existing edge values untouched; a null value clears a key.", alias="edgeProperties", json_schema_extra={"examples": [{"partstat": "ACCEPTED"}]})
     record: Optional[RecordDTO] = Field(default=None, description="Nested record to create before linking, or update first when record.uuid is provided")
     object_name: Optional[StrictStr] = Field(default=None, description="Object name for nested record create when relation allows multiple target types", alias="objectName")
     primary: Optional[StrictBool] = Field(default=None, description="When true, marks this relation edge as primary", json_schema_extra={"examples": [False]})
     merge: Optional[StrictBool] = Field(default=None, description="When true, MERGE relation edge instead of CREATE", json_schema_extra={"examples": [True]})
-    __properties: ClassVar[List[str]] = ["relationName", "uuid", "properties", "record", "objectName", "primary", "merge"]
+    __properties: ClassVar[List[str]] = ["relationName", "uuid", "properties", "edgeProperties", "record", "objectName", "primary", "merge"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -93,6 +94,7 @@ class RecordRelationRequestDTO(BaseModel):
             "relationName": obj.get("relationName"),
             "uuid": obj.get("uuid"),
             "properties": obj.get("properties"),
+            "edgeProperties": obj.get("edgeProperties"),
             "record": RecordDTO.from_dict(obj["record"]) if obj.get("record") is not None else None,
             "objectName": obj.get("objectName"),
             "primary": obj.get("primary"),

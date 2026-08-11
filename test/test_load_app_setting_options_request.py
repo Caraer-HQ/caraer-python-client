@@ -53,6 +53,7 @@ class TestLoadAppSettingOptionsRequest(unittest.TestCase):
                         options_source = caraer_client.models.app_setting_options_source.AppSettingOptionsSource(
                             type = '', 
                             serverless_function_uuid = '', 
+                            serverless_function_name = '', 
                             depends_on = [
                                 ''
                                 ], 
@@ -61,6 +62,7 @@ class TestLoadAppSettingOptionsRequest(unittest.TestCase):
                         default_value = null, 
                         hidden = True, 
                         value = null, 
+                        has_value = True, 
                         mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
                             object_name = '', 
                             items = [
@@ -76,7 +78,8 @@ class TestLoadAppSettingOptionsRequest(unittest.TestCase):
                                         ''
                                         ], 
                                     property_name = '', )
-                                ], ), )
+                                ], ), 
+                        value_scope = '', )
                     ],
                 app_bar_uuid = ''
             )
@@ -99,6 +102,7 @@ class TestLoadAppSettingOptionsRequest(unittest.TestCase):
                         options_source = caraer_client.models.app_setting_options_source.AppSettingOptionsSource(
                             type = '', 
                             serverless_function_uuid = '', 
+                            serverless_function_name = '', 
                             depends_on = [
                                 ''
                                 ], 
@@ -107,6 +111,7 @@ class TestLoadAppSettingOptionsRequest(unittest.TestCase):
                         default_value = null, 
                         hidden = True, 
                         value = null, 
+                        has_value = True, 
                         mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
                             object_name = '', 
                             items = [
@@ -122,7 +127,8 @@ class TestLoadAppSettingOptionsRequest(unittest.TestCase):
                                         ''
                                         ], 
                                     property_name = '', )
-                                ], ), )
+                                ], ), 
+                        value_scope = '', )
                     ],
         )
         """

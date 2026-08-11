@@ -33,8 +33,9 @@ class PropertyOption(BaseModel):
     icon: Optional[StrictStr] = None
     color: Optional[StrictStr] = None
     disabled: Optional[StrictBool] = None
+    completed: Optional[StrictBool] = None
     used_in: Optional[UsedInResult] = Field(default=None, alias="usedIn")
-    __properties: ClassVar[List[str]] = ["name", "label", "icon", "color", "disabled", "usedIn"]
+    __properties: ClassVar[List[str]] = ["name", "label", "icon", "color", "disabled", "completed", "usedIn"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -95,6 +96,7 @@ class PropertyOption(BaseModel):
             "icon": obj.get("icon"),
             "color": obj.get("color"),
             "disabled": obj.get("disabled"),
+            "completed": obj.get("completed"),
             "usedIn": UsedInResult.from_dict(obj["usedIn"]) if obj.get("usedIn") is not None else None
         })
         return _obj

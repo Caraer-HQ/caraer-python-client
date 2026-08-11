@@ -37,11 +37,13 @@ class TestFilterItem(unittest.TestCase):
             return FilterItem(
                 object = 'User',
                 relation = 'hasProperty',
+                relation_direction = 'outgoing',
                 var_property = 'email',
                 relation_included = True,
                 operator = 'EQUALS',
                 value = None,
-                smart_content = True
+                smart_content = True,
+                edge_property = False
             )
         else:
             return FilterItem(

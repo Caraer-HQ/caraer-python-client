@@ -55,6 +55,7 @@ class TestGridItemDTO(unittest.TestCase):
                             icon = '', 
                             color = '', 
                             disabled = True, 
+                            completed = True, 
                             used_in = caraer_client.models.used_in_result.UsedInResult(
                                 record_uuids = [
                                     ''
@@ -69,6 +70,7 @@ class TestGridItemDTO(unittest.TestCase):
                     immutable = True, 
                     hidden = True, 
                     lifecycle_active = True, 
+                    required_filter = null, 
                     non_public = True, 
                     indexed = True, 
                     editable = True, 
@@ -79,6 +81,7 @@ class TestGridItemDTO(unittest.TestCase):
                     icon = '', 
                     webpage_public = True, 
                     embeddable = True, 
+                    sensitive = True, 
                     min_and_max_value = null, 
                     pinned = True, ),
                 text = '',
@@ -119,11 +122,13 @@ class TestGridItemDTO(unittest.TestCase):
                         caraer_client.models.leadscore.Leadscore(
                             object = 'User', 
                             relation = 'hasProperty', 
+                            relation_direction = 'outgoing', 
                             property = 'email', 
                             relation_included = True, 
                             operator = 'EQUALS', 
                             value = null, 
                             smart_content = True, 
+                            edge_property = False, 
                             smart_value = True, 
                             score = 10, )
                         ], 

@@ -3262,7 +3262,7 @@ class ObjectsApi:
 
 
     @validate_call
-    def sync_morph_objects(
+    def sync_extended_objects(
         self,
         uuid: StrictStr,
         _request_timeout: Union[
@@ -3278,9 +3278,9 @@ class ObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SuccessResponse:
-        """Sync morph objects for existing records
+        """Sync extended objects for existing records
 
-        Synchronizes existing records for an object after morph configuration changes. The object path variable accepts UUID or object name. Records that reference the object as primary object, morph object, or label are re-morphed.
+        Synchronizes existing records for an object after extended configuration changes. The object path variable accepts UUID or object name. Records that reference the object as primary object, extended object, or label are re-extended.
 
         :param uuid: (required)
         :type uuid: str
@@ -3306,7 +3306,7 @@ class ObjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._sync_morph_objects_serialize(
+        _param = self._sync_extended_objects_serialize(
             uuid=uuid,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3331,7 +3331,7 @@ class ObjectsApi:
 
 
     @validate_call
-    def sync_morph_objects_with_http_info(
+    def sync_extended_objects_with_http_info(
         self,
         uuid: StrictStr,
         _request_timeout: Union[
@@ -3347,9 +3347,9 @@ class ObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SuccessResponse]:
-        """Sync morph objects for existing records
+        """Sync extended objects for existing records
 
-        Synchronizes existing records for an object after morph configuration changes. The object path variable accepts UUID or object name. Records that reference the object as primary object, morph object, or label are re-morphed.
+        Synchronizes existing records for an object after extended configuration changes. The object path variable accepts UUID or object name. Records that reference the object as primary object, extended object, or label are re-extended.
 
         :param uuid: (required)
         :type uuid: str
@@ -3375,7 +3375,7 @@ class ObjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._sync_morph_objects_serialize(
+        _param = self._sync_extended_objects_serialize(
             uuid=uuid,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3400,7 +3400,7 @@ class ObjectsApi:
 
 
     @validate_call
-    def sync_morph_objects_without_preload_content(
+    def sync_extended_objects_without_preload_content(
         self,
         uuid: StrictStr,
         _request_timeout: Union[
@@ -3416,9 +3416,9 @@ class ObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Sync morph objects for existing records
+        """Sync extended objects for existing records
 
-        Synchronizes existing records for an object after morph configuration changes. The object path variable accepts UUID or object name. Records that reference the object as primary object, morph object, or label are re-morphed.
+        Synchronizes existing records for an object after extended configuration changes. The object path variable accepts UUID or object name. Records that reference the object as primary object, extended object, or label are re-extended.
 
         :param uuid: (required)
         :type uuid: str
@@ -3444,7 +3444,7 @@ class ObjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._sync_morph_objects_serialize(
+        _param = self._sync_extended_objects_serialize(
             uuid=uuid,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3464,7 +3464,7 @@ class ObjectsApi:
         return response_data.response
 
 
-    def _sync_morph_objects_serialize(
+    def _sync_extended_objects_serialize(
         self,
         uuid,
         _request_auth,
@@ -3513,7 +3513,7 @@ class ObjectsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/api/v2/objects/{uuid}/syncMorphObjects',
+            resource_path='/api/v2/objects/{uuid}/syncExtendedObjects',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

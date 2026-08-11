@@ -40,6 +40,7 @@ class TestPropertyOption(unittest.TestCase):
                 icon = '',
                 color = '',
                 disabled = True,
+                completed = True,
                 used_in = caraer_client.models.used_in_result.UsedInResult(
                     record_uuids = [
                         ''

@@ -49,8 +49,8 @@ class TestAppDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -90,8 +90,8 @@ class TestAppDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', ), ), ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
@@ -104,8 +104,8 @@ class TestAppDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -145,8 +145,8 @@ class TestAppDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', ), ), ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
@@ -159,8 +159,8 @@ class TestAppDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -200,8 +200,8 @@ class TestAppDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', ), ), ),
                 index = 56,
                 private_app = True,
@@ -301,6 +301,7 @@ class TestAppDTO(unittest.TestCase):
                                 options_source = caraer_client.models.app_setting_options_source.AppSettingOptionsSource(
                                     type = '', 
                                     serverless_function_uuid = '', 
+                                    serverless_function_name = '', 
                                     depends_on = [
                                         ''
                                         ], 
@@ -309,6 +310,7 @@ class TestAppDTO(unittest.TestCase):
                                 default_value = null, 
                                 hidden = True, 
                                 value = null, 
+                                has_value = True, 
                                 mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
                                     object_name = '', 
                                     items = [
@@ -324,7 +326,8 @@ class TestAppDTO(unittest.TestCase):
                                                 ''
                                                 ], 
                                             property_name = '', )
-                                        ], ), )
+                                        ], ), 
+                                value_scope = '', )
                             ], 
                         webhook = null, )
                     ],
@@ -342,6 +345,9 @@ class TestAppDTO(unittest.TestCase):
                         index = 56, 
                         runtime = '', 
                         code = '', 
+                        source_files = {
+                            'key' : ''
+                            }, 
                         description = '', )
                     ],
                 install_webhook = caraer_client.models.subscribe_webhook_dto.SubscribeWebhookDTO(
@@ -508,6 +514,7 @@ class TestAppDTO(unittest.TestCase):
                         options_source = caraer_client.models.app_setting_options_source.AppSettingOptionsSource(
                             type = '', 
                             serverless_function_uuid = '', 
+                            serverless_function_name = '', 
                             depends_on = [
                                 ''
                                 ], 
@@ -516,6 +523,7 @@ class TestAppDTO(unittest.TestCase):
                         default_value = null, 
                         hidden = True, 
                         value = null, 
+                        has_value = True, 
                         mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
                             object_name = '', 
                             items = [
@@ -531,9 +539,18 @@ class TestAppDTO(unittest.TestCase):
                                         ''
                                         ], 
                                     property_name = '', )
-                                ], ), )
+                                ], ), 
+                        value_scope = '', )
+                    ],
+                external_o_auth_providers = [
+                    caraer_client.models.app_external_o_auth_provider_summary_dto.AppExternalOAuthProviderSummaryDTO(
+                        name = '', 
+                        label = '', 
+                        logo = '', 
+                        connection_owner = '', )
                     ],
                 webhook_rate_limit_per_minute = 56,
+                job_rate_limit_per_minute = 56,
                 bill_failed_webhook_requests = True,
                 app_publish = caraer_client.models.app_publish_dto.AppPublishDTO(
                     uuid = '0', 
@@ -599,7 +616,14 @@ class TestAppDTO(unittest.TestCase):
                 oauth_token_url = '',
                 install_url = '',
                 brandmark = '',
-                description = ''
+                description = '',
+                platform_version = 56,
+                runtime = '',
+                runtime_base_url = '',
+                runtime_revision = '',
+                runtime_status = '',
+                runtime_error = '',
+                runtime_generation = 56
             )
         else:
             return AppDTO(

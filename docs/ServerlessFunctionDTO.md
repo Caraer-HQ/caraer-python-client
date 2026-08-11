@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **index** | **int** | Index number for ordering entities | [optional] 
 **runtime** | **str** | Runtime identifier (e.g. javascript, python) | [optional] 
 **code** | **str** | Function source code | [optional] 
+**source_files** | **Dict[str, str]** | Additional source files relative to the function folder (e.g. shared.js) | [optional] 
 **description** | **str** | Optional description of the serverless function | [optional] 
 
 ## Example

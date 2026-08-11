@@ -34,7 +34,8 @@ class ErrorResponse(BaseModel):
     stack_trace: Optional[StrictStr] = Field(default=None, alias="stackTrace")
     roles: Optional[List[StrictStr]] = None
     scopes: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["message", "errors", "status", "stackTrace", "roles", "scopes"]
+    request_id: Optional[StrictStr] = Field(default=None, description="Request correlation ID for support and log tracing.", alias="requestId", json_schema_extra={"examples": ["a1b2c3d4-e5f6-7890-abcd-ef1234567890"]})
+    __properties: ClassVar[List[str]] = ["message", "errors", "status", "stackTrace", "roles", "scopes", "requestId"]
 
     @field_validator('roles')
     def roles_validate_enum(cls, value):
@@ -106,7 +107,8 @@ class ErrorResponse(BaseModel):
             "status": obj.get("status"),
             "stackTrace": obj.get("stackTrace"),
             "roles": obj.get("roles"),
-            "scopes": obj.get("scopes")
+            "scopes": obj.get("scopes"),
+            "requestId": obj.get("requestId")
         })
         return _obj
 

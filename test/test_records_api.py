@@ -26,6 +26,34 @@ class TestRecordsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_aggregate(self) -> None:
+        """Test case for aggregate
+
+        Aggregate records for analytics charts
+        """
+        pass
+
+    def test_aggregate_batch(self) -> None:
+        """Test case for aggregate_batch
+
+        Batch aggregate records for analytics dashboards
+        """
+        pass
+
+    def test_bulk_delete(self) -> None:
+        """Test case for bulk_delete
+
+        Bulk delete records
+        """
+        pass
+
+    def test_bulk_edit(self) -> None:
+        """Test case for bulk_edit
+
+        Bulk create or update records
+        """
+        pass
+
     def test_create(self) -> None:
         """Test case for create
 
@@ -61,6 +89,13 @@ class TestRecordsApi(unittest.TestCase):
         """
         pass
 
+    def test_extend(self) -> None:
+        """Test case for extend
+
+        Extend a record
+        """
+        pass
+
     def test_index(self) -> None:
         """Test case for index
 
@@ -89,17 +124,17 @@ class TestRecordsApi(unittest.TestCase):
         """
         pass
 
-    def test_morph(self) -> None:
-        """Test case for morph
-
-        Morph a record
-        """
-        pass
-
     def test_preview(self) -> None:
         """Test case for preview
 
         Get record preview
+        """
+        pass
+
+    def test_query(self) -> None:
+        """Test case for query
+
+        Advanced graph-aware record query
         """
         pass
 
@@ -117,10 +152,31 @@ class TestRecordsApi(unittest.TestCase):
         """
         pass
 
-    def test_show1(self) -> None:
-        """Test case for show1
+    def test_search_cross_object(self) -> None:
+        """Test case for search_cross_object
+
+        Search records across objects
+        """
+        pass
+
+    def test_show(self) -> None:
+        """Test case for show
 
         Get record details
+        """
+        pass
+
+    def test_show_by_object(self) -> None:
+        """Test case for show_by_object
+
+        Get record details by object
+        """
+        pass
+
+    def test_suggest_analytics_widgets(self) -> None:
+        """Test case for suggest_analytics_widgets
+
+        Suggest analytics widgets with AI
         """
         pass
 
@@ -128,6 +184,20 @@ class TestRecordsApi(unittest.TestCase):
         """Test case for update
 
         Update a record
+        """
+        pass
+
+    def test_update_by_uuid(self) -> None:
+        """Test case for update_by_uuid
+
+        Update a record by UUID
+        """
+        pass
+
+    def test_update_relation_edge(self) -> None:
+        """Test case for update_relation_edge
+
+        Update relation edge properties
         """
         pass
 

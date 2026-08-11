@@ -29,10 +29,11 @@ class AppSettingOptionsSource(BaseModel):
     """ # noqa: E501
     type: Optional[StrictStr] = None
     serverless_function_uuid: Optional[StrictStr] = Field(default=None, alias="serverlessFunctionUuid")
+    serverless_function_name: Optional[StrictStr] = Field(default=None, alias="serverlessFunctionName")
     depends_on: Optional[List[StrictStr]] = Field(default=None, alias="dependsOn")
     searchable: Optional[StrictBool] = None
     min_query_length: Optional[StrictInt] = Field(default=None, alias="minQueryLength")
-    __properties: ClassVar[List[str]] = ["type", "serverlessFunctionUuid", "dependsOn", "searchable", "minQueryLength"]
+    __properties: ClassVar[List[str]] = ["type", "serverlessFunctionUuid", "serverlessFunctionName", "dependsOn", "searchable", "minQueryLength"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -87,6 +88,7 @@ class AppSettingOptionsSource(BaseModel):
         _obj = cls.model_validate({
             "type": obj.get("type"),
             "serverlessFunctionUuid": obj.get("serverlessFunctionUuid"),
+            "serverlessFunctionName": obj.get("serverlessFunctionName"),
             "dependsOn": obj.get("dependsOn"),
             "searchable": obj.get("searchable"),
             "minQueryLength": obj.get("minQueryLength")

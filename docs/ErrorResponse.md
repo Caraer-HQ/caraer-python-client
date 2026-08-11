@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **stack_trace** | **str** |  | [optional] 
 **roles** | **List[str]** |  | [optional] 
 **scopes** | **List[str]** |  | [optional] 
+**request_id** | **str** | Request correlation ID for support and log tracing. | [optional] 
 
 ## Example
 

@@ -61,6 +61,13 @@ class TestApplicationsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_app_webhook(self) -> None:
+        """Test case for get_app_webhook
+
+        Get a webhook for an app
+        """
+        pass
+
     def test_get_app_webhooks(self) -> None:
         """Test case for get_app_webhooks
 
@@ -93,6 +100,13 @@ class TestApplicationsApi(unittest.TestCase):
         """Test case for get_public_app
 
         Get a public app (creator view)
+        """
+        pass
+
+    def test_get_runtime_logs(self) -> None:
+        """Test case for get_runtime_logs
+
+        Get app runtime logs
         """
         pass
 
@@ -138,6 +152,13 @@ class TestApplicationsApi(unittest.TestCase):
         """
         pass
 
+    def test_migrate_to_v2(self) -> None:
+        """Test case for migrate_to_v2
+
+        Migrate an app from platform V1 to V2
+        """
+        pass
+
     def test_review_public_app(self) -> None:
         """Test case for review_public_app
 
@@ -149,6 +170,13 @@ class TestApplicationsApi(unittest.TestCase):
         """Test case for rotate_app
 
         Rotate application configurations
+        """
+        pass
+
+    def test_stream_runtime_logs(self) -> None:
+        """Test case for stream_runtime_logs
+
+        Stream app runtime logs (SSE)
         """
         pass
 

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** | The name of the object to which this pagination item belongs. | [optional] 
 **relation** | **str** | The relationship between objects. | [optional] 
+**relation_direction** | **str** | Optional relation direction: outgoing (related→main), incoming (main→related), or omit for undirected. | [optional] 
 **var_property** | **str** | The name of the property within the object. | [optional] 
 **direction** | **str** | The direction for sorting. Can be ASC (ascending) or DESC (descending). | [optional] 
 

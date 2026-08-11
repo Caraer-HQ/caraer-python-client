@@ -49,8 +49,8 @@ class TestAppBarDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -90,8 +90,8 @@ class TestAppBarDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', ), ), ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
@@ -104,8 +104,8 @@ class TestAppBarDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -145,8 +145,8 @@ class TestAppBarDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', ), ), ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
@@ -159,8 +159,8 @@ class TestAppBarDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -200,8 +200,8 @@ class TestAppBarDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', ), ), ),
                 index = 56,
                 location = 'RECORD_PREVIEW',
@@ -226,6 +226,7 @@ class TestAppBarDTO(unittest.TestCase):
                         options_source = caraer_client.models.app_setting_options_source.AppSettingOptionsSource(
                             type = '', 
                             serverless_function_uuid = '', 
+                            serverless_function_name = '', 
                             depends_on = [
                                 ''
                                 ], 
@@ -234,6 +235,7 @@ class TestAppBarDTO(unittest.TestCase):
                         default_value = null, 
                         hidden = True, 
                         value = null, 
+                        has_value = True, 
                         mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
                             object_name = '', 
                             items = [
@@ -249,7 +251,8 @@ class TestAppBarDTO(unittest.TestCase):
                                         ''
                                         ], 
                                     property_name = '', )
-                                ], ), )
+                                ], ), 
+                        value_scope = '', )
                     ],
                 webhook = caraer_client.models.subscribe_webhook_dto.SubscribeWebhookDTO(
                     url = 'https://example.com/webhook', 
