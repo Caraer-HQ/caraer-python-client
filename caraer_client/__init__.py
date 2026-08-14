@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.388"
+__version__ = "2.0.389"
 
 # Define package exports
 __all__ = [
@@ -123,6 +123,7 @@ __all__ = [
     "CurrencyRange",
     "CursorLocation",
     "CustomFontDTO",
+    "DateRange",
     "DeleteResponse",
     "DeleteResponseString",
     "DeleteResponseVoid",
@@ -397,6 +398,7 @@ from caraer_client.models.currency import Currency as Currency
 from caraer_client.models.currency_range import CurrencyRange as CurrencyRange
 from caraer_client.models.cursor_location import CursorLocation as CursorLocation
 from caraer_client.models.custom_font_dto import CustomFontDTO as CustomFontDTO
+from caraer_client.models.date_range import DateRange as DateRange
 from caraer_client.models.delete_response import DeleteResponse as DeleteResponse
 from caraer_client.models.delete_response_string import DeleteResponseString as DeleteResponseString
 from caraer_client.models.delete_response_void import DeleteResponseVoid as DeleteResponseVoid

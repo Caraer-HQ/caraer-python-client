@@ -370,6 +370,8 @@ class TestCompanyDTO(unittest.TestCase):
                     header_tertiary_button_icon_color = '', 
                     cookie_text = '', 
                     cookie_agreement_text = '', 
+                    cookie_banner_enabled = True, 
+                    cookie_banner_module_uuid = '', 
                     css_styles = '', 
                     head_js_script = '', 
                     body_js_script = '', 

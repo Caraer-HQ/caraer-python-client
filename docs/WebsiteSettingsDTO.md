@@ -93,6 +93,8 @@ Name | Type | Description | Notes
 **header_tertiary_button_icon_color** | **str** |  | [optional] 
 **cookie_text** | **str** |  | [optional] 
 **cookie_agreement_text** | **str** |  | [optional] 
+**cookie_banner_enabled** | **bool** |  | [optional] 
+**cookie_banner_module_uuid** | **str** |  | [optional] 
 **css_styles** | **str** |  | [optional] 
 **head_js_script** | **str** |  | [optional] 
 **body_js_script** | **str** |  | [optional] 

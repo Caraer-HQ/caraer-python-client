@@ -124,13 +124,6 @@ class TestWebpagesApi(unittest.TestCase):
         """
         pass
 
-    def test_get_public_custom_footer_module(self) -> None:
-        """Test case for get_public_custom_footer_module
-
-        Fetch public custom footer module
-        """
-        pass
-
     def test_get_public_previews(self) -> None:
         """Test case for get_public_previews
 
@@ -156,6 +149,13 @@ class TestWebpagesApi(unittest.TestCase):
         """Test case for get_public_webpage_protection
 
         Get webpage protection metadata
+        """
+        pass
+
+    def test_get_public_website_module(self) -> None:
+        """Test case for get_public_website_module
+
+        Fetch public website module
         """
         pass
 

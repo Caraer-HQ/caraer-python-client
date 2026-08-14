@@ -18,11 +18,11 @@ Method | HTTP request | Description
 [**get_company_settings**](WebpagesApi.md#get_company_settings) | **GET** /api/v2/webpages/public/companySettings | Fetch public company settings
 [**get_environments**](WebpagesApi.md#get_environments) | **GET** /api/v2/webpages/environments | Get all environments
 [**get_menus**](WebpagesApi.md#get_menus) | **GET** /api/v2/webpages/public/getMenus | Fetch public web menus
-[**get_public_custom_footer_module**](WebpagesApi.md#get_public_custom_footer_module) | **GET** /api/v2/webpages/public/module/{moduleUuid} | Fetch public custom footer module
 [**get_public_previews**](WebpagesApi.md#get_public_previews) | **POST** /api/v2/webpages/public/previews/{pageUuid}/{componentUuid}/{layout} | Get previews for a public webpage
 [**get_public_webpage**](WebpagesApi.md#get_public_webpage) | **GET** /api/v2/webpages/public/{rootSlug}/{slug} | Get a public webpage by slug
 [**get_public_webpage_by_uuid**](WebpagesApi.md#get_public_webpage_by_uuid) | **GET** /api/v2/webpages/public/uuid/{uuid} | Get a public webpage by UUID
 [**get_public_webpage_protection**](WebpagesApi.md#get_public_webpage_protection) | **GET** /api/v2/webpages/public/uuid/{uuid}/protection | Get webpage protection metadata
+[**get_public_website_module**](WebpagesApi.md#get_public_website_module) | **GET** /api/v2/webpages/public/module/{moduleUuid} | Fetch public website module
 [**get_template_webpage**](WebpagesApi.md#get_template_webpage) | **GET** /api/v2/webpages/template/{objectName}/{environment} | Get template webpage
 [**get_template_webpage_editing_status**](WebpagesApi.md#get_template_webpage_editing_status) | **GET** /api/v2/webpages/template/{objectName}/{environment}/editing-status | Check if a template webpage is being edited
 [**get_webpage**](WebpagesApi.md#get_webpage) | **GET** /api/v2/webpages/{uuid} | Get webpage details
@@ -1183,87 +1183,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_public_custom_footer_module**
-> ShowResponse get_public_custom_footer_module(x_caraer_subdomain, module_uuid)
-
-Fetch public custom footer module
-
-Returns the PageContent tree for the module configured as custom footer when enabled. Requires X-Caraer-Subdomain; only the UUID configured in website settings is accessible.
-
-### Example
-
-* Bearer (Opaque) Authentication (bearerAuth):
-
-```python
-import caraer_client
-from caraer_client.models.show_response import ShowResponse
-from caraer_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://v2.api.caraer.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = caraer_client.Configuration(
-    host = "https://v2.api.caraer.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (Opaque): bearerAuth
-configuration = caraer_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with caraer_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = caraer_client.WebpagesApi(api_client)
-    x_caraer_subdomain = 'x_caraer_subdomain_example' # str | 
-    module_uuid = 'module_uuid_example' # str | 
-
-    try:
-        # Fetch public custom footer module
-        api_response = api_instance.get_public_custom_footer_module(x_caraer_subdomain, module_uuid)
-        print("The response of WebpagesApi->get_public_custom_footer_module:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling WebpagesApi->get_public_custom_footer_module: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **x_caraer_subdomain** | **str**|  | 
- **module_uuid** | **str**|  | 
-
-### Return type
-
-[**ShowResponse**](ShowResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Module retrieved successfully |  -  |
-**404** | Module not found or not exposed |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_public_previews**
 > PaginationResponsePreviewDTO get_public_previews(x_caraer_subdomain, page_uuid, component_uuid, layout, x_caraer_environment=x_caraer_environment, x_caraer_primary_environment=x_caraer_primary_environment, authorization=authorization, x_caraer_webpage_access=x_caraer_webpage_access, access=access, token=token)
 
@@ -1629,6 +1548,87 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_public_website_module**
+> ShowResponse get_public_website_module(x_caraer_subdomain, module_uuid)
+
+Fetch public website module
+
+Returns the PageContent tree for a module exposed by website settings, such as the custom footer or the cookie banner. Requires X-Caraer-Subdomain; only the UUIDs configured in website settings are accessible.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response import ShowResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.WebpagesApi(api_client)
+    x_caraer_subdomain = 'x_caraer_subdomain_example' # str | 
+    module_uuid = 'module_uuid_example' # str | 
+
+    try:
+        # Fetch public website module
+        api_response = api_instance.get_public_website_module(x_caraer_subdomain, module_uuid)
+        print("The response of WebpagesApi->get_public_website_module:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WebpagesApi->get_public_website_module: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_caraer_subdomain** | **str**|  | 
+ **module_uuid** | **str**|  | 
+
+### Return type
+
+[**ShowResponse**](ShowResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Module retrieved successfully |  -  |
+**404** | Module not found or not exposed |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

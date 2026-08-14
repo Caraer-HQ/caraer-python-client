@@ -84,6 +84,7 @@ from caraer_client.models.currency import Currency
 from caraer_client.models.currency_range import CurrencyRange
 from caraer_client.models.cursor_location import CursorLocation
 from caraer_client.models.custom_font_dto import CustomFontDTO
+from caraer_client.models.date_range import DateRange
 from caraer_client.models.delete_response import DeleteResponse
 from caraer_client.models.delete_response_string import DeleteResponseString
 from caraer_client.models.delete_response_void import DeleteResponseVoid

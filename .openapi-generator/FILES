@@ -107,6 +107,7 @@ caraer_client/models/currency.py
 caraer_client/models/currency_range.py
 caraer_client/models/cursor_location.py
 caraer_client/models/custom_font_dto.py
+caraer_client/models/date_range.py
 caraer_client/models/delete_response.py
 caraer_client/models/delete_response_string.py
 caraer_client/models/delete_response_void.py
@@ -338,6 +339,7 @@ docs/Currency.md
 docs/CurrencyRange.md
 docs/CursorLocation.md
 docs/CustomFontDTO.md
+docs/DateRange.md
 docs/DeleteResponse.md
 docs/DeleteResponseString.md
 docs/DeleteResponseVoid.md
@@ -592,6 +594,7 @@ test/test_currency.py
 test/test_currency_range.py
 test/test_cursor_location.py
 test/test_custom_font_dto.py
+test/test_date_range.py
 test/test_delete_response.py
 test/test_delete_response_string.py
 test/test_delete_response_void.py
