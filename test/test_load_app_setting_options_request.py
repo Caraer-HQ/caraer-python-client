@@ -87,7 +87,9 @@ class TestLoadAppSettingOptionsRequest(unittest.TestCase):
                                 ], ), 
                         value_scope = '', )
                     ],
-                app_bar_uuid = ''
+                app_bar_uuid = '',
+                record_uuid = '',
+                object = ''
             )
         else:
             return LoadAppSettingOptionsRequest(

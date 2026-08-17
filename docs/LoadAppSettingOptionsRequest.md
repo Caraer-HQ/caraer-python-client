@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **query** | **str** | Optional search query typed by the installer. | [optional] 
 **settings_schema** | [**List[AppSettingFieldSchema]**](AppSettingFieldSchema.md) | Current draft settings schema with values from the installer UI. | 
 **app_bar_uuid** | **str** | When loading options for an app bar field, the app bar UUID. | [optional] 
+**record_uuid** | **str** | Record in context when the options field is on an action dialog. | [optional] 
+**object** | **str** | Object name in context when the options field is on an action dialog. | [optional] 
 
 ## Example
 

@@ -32,7 +32,9 @@ class LoadAppSettingOptionsRequest(BaseModel):
     query: Optional[StrictStr] = Field(default=None, description="Optional search query typed by the installer.")
     settings_schema: List[AppSettingFieldSchema] = Field(description="Current draft settings schema with values from the installer UI.", alias="settingsSchema")
     app_bar_uuid: Optional[StrictStr] = Field(default=None, description="When loading options for an app bar field, the app bar UUID.", alias="appBarUuid")
-    __properties: ClassVar[List[str]] = ["fieldName", "query", "settingsSchema", "appBarUuid"]
+    record_uuid: Optional[StrictStr] = Field(default=None, description="Record in context when the options field is on an action dialog.", alias="recordUuid")
+    object: Optional[StrictStr] = Field(default=None, description="Object name in context when the options field is on an action dialog.")
+    __properties: ClassVar[List[str]] = ["fieldName", "query", "settingsSchema", "appBarUuid", "recordUuid", "object"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -95,7 +97,9 @@ class LoadAppSettingOptionsRequest(BaseModel):
             "fieldName": obj.get("fieldName"),
             "query": obj.get("query"),
             "settingsSchema": [AppSettingFieldSchema.from_dict(_item) for _item in obj["settingsSchema"]] if obj.get("settingsSchema") is not None else None,
-            "appBarUuid": obj.get("appBarUuid")
+            "appBarUuid": obj.get("appBarUuid"),
+            "recordUuid": obj.get("recordUuid"),
+            "object": obj.get("object")
         })
         return _obj
 
