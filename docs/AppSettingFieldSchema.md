@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **options_source** | [**AppSettingOptionsSource**](AppSettingOptionsSource.md) |  | [optional] 
 **default_value** | **object** |  | [optional] 
 **hidden** | **bool** |  | [optional] 
+**visible_when** | [**List[AppSettingCondition]**](AppSettingCondition.md) |  | [optional] 
 **value** | **object** |  | [optional] 
 **has_value** | **bool** |  | [optional] 
 **mapping_value** | [**AppSettingFieldMappingStructure**](AppSettingFieldMappingStructure.md) |  | [optional] 

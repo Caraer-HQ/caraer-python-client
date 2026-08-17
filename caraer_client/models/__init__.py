@@ -45,6 +45,7 @@ from caraer_client.models.app_pricing_dto import AppPricingDTO
 from caraer_client.models.app_publish_dto import AppPublishDTO
 from caraer_client.models.app_request import AppRequest
 from caraer_client.models.app_schedule_dto import AppScheduleDTO
+from caraer_client.models.app_setting_condition import AppSettingCondition
 from caraer_client.models.app_setting_field_mapping_structure import AppSettingFieldMappingStructure
 from caraer_client.models.app_setting_field_mapping_structure_item import AppSettingFieldMappingStructureItem
 from caraer_client.models.app_setting_field_schema import AppSettingFieldSchema

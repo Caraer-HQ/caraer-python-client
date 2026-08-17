@@ -17,39 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from caraer_client.models.setting_option import SettingOption
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class SettingField(BaseModel):
+class AppSettingCondition(BaseModel):
     """
-    SettingField
+    AppSettingCondition
     """ # noqa: E501
-    name: Optional[StrictStr] = None
-    label: Optional[StrictStr] = None
-    help_text: Optional[StrictStr] = Field(default=None, alias="helpText")
-    type: Optional[StrictStr] = None
-    required: Optional[StrictBool] = None
-    dynamic: Optional[StrictBool] = None
-    hidden: Optional[StrictBool] = None
-    disabled: Optional[StrictBool] = None
-    options: Optional[List[SettingOption]] = None
-    default_value: Optional[Any] = Field(default=None, alias="defaultValue")
+    var_field: Optional[StrictStr] = Field(default=None, alias="field")
+    operator: Optional[StrictStr] = None
     value: Optional[Any] = None
-    __properties: ClassVar[List[str]] = ["name", "label", "helpText", "type", "required", "dynamic", "hidden", "disabled", "options", "defaultValue", "value"]
-
-    @field_validator('type')
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['STRING', 'NUMBER', 'SINGLE_SELECT', 'MULTI_SELECT', 'DATE', 'FILE']):
-            raise ValueError("must be one of enum values ('STRING', 'NUMBER', 'SINGLE_SELECT', 'MULTI_SELECT', 'DATE', 'FILE')")
-        return value
+    __properties: ClassVar[List[str]] = ["field", "operator", "value"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -69,7 +50,7 @@ class SettingField(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SettingField from a JSON string"""
+        """Create an instance of AppSettingCondition from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -90,18 +71,6 @@ class SettingField(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in options (list)
-        _items = []
-        if self.options:
-            for _item_options in self.options:
-                if _item_options:
-                    _items.append(_item_options.to_dict())
-            _dict['options'] = _items
-        # set to None if default_value (nullable) is None
-        # and model_fields_set contains the field
-        if self.default_value is None and "default_value" in self.model_fields_set:
-            _dict['defaultValue'] = None
-
         # set to None if value (nullable) is None
         # and model_fields_set contains the field
         if self.value is None and "value" in self.model_fields_set:
@@ -111,7 +80,7 @@ class SettingField(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SettingField from a dict"""
+        """Create an instance of AppSettingCondition from a dict"""
         if obj is None:
             return None
 
@@ -119,16 +88,8 @@ class SettingField(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "label": obj.get("label"),
-            "helpText": obj.get("helpText"),
-            "type": obj.get("type"),
-            "required": obj.get("required"),
-            "dynamic": obj.get("dynamic"),
-            "hidden": obj.get("hidden"),
-            "disabled": obj.get("disabled"),
-            "options": [SettingOption.from_dict(_item) for _item in obj["options"]] if obj.get("options") is not None else None,
-            "defaultValue": obj.get("defaultValue"),
+            "field": obj.get("field"),
+            "operator": obj.get("operator"),
             "value": obj.get("value")
         })
         return _obj

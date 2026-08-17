@@ -61,6 +61,12 @@ class TestLoadAppSettingOptionsRequest(unittest.TestCase):
                             min_query_length = 56, ), 
                         default_value = null, 
                         hidden = True, 
+                        visible_when = [
+                            caraer_client.models.app_setting_condition.AppSettingCondition(
+                                field = '', 
+                                operator = '', 
+                                value = null, )
+                            ], 
                         value = null, 
                         has_value = True, 
                         mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
@@ -110,6 +116,12 @@ class TestLoadAppSettingOptionsRequest(unittest.TestCase):
                             min_query_length = 56, ), 
                         default_value = null, 
                         hidden = True, 
+                        visible_when = [
+                            caraer_client.models.app_setting_condition.AppSettingCondition(
+                                field = '', 
+                                operator = '', 
+                                value = null, )
+                            ], 
                         value = null, 
                         has_value = True, 
                         mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(

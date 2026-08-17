@@ -57,6 +57,12 @@ class TestAppSettingFieldSchema(unittest.TestCase):
                     min_query_length = 56, ),
                 default_value = None,
                 hidden = True,
+                visible_when = [
+                    caraer_client.models.app_setting_condition.AppSettingCondition(
+                        field = '', 
+                        operator = '', 
+                        value = null, )
+                    ],
                 value = None,
                 has_value = True,
                 mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(

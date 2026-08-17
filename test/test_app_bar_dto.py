@@ -52,6 +52,17 @@ class TestAppBarDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -81,29 +92,7 @@ class TestAppBarDTO(unittest.TestCase):
                             index = 56, 
                             deleted = True, 
                             complete = True, 
-                            uuid = '0', 
-                            properties = [
-                                caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
-                                    name = '', 
-                                    value = null, 
-                                    type = '', 
-                                    label = '', )
-                                ], 
-                            objects = {
-                                'key' : null
-                                }, ), ), 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, ),
+                            uuid = '0', ), ), ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -118,6 +107,17 @@ class TestAppBarDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -147,29 +147,7 @@ class TestAppBarDTO(unittest.TestCase):
                             index = 56, 
                             deleted = True, 
                             complete = True, 
-                            uuid = '0', 
-                            properties = [
-                                caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
-                                    name = '', 
-                                    value = null, 
-                                    type = '', 
-                                    label = '', )
-                                ], 
-                            objects = {
-                                'key' : null
-                                }, ), ), 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, ),
+                            uuid = '0', ), ), ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -184,6 +162,17 @@ class TestAppBarDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -213,29 +202,7 @@ class TestAppBarDTO(unittest.TestCase):
                             index = 56, 
                             deleted = True, 
                             complete = True, 
-                            uuid = '0', 
-                            properties = [
-                                caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
-                                    name = '', 
-                                    value = null, 
-                                    type = '', 
-                                    label = '', )
-                                ], 
-                            objects = {
-                                'key' : null
-                                }, ), ), 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, ),
+                            uuid = '0', ), ), ),
                 index = 56,
                 location = 'RECORD_PREVIEW',
                 iframe_url = '',
@@ -267,6 +234,12 @@ class TestAppBarDTO(unittest.TestCase):
                             min_query_length = 56, ), 
                         default_value = null, 
                         hidden = True, 
+                        visible_when = [
+                            caraer_client.models.app_setting_condition.AppSettingCondition(
+                                field = '', 
+                                operator = '', 
+                                value = null, )
+                            ], 
                         value = null, 
                         has_value = True, 
                         mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(

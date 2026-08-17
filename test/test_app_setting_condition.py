@@ -14,10 +14,10 @@
 
 import unittest
 
-from caraer_client.models.existing_widget_summary import ExistingWidgetSummary
+from caraer_client.models.app_setting_condition import AppSettingCondition
 
-class TestExistingWidgetSummary(unittest.TestCase):
-    """ExistingWidgetSummary unit test stubs"""
+class TestAppSettingCondition(unittest.TestCase):
+    """AppSettingCondition unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,32 +25,27 @@ class TestExistingWidgetSummary(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ExistingWidgetSummary:
-        """Test ExistingWidgetSummary
+    def make_instance(self, include_optional) -> AppSettingCondition:
+        """Test AppSettingCondition
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ExistingWidgetSummary`
+        # uncomment below to create an instance of `AppSettingCondition`
         """
-        model = ExistingWidgetSummary()
+        model = AppSettingCondition()
         if include_optional:
-            return ExistingWidgetSummary(
-                xproperty = '',
-                ymetric = '',
-                yproperty = '',
-                title = '',
-                chart_type = '',
-                x_property = '',
-                y_metric = '',
-                y_property = ''
+            return AppSettingCondition(
+                var_field = '',
+                operator = '',
+                value = None
             )
         else:
-            return ExistingWidgetSummary(
+            return AppSettingCondition(
         )
         """
 
-    def testExistingWidgetSummary(self):
-        """Test ExistingWidgetSummary"""
+    def testAppSettingCondition(self):
+        """Test AppSettingCondition"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
