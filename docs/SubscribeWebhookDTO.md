@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **url** | **str** | The URL of the webhook where requests will be sent. | [optional] 
 **serverless_function** | [**ServerlessFunctionDTO**](ServerlessFunctionDTO.md) | UUID of the serverless function to invoke when the webhook is triggered (must belong to the same app). | [optional] 
 **delivery_mode** | **str** | Delivery mode for this webhook: HTTP (use url) or SERVERLESS (use serverlessFunctionUuid). If omitted, legacy behavior applies based on presence of url/serverlessFunctionUuid. | [optional] 
+**wait_until_complete** | **bool** | When true, install or settings save waits for this lifecycle hook to finish and returns the settings it wrote. | [optional] 
 **secret** | **str** | The secret used for webhook validation. | [optional] 
 **topic** | **str** | The topic for which the webhook is subscribed. | [optional] 
 **description** | **str** | Optional human-readable description for this webhook | [optional] 

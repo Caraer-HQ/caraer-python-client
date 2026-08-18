@@ -34,6 +34,7 @@ class SubscribeWebhookDTO(BaseModel):
     url: Optional[StrictStr] = Field(default=None, description="The URL of the webhook where requests will be sent.", json_schema_extra={"examples": ["https://example.com/webhook"]})
     serverless_function: Optional[ServerlessFunctionDTO] = Field(default=None, description="UUID of the serverless function to invoke when the webhook is triggered (must belong to the same app).", alias="serverlessFunction")
     delivery_mode: Optional[StrictStr] = Field(default=None, description="Delivery mode for this webhook: HTTP (use url) or SERVERLESS (use serverlessFunctionUuid). If omitted, legacy behavior applies based on presence of url/serverlessFunctionUuid.", alias="deliveryMode")
+    wait_until_complete: Optional[StrictBool] = Field(default=None, description="When true, install or settings save waits for this lifecycle hook to finish and returns the settings it wrote.", alias="waitUntilComplete")
     secret: Optional[StrictStr] = Field(default=None, description="The secret used for webhook validation.", json_schema_extra={"examples": ["abcd1234"]})
     topic: Optional[StrictStr] = Field(default=None, description="The topic for which the webhook is subscribed.", json_schema_extra={"examples": ["user.created"]})
     description: Optional[StrictStr] = Field(default=None, description="Optional human-readable description for this webhook")
@@ -61,7 +62,7 @@ class SubscribeWebhookDTO(BaseModel):
     deleted_at: Optional[StrictInt] = Field(default=None, description="Unix timestamp when the entity was deleted (null if not deleted)", alias="deletedAt")
     deleted_by: Optional[Record] = Field(default=None, description="Identifier of the user who deleted the entity", alias="deletedBy")
     index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
-    __properties: ClassVar[List[str]] = ["url", "serverlessFunction", "deliveryMode", "secret", "topic", "description", "webhookFormat", "parseRecord", "filter", "includeRelations", "relationFilters", "relationLimit", "retryEnabled", "maxRetries", "retryBackoffMs", "triggerOffsetSeconds", "scheduleDirection", "scheduleRecurring", "scheduleCronExpression", "scheduleVersion", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index"]
+    __properties: ClassVar[List[str]] = ["url", "serverlessFunction", "deliveryMode", "waitUntilComplete", "secret", "topic", "description", "webhookFormat", "parseRecord", "filter", "includeRelations", "relationFilters", "relationLimit", "retryEnabled", "maxRetries", "retryBackoffMs", "triggerOffsetSeconds", "scheduleDirection", "scheduleRecurring", "scheduleCronExpression", "scheduleVersion", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -139,6 +140,7 @@ class SubscribeWebhookDTO(BaseModel):
             "url": obj.get("url"),
             "serverlessFunction": ServerlessFunctionDTO.from_dict(obj["serverlessFunction"]) if obj.get("serverlessFunction") is not None else None,
             "deliveryMode": obj.get("deliveryMode"),
+            "waitUntilComplete": obj.get("waitUntilComplete"),
             "secret": obj.get("secret"),
             "topic": obj.get("topic"),
             "description": obj.get("description"),
