@@ -38,13 +38,13 @@ class Record(BaseModel):
     updated_by_uuid: Optional[StrictStr] = Field(default=None, alias="updatedByUuid")
     deleted_by_uuid: Optional[StrictStr] = Field(default=None, alias="deletedByUuid")
     index: Optional[StrictInt] = None
-    deleted: Optional[StrictBool] = None
     complete: Optional[StrictBool] = None
+    deleted: Optional[StrictBool] = None
     uuid: Annotated[str, Field(min_length=1, strict=True)]
-    user: Optional[PublicUserDTO] = None
     properties: Optional[List[FilledProperty]] = None
     objects: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["name", "label", "createdAt", "updatedAt", "deletedAt", "createdByUuid", "updatedByUuid", "deletedByUuid", "index", "deleted", "complete", "uuid", "user", "properties", "objects"]
+    user: Optional[PublicUserDTO] = None
+    __properties: ClassVar[List[str]] = ["name", "label", "createdAt", "updatedAt", "deletedAt", "createdByUuid", "updatedByUuid", "deletedByUuid", "index", "complete", "deleted", "uuid", "properties", "objects", "user"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,9 +85,6 @@ class Record(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of user
-        if self.user:
-            _dict['user'] = self.user.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in properties (list)
         _items = []
         if self.properties:
@@ -95,6 +92,9 @@ class Record(BaseModel):
                 if _item_properties:
                     _items.append(_item_properties.to_dict())
             _dict['properties'] = _items
+        # override the default output from pydantic by calling `to_dict()` of user
+        if self.user:
+            _dict['user'] = self.user.to_dict()
         return _dict
 
     @classmethod
@@ -116,12 +116,12 @@ class Record(BaseModel):
             "updatedByUuid": obj.get("updatedByUuid"),
             "deletedByUuid": obj.get("deletedByUuid"),
             "index": obj.get("index"),
-            "deleted": obj.get("deleted"),
             "complete": obj.get("complete"),
+            "deleted": obj.get("deleted"),
             "uuid": obj.get("uuid"),
-            "user": PublicUserDTO.from_dict(obj["user"]) if obj.get("user") is not None else None,
             "properties": [FilledProperty.from_dict(_item) for _item in obj["properties"]] if obj.get("properties") is not None else None,
-            "objects": obj.get("objects")
+            "objects": obj.get("objects"),
+            "user": PublicUserDTO.from_dict(obj["user"]) if obj.get("user") is not None else None
         })
         return _obj
 

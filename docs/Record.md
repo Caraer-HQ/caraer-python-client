@@ -14,12 +14,12 @@ Name | Type | Description | Notes
 **updated_by_uuid** | **str** |  | [optional] 
 **deleted_by_uuid** | **str** |  | [optional] 
 **index** | **int** |  | [optional] 
-**deleted** | **bool** |  | [optional] 
 **complete** | **bool** |  | [optional] 
+**deleted** | **bool** |  | [optional] 
 **uuid** | **str** |  | 
-**user** | [**PublicUserDTO**](PublicUserDTO.md) |  | [optional] 
 **properties** | [**List[FilledProperty]**](FilledProperty.md) |  | [optional] 
 **objects** | **Dict[str, Optional[object]]** |  | [optional] 
+**user** | [**PublicUserDTO**](PublicUserDTO.md) |  | [optional] 
 
 ## Example
 
