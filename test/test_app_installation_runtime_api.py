@@ -82,6 +82,13 @@ class TestAppInstallationRuntimeApi(unittest.TestCase):
         """
         pass
 
+    def test_merge_company_settings(self) -> None:
+        """Test case for merge_company_settings
+
+        Merge COMPANY-scoped installation settings from the app runtime
+        """
+        pass
+
     def test_put_secret(self) -> None:
         """Test case for put_secret
 

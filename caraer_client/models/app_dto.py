@@ -26,6 +26,7 @@ from caraer_client.models.app_external_o_auth_provider_summary_dto import AppExt
 from caraer_client.models.app_pricing_dto import AppPricingDTO
 from caraer_client.models.app_publish_dto import AppPublishDTO
 from caraer_client.models.app_setting_field_schema import AppSettingFieldSchema
+from caraer_client.models.app_settings_section import AppSettingsSection
 from caraer_client.models.has_app_dto import HasAppDTO
 from caraer_client.models.record import Record
 from caraer_client.models.serverless_function_dto import ServerlessFunctionDTO
@@ -59,6 +60,7 @@ class AppDTO(BaseModel):
     rotate_webhook: Optional[SubscribeWebhookDTO] = Field(default=None, description="Webhook triggered when the app installation token is rotated", alias="rotateWebhook")
     update_webhook: Optional[SubscribeWebhookDTO] = Field(default=None, description="Webhook triggered when an already installed app is saved again", alias="updateWebhook")
     settings_schema: Optional[List[AppSettingFieldSchema]] = Field(default=None, description="JSON array of AppSettingFieldSchema (app-level setting field definitions)", alias="settingsSchema")
+    settings_sections: Optional[List[AppSettingsSection]] = Field(default=None, description="Optional UI grouping of settingsSchema fields into installer cards", alias="settingsSections")
     external_o_auth_providers: Optional[List[AppExternalOAuthProviderSummaryDTO]] = Field(default=None, description="External OAuth providers installers can Connect (name/logo only; no secrets)", alias="externalOAuthProviders")
     webhook_rate_limit_per_minute: Optional[StrictInt] = Field(default=None, description="Webhook rate limit per minute", alias="webhookRateLimitPerMinute")
     job_rate_limit_per_minute: Optional[StrictInt] = Field(default=None, description="App job enqueue rate limit per minute per installation", alias="jobRateLimitPerMinute")
@@ -88,7 +90,7 @@ class AppDTO(BaseModel):
     runtime_status: Optional[StrictStr] = Field(default=None, description="V2 runtime status: PENDING, PROVISIONING, READY, FAILED", alias="runtimeStatus")
     runtime_error: Optional[StrictStr] = Field(default=None, description="Last V2 runtime error message when FAILED", alias="runtimeError")
     runtime_generation: Optional[StrictInt] = Field(default=None, description="Monotonic generation for async runtime jobs", alias="runtimeGeneration")
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "privateApp", "hideApiKeyField", "details", "pricingPlans", "appBars", "serverlessFunctions", "installWebhook", "uninstallWebhook", "rotateWebhook", "updateWebhook", "settingsSchema", "externalOAuthProviders", "webhookRateLimitPerMinute", "jobRateLimitPerMinute", "billFailedWebhookRequests", "appPublish", "hasApp", "image", "url", "category", "installed", "requiredScopes", "resolvedRequiredScopes", "authMethod", "oauthClientId", "oauthClientSecret", "oauthClientSecretConfigured", "oauthRedirectUris", "oauthAuthorizeUrl", "oauthTokenUrl", "installUrl", "brandmark", "description", "platformVersion", "runtime", "runtimeBaseUrl", "runtimeRevision", "runtimeStatus", "runtimeError", "runtimeGeneration"]
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "privateApp", "hideApiKeyField", "details", "pricingPlans", "appBars", "serverlessFunctions", "installWebhook", "uninstallWebhook", "rotateWebhook", "updateWebhook", "settingsSchema", "settingsSections", "externalOAuthProviders", "webhookRateLimitPerMinute", "jobRateLimitPerMinute", "billFailedWebhookRequests", "appPublish", "hasApp", "image", "url", "category", "installed", "requiredScopes", "resolvedRequiredScopes", "authMethod", "oauthClientId", "oauthClientSecret", "oauthClientSecretConfigured", "oauthRedirectUris", "oauthAuthorizeUrl", "oauthTokenUrl", "installUrl", "brandmark", "description", "platformVersion", "runtime", "runtimeBaseUrl", "runtimeRevision", "runtimeStatus", "runtimeError", "runtimeGeneration"]
 
     @field_validator('auth_method')
     def auth_method_validate_enum(cls, value):
@@ -191,6 +193,13 @@ class AppDTO(BaseModel):
                 if _item_settings_schema:
                     _items.append(_item_settings_schema.to_dict())
             _dict['settingsSchema'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in settings_sections (list)
+        _items = []
+        if self.settings_sections:
+            for _item_settings_sections in self.settings_sections:
+                if _item_settings_sections:
+                    _items.append(_item_settings_sections.to_dict())
+            _dict['settingsSections'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in external_o_auth_providers (list)
         _items = []
         if self.external_o_auth_providers:
@@ -237,6 +246,7 @@ class AppDTO(BaseModel):
             "rotateWebhook": SubscribeWebhookDTO.from_dict(obj["rotateWebhook"]) if obj.get("rotateWebhook") is not None else None,
             "updateWebhook": SubscribeWebhookDTO.from_dict(obj["updateWebhook"]) if obj.get("updateWebhook") is not None else None,
             "settingsSchema": [AppSettingFieldSchema.from_dict(_item) for _item in obj["settingsSchema"]] if obj.get("settingsSchema") is not None else None,
+            "settingsSections": [AppSettingsSection.from_dict(_item) for _item in obj["settingsSections"]] if obj.get("settingsSections") is not None else None,
             "externalOAuthProviders": [AppExternalOAuthProviderSummaryDTO.from_dict(_item) for _item in obj["externalOAuthProviders"]] if obj.get("externalOAuthProviders") is not None else None,
             "webhookRateLimitPerMinute": obj.get("webhookRateLimitPerMinute"),
             "jobRateLimitPerMinute": obj.get("jobRateLimitPerMinute"),

@@ -50,6 +50,7 @@ from caraer_client.models.app_setting_field_mapping_structure import AppSettingF
 from caraer_client.models.app_setting_field_mapping_structure_item import AppSettingFieldMappingStructureItem
 from caraer_client.models.app_setting_field_schema import AppSettingFieldSchema
 from caraer_client.models.app_setting_options_source import AppSettingOptionsSource
+from caraer_client.models.app_settings_section import AppSettingsSection
 from caraer_client.models.app_tier_dto import AppTierDTO
 from caraer_client.models.billing_settings_dto import BillingSettingsDTO
 from caraer_client.models.bulk_delete_records_data import BulkDeleteRecordsData

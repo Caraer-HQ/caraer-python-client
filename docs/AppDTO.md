@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **rotate_webhook** | [**SubscribeWebhookDTO**](SubscribeWebhookDTO.md) | Webhook triggered when the app installation token is rotated | [optional] 
 **update_webhook** | [**SubscribeWebhookDTO**](SubscribeWebhookDTO.md) | Webhook triggered when an already installed app is saved again | [optional] 
 **settings_schema** | [**List[AppSettingFieldSchema]**](AppSettingFieldSchema.md) | JSON array of AppSettingFieldSchema (app-level setting field definitions) | [optional] 
+**settings_sections** | [**List[AppSettingsSection]**](AppSettingsSection.md) | Optional UI grouping of settingsSchema fields into installer cards | [optional] 
 **external_o_auth_providers** | [**List[AppExternalOAuthProviderSummaryDTO]**](AppExternalOAuthProviderSummaryDTO.md) | External OAuth providers installers can Connect (name/logo only; no secrets) | [optional] 
 **webhook_rate_limit_per_minute** | **int** | Webhook rate limit per minute | [optional] 
 **job_rate_limit_per_minute** | **int** | App job enqueue rate limit per minute per installation | [optional] 

@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**get_state_key**](AppInstallationRuntimeApi.md#get_state_key) | **GET** /api/v2/apps/{appUuid}/installation/state/{key} | Get a single state key
 [**list_connections**](AppInstallationRuntimeApi.md#list_connections) | **GET** /api/v2/apps/{appUuid}/installation/connections | List external OAuth connection status
 [**list_secrets**](AppInstallationRuntimeApi.md#list_secrets) | **GET** /api/v2/apps/{appUuid}/installation/secrets | List secret names (no values)
+[**merge_company_settings**](AppInstallationRuntimeApi.md#merge_company_settings) | **PUT** /api/v2/apps/{appUuid}/installation/settings | Merge COMPANY-scoped installation settings from the app runtime
 [**put_secret**](AppInstallationRuntimeApi.md#put_secret) | **PUT** /api/v2/apps/{appUuid}/installation/secrets/{name} | Set an encrypted secret
 [**put_state**](AppInstallationRuntimeApi.md#put_state) | **PUT** /api/v2/apps/{appUuid}/installation/state | Replace/merge installation state (shallow merge)
 [**put_state_key**](AppInstallationRuntimeApi.md#put_state_key) | **PUT** /api/v2/apps/{appUuid}/installation/state/{key} | Put a single state key
@@ -636,6 +637,86 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **merge_company_settings**
+> ShowResponseMapStringObject merge_company_settings(app_uuid, app_setting_field_schema)
+
+Merge COMPANY-scoped installation settings from the app runtime
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.app_setting_field_schema import AppSettingFieldSchema
+from caraer_client.models.show_response_map_string_object import ShowResponseMapStringObject
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.AppInstallationRuntimeApi(api_client)
+    app_uuid = 'app_uuid_example' # str | 
+    app_setting_field_schema = [caraer_client.AppSettingFieldSchema()] # List[AppSettingFieldSchema] | 
+
+    try:
+        # Merge COMPANY-scoped installation settings from the app runtime
+        api_response = api_instance.merge_company_settings(app_uuid, app_setting_field_schema)
+        print("The response of AppInstallationRuntimeApi->merge_company_settings:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AppInstallationRuntimeApi->merge_company_settings: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**|  | 
+ **app_setting_field_schema** | [**List[AppSettingFieldSchema]**](AppSettingFieldSchema.md)|  | 
+
+### Return type
+
+[**ShowResponseMapStringObject**](ShowResponseMapStringObject.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Merged settings map |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

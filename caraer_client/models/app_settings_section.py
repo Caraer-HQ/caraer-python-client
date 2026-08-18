@@ -17,25 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ExistingWidgetSummary(BaseModel):
+class AppSettingsSection(BaseModel):
     """
-    ExistingWidgetSummary
+    AppSettingsSection
     """ # noqa: E501
-    xproperty: Optional[StrictStr] = None
-    ymetric: Optional[StrictStr] = None
-    yproperty: Optional[StrictStr] = None
     title: Optional[StrictStr] = None
-    chart_type: Optional[StrictStr] = Field(default=None, alias="chartType")
-    x_property: Optional[StrictStr] = Field(default=None, alias="xProperty")
-    y_metric: Optional[StrictStr] = Field(default=None, alias="yMetric")
-    y_property: Optional[StrictStr] = Field(default=None, alias="yProperty")
-    __properties: ClassVar[List[str]] = ["xproperty", "ymetric", "yproperty", "title", "chartType", "xProperty", "yMetric", "yProperty"]
+    subtitle: Optional[StrictStr] = None
+    settings: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = ["title", "subtitle", "settings"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -55,7 +50,7 @@ class ExistingWidgetSummary(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ExistingWidgetSummary from a JSON string"""
+        """Create an instance of AppSettingsSection from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -80,7 +75,7 @@ class ExistingWidgetSummary(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ExistingWidgetSummary from a dict"""
+        """Create an instance of AppSettingsSection from a dict"""
         if obj is None:
             return None
 
@@ -88,14 +83,9 @@ class ExistingWidgetSummary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "xproperty": obj.get("xproperty"),
-            "ymetric": obj.get("ymetric"),
-            "yproperty": obj.get("yproperty"),
             "title": obj.get("title"),
-            "chartType": obj.get("chartType"),
-            "xProperty": obj.get("xProperty"),
-            "yMetric": obj.get("yMetric"),
-            "yProperty": obj.get("yProperty")
+            "subtitle": obj.get("subtitle"),
+            "settings": obj.get("settings")
         })
         return _obj
 

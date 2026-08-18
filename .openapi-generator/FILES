@@ -73,6 +73,7 @@ caraer_client/models/app_setting_field_mapping_structure.py
 caraer_client/models/app_setting_field_mapping_structure_item.py
 caraer_client/models/app_setting_field_schema.py
 caraer_client/models/app_setting_options_source.py
+caraer_client/models/app_settings_section.py
 caraer_client/models/app_tier_dto.py
 caraer_client/models/billing_settings_dto.py
 caraer_client/models/bulk_delete_records_data.py
@@ -302,6 +303,7 @@ docs/AppSettingFieldMappingStructure.md
 docs/AppSettingFieldMappingStructureItem.md
 docs/AppSettingFieldSchema.md
 docs/AppSettingOptionsSource.md
+docs/AppSettingsSection.md
 docs/AppTierDTO.md
 docs/ApplicationsApi.md
 docs/AutomationsApi.md
@@ -558,6 +560,7 @@ test/test_app_setting_field_mapping_structure.py
 test/test_app_setting_field_mapping_structure_item.py
 test/test_app_setting_field_schema.py
 test/test_app_setting_options_source.py
+test/test_app_settings_section.py
 test/test_app_tier_dto.py
 test/test_applications_api.py
 test/test_automations_api.py

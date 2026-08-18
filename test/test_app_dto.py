@@ -52,17 +52,6 @@ class TestAppDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -92,7 +81,29 @@ class TestAppDTO(unittest.TestCase):
                             index = 56, 
                             deleted = True, 
                             complete = True, 
-                            uuid = '0', ), ), ),
+                            uuid = '0', 
+                            properties = [
+                                caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
+                                    name = '', 
+                                    value = null, 
+                                    type = '', 
+                                    label = '', )
+                                ], 
+                            objects = {
+                                'key' : null
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -107,17 +118,6 @@ class TestAppDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -147,7 +147,29 @@ class TestAppDTO(unittest.TestCase):
                             index = 56, 
                             deleted = True, 
                             complete = True, 
-                            uuid = '0', ), ), ),
+                            uuid = '0', 
+                            properties = [
+                                caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
+                                    name = '', 
+                                    value = null, 
+                                    type = '', 
+                                    label = '', )
+                                ], 
+                            objects = {
+                                'key' : null
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -162,17 +184,6 @@ class TestAppDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -202,7 +213,29 @@ class TestAppDTO(unittest.TestCase):
                             index = 56, 
                             deleted = True, 
                             complete = True, 
-                            uuid = '0', ), ), ),
+                            uuid = '0', 
+                            properties = [
+                                caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
+                                    name = '', 
+                                    value = null, 
+                                    type = '', 
+                                    label = '', )
+                                ], 
+                            objects = {
+                                'key' : null
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 index = 56,
                 private_app = True,
                 hide_api_key_field = True,
@@ -553,6 +586,14 @@ class TestAppDTO(unittest.TestCase):
                                     property_name = '', )
                                 ], ), 
                         value_scope = '', )
+                    ],
+                settings_sections = [
+                    caraer_client.models.app_settings_section.AppSettingsSection(
+                        title = '', 
+                        subtitle = '', 
+                        settings = [
+                            ''
+                            ], )
                     ],
                 external_o_auth_providers = [
                     caraer_client.models.app_external_o_auth_provider_summary_dto.AppExternalOAuthProviderSummaryDTO(
