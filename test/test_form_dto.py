@@ -52,9 +52,6 @@ class TestFormDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
-                    objects = {
-                        'key' : null
-                        }, 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
                             icon = '', 
@@ -63,6 +60,9 @@ class TestFormDTO(unittest.TestCase):
                             type = '', 
                             label = '', )
                         ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -107,9 +107,6 @@ class TestFormDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
-                    objects = {
-                        'key' : null
-                        }, 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
                             icon = '', 
@@ -118,6 +115,9 @@ class TestFormDTO(unittest.TestCase):
                             type = '', 
                             label = '', )
                         ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -162,9 +162,6 @@ class TestFormDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
-                    objects = {
-                        'key' : null
-                        }, 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
                             icon = '', 
@@ -173,6 +170,9 @@ class TestFormDTO(unittest.TestCase):
                             type = '', 
                             label = '', )
                         ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 

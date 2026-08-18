@@ -47,9 +47,6 @@ class TestRecord(unittest.TestCase):
                 deleted = True,
                 complete = True,
                 uuid = '0',
-                objects = {
-                    'key' : null
-                    },
                 properties = [
                     caraer_client.models.filled_property.FilledProperty(
                         icon = '', 
@@ -58,6 +55,9 @@ class TestRecord(unittest.TestCase):
                         type = '', 
                         label = '', )
                     ],
+                objects = {
+                    'key' : null
+                    },
                 user = caraer_client.models.public_user_dto.PublicUserDTO(
                     uuid = '', 
                     email = '', 
@@ -88,9 +88,6 @@ class TestRecord(unittest.TestCase):
                         deleted = True, 
                         complete = True, 
                         uuid = '0', 
-                        objects = {
-                            'key' : null
-                            }, 
                         properties = [
                             caraer_client.models.filled_property.FilledProperty(
                                 icon = '', 
@@ -98,7 +95,10 @@ class TestRecord(unittest.TestCase):
                                 value = null, 
                                 type = '', 
                                 label = '', )
-                            ], ), )
+                            ], 
+                        objects = {
+                            'key' : null
+                            }, ), )
             )
         else:
             return Record(
