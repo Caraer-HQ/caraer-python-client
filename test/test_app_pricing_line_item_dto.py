@@ -14,10 +14,10 @@
 
 import unittest
 
-from caraer_client.models.app_pricing_dto import AppPricingDTO
+from caraer_client.models.app_pricing_line_item_dto import AppPricingLineItemDTO
 
-class TestAppPricingDTO(unittest.TestCase):
-    """AppPricingDTO unit test stubs"""
+class TestAppPricingLineItemDTO(unittest.TestCase):
+    """AppPricingLineItemDTO unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,16 +25,16 @@ class TestAppPricingDTO(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AppPricingDTO:
-        """Test AppPricingDTO
+    def make_instance(self, include_optional) -> AppPricingLineItemDTO:
+        """Test AppPricingLineItemDTO
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `AppPricingDTO`
+        # uncomment below to create an instance of `AppPricingLineItemDTO`
         """
-        model = AppPricingDTO()
+        model = AppPricingLineItemDTO()
         if include_optional:
-            return AppPricingDTO(
+            return AppPricingLineItemDTO(
                 uuid = '0',
                 name = '0',
                 label = '',
@@ -237,13 +237,15 @@ class TestAppPricingDTO(unittest.TestCase):
                         'key' : null
                         }, ),
                 index = 56,
-                title = '',
-                description = '',
-                pricing_type = '',
-                price_per_unit = '',
+                count_type = '',
+                counting_source = '',
                 unit = '',
-                free_units = '',
-                free_units_period = '',
+                included_units = '',
+                price_per_unit = '',
+                price_per_extra_unit = '',
+                static_query = caraer_client.models.app_static_query_dto.AppStaticQueryDTO(
+                    schedule = '', 
+                    cypher = '', ),
                 tiers = [
                     caraer_client.models.app_tier_dto.AppTierDTO(
                         uuid = '0', 
@@ -261,59 +263,17 @@ class TestAppPricingDTO(unittest.TestCase):
                         price_per_month = '', 
                         price_per_year = '', 
                         price_per_extra_unit = '', )
-                    ],
-                billing_period = '',
-                commitments = [
-                    ''
-                    ],
-                line_items = [
-                    caraer_client.models.app_pricing_line_item_dto.AppPricingLineItemDTO(
-                        uuid = '0', 
-                        name = '0', 
-                        label = '', 
-                        created_at = 56, 
-                        created_by = null, 
-                        updated_at = 56, 
-                        updated_by = null, 
-                        deleted_at = 56, 
-                        deleted_by = null, 
-                        index = 56, 
-                        count_type = '', 
-                        counting_source = '', 
-                        unit = '', 
-                        included_units = '', 
-                        price_per_unit = '', 
-                        price_per_extra_unit = '', 
-                        static_query = null, 
-                        tiers = [
-                            caraer_client.models.app_tier_dto.AppTierDTO(
-                                uuid = '0', 
-                                name = '0', 
-                                label = '', 
-                                created_at = 56, 
-                                created_by = null, 
-                                updated_at = 56, 
-                                updated_by = null, 
-                                deleted_at = 56, 
-                                deleted_by = null, 
-                                index = 56, 
-                                start_units = '', 
-                                end_units = '', 
-                                price_per_month = '', 
-                                price_per_year = '', 
-                                price_per_extra_unit = '', )
-                            ], )
                     ]
             )
         else:
-            return AppPricingDTO(
+            return AppPricingLineItemDTO(
                 uuid = '0',
                 name = '0',
         )
         """
 
-    def testAppPricingDTO(self):
-        """Test AppPricingDTO"""
+    def testAppPricingLineItemDTO(self):
+        """Test AppPricingLineItemDTO"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

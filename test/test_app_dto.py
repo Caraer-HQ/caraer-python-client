@@ -298,6 +298,30 @@ class TestAppDTO(unittest.TestCase):
                                 price_per_month = '', 
                                 price_per_year = '', 
                                 price_per_extra_unit = '', )
+                            ], 
+                        billing_period = '', 
+                        commitments = [
+                            ''
+                            ], 
+                        line_items = [
+                            caraer_client.models.app_pricing_line_item_dto.AppPricingLineItemDTO(
+                                uuid = '0', 
+                                name = '0', 
+                                label = '', 
+                                created_at = 56, 
+                                created_by = null, 
+                                updated_at = 56, 
+                                updated_by = null, 
+                                deleted_at = 56, 
+                                deleted_by = null, 
+                                index = 56, 
+                                count_type = '', 
+                                counting_source = '', 
+                                unit = '', 
+                                included_units = '', 
+                                price_per_unit = '', 
+                                price_per_extra_unit = '', 
+                                static_query = null, )
                             ], )
                     ],
                 app_bars = [
@@ -651,7 +675,13 @@ class TestAppDTO(unittest.TestCase):
                         }, 
                     oauth_connected = True, 
                     oauth_access_token_expires_at = 56, 
-                    selected_pricing_plan_uuid = '', ),
+                    selected_pricing_plan_uuid = '', 
+                    billing_commitment = '', 
+                    contract_start = 56, 
+                    contract_end = 56, 
+                    pending_pricing_plan_uuid = '', 
+                    pending_billing_commitment = '', 
+                    pending_effective_at = 56, ),
                 image = '',
                 url = '',
                 category = '',

@@ -24,6 +24,9 @@ Name | Type | Description | Notes
 **free_units** | **str** | Free units included (FLAT, e.g. 100) | [optional] 
 **free_units_period** | **str** | Free units period (FLAT, e.g. month) | [optional] 
 **tiers** | [**List[AppTierDTO]**](AppTierDTO.md) | Tiers for tiered pricing (TIERED) | [optional] 
+**billing_period** | **str** | Billing period for usage aggregation (default month) | [optional] 
+**commitments** | **List[str]** | Allowed billing commitments: MONTHLY and/or ANNUAL | [optional] 
+**line_items** | [**List[AppPricingLineItemDTO]**](AppPricingLineItemDTO.md) | Billable line items (meters and/or static queries) | [optional] 
 
 ## Example
 
