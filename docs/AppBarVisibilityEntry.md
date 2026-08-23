@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **objects** | **List[str]** |  | [optional] 
 **suites** | **List[str]** |  | [optional] 
+**traits** | **List[str]** |  | [optional] 
 
 ## Example
 

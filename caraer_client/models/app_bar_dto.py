@@ -41,7 +41,7 @@ class AppBarDTO(BaseModel):
     deleted_at: Optional[StrictInt] = Field(default=None, description="Unix timestamp when the entity was deleted (null if not deleted)", alias="deletedAt")
     deleted_by: Optional[Record] = Field(default=None, description="Identifier of the user who deleted the entity", alias="deletedBy")
     index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
-    location: Optional[StrictStr] = Field(default=None, description="Bar location: RECORD_PREVIEW, RECORD_OVERVIEW, RECORD_DETAIL, TOOL_BAR, TRAIT_BAR")
+    location: Optional[StrictStr] = Field(default=None, description="Bar location: RECORD_PREVIEW, RECORD_OVERVIEW, RECORD_DETAIL, TOOL_BAR, TRAIT_BAR, RECORD_TRAIT")
     iframe_url: Optional[StrictStr] = Field(default=None, description="URL for iframe-based locations (supports {recordUuid}, {object}, {viewId}, {trait}, {companyUuid} placeholders)", alias="iframeUrl")
     icon: Optional[StrictStr] = Field(default=None, description="Optional icon name/key for this app bar")
     description: Optional[StrictStr] = Field(default=None, description="Description shown under the dialog title for action-based bars")
@@ -57,8 +57,8 @@ class AppBarDTO(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['RECORD_PREVIEW', 'RECORD_OVERVIEW', 'RECORD_DETAIL', 'TOOL_BAR', 'TRAIT_BAR']):
-            raise ValueError("must be one of enum values ('RECORD_PREVIEW', 'RECORD_OVERVIEW', 'RECORD_DETAIL', 'TOOL_BAR', 'TRAIT_BAR')")
+        if value not in set(['RECORD_PREVIEW', 'RECORD_OVERVIEW', 'RECORD_DETAIL', 'TOOL_BAR', 'TRAIT_BAR', 'RECORD_TRAIT']):
+            raise ValueError("must be one of enum values ('RECORD_PREVIEW', 'RECORD_OVERVIEW', 'RECORD_DETAIL', 'TOOL_BAR', 'TRAIT_BAR', 'RECORD_TRAIT')")
         return value
 
     model_config = ConfigDict(

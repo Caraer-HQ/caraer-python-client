@@ -102,6 +102,9 @@ class TestInstallAppRequest(unittest.TestCase):
                             ], 
                         suites = [
                             ''
+                            ], 
+                        traits = [
+                            ''
                             ], )
                     }
             )

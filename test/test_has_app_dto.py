@@ -55,6 +55,9 @@ class TestHasAppDTO(unittest.TestCase):
                             ], 
                         suites = [
                             ''
+                            ], 
+                        traits = [
+                            ''
                             ], )
                     },
                 oauth_connected = True,

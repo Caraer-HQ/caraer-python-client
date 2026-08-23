@@ -575,6 +575,9 @@ class TestAppDTO(unittest.TestCase):
                                 ], 
                             suites = [
                                 ''
+                                ], 
+                            traits = [
+                                ''
                                 ], )
                         }, 
                     oauth_connected = True, 

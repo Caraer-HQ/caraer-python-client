@@ -40,6 +40,9 @@ class TestAppBarVisibilityEntry(unittest.TestCase):
                     ],
                 suites = [
                     ''
+                    ],
+                traits = [
+                    ''
                     ]
             )
         else:

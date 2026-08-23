@@ -29,7 +29,8 @@ class AppBarVisibilityEntry(BaseModel):
     """ # noqa: E501
     objects: Optional[List[StrictStr]] = None
     suites: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["objects", "suites"]
+    traits: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = ["objects", "suites", "traits"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -83,7 +84,8 @@ class AppBarVisibilityEntry(BaseModel):
 
         _obj = cls.model_validate({
             "objects": obj.get("objects"),
-            "suites": obj.get("suites")
+            "suites": obj.get("suites"),
+            "traits": obj.get("traits")
         })
         return _obj
 
