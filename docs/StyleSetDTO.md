@@ -244,9 +244,9 @@ Name | Type | Description | Notes
 **hyperlink_letter_spacing** | **object** |  | [optional] 
 **hyperlink_color_light** | **str** |  | [optional] 
 **hyperlink_color_dark** | **str** |  | [optional] 
-**zindex** | **int** |  | [optional] 
 **xlarge_font_size** | **object** |  | [optional] 
 **xsmall_font_size** | **object** |  | [optional] 
+**zindex** | **int** |  | [optional] 
 
 ## Example
 

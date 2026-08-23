@@ -23,7 +23,6 @@ from typing_extensions import Annotated
 from caraer_client.models.app_bar_dto import AppBarDTO
 from caraer_client.models.app_details_dto import AppDetailsDTO
 from caraer_client.models.app_external_o_auth_provider_summary_dto import AppExternalOAuthProviderSummaryDTO
-from caraer_client.models.app_pricing_dto import AppPricingDTO
 from caraer_client.models.app_publish_dto import AppPublishDTO
 from caraer_client.models.app_setting_field_schema import AppSettingFieldSchema
 from caraer_client.models.app_settings_section import AppSettingsSection
@@ -52,7 +51,6 @@ class AppDTO(BaseModel):
     private_app: Optional[StrictBool] = Field(default=None, description="Indicates whether this app is private (only available to the creator's company)", alias="privateApp")
     hide_api_key_field: Optional[StrictBool] = Field(default=None, description="Whether to hide the API token field in app settings UI. Defaults to true when omitted.", alias="hideApiKeyField")
     details: Optional[AppDetailsDTO] = Field(default=None, description="Additional details and specifications about the application")
-    pricing_plans: Optional[List[AppPricingDTO]] = Field(default=None, description="Pricing information for the application", alias="pricingPlans")
     app_bars: Optional[List[AppBarDTO]] = Field(default=None, description="App bars (location-specific configuration and actions)", alias="appBars")
     serverless_functions: Optional[List[ServerlessFunctionDTO]] = Field(default=None, description="Serverless functions owned by this app", alias="serverlessFunctions")
     install_webhook: Optional[SubscribeWebhookDTO] = Field(default=None, description="Webhook triggered when the app is installed", alias="installWebhook")
@@ -64,7 +62,6 @@ class AppDTO(BaseModel):
     external_o_auth_providers: Optional[List[AppExternalOAuthProviderSummaryDTO]] = Field(default=None, description="External OAuth providers installers can Connect (name/logo only; no secrets)", alias="externalOAuthProviders")
     webhook_rate_limit_per_minute: Optional[StrictInt] = Field(default=None, description="Webhook rate limit per minute", alias="webhookRateLimitPerMinute")
     job_rate_limit_per_minute: Optional[StrictInt] = Field(default=None, description="App job enqueue rate limit per minute per installation", alias="jobRateLimitPerMinute")
-    bill_failed_webhook_requests: Optional[StrictBool] = Field(default=None, description="Whether failed webhook requests are considered billable for this app", alias="billFailedWebhookRequests")
     app_publish: Optional[AppPublishDTO] = Field(default=None, description="Publish and review state for the app in the marketplace (creator view)", alias="appPublish")
     has_app: Optional[HasAppDTO] = Field(default=None, description="Installation link (company–app) with token, scopes, and per-installation settingsValues; present when includeSettings is true", alias="hasApp")
     image: Optional[StrictStr] = Field(default=None, description="URL to the application's image or icon (derived from details.image)")
@@ -90,7 +87,7 @@ class AppDTO(BaseModel):
     runtime_status: Optional[StrictStr] = Field(default=None, description="V2 runtime status: PENDING, PROVISIONING, READY, FAILED", alias="runtimeStatus")
     runtime_error: Optional[StrictStr] = Field(default=None, description="Last V2 runtime error message when FAILED", alias="runtimeError")
     runtime_generation: Optional[StrictInt] = Field(default=None, description="Monotonic generation for async runtime jobs", alias="runtimeGeneration")
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "privateApp", "hideApiKeyField", "details", "pricingPlans", "appBars", "serverlessFunctions", "installWebhook", "uninstallWebhook", "rotateWebhook", "updateWebhook", "settingsSchema", "settingsSections", "externalOAuthProviders", "webhookRateLimitPerMinute", "jobRateLimitPerMinute", "billFailedWebhookRequests", "appPublish", "hasApp", "image", "url", "category", "installed", "requiredScopes", "resolvedRequiredScopes", "authMethod", "oauthClientId", "oauthClientSecret", "oauthClientSecretConfigured", "oauthRedirectUris", "oauthAuthorizeUrl", "oauthTokenUrl", "installUrl", "brandmark", "description", "platformVersion", "runtime", "runtimeBaseUrl", "runtimeRevision", "runtimeStatus", "runtimeError", "runtimeGeneration"]
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "privateApp", "hideApiKeyField", "details", "appBars", "serverlessFunctions", "installWebhook", "uninstallWebhook", "rotateWebhook", "updateWebhook", "settingsSchema", "settingsSections", "externalOAuthProviders", "webhookRateLimitPerMinute", "jobRateLimitPerMinute", "appPublish", "hasApp", "image", "url", "category", "installed", "requiredScopes", "resolvedRequiredScopes", "authMethod", "oauthClientId", "oauthClientSecret", "oauthClientSecretConfigured", "oauthRedirectUris", "oauthAuthorizeUrl", "oauthTokenUrl", "installUrl", "brandmark", "description", "platformVersion", "runtime", "runtimeBaseUrl", "runtimeRevision", "runtimeStatus", "runtimeError", "runtimeGeneration"]
 
     @field_validator('auth_method')
     def auth_method_validate_enum(cls, value):
@@ -153,13 +150,6 @@ class AppDTO(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of details
         if self.details:
             _dict['details'] = self.details.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in pricing_plans (list)
-        _items = []
-        if self.pricing_plans:
-            for _item_pricing_plans in self.pricing_plans:
-                if _item_pricing_plans:
-                    _items.append(_item_pricing_plans.to_dict())
-            _dict['pricingPlans'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in app_bars (list)
         _items = []
         if self.app_bars:
@@ -238,7 +228,6 @@ class AppDTO(BaseModel):
             "privateApp": obj.get("privateApp"),
             "hideApiKeyField": obj.get("hideApiKeyField"),
             "details": AppDetailsDTO.from_dict(obj["details"]) if obj.get("details") is not None else None,
-            "pricingPlans": [AppPricingDTO.from_dict(_item) for _item in obj["pricingPlans"]] if obj.get("pricingPlans") is not None else None,
             "appBars": [AppBarDTO.from_dict(_item) for _item in obj["appBars"]] if obj.get("appBars") is not None else None,
             "serverlessFunctions": [ServerlessFunctionDTO.from_dict(_item) for _item in obj["serverlessFunctions"]] if obj.get("serverlessFunctions") is not None else None,
             "installWebhook": SubscribeWebhookDTO.from_dict(obj["installWebhook"]) if obj.get("installWebhook") is not None else None,
@@ -250,7 +239,6 @@ class AppDTO(BaseModel):
             "externalOAuthProviders": [AppExternalOAuthProviderSummaryDTO.from_dict(_item) for _item in obj["externalOAuthProviders"]] if obj.get("externalOAuthProviders") is not None else None,
             "webhookRateLimitPerMinute": obj.get("webhookRateLimitPerMinute"),
             "jobRateLimitPerMinute": obj.get("jobRateLimitPerMinute"),
-            "billFailedWebhookRequests": obj.get("billFailedWebhookRequests"),
             "appPublish": AppPublishDTO.from_dict(obj["appPublish"]) if obj.get("appPublish") is not None else None,
             "hasApp": HasAppDTO.from_dict(obj["hasApp"]) if obj.get("hasApp") is not None else None,
             "image": obj.get("image"),

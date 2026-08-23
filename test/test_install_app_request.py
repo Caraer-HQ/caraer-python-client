@@ -103,8 +103,7 @@ class TestInstallAppRequest(unittest.TestCase):
                         suites = [
                             ''
                             ], )
-                    },
-                selected_pricing_plan_uuid = ''
+                    }
             )
         else:
             return InstallAppRequest(

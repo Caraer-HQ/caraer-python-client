@@ -14,13 +14,6 @@ Name | Type | Description | Notes
 **app_bar_visibility** | [**Dict[str, AppBarVisibilityEntry]**](AppBarVisibilityEntry.md) | Per-app-bar placement config keyed by app bar UUID | [optional] 
 **oauth_connected** | **bool** | Whether OAuth tokens have been issued for this installation | [optional] 
 **oauth_access_token_expires_at** | **int** | OAuth access token expiry (epoch ms), if connected via OAuth | [optional] 
-**selected_pricing_plan_uuid** | **str** | UUID of the pricing plan selected for this installation | [optional] 
-**billing_commitment** | **str** | MONTHLY or ANNUAL billing commitment | [optional] 
-**contract_start** | **int** | Current contract start (epoch ms) | [optional] 
-**contract_end** | **int** | Current contract end / renewal date (epoch ms) | [optional] 
-**pending_pricing_plan_uuid** | **str** | Plan scheduled to become active | [optional] 
-**pending_billing_commitment** | **str** | Commitment scheduled to become active | [optional] 
-**pending_effective_at** | **int** | When the pending subscription change takes effect (epoch ms) | [optional] 
 
 ## Example
 

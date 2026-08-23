@@ -281,9 +281,9 @@ class TestPageContentStylingDTO(unittest.TestCase):
                     hyperlink_letter_spacing = null, 
                     hyperlink_color_light = '', 
                     hyperlink_color_dark = '', 
-                    zindex = 56, 
                     xlarge_font_size = null, 
-                    xsmall_font_size = null, ),
+                    xsmall_font_size = null, 
+                    zindex = 56, ),
                 mobile = caraer_client.models.style_set_dto.StyleSetDTO(
                     hide = True, 
                     custom_id = '', 
@@ -530,9 +530,9 @@ class TestPageContentStylingDTO(unittest.TestCase):
                     hyperlink_letter_spacing = null, 
                     hyperlink_color_light = '', 
                     hyperlink_color_dark = '', 
-                    zindex = 56, 
                     xlarge_font_size = null, 
-                    xsmall_font_size = null, ),
+                    xsmall_font_size = null, 
+                    zindex = 56, ),
                 tablet = caraer_client.models.style_set_dto.StyleSetDTO(
                     hide = True, 
                     custom_id = '', 
@@ -779,9 +779,9 @@ class TestPageContentStylingDTO(unittest.TestCase):
                     hyperlink_letter_spacing = null, 
                     hyperlink_color_light = '', 
                     hyperlink_color_dark = '', 
-                    zindex = 56, 
                     xlarge_font_size = null, 
-                    xsmall_font_size = null, ),
+                    xsmall_font_size = null, 
+                    zindex = 56, ),
                 desktop = caraer_client.models.style_set_dto.StyleSetDTO(
                     hide = True, 
                     custom_id = '', 
@@ -1028,9 +1028,9 @@ class TestPageContentStylingDTO(unittest.TestCase):
                     hyperlink_letter_spacing = null, 
                     hyperlink_color_light = '', 
                     hyperlink_color_dark = '', 
-                    zindex = 56, 
                     xlarge_font_size = null, 
-                    xsmall_font_size = null, )
+                    xsmall_font_size = null, 
+                    zindex = 56, )
             )
         else:
             return PageContentStylingDTO(

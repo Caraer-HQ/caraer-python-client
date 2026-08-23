@@ -229,68 +229,6 @@ class TestAppDTO(unittest.TestCase):
                     deleted_at = 56, 
                     deleted_by = null, 
                     index = 56, ),
-                pricing_plans = [
-                    caraer_client.models.app_pricing_dto.AppPricingDTO(
-                        uuid = '0', 
-                        name = '0', 
-                        label = '', 
-                        created_at = 56, 
-                        created_by = null, 
-                        updated_at = 56, 
-                        updated_by = null, 
-                        deleted_at = 56, 
-                        deleted_by = null, 
-                        index = 56, 
-                        title = '', 
-                        description = '', 
-                        pricing_type = '', 
-                        price_per_unit = '', 
-                        unit = '', 
-                        free_units = '', 
-                        free_units_period = '', 
-                        tiers = [
-                            caraer_client.models.app_tier_dto.AppTierDTO(
-                                uuid = '0', 
-                                name = '0', 
-                                label = '', 
-                                created_at = 56, 
-                                created_by = null, 
-                                updated_at = 56, 
-                                updated_by = null, 
-                                deleted_at = 56, 
-                                deleted_by = null, 
-                                index = 56, 
-                                start_units = '', 
-                                end_units = '', 
-                                price_per_month = '', 
-                                price_per_year = '', 
-                                price_per_extra_unit = '', )
-                            ], 
-                        billing_period = '', 
-                        commitments = [
-                            ''
-                            ], 
-                        line_items = [
-                            caraer_client.models.app_pricing_line_item_dto.AppPricingLineItemDTO(
-                                uuid = '0', 
-                                name = '0', 
-                                label = '', 
-                                created_at = 56, 
-                                created_by = null, 
-                                updated_at = 56, 
-                                updated_by = null, 
-                                deleted_at = 56, 
-                                deleted_by = null, 
-                                index = 56, 
-                                count_type = '', 
-                                counting_source = '', 
-                                unit = '', 
-                                included_units = '', 
-                                price_per_unit = '', 
-                                price_per_extra_unit = '', 
-                                static_query = null, )
-                            ], )
-                    ],
                 app_bars = [
                     caraer_client.models.app_bar_dto.AppBarDTO(
                         uuid = '0', 
@@ -599,7 +537,6 @@ class TestAppDTO(unittest.TestCase):
                     ],
                 webhook_rate_limit_per_minute = 56,
                 job_rate_limit_per_minute = 56,
-                bill_failed_webhook_requests = True,
                 app_publish = caraer_client.models.app_publish_dto.AppPublishDTO(
                     uuid = '0', 
                     name = '0', 
@@ -641,14 +578,7 @@ class TestAppDTO(unittest.TestCase):
                                 ], )
                         }, 
                     oauth_connected = True, 
-                    oauth_access_token_expires_at = 56, 
-                    selected_pricing_plan_uuid = '', 
-                    billing_commitment = '', 
-                    contract_start = 56, 
-                    contract_end = 56, 
-                    pending_pricing_plan_uuid = '', 
-                    pending_billing_commitment = '', 
-                    pending_effective_at = 56, ),
+                    oauth_access_token_expires_at = 56, ),
                 image = '',
                 url = '',
                 category = '',

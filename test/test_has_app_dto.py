@@ -58,14 +58,7 @@ class TestHasAppDTO(unittest.TestCase):
                             ], )
                     },
                 oauth_connected = True,
-                oauth_access_token_expires_at = 56,
-                selected_pricing_plan_uuid = '',
-                billing_commitment = '',
-                contract_start = 56,
-                contract_end = 56,
-                pending_pricing_plan_uuid = '',
-                pending_billing_commitment = '',
-                pending_effective_at = 56
+                oauth_access_token_expires_at = 56
             )
         else:
             return HasAppDTO(

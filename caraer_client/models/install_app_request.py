@@ -34,8 +34,7 @@ class InstallAppRequest(BaseModel):
     scopes: Optional[List[StrictStr]] = Field(default=None, description="Optional scopes to grant to the app.")
     filters: Optional[Dict[str, Filter]] = Field(default=None, description="Optional per-object record filters for this installation (object name → filter).")
     app_bar_visibility: Optional[Dict[str, AppBarVisibilityEntry]] = Field(default=None, description="Optional per-app-bar placement config keyed by app bar UUID.", alias="appBarVisibility")
-    selected_pricing_plan_uuid: Optional[StrictStr] = Field(default=None, description="UUID of the pricing plan selected for this installation.", alias="selectedPricingPlanUuid")
-    __properties: ClassVar[List[str]] = ["settings", "scopes", "filters", "appBarVisibility", "selectedPricingPlanUuid"]
+    __properties: ClassVar[List[str]] = ["settings", "scopes", "filters", "appBarVisibility"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -122,8 +121,7 @@ class InstallAppRequest(BaseModel):
                 for _k, _v in obj["appBarVisibility"].items()
             )
             if obj.get("appBarVisibility") is not None
-            else None,
-            "selectedPricingPlanUuid": obj.get("selectedPricingPlanUuid")
+            else None
         })
         return _obj
 

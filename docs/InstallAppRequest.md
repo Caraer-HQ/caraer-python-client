@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **scopes** | **List[str]** | Optional scopes to grant to the app. | [optional] 
 **filters** | [**Dict[str, Filter]**](Filter.md) | Optional per-object record filters for this installation (object name → filter). | [optional] 
 **app_bar_visibility** | [**Dict[str, AppBarVisibilityEntry]**](AppBarVisibilityEntry.md) | Optional per-app-bar placement config keyed by app bar UUID. | [optional] 
-**selected_pricing_plan_uuid** | **str** | UUID of the pricing plan selected for this installation. | [optional] 
 
 ## Example
 

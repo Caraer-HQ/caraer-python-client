@@ -37,14 +37,7 @@ class HasAppDTO(BaseModel):
     app_bar_visibility: Optional[Dict[str, AppBarVisibilityEntry]] = Field(default=None, description="Per-app-bar placement config keyed by app bar UUID", alias="appBarVisibility")
     oauth_connected: Optional[StrictBool] = Field(default=None, description="Whether OAuth tokens have been issued for this installation", alias="oauthConnected")
     oauth_access_token_expires_at: Optional[StrictInt] = Field(default=None, description="OAuth access token expiry (epoch ms), if connected via OAuth", alias="oauthAccessTokenExpiresAt")
-    selected_pricing_plan_uuid: Optional[StrictStr] = Field(default=None, description="UUID of the pricing plan selected for this installation", alias="selectedPricingPlanUuid")
-    billing_commitment: Optional[StrictStr] = Field(default=None, description="MONTHLY or ANNUAL billing commitment", alias="billingCommitment")
-    contract_start: Optional[StrictInt] = Field(default=None, description="Current contract start (epoch ms)", alias="contractStart")
-    contract_end: Optional[StrictInt] = Field(default=None, description="Current contract end / renewal date (epoch ms)", alias="contractEnd")
-    pending_pricing_plan_uuid: Optional[StrictStr] = Field(default=None, description="Plan scheduled to become active", alias="pendingPricingPlanUuid")
-    pending_billing_commitment: Optional[StrictStr] = Field(default=None, description="Commitment scheduled to become active", alias="pendingBillingCommitment")
-    pending_effective_at: Optional[StrictInt] = Field(default=None, description="When the pending subscription change takes effect (epoch ms)", alias="pendingEffectiveAt")
-    __properties: ClassVar[List[str]] = ["uuid", "token", "scopes", "settingsValues", "filters", "appBarVisibility", "oauthConnected", "oauthAccessTokenExpiresAt", "selectedPricingPlanUuid", "billingCommitment", "contractStart", "contractEnd", "pendingPricingPlanUuid", "pendingBillingCommitment", "pendingEffectiveAt"]
+    __properties: ClassVar[List[str]] = ["uuid", "token", "scopes", "settingsValues", "filters", "appBarVisibility", "oauthConnected", "oauthAccessTokenExpiresAt"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -128,14 +121,7 @@ class HasAppDTO(BaseModel):
             if obj.get("appBarVisibility") is not None
             else None,
             "oauthConnected": obj.get("oauthConnected"),
-            "oauthAccessTokenExpiresAt": obj.get("oauthAccessTokenExpiresAt"),
-            "selectedPricingPlanUuid": obj.get("selectedPricingPlanUuid"),
-            "billingCommitment": obj.get("billingCommitment"),
-            "contractStart": obj.get("contractStart"),
-            "contractEnd": obj.get("contractEnd"),
-            "pendingPricingPlanUuid": obj.get("pendingPricingPlanUuid"),
-            "pendingBillingCommitment": obj.get("pendingBillingCommitment"),
-            "pendingEffectiveAt": obj.get("pendingEffectiveAt")
+            "oauthAccessTokenExpiresAt": obj.get("oauthAccessTokenExpiresAt")
         })
         return _obj
 
