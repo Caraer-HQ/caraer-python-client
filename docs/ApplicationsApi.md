@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**list_app_categories**](ApplicationsApi.md#list_app_categories) | **GET** /api/v2/apps/categories | List predefined marketplace app categories
 [**load_setting_options**](ApplicationsApi.md#load_setting_options) | **POST** /api/v2/apps/{uuid}/settings-schema/options | Load dynamic options for a setting select field
 [**migrate_to_v2**](ApplicationsApi.md#migrate_to_v2) | **POST** /api/v2/apps/{uuid}/migrate-v2 | Migrate an app from platform V1 to V2
+[**list_public_app_review_queue**](ApplicationsApi.md#list_public_app_review_queue) | **GET** /api/v2/apps/public/review-queue | List public apps in the review queue
 [**review_public_app**](ApplicationsApi.md#review_public_app) | **POST** /api/v2/apps/public/{uuid}/review | Review a public app
 [**rotate_app**](ApplicationsApi.md#rotate_app) | **POST** /api/v2/apps/{uuid}/rotate | Rotate application configurations
 [**stream_runtime_logs**](ApplicationsApi.md#stream_runtime_logs) | **GET** /api/v2/apps/{appUuid}/runtime/logs/stream | Stream app runtime logs (SSE)

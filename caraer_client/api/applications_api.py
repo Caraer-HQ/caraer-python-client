@@ -8330,3 +8330,111 @@ class ApplicationsApi:
         )
 
 
+
+
+    @validate_call
+    def list_public_app_review_queue(
+        self,
+        states: Annotated[Optional[StrictStr], Field(description="Comma-separated publish states")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number (1-based)")] = None,
+        limit: Annotated[Optional[StrictInt], Field(description="Page size")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ShowResponse:
+        """List public apps in the review queue
+
+        Returns public apps filtered by publish state for Caraer BV ops.
+        Defaults to SUBMITTED and IN_REVIEW.
+
+        :param states: Comma-separated publish states
+        :param page: Page number (1-based)
+        :param limit: Page size
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._list_public_app_review_queue_serialize(
+            states=states,
+            page=page,
+            limit=limit,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ShowResponse",
+            '401': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _list_public_app_review_queue_serialize(
+        self,
+        states,
+        page,
+        limit,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+        _collection_formats: Dict[str, str] = {}
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        if states is not None:
+            _query_params.append(('states', states))
+        if page is not None:
+            _query_params.append(('page', page))
+        if limit is not None:
+            _query_params.append(('limit', limit))
+
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                ['application/json']
+            )
+
+        _auth_settings: List[str] = ['bearerAuth']
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/apps/public/review-queue',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
