@@ -14,10 +14,10 @@
 
 import unittest
 
-from caraer_client.models.existing_widget_summary import ExistingWidgetSummary
+from caraer_client.models.o_auth_registration_request import OAuthRegistrationRequest
 
-class TestExistingWidgetSummary(unittest.TestCase):
-    """ExistingWidgetSummary unit test stubs"""
+class TestOAuthRegistrationRequest(unittest.TestCase):
+    """OAuthRegistrationRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,32 +25,30 @@ class TestExistingWidgetSummary(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ExistingWidgetSummary:
-        """Test ExistingWidgetSummary
+    def make_instance(self, include_optional) -> OAuthRegistrationRequest:
+        """Test OAuthRegistrationRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ExistingWidgetSummary`
+        # uncomment below to create an instance of `OAuthRegistrationRequest`
         """
-        model = ExistingWidgetSummary()
+        model = OAuthRegistrationRequest()
         if include_optional:
-            return ExistingWidgetSummary(
-                xproperty = '',
-                ymetric = '',
-                yproperty = '',
-                title = '',
-                chart_type = '',
-                x_property = '',
-                y_metric = '',
-                y_property = ''
+            return OAuthRegistrationRequest(
+                redirect_uris = [
+                    ''
+                    ],
+                client_name = '',
+                token_endpoint_auth_method = '',
+                application_type = ''
             )
         else:
-            return ExistingWidgetSummary(
+            return OAuthRegistrationRequest(
         )
         """
 
-    def testExistingWidgetSummary(self):
-        """Test ExistingWidgetSummary"""
+    def testOAuthRegistrationRequest(self):
+        """Test OAuthRegistrationRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

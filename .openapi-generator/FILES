@@ -155,6 +155,7 @@ caraer_client/models/not_found_error_cause.py
 caraer_client/models/not_found_error_cause_stack_trace_inner.py
 caraer_client/models/number.py
 caraer_client/models/number_range.py
+caraer_client/models/o_auth_registration_request.py
 caraer_client/models/object_access_grant_candidates_dto.py
 caraer_client/models/object_access_grant_request_dto.py
 caraer_client/models/object_access_grant_section_dto.py
@@ -395,6 +396,7 @@ docs/NotFoundErrorCauseStackTraceInner.md
 docs/NotificationsApi.md
 docs/Number.md
 docs/NumberRange.md
+docs/OAuthRegistrationRequest.md
 docs/ObjectAccessGrantCandidatesDTO.md
 docs/ObjectAccessGrantRequestDTO.md
 docs/ObjectAccessGrantSectionDTO.md
@@ -650,6 +652,7 @@ test/test_not_found_error_cause_stack_trace_inner.py
 test/test_notifications_api.py
 test/test_number.py
 test/test_number_range.py
+test/test_o_auth_registration_request.py
 test/test_object_access_grant_candidates_dto.py
 test/test_object_access_grant_request_dto.py
 test/test_object_access_grant_section_dto.py

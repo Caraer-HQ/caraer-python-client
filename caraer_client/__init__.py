@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.424"
+__version__ = "2.0.425"
 
 # Define package exports
 __all__ = [
@@ -171,6 +171,7 @@ __all__ = [
     "NotFoundErrorCauseStackTraceInner",
     "Number",
     "NumberRange",
+    "OAuthRegistrationRequest",
     "ObjectAccessGrantCandidatesDTO",
     "ObjectAccessGrantRequestDTO",
     "ObjectAccessGrantSectionDTO",
@@ -446,6 +447,7 @@ from caraer_client.models.not_found_error_cause import NotFoundErrorCause as Not
 from caraer_client.models.not_found_error_cause_stack_trace_inner import NotFoundErrorCauseStackTraceInner as NotFoundErrorCauseStackTraceInner
 from caraer_client.models.number import Number as Number
 from caraer_client.models.number_range import NumberRange as NumberRange
+from caraer_client.models.o_auth_registration_request import OAuthRegistrationRequest as OAuthRegistrationRequest
 from caraer_client.models.object_access_grant_candidates_dto import ObjectAccessGrantCandidatesDTO as ObjectAccessGrantCandidatesDTO
 from caraer_client.models.object_access_grant_request_dto import ObjectAccessGrantRequestDTO as ObjectAccessGrantRequestDTO
 from caraer_client.models.object_access_grant_section_dto import ObjectAccessGrantSectionDTO as ObjectAccessGrantSectionDTO
