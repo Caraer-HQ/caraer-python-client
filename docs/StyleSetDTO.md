@@ -245,8 +245,8 @@ Name | Type | Description | Notes
 **hyperlink_color_light** | **str** |  | [optional] 
 **hyperlink_color_dark** | **str** |  | [optional] 
 **zindex** | **int** |  | [optional] 
-**xlarge_font_size** | **object** |  | [optional] 
-**xsmall_font_size** | **object** |  | [optional] 
+**x_large_font_size** | **object** |  | [optional] 
+**x_small_font_size** | **object** |  | [optional] 
 
 ## Example
 

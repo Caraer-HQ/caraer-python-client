@@ -282,8 +282,8 @@ class TestPageContentStylingDTO(unittest.TestCase):
                     hyperlink_color_light = '', 
                     hyperlink_color_dark = '', 
                     zindex = 56, 
-                    xlarge_font_size = null, 
-                    xsmall_font_size = null, ),
+                    x_large_font_size = null, 
+                    x_small_font_size = null, ),
                 mobile = caraer_client.models.style_set_dto.StyleSetDTO(
                     hide = True, 
                     custom_id = '', 
@@ -531,8 +531,8 @@ class TestPageContentStylingDTO(unittest.TestCase):
                     hyperlink_color_light = '', 
                     hyperlink_color_dark = '', 
                     zindex = 56, 
-                    xlarge_font_size = null, 
-                    xsmall_font_size = null, ),
+                    x_large_font_size = null, 
+                    x_small_font_size = null, ),
                 tablet = caraer_client.models.style_set_dto.StyleSetDTO(
                     hide = True, 
                     custom_id = '', 
@@ -780,8 +780,8 @@ class TestPageContentStylingDTO(unittest.TestCase):
                     hyperlink_color_light = '', 
                     hyperlink_color_dark = '', 
                     zindex = 56, 
-                    xlarge_font_size = null, 
-                    xsmall_font_size = null, ),
+                    x_large_font_size = null, 
+                    x_small_font_size = null, ),
                 desktop = caraer_client.models.style_set_dto.StyleSetDTO(
                     hide = True, 
                     custom_id = '', 
@@ -1029,8 +1029,8 @@ class TestPageContentStylingDTO(unittest.TestCase):
                     hyperlink_color_light = '', 
                     hyperlink_color_dark = '', 
                     zindex = 56, 
-                    xlarge_font_size = null, 
-                    xsmall_font_size = null, )
+                    x_large_font_size = null, 
+                    x_small_font_size = null, )
             )
         else:
             return PageContentStylingDTO(
