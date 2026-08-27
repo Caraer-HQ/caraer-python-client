@@ -55,8 +55,8 @@ class TestPropertyFormat(unittest.TestCase):
                                 label = '', 
                                 help_text = '', )
                             ], 
-                        value = null, 
-                        default_value = null, )
+                        default_value = null, 
+                        value = null, )
                     ],
                 filters = [
                     ''

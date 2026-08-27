@@ -49,7 +49,7 @@ class AppDTO(BaseModel):
     deleted_by: Optional[Record] = Field(default=None, description="Identifier of the user who deleted the entity", alias="deletedBy")
     index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
     private_app: Optional[StrictBool] = Field(default=None, description="Indicates whether this app is private (only available to the creator's company)", alias="privateApp")
-    hide_api_key_field: Optional[StrictBool] = Field(default=None, description="Whether to hide the API token field in app settings UI. Defaults to true when omitted.", alias="hideApiKeyField")
+    hide_api_key_field: Optional[StrictBool] = Field(default=None, description="Whether to hide the API token field in marketplace installer UI. Defaults to true when omitted. Private apps show the key regardless.", alias="hideApiKeyField")
     details: Optional[AppDetailsDTO] = Field(default=None, description="Additional details and specifications about the application")
     app_bars: Optional[List[AppBarDTO]] = Field(default=None, description="App bars (location-specific configuration and actions)", alias="appBars")
     serverless_functions: Optional[List[ServerlessFunctionDTO]] = Field(default=None, description="Serverless functions owned by this app", alias="serverlessFunctions")
