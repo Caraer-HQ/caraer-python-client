@@ -89,6 +89,13 @@ class TestRelationsApi(unittest.TestCase):
         """
         pass
 
+    def test_permanently_delete_archived_relation(self) -> None:
+        """Test case for permanently_delete_archived_relation
+
+        Permanently delete archived relation
+        """
+        pass
+
     def test_restore_relation(self) -> None:
         """Test case for restore_relation
 

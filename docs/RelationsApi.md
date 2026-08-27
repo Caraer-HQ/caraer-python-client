@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**get_relations**](RelationsApi.md#get_relations) | **POST** /api/v2/relations/index | Fetch paginated relations
 [**get_relations_between_objects**](RelationsApi.md#get_relations_between_objects) | **POST** /api/v2/relations/index/{fromObjectUuid}/{toObjectUuid} | Get all relations between two objects
 [**get_relations_by_object**](RelationsApi.md#get_relations_by_object) | **POST** /api/v2/relations/index/{objectUuid} | Fetch relations for a specific object
+[**permanently_delete_archived_relation**](RelationsApi.md#permanently_delete_archived_relation) | **DELETE** /api/v2/relations/{relationUuid}/permanent | Permanently delete archived relation
 [**restore_relation**](RelationsApi.md#restore_relation) | **POST** /api/v2/relations/{relationUuid}/restore | Restore a deleted relation
 [**update_indices**](RelationsApi.md#update_indices) | **PUT** /api/v2/relations/updateIndices | Update relation indices
 
@@ -751,6 +752,86 @@ Name | Type | Description  | Notes
 **200** | Relations fetched successfully |  -  |
 **404** | Object not found |  -  |
 **500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **permanently_delete_archived_relation**
+> DeleteResponse permanently_delete_archived_relation(relation_uuid)
+
+Permanently delete archived relation
+
+Hard-deletes a soft-deleted relation. Only relations with deletedAt set can be removed.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.delete_response import DeleteResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.RelationsApi(api_client)
+    relation_uuid = 'relation_uuid_example' # str | 
+
+    try:
+        # Permanently delete archived relation
+        api_response = api_instance.permanently_delete_archived_relation(relation_uuid)
+        print("The response of RelationsApi->permanently_delete_archived_relation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling RelationsApi->permanently_delete_archived_relation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **relation_uuid** | **str**|  | 
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, */*
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Relation permanently deleted |  -  |
+**400** | Relation is not archived |  -  |
+**404** | Relation not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
