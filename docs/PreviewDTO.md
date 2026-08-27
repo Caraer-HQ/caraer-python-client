@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **url** | **str** | URL of the preview | [optional] 
 **styling** | [**PageContentStylingDTO**](PageContentStylingDTO.md) | The styling of the preview | [optional] 
 **sort_property** | **str** | Property name used for server-side list sorting | [optional] 
-**sort_value** | **object** |  | [optional] 
+**sort_value** | **object** | Raw stored value of the sort property for this record | [optional] 
 **uuid** | **str** | Unique identifier for the entity | 
 **name** | **str** | The name of the entity | 
 **label** | **str** | Display label for the entity, can be different from name | [optional] 

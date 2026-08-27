@@ -52,7 +52,7 @@ class PreviewDTO(BaseModel):
     url: Optional[StrictStr] = Field(default=None, description="URL of the preview")
     styling: Optional[PageContentStylingDTO] = Field(default=None, description="The styling of the preview")
     sort_property: Optional[StrictStr] = Field(default=None, description="Property name used for server-side list sorting", alias="sortProperty")
-    sort_value: Optional[Any] = Field(default=None, alias="sortValue")
+    sort_value: Optional[Any] = Field(default=None, description="Raw stored value of the sort property for this record", alias="sortValue")
     uuid: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Unique identifier for the entity")
     name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The name of the entity")
     label: Optional[StrictStr] = Field(default=None, description="Display label for the entity, can be different from name")
@@ -111,10 +111,9 @@ class PreviewDTO(BaseModel):
         _items = []
         if self.grid:
             for _item_grid in self.grid:
-                if _item_grid:
-                    _items.append(
-                         [_inner_item.to_dict() for _inner_item in _item_grid if _inner_item is not None]
-                    )
+                _items.append(
+                     [_inner_item.to_dict() if _inner_item is not None else None for _inner_item in _item_grid] if _item_grid is not None else None
+                )
             _dict['grid'] = _items
         # override the default output from pydantic by calling `to_dict()` of profile_image
         if self.profile_image:
@@ -163,7 +162,7 @@ class PreviewDTO(BaseModel):
             "primary": obj.get("primary"),
             "edgeProperties": obj.get("edgeProperties"),
             "grid": [
-                    [PreviewItemDTO.from_dict(_inner_item) for _inner_item in _item]
+                    [PreviewItemDTO.from_dict(_inner_item) for _inner_item in _item] if _item is not None else None
                     for _item in obj["grid"]
                 ] if obj.get("grid") is not None else None,
             "previewType": obj.get("previewType"),

@@ -78,10 +78,9 @@ class FormItemDTO(BaseModel):
         _items = []
         if self.grid:
             for _item_grid in self.grid:
-                if _item_grid:
-                    _items.append(
-                         [_inner_item.to_dict() for _inner_item in _item_grid if _inner_item is not None]
-                    )
+                _items.append(
+                     [_inner_item.to_dict() if _inner_item is not None else None for _inner_item in _item_grid] if _item_grid is not None else None
+                )
             _dict['grid'] = _items
         return _dict
 
@@ -101,7 +100,7 @@ class FormItemDTO(BaseModel):
             "type": obj.get("type"),
             "AIPrompt": obj.get("AIPrompt"),
             "grid": [
-                    [GridItemDTO.from_dict(_inner_item) for _inner_item in _item]
+                    [GridItemDTO.from_dict(_inner_item) for _inner_item in _item] if _item is not None else None
                     for _item in obj["grid"]
                 ] if obj.get("grid") is not None else None
         })

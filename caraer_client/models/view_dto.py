@@ -123,15 +123,13 @@ class ViewDTO(BaseModel):
         _items = []
         if self.shows:
             for _item_shows in self.shows:
-                if _item_shows:
-                    _items.append(_item_shows.to_dict())
+                _items.append(_item_shows.to_dict() if _item_shows is not None else None)
             _dict['shows'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in sorts (list)
         _items = []
         if self.sorts:
             for _item_sorts in self.sorts:
-                if _item_sorts:
-                    _items.append(_item_sorts.to_dict())
+                _items.append(_item_sorts.to_dict() if _item_sorts is not None else None)
             _dict['sorts'] = _items
         # override the default output from pydantic by calling `to_dict()` of analytics
         if self.analytics:

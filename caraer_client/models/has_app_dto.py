@@ -82,15 +82,13 @@ class HasAppDTO(BaseModel):
         _field_dict = {}
         if self.filters:
             for _key_filters in self.filters:
-                if self.filters[_key_filters]:
-                    _field_dict[_key_filters] = self.filters[_key_filters].to_dict()
+                _field_dict[_key_filters] = self.filters[_key_filters].to_dict() if self.filters[_key_filters] is not None else None
             _dict['filters'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in app_bar_visibility (dict)
         _field_dict = {}
         if self.app_bar_visibility:
             for _key_app_bar_visibility in self.app_bar_visibility:
-                if self.app_bar_visibility[_key_app_bar_visibility]:
-                    _field_dict[_key_app_bar_visibility] = self.app_bar_visibility[_key_app_bar_visibility].to_dict()
+                _field_dict[_key_app_bar_visibility] = self.app_bar_visibility[_key_app_bar_visibility].to_dict() if self.app_bar_visibility[_key_app_bar_visibility] is not None else None
             _dict['appBarVisibility'] = _field_dict
         return _dict
 

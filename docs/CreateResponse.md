@@ -7,7 +7,7 @@ Response for a successful resource creation operation.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **str** | A message detailing the result of the operation. | [optional] 
-**data** | **object** |  | [optional] 
+**data** | **object** | The data payload of the response, if any. | [optional] 
 
 ## Example
 

@@ -113,8 +113,7 @@ class SubscribeWebhookDTO(BaseModel):
         _field_dict = {}
         if self.relation_filters:
             for _key_relation_filters in self.relation_filters:
-                if self.relation_filters[_key_relation_filters]:
-                    _field_dict[_key_relation_filters] = self.relation_filters[_key_relation_filters].to_dict()
+                _field_dict[_key_relation_filters] = self.relation_filters[_key_relation_filters].to_dict() if self.relation_filters[_key_relation_filters] is not None else None
             _dict['relationFilters'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:

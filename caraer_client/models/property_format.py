@@ -81,7 +81,7 @@ class PropertyFormat(BaseModel):
     @classmethod
     def get_discriminator_value(cls, obj: Dict[str, Any]) -> Optional[str]:
         """Returns the discriminator value (object type) of the data"""
-        discriminator_value = obj[cls.__discriminator_property_name]
+        discriminator_value = obj.get(cls.__discriminator_property_name)
         if discriminator_value:
             return cls.__discriminator_value_class_map.get(discriminator_value)
         else:
@@ -122,8 +122,7 @@ class PropertyFormat(BaseModel):
         _items = []
         if self.settings:
             for _item_settings in self.settings:
-                if _item_settings:
-                    _items.append(_item_settings.to_dict())
+                _items.append(_item_settings.to_dict() if _item_settings is not None else None)
             _dict['settings'] = _items
         return _dict
 

@@ -43,7 +43,7 @@ class TestShowItem(unittest.TestCase):
                 sticky = True,
                 width = 100,
                 calculation_function = 'max',
-                calculation_result = None
+                calculation_result = 100
             )
         else:
             return ShowItem(

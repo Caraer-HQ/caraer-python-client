@@ -76,15 +76,13 @@ class ViewShareRequest(BaseModel):
         _items = []
         if self.users:
             for _item_users in self.users:
-                if _item_users:
-                    _items.append(_item_users.to_dict())
+                _items.append(_item_users.to_dict() if _item_users is not None else None)
             _dict['users'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in teams (list)
         _items = []
         if self.teams:
             for _item_teams in self.teams:
-                if _item_teams:
-                    _items.append(_item_teams.to_dict())
+                _items.append(_item_teams.to_dict() if _item_teams is not None else None)
             _dict['teams'] = _items
         return _dict
 

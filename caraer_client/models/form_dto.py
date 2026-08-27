@@ -109,22 +109,19 @@ class FormDTO(BaseModel):
         _items = []
         if self.grids:
             for _item_grids in self.grids:
-                if _item_grids:
-                    _items.append(_item_grids.to_dict())
+                _items.append(_item_grids.to_dict() if _item_grids is not None else None)
             _dict['grids'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in leadscores (list)
         _items = []
         if self.leadscores:
             for _item_leadscores in self.leadscores:
-                if _item_leadscores:
-                    _items.append(_item_leadscores.to_dict())
+                _items.append(_item_leadscores.to_dict() if _item_leadscores is not None else None)
             _dict['leadscores'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in relations (list)
         _items = []
         if self.relations:
             for _item_relations in self.relations:
-                if _item_relations:
-                    _items.append(_item_relations.to_dict())
+                _items.append(_item_relations.to_dict() if _item_relations is not None else None)
             _dict['relations'] = _items
         return _dict
 

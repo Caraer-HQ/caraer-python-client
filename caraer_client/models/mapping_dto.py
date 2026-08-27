@@ -101,8 +101,7 @@ class MappingDTO(BaseModel):
         _items = []
         if self.mapping_items:
             for _item_mapping_items in self.mapping_items:
-                if _item_mapping_items:
-                    _items.append(_item_mapping_items.to_dict())
+                _items.append(_item_mapping_items.to_dict() if _item_mapping_items is not None else None)
             _dict['mappingItems'] = _items
         # override the default output from pydantic by calling `to_dict()` of object
         if self.object:

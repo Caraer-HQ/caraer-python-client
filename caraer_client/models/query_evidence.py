@@ -84,8 +84,7 @@ class QueryEvidence(BaseModel):
         _items = []
         if self.paths:
             for _item_paths in self.paths:
-                if _item_paths:
-                    _items.append(_item_paths.to_dict())
+                _items.append(_item_paths.to_dict() if _item_paths is not None else None)
             _dict['paths'] = _items
         return _dict
 

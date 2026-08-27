@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **var_property** | **str** | The name of the property within the object. | [optional] 
 **relation_included** | **bool** | Specifies whether the relation is included. | [optional] 
 **operator** | **str** | Defines the operator used in the filter. Available operators are defined in the API documentation. | [optional] 
-**value** | **object** |  | [optional] 
+**value** | **object** | Represents the value to filter against. | [optional] 
 **smart_content** | **bool** | When true, filter fields contain smart content placeholders resolved at runtime. | [optional] 
 **edge_property** | **bool** | When true, propertyName refers to a property stored on the relation edge itself (declared on the relation schema, e.g. partstat on attendees) instead of a property of the related record. Requires relation and propertyName. | [optional] 
 

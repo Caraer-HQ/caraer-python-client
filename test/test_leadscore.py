@@ -41,7 +41,7 @@ class TestLeadscore(unittest.TestCase):
                 var_property = 'email',
                 relation_included = True,
                 operator = 'EQUALS',
-                value = None,
+                value = 12345,
                 smart_content = True,
                 edge_property = False,
                 smart_value = True,

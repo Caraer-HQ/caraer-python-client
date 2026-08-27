@@ -79,8 +79,7 @@ class LoadAppSettingOptionsRequest(BaseModel):
         _items = []
         if self.settings_schema:
             for _item_settings_schema in self.settings_schema:
-                if _item_settings_schema:
-                    _items.append(_item_settings_schema.to_dict())
+                _items.append(_item_settings_schema.to_dict() if _item_settings_schema is not None else None)
             _dict['settingsSchema'] = _items
         return _dict
 

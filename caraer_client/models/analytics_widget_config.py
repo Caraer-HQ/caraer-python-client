@@ -108,8 +108,7 @@ class AnalyticsWidgetConfig(BaseModel):
         _items = []
         if self.comparison_metrics:
             for _item_comparison_metrics in self.comparison_metrics:
-                if _item_comparison_metrics:
-                    _items.append(_item_comparison_metrics.to_dict())
+                _items.append(_item_comparison_metrics.to_dict() if _item_comparison_metrics is not None else None)
             _dict['comparisonMetrics'] = _items
         # override the default output from pydantic by calling `to_dict()` of trend
         if self.trend:

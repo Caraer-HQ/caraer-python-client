@@ -91,29 +91,25 @@ class NotFoundError(BaseModel):
         _items = []
         if self.stack_trace:
             for _item_stack_trace in self.stack_trace:
-                if _item_stack_trace:
-                    _items.append(_item_stack_trace.to_dict())
+                _items.append(_item_stack_trace.to_dict() if _item_stack_trace is not None else None)
             _dict['stackTrace'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
         _items = []
         if self.errors:
             for _item_errors in self.errors:
-                if _item_errors:
-                    _items.append(_item_errors.to_dict())
+                _items.append(_item_errors.to_dict() if _item_errors is not None else None)
             _dict['errors'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in suppressed (list)
         _items = []
         if self.suppressed:
             for _item_suppressed in self.suppressed:
-                if _item_suppressed:
-                    _items.append(_item_suppressed.to_dict())
+                _items.append(_item_suppressed.to_dict() if _item_suppressed is not None else None)
             _dict['suppressed'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in referenced_by (list)
         _items = []
         if self.referenced_by:
             for _item_referenced_by in self.referenced_by:
-                if _item_referenced_by:
-                    _items.append(_item_referenced_by.to_dict())
+                _items.append(_item_referenced_by.to_dict() if _item_referenced_by is not None else None)
             _dict['referencedBy'] = _items
         return _dict
 

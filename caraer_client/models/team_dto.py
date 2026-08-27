@@ -91,15 +91,13 @@ class TeamDTO(BaseModel):
         _items = []
         if self.members:
             for _item_members in self.members:
-                if _item_members:
-                    _items.append(_item_members.to_dict())
+                _items.append(_item_members.to_dict() if _item_members is not None else None)
             _dict['members'] = _items
         # override the default output from pydantic by calling `to_dict()` of each value in filters (dict)
         _field_dict = {}
         if self.filters:
             for _key_filters in self.filters:
-                if self.filters[_key_filters]:
-                    _field_dict[_key_filters] = self.filters[_key_filters].to_dict()
+                _field_dict[_key_filters] = self.filters[_key_filters].to_dict() if self.filters[_key_filters] is not None else None
             _dict['filters'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:

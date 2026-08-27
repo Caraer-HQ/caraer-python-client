@@ -108,29 +108,25 @@ class CaraerObjectDTO(BaseModel):
         _items = []
         if self.views:
             for _item_views in self.views:
-                if _item_views:
-                    _items.append(_item_views.to_dict())
+                _items.append(_item_views.to_dict() if _item_views is not None else None)
             _dict['views'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in properties (list)
         _items = []
         if self.properties:
             for _item_properties in self.properties:
-                if _item_properties:
-                    _items.append(_item_properties.to_dict())
+                _items.append(_item_properties.to_dict() if _item_properties is not None else None)
             _dict['properties'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in relations (list)
         _items = []
         if self.relations:
             for _item_relations in self.relations:
-                if _item_relations:
-                    _items.append(_item_relations.to_dict())
+                _items.append(_item_relations.to_dict() if _item_relations is not None else None)
             _dict['relations'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in extends_to (list)
         _items = []
         if self.extends_to:
             for _item_extends_to in self.extends_to:
-                if _item_extends_to:
-                    _items.append(_item_extends_to.to_dict())
+                _items.append(_item_extends_to.to_dict() if _item_extends_to is not None else None)
             _dict['extendsTo'] = _items
         return _dict
 

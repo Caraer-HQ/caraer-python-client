@@ -28,7 +28,7 @@ class DeleteResponse(BaseModel):
     Response class representing the result of a delete operation.
     """ # noqa: E501
     message: Optional[StrictStr] = Field(default=None, description="A message detailing the result of the operation.", json_schema_extra={"examples": ["Success"]})
-    data: Optional[Any] = None
+    data: Optional[Any] = Field(default=None, description="The data payload of the response, if any.")
     __properties: ClassVar[List[str]] = ["message", "data"]
 
     model_config = ConfigDict(

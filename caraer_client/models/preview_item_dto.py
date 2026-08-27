@@ -33,14 +33,14 @@ class PreviewItemDTO(BaseModel):
     """ # noqa: E501
     var_property: Optional[PropertyDTO] = Field(default=None, description="The property details associated with the preview item.", alias="property")
     text: Optional[StrictStr] = Field(default=None, description="The text content associated with the preview item.", json_schema_extra={"examples": ["Sample text"]})
-    value: Optional[Any] = None
+    value: Optional[Any] = Field(default=None, description="The value associated with the preview item. This can hold custom data.")
     related_object: Optional[PreviewRelatedObjectDTO] = Field(default=None, description="The related object information for the preview item.", alias="relatedObject")
-    related_object_value: Optional[Any] = Field(default=None, alias="relatedObjectValue")
+    related_object_value: Optional[Any] = Field(default=None, description="The related object value associated with this preview item.", alias="relatedObjectValue")
     divider: Optional[StrictStr] = Field(default=None, description="Whether the preview item is a divider. (solid, dashed, dotted, spacer)", json_schema_extra={"examples": ["solid"]})
     button_text: Optional[StrictStr] = Field(default=None, description="The button text associated with the preview item.", alias="buttonText", json_schema_extra={"examples": ["Sample text"]})
     button_url: Optional[StrictStr] = Field(default=None, description="The button url associated with the preview item.", alias="buttonUrl", json_schema_extra={"examples": ["https://www.google.com"]})
-    button_text_value: Optional[Any] = Field(default=None, alias="buttonTextValue")
-    button_url_value: Optional[Any] = Field(default=None, alias="buttonUrlValue")
+    button_text_value: Optional[Any] = Field(default=None, description="The button text value associated with the preview item.", alias="buttonTextValue")
+    button_url_value: Optional[Any] = Field(default=None, description="The button value associated with the preview item.", alias="buttonUrlValue")
     settings: Optional[PreviewItemSettingsDTO] = Field(default=None, description="The settings associated with the preview item.")
     styling: Optional[PageContentStylingDTO] = Field(default=None, description="The styling associated with the preview item.")
     __properties: ClassVar[List[str]] = ["property", "text", "value", "relatedObject", "relatedObjectValue", "divider", "buttonText", "buttonUrl", "buttonTextValue", "buttonUrlValue", "settings", "styling"]

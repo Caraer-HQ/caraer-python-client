@@ -90,8 +90,7 @@ class AppSettingFieldSchema(BaseModel):
         _items = []
         if self.options:
             for _item_options in self.options:
-                if _item_options:
-                    _items.append(_item_options.to_dict())
+                _items.append(_item_options.to_dict() if _item_options is not None else None)
             _dict['options'] = _items
         # override the default output from pydantic by calling `to_dict()` of options_source
         if self.options_source:
@@ -100,8 +99,7 @@ class AppSettingFieldSchema(BaseModel):
         _items = []
         if self.visible_when:
             for _item_visible_when in self.visible_when:
-                if _item_visible_when:
-                    _items.append(_item_visible_when.to_dict())
+                _items.append(_item_visible_when.to_dict() if _item_visible_when is not None else None)
             _dict['visibleWhen'] = _items
         # override the default output from pydantic by calling `to_dict()` of mapping_value
         if self.mapping_value:

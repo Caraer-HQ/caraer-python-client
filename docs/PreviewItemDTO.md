@@ -8,14 +8,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **var_property** | [**PropertyDTO**](PropertyDTO.md) | The property details associated with the preview item. | [optional] 
 **text** | **str** | The text content associated with the preview item. | [optional] 
-**value** | **object** |  | [optional] 
+**value** | **object** | The value associated with the preview item. This can hold custom data. | [optional] 
 **related_object** | [**PreviewRelatedObjectDTO**](PreviewRelatedObjectDTO.md) | The related object information for the preview item. | [optional] 
-**related_object_value** | **object** |  | [optional] 
+**related_object_value** | **object** | The related object value associated with this preview item. | [optional] 
 **divider** | **str** | Whether the preview item is a divider. (solid, dashed, dotted, spacer) | [optional] 
 **button_text** | **str** | The button text associated with the preview item. | [optional] 
 **button_url** | **str** | The button url associated with the preview item. | [optional] 
-**button_text_value** | **object** |  | [optional] 
-**button_url_value** | **object** |  | [optional] 
+**button_text_value** | **object** | The button text value associated with the preview item. | [optional] 
+**button_url_value** | **object** | The button value associated with the preview item. | [optional] 
 **settings** | [**PreviewItemSettingsDTO**](PreviewItemSettingsDTO.md) | The settings associated with the preview item. | [optional] 
 **styling** | [**PageContentStylingDTO**](PageContentStylingDTO.md) | The styling associated with the preview item. | [optional] 
 

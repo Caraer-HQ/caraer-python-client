@@ -79,15 +79,13 @@ class CriterionScore(BaseModel):
         _items = []
         if self.supporting_evidence:
             for _item_supporting_evidence in self.supporting_evidence:
-                if _item_supporting_evidence:
-                    _items.append(_item_supporting_evidence.to_dict())
+                _items.append(_item_supporting_evidence.to_dict() if _item_supporting_evidence is not None else None)
             _dict['supportingEvidence'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in contradicting_evidence (list)
         _items = []
         if self.contradicting_evidence:
             for _item_contradicting_evidence in self.contradicting_evidence:
-                if _item_contradicting_evidence:
-                    _items.append(_item_contradicting_evidence.to_dict())
+                _items.append(_item_contradicting_evidence.to_dict() if _item_contradicting_evidence is not None else None)
             _dict['contradictingEvidence'] = _items
         return _dict
 

@@ -154,15 +154,13 @@ class AppDTO(BaseModel):
         _items = []
         if self.app_bars:
             for _item_app_bars in self.app_bars:
-                if _item_app_bars:
-                    _items.append(_item_app_bars.to_dict())
+                _items.append(_item_app_bars.to_dict() if _item_app_bars is not None else None)
             _dict['appBars'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in serverless_functions (list)
         _items = []
         if self.serverless_functions:
             for _item_serverless_functions in self.serverless_functions:
-                if _item_serverless_functions:
-                    _items.append(_item_serverless_functions.to_dict())
+                _items.append(_item_serverless_functions.to_dict() if _item_serverless_functions is not None else None)
             _dict['serverlessFunctions'] = _items
         # override the default output from pydantic by calling `to_dict()` of install_webhook
         if self.install_webhook:
@@ -180,22 +178,19 @@ class AppDTO(BaseModel):
         _items = []
         if self.settings_schema:
             for _item_settings_schema in self.settings_schema:
-                if _item_settings_schema:
-                    _items.append(_item_settings_schema.to_dict())
+                _items.append(_item_settings_schema.to_dict() if _item_settings_schema is not None else None)
             _dict['settingsSchema'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in settings_sections (list)
         _items = []
         if self.settings_sections:
             for _item_settings_sections in self.settings_sections:
-                if _item_settings_sections:
-                    _items.append(_item_settings_sections.to_dict())
+                _items.append(_item_settings_sections.to_dict() if _item_settings_sections is not None else None)
             _dict['settingsSections'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in external_o_auth_providers (list)
         _items = []
         if self.external_o_auth_providers:
             for _item_external_o_auth_providers in self.external_o_auth_providers:
-                if _item_external_o_auth_providers:
-                    _items.append(_item_external_o_auth_providers.to_dict())
+                _items.append(_item_external_o_auth_providers.to_dict() if _item_external_o_auth_providers is not None else None)
             _dict['externalOAuthProviders'] = _items
         # override the default output from pydantic by calling `to_dict()` of app_publish
         if self.app_publish:

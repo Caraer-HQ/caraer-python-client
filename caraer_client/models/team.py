@@ -91,8 +91,7 @@ class Team(BaseModel):
         _field_dict = {}
         if self.filters:
             for _key_filters in self.filters:
-                if self.filters[_key_filters]:
-                    _field_dict[_key_filters] = self.filters[_key_filters].to_dict()
+                _field_dict[_key_filters] = self.filters[_key_filters].to_dict() if self.filters[_key_filters] is not None else None
             _dict['filters'] = _field_dict
         return _dict
 

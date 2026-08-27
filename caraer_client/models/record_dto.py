@@ -100,8 +100,7 @@ class RecordDTO(BaseModel):
         _items = []
         if self.relations:
             for _item_relations in self.relations:
-                if _item_relations:
-                    _items.append(_item_relations.to_dict())
+                _items.append(_item_relations.to_dict() if _item_relations is not None else None)
             _dict['relations'] = _items
         return _dict
 

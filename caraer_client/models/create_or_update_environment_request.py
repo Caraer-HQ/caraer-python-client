@@ -75,8 +75,7 @@ class CreateOrUpdateEnvironmentRequest(BaseModel):
         _items = []
         if self.webpage_objects:
             for _item_webpage_objects in self.webpage_objects:
-                if _item_webpage_objects:
-                    _items.append(_item_webpage_objects.to_dict())
+                _items.append(_item_webpage_objects.to_dict() if _item_webpage_objects is not None else None)
             _dict['webpageObjects'] = _items
         return _dict
 

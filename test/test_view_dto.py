@@ -224,7 +224,7 @@ class TestViewDTO(unittest.TestCase):
                         sticky = True, 
                         width = 100, 
                         calculation_function = 'max', 
-                        calculation_result = null, )
+                        calculation_result = 100, )
                     ],
                 sorts = [
                     caraer_client.models.sort_item.SortItem(

@@ -74,8 +74,7 @@ class Email(PropertyFormat):
         _items = []
         if self.settings:
             for _item_settings in self.settings:
-                if _item_settings:
-                    _items.append(_item_settings.to_dict())
+                _items.append(_item_settings.to_dict() if _item_settings is not None else None)
             _dict['settings'] = _items
         return _dict
 

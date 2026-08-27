@@ -76,8 +76,7 @@ class NotFoundErrorCause(BaseModel):
         _items = []
         if self.stack_trace:
             for _item_stack_trace in self.stack_trace:
-                if _item_stack_trace:
-                    _items.append(_item_stack_trace.to_dict())
+                _items.append(_item_stack_trace.to_dict() if _item_stack_trace is not None else None)
             _dict['stackTrace'] = _items
         return _dict
 

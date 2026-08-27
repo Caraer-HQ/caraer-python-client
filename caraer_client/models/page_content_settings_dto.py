@@ -129,8 +129,7 @@ class PageContentSettingsDTO(BaseModel):
         _field_dict = {}
         if self.previews:
             for _key_previews in self.previews:
-                if self.previews[_key_previews]:
-                    _field_dict[_key_previews] = self.previews[_key_previews].to_dict()
+                _field_dict[_key_previews] = self.previews[_key_previews].to_dict() if self.previews[_key_previews] is not None else None
             _dict['previews'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of filter
         if self.filter:
@@ -145,8 +144,7 @@ class PageContentSettingsDTO(BaseModel):
         _items = []
         if self.filter_properties:
             for _item_filter_properties in self.filter_properties:
-                if _item_filter_properties:
-                    _items.append(_item_filter_properties.to_dict())
+                _items.append(_item_filter_properties.to_dict() if _item_filter_properties is not None else None)
             _dict['filterProperties'] = _items
         return _dict
 

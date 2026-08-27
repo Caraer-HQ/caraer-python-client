@@ -35,7 +35,7 @@ class ShowItem(BaseModel):
     sticky: Optional[StrictBool] = Field(default=False, description="Flag indicating whether this item is sticky and will stay fixed in the list.")
     width: Optional[StrictInt] = Field(default=None, description="Width of the item in pixels.", json_schema_extra={"examples": [100]})
     calculation_function: Optional[StrictStr] = Field(default=None, description="Calculation function used to calculate the value of the item.", alias="calculationFunction", json_schema_extra={"examples": ["max"]})
-    calculation_result: Optional[Any] = Field(default=None, alias="calculationResult")
+    calculation_result: Optional[Any] = Field(default=None, description="Result of the calculation.", alias="calculationResult", json_schema_extra={"examples": [100]})
     __properties: ClassVar[List[str]] = ["object", "relation", "relationDirection", "property", "separator", "sticky", "width", "calculationFunction", "calculationResult"]
 
     model_config = ConfigDict(

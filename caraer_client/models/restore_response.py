@@ -28,7 +28,7 @@ class RestoreResponse(BaseModel):
     Represents the response returned when a restore operation is performed successfully.
     """ # noqa: E501
     message: Optional[StrictStr] = Field(default=None, description="A message detailing the result of the operation.", json_schema_extra={"examples": ["Success"]})
-    data: Optional[Any] = None
+    data: Optional[Any] = Field(default=None, description="The data payload of the response, if any.")
     __properties: ClassVar[List[str]] = ["message", "data"]
 
     model_config = ConfigDict(

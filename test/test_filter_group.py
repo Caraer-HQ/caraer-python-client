@@ -42,7 +42,7 @@ class TestFilterGroup(unittest.TestCase):
                     property = 'email', 
                     relation_included = True, 
                     operator = 'EQUALS', 
-                    value = null, 
+                    value = 12345, 
                     smart_content = True, 
                     edge_property = False, )
             )

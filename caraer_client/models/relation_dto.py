@@ -97,8 +97,7 @@ class RelationDTO(BaseModel):
         _items = []
         if self.objects:
             for _item_objects in self.objects:
-                if _item_objects:
-                    _items.append(_item_objects.to_dict())
+                _items.append(_item_objects.to_dict() if _item_objects is not None else None)
             _dict['objects'] = _items
         return _dict
 

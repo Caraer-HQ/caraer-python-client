@@ -254,7 +254,7 @@ class TestFormDTO(unittest.TestCase):
                                     sticky = True, 
                                     width = 100, 
                                     calculation_function = 'max', 
-                                    calculation_result = null, )
+                                    calculation_result = 100, )
                                 ], 
                             sorts = [
                                 caraer_client.models.sort_item.SortItem(
@@ -475,7 +475,7 @@ class TestFormDTO(unittest.TestCase):
                         property = 'email', 
                         relation_included = True, 
                         operator = 'EQUALS', 
-                        value = null, 
+                        value = 12345, 
                         smart_content = True, 
                         edge_property = False, 
                         smart_value = True, 

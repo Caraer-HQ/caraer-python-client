@@ -33,7 +33,7 @@ class FilterItem(BaseModel):
     var_property: Optional[StrictStr] = Field(default=None, description="The name of the property within the object.", alias="property", json_schema_extra={"examples": ["email"]})
     relation_included: Optional[StrictBool] = Field(default=None, description="Specifies whether the relation is included.", alias="relationIncluded", json_schema_extra={"examples": [True]})
     operator: Optional[StrictStr] = Field(default=None, description="Defines the operator used in the filter. Available operators are defined in the API documentation.", json_schema_extra={"examples": ["EQUALS"]})
-    value: Optional[Any] = None
+    value: Optional[Any] = Field(default=None, description="Represents the value to filter against.", json_schema_extra={"examples": [12345]})
     smart_content: Optional[StrictBool] = Field(default=None, description="When true, filter fields contain smart content placeholders resolved at runtime.", alias="smartContent", json_schema_extra={"examples": [True]})
     edge_property: Optional[StrictBool] = Field(default=None, description="When true, propertyName refers to a property stored on the relation edge itself (declared on the relation schema, e.g. partstat on attendees) instead of a property of the related record. Requires relation and propertyName.", alias="edgeProperty", json_schema_extra={"examples": [False]})
     __properties: ClassVar[List[str]] = ["object", "relation", "relationDirection", "property", "relationIncluded", "operator", "value", "smartContent", "edgeProperty"]

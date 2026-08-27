@@ -80,8 +80,7 @@ class AnalyticsWidgetStyle(BaseModel):
         _items = []
         if self.reference_lines:
             for _item_reference_lines in self.reference_lines:
-                if _item_reference_lines:
-                    _items.append(_item_reference_lines.to_dict())
+                _items.append(_item_reference_lines.to_dict() if _item_reference_lines is not None else None)
             _dict['referenceLines'] = _items
         return _dict
 

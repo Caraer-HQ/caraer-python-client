@@ -66,7 +66,7 @@ class TestAdvancedRecordQueryRequest(unittest.TestCase):
                             sticky = True, 
                             width = 100, 
                             calculation_function = 'max', 
-                            calculation_result = null, )
+                            calculation_result = 100, )
                         ], 
                     strategy = 'AUTO', 
                     anchor_record_uuid = '', 

@@ -76,8 +76,7 @@ class SuggestAnalyticsWidgetsRequest(BaseModel):
         _items = []
         if self.existing_widgets:
             for _item_existing_widgets in self.existing_widgets:
-                if _item_existing_widgets:
-                    _items.append(_item_existing_widgets.to_dict())
+                _items.append(_item_existing_widgets.to_dict() if _item_existing_widgets is not None else None)
             _dict['existingWidgets'] = _items
         return _dict
 

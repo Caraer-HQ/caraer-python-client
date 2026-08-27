@@ -105,22 +105,19 @@ class AdvancedRecordQueryPlan(BaseModel):
         _items = []
         if self.sort:
             for _item_sort in self.sort:
-                if _item_sort:
-                    _items.append(_item_sort.to_dict())
+                _items.append(_item_sort.to_dict() if _item_sort is not None else None)
             _dict['sort'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in show (list)
         _items = []
         if self.show:
             for _item_show in self.show:
-                if _item_show:
-                    _items.append(_item_show.to_dict())
+                _items.append(_item_show.to_dict() if _item_show is not None else None)
             _dict['show'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in graph_traversals (list)
         _items = []
         if self.graph_traversals:
             for _item_graph_traversals in self.graph_traversals:
-                if _item_graph_traversals:
-                    _items.append(_item_graph_traversals.to_dict())
+                _items.append(_item_graph_traversals.to_dict() if _item_graph_traversals is not None else None)
             _dict['graphTraversals'] = _items
         return _dict
 

@@ -118,8 +118,7 @@ class PageContentDTO(BaseModel):
         _items = []
         if self.children:
             for _item_children in self.children:
-                if _item_children:
-                    _items.append(_item_children.to_dict())
+                _items.append(_item_children.to_dict() if _item_children is not None else None)
             _dict['children'] = _items
         return _dict
 
