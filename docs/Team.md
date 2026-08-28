@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 **filters_string** | **str** |  | [optional] 
 **filters** | [**Dict[str, Filter]**](Filter.md) |  | [optional] 
 **member_count** | **int** |  | [optional] 
-**deleted** | **bool** |  | [optional] 
 **complete** | **bool** |  | [optional] 
+**deleted** | **bool** |  | [optional] 
 **uuid** | **str** |  | 
 
 ## Example
