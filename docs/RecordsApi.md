@@ -452,7 +452,7 @@ Name | Type | Description  | Notes
 
 Create or update a record
 
-Creates a new record or updates an existing one based on uniqueness criteria for the given object. If a matching record exists, it is updated; otherwise, a new record is created. Returns a CreateResponse or UpdateResponse with the record details. Validation: Record properties are validated according to the property rules defined for the object. Each property may have validation rules such as required, type constraints, character limits, uniqueness, etc.
+Creates a new record or updates an existing one. Match order: body/path uuid already in the graph, then unique property values. If a matching record exists, it is updated; otherwise, a new record is created. Returns a CreateResponse or UpdateResponse with the record details. Validation: Record properties are validated according to the property rules defined for the object. Each property may have validation rules such as required, type constraints, character limits, uniqueness, etc.
 
 ### Example
 
@@ -485,7 +485,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.RecordsApi(api_client)
     object_name = 'object_name_example' # str | 
-    record_dto = caraer_client.RecordDTO() # RecordDTO | Record data to create or update
+    record_dto = caraer_client.RecordDTO() # RecordDTO | Record data to create or update. Top-level uuid updates that record when it already exists.
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
     ignore_errors = False # bool |  (optional) (default to False)
     record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. (optional) (default to 'LEGACY')
@@ -505,7 +505,7 @@ with caraer_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **object_name** | **str**|  | 
- **record_dto** | [**RecordDTO**](RecordDTO.md)| Record data to create or update | 
+ **record_dto** | [**RecordDTO**](RecordDTO.md)| Record data to create or update. Top-level uuid updates that record when it already exists. | 
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
  **ignore_errors** | **bool**|  | [optional] [default to False]
  **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. | [optional] [default to &#39;LEGACY&#39;]

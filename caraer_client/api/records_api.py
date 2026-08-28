@@ -1563,7 +1563,7 @@ class RecordsApi:
     def create_or_update(
         self,
         object_name: StrictStr,
-        record_dto: Annotated[RecordDTO, Field(description="Record data to create or update")],
+        record_dto: Annotated[RecordDTO, Field(description="Record data to create or update. Top-level uuid updates that record when it already exists.")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Optional[StrictBool] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
@@ -1582,11 +1582,11 @@ class RecordsApi:
     ) -> None:
         """Create or update a record
 
-        Creates a new record or updates an existing one based on uniqueness criteria for the given object. If a matching record exists, it is updated; otherwise, a new record is created. Returns a CreateResponse or UpdateResponse with the record details. Validation: Record properties are validated according to the property rules defined for the object. Each property may have validation rules such as required, type constraints, character limits, uniqueness, etc.
+        Creates a new record or updates an existing one. Match order: body/path uuid already in the graph, then unique property values. If a matching record exists, it is updated; otherwise, a new record is created. Returns a CreateResponse or UpdateResponse with the record details. Validation: Record properties are validated according to the property rules defined for the object. Each property may have validation rules such as required, type constraints, character limits, uniqueness, etc.
 
         :param object_name: (required)
         :type object_name: str
-        :param record_dto: Record data to create or update (required)
+        :param record_dto: Record data to create or update. Top-level uuid updates that record when it already exists. (required)
         :type record_dto: RecordDTO
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -1649,7 +1649,7 @@ class RecordsApi:
     def create_or_update_with_http_info(
         self,
         object_name: StrictStr,
-        record_dto: Annotated[RecordDTO, Field(description="Record data to create or update")],
+        record_dto: Annotated[RecordDTO, Field(description="Record data to create or update. Top-level uuid updates that record when it already exists.")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Optional[StrictBool] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
@@ -1668,11 +1668,11 @@ class RecordsApi:
     ) -> ApiResponse[None]:
         """Create or update a record
 
-        Creates a new record or updates an existing one based on uniqueness criteria for the given object. If a matching record exists, it is updated; otherwise, a new record is created. Returns a CreateResponse or UpdateResponse with the record details. Validation: Record properties are validated according to the property rules defined for the object. Each property may have validation rules such as required, type constraints, character limits, uniqueness, etc.
+        Creates a new record or updates an existing one. Match order: body/path uuid already in the graph, then unique property values. If a matching record exists, it is updated; otherwise, a new record is created. Returns a CreateResponse or UpdateResponse with the record details. Validation: Record properties are validated according to the property rules defined for the object. Each property may have validation rules such as required, type constraints, character limits, uniqueness, etc.
 
         :param object_name: (required)
         :type object_name: str
-        :param record_dto: Record data to create or update (required)
+        :param record_dto: Record data to create or update. Top-level uuid updates that record when it already exists. (required)
         :type record_dto: RecordDTO
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -1735,7 +1735,7 @@ class RecordsApi:
     def create_or_update_without_preload_content(
         self,
         object_name: StrictStr,
-        record_dto: Annotated[RecordDTO, Field(description="Record data to create or update")],
+        record_dto: Annotated[RecordDTO, Field(description="Record data to create or update. Top-level uuid updates that record when it already exists.")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Optional[StrictBool] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
@@ -1754,11 +1754,11 @@ class RecordsApi:
     ) -> RESTResponseType:
         """Create or update a record
 
-        Creates a new record or updates an existing one based on uniqueness criteria for the given object. If a matching record exists, it is updated; otherwise, a new record is created. Returns a CreateResponse or UpdateResponse with the record details. Validation: Record properties are validated according to the property rules defined for the object. Each property may have validation rules such as required, type constraints, character limits, uniqueness, etc.
+        Creates a new record or updates an existing one. Match order: body/path uuid already in the graph, then unique property values. If a matching record exists, it is updated; otherwise, a new record is created. Returns a CreateResponse or UpdateResponse with the record details. Validation: Record properties are validated according to the property rules defined for the object. Each property may have validation rules such as required, type constraints, character limits, uniqueness, etc.
 
         :param object_name: (required)
         :type object_name: str
-        :param record_dto: Record data to create or update (required)
+        :param record_dto: Record data to create or update. Top-level uuid updates that record when it already exists. (required)
         :type record_dto: RecordDTO
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
