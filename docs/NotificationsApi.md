@@ -84,6 +84,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Notification dismissed |  -  |
 **404** | Notification not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -156,6 +159,10 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -233,11 +240,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Notification marked as read |  -  |
 **404** | Notification not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_notification**
-> send_notification(send_notification_request)
+> CreateResponseMapStringString send_notification(send_notification_request)
 
 Send a notification (app token)
 
@@ -249,6 +259,7 @@ Installed apps call this endpoint after async work completes. Authenticate with 
 
 ```python
 import caraer_client
+from caraer_client.models.create_response_map_string_string import CreateResponseMapStringString
 from caraer_client.models.send_notification_request import SendNotificationRequest
 from caraer_client.rest import ApiException
 from pprint import pprint
@@ -277,7 +288,9 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Send a notification (app token)
-        api_instance.send_notification(send_notification_request)
+        api_response = api_instance.send_notification(send_notification_request)
+        print("The response of NotificationsApi->send_notification:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling NotificationsApi->send_notification: %s\n" % e)
 ```
@@ -293,7 +306,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**CreateResponseMapStringString**](CreateResponseMapStringString.md)
 
 ### Authorization
 
@@ -312,6 +325,9 @@ void (empty response body)
 **400** | Invalid request |  -  |
 **403** | Forbidden |  -  |
 **429** | Rate limited |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

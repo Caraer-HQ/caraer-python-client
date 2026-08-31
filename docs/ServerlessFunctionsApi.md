@@ -93,6 +93,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successfully created serverless function |  -  |
 **400** | Invalid request or app not installed for company |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -174,11 +178,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successfully deleted serverless function |  -  |
 **404** | Serverless function not found for this app |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **index2**
-> PaginationResponse index2(app_uuid, body)
+> PaginationResponseServerlessFunctionDTO index2(app_uuid, pagination_request)
 
 List serverless functions for an app
 
@@ -190,7 +197,8 @@ Retrieves a paginated list of serverless functions that belong to the specified 
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_serverless_function_dto import PaginationResponseServerlessFunctionDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -215,11 +223,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.ServerlessFunctionsApi(api_client)
     app_uuid = 'app_uuid_example' # str | UUID of the app whose serverless functions to list
-    body = None # object | Pagination and filtering options for the request
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | Pagination and filtering options for the request
 
     try:
         # List serverless functions for an app
-        api_response = api_instance.index2(app_uuid, body)
+        api_response = api_instance.index2(app_uuid, pagination_request)
         print("The response of ServerlessFunctionsApi->index2:\n")
         pprint(api_response)
     except Exception as e:
@@ -234,11 +242,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **app_uuid** | **str**| UUID of the app whose serverless functions to list | 
- **body** | **object**| Pagination and filtering options for the request | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)| Pagination and filtering options for the request | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseServerlessFunctionDTO**](PaginationResponseServerlessFunctionDTO.md)
 
 ### Authorization
 
@@ -256,11 +264,14 @@ Name | Type | Description  | Notes
 **200** | Successfully retrieved serverless functions |  -  |
 **400** | Invalid request or app not installed for company |  -  |
 **401** | Unauthorized access |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **logs**
-> SuccessResponse logs(app_uuid, uuid, since=since, limit=limit)
+> SuccessResponseMapStringObject logs(app_uuid, uuid, since=since, limit=limit)
 
 Get serverless function logs
 
@@ -272,7 +283,7 @@ Queries Cloud Logging for recent log entries emitted by the Cloud Function backi
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_map_string_object import SuccessResponseMapStringObject
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -324,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseMapStringObject**](SuccessResponseMapStringObject.md)
 
 ### Authorization
 
@@ -341,11 +352,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successfully retrieved logs (may be empty if logging is unavailable) |  -  |
 **404** | Serverless function not found for this app |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **sample_payload**
-> SuccessResponse sample_payload(app_uuid, sample_payload_request)
+> SuccessResponseObject sample_payload(app_uuid, sample_payload_request)
 
 Generate a sample webhook payload
 
@@ -358,7 +372,7 @@ Builds the same payload shape used for serverless invocations and webhook delive
 ```python
 import caraer_client
 from caraer_client.models.sample_payload_request import SamplePayloadRequest
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_object import SuccessResponseObject
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -406,7 +420,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseObject**](SuccessResponseObject.md)
 
 ### Authorization
 
@@ -424,11 +438,14 @@ Name | Type | Description  | Notes
 **200** | Sample payload generated |  -  |
 **400** | Invalid input provided |  -  |
 **404** | App or record not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show1**
-> ShowResponse show1(app_uuid, uuid)
+> ShowResponseServerlessFunctionDTO show1(app_uuid, uuid)
 
 Get a serverless function
 
@@ -440,7 +457,7 @@ Retrieves a serverless function by its UUID, ensuring it belongs to the specifie
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_serverless_function_dto import ShowResponseServerlessFunctionDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -488,7 +505,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseServerlessFunctionDTO**](ShowResponseServerlessFunctionDTO.md)
 
 ### Authorization
 
@@ -505,11 +522,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successfully retrieved serverless function |  -  |
 **404** | Serverless function not found for this app |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **test_serverless_function**
-> SuccessResponse test_serverless_function(app_uuid, uuid, test_serverless_function_request)
+> SuccessResponseMapStringObject test_serverless_function(app_uuid, uuid, test_serverless_function_request)
 
 Test a serverless function
 
@@ -521,7 +541,7 @@ Provisions (if needed) and invokes a serverless function for a given record and 
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_map_string_object import SuccessResponseMapStringObject
 from caraer_client.models.test_serverless_function_request import TestServerlessFunctionRequest
 from caraer_client.rest import ApiException
 from pprint import pprint
@@ -572,7 +592,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseMapStringObject**](SuccessResponseMapStringObject.md)
 
 ### Authorization
 
@@ -590,11 +610,14 @@ Name | Type | Description  | Notes
 **200** | Serverless function test executed |  -  |
 **400** | Invalid input provided |  -  |
 **404** | App, serverless function, or record not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update1**
-> ShowResponse update1(app_uuid, uuid, serverless_function_dto)
+> ShowResponseServerlessFunctionDTO update1(app_uuid, uuid, serverless_function_dto)
 
 Update a serverless function
 
@@ -607,7 +630,7 @@ Updates an existing serverless function's runtime and code, keeping it attached 
 ```python
 import caraer_client
 from caraer_client.models.serverless_function_dto import ServerlessFunctionDTO
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_serverless_function_dto import ShowResponseServerlessFunctionDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -657,7 +680,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseServerlessFunctionDTO**](ShowResponseServerlessFunctionDTO.md)
 
 ### Authorization
 
@@ -674,6 +697,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successfully updated serverless function |  -  |
 **404** | Serverless function not found for this app |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

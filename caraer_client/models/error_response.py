@@ -29,11 +29,11 @@ class ErrorResponse(BaseModel):
     Defines the structure of error responses returned by the API.
     """ # noqa: E501
     message: Optional[StrictStr] = Field(default=None, description="The error message providing details about the failure.", json_schema_extra={"examples": ["Resource not found."]})
-    errors: Optional[CaraerErrorType] = Field(default=None, description="A list of error types providing further details about the error.")
+    errors: Optional[List[CaraerErrorType]] = Field(default=None, description="A list of error types providing further details about the error.")
     status: Optional[StrictInt] = Field(default=None, description="The HTTP status code associated with the error.", json_schema_extra={"examples": [400]})
     stack_trace: Optional[StrictStr] = Field(default=None, alias="stackTrace")
-    roles: Optional[List[StrictStr]] = None
-    scopes: Optional[List[StrictStr]] = None
+    roles: Optional[List[StrictStr]] = Field(default=None, description="Roles the caller is missing when the failure is an authorization error.")
+    scopes: Optional[List[StrictStr]] = Field(default=None, description="Scopes the caller is missing when the failure is an authorization error.")
     request_id: Optional[StrictStr] = Field(default=None, description="Request correlation ID for support and log tracing.", alias="requestId", json_schema_extra={"examples": ["a1b2c3d4-e5f6-7890-abcd-ef1234567890"]})
     __properties: ClassVar[List[str]] = ["message", "errors", "status", "stackTrace", "roles", "scopes", "requestId"]
 
@@ -87,9 +87,12 @@ class ErrorResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of errors
+        # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
+        _items = []
         if self.errors:
-            _dict['errors'] = self.errors.to_dict()
+            for _item_errors in self.errors:
+                _items.append(_item_errors.to_dict() if _item_errors is not None else None)
+            _dict['errors'] = _items
         return _dict
 
     @classmethod
@@ -103,7 +106,7 @@ class ErrorResponse(BaseModel):
 
         _obj = cls.model_validate({
             "message": obj.get("message"),
-            "errors": CaraerErrorType.from_dict(obj["errors"]) if obj.get("errors") is not None else None,
+            "errors": [CaraerErrorType.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
             "status": obj.get("status"),
             "stackTrace": obj.get("stackTrace"),
             "roles": obj.get("roles"),

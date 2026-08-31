@@ -16,7 +16,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictInt, StrictStr
-from typing import Any, Optional
+from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from caraer_client.models.app_dto import AppDTO
 from caraer_client.models.app_request import AppRequest
@@ -26,13 +26,17 @@ from caraer_client.models.delete_response import DeleteResponse
 from caraer_client.models.install_app_request import InstallAppRequest
 from caraer_client.models.load_app_setting_options_request import LoadAppSettingOptionsRequest
 from caraer_client.models.migrate_app_to_v2_request import MigrateAppToV2Request
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_app_dto import PaginationResponseAppDTO
+from caraer_client.models.pagination_response_subscribe_webhook_dto import PaginationResponseSubscribeWebhookDTO
 from caraer_client.models.review_request import ReviewRequest
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_app_dto import ShowResponseAppDTO
+from caraer_client.models.show_response_load_app_setting_options_response import ShowResponseLoadAppSettingOptionsResponse
+from caraer_client.models.show_response_subscribe_webhook_dto import ShowResponseSubscribeWebhookDTO
 from caraer_client.models.simple_public_company_dto import SimplePublicCompanyDTO
 from caraer_client.models.sse_emitter import SseEmitter
 from caraer_client.models.subscribe_webhook_dto import SubscribeWebhookDTO
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_map_string_object import SuccessResponseMapStringObject
 from caraer_client.models.test_webhook_request import TestWebhookRequest
 
 from caraer_client.api_client import ApiClient, RequestSerialized
@@ -115,6 +119,8 @@ class ApplicationsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -189,6 +195,8 @@ class ApplicationsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -263,6 +271,8 @@ class ApplicationsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -409,6 +419,8 @@ class ApplicationsApi:
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -479,6 +491,8 @@ class ApplicationsApi:
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -549,6 +563,8 @@ class ApplicationsApi:
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -692,6 +708,8 @@ class ApplicationsApi:
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -762,6 +780,8 @@ class ApplicationsApi:
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -832,6 +852,8 @@ class ApplicationsApi:
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -978,6 +1000,8 @@ class ApplicationsApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1051,6 +1075,8 @@ class ApplicationsApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1124,6 +1150,8 @@ class ApplicationsApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1215,7 +1243,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseAppDTO:
         """Retrieve application details by UUID
 
         Fetches details about an application specified by its UUID. Returns the application details as a ShowResponse wrapping an AppDetailDTO.
@@ -1253,9 +1281,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1284,7 +1314,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseAppDTO]:
         """Retrieve application details by UUID
 
         Fetches details about an application specified by its UUID. Returns the application details as a ShowResponse wrapping an AppDetailDTO.
@@ -1322,9 +1352,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1391,9 +1423,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1483,7 +1517,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseSubscribeWebhookDTO:
         """Get a webhook for an app
 
         Fetches a single webhook that belongs to the specified app.
@@ -1524,9 +1558,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseSubscribeWebhookDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1556,7 +1592,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseSubscribeWebhookDTO]:
         """Get a webhook for an app
 
         Fetches a single webhook that belongs to the specified app.
@@ -1597,9 +1633,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseSubscribeWebhookDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1670,9 +1708,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseSubscribeWebhookDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1752,7 +1792,7 @@ class ApplicationsApi:
     def get_app_webhooks(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the application for which to retrieve webhooks")],
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1765,15 +1805,15 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseSubscribeWebhookDTO:
         """Retrieve a paginated list of webhooks for an app
 
         Fetches a paginated and optionally filtered list of webhooks associated with the specified app and the authenticated user's selected company.
 
         :param app_uuid: UUID of the application for which to retrieve webhooks (required)
         :type app_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1798,7 +1838,7 @@ class ApplicationsApi:
 
         _param = self._get_app_webhooks_serialize(
             app_uuid=app_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1806,11 +1846,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseSubscribeWebhookDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1827,7 +1868,7 @@ class ApplicationsApi:
     def get_app_webhooks_with_http_info(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the application for which to retrieve webhooks")],
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1840,15 +1881,15 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseSubscribeWebhookDTO]:
         """Retrieve a paginated list of webhooks for an app
 
         Fetches a paginated and optionally filtered list of webhooks associated with the specified app and the authenticated user's selected company.
 
         :param app_uuid: UUID of the application for which to retrieve webhooks (required)
         :type app_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1873,7 +1914,7 @@ class ApplicationsApi:
 
         _param = self._get_app_webhooks_serialize(
             app_uuid=app_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1881,11 +1922,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseSubscribeWebhookDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1902,7 +1944,7 @@ class ApplicationsApi:
     def get_app_webhooks_without_preload_content(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the application for which to retrieve webhooks")],
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1922,8 +1964,8 @@ class ApplicationsApi:
 
         :param app_uuid: UUID of the application for which to retrieve webhooks (required)
         :type app_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1948,7 +1990,7 @@ class ApplicationsApi:
 
         _param = self._get_app_webhooks_serialize(
             app_uuid=app_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1956,11 +1998,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseSubscribeWebhookDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1972,7 +2015,7 @@ class ApplicationsApi:
     def _get_app_webhooks_serialize(
         self,
         app_uuid,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2000,8 +2043,8 @@ class ApplicationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -2052,7 +2095,7 @@ class ApplicationsApi:
     @validate_call
     def get_apps(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         type: Optional[StrictStr] = None,
         installed_only: Optional[StrictBool] = None,
         _request_timeout: Union[
@@ -2067,13 +2110,13 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseAppDTO:
         """Retrieve a paginated list of applications
 
         Fetches a paginated and optionally filtered list of applications. The list is sorted alphabetically by category and name. On success, returns a PaginationResponse containing AppSummaryDTO objects.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param type:
         :type type: str
         :param installed_only:
@@ -2101,7 +2144,7 @@ class ApplicationsApi:
         """ # noqa: E501
 
         _param = self._get_apps_serialize(
-            body=body,
+            pagination_request=pagination_request,
             type=type,
             installed_only=installed_only,
             _request_auth=_request_auth,
@@ -2111,10 +2154,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseAppDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2130,7 +2175,7 @@ class ApplicationsApi:
     @validate_call
     def get_apps_with_http_info(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         type: Optional[StrictStr] = None,
         installed_only: Optional[StrictBool] = None,
         _request_timeout: Union[
@@ -2145,13 +2190,13 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseAppDTO]:
         """Retrieve a paginated list of applications
 
         Fetches a paginated and optionally filtered list of applications. The list is sorted alphabetically by category and name. On success, returns a PaginationResponse containing AppSummaryDTO objects.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param type:
         :type type: str
         :param installed_only:
@@ -2179,7 +2224,7 @@ class ApplicationsApi:
         """ # noqa: E501
 
         _param = self._get_apps_serialize(
-            body=body,
+            pagination_request=pagination_request,
             type=type,
             installed_only=installed_only,
             _request_auth=_request_auth,
@@ -2189,10 +2234,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseAppDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2208,7 +2255,7 @@ class ApplicationsApi:
     @validate_call
     def get_apps_without_preload_content(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         type: Optional[StrictStr] = None,
         installed_only: Optional[StrictBool] = None,
         _request_timeout: Union[
@@ -2228,8 +2275,8 @@ class ApplicationsApi:
 
         Fetches a paginated and optionally filtered list of applications. The list is sorted alphabetically by category and name. On success, returns a PaginationResponse containing AppSummaryDTO objects.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param type:
         :type type: str
         :param installed_only:
@@ -2257,7 +2304,7 @@ class ApplicationsApi:
         """ # noqa: E501
 
         _param = self._get_apps_serialize(
-            body=body,
+            pagination_request=pagination_request,
             type=type,
             installed_only=installed_only,
             _request_auth=_request_auth,
@@ -2267,10 +2314,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseAppDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2281,7 +2330,7 @@ class ApplicationsApi:
 
     def _get_apps_serialize(
         self,
-        body,
+        pagination_request,
         type,
         installed_only,
         _request_auth,
@@ -2317,8 +2366,8 @@ class ApplicationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -2422,6 +2471,9 @@ class ApplicationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SimplePublicCompanyDTO",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2490,6 +2542,9 @@ class ApplicationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SimplePublicCompanyDTO",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2558,6 +2613,9 @@ class ApplicationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SimplePublicCompanyDTO",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2633,7 +2691,7 @@ class ApplicationsApi:
     @validate_call
     def get_my_created_apps(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2646,13 +2704,13 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseAppDTO:
         """Retrieve apps created by the logged-in user's selected company
 
         Fetches a paginated and optionally filtered list of apps where the selected company is the creator. Returns a PaginationResponse containing AppDTO objects.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2676,7 +2734,7 @@ class ApplicationsApi:
         """ # noqa: E501
 
         _param = self._get_my_created_apps_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2684,10 +2742,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseAppDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2703,7 +2763,7 @@ class ApplicationsApi:
     @validate_call
     def get_my_created_apps_with_http_info(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2716,13 +2776,13 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseAppDTO]:
         """Retrieve apps created by the logged-in user's selected company
 
         Fetches a paginated and optionally filtered list of apps where the selected company is the creator. Returns a PaginationResponse containing AppDTO objects.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2746,7 +2806,7 @@ class ApplicationsApi:
         """ # noqa: E501
 
         _param = self._get_my_created_apps_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2754,10 +2814,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseAppDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2773,7 +2835,7 @@ class ApplicationsApi:
     @validate_call
     def get_my_created_apps_without_preload_content(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2791,8 +2853,8 @@ class ApplicationsApi:
 
         Fetches a paginated and optionally filtered list of apps where the selected company is the creator. Returns a PaginationResponse containing AppDTO objects.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2816,7 +2878,7 @@ class ApplicationsApi:
         """ # noqa: E501
 
         _param = self._get_my_created_apps_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2824,10 +2886,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseAppDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '500': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2838,7 +2902,7 @@ class ApplicationsApi:
 
     def _get_my_created_apps_serialize(
         self,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2864,8 +2928,8 @@ class ApplicationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -2929,7 +2993,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseAppDTO:
         """Get a public app (creator view)
 
         Gets the full app for the creator, including appPublish, appBars, details, and pricing. Returns AppCreatorDTO with everything under App.
@@ -2967,9 +3031,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2998,7 +3064,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseAppDTO]:
         """Get a public app (creator view)
 
         Gets the full app for the creator, including appPublish, appBars, details, and pricing. Returns AppCreatorDTO with everything under App.
@@ -3036,9 +3102,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3105,9 +3173,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3198,7 +3268,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseMapStringObject:
         """Get app runtime logs
 
         Queries Cloud Logging for the shared V2 app container (app-{uuid}) without filtering to a single function.
@@ -3242,8 +3312,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3274,7 +3347,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseMapStringObject]:
         """Get app runtime logs
 
         Queries Cloud Logging for the shared V2 app container (app-{uuid}) without filtering to a single function.
@@ -3318,8 +3391,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3394,8 +3470,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3494,7 +3573,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> List[Dict[str, Optional[object]]]:
         """Get available webhook record events
 
         Returns all supported record webhook events with their details.
@@ -3532,7 +3611,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Dict[str, Optional[object]]]",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3561,7 +3644,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[List[Dict[str, Optional[object]]]]:
         """Get available webhook record events
 
         Returns all supported record webhook events with their details.
@@ -3599,7 +3682,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Dict[str, Optional[object]]]",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3666,7 +3753,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Dict[str, Optional[object]]]",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3755,7 +3846,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> List[Dict[str, Optional[object]]]:
         """Get available webhook formats
 
         Returns all supported webhook payload formats with their details.
@@ -3793,7 +3884,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Dict[str, Optional[object]]]",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3822,7 +3917,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[List[Dict[str, Optional[object]]]]:
         """Get available webhook formats
 
         Returns all supported webhook payload formats with their details.
@@ -3860,7 +3955,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Dict[str, Optional[object]]]",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3927,7 +4026,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Dict[str, Optional[object]]]",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4017,7 +4120,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> List[Dict[str, str]]:
         """Get webhook property topic options
 
         Returns property names on an object that can be used in 4-part property_changed webhook topics.
@@ -4058,7 +4161,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Dict[str, str]]",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4088,7 +4195,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[List[Dict[str, str]]]:
         """Get webhook property topic options
 
         Returns property names on an object that can be used in 4-part property_changed webhook topics.
@@ -4129,7 +4236,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Dict[str, str]]",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4200,7 +4311,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Dict[str, str]]",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4295,7 +4410,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseAppDTO:
         """Install an application
 
         Installs the application specified by its UUID with optional initial configuration settings. Returns the updated application details as a ShowResponse wrapping an AppDTO.
@@ -4336,9 +4451,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4368,7 +4485,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseAppDTO]:
         """Install an application
 
         Installs the application specified by its UUID with optional initial configuration settings. Returns the updated application details as a ShowResponse wrapping an AppDTO.
@@ -4409,9 +4526,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4482,9 +4601,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4588,7 +4709,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> List[Dict[str, object]]:
         """List predefined marketplace app categories
 
         Returns the allowed category keys and labels for public app marketplace listings.
@@ -4623,7 +4744,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Dict[str, object]]",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4651,7 +4776,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[List[Dict[str, object]]]:
         """List predefined marketplace app categories
 
         Returns the allowed category keys and labels for public app marketplace listings.
@@ -4686,7 +4811,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Dict[str, object]]",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4749,7 +4878,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Dict[str, object]]",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4836,7 +4969,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseLoadAppSettingOptionsResponse:
         """Load dynamic options for a setting select field
 
         Invokes the app serverless function configured on the field's optionsSource and returns options for SINGLE_SELECT / MULTI_SELECT fields. Uses the draft settingsSchema from the installer UI so credentials entered in other fields are available to the loader.
@@ -4877,11 +5010,13 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseLoadAppSettingOptionsResponse",
             '400': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
             '502': "ErrorResponse",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4911,7 +5046,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseLoadAppSettingOptionsResponse]:
         """Load dynamic options for a setting select field
 
         Invokes the app serverless function configured on the field's optionsSource and returns options for SINGLE_SELECT / MULTI_SELECT fields. Uses the draft settingsSchema from the installer UI so credentials entered in other fields are available to the loader.
@@ -4952,11 +5087,13 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseLoadAppSettingOptionsResponse",
             '400': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
             '502': "ErrorResponse",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5027,11 +5164,13 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseLoadAppSettingOptionsResponse",
             '400': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
             '502': "ErrorResponse",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5137,7 +5276,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseMapStringObject:
         """Migrate an app from platform V1 to V2
 
         Opt-in in-place migration to the shared container runtime. Validates a single runtime, sets platformVersion=2, schedules an async rebuild, and keeps invoking via legacy gcpReference until runtimeStatus is READY.
@@ -5178,10 +5317,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '400': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5211,7 +5352,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseMapStringObject]:
         """Migrate an app from platform V1 to V2
 
         Opt-in in-place migration to the shared container runtime. Validates a single runtime, sets platformVersion=2, schedules an async rebuild, and keeps invoking via legacy gcpReference until runtimeStatus is READY.
@@ -5252,10 +5393,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '400': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5326,10 +5469,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '400': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5435,7 +5580,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseAppDTO:
         """Review a public app
 
         Sets review outcome (approve/reject/changes requested), feedback, and optional reviewer notes. Returns the updated app details as a ShowResponse wrapping an AppDTO.
@@ -5476,9 +5621,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5508,7 +5655,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseAppDTO]:
         """Review a public app
 
         Sets review outcome (approve/reject/changes requested), feedback, and optional reviewer notes. Returns the updated app details as a ShowResponse wrapping an AppDTO.
@@ -5549,9 +5696,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5622,9 +5771,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5729,7 +5880,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseAppDTO:
         """Rotate application configurations
 
         Rotates the configuration or settings for the specified application by UUID. On success, returns the updated application details as a ShowResponse wrapping an AppDTO.
@@ -5767,9 +5918,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5798,7 +5951,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseAppDTO]:
         """Rotate application configurations
 
         Rotates the configuration or settings for the specified application by UUID. On success, returns the updated application details as a ShowResponse wrapping an AppDTO.
@@ -5836,9 +5989,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5905,9 +6060,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6036,6 +6193,9 @@ class ApplicationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SseEmitter",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6104,6 +6264,9 @@ class ApplicationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SseEmitter",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6172,6 +6335,9 @@ class ApplicationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SseEmitter",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6216,7 +6382,8 @@ class ApplicationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'text/event-stream'
+                    'text/event-stream', 
+                    'application/json'
                 ]
             )
 
@@ -6260,7 +6427,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseAppDTO:
         """Submit a public app for review
 
         Submits a public app specified by its UUID for review. Returns the submitted app details as a ShowResponse wrapping an AppDTO.
@@ -6298,9 +6465,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6329,7 +6498,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseAppDTO]:
         """Submit a public app for review
 
         Submits a public app specified by its UUID for review. Returns the submitted app details as a ShowResponse wrapping an AppDTO.
@@ -6367,9 +6536,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6436,9 +6607,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6531,7 +6704,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> str:
         """Test a webhook for an app
 
         Generates a test webhook payload for a specific record and event type. Uses the same payload generation logic as live webhook delivery.
@@ -6581,10 +6754,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "str",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6617,7 +6792,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[str]:
         """Test a webhook for an app
 
         Generates a test webhook payload for a specific record and event type. Uses the same payload generation logic as live webhook delivery.
@@ -6667,10 +6842,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "str",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6753,10 +6930,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "str",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6860,7 +7039,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> str:
         """Test a webhook for an app (auto-resolve)
 
         Generates a test webhook payload using the latest matching record for the topic object. Form-submission topics prefer a record that submitted that form; includeRelations prefer a record that has as many of those related objects as possible. If no record exists, a simulated record is used. Missing includeRelations and simulated samples are explained in context.testNote and the X-Webhook-Test-Note header. Uses the event type from the webhook topic (updated when the topic action is all).
@@ -6901,10 +7080,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "str",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6934,7 +7115,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[str]:
         """Test a webhook for an app (auto-resolve)
 
         Generates a test webhook payload using the latest matching record for the topic object. Form-submission topics prefer a record that submitted that form; includeRelations prefer a record that has as many of those related objects as possible. If no record exists, a simulated record is used. Missing includeRelations and simulated samples are explained in context.testNote and the X-Webhook-Test-Note header. Uses the event type from the webhook topic (updated when the topic action is all).
@@ -6975,10 +7156,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "str",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7049,10 +7232,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "str",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7145,7 +7330,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> str:
         """Test an unsaved webhook for an app
 
         Generates a test webhook payload from webhook configuration supplied in the request body without persisting the webhook. When recordUuid is omitted, auto-resolves the latest matching record, prefers records that submitted the topic form and that have as many includeRelations as possible, and uses the event from the webhook topic. If no record exists, a simulated record is used and context.testNote (also X-Webhook-Test-Note) explains that plus any missing includeRelations.
@@ -7186,10 +7371,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "str",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7219,7 +7406,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[str]:
         """Test an unsaved webhook for an app
 
         Generates a test webhook payload from webhook configuration supplied in the request body without persisting the webhook. When recordUuid is omitted, auto-resolves the latest matching record, prefers records that submitted the topic form and that have as many includeRelations as possible, and uses the event from the webhook topic. If no record exists, a simulated record is used and context.testNote (also X-Webhook-Test-Note) explains that plus any missing includeRelations.
@@ -7260,10 +7447,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "str",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7334,10 +7523,12 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "str",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7443,7 +7634,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseAppDTO:
         """Uninstall an application
 
         Removes the installed application specified by its UUID using the provided settings. The request body should contain an AppRequest with the uninstallation settings. Returns the updated application details as a ShowResponse wrapping an AppDTO.
@@ -7484,9 +7675,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7516,7 +7709,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseAppDTO]:
         """Uninstall an application
 
         Removes the installed application specified by its UUID using the provided settings. The request body should contain an AppRequest with the uninstallation settings. Returns the updated application details as a ShowResponse wrapping an AppDTO.
@@ -7557,9 +7750,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7630,9 +7825,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7787,6 +7984,8 @@ class ApplicationsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7865,6 +8064,8 @@ class ApplicationsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7943,6 +8144,8 @@ class ApplicationsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8051,7 +8254,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseAppDTO:
         """Update a public app (creator edit)
 
         Updates a public app with the full creator payload (label, description, details, pricing, settingsSchema, appBars). Send the entire AppCreatorDTO as returned by GET. Returns the updated app as AppCreatorDTO.
@@ -8092,10 +8295,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '403': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8125,7 +8329,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseAppDTO]:
         """Update a public app (creator edit)
 
         Updates a public app with the full creator payload (label, description, details, pricing, settingsSchema, appBars). Send the entire AppCreatorDTO as returned by GET. Returns the updated app as AppCreatorDTO.
@@ -8166,10 +8370,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '403': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8240,10 +8445,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAppDTO",
             '404': "ErrorResponse",
             '403': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

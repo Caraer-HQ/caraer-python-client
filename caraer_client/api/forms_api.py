@@ -16,16 +16,22 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBytes, StrictStr
-from typing import Any, List, Optional, Tuple, Union
+from typing import List, Tuple, Union
 from typing_extensions import Annotated
 from caraer_client.models.create_response import CreateResponse
 from caraer_client.models.delete_response import DeleteResponse
 from caraer_client.models.form_dto import FormDTO
 from caraer_client.models.form_with_ai_prompt_dto import FormWithAiPromptDTO
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_form_dto import PaginationResponseFormDTO
+from caraer_client.models.pagination_response_property_option import PaginationResponsePropertyOption
+from caraer_client.models.pagination_response_public_form_dto import PaginationResponsePublicFormDTO
 from caraer_client.models.restore_response import RestoreResponse
-from caraer_client.models.show_response import ShowResponse
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.show_response_form_dto import ShowResponseFormDTO
+from caraer_client.models.show_response_list_form_object_summary_dto import ShowResponseListFormObjectSummaryDTO
+from caraer_client.models.show_response_public_form_dto import ShowResponsePublicFormDTO
+from caraer_client.models.success_response_list_string import SuccessResponseListString
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.models.update_response import UpdateResponse
 
 from caraer_client.api_client import ApiClient, RequestSerialized
@@ -65,7 +71,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> SuccessResponseString:
         """AI form field (public)
 
         When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
@@ -112,7 +118,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -144,7 +154,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[SuccessResponseString]:
         """AI form field (public)
 
         When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
@@ -191,7 +201,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -270,7 +284,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -324,7 +342,8 @@ class FormsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    '*/*', 
+                    'application/json'
                 ]
             )
 
@@ -384,7 +403,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> SuccessResponseListString:
         """AI form step (public)
 
         When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
@@ -431,7 +450,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseListString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -463,7 +486,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[SuccessResponseListString]:
         """AI form step (public)
 
         When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
@@ -510,7 +533,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseListString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -589,7 +616,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseListString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -643,7 +674,8 @@ class FormsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    '*/*', 
+                    'application/json'
                 ]
             )
 
@@ -742,6 +774,8 @@ class FormsApi:
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -812,6 +846,8 @@ class FormsApi:
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -882,6 +918,8 @@ class FormsApi:
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1025,6 +1063,7 @@ class FormsApi:
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1095,6 +1134,7 @@ class FormsApi:
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1165,6 +1205,7 @@ class FormsApi:
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1209,8 +1250,7 @@ class FormsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1254,7 +1294,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseFormDTO:
         """Get form by UUID
 
         Retrieves a specific form by its UUID. Returns the details of the form in a FormDTO object wrapped in a ShowResponse.
@@ -1292,10 +1332,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseFormDTO",
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1324,7 +1365,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseFormDTO]:
         """Get form by UUID
 
         Retrieves a specific form by its UUID. Returns the details of the form in a FormDTO object wrapped in a ShowResponse.
@@ -1362,10 +1403,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseFormDTO",
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1432,10 +1474,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseFormDTO",
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1525,7 +1568,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponsePublicFormDTO:
         """Get form by UUID
 
         Retrieves a specific form by its UUID. When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
@@ -1566,10 +1609,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePublicFormDTO",
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1599,7 +1643,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponsePublicFormDTO]:
         """Get form by UUID
 
         Retrieves a specific form by its UUID. When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
@@ -1640,10 +1684,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePublicFormDTO",
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1714,10 +1759,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePublicFormDTO",
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1765,8 +1811,7 @@ class FormsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1797,7 +1842,7 @@ class FormsApi:
     @validate_call
     def get_forms(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1810,13 +1855,13 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseFormDTO:
         """Get paginated list of forms
 
         Retrieves a paginated list of forms based on the provided filters, sorting, and search query. This endpoint returns a list of FormDTO objects wrapped in a PaginationResponse containing the current page, limit, total count, and the forms data.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1840,7 +1885,7 @@ class FormsApi:
         """ # noqa: E501
 
         _param = self._get_forms_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1848,10 +1893,12 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseFormDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1867,7 +1914,7 @@ class FormsApi:
     @validate_call
     def get_forms_with_http_info(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1880,13 +1927,13 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseFormDTO]:
         """Get paginated list of forms
 
         Retrieves a paginated list of forms based on the provided filters, sorting, and search query. This endpoint returns a list of FormDTO objects wrapped in a PaginationResponse containing the current page, limit, total count, and the forms data.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1910,7 +1957,7 @@ class FormsApi:
         """ # noqa: E501
 
         _param = self._get_forms_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1918,10 +1965,12 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseFormDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1937,7 +1986,7 @@ class FormsApi:
     @validate_call
     def get_forms_without_preload_content(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1955,8 +2004,8 @@ class FormsApi:
 
         Retrieves a paginated list of forms based on the provided filters, sorting, and search query. This endpoint returns a list of FormDTO objects wrapped in a PaginationResponse containing the current page, limit, total count, and the forms data.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1980,7 +2029,7 @@ class FormsApi:
         """ # noqa: E501
 
         _param = self._get_forms_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1988,10 +2037,12 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseFormDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2002,7 +2053,7 @@ class FormsApi:
 
     def _get_forms_serialize(
         self,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2028,8 +2079,8 @@ class FormsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -2081,7 +2132,7 @@ class FormsApi:
     def get_forms_by_object(
         self,
         object_uuid: Annotated[StrictStr, Field(description="UUID of the object to get forms for")],
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2094,15 +2145,15 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseFormDTO:
         """Get forms by object UUID
 
         Retrieves a paginated list of forms associated with a specific object UUID. The endpoint uses a custom Cypher query to match forms linked to the object.
 
         :param object_uuid: UUID of the object to get forms for (required)
         :type object_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2127,7 +2178,7 @@ class FormsApi:
 
         _param = self._get_forms_by_object_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2135,10 +2186,12 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseFormDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2155,7 +2208,7 @@ class FormsApi:
     def get_forms_by_object_with_http_info(
         self,
         object_uuid: Annotated[StrictStr, Field(description="UUID of the object to get forms for")],
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2168,15 +2221,15 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseFormDTO]:
         """Get forms by object UUID
 
         Retrieves a paginated list of forms associated with a specific object UUID. The endpoint uses a custom Cypher query to match forms linked to the object.
 
         :param object_uuid: UUID of the object to get forms for (required)
         :type object_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2201,7 +2254,7 @@ class FormsApi:
 
         _param = self._get_forms_by_object_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2209,10 +2262,12 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseFormDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2229,7 +2284,7 @@ class FormsApi:
     def get_forms_by_object_without_preload_content(
         self,
         object_uuid: Annotated[StrictStr, Field(description="UUID of the object to get forms for")],
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2249,8 +2304,8 @@ class FormsApi:
 
         :param object_uuid: UUID of the object to get forms for (required)
         :type object_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2275,7 +2330,7 @@ class FormsApi:
 
         _param = self._get_forms_by_object_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2283,10 +2338,12 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseFormDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2298,7 +2355,7 @@ class FormsApi:
     def _get_forms_by_object_serialize(
         self,
         object_uuid,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2326,8 +2383,8 @@ class FormsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -2379,7 +2436,7 @@ class FormsApi:
     def get_forms_public(
         self,
         company_uuid: StrictStr,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2392,15 +2449,15 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> PaginationResponsePublicFormDTO:
         """Get all forms for a company
 
         When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
 
         :param company_uuid: (required)
         :type company_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2425,7 +2482,7 @@ class FormsApi:
 
         _param = self._get_forms_public_serialize(
             company_uuid=company_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2433,7 +2490,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "PaginationResponsePublicFormDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2450,7 +2511,7 @@ class FormsApi:
     def get_forms_public_with_http_info(
         self,
         company_uuid: StrictStr,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2463,15 +2524,15 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[PaginationResponsePublicFormDTO]:
         """Get all forms for a company
 
         When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
 
         :param company_uuid: (required)
         :type company_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2496,7 +2557,7 @@ class FormsApi:
 
         _param = self._get_forms_public_serialize(
             company_uuid=company_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2504,7 +2565,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "PaginationResponsePublicFormDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2521,7 +2586,7 @@ class FormsApi:
     def get_forms_public_without_preload_content(
         self,
         company_uuid: StrictStr,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2541,8 +2606,8 @@ class FormsApi:
 
         :param company_uuid: (required)
         :type company_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2567,7 +2632,7 @@ class FormsApi:
 
         _param = self._get_forms_public_serialize(
             company_uuid=company_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2575,7 +2640,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "PaginationResponsePublicFormDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2587,7 +2656,7 @@ class FormsApi:
     def _get_forms_public_serialize(
         self,
         company_uuid,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2615,15 +2684,16 @@ class FormsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    '*/*', 
+                    'application/json'
                 ]
             )
 
@@ -2679,7 +2749,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseListFormObjectSummaryDTO:
         """List objects that have forms
 
         Returns distinct custom objects that have at least one non-deleted form, ordered by object index.
@@ -2714,9 +2784,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseListFormObjectSummaryDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2744,7 +2816,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseListFormObjectSummaryDTO]:
         """List objects that have forms
 
         Returns distinct custom objects that have at least one non-deleted form, ordered by object index.
@@ -2779,9 +2851,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseListFormObjectSummaryDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2844,9 +2918,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseListFormObjectSummaryDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2921,7 +2997,7 @@ class FormsApi:
         self,
         property_uuid: StrictStr,
         company_uuid: StrictStr,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2934,7 +3010,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> PaginationResponsePropertyOption:
         """Property options (public)
 
         When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
@@ -2943,8 +3019,8 @@ class FormsApi:
         :type property_uuid: str
         :param company_uuid: (required)
         :type company_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2970,7 +3046,7 @@ class FormsApi:
         _param = self._get_options_serialize(
             property_uuid=property_uuid,
             company_uuid=company_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2978,7 +3054,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "PaginationResponsePropertyOption",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2996,7 +3076,7 @@ class FormsApi:
         self,
         property_uuid: StrictStr,
         company_uuid: StrictStr,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3009,7 +3089,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[PaginationResponsePropertyOption]:
         """Property options (public)
 
         When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
@@ -3018,8 +3098,8 @@ class FormsApi:
         :type property_uuid: str
         :param company_uuid: (required)
         :type company_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3045,7 +3125,7 @@ class FormsApi:
         _param = self._get_options_serialize(
             property_uuid=property_uuid,
             company_uuid=company_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3053,7 +3133,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "PaginationResponsePropertyOption",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3071,7 +3155,7 @@ class FormsApi:
         self,
         property_uuid: StrictStr,
         company_uuid: StrictStr,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3093,8 +3177,8 @@ class FormsApi:
         :type property_uuid: str
         :param company_uuid: (required)
         :type company_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3120,7 +3204,7 @@ class FormsApi:
         _param = self._get_options_serialize(
             property_uuid=property_uuid,
             company_uuid=company_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3128,7 +3212,11 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "PaginationResponsePropertyOption",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3141,7 +3229,7 @@ class FormsApi:
         self,
         property_uuid,
         company_uuid,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -3171,15 +3259,16 @@ class FormsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    '*/*', 
+                    'application/json'
                 ]
             )
 
@@ -3278,6 +3367,7 @@ class FormsApi:
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3348,6 +3438,7 @@ class FormsApi:
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3418,6 +3509,7 @@ class FormsApi:
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3462,8 +3554,7 @@ class FormsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -3509,7 +3600,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseString:
         """Submit a form
 
         Submits a form with the provided data. Returns a SuccessResponse upon successful submission. When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
@@ -3553,9 +3644,12 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3586,7 +3680,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseString]:
         """Submit a form
 
         Submits a form with the provided data. Returns a SuccessResponse upon successful submission. When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
@@ -3630,9 +3724,12 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3707,9 +3804,12 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3865,6 +3965,7 @@ class FormsApi:
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3940,6 +4041,7 @@ class FormsApi:
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4015,6 +4117,7 @@ class FormsApi:
             '404': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4121,7 +4224,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseListString:
         """Submit a file
 
         Submits a file with the provided data. Returns a SuccessResponse upon successful submission. When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
@@ -4165,9 +4268,12 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListString",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4198,7 +4304,7 @@ class FormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseListString]:
         """Submit a file
 
         Submits a file with the provided data. Returns a SuccessResponse upon successful submission. When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the tenant company and overrides the companyUuid path segment.
@@ -4242,9 +4348,12 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListString",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4319,9 +4428,12 @@ class FormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListString",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **delete_file**
-> SuccessResponse delete_file(key)
+> SuccessResponseVoid delete_file(key)
 
 Delete file
 
@@ -23,7 +23,7 @@ Deletes a file from the S3-compatible storage identified by its unique key.
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_void import SuccessResponseVoid
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseVoid**](SuccessResponseVoid.md)
 
 ### Authorization
 
@@ -87,11 +87,13 @@ Name | Type | Description  | Notes
 **200** | File deleted successfully. |  -  |
 **404** | File not found. |  -  |
 **500** | Internal server error. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_file**
-> SuccessResponse download_file(key, expire_after=expire_after, download=download)
+> SuccessResponseString download_file(key, expire_after=expire_after, download=download)
 
 Download file
 
@@ -103,7 +105,7 @@ Generates a pre-signed URL to download a file stored in S3-compatible storage. T
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -153,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -171,11 +173,13 @@ Name | Type | Description  | Notes
 **200** | File URL generated successfully. |  -  |
 **404** | File not found. |  -  |
 **500** | Internal server error. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_files**
-> SuccessResponse list_files(record_uuid=record_uuid)
+> SuccessResponseListString list_files(record_uuid=record_uuid)
 
 List files
 
@@ -187,7 +191,7 @@ Lists all files stored in the system or, if a record UUID is provided, lists the
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_list_string import SuccessResponseListString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -233,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseListString**](SuccessResponseListString.md)
 
 ### Authorization
 
@@ -250,11 +254,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Files listed successfully. |  -  |
 **500** | Internal server error. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_file2**
-> SuccessResponse upload_file2(record_uuid=record_uuid)
+> SuccessResponseListString upload_file2(record_uuid=record_uuid)
 
 Upload files
 
@@ -266,7 +273,7 @@ Uploads multiple files to an S3-compatible storage and returns their unique keys
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_list_string import SuccessResponseListString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -312,7 +319,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseListString**](SuccessResponseListString.md)
 
 ### Authorization
 
@@ -329,7 +336,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Files uploaded successfully. |  -  |
 **400** | Invalid input, e.g., file size exceeds the limit. |  -  |
-**500** | Internal server error. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

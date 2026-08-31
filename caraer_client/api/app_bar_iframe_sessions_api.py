@@ -20,6 +20,8 @@ from typing import Optional
 from typing_extensions import Annotated
 from caraer_client.models.app_bar_iframe_session_request import AppBarIframeSessionRequest
 from caraer_client.models.app_bar_iframe_session_validate_request import AppBarIframeSessionValidateRequest
+from caraer_client.models.show_response_app_bar_iframe_session_context_dto import ShowResponseAppBarIframeSessionContextDTO
+from caraer_client.models.show_response_app_bar_iframe_session_token_dto import ShowResponseAppBarIframeSessionTokenDTO
 
 from caraer_client.api_client import ApiClient, RequestSerialized
 from caraer_client.api_response import ApiResponse
@@ -56,7 +58,7 @@ class AppBarIframeSessionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> ShowResponseAppBarIframeSessionTokenDTO:
         """Create an iframe session token
 
         Issues a short-lived opaque token for an iframe-based app bar. The token can be validated by the embedded app to confirm user, company, view, and filter context.
@@ -97,9 +99,12 @@ class AppBarIframeSessionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "ShowResponseAppBarIframeSessionTokenDTO",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -129,7 +134,7 @@ class AppBarIframeSessionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[ShowResponseAppBarIframeSessionTokenDTO]:
         """Create an iframe session token
 
         Issues a short-lived opaque token for an iframe-based app bar. The token can be validated by the embedded app to confirm user, company, view, and filter context.
@@ -170,9 +175,12 @@ class AppBarIframeSessionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "ShowResponseAppBarIframeSessionTokenDTO",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -243,9 +251,12 @@ class AppBarIframeSessionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "ShowResponseAppBarIframeSessionTokenDTO",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -350,7 +361,7 @@ class AppBarIframeSessionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> ShowResponseAppBarIframeSessionContextDTO:
         """Validate an iframe session token
 
         Public endpoint for embedded apps to validate a caraer_iframe_token and receive safe context.
@@ -388,8 +399,11 @@ class AppBarIframeSessionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "ShowResponseAppBarIframeSessionContextDTO",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -418,7 +432,7 @@ class AppBarIframeSessionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[ShowResponseAppBarIframeSessionContextDTO]:
         """Validate an iframe session token
 
         Public endpoint for embedded apps to validate a caraer_iframe_token and receive safe context.
@@ -456,8 +470,11 @@ class AppBarIframeSessionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "ShowResponseAppBarIframeSessionContextDTO",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -524,8 +541,11 @@ class AppBarIframeSessionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "ShowResponseAppBarIframeSessionContextDTO",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

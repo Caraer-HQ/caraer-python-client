@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_status**
-> ShowResponse get_status()
+> ShowResponseBillingStatusDTO get_status()
 
 Get billing enforcement status
 
@@ -21,7 +21,7 @@ Returns whether the selected company should see no UI, a billing banner, or a no
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_billing_status_dto import ShowResponseBillingStatusDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -63,7 +63,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseBillingStatusDTO**](ShowResponseBillingStatusDTO.md)
 
 ### Authorization
 
@@ -80,11 +80,14 @@ This endpoint does not need any parameter.
 |-------------|-------------|------------------|
 **200** | Billing status |  -  |
 **401** | Unauthorized |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_setup_email**
-> ShowResponse send_setup_email()
+> ShowResponseMapStringBoolean send_setup_email()
 
 Send billing setup email
 
@@ -96,7 +99,7 @@ Triggers Jortt to email the linked customer a direct-debit authorization payment
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_map_string_boolean import ShowResponseMapStringBoolean
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -138,7 +141,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseMapStringBoolean**](ShowResponseMapStringBoolean.md)
 
 ### Authorization
 
@@ -157,6 +160,9 @@ This endpoint does not need any parameter.
 **400** | Missing CRM link, Jortt customer id, or already accepted |  -  |
 **401** | Unauthorized |  -  |
 **503** | Jortt or CRM not configured |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_token**
-> str get_token()
+> ShowResponseMapStringString get_token()
 
 Get Latenode JWT token for current user
 
@@ -20,6 +20,7 @@ Generates a short-lived Latenode JWT token for the authenticated user, to be use
 
 ```python
 import caraer_client
+from caraer_client.models.show_response_map_string_string import ShowResponseMapStringString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -61,7 +62,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**str**
+[**ShowResponseMapStringString**](ShowResponseMapStringString.md)
 
 ### Authorization
 
@@ -77,8 +78,10 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successfully generated token |  -  |
-**401** | Unauthorized access |  -  |
-**500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

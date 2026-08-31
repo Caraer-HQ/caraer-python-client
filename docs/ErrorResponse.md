@@ -7,11 +7,11 @@ Defines the structure of error responses returned by the API.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **str** | The error message providing details about the failure. | [optional] 
-**errors** | [**CaraerErrorType**](CaraerErrorType.md) | A list of error types providing further details about the error. | [optional] 
+**errors** | [**List[CaraerErrorType]**](CaraerErrorType.md) | A list of error types providing further details about the error. | [optional] 
 **status** | **int** | The HTTP status code associated with the error. | [optional] 
 **stack_trace** | **str** |  | [optional] 
-**roles** | **List[str]** |  | [optional] 
-**scopes** | **List[str]** |  | [optional] 
+**roles** | **List[str]** | Roles the caller is missing when the failure is an authorization error. | [optional] 
+**scopes** | **List[str]** | Scopes the caller is missing when the failure is an authorization error. | [optional] 
 **request_id** | **str** | Request correlation ID for support and log tracing. | [optional] 
 
 ## Example

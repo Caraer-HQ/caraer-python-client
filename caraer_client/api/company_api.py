@@ -21,8 +21,14 @@ from caraer_client.models.analytics_dashboard_config import AnalyticsDashboardCo
 from caraer_client.models.company_dto import CompanyDTO
 from caraer_client.models.create_company_request import CreateCompanyRequest
 from caraer_client.models.digital_identity_dto import DigitalIdentityDTO
-from caraer_client.models.show_response import ShowResponse
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.show_response_analytics_dashboard_config import ShowResponseAnalyticsDashboardConfig
+from caraer_client.models.show_response_company_dto import ShowResponseCompanyDTO
+from caraer_client.models.show_response_digital_identity_dto import ShowResponseDigitalIdentityDTO
+from caraer_client.models.show_response_map_string_analytics_dashboard_config import ShowResponseMapStringAnalyticsDashboardConfig
+from caraer_client.models.show_response_website_settings_dto import ShowResponseWebsiteSettingsDTO
+from caraer_client.models.success_response_company_dto import SuccessResponseCompanyDTO
+from caraer_client.models.success_response_map_string_object import SuccessResponseMapStringObject
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.models.update_response import UpdateResponse
 from caraer_client.models.website_settings_dto import WebsiteSettingsDTO
 
@@ -60,7 +66,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseCompanyDTO:
         """Create a new company
 
         Creates a new company based on the provided request data.
@@ -98,10 +104,12 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseCompanyDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -130,7 +138,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseCompanyDTO]:
         """Create a new company
 
         Creates a new company based on the provided request data.
@@ -168,10 +176,12 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseCompanyDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -238,10 +248,12 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseCompanyDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -342,7 +354,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseCompanyDTO:
         """Get current company
 
         Returns the company currently selected by the logged-in user. Requires TOOLS_COMPANY_SETTINGS_READ scope.
@@ -377,9 +389,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseCompanyDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -407,7 +421,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseCompanyDTO]:
         """Get current company
 
         Returns the company currently selected by the logged-in user. Requires TOOLS_COMPANY_SETTINGS_READ scope.
@@ -442,9 +456,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseCompanyDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -507,9 +523,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseCompanyDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -595,7 +613,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseCompanyDTO:
         """Get company by UUID
 
         Returns a company by its UUID. Requires TOOLS_COMPANY_SETTINGS_READ scope.
@@ -633,10 +651,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseCompanyDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -665,7 +684,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseCompanyDTO]:
         """Get company by UUID
 
         Returns a company by its UUID. Requires TOOLS_COMPANY_SETTINGS_READ scope.
@@ -703,10 +722,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseCompanyDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -773,10 +793,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseCompanyDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -864,7 +885,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseDigitalIdentityDTO:
         """Get digital identity
 
         Returns the digital identity (branding) for the company currently selected by the logged-in user.
@@ -899,9 +920,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseDigitalIdentityDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -929,7 +952,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseDigitalIdentityDTO]:
         """Get digital identity
 
         Returns the digital identity (branding) for the company currently selected by the logged-in user.
@@ -964,9 +987,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseDigitalIdentityDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1029,9 +1054,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseDigitalIdentityDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1117,7 +1144,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseAnalyticsDashboardConfig:
         """Get suite dashboard
 
         Returns the home analytics dashboard for a suite. Empty dashboard when none is saved.
@@ -1155,8 +1182,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAnalyticsDashboardConfig",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1185,7 +1215,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseAnalyticsDashboardConfig]:
         """Get suite dashboard
 
         Returns the home analytics dashboard for a suite. Empty dashboard when none is saved.
@@ -1223,8 +1253,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAnalyticsDashboardConfig",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1291,8 +1324,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseAnalyticsDashboardConfig",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1380,7 +1416,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseMapStringAnalyticsDashboardConfig:
         """List suite dashboards
 
         Returns all home analytics dashboards keyed by suite name for the selected company.
@@ -1415,8 +1451,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseMapStringAnalyticsDashboardConfig",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1444,7 +1483,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseMapStringAnalyticsDashboardConfig]:
         """List suite dashboards
 
         Returns all home analytics dashboards keyed by suite name for the selected company.
@@ -1479,8 +1518,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseMapStringAnalyticsDashboardConfig",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1543,8 +1585,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseMapStringAnalyticsDashboardConfig",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1629,7 +1674,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseWebsiteSettingsDTO:
         """Get website settings
 
         Returns the website settings for the company currently selected by the logged-in user.
@@ -1664,9 +1709,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseWebsiteSettingsDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1694,7 +1741,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseWebsiteSettingsDTO]:
         """Get website settings
 
         Returns the website settings for the company currently selected by the logged-in user.
@@ -1729,9 +1776,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseWebsiteSettingsDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1794,9 +1843,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseWebsiteSettingsDTO",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1882,7 +1933,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseMapStringObject:
         """Resume webhook dispatch
 
         Clears the per-company webhook circuit breaker so outbound deliveries resume immediately.
@@ -1920,9 +1971,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1951,7 +2004,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseMapStringObject]:
         """Resume webhook dispatch
 
         Clears the per-company webhook circuit breaker so outbound deliveries resume immediately.
@@ -1989,9 +2042,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2058,9 +2113,11 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2195,6 +2252,7 @@ class CompanyApi:
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2269,6 +2327,7 @@ class CompanyApi:
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2343,6 +2402,7 @@ class CompanyApi:
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2489,6 +2549,7 @@ class CompanyApi:
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2559,6 +2620,7 @@ class CompanyApi:
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2629,6 +2691,7 @@ class CompanyApi:
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2775,6 +2838,9 @@ class CompanyApi:
             '200': "UpdateResponse",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2848,6 +2914,9 @@ class CompanyApi:
             '200': "UpdateResponse",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2921,6 +2990,9 @@ class CompanyApi:
             '200': "UpdateResponse",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3067,6 +3139,7 @@ class CompanyApi:
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3137,6 +3210,7 @@ class CompanyApi:
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3207,6 +3281,7 @@ class CompanyApi:
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3308,7 +3383,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseString:
         """Upload a font file
 
         Uploads a font file to S3 storage and returns the public URL.
@@ -3346,9 +3421,12 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3377,7 +3455,7 @@ class CompanyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseString]:
         """Upload a font file
 
         Uploads a font file to S3 storage and returns the public URL.
@@ -3415,9 +3493,12 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3484,9 +3565,12 @@ class CompanyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

@@ -104,7 +104,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Object successfully created |  -  |
 **400** | Invalid input |  -  |
-**500** | Internal server error |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -176,15 +179,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Object deleted successfully |  -  |
-**404** | Object not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -259,11 +264,15 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_object**
-> ShowResponse get_object(uuid, views=views, properties=properties, relations=relations)
+> ShowResponseCaraerObjectDTO get_object(uuid, views=views, properties=properties, relations=relations)
 
 Get object by UUID
 
@@ -275,7 +284,7 @@ Fetches a single object by its UUID. Optional parameters determine whether to in
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_caraer_object_dto import ShowResponseCaraerObjectDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -327,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseCaraerObjectDTO**](ShowResponseCaraerObjectDTO.md)
 
 ### Authorization
 
@@ -336,20 +345,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Object fetched successfully |  -  |
-**404** | Object not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_objects**
-> PaginationResponse get_objects(body, views=views, properties=properties, relations=relations)
+> PaginationResponseCaraerObjectDTO get_objects(pagination_request, views=views, properties=properties, relations=relations)
 
 Fetch paginated objects
 
@@ -361,7 +372,8 @@ Fetches a paginated list of objects, optionally including views, properties, and
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_caraer_object_dto import PaginationResponseCaraerObjectDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -385,14 +397,14 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.ObjectsApi(api_client)
-    body = None # object | Pagination request details
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | Pagination request details
     views = 'false' # str |  (optional) (default to 'false')
     properties = 'false' # str |  (optional) (default to 'false')
     relations = 'false' # str |  (optional) (default to 'false')
 
     try:
         # Fetch paginated objects
-        api_response = api_instance.get_objects(body, views=views, properties=properties, relations=relations)
+        api_response = api_instance.get_objects(pagination_request, views=views, properties=properties, relations=relations)
         print("The response of ObjectsApi->get_objects:\n")
         pprint(api_response)
     except Exception as e:
@@ -406,14 +418,14 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **object**| Pagination request details | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)| Pagination request details | 
  **views** | **str**|  | [optional] [default to &#39;false&#39;]
  **properties** | **str**|  | [optional] [default to &#39;false&#39;]
  **relations** | **str**|  | [optional] [default to &#39;false&#39;]
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseCaraerObjectDTO**](PaginationResponseCaraerObjectDTO.md)
 
 ### Authorization
 
@@ -431,11 +443,14 @@ Name | Type | Description  | Notes
 **200** | Objects fetched successfully |  -  |
 **400** | Bad request |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_preview**
-> ShowResponse get_preview(uuid, name)
+> ShowResponsePreviewDTO get_preview(uuid, name)
 
 Get specific preview by name
 
@@ -447,7 +462,7 @@ Fetches a preview for an object by the object's UUID and the preview name. Retur
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_preview_dto import ShowResponsePreviewDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -495,7 +510,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponsePreviewDTO**](ShowResponsePreviewDTO.md)
 
 ### Authorization
 
@@ -513,11 +528,13 @@ Name | Type | Description  | Notes
 **200** | Successfully fetched preview |  -  |
 **404** | Object or preview not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_previews**
-> PaginationResponse get_previews(body)
+> PaginationResponsePreviewDTO get_previews(pagination_request)
 
 Get all previews over all objects
 
@@ -529,7 +546,8 @@ Fetches all previews over all objects. Returns a PaginationResponse containing a
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_preview_dto import PaginationResponsePreviewDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -553,11 +571,11 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.ObjectsApi(api_client)
-    body = None # object | 
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | 
 
     try:
         # Get all previews over all objects
-        api_response = api_instance.get_previews(body)
+        api_response = api_instance.get_previews(pagination_request)
         print("The response of ObjectsApi->get_previews:\n")
         pprint(api_response)
     except Exception as e:
@@ -571,11 +589,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **object**|  | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)|  | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponsePreviewDTO**](PaginationResponsePreviewDTO.md)
 
 ### Authorization
 
@@ -592,11 +610,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successfully fetched previews |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_previews1**
-> PaginationResponse get_previews1(uuid, search=search)
+> PaginationResponsePreviewDTO get_previews1(uuid, search=search)
 
 Get all previews of an object
 
@@ -608,7 +629,7 @@ Fetches all previews associated with a specific object. Returns a PaginationResp
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_response_preview_dto import PaginationResponsePreviewDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -656,7 +677,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponsePreviewDTO**](PaginationResponsePreviewDTO.md)
 
 ### Authorization
 
@@ -674,6 +695,8 @@ Name | Type | Description  | Notes
 **200** | Successfully fetched previews |  -  |
 **404** | Object not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -757,6 +780,9 @@ Name | Type | Description  | Notes
 **202** | Grant accepted and processing in the background |  -  |
 **400** | Invalid request |  -  |
 **404** | Object not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -836,7 +862,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Object permanently deleted |  -  |
 **400** | Object is not archived |  -  |
-**404** | Object not found |  -  |
+**404** | The requested resource was not found. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -922,11 +951,13 @@ Name | Type | Description  | Notes
 **201** | Successfully created or updated preview |  -  |
 **404** | Object or preview not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **sync_extended_objects**
-> SuccessResponse sync_extended_objects(uuid)
+> SuccessResponseMapStringInteger sync_extended_objects(uuid)
 
 Sync extended objects for existing records
 
@@ -938,7 +969,7 @@ Synchronizes existing records for an object after extended configuration changes
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_map_string_integer import SuccessResponseMapStringInteger
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -984,7 +1015,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseMapStringInteger**](SuccessResponseMapStringInteger.md)
 
 ### Authorization
 
@@ -993,20 +1024,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Extended objects synchronized successfully |  -  |
-**404** | Object not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_indices3**
-> update_indices3(body, views=views, properties=properties, relations=relations)
+> SuccessResponseListCaraerObjectDTO update_indices3(request_body, views=views, properties=properties, relations=relations)
 
 Update object indices
 
@@ -1018,6 +1051,7 @@ Updates indices of objects based on the provided mapping. The request body shoul
 
 ```python
 import caraer_client
+from caraer_client.models.success_response_list_caraer_object_dto import SuccessResponseListCaraerObjectDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1041,14 +1075,16 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.ObjectsApi(api_client)
-    body = 'body_example' # str | Mapping of object indices
+    request_body = {'key': 56} # Dict[str, int] | Mapping of object indices
     views = 'false' # str |  (optional) (default to 'false')
     properties = 'false' # str |  (optional) (default to 'false')
     relations = 'false' # str |  (optional) (default to 'false')
 
     try:
         # Update object indices
-        api_instance.update_indices3(body, views=views, properties=properties, relations=relations)
+        api_response = api_instance.update_indices3(request_body, views=views, properties=properties, relations=relations)
+        print("The response of ObjectsApi->update_indices3:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ObjectsApi->update_indices3: %s\n" % e)
 ```
@@ -1060,14 +1096,14 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **str**| Mapping of object indices | 
+ **request_body** | [**Dict[str, int]**](int.md)| Mapping of object indices | 
  **views** | **str**|  | [optional] [default to &#39;false&#39;]
  **properties** | **str**|  | [optional] [default to &#39;false&#39;]
  **relations** | **str**|  | [optional] [default to &#39;false&#39;]
 
 ### Return type
 
-void (empty response body)
+[**SuccessResponseListCaraerObjectDTO**](SuccessResponseListCaraerObjectDTO.md)
 
 ### Authorization
 
@@ -1084,7 +1120,10 @@ void (empty response body)
 |-------------|-------------|------------------|
 **200** | Indices updated successfully |  -  |
 **400** | Bad request |  -  |
-**500** | Internal server error |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1167,6 +1206,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Lifecycle properties updated |  -  |
 **404** | Object not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1255,8 +1297,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Object updated successfully |  -  |
 **400** | Invalid input |  -  |
-**404** | Object not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

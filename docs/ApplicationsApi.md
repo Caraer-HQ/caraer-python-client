@@ -116,6 +116,8 @@ Name | Type | Description  | Notes
 **400** | Invalid input provided or app not installed |  -  |
 **404** | App not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -198,6 +200,8 @@ Name | Type | Description  | Notes
 **400** | Invalid request data |  -  |
 **401** | Unauthorized access |  -  |
 **500** | Internal server error |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -280,6 +284,8 @@ Name | Type | Description  | Notes
 **400** | Invalid request data |  -  |
 **401** | Unauthorized access |  -  |
 **500** | Internal server error |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -362,11 +368,13 @@ Name | Type | Description  | Notes
 **200** | Webhook deleted successfully |  -  |
 **404** | Webhook not found for the specified app or company |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_app**
-> ShowResponse get_app(uuid)
+> ShowResponseAppDTO get_app(uuid)
 
 Retrieve application details by UUID
 
@@ -378,7 +386,7 @@ Fetches details about an application specified by its UUID. Returns the applicat
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_app_dto import ShowResponseAppDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -424,7 +432,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseAppDTO**](ShowResponseAppDTO.md)
 
 ### Authorization
 
@@ -442,11 +450,13 @@ Name | Type | Description  | Notes
 **200** | Successfully retrieved application details |  -  |
 **404** | Application not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_app_webhook**
-> ShowResponse get_app_webhook(app_uuid, webhook_uuid)
+> ShowResponseSubscribeWebhookDTO get_app_webhook(app_uuid, webhook_uuid)
 
 Get a webhook for an app
 
@@ -458,7 +468,7 @@ Fetches a single webhook that belongs to the specified app.
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_subscribe_webhook_dto import ShowResponseSubscribeWebhookDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -506,7 +516,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseSubscribeWebhookDTO**](ShowResponseSubscribeWebhookDTO.md)
 
 ### Authorization
 
@@ -524,11 +534,13 @@ Name | Type | Description  | Notes
 **200** | Webhook retrieved successfully |  -  |
 **404** | Webhook not found for the specified app or company |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_app_webhooks**
-> PaginationResponse get_app_webhooks(app_uuid, body)
+> PaginationResponseSubscribeWebhookDTO get_app_webhooks(app_uuid, pagination_request)
 
 Retrieve a paginated list of webhooks for an app
 
@@ -540,7 +552,8 @@ Fetches a paginated and optionally filtered list of webhooks associated with the
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_subscribe_webhook_dto import PaginationResponseSubscribeWebhookDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -565,11 +578,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.ApplicationsApi(api_client)
     app_uuid = 'app_uuid_example' # str | UUID of the application for which to retrieve webhooks
-    body = None # object | 
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | 
 
     try:
         # Retrieve a paginated list of webhooks for an app
-        api_response = api_instance.get_app_webhooks(app_uuid, body)
+        api_response = api_instance.get_app_webhooks(app_uuid, pagination_request)
         print("The response of ApplicationsApi->get_app_webhooks:\n")
         pprint(api_response)
     except Exception as e:
@@ -584,11 +597,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **app_uuid** | **str**| UUID of the application for which to retrieve webhooks | 
- **body** | **object**|  | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)|  | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseSubscribeWebhookDTO**](PaginationResponseSubscribeWebhookDTO.md)
 
 ### Authorization
 
@@ -608,11 +621,12 @@ Name | Type | Description  | Notes
 **401** | Unauthorized access |  -  |
 **404** | Application not found |  -  |
 **500** | Internal server error |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_apps**
-> PaginationResponse get_apps(body, type=type, installed_only=installed_only)
+> PaginationResponseAppDTO get_apps(pagination_request, type=type, installed_only=installed_only)
 
 Retrieve a paginated list of applications
 
@@ -624,7 +638,8 @@ Fetches a paginated and optionally filtered list of applications. The list is so
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_app_dto import PaginationResponseAppDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -648,13 +663,13 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.ApplicationsApi(api_client)
-    body = None # object | 
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | 
     type = '' # str |  (optional) (default to '')
     installed_only = False # bool |  (optional) (default to False)
 
     try:
         # Retrieve a paginated list of applications
-        api_response = api_instance.get_apps(body, type=type, installed_only=installed_only)
+        api_response = api_instance.get_apps(pagination_request, type=type, installed_only=installed_only)
         print("The response of ApplicationsApi->get_apps:\n")
         pprint(api_response)
     except Exception as e:
@@ -668,13 +683,13 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **object**|  | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)|  | 
  **type** | **str**|  | [optional] [default to &#39;&#39;]
  **installed_only** | **bool**|  | [optional] [default to False]
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseAppDTO**](PaginationResponseAppDTO.md)
 
 ### Authorization
 
@@ -693,6 +708,8 @@ Name | Type | Description  | Notes
 **400** | Invalid request data |  -  |
 **401** | Unauthorized access |  -  |
 **500** | Internal server error |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -772,11 +789,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successfully retrieved company information |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_my_created_apps**
-> PaginationResponse get_my_created_apps(body)
+> PaginationResponseAppDTO get_my_created_apps(pagination_request)
 
 Retrieve apps created by the logged-in user's selected company
 
@@ -788,7 +808,8 @@ Fetches a paginated and optionally filtered list of apps where the selected comp
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_app_dto import PaginationResponseAppDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -812,11 +833,11 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.ApplicationsApi(api_client)
-    body = None # object | 
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | 
 
     try:
         # Retrieve apps created by the logged-in user's selected company
-        api_response = api_instance.get_my_created_apps(body)
+        api_response = api_instance.get_my_created_apps(pagination_request)
         print("The response of ApplicationsApi->get_my_created_apps:\n")
         pprint(api_response)
     except Exception as e:
@@ -830,11 +851,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **object**|  | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)|  | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseAppDTO**](PaginationResponseAppDTO.md)
 
 ### Authorization
 
@@ -853,11 +874,13 @@ Name | Type | Description  | Notes
 **400** | Invalid request data |  -  |
 **401** | Unauthorized access |  -  |
 **500** | Internal server error |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_public_app**
-> ShowResponse get_public_app(uuid)
+> ShowResponseAppDTO get_public_app(uuid)
 
 Get a public app (creator view)
 
@@ -869,7 +892,7 @@ Gets the full app for the creator, including appPublish, appBars, details, and p
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_app_dto import ShowResponseAppDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -915,7 +938,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseAppDTO**](ShowResponseAppDTO.md)
 
 ### Authorization
 
@@ -933,11 +956,13 @@ Name | Type | Description  | Notes
 **200** | Successfully retrieved the public app |  -  |
 **404** | Public app not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_runtime_logs**
-> SuccessResponse get_runtime_logs(app_uuid, since=since, limit=limit)
+> SuccessResponseMapStringObject get_runtime_logs(app_uuid, since=since, limit=limit)
 
 Get app runtime logs
 
@@ -949,7 +974,7 @@ Queries Cloud Logging for the shared V2 app container (app-{uuid}) without filte
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_map_string_object import SuccessResponseMapStringObject
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -999,7 +1024,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseMapStringObject**](SuccessResponseMapStringObject.md)
 
 ### Authorization
 
@@ -1016,11 +1041,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successfully retrieved logs (may be empty if logging is unavailable) |  -  |
 **404** | App not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_webhook_events**
-> get_webhook_events(app_uuid)
+> List[Dict[str, Optional[object]]] get_webhook_events(app_uuid)
 
 Get available webhook record events
 
@@ -1059,7 +1087,9 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Get available webhook record events
-        api_instance.get_webhook_events(app_uuid)
+        api_response = api_instance.get_webhook_events(app_uuid)
+        print("The response of ApplicationsApi->get_webhook_events:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ApplicationsApi->get_webhook_events: %s\n" % e)
 ```
@@ -1075,7 +1105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**List[Dict[str, Optional[object]]]**
 
 ### Authorization
 
@@ -1091,11 +1121,15 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of available webhook record events |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_webhook_formats**
-> get_webhook_formats(app_uuid)
+> List[Dict[str, Optional[object]]] get_webhook_formats(app_uuid)
 
 Get available webhook formats
 
@@ -1134,7 +1168,9 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Get available webhook formats
-        api_instance.get_webhook_formats(app_uuid)
+        api_response = api_instance.get_webhook_formats(app_uuid)
+        print("The response of ApplicationsApi->get_webhook_formats:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ApplicationsApi->get_webhook_formats: %s\n" % e)
 ```
@@ -1150,7 +1186,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**List[Dict[str, Optional[object]]]**
 
 ### Authorization
 
@@ -1166,11 +1202,15 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of available webhook formats |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_webhook_property_topics**
-> get_webhook_property_topics(app_uuid, object)
+> List[Dict[str, str]] get_webhook_property_topics(app_uuid, object)
 
 Get webhook property topic options
 
@@ -1210,7 +1250,9 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Get webhook property topic options
-        api_instance.get_webhook_property_topics(app_uuid, object)
+        api_response = api_instance.get_webhook_property_topics(app_uuid, object)
+        print("The response of ApplicationsApi->get_webhook_property_topics:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ApplicationsApi->get_webhook_property_topics: %s\n" % e)
 ```
@@ -1227,7 +1269,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**List[Dict[str, str]]**
 
 ### Authorization
 
@@ -1243,11 +1285,15 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of property names |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **install_app**
-> ShowResponse install_app(uuid, install_app_request=install_app_request)
+> ShowResponseAppDTO install_app(uuid, install_app_request=install_app_request)
 
 Install an application
 
@@ -1260,7 +1306,7 @@ Installs the application specified by its UUID with optional initial configurati
 ```python
 import caraer_client
 from caraer_client.models.install_app_request import InstallAppRequest
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_app_dto import ShowResponseAppDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1308,7 +1354,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseAppDTO**](ShowResponseAppDTO.md)
 
 ### Authorization
 
@@ -1326,11 +1372,13 @@ Name | Type | Description  | Notes
 **200** | Successfully installed the application |  -  |
 **404** | Application not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_app_categories**
-> list_app_categories()
+> List[Dict[str, object]] list_app_categories()
 
 List predefined marketplace app categories
 
@@ -1368,7 +1416,9 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # List predefined marketplace app categories
-        api_instance.list_app_categories()
+        api_response = api_instance.list_app_categories()
+        print("The response of ApplicationsApi->list_app_categories:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ApplicationsApi->list_app_categories: %s\n" % e)
 ```
@@ -1381,7 +1431,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**List[Dict[str, object]]**
 
 ### Authorization
 
@@ -1397,11 +1447,15 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successfully retrieved app categories |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **load_setting_options**
-> ShowResponse load_setting_options(uuid, load_app_setting_options_request)
+> ShowResponseLoadAppSettingOptionsResponse load_setting_options(uuid, load_app_setting_options_request)
 
 Load dynamic options for a setting select field
 
@@ -1414,7 +1468,7 @@ Invokes the app serverless function configured on the field's optionsSource and 
 ```python
 import caraer_client
 from caraer_client.models.load_app_setting_options_request import LoadAppSettingOptionsRequest
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_load_app_setting_options_response import ShowResponseLoadAppSettingOptionsResponse
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1462,7 +1516,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseLoadAppSettingOptionsResponse**](ShowResponseLoadAppSettingOptionsResponse.md)
 
 ### Authorization
 
@@ -1482,11 +1536,13 @@ Name | Type | Description  | Notes
 **403** | App not accessible |  -  |
 **404** | App, field, or serverless function not found |  -  |
 **502** | Serverless function failed or returned invalid response |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **migrate_to_v2**
-> SuccessResponse migrate_to_v2(uuid, migrate_app_to_v2_request=migrate_app_to_v2_request)
+> SuccessResponseMapStringObject migrate_to_v2(uuid, migrate_app_to_v2_request=migrate_app_to_v2_request)
 
 Migrate an app from platform V1 to V2
 
@@ -1499,7 +1555,7 @@ Opt-in in-place migration to the shared container runtime. Validates a single ru
 ```python
 import caraer_client
 from caraer_client.models.migrate_app_to_v2_request import MigrateAppToV2Request
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_map_string_object import SuccessResponseMapStringObject
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1547,7 +1603,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseMapStringObject**](SuccessResponseMapStringObject.md)
 
 ### Authorization
 
@@ -1566,11 +1622,13 @@ Name | Type | Description  | Notes
 **400** | Mixed/missing runtimes or invalid request |  -  |
 **403** | Not allowed to migrate this app |  -  |
 **404** | App not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **review_public_app**
-> ShowResponse review_public_app(uuid, review_request)
+> ShowResponseAppDTO review_public_app(uuid, review_request)
 
 Review a public app
 
@@ -1583,7 +1641,7 @@ Sets review outcome (approve/reject/changes requested), feedback, and optional r
 ```python
 import caraer_client
 from caraer_client.models.review_request import ReviewRequest
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_app_dto import ShowResponseAppDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1631,7 +1689,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseAppDTO**](ShowResponseAppDTO.md)
 
 ### Authorization
 
@@ -1649,11 +1707,13 @@ Name | Type | Description  | Notes
 **200** | Successfully reviewed the public app |  -  |
 **404** | Public app not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rotate_app**
-> ShowResponse rotate_app(uuid)
+> ShowResponseAppDTO rotate_app(uuid)
 
 Rotate application configurations
 
@@ -1665,7 +1725,7 @@ Rotates the configuration or settings for the specified application by UUID. On 
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_app_dto import ShowResponseAppDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1711,7 +1771,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseAppDTO**](ShowResponseAppDTO.md)
 
 ### Authorization
 
@@ -1729,6 +1789,8 @@ Name | Type | Description  | Notes
 **200** | Successfully rotated application configurations |  -  |
 **404** | Application not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1800,19 +1862,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/event-stream
+ - **Accept**: text/event-stream, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | SSE stream of log entries |  -  |
-**404** | App not found |  -  |
+**404** | The requested resource was not found. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **submit_public_app**
-> ShowResponse submit_public_app(uuid)
+> ShowResponseAppDTO submit_public_app(uuid)
 
 Submit a public app for review
 
@@ -1824,7 +1889,7 @@ Submits a public app specified by its UUID for review. Returns the submitted app
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_app_dto import ShowResponseAppDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1870,7 +1935,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseAppDTO**](ShowResponseAppDTO.md)
 
 ### Authorization
 
@@ -1888,11 +1953,13 @@ Name | Type | Description  | Notes
 **200** | Successfully submitted the public app for review |  -  |
 **404** | Public app not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **test_app_webhook**
-> test_app_webhook(app_uuid, webhook_uuid, record_uuid, event_type, property_name=property_name)
+> str test_app_webhook(app_uuid, webhook_uuid, record_uuid, event_type, property_name=property_name)
 
 Test a webhook for an app
 
@@ -1935,7 +2002,9 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Test a webhook for an app
-        api_instance.test_app_webhook(app_uuid, webhook_uuid, record_uuid, event_type, property_name=property_name)
+        api_response = api_instance.test_app_webhook(app_uuid, webhook_uuid, record_uuid, event_type, property_name=property_name)
+        print("The response of ApplicationsApi->test_app_webhook:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ApplicationsApi->test_app_webhook: %s\n" % e)
 ```
@@ -1955,7 +2024,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -1974,11 +2043,13 @@ void (empty response body)
 **400** | Invalid event type or app not installed |  -  |
 **404** | Webhook not found for the specified app or company |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **test_app_webhook_auto**
-> test_app_webhook_auto(app_uuid, webhook_uuid)
+> str test_app_webhook_auto(app_uuid, webhook_uuid)
 
 Test a webhook for an app (auto-resolve)
 
@@ -2018,7 +2089,9 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Test a webhook for an app (auto-resolve)
-        api_instance.test_app_webhook_auto(app_uuid, webhook_uuid)
+        api_response = api_instance.test_app_webhook_auto(app_uuid, webhook_uuid)
+        print("The response of ApplicationsApi->test_app_webhook_auto:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ApplicationsApi->test_app_webhook_auto: %s\n" % e)
 ```
@@ -2035,7 +2108,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -2054,11 +2127,13 @@ void (empty response body)
 **400** | Webhook topic cannot be used for record testing |  -  |
 **404** | Webhook not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **test_app_webhook_unsaved**
-> test_app_webhook_unsaved(app_uuid, test_webhook_request)
+> str test_app_webhook_unsaved(app_uuid, test_webhook_request)
 
 Test an unsaved webhook for an app
 
@@ -2099,7 +2174,9 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Test an unsaved webhook for an app
-        api_instance.test_app_webhook_unsaved(app_uuid, test_webhook_request)
+        api_response = api_instance.test_app_webhook_unsaved(app_uuid, test_webhook_request)
+        print("The response of ApplicationsApi->test_app_webhook_unsaved:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ApplicationsApi->test_app_webhook_unsaved: %s\n" % e)
 ```
@@ -2116,7 +2193,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -2135,11 +2212,13 @@ void (empty response body)
 **400** | Invalid webhook configuration or event parameters |  -  |
 **404** | App not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **uninstall_app**
-> ShowResponse uninstall_app(uuid, app_request)
+> ShowResponseAppDTO uninstall_app(uuid, app_request)
 
 Uninstall an application
 
@@ -2152,7 +2231,7 @@ Removes the installed application specified by its UUID using the provided setti
 ```python
 import caraer_client
 from caraer_client.models.app_request import AppRequest
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_app_dto import ShowResponseAppDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -2200,7 +2279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseAppDTO**](ShowResponseAppDTO.md)
 
 ### Authorization
 
@@ -2218,6 +2297,8 @@ Name | Type | Description  | Notes
 **200** | Successfully uninstalled the application |  -  |
 **404** | Application not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2304,11 +2385,13 @@ Name | Type | Description  | Notes
 **400** | Invalid input provided or app not installed |  -  |
 **404** | Webhook not found for the specified app or company |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_public_app**
-> ShowResponse update_public_app(uuid, app_dto)
+> ShowResponseAppDTO update_public_app(uuid, app_dto)
 
 Update a public app (creator edit)
 
@@ -2321,7 +2404,7 @@ Updates a public app with the full creator payload (label, description, details,
 ```python
 import caraer_client
 from caraer_client.models.app_dto import AppDTO
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_app_dto import ShowResponseAppDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -2369,7 +2452,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseAppDTO**](ShowResponseAppDTO.md)
 
 ### Authorization
 
@@ -2388,6 +2471,7 @@ Name | Type | Description  | Notes
 **404** | Public app not found |  -  |
 **403** | You are not allowed to update this app |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

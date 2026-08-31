@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **copy_properties_to_object**
-> SuccessResponse copy_properties_to_object(object_uuid, copy_properties_to_object_request)
+> SuccessResponseListPropertyDTO copy_properties_to_object(object_uuid, copy_properties_to_object_request)
 
 Copy properties to object
 
@@ -34,7 +34,7 @@ Attaches existing properties from other objects to the target object in a single
 ```python
 import caraer_client
 from caraer_client.models.copy_properties_to_object_request import CopyPropertiesToObjectRequest
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_list_property_dto import SuccessResponseListPropertyDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseListPropertyDTO**](SuccessResponseListPropertyDTO.md)
 
 ### Authorization
 
@@ -100,6 +100,9 @@ Name | Type | Description  | Notes
 **200** | Properties copied successfully |  -  |
 **400** | Invalid input data |  -  |
 **404** | Object or property not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -182,7 +185,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Property created successfully |  -  |
 **400** | Invalid input data |  -  |
-**500** | Internal server error |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -256,20 +262,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Property deleted successfully |  -  |
-**404** | Property not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_types**
-> PaginationResponse get_calculation_types(object_uuid)
+> PaginationResponsePropertyCalculationTypeDTO get_calculation_types(object_uuid)
 
 Retrieve allowed calculation types per property type
 
@@ -281,7 +289,7 @@ Returns the calculation functions available for each property type (for example 
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_response_property_calculation_type_dto import PaginationResponsePropertyCalculationTypeDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -327,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponsePropertyCalculationTypeDTO**](PaginationResponsePropertyCalculationTypeDTO.md)
 
 ### Authorization
 
@@ -336,19 +344,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Calculation types retrieved successfully |  -  |
-**500** | Internal server error |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_formats**
-> PaginationResponse get_formats(object_uuid)
+> PaginationResponsePropertyFormat get_formats(object_uuid)
 
 Retrieve property formats
 
@@ -360,7 +371,7 @@ Fetches a sorted list of available property formats. The formats are retrieved f
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_response_property_format import PaginationResponsePropertyFormat
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -406,7 +417,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponsePropertyFormat**](PaginationResponsePropertyFormat.md)
 
 ### Authorization
 
@@ -415,19 +426,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Property formats retrieved successfully |  -  |
-**500** | Internal server error |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_properties**
-> PaginationResponse get_properties(object_uuid, body)
+> PaginationResponsePropertyDTO get_properties(object_uuid, pagination_request)
 
 Fetch paginated properties
 
@@ -439,7 +453,8 @@ Retrieves a paginated list of properties for a given object. Depending on the ob
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_property_dto import PaginationResponsePropertyDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -464,11 +479,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.PropertyApi(api_client)
     object_uuid = 'object_uuid_example' # str | 
-    body = None # object | Pagination details (limit, page, filters, sort, query)
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | Pagination details (limit, page, filters, sort, query)
 
     try:
         # Fetch paginated properties
-        api_response = api_instance.get_properties(object_uuid, body)
+        api_response = api_instance.get_properties(object_uuid, pagination_request)
         print("The response of PropertyApi->get_properties:\n")
         pprint(api_response)
     except Exception as e:
@@ -483,11 +498,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **object_uuid** | **str**|  | 
- **body** | **object**| Pagination details (limit, page, filters, sort, query) | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)| Pagination details (limit, page, filters, sort, query) | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponsePropertyDTO**](PaginationResponsePropertyDTO.md)
 
 ### Authorization
 
@@ -505,11 +520,14 @@ Name | Type | Description  | Notes
 **200** | Properties fetched successfully |  -  |
 **400** | Invalid pagination request |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_property**
-> ShowResponse get_property(object_uuid, property_uuid)
+> ShowResponsePropertyDTO get_property(object_uuid, property_uuid)
 
 Fetch a specific property
 
@@ -521,7 +539,7 @@ Retrieves details of a property by its UUID and associates it with its parent ob
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_property_dto import ShowResponsePropertyDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -569,7 +587,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponsePropertyDTO**](ShowResponsePropertyDTO.md)
 
 ### Authorization
 
@@ -578,20 +596,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Property retrieved successfully |  -  |
-**404** | Property not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_property_calculation_types**
-> SuccessResponse get_property_calculation_types(object_uuid, property_uuid)
+> SuccessResponseListString get_property_calculation_types(object_uuid, property_uuid)
 
 Retrieve allowed calculation types for a property
 
@@ -603,7 +623,7 @@ Returns calculation functions supported for the property's type.
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_list_string import SuccessResponseListString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -651,7 +671,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseListString**](SuccessResponseListString.md)
 
 ### Authorization
 
@@ -660,14 +680,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Calculation types retrieved successfully |  -  |
-**404** | Property or object not found |  -  |
+**404** | The requested resource was not found. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -749,7 +772,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Archived property permanently removed |  -  |
 **400** | Property is not archived for this object |  -  |
-**404** | Object or property not found |  -  |
+**404** | The requested resource was not found. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -823,15 +849,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Property pinned successfully |  -  |
-**404** | Property not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -905,15 +933,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Property restored successfully |  -  |
-**404** | Property or Object not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -987,20 +1017,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Property unpinned successfully |  -  |
-**404** | Property not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_indices2**
-> SuccessResponse update_indices2(object_uuid, body)
+> SuccessResponseListPropertyDTO update_indices2(object_uuid, request_body)
 
 Update property indices
 
@@ -1012,7 +1044,7 @@ Updates the indices for properties of a specific object. The request body should
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_list_property_dto import SuccessResponseListPropertyDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1037,11 +1069,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.PropertyApi(api_client)
     object_uuid = 'object_uuid_example' # str | 
-    body = 'body_example' # str | Mapping of property UUIDs to new index values
+    request_body = {'key': 56} # Dict[str, int] | Mapping of property UUIDs to new index values
 
     try:
         # Update property indices
-        api_response = api_instance.update_indices2(object_uuid, body)
+        api_response = api_instance.update_indices2(object_uuid, request_body)
         print("The response of PropertyApi->update_indices2:\n")
         pprint(api_response)
     except Exception as e:
@@ -1056,11 +1088,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **object_uuid** | **str**|  | 
- **body** | **str**| Mapping of property UUIDs to new index values | 
+ **request_body** | [**Dict[str, int]**](int.md)| Mapping of property UUIDs to new index values | 
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseListPropertyDTO**](SuccessResponseListPropertyDTO.md)
 
 ### Authorization
 
@@ -1077,7 +1109,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Indices updated successfully |  -  |
 **400** | Invalid input provided |  -  |
-**500** | Internal server error |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1162,8 +1197,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Property updated successfully |  -  |
 **400** | Invalid input data |  -  |
-**404** | Property not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

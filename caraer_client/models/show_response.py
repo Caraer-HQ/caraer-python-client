@@ -25,10 +25,10 @@ from pydantic_core import to_jsonable_python
 
 class ShowResponse(BaseModel):
     """
-    Represents the response for viewing or showing a specific resource.
+    Success response (ShowResponse).
     """ # noqa: E501
-    message: Optional[StrictStr] = Field(default=None, description="A message detailing the result of the operation.", json_schema_extra={"examples": ["Success"]})
-    data: Optional[Any] = Field(default=None, description="The data payload of the response, if any.")
+    message: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["Success"]})
+    data: Optional[Dict[str, Any]] = None
     __properties: ClassVar[List[str]] = ["message", "data"]
 
     model_config = ConfigDict(
@@ -70,11 +70,6 @@ class ShowResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if data (nullable) is None
-        # and model_fields_set contains the field
-        if self.data is None and "data" in self.model_fields_set:
-            _dict['data'] = None
-
         return _dict
 
     @classmethod

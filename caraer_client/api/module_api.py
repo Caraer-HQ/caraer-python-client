@@ -16,13 +16,13 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
-from typing import Any, Optional
 from typing_extensions import Annotated
 from caraer_client.models.create_response import CreateResponse
 from caraer_client.models.delete_response import DeleteResponse
 from caraer_client.models.page_content_dto import PageContentDTO
-from caraer_client.models.pagination_response import PaginationResponse
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_page_content_dto import PaginationResponsePageContentDTO
+from caraer_client.models.show_response_page_content_dto import ShowResponsePageContentDTO
 from caraer_client.models.update_response import UpdateResponse
 
 from caraer_client.api_client import ApiClient, RequestSerialized
@@ -100,6 +100,9 @@ class ModuleApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -169,6 +172,9 @@ class ModuleApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -238,6 +244,9 @@ class ModuleApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -381,6 +390,9 @@ class ModuleApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -450,6 +462,9 @@ class ModuleApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -519,6 +534,9 @@ class ModuleApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -662,6 +680,8 @@ class ModuleApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -731,6 +751,8 @@ class ModuleApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -800,6 +822,8 @@ class ModuleApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -844,8 +868,7 @@ class ModuleApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -928,9 +951,10 @@ class ModuleApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponse",
-            '403': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -998,9 +1022,10 @@ class ModuleApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponse",
-            '403': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1068,9 +1093,10 @@ class ModuleApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponse",
-            '403': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1115,8 +1141,7 @@ class ModuleApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1160,7 +1185,7 @@ class ModuleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponsePageContentDTO:
         """Fetch a specific module
 
         Retrieves details of a module by its UUID.
@@ -1198,9 +1223,11 @@ class ModuleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePageContentDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1229,7 +1256,7 @@ class ModuleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponsePageContentDTO]:
         """Fetch a specific module
 
         Retrieves details of a module by its UUID.
@@ -1267,9 +1294,11 @@ class ModuleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePageContentDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1336,9 +1365,11 @@ class ModuleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePageContentDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1383,8 +1414,7 @@ class ModuleApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1415,7 +1445,7 @@ class ModuleApi:
     @validate_call
     def get_modules(
         self,
-        body: Annotated[Optional[Any], Field(description="Pagination details")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination details")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1428,13 +1458,13 @@ class ModuleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponsePageContentDTO:
         """Fetch paginated modules
 
         Retrieves a paginated list of modules.
 
-        :param body: Pagination details (required)
-        :type body: object
+        :param pagination_request: Pagination details (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1458,7 +1488,7 @@ class ModuleApi:
         """ # noqa: E501
 
         _param = self._get_modules_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1466,9 +1496,12 @@ class ModuleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePageContentDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1484,7 +1517,7 @@ class ModuleApi:
     @validate_call
     def get_modules_with_http_info(
         self,
-        body: Annotated[Optional[Any], Field(description="Pagination details")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination details")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1497,13 +1530,13 @@ class ModuleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponsePageContentDTO]:
         """Fetch paginated modules
 
         Retrieves a paginated list of modules.
 
-        :param body: Pagination details (required)
-        :type body: object
+        :param pagination_request: Pagination details (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1527,7 +1560,7 @@ class ModuleApi:
         """ # noqa: E501
 
         _param = self._get_modules_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1535,9 +1568,12 @@ class ModuleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePageContentDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1553,7 +1589,7 @@ class ModuleApi:
     @validate_call
     def get_modules_without_preload_content(
         self,
-        body: Annotated[Optional[Any], Field(description="Pagination details")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination details")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1571,8 +1607,8 @@ class ModuleApi:
 
         Retrieves a paginated list of modules.
 
-        :param body: Pagination details (required)
-        :type body: object
+        :param pagination_request: Pagination details (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1596,7 +1632,7 @@ class ModuleApi:
         """ # noqa: E501
 
         _param = self._get_modules_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1604,9 +1640,12 @@ class ModuleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePageContentDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1617,7 +1656,7 @@ class ModuleApi:
 
     def _get_modules_serialize(
         self,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1643,8 +1682,8 @@ class ModuleApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -1708,7 +1747,7 @@ class ModuleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponsePageContentDTO:
         """Fetch a personal module
 
         Retrieves a personal module by UUID for the logged-in user.
@@ -1746,10 +1785,11 @@ class ModuleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
-            '403': "ErrorResponse",
+            '200': "ShowResponsePageContentDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1778,7 +1818,7 @@ class ModuleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponsePageContentDTO]:
         """Fetch a personal module
 
         Retrieves a personal module by UUID for the logged-in user.
@@ -1816,10 +1856,11 @@ class ModuleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
-            '403': "ErrorResponse",
+            '200': "ShowResponsePageContentDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1886,10 +1927,11 @@ class ModuleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
-            '403': "ErrorResponse",
+            '200': "ShowResponsePageContentDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1934,8 +1976,7 @@ class ModuleApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1966,7 +2007,7 @@ class ModuleApi:
     @validate_call
     def get_personal_modules(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1979,13 +2020,13 @@ class ModuleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponsePageContentDTO:
         """Fetch paginated personal modules
 
         Retrieves personal modules for the logged-in user.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2009,7 +2050,7 @@ class ModuleApi:
         """ # noqa: E501
 
         _param = self._get_personal_modules_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2017,9 +2058,12 @@ class ModuleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePageContentDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2035,7 +2079,7 @@ class ModuleApi:
     @validate_call
     def get_personal_modules_with_http_info(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2048,13 +2092,13 @@ class ModuleApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponsePageContentDTO]:
         """Fetch paginated personal modules
 
         Retrieves personal modules for the logged-in user.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2078,7 +2122,7 @@ class ModuleApi:
         """ # noqa: E501
 
         _param = self._get_personal_modules_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2086,9 +2130,12 @@ class ModuleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePageContentDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2104,7 +2151,7 @@ class ModuleApi:
     @validate_call
     def get_personal_modules_without_preload_content(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2122,8 +2169,8 @@ class ModuleApi:
 
         Retrieves personal modules for the logged-in user.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2147,7 +2194,7 @@ class ModuleApi:
         """ # noqa: E501
 
         _param = self._get_personal_modules_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2155,9 +2202,12 @@ class ModuleApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePageContentDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2168,7 +2218,7 @@ class ModuleApi:
 
     def _get_personal_modules_serialize(
         self,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2194,8 +2244,8 @@ class ModuleApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -2305,6 +2355,8 @@ class ModuleApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2379,6 +2431,8 @@ class ModuleApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2453,6 +2507,8 @@ class ModuleApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2604,6 +2660,7 @@ class ModuleApi:
             '403': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2678,6 +2735,7 @@ class ModuleApi:
             '403': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2752,6 +2810,7 @@ class ModuleApi:
             '403': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2799,8 +2858,7 @@ class ModuleApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 

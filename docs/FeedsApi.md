@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **index1**
-> object index1(body)
+> PaginationResponseFeedDTO index1(pagination_request)
 
 List feeds
 
@@ -18,6 +18,8 @@ List feeds
 
 ```python
 import caraer_client
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_feed_dto import PaginationResponseFeedDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -41,11 +43,11 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.FeedsApi(api_client)
-    body = None # object | 
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | 
 
     try:
         # List feeds
-        api_response = api_instance.index1(body)
+        api_response = api_instance.index1(pagination_request)
         print("The response of FeedsApi->index1:\n")
         pprint(api_response)
     except Exception as e:
@@ -59,11 +61,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **object**|  | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)|  | 
 
 ### Return type
 
-**object**
+[**PaginationResponseFeedDTO**](PaginationResponseFeedDTO.md)
 
 ### Authorization
 
@@ -79,6 +81,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

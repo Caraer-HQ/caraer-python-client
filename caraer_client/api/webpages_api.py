@@ -23,13 +23,18 @@ from caraer_client.models.create_or_update_environment_request import CreateOrUp
 from caraer_client.models.create_response import CreateResponse
 from caraer_client.models.create_response_signed_url_result_dto import CreateResponseSignedUrlResultDTO
 from caraer_client.models.create_signed_url_request import CreateSignedUrlRequest
-from caraer_client.models.pagination_response import PaginationResponse
 from caraer_client.models.pagination_response_preview_dto import PaginationResponsePreviewDTO
+from caraer_client.models.pagination_response_public_environment_dto import PaginationResponsePublicEnvironmentDTO
+from caraer_client.models.pagination_response_web_menu_dto import PaginationResponseWebMenuDTO
 from caraer_client.models.pagination_response_webpage_access_grant_dto import PaginationResponseWebpageAccessGrantDTO
 from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_list_environment_dto import ShowResponseListEnvironmentDTO
+from caraer_client.models.show_response_list_property_dto import ShowResponseListPropertyDTO
+from caraer_client.models.show_response_list_webpage_picker_item_dto import ShowResponseListWebpagePickerItemDTO
+from caraer_client.models.show_response_string import ShowResponseString
+from caraer_client.models.show_response_template_webpage_dto import ShowResponseTemplateWebpageDTO
 from caraer_client.models.show_response_webpage_protection_info_dto import ShowResponseWebpageProtectionInfoDTO
 from caraer_client.models.simple_public_company_dto import SimplePublicCompanyDTO
-from caraer_client.models.success_response import SuccessResponse
 from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.models.template_webpage_dto import TemplateWebpageDTO
 from caraer_client.models.update_response import UpdateResponse
@@ -115,6 +120,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebpageEditingStatusDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -187,6 +195,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebpageEditingStatusDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -259,6 +270,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebpageEditingStatusDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -395,6 +409,8 @@ class WebpagesApi:
             '200': "WebpageEditingStatusDTO",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -468,6 +484,8 @@ class WebpagesApi:
             '200': "WebpageEditingStatusDTO",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -541,6 +559,8 @@ class WebpagesApi:
             '200': "WebpageEditingStatusDTO",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -634,7 +654,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseListPropertyDTO:
         """Copy properties to environments
 
         Copies selected properties for the chosen environments (e.g. production_title → german_production_title).
@@ -672,9 +692,12 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseListPropertyDTO",
             '400': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -703,7 +726,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseListPropertyDTO]:
         """Copy properties to environments
 
         Copies selected properties for the chosen environments (e.g. production_title → german_production_title).
@@ -741,9 +764,12 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseListPropertyDTO",
             '400': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -810,9 +836,12 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseListPropertyDTO",
             '400': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -962,6 +991,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "CreateResponse",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1038,6 +1070,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "CreateResponse",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1114,6 +1149,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "CreateResponse",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1256,6 +1294,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "CreateResponse",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1332,6 +1373,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "CreateResponse",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1408,6 +1452,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "CreateResponse",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1502,7 +1549,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseString:
         """Create an environment
 
         Creates an environment.
@@ -1540,8 +1587,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseString",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1570,7 +1620,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseString]:
         """Create an environment
 
         Creates an environment.
@@ -1608,8 +1658,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseString",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1676,8 +1729,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseString",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1829,6 +1885,8 @@ class WebpagesApi:
             '201': "CreateResponse",
             '404': "NotFoundError",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1907,6 +1965,8 @@ class WebpagesApi:
             '201': "CreateResponse",
             '404': "NotFoundError",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1985,6 +2045,8 @@ class WebpagesApi:
             '201': "CreateResponse",
             '404': "NotFoundError",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2138,6 +2200,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponseSignedUrlResultDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2212,6 +2278,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponseSignedUrlResultDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2286,6 +2356,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponseSignedUrlResultDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2440,6 +2514,9 @@ class WebpagesApi:
             '201': "CreateResponse",
             '400': "NotFoundError",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2513,6 +2590,9 @@ class WebpagesApi:
             '201': "CreateResponse",
             '400': "NotFoundError",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2586,6 +2666,9 @@ class WebpagesApi:
             '201': "CreateResponse",
             '400': "NotFoundError",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2692,7 +2775,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseString:
         """Delete an environment
 
         Soft deletes an environment.
@@ -2730,8 +2813,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseString",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2760,7 +2846,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseString]:
         """Delete an environment
 
         Soft deletes an environment.
@@ -2798,8 +2884,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseString",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2866,8 +2955,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseString",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2958,7 +3050,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponsePublicEnvironmentDTO:
         """Get all public webpage slugs
 
         Retrieves a list of all webpage slugs for the public site. Returns a PaginationResponse containing WebpageMapItemDTO objects.
@@ -3002,8 +3094,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePublicEnvironmentDTO",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3034,7 +3129,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponsePublicEnvironmentDTO]:
         """Get all public webpage slugs
 
         Retrieves a list of all webpage slugs for the public site. Returns a PaginationResponse containing WebpageMapItemDTO objects.
@@ -3078,8 +3173,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePublicEnvironmentDTO",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3154,8 +3252,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePublicEnvironmentDTO",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3298,6 +3399,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SimplePublicCompanyDTO",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3374,6 +3478,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SimplePublicCompanyDTO",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3450,6 +3557,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SimplePublicCompanyDTO",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3543,7 +3653,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseListEnvironmentDTO:
         """Get all environments
 
         Retrieves a list of all environments.
@@ -3578,8 +3688,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseListEnvironmentDTO",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3607,7 +3720,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseListEnvironmentDTO]:
         """Get all environments
 
         Retrieves a list of all environments.
@@ -3642,8 +3755,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseListEnvironmentDTO",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3706,8 +3822,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseListEnvironmentDTO",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3795,7 +3914,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseWebMenuDTO:
         """Fetch public web menus
 
         Retrieves a list of web menus for the public site. Returns a PaginationResponse containing WebMenuDTO objects.
@@ -3839,8 +3958,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseWebMenuDTO",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3871,7 +3993,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseWebMenuDTO]:
         """Fetch public web menus
 
         Retrieves a list of web menus for the public site. Returns a PaginationResponse containing WebMenuDTO objects.
@@ -3915,8 +4037,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseWebMenuDTO",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3991,8 +4116,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseWebMenuDTO",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4162,6 +4290,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PaginationResponsePreviewDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4265,6 +4397,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PaginationResponsePreviewDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4368,6 +4504,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PaginationResponsePreviewDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4572,6 +4712,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebpageDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4672,6 +4815,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebpageDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4772,6 +4918,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebpageDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4956,6 +5105,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebpageDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5052,6 +5204,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebpageDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5148,6 +5303,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebpageDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5312,6 +5470,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseWebpageProtectionInfoDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5391,6 +5553,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseWebpageProtectionInfoDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5470,6 +5636,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseWebpageProtectionInfoDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5611,6 +5781,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponse",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5683,6 +5856,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponse",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5755,6 +5931,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponse",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5847,7 +6026,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseTemplateWebpageDTO:
         """Get template webpage
 
         Retrieves the template webpage for the given object name by querying the TemplateWebpage associated with it. Returns a ShowResponse containing TemplateWebpageDTO data.
@@ -5888,8 +6067,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseTemplateWebpageDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5919,7 +6101,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseTemplateWebpageDTO]:
         """Get template webpage
 
         Retrieves the template webpage for the given object name by querying the TemplateWebpage associated with it. Returns a ShowResponse containing TemplateWebpageDTO data.
@@ -5960,8 +6142,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseTemplateWebpageDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6032,8 +6217,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseTemplateWebpageDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6169,6 +6357,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebpageEditingStatusDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6241,6 +6432,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebpageEditingStatusDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6313,6 +6507,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebpageEditingStatusDTO",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6453,6 +6650,8 @@ class WebpagesApi:
             '200': "WebpageDTO",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6530,6 +6729,8 @@ class WebpagesApi:
             '200': "WebpageDTO",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6607,6 +6808,8 @@ class WebpagesApi:
             '200': "WebpageDTO",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6750,6 +6953,8 @@ class WebpagesApi:
             '200': "WebpageEditingStatusDTO",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6823,6 +7028,8 @@ class WebpagesApi:
             '200': "WebpageEditingStatusDTO",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6896,6 +7103,8 @@ class WebpagesApi:
             '200': "WebpageEditingStatusDTO",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6991,7 +7200,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseListWebpagePickerItemDTO:
         """List webpages for picker dropdowns
 
         Returns uuid and title for all webpage records across objects with a Page trait. Supports optional filters for published pages and excluding template-related pages.
@@ -7035,7 +7244,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseListWebpagePickerItemDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7066,7 +7279,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseListWebpagePickerItemDTO]:
         """List webpages for picker dropdowns
 
         Returns uuid and title for all webpage records across objects with a Page trait. Supports optional filters for published pages and excluding template-related pages.
@@ -7110,7 +7323,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseListWebpagePickerItemDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7185,7 +7402,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseListWebpagePickerItemDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7328,6 +7549,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PaginationResponseWebpageAccessGrantDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7398,6 +7623,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PaginationResponseWebpageAccessGrantDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7468,6 +7697,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PaginationResponseWebpageAccessGrantDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7611,6 +7844,8 @@ class WebpagesApi:
             '400': "NotFoundError",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7689,6 +7924,8 @@ class WebpagesApi:
             '400': "NotFoundError",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7767,6 +8004,8 @@ class WebpagesApi:
             '400': "NotFoundError",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7866,7 +8105,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseString:
         """Release a template webpage editing session
 
         Releases the editing session held by the current user for this template webpage.
@@ -7907,7 +8146,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7937,7 +8180,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseString]:
         """Release a template webpage editing session
 
         Releases the editing session held by the current user for this template webpage.
@@ -7978,7 +8221,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8049,7 +8296,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8141,7 +8392,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseString:
         """Release a webpage editing session
 
         Releases the editing session held by the current user for this webpage.
@@ -8179,8 +8430,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseString",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8209,7 +8463,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseString]:
         """Release a webpage editing session
 
         Releases the editing session held by the current user for this webpage.
@@ -8247,8 +8501,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseString",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8315,8 +8572,11 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseString",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8451,6 +8711,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8525,6 +8789,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8599,6 +8867,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8750,6 +9022,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8833,6 +9109,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8916,6 +9196,10 @@ class WebpagesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9077,6 +9361,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UpdateResponse",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9153,6 +9440,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UpdateResponse",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9229,6 +9519,9 @@ class WebpagesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UpdateResponse",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9377,6 +9670,8 @@ class WebpagesApi:
             '400': "NotFoundError",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9455,6 +9750,8 @@ class WebpagesApi:
             '400': "NotFoundError",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9533,6 +9830,8 @@ class WebpagesApi:
             '400': "NotFoundError",
             '403': "ValidationError",
             '404': "NotFoundError",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9642,7 +9941,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseString:
         """Upload a file for a webpage
 
         Uploads a file to S3 storage under the specified webpage's attachments folder, sets the file's ACL to public, and returns the public URL for the file in a SuccessResponse.
@@ -9680,9 +9979,12 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "NotFoundError",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9711,7 +10013,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseString]:
         """Upload a file for a webpage
 
         Uploads a file to S3 storage under the specified webpage's attachments folder, sets the file's ACL to public, and returns the public URL for the file in a SuccessResponse.
@@ -9749,9 +10051,12 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "NotFoundError",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9818,9 +10123,12 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "NotFoundError",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9922,7 +10230,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseString:
         """Upload a file
 
         Uploads a file to S3 storage and returns the public URL for the file in a SuccessResponse.
@@ -9960,9 +10268,12 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "NotFoundError",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9991,7 +10302,7 @@ class WebpagesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseString]:
         """Upload a file
 
         Uploads a file to S3 storage and returns the public URL for the file in a SuccessResponse.
@@ -10029,9 +10340,12 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "NotFoundError",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10098,9 +10412,12 @@ class WebpagesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "NotFoundError",
             '500': "NotFoundError",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

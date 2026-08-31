@@ -90,6 +90,9 @@ Name | Type | Description  | Notes
 **200** | Web menu created successfully |  -  |
 **400** | Bad request |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -169,12 +172,15 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Web menu deleted successfully |  -  |
 **400** | Bad request |  -  |
-**500** | Internal server error |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_web_menu**
-> ShowResponse get_web_menu(uuid)
+> ShowResponseWebMenuDTO get_web_menu(uuid)
 
 Show web menu
 
@@ -186,7 +192,7 @@ Show web menu
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_web_menu_dto import ShowResponseWebMenuDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -232,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseWebMenuDTO**](ShowResponseWebMenuDTO.md)
 
 ### Authorization
 
@@ -250,11 +256,14 @@ Name | Type | Description  | Notes
 **200** | Web menu shown successfully |  -  |
 **400** | Bad request |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **index_web_menus**
-> PaginationResponse index_web_menus(body)
+> PaginationResponseWebMenuDTO index_web_menus(pagination_request)
 
 Index web menus
 
@@ -266,7 +275,8 @@ Index web menus
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_web_menu_dto import PaginationResponseWebMenuDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -290,11 +300,11 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.WebMenusApi(api_client)
-    body = None # object | 
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | 
 
     try:
         # Index web menus
-        api_response = api_instance.index_web_menus(body)
+        api_response = api_instance.index_web_menus(pagination_request)
         print("The response of WebMenusApi->index_web_menus:\n")
         pprint(api_response)
     except Exception as e:
@@ -308,11 +318,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **object**|  | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)|  | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseWebMenuDTO**](PaginationResponseWebMenuDTO.md)
 
 ### Authorization
 
@@ -330,6 +340,9 @@ Name | Type | Description  | Notes
 **200** | Web menus indexed successfully |  -  |
 **400** | Bad request |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -401,15 +414,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Web menu restored successfully |  -  |
-**404** | Web menu not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -493,6 +508,9 @@ Name | Type | Description  | Notes
 **200** | Web menu updated successfully |  -  |
 **400** | Bad request |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

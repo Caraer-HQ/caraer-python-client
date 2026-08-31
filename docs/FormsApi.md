@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 
 # **chat_field**
-> object chat_field(company_uuid, field_uuid, prompt, form_with_ai_prompt_dto)
+> SuccessResponseString chat_field(company_uuid, field_uuid, prompt, form_with_ai_prompt_dto)
 
 AI form field (public)
 
@@ -35,6 +35,7 @@ When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the ten
 ```python
 import caraer_client
 from caraer_client.models.form_with_ai_prompt_dto import FormWithAiPromptDTO
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -86,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -95,18 +96,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: */*, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **chat_step**
-> object chat_step(company_uuid, step_title, prompt, form_with_ai_prompt_dto)
+> SuccessResponseListString chat_step(company_uuid, step_title, prompt, form_with_ai_prompt_dto)
 
 AI form step (public)
 
@@ -119,6 +124,7 @@ When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the ten
 ```python
 import caraer_client
 from caraer_client.models.form_with_ai_prompt_dto import FormWithAiPromptDTO
+from caraer_client.models.success_response_list_string import SuccessResponseListString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -170,7 +176,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**SuccessResponseListString**](SuccessResponseListString.md)
 
 ### Authorization
 
@@ -179,13 +185,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: */*, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -268,6 +278,8 @@ Name | Type | Description  | Notes
 **400** | Invalid input |  -  |
 **401** | Unauthorized access |  -  |
 **403** | Forbidden |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -339,21 +351,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Form successfully deleted |  -  |
-**404** | Form not found |  -  |
-**401** | Unauthorized access |  -  |
-**403** | Forbidden |  -  |
+**404** | The requested resource was not found. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_form**
-> ShowResponse get_form(form_uuid)
+> ShowResponseFormDTO get_form(form_uuid)
 
 Get form by UUID
 
@@ -365,7 +378,7 @@ Retrieves a specific form by its UUID. Returns the details of the form in a Form
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_form_dto import ShowResponseFormDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -411,7 +424,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseFormDTO**](ShowResponseFormDTO.md)
 
 ### Authorization
 
@@ -430,11 +443,12 @@ Name | Type | Description  | Notes
 **404** | Form not found |  -  |
 **401** | Unauthorized access |  -  |
 **403** | Forbidden |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_form_public**
-> ShowResponse get_form_public(company_uuid, form_uuid)
+> ShowResponsePublicFormDTO get_form_public(company_uuid, form_uuid)
 
 Get form by UUID
 
@@ -446,7 +460,7 @@ Retrieves a specific form by its UUID. When X-CARAER-TOKEN or X-Caraer-Company-U
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_public_form_dto import ShowResponsePublicFormDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -494,7 +508,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponsePublicFormDTO**](ShowResponsePublicFormDTO.md)
 
 ### Authorization
 
@@ -503,21 +517,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successfully retrieved the form |  -  |
-**404** | Form not found |  -  |
-**401** | Unauthorized access |  -  |
-**403** | Forbidden |  -  |
+**404** | The requested resource was not found. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_forms**
-> PaginationResponse get_forms(body)
+> PaginationResponseFormDTO get_forms(pagination_request)
 
 Get paginated list of forms
 
@@ -529,7 +544,8 @@ Retrieves a paginated list of forms based on the provided filters, sorting, and 
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_form_dto import PaginationResponseFormDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -553,11 +569,11 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.FormsApi(api_client)
-    body = None # object | 
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | 
 
     try:
         # Get paginated list of forms
-        api_response = api_instance.get_forms(body)
+        api_response = api_instance.get_forms(pagination_request)
         print("The response of FormsApi->get_forms:\n")
         pprint(api_response)
     except Exception as e:
@@ -571,11 +587,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **object**|  | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)|  | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseFormDTO**](PaginationResponseFormDTO.md)
 
 ### Authorization
 
@@ -594,11 +610,13 @@ Name | Type | Description  | Notes
 **400** | Invalid request |  -  |
 **401** | Unauthorized access |  -  |
 **403** | Forbidden |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_forms_by_object**
-> PaginationResponse get_forms_by_object(object_uuid, body)
+> PaginationResponseFormDTO get_forms_by_object(object_uuid, pagination_request)
 
 Get forms by object UUID
 
@@ -610,7 +628,8 @@ Retrieves a paginated list of forms associated with a specific object UUID. The 
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_form_dto import PaginationResponseFormDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -635,11 +654,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.FormsApi(api_client)
     object_uuid = 'object_uuid_example' # str | UUID of the object to get forms for
-    body = None # object | 
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | 
 
     try:
         # Get forms by object UUID
-        api_response = api_instance.get_forms_by_object(object_uuid, body)
+        api_response = api_instance.get_forms_by_object(object_uuid, pagination_request)
         print("The response of FormsApi->get_forms_by_object:\n")
         pprint(api_response)
     except Exception as e:
@@ -654,11 +673,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **object_uuid** | **str**| UUID of the object to get forms for | 
- **body** | **object**|  | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)|  | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseFormDTO**](PaginationResponseFormDTO.md)
 
 ### Authorization
 
@@ -677,11 +696,13 @@ Name | Type | Description  | Notes
 **400** | Invalid request |  -  |
 **401** | Unauthorized access |  -  |
 **403** | Forbidden |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_forms_public**
-> object get_forms_public(company_uuid, body)
+> PaginationResponsePublicFormDTO get_forms_public(company_uuid, pagination_request)
 
 Get all forms for a company
 
@@ -693,6 +714,8 @@ When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the ten
 
 ```python
 import caraer_client
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_public_form_dto import PaginationResponsePublicFormDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -717,11 +740,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.FormsApi(api_client)
     company_uuid = 'company_uuid_example' # str | 
-    body = None # object | 
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | 
 
     try:
         # Get all forms for a company
-        api_response = api_instance.get_forms_public(company_uuid, body)
+        api_response = api_instance.get_forms_public(company_uuid, pagination_request)
         print("The response of FormsApi->get_forms_public:\n")
         pprint(api_response)
     except Exception as e:
@@ -736,11 +759,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **company_uuid** | **str**|  | 
- **body** | **object**|  | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)|  | 
 
 ### Return type
 
-**object**
+[**PaginationResponsePublicFormDTO**](PaginationResponsePublicFormDTO.md)
 
 ### Authorization
 
@@ -749,18 +772,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: */*, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_objects_with_forms**
-> ShowResponse get_objects_with_forms()
+> ShowResponseListFormObjectSummaryDTO get_objects_with_forms()
 
 List objects that have forms
 
@@ -772,7 +799,7 @@ Returns distinct custom objects that have at least one non-deleted form, ordered
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_list_form_object_summary_dto import ShowResponseListFormObjectSummaryDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -814,7 +841,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseListFormObjectSummaryDTO**](ShowResponseListFormObjectSummaryDTO.md)
 
 ### Authorization
 
@@ -832,11 +859,13 @@ This endpoint does not need any parameter.
 **200** | Successfully retrieved objects with forms |  -  |
 **401** | Unauthorized access |  -  |
 **403** | Forbidden |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_options**
-> object get_options(property_uuid, company_uuid, body)
+> PaginationResponsePropertyOption get_options(property_uuid, company_uuid, pagination_request)
 
 Property options (public)
 
@@ -848,6 +877,8 @@ When X-CARAER-TOKEN or X-Caraer-Company-Uuid is sent, that value selects the ten
 
 ```python
 import caraer_client
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_property_option import PaginationResponsePropertyOption
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -873,11 +904,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     api_instance = caraer_client.FormsApi(api_client)
     property_uuid = 'property_uuid_example' # str | 
     company_uuid = 'company_uuid_example' # str | 
-    body = None # object | 
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | 
 
     try:
         # Property options (public)
-        api_response = api_instance.get_options(property_uuid, company_uuid, body)
+        api_response = api_instance.get_options(property_uuid, company_uuid, pagination_request)
         print("The response of FormsApi->get_options:\n")
         pprint(api_response)
     except Exception as e:
@@ -893,11 +924,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **property_uuid** | **str**|  | 
  **company_uuid** | **str**|  | 
- **body** | **object**|  | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)|  | 
 
 ### Return type
 
-**object**
+[**PaginationResponsePropertyOption**](PaginationResponsePropertyOption.md)
 
 ### Authorization
 
@@ -906,13 +937,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: */*, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -984,21 +1019,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Form successfully restored |  -  |
-**404** | Form not found |  -  |
-**401** | Unauthorized access |  -  |
-**403** | Forbidden |  -  |
+**404** | The requested resource was not found. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **submit**
-> SuccessResponse submit(company_uuid, form_uuid, form_dto)
+> SuccessResponseString submit(company_uuid, form_uuid, form_dto)
 
 Submit a form
 
@@ -1011,7 +1047,7 @@ Submits a form with the provided data. Returns a SuccessResponse upon successful
 ```python
 import caraer_client
 from caraer_client.models.form_dto import FormDTO
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1061,7 +1097,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -1078,7 +1114,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Form successfully submitted |  -  |
 **400** | Invalid input |  -  |
-**401** | Invalid X-CARAER-TOKEN |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1164,11 +1203,12 @@ Name | Type | Description  | Notes
 **404** | Form not found |  -  |
 **401** | Unauthorized access |  -  |
 **403** | Forbidden |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_files**
-> SuccessResponse upload_files(company_uuid, form_uuid, files)
+> SuccessResponseListString upload_files(company_uuid, form_uuid, files)
 
 Submit a file
 
@@ -1180,7 +1220,7 @@ Submits a file with the provided data. Returns a SuccessResponse upon successful
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_list_string import SuccessResponseListString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1230,7 +1270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseListString**](SuccessResponseListString.md)
 
 ### Authorization
 
@@ -1247,7 +1287,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | File successfully submitted |  -  |
 **400** | Invalid input |  -  |
-**401** | Invalid X-CARAER-TOKEN |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

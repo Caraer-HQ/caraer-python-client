@@ -16,13 +16,15 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
-from typing import Any, Optional
+from typing import Optional
 from typing_extensions import Annotated
 from caraer_client.models.create_developer_project_request import CreateDeveloperProjectRequest
 from caraer_client.models.create_project_build_request import CreateProjectBuildRequest
 from caraer_client.models.create_response import CreateResponse
 from caraer_client.models.deploy_build_request import DeployBuildRequest
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_developer_project_dto import ShowResponseDeveloperProjectDTO
+from caraer_client.models.success_response_list_project_build_dto import SuccessResponseListProjectBuildDTO
+from caraer_client.models.success_response_list_project_deploy_dto import SuccessResponseListProjectDeployDTO
 
 from caraer_client.api_client import ApiClient, RequestSerialized
 from caraer_client.api_response import ApiResponse
@@ -99,6 +101,9 @@ class DeveloperProjectsApi:
             '200': "CreateResponse",
             '400': "ErrorResponse",
             '403': "ErrorResponse",
+            '401': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -168,6 +173,9 @@ class DeveloperProjectsApi:
             '200': "CreateResponse",
             '400': "ErrorResponse",
             '403': "ErrorResponse",
+            '401': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -237,6 +245,9 @@ class DeveloperProjectsApi:
             '200': "CreateResponse",
             '400': "ErrorResponse",
             '403': "ErrorResponse",
+            '401': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -382,6 +393,10 @@ class DeveloperProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -454,6 +469,10 @@ class DeveloperProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -526,6 +545,10 @@ class DeveloperProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -678,6 +701,10 @@ class DeveloperProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -754,6 +781,10 @@ class DeveloperProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -830,6 +861,10 @@ class DeveloperProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -979,6 +1014,9 @@ class DeveloperProjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1049,6 +1087,9 @@ class DeveloperProjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1119,6 +1160,9 @@ class DeveloperProjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1210,7 +1254,7 @@ class DeveloperProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> SuccessResponseListProjectBuildDTO:
         """List project builds
 
 
@@ -1247,7 +1291,11 @@ class DeveloperProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseListProjectBuildDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1276,7 +1324,7 @@ class DeveloperProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[SuccessResponseListProjectBuildDTO]:
         """List project builds
 
 
@@ -1313,7 +1361,11 @@ class DeveloperProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseListProjectBuildDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1379,7 +1431,11 @@ class DeveloperProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseListProjectBuildDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1468,7 +1524,7 @@ class DeveloperProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> SuccessResponseListProjectDeployDTO:
         """List project deploys
 
 
@@ -1505,7 +1561,11 @@ class DeveloperProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseListProjectDeployDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1534,7 +1594,7 @@ class DeveloperProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[SuccessResponseListProjectDeployDTO]:
         """List project deploys
 
 
@@ -1571,7 +1631,11 @@ class DeveloperProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseListProjectDeployDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1637,7 +1701,11 @@ class DeveloperProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseListProjectDeployDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1726,7 +1794,7 @@ class DeveloperProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseDeveloperProjectDTO:
         """Get a developer project
 
 
@@ -1763,8 +1831,11 @@ class DeveloperProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseDeveloperProjectDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1793,7 +1864,7 @@ class DeveloperProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseDeveloperProjectDTO]:
         """Get a developer project
 
 
@@ -1830,8 +1901,11 @@ class DeveloperProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseDeveloperProjectDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1897,8 +1971,11 @@ class DeveloperProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseDeveloperProjectDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

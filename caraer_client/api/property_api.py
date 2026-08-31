@@ -15,17 +15,21 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
-from typing import Any, Optional
+from pydantic import Field, StrictInt, StrictStr
+from typing import Dict
 from typing_extensions import Annotated
 from caraer_client.models.copy_properties_to_object_request import CopyPropertiesToObjectRequest
 from caraer_client.models.create_response import CreateResponse
 from caraer_client.models.delete_response import DeleteResponse
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_property_calculation_type_dto import PaginationResponsePropertyCalculationTypeDTO
+from caraer_client.models.pagination_response_property_dto import PaginationResponsePropertyDTO
+from caraer_client.models.pagination_response_property_format import PaginationResponsePropertyFormat
 from caraer_client.models.restore_response import RestoreResponse
 from caraer_client.models.save_property_dto import SavePropertyDTO
-from caraer_client.models.show_response import ShowResponse
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.show_response_property_dto import ShowResponsePropertyDTO
+from caraer_client.models.success_response_list_property_dto import SuccessResponseListPropertyDTO
+from caraer_client.models.success_response_list_string import SuccessResponseListString
 from caraer_client.models.update_response import UpdateResponse
 
 from caraer_client.api_client import ApiClient, RequestSerialized
@@ -63,7 +67,7 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseListPropertyDTO:
         """Copy properties to object
 
         Attaches existing properties from other objects to the target object in a single request. Archived links on the target object are restored. Properties already active on the target are rejected.
@@ -104,9 +108,12 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListPropertyDTO",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -136,7 +143,7 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseListPropertyDTO]:
         """Copy properties to object
 
         Attaches existing properties from other objects to the target object in a single request. Archived links on the target object are restored. Properties already active on the target are rejected.
@@ -177,9 +184,12 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListPropertyDTO",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -250,9 +260,12 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListPropertyDTO",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -402,6 +415,9 @@ class PropertyApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -475,6 +491,9 @@ class PropertyApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -548,6 +567,9 @@ class PropertyApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -698,6 +720,8 @@ class PropertyApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -771,6 +795,8 @@ class PropertyApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -844,6 +870,8 @@ class PropertyApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -891,8 +919,7 @@ class PropertyApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -936,7 +963,7 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponsePropertyCalculationTypeDTO:
         """Retrieve allowed calculation types per property type
 
         Returns the calculation functions available for each property type (for example min/max on numbers).
@@ -974,8 +1001,11 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePropertyCalculationTypeDTO",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1004,7 +1034,7 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponsePropertyCalculationTypeDTO]:
         """Retrieve allowed calculation types per property type
 
         Returns the calculation functions available for each property type (for example min/max on numbers).
@@ -1042,8 +1072,11 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePropertyCalculationTypeDTO",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1110,8 +1143,11 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePropertyCalculationTypeDTO",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1156,8 +1192,7 @@ class PropertyApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1201,7 +1236,7 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponsePropertyFormat:
         """Retrieve property formats
 
         Fetches a sorted list of available property formats. The formats are retrieved from the PropertyFormats enum and converted to PropertyFormat instances.
@@ -1239,8 +1274,11 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePropertyFormat",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1269,7 +1307,7 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponsePropertyFormat]:
         """Retrieve property formats
 
         Fetches a sorted list of available property formats. The formats are retrieved from the PropertyFormats enum and converted to PropertyFormat instances.
@@ -1307,8 +1345,11 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePropertyFormat",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1375,8 +1416,11 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePropertyFormat",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1421,8 +1465,7 @@ class PropertyApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1454,7 +1497,7 @@ class PropertyApi:
     def get_properties(
         self,
         object_uuid: StrictStr,
-        body: Annotated[Optional[Any], Field(description="Pagination details (limit, page, filters, sort, query)")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination details (limit, page, filters, sort, query)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1467,15 +1510,15 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponsePropertyDTO:
         """Fetch paginated properties
 
         Retrieves a paginated list of properties for a given object. Depending on the object UUID format, a Cypher query is constructed to filter properties belonging to that object. Returns a PaginationResponse containing PropertyDTO objects.
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Pagination details (limit, page, filters, sort, query) (required)
-        :type body: object
+        :param pagination_request: Pagination details (limit, page, filters, sort, query) (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1500,7 +1543,7 @@ class PropertyApi:
 
         _param = self._get_properties_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1508,9 +1551,12 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePropertyDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1527,7 +1573,7 @@ class PropertyApi:
     def get_properties_with_http_info(
         self,
         object_uuid: StrictStr,
-        body: Annotated[Optional[Any], Field(description="Pagination details (limit, page, filters, sort, query)")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination details (limit, page, filters, sort, query)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1540,15 +1586,15 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponsePropertyDTO]:
         """Fetch paginated properties
 
         Retrieves a paginated list of properties for a given object. Depending on the object UUID format, a Cypher query is constructed to filter properties belonging to that object. Returns a PaginationResponse containing PropertyDTO objects.
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Pagination details (limit, page, filters, sort, query) (required)
-        :type body: object
+        :param pagination_request: Pagination details (limit, page, filters, sort, query) (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1573,7 +1619,7 @@ class PropertyApi:
 
         _param = self._get_properties_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1581,9 +1627,12 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePropertyDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1600,7 +1649,7 @@ class PropertyApi:
     def get_properties_without_preload_content(
         self,
         object_uuid: StrictStr,
-        body: Annotated[Optional[Any], Field(description="Pagination details (limit, page, filters, sort, query)")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination details (limit, page, filters, sort, query)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1620,8 +1669,8 @@ class PropertyApi:
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Pagination details (limit, page, filters, sort, query) (required)
-        :type body: object
+        :param pagination_request: Pagination details (limit, page, filters, sort, query) (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1646,7 +1695,7 @@ class PropertyApi:
 
         _param = self._get_properties_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1654,9 +1703,12 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePropertyDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1668,7 +1720,7 @@ class PropertyApi:
     def _get_properties_serialize(
         self,
         object_uuid,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1696,8 +1748,8 @@ class PropertyApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -1762,7 +1814,7 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponsePropertyDTO:
         """Fetch a specific property
 
         Retrieves details of a property by its UUID and associates it with its parent object. Returns a ShowResponse containing a PropertyDTO object with complete property details.
@@ -1803,9 +1855,11 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePropertyDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1835,7 +1889,7 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponsePropertyDTO]:
         """Fetch a specific property
 
         Retrieves details of a property by its UUID and associates it with its parent object. Returns a ShowResponse containing a PropertyDTO object with complete property details.
@@ -1876,9 +1930,11 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePropertyDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1949,9 +2005,11 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePropertyDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1999,8 +2057,7 @@ class PropertyApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -2045,7 +2102,7 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseListString:
         """Retrieve allowed calculation types for a property
 
         Returns calculation functions supported for the property's type.
@@ -2086,8 +2143,11 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListString",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2117,7 +2177,7 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseListString]:
         """Retrieve allowed calculation types for a property
 
         Returns calculation functions supported for the property's type.
@@ -2158,8 +2218,11 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListString",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2230,8 +2293,11 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListString",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2279,8 +2345,7 @@ class PropertyApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -2369,6 +2434,9 @@ class PropertyApi:
             '200': "DeleteResponse",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2442,6 +2510,9 @@ class PropertyApi:
             '200': "DeleteResponse",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2515,6 +2586,9 @@ class PropertyApi:
             '200': "DeleteResponse",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2652,6 +2726,8 @@ class PropertyApi:
             '200': "UpdateResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2725,6 +2801,8 @@ class PropertyApi:
             '200': "UpdateResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2798,6 +2876,8 @@ class PropertyApi:
             '200': "UpdateResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2845,8 +2925,7 @@ class PropertyApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -2935,6 +3014,8 @@ class PropertyApi:
             '200': "RestoreResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3008,6 +3089,8 @@ class PropertyApi:
             '200': "RestoreResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3081,6 +3164,8 @@ class PropertyApi:
             '200': "RestoreResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3128,8 +3213,7 @@ class PropertyApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -3218,6 +3302,8 @@ class PropertyApi:
             '200': "UpdateResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3291,6 +3377,8 @@ class PropertyApi:
             '200': "UpdateResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3364,6 +3452,8 @@ class PropertyApi:
             '200': "UpdateResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3411,8 +3501,7 @@ class PropertyApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -3444,7 +3533,7 @@ class PropertyApi:
     def update_indices2(
         self,
         object_uuid: StrictStr,
-        body: Annotated[StrictStr, Field(description="Mapping of property UUIDs to new index values")],
+        request_body: Annotated[Dict[str, StrictInt], Field(description="Mapping of property UUIDs to new index values")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3457,15 +3546,15 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseListPropertyDTO:
         """Update property indices
 
         Updates the indices for properties of a specific object. The request body should contain a mapping between property UUIDs and their new index values. Returns a SuccessResponse containing a list of updated PropertyDTO objects.
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Mapping of property UUIDs to new index values (required)
-        :type body: str
+        :param request_body: Mapping of property UUIDs to new index values (required)
+        :type request_body: Dict[str, int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3490,7 +3579,7 @@ class PropertyApi:
 
         _param = self._update_indices2_serialize(
             object_uuid=object_uuid,
-            body=body,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3498,9 +3587,12 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListPropertyDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3517,7 +3609,7 @@ class PropertyApi:
     def update_indices2_with_http_info(
         self,
         object_uuid: StrictStr,
-        body: Annotated[StrictStr, Field(description="Mapping of property UUIDs to new index values")],
+        request_body: Annotated[Dict[str, StrictInt], Field(description="Mapping of property UUIDs to new index values")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3530,15 +3622,15 @@ class PropertyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseListPropertyDTO]:
         """Update property indices
 
         Updates the indices for properties of a specific object. The request body should contain a mapping between property UUIDs and their new index values. Returns a SuccessResponse containing a list of updated PropertyDTO objects.
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Mapping of property UUIDs to new index values (required)
-        :type body: str
+        :param request_body: Mapping of property UUIDs to new index values (required)
+        :type request_body: Dict[str, int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3563,7 +3655,7 @@ class PropertyApi:
 
         _param = self._update_indices2_serialize(
             object_uuid=object_uuid,
-            body=body,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3571,9 +3663,12 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListPropertyDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3590,7 +3685,7 @@ class PropertyApi:
     def update_indices2_without_preload_content(
         self,
         object_uuid: StrictStr,
-        body: Annotated[StrictStr, Field(description="Mapping of property UUIDs to new index values")],
+        request_body: Annotated[Dict[str, StrictInt], Field(description="Mapping of property UUIDs to new index values")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3610,8 +3705,8 @@ class PropertyApi:
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Mapping of property UUIDs to new index values (required)
-        :type body: str
+        :param request_body: Mapping of property UUIDs to new index values (required)
+        :type request_body: Dict[str, int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3636,7 +3731,7 @@ class PropertyApi:
 
         _param = self._update_indices2_serialize(
             object_uuid=object_uuid,
-            body=body,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3644,9 +3739,12 @@ class PropertyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListPropertyDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3658,7 +3756,7 @@ class PropertyApi:
     def _update_indices2_serialize(
         self,
         object_uuid,
-        body,
+        request_body,
         _request_auth,
         _content_type,
         _headers,
@@ -3686,8 +3784,8 @@ class PropertyApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if request_body is not None:
+            _body_params = request_body
 
 
         # set the HTTP header `Accept`
@@ -3802,6 +3900,8 @@ class PropertyApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3880,6 +3980,8 @@ class PropertyApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3958,6 +4060,8 @@ class PropertyApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

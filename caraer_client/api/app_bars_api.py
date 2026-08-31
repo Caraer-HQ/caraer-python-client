@@ -19,6 +19,8 @@ from pydantic import Field, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from caraer_client.models.app_bar_trigger_request import AppBarTriggerRequest
+from caraer_client.models.show_response_list_installed_app_bar_dto import ShowResponseListInstalledAppBarDTO
+from caraer_client.models.success_response_string import SuccessResponseString
 
 from caraer_client.api_client import ApiClient, RequestSerialized
 from caraer_client.api_response import ApiResponse
@@ -58,7 +60,7 @@ class AppBarsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> ShowResponseListInstalledAppBarDTO:
         """List installed app bars for a location
 
         Returns all app bars from installed apps for the authenticated user's company at the given location.
@@ -108,8 +110,12 @@ class AppBarsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "ShowResponseListInstalledAppBarDTO",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -142,7 +148,7 @@ class AppBarsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[ShowResponseListInstalledAppBarDTO]:
         """List installed app bars for a location
 
         Returns all app bars from installed apps for the authenticated user's company at the given location.
@@ -192,8 +198,12 @@ class AppBarsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "ShowResponseListInstalledAppBarDTO",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -276,8 +286,12 @@ class AppBarsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "ShowResponseListInstalledAppBarDTO",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -389,7 +403,7 @@ class AppBarsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> SuccessResponseString:
         """Trigger an action-based app bar
 
         Fires the app bar webhook with optional settings values and record/view context.
@@ -430,9 +444,12 @@ class AppBarsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -462,7 +479,7 @@ class AppBarsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[SuccessResponseString]:
         """Trigger an action-based app bar
 
         Fires the app bar webhook with optional settings values and record/view context.
@@ -503,9 +520,12 @@ class AppBarsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -576,9 +596,12 @@ class AppBarsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

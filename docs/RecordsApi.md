@@ -32,7 +32,7 @@ Method | HTTP request | Description
 
 
 # **aggregate**
-> SuccessResponse aggregate(aggregate_request)
+> SuccessResponseAggregateResponse aggregate(aggregate_request)
 
 Aggregate records for analytics charts
 
@@ -45,7 +45,7 @@ Groups Neo4j records by property or time bucket and returns series points with o
 ```python
 import caraer_client
 from caraer_client.models.aggregate_request import AggregateRequest
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_aggregate_response import SuccessResponseAggregateResponse
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseAggregateResponse**](SuccessResponseAggregateResponse.md)
 
 ### Authorization
 
@@ -108,11 +108,15 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Aggregation completed |  -  |
 **400** | Invalid request |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **aggregate_batch**
-> SuccessResponse aggregate_batch(aggregate_batch_request)
+> SuccessResponseListAggregateResponse aggregate_batch(aggregate_batch_request)
 
 Batch aggregate records for analytics dashboards
 
@@ -125,7 +129,7 @@ Runs multiple aggregation requests for dashboard widgets.
 ```python
 import caraer_client
 from caraer_client.models.aggregate_batch_request import AggregateBatchRequest
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_list_aggregate_response import SuccessResponseListAggregateResponse
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -171,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseListAggregateResponse**](SuccessResponseListAggregateResponse.md)
 
 ### Authorization
 
@@ -188,6 +192,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Batch aggregation completed |  -  |
 **400** | Invalid request |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -270,6 +278,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Bulk delete completed (possibly with per-record errors) |  -  |
 **400** | Invalid request |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -355,6 +367,10 @@ Name | Type | Description  | Notes
 **201** | All records saved successfully |  -  |
 **200** | Partial success with per-record validation errors |  -  |
 **400** | Invalid request |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -444,11 +460,14 @@ Name | Type | Description  | Notes
 **201** | Record created successfully |  -  |
 **400** | Invalid input data |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_or_update**
-> create_or_update(object_name, record_dto, parse=parse, ignore_errors=ignore_errors, record_return_format=record_return_format)
+> UpdateResponse create_or_update(object_name, record_dto, parse=parse, ignore_errors=ignore_errors, record_return_format=record_return_format)
 
 Create or update a record
 
@@ -461,6 +480,7 @@ Creates a new record or updates an existing one. Match order: body/path uuid alr
 ```python
 import caraer_client
 from caraer_client.models.record_dto import RecordDTO
+from caraer_client.models.update_response import UpdateResponse
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -492,7 +512,9 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Create or update a record
-        api_instance.create_or_update(object_name, record_dto, parse=parse, ignore_errors=ignore_errors, record_return_format=record_return_format)
+        api_response = api_instance.create_or_update(object_name, record_dto, parse=parse, ignore_errors=ignore_errors, record_return_format=record_return_format)
+        print("The response of RecordsApi->create_or_update:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling RecordsApi->create_or_update: %s\n" % e)
 ```
@@ -512,7 +534,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**UpdateResponse**](UpdateResponse.md)
 
 ### Authorization
 
@@ -531,11 +553,14 @@ void (empty response body)
 **201** | Record created successfully |  -  |
 **400** | Invalid input data |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_relation**
-> SuccessResponse create_relation(from_uuid, relation_name, to_uuid, primary=primary, relation_edge_request_dto=relation_edge_request_dto)
+> SuccessResponseString create_relation(from_uuid, relation_name, to_uuid, primary=primary, relation_edge_request_dto=relation_edge_request_dto)
 
 Create a relation between records
 
@@ -548,7 +573,7 @@ Creates a relation between two records identified by their UUIDs using the provi
 ```python
 import caraer_client
 from caraer_client.models.relation_edge_request_dto import RelationEdgeRequestDTO
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -602,7 +627,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -620,11 +645,13 @@ Name | Type | Description  | Notes
 **200** | Relation created successfully |  -  |
 **404** | One or more entities not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete**
-> SuccessResponse delete(uuid, mode=mode)
+> SuccessResponseString delete(uuid, mode=mode)
 
 Delete a record
 
@@ -636,7 +663,7 @@ Deletes a record specified by its UUID.
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -684,7 +711,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -702,11 +729,13 @@ Name | Type | Description  | Notes
 **200** | Record deleted successfully |  -  |
 **404** | Record not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_relation**
-> SuccessResponse delete_relation(from_uuid, relation_name, to_uuid)
+> SuccessResponseString delete_relation(from_uuid, relation_name, to_uuid)
 
 Delete a relation between records
 
@@ -718,7 +747,7 @@ Deletes a relation between two records identified by their UUIDs and the relatio
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -768,7 +797,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -786,11 +815,13 @@ Name | Type | Description  | Notes
 **200** | Relation deleted successfully |  -  |
 **404** | One or more entities not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **extend**
-> SuccessResponse extend(uuid, extend_record_request, record_return_format=record_return_format, parse=parse)
+> SuccessResponseObject extend(uuid, extend_record_request, record_return_format=record_return_format, parse=parse)
 
 Extend a record
 
@@ -803,7 +834,7 @@ Extends a record identified by its UUID to one or more objects. You can use this
 ```python
 import caraer_client
 from caraer_client.models.extend_record_request import ExtendRecordRequest
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_object import SuccessResponseObject
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -855,7 +886,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseObject**](SuccessResponseObject.md)
 
 ### Authorization
 
@@ -873,11 +904,13 @@ Name | Type | Description  | Notes
 **200** | Record extended successfully |  -  |
 **404** | Record not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **index**
-> PaginationResponse index(body, parse=parse, archived=archived, related_record_uuid=related_record_uuid, record_return_format=record_return_format)
+> PaginationResponseObject index(record_pagination_request, parse=parse, archived=archived, related_record_uuid=related_record_uuid, record_return_format=record_return_format)
 
 Fetch paginated records
 
@@ -889,7 +922,8 @@ Retrieves a paginated list of records. If a preview type is specified in the req
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_response_object import PaginationResponseObject
+from caraer_client.models.record_pagination_request import RecordPaginationRequest
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -913,7 +947,7 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.RecordsApi(api_client)
-    body = 'body_example' # str | Pagination request for records
+    record_pagination_request = caraer_client.RecordPaginationRequest() # RecordPaginationRequest | Pagination request for records
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
     archived = False # bool | When 'true', archived records are returned instead of active records. Defaults to 'false'. (optional) (default to False)
     related_record_uuid = 'related_record_uuid_example' # str | UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record. (optional)
@@ -921,7 +955,7 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Fetch paginated records
-        api_response = api_instance.index(body, parse=parse, archived=archived, related_record_uuid=related_record_uuid, record_return_format=record_return_format)
+        api_response = api_instance.index(record_pagination_request, parse=parse, archived=archived, related_record_uuid=related_record_uuid, record_return_format=record_return_format)
         print("The response of RecordsApi->index:\n")
         pprint(api_response)
     except Exception as e:
@@ -935,7 +969,7 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **str**| Pagination request for records | 
+ **record_pagination_request** | [**RecordPaginationRequest**](RecordPaginationRequest.md)| Pagination request for records | 
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
  **archived** | **bool**| When &#39;true&#39;, archived records are returned instead of active records. Defaults to &#39;false&#39;. | [optional] [default to False]
  **related_record_uuid** | **str**| UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record. | [optional] 
@@ -943,7 +977,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseObject**](PaginationResponseObject.md)
 
 ### Authorization
 
@@ -958,14 +992,17 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Records fetched successfully |  -  |
+**200** | Records fetched successfully. data items are preview objects when preview is set, otherwise record payloads shaped by recordReturnFormat. |  -  |
 **400** | Invalid pagination request |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **index_flow**
-> SuccessResponse index_flow(body, related_record_uuid=related_record_uuid, parse=parse)
+> SuccessResponseFlow index_flow(flow_pagination_request, related_record_uuid=related_record_uuid, parse=parse)
 
 Fetch records for flow view
 
@@ -977,7 +1014,8 @@ Retrieves a list of records formatted for flow view based on a specific property
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.flow_pagination_request import FlowPaginationRequest
+from caraer_client.models.success_response_flow import SuccessResponseFlow
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1001,13 +1039,13 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.RecordsApi(api_client)
-    body = 'body_example' # str | Pagination request for flow view
+    flow_pagination_request = caraer_client.FlowPaginationRequest() # FlowPaginationRequest | Pagination request for flow view
     related_record_uuid = 'related_record_uuid_example' # str | UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record. (optional)
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
 
     try:
         # Fetch records for flow view
-        api_response = api_instance.index_flow(body, related_record_uuid=related_record_uuid, parse=parse)
+        api_response = api_instance.index_flow(flow_pagination_request, related_record_uuid=related_record_uuid, parse=parse)
         print("The response of RecordsApi->index_flow:\n")
         pprint(api_response)
     except Exception as e:
@@ -1021,13 +1059,13 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **str**| Pagination request for flow view | 
+ **flow_pagination_request** | [**FlowPaginationRequest**](FlowPaginationRequest.md)| Pagination request for flow view | 
  **related_record_uuid** | **str**| UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record. | [optional] 
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseFlow**](SuccessResponseFlow.md)
 
 ### Authorization
 
@@ -1045,11 +1083,14 @@ Name | Type | Description  | Notes
 **200** | Records for flow view fetched successfully |  -  |
 **400** | Required property not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **index_page**
-> PaginationResponse index_page(body, environment=environment, related_record_uuid=related_record_uuid, fields=fields, published_only=published_only, exclude_template_related=exclude_template_related)
+> PaginationResponseObject index_page(record_pagination_request, environment=environment, related_record_uuid=related_record_uuid, fields=fields, published_only=published_only, exclude_template_related=exclude_template_related)
 
 Fetch records for page view
 
@@ -1061,7 +1102,8 @@ Retrieves a paginated list of webpages for page view. The search query is tempor
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_response_object import PaginationResponseObject
+from caraer_client.models.record_pagination_request import RecordPaginationRequest
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1085,7 +1127,7 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.RecordsApi(api_client)
-    body = 'body_example' # str | Pagination request for page view
+    record_pagination_request = caraer_client.RecordPaginationRequest() # RecordPaginationRequest | Pagination request for page view
     environment = 'staging' # str | Target environment for resolving webpages (for example 'staging' or 'production'). Defaults to 'staging'. (optional) (default to 'staging')
     related_record_uuid = 'related_record_uuid_example' # str | UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record. (optional)
     fields = 'fields_example' # str | Comma-separated WebpageDTO fields to return (for example: uuid,title). When omitted, the full WebpageDTO is returned. (optional)
@@ -1094,7 +1136,7 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Fetch records for page view
-        api_response = api_instance.index_page(body, environment=environment, related_record_uuid=related_record_uuid, fields=fields, published_only=published_only, exclude_template_related=exclude_template_related)
+        api_response = api_instance.index_page(record_pagination_request, environment=environment, related_record_uuid=related_record_uuid, fields=fields, published_only=published_only, exclude_template_related=exclude_template_related)
         print("The response of RecordsApi->index_page:\n")
         pprint(api_response)
     except Exception as e:
@@ -1108,7 +1150,7 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **str**| Pagination request for page view | 
+ **record_pagination_request** | [**RecordPaginationRequest**](RecordPaginationRequest.md)| Pagination request for page view | 
  **environment** | **str**| Target environment for resolving webpages (for example &#39;staging&#39; or &#39;production&#39;). Defaults to &#39;staging&#39;. | [optional] [default to &#39;staging&#39;]
  **related_record_uuid** | **str**| UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record. | [optional] 
  **fields** | **str**| Comma-separated WebpageDTO fields to return (for example: uuid,title). When omitted, the full WebpageDTO is returned. | [optional] 
@@ -1117,7 +1159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseObject**](PaginationResponseObject.md)
 
 ### Authorization
 
@@ -1134,11 +1176,15 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Webpages fetched successfully |  -  |
 **400** | Invalid pagination request |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **index_table**
-> PaginationResponse index_table(body, related_record_uuid=related_record_uuid)
+> SuccessResponseTable index_table(record_pagination_request, related_record_uuid=related_record_uuid)
 
 Fetch records for table view
 
@@ -1150,7 +1196,8 @@ Retrieves records formatted for table display. Returns a PaginationResponse cont
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.record_pagination_request import RecordPaginationRequest
+from caraer_client.models.success_response_table import SuccessResponseTable
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1174,12 +1221,12 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.RecordsApi(api_client)
-    body = 'body_example' # str | Pagination request for table view
+    record_pagination_request = caraer_client.RecordPaginationRequest() # RecordPaginationRequest | Pagination request for table view
     related_record_uuid = 'related_record_uuid_example' # str | UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record. (optional)
 
     try:
         # Fetch records for table view
-        api_response = api_instance.index_table(body, related_record_uuid=related_record_uuid)
+        api_response = api_instance.index_table(record_pagination_request, related_record_uuid=related_record_uuid)
         print("The response of RecordsApi->index_table:\n")
         pprint(api_response)
     except Exception as e:
@@ -1193,12 +1240,12 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **str**| Pagination request for table view | 
+ **record_pagination_request** | [**RecordPaginationRequest**](RecordPaginationRequest.md)| Pagination request for table view | 
  **related_record_uuid** | **str**| UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record. | [optional] 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**SuccessResponseTable**](SuccessResponseTable.md)
 
 ### Authorization
 
@@ -1215,11 +1262,15 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Records for table view fetched successfully |  -  |
 **400** | Invalid request |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **preview**
-> ShowResponse preview(uuid, name, object=object, parse=parse)
+> ShowResponsePreviewDTO preview(uuid, name, object=object, parse=parse)
 
 Get record preview
 
@@ -1231,7 +1282,7 @@ Retrieves a preview for a record specified by its UUID and preview name. Returns
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_preview_dto import ShowResponsePreviewDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1283,7 +1334,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponsePreviewDTO**](ShowResponsePreviewDTO.md)
 
 ### Authorization
 
@@ -1300,6 +1351,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Preview retrieved successfully |  -  |
 **404** | Record or preview not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1380,11 +1434,15 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Query completed successfully |  -  |
 **400** | Invalid query request |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **restore**
-> SuccessResponse restore(uuid)
+> SuccessResponseString restore(uuid)
 
 Restore a deleted record
 
@@ -1396,7 +1454,7 @@ Restores a soft-deleted record identified by its UUID. Returns a SuccessResponse
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1442,7 +1500,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -1460,11 +1518,13 @@ Name | Type | Description  | Notes
 **200** | Record restored successfully |  -  |
 **404** | Record not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search**
-> PaginationResponse search(body, archived=archived, parse=parse, record_return_format=record_return_format)
+> PaginationResponseObject search(search_request, archived=archived, parse=parse, record_return_format=record_return_format)
 
 Search records
 
@@ -1476,7 +1536,8 @@ Performs a search for records based on the specified criteria in the request bod
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_response_object import PaginationResponseObject
+from caraer_client.models.search_request import SearchRequest
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1500,14 +1561,14 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.RecordsApi(api_client)
-    body = 'body_example' # str | Search criteria
+    search_request = caraer_client.SearchRequest() # SearchRequest | Search criteria
     archived = False # bool | When set to 'true', includes soft-deleted records in the search results. (optional) (default to False)
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
     record_return_format = 'LEGACY' # str | Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED. (optional) (default to 'LEGACY')
 
     try:
         # Search records
-        api_response = api_instance.search(body, archived=archived, parse=parse, record_return_format=record_return_format)
+        api_response = api_instance.search(search_request, archived=archived, parse=parse, record_return_format=record_return_format)
         print("The response of RecordsApi->search:\n")
         pprint(api_response)
     except Exception as e:
@@ -1521,14 +1582,14 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **str**| Search criteria | 
+ **search_request** | [**SearchRequest**](SearchRequest.md)| Search criteria | 
  **archived** | **bool**| When set to &#39;true&#39;, includes soft-deleted records in the search results. | [optional] [default to False]
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
  **record_return_format** | **str**| Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED. | [optional] [default to &#39;LEGACY&#39;]
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseObject**](PaginationResponseObject.md)
 
 ### Authorization
 
@@ -1543,14 +1604,17 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Search completed successfully |  -  |
+**200** | Search completed successfully. data items are preview objects when preview is set, otherwise record payloads shaped by recordReturnFormat. |  -  |
 **400** | Invalid search parameters |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_cross_object**
-> PaginationResponse search_cross_object(cross_object_record_search_request, archived=archived, parse=parse)
+> PaginationResponsePreviewDTO search_cross_object(cross_object_record_search_request, archived=archived, parse=parse)
 
 Search records across objects
 
@@ -1563,7 +1627,7 @@ Searches records across multiple object types in one request. Use fromObjectUuid
 ```python
 import caraer_client
 from caraer_client.models.cross_object_record_search_request import CrossObjectRecordSearchRequest
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_response_preview_dto import PaginationResponsePreviewDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1613,7 +1677,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponsePreviewDTO**](PaginationResponsePreviewDTO.md)
 
 ### Authorization
 
@@ -1630,11 +1694,15 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Search completed successfully |  -  |
 **400** | Invalid search parameters |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show**
-> ShowResponse show(uuid, object=object, record_return_format=record_return_format, parse=parse, fields=fields)
+> ShowResponseObject show(uuid, object=object, record_return_format=record_return_format, parse=parse, fields=fields)
 
 Get record details
 
@@ -1646,7 +1714,7 @@ Retrieves detailed information about a record by its UUID. Returns a ShowRespons
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_object import ShowResponseObject
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1700,7 +1768,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseObject**](ShowResponseObject.md)
 
 ### Authorization
 
@@ -1717,11 +1785,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Record retrieved successfully |  -  |
 **404** | Record not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show_by_object**
-> ShowResponse show_by_object(object_name, uuid, record_return_format=record_return_format, parse=parse)
+> ShowResponseObject show_by_object(object_name, uuid, record_return_format=record_return_format, parse=parse)
 
 Get record details by object
 
@@ -1733,7 +1804,7 @@ Retrieves a record by object name and UUID. Same response as GET /{uuid}?object=
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_object import ShowResponseObject
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1785,7 +1856,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseObject**](ShowResponseObject.md)
 
 ### Authorization
 
@@ -1802,11 +1873,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Record retrieved successfully |  -  |
 **404** | Record not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **suggest_analytics_widgets**
-> SuccessResponse suggest_analytics_widgets(suggest_analytics_widgets_request)
+> SuccessResponseSuggestAnalyticsWidgetsResponse suggest_analytics_widgets(suggest_analytics_widgets_request)
 
 Suggest analytics widgets with AI
 
@@ -1818,7 +1892,7 @@ Uses structured OpenAI output plus schema validation to propose dashboard charts
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_suggest_analytics_widgets_response import SuccessResponseSuggestAnalyticsWidgetsResponse
 from caraer_client.models.suggest_analytics_widgets_request import SuggestAnalyticsWidgetsRequest
 from caraer_client.rest import ApiException
 from pprint import pprint
@@ -1865,7 +1939,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseSuggestAnalyticsWidgetsResponse**](SuccessResponseSuggestAnalyticsWidgetsResponse.md)
 
 ### Authorization
 
@@ -1883,6 +1957,9 @@ Name | Type | Description  | Notes
 **200** | Suggestions generated (may be empty) |  -  |
 **400** | Invalid request |  -  |
 **404** | Object not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1975,6 +2052,8 @@ Name | Type | Description  | Notes
 **400** | Invalid input data |  -  |
 **404** | Record not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2067,11 +2146,13 @@ Name | Type | Description  | Notes
 **400** | Invalid input data |  -  |
 **404** | Record not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_relation_edge**
-> SuccessResponse update_relation_edge(from_uuid, relation_name, to_uuid, relation_edge_request_dto)
+> SuccessResponseString update_relation_edge(from_uuid, relation_name, to_uuid, relation_edge_request_dto)
 
 Update relation edge properties
 
@@ -2084,7 +2165,7 @@ Patches values stored on an existing relation edge. Only keys present in edgePro
 ```python
 import caraer_client
 from caraer_client.models.relation_edge_request_dto import RelationEdgeRequestDTO
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -2136,7 +2217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -2154,6 +2235,9 @@ Name | Type | Description  | Notes
 **200** | Relation updated successfully |  -  |
 **400** | Unknown or invalid edge property |  -  |
 **404** | One or more entities not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

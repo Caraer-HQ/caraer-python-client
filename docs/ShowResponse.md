@@ -1,13 +1,13 @@
 # ShowResponse
 
-Represents the response for viewing or showing a specific resource.
+Success response (ShowResponse).
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **str** | A message detailing the result of the operation. | [optional] 
-**data** | **object** | The data payload of the response, if any. | [optional] 
+**message** | **str** |  | [optional] 
+**data** | **Dict[str, object]** |  | [optional] 
 
 ## Example
 

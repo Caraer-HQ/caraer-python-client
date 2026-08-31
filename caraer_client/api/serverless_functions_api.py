@@ -16,15 +16,17 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictInt, StrictStr
-from typing import Any, Optional
+from typing import Optional
 from typing_extensions import Annotated
 from caraer_client.models.create_response import CreateResponse
 from caraer_client.models.delete_response import DeleteResponse
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_serverless_function_dto import PaginationResponseServerlessFunctionDTO
 from caraer_client.models.sample_payload_request import SamplePayloadRequest
 from caraer_client.models.serverless_function_dto import ServerlessFunctionDTO
-from caraer_client.models.show_response import ShowResponse
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.show_response_serverless_function_dto import ShowResponseServerlessFunctionDTO
+from caraer_client.models.success_response_map_string_object import SuccessResponseMapStringObject
+from caraer_client.models.success_response_object import SuccessResponseObject
 from caraer_client.models.test_serverless_function_request import TestServerlessFunctionRequest
 
 from caraer_client.api_client import ApiClient, RequestSerialized
@@ -105,6 +107,10 @@ class ServerlessFunctionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -177,6 +183,10 @@ class ServerlessFunctionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -249,6 +259,10 @@ class ServerlessFunctionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -397,6 +411,9 @@ class ServerlessFunctionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -469,6 +486,9 @@ class ServerlessFunctionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -541,6 +561,9 @@ class ServerlessFunctionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -620,7 +643,7 @@ class ServerlessFunctionsApi:
     def index2(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app whose serverless functions to list")],
-        body: Annotated[Optional[Any], Field(description="Pagination and filtering options for the request")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination and filtering options for the request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -633,15 +656,15 @@ class ServerlessFunctionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseServerlessFunctionDTO:
         """List serverless functions for an app
 
         Retrieves a paginated list of serverless functions that belong to the specified app.
 
         :param app_uuid: UUID of the app whose serverless functions to list (required)
         :type app_uuid: str
-        :param body: Pagination and filtering options for the request (required)
-        :type body: object
+        :param pagination_request: Pagination and filtering options for the request (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -666,7 +689,7 @@ class ServerlessFunctionsApi:
 
         _param = self._index2_serialize(
             app_uuid=app_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -674,9 +697,12 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseServerlessFunctionDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -693,7 +719,7 @@ class ServerlessFunctionsApi:
     def index2_with_http_info(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app whose serverless functions to list")],
-        body: Annotated[Optional[Any], Field(description="Pagination and filtering options for the request")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination and filtering options for the request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -706,15 +732,15 @@ class ServerlessFunctionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseServerlessFunctionDTO]:
         """List serverless functions for an app
 
         Retrieves a paginated list of serverless functions that belong to the specified app.
 
         :param app_uuid: UUID of the app whose serverless functions to list (required)
         :type app_uuid: str
-        :param body: Pagination and filtering options for the request (required)
-        :type body: object
+        :param pagination_request: Pagination and filtering options for the request (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -739,7 +765,7 @@ class ServerlessFunctionsApi:
 
         _param = self._index2_serialize(
             app_uuid=app_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -747,9 +773,12 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseServerlessFunctionDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -766,7 +795,7 @@ class ServerlessFunctionsApi:
     def index2_without_preload_content(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app whose serverless functions to list")],
-        body: Annotated[Optional[Any], Field(description="Pagination and filtering options for the request")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination and filtering options for the request")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -786,8 +815,8 @@ class ServerlessFunctionsApi:
 
         :param app_uuid: UUID of the app whose serverless functions to list (required)
         :type app_uuid: str
-        :param body: Pagination and filtering options for the request (required)
-        :type body: object
+        :param pagination_request: Pagination and filtering options for the request (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -812,7 +841,7 @@ class ServerlessFunctionsApi:
 
         _param = self._index2_serialize(
             app_uuid=app_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -820,9 +849,12 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseServerlessFunctionDTO",
             '400': "ErrorResponse",
             '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -834,7 +866,7 @@ class ServerlessFunctionsApi:
     def _index2_serialize(
         self,
         app_uuid,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -862,8 +894,8 @@ class ServerlessFunctionsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -930,7 +962,7 @@ class ServerlessFunctionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseMapStringObject:
         """Get serverless function logs
 
         Queries Cloud Logging for recent log entries emitted by the Cloud Function backing this serverless function.
@@ -977,8 +1009,11 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1010,7 +1045,7 @@ class ServerlessFunctionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseMapStringObject]:
         """Get serverless function logs
 
         Queries Cloud Logging for recent log entries emitted by the Cloud Function backing this serverless function.
@@ -1057,8 +1092,11 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1137,8 +1175,11 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1241,7 +1282,7 @@ class ServerlessFunctionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseObject:
         """Generate a sample webhook payload
 
         Builds the same payload shape used for serverless invocations and webhook delivery from a record and event type, without invoking anything.
@@ -1282,9 +1323,12 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseObject",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1314,7 +1358,7 @@ class ServerlessFunctionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseObject]:
         """Generate a sample webhook payload
 
         Builds the same payload shape used for serverless invocations and webhook delivery from a record and event type, without invoking anything.
@@ -1355,9 +1399,12 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseObject",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1428,9 +1475,12 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseObject",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1536,7 +1586,7 @@ class ServerlessFunctionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseServerlessFunctionDTO:
         """Get a serverless function
 
         Retrieves a serverless function by its UUID, ensuring it belongs to the specified app.
@@ -1577,8 +1627,11 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseServerlessFunctionDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1608,7 +1661,7 @@ class ServerlessFunctionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseServerlessFunctionDTO]:
         """Get a serverless function
 
         Retrieves a serverless function by its UUID, ensuring it belongs to the specified app.
@@ -1649,8 +1702,11 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseServerlessFunctionDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1721,8 +1777,11 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseServerlessFunctionDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1816,7 +1875,7 @@ class ServerlessFunctionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseMapStringObject:
         """Test a serverless function
 
         Provisions (if needed) and invokes a serverless function for a given record and event type, using the same payload shape as webhooks.
@@ -1860,9 +1919,12 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1893,7 +1955,7 @@ class ServerlessFunctionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseMapStringObject]:
         """Test a serverless function
 
         Provisions (if needed) and invokes a serverless function for a given record and event type, using the same payload shape as webhooks.
@@ -1937,9 +1999,12 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2014,9 +2079,12 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringObject",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2126,7 +2194,7 @@ class ServerlessFunctionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseServerlessFunctionDTO:
         """Update a serverless function
 
         Updates an existing serverless function's runtime and code, keeping it attached to the same app.
@@ -2170,8 +2238,11 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseServerlessFunctionDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2202,7 +2273,7 @@ class ServerlessFunctionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseServerlessFunctionDTO]:
         """Update a serverless function
 
         Updates an existing serverless function's runtime and code, keeping it attached to the same app.
@@ -2246,8 +2317,11 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseServerlessFunctionDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2322,8 +2396,11 @@ class ServerlessFunctionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseServerlessFunctionDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

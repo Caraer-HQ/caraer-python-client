@@ -36,7 +36,12 @@ class TestErrorResponse(unittest.TestCase):
         if include_optional:
             return ErrorResponse(
                 message = 'Resource not found.',
-                errors = [{field=name, message=Name is required., correctionSuggestion=Please provide a name.}],
+                errors = [
+                    caraer_client.models.caraer_error_type.CaraerErrorType(
+                        message = 'Invalid file type.', 
+                        type = 'INVALID_FILE_TYPE', 
+                        correction_suggestion = 'Try uploading a different file type.', )
+                    ],
                 status = 400,
                 stack_trace = '',
                 roles = [

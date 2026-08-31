@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **list_app_bars**
-> list_app_bars(location, object=object, record_uuid=record_uuid, view_id=view_id, trait=trait)
+> ShowResponseListInstalledAppBarDTO list_app_bars(location, object=object, record_uuid=record_uuid, view_id=view_id, trait=trait)
 
 List installed app bars for a location
 
@@ -21,6 +21,7 @@ Returns all app bars from installed apps for the authenticated user's company at
 
 ```python
 import caraer_client
+from caraer_client.models.show_response_list_installed_app_bar_dto import ShowResponseListInstalledAppBarDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -52,7 +53,9 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # List installed app bars for a location
-        api_instance.list_app_bars(location, object=object, record_uuid=record_uuid, view_id=view_id, trait=trait)
+        api_response = api_instance.list_app_bars(location, object=object, record_uuid=record_uuid, view_id=view_id, trait=trait)
+        print("The response of AppBarsApi->list_app_bars:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AppBarsApi->list_app_bars: %s\n" % e)
 ```
@@ -72,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ShowResponseListInstalledAppBarDTO**](ShowResponseListInstalledAppBarDTO.md)
 
 ### Authorization
 
@@ -89,11 +92,15 @@ void (empty response body)
 |-------------|-------------|------------------|
 **200** | App bars retrieved |  -  |
 **400** | Invalid request |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **trigger_app_bar**
-> trigger_app_bar(app_bar_uuid, app_bar_trigger_request=app_bar_trigger_request)
+> SuccessResponseString trigger_app_bar(app_bar_uuid, app_bar_trigger_request=app_bar_trigger_request)
 
 Trigger an action-based app bar
 
@@ -106,6 +113,7 @@ Fires the app bar webhook with optional settings values and record/view context.
 ```python
 import caraer_client
 from caraer_client.models.app_bar_trigger_request import AppBarTriggerRequest
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -134,7 +142,9 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Trigger an action-based app bar
-        api_instance.trigger_app_bar(app_bar_uuid, app_bar_trigger_request=app_bar_trigger_request)
+        api_response = api_instance.trigger_app_bar(app_bar_uuid, app_bar_trigger_request=app_bar_trigger_request)
+        print("The response of AppBarsApi->trigger_app_bar:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AppBarsApi->trigger_app_bar: %s\n" % e)
 ```
@@ -151,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -169,6 +179,9 @@ void (empty response body)
 **200** | Trigger accepted |  -  |
 **400** | Invalid request |  -  |
 **404** | App bar not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

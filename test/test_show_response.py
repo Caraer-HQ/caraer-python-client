@@ -36,7 +36,7 @@ class TestShowResponse(unittest.TestCase):
         if include_optional:
             return ShowResponse(
                 message = 'Success',
-                data = None
+                data = { }
             )
         else:
             return ShowResponse(

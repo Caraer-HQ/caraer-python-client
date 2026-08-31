@@ -16,13 +16,13 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
-from typing import Any, Optional
 from typing_extensions import Annotated
 from caraer_client.models.create_response import CreateResponse
 from caraer_client.models.delete_response import DeleteResponse
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_saved_filter_dto import PaginationResponseSavedFilterDTO
 from caraer_client.models.saved_filter_dto import SavedFilterDTO
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_saved_filter_dto import ShowResponseSavedFilterDTO
 from caraer_client.models.update_response import UpdateResponse
 
 from caraer_client.api_client import ApiClient, RequestSerialized
@@ -100,6 +100,9 @@ class FilterApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -169,6 +172,9 @@ class FilterApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -238,6 +244,9 @@ class FilterApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -380,6 +389,8 @@ class FilterApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -449,6 +460,8 @@ class FilterApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -518,6 +531,8 @@ class FilterApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -606,7 +621,7 @@ class FilterApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseSavedFilterDTO:
         """Fetch a specific saved filter
 
         Retrieves details of a saved filter by its UUID.
@@ -644,9 +659,11 @@ class FilterApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseSavedFilterDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -675,7 +692,7 @@ class FilterApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseSavedFilterDTO]:
         """Fetch a specific saved filter
 
         Retrieves details of a saved filter by its UUID.
@@ -713,9 +730,11 @@ class FilterApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseSavedFilterDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -782,9 +801,11 @@ class FilterApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseSavedFilterDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -861,7 +882,7 @@ class FilterApi:
     def get_filters(
         self,
         object_uuid: StrictStr,
-        body: Annotated[Optional[Any], Field(description="Pagination request details")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request details")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -874,15 +895,15 @@ class FilterApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseSavedFilterDTO:
         """Fetch paginated saved filters
 
         Fetches a paginated list of saved filters. The request body should contain pagination details such as limit, page, filters, and sort.
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Pagination request details (required)
-        :type body: object
+        :param pagination_request: Pagination request details (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -907,7 +928,7 @@ class FilterApi:
 
         _param = self._get_filters_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -915,9 +936,12 @@ class FilterApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseSavedFilterDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -934,7 +958,7 @@ class FilterApi:
     def get_filters_with_http_info(
         self,
         object_uuid: StrictStr,
-        body: Annotated[Optional[Any], Field(description="Pagination request details")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request details")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -947,15 +971,15 @@ class FilterApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseSavedFilterDTO]:
         """Fetch paginated saved filters
 
         Fetches a paginated list of saved filters. The request body should contain pagination details such as limit, page, filters, and sort.
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Pagination request details (required)
-        :type body: object
+        :param pagination_request: Pagination request details (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -980,7 +1004,7 @@ class FilterApi:
 
         _param = self._get_filters_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -988,9 +1012,12 @@ class FilterApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseSavedFilterDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1007,7 +1034,7 @@ class FilterApi:
     def get_filters_without_preload_content(
         self,
         object_uuid: StrictStr,
-        body: Annotated[Optional[Any], Field(description="Pagination request details")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request details")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1027,8 +1054,8 @@ class FilterApi:
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Pagination request details (required)
-        :type body: object
+        :param pagination_request: Pagination request details (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1053,7 +1080,7 @@ class FilterApi:
 
         _param = self._get_filters_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1061,9 +1088,12 @@ class FilterApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseSavedFilterDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1075,7 +1105,7 @@ class FilterApi:
     def _get_filters_serialize(
         self,
         object_uuid,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1103,8 +1133,8 @@ class FilterApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -1214,6 +1244,8 @@ class FilterApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1288,6 +1320,8 @@ class FilterApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1362,6 +1396,8 @@ class FilterApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

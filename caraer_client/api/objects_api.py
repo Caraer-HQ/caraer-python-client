@@ -15,18 +15,22 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
-from typing import Any, Optional
+from pydantic import Field, StrictInt, StrictStr
+from typing import Dict, Optional
 from typing_extensions import Annotated
 from caraer_client.models.caraer_object_dto import CaraerObjectDTO
 from caraer_client.models.create_response import CreateResponse
 from caraer_client.models.delete_response import DeleteResponse
 from caraer_client.models.object_access_grant_request_dto import ObjectAccessGrantRequestDTO
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_caraer_object_dto import PaginationResponseCaraerObjectDTO
+from caraer_client.models.pagination_response_preview_dto import PaginationResponsePreviewDTO
 from caraer_client.models.preview_dto import PreviewDTO
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_caraer_object_dto import ShowResponseCaraerObjectDTO
 from caraer_client.models.show_response_object_access_grant_candidates_dto import ShowResponseObjectAccessGrantCandidatesDTO
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.show_response_preview_dto import ShowResponsePreviewDTO
+from caraer_client.models.success_response_list_caraer_object_dto import SuccessResponseListCaraerObjectDTO
+from caraer_client.models.success_response_map_string_integer import SuccessResponseMapStringInteger
 from caraer_client.models.success_response_void import SuccessResponseVoid
 from caraer_client.models.update_lifecycle_properties_dto import UpdateLifecyclePropertiesDTO
 from caraer_client.models.update_response import UpdateResponse
@@ -118,6 +122,9 @@ class ObjectsApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -199,6 +206,9 @@ class ObjectsApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -280,6 +290,9 @@ class ObjectsApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -438,6 +451,8 @@ class ObjectsApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -507,6 +522,8 @@ class ObjectsApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -576,6 +593,8 @@ class ObjectsApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -620,8 +639,7 @@ class ObjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -700,6 +718,10 @@ class ObjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseObjectAccessGrantCandidatesDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -763,6 +785,10 @@ class ObjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseObjectAccessGrantCandidatesDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -826,6 +852,10 @@ class ObjectsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseObjectAccessGrantCandidatesDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -914,7 +944,7 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseCaraerObjectDTO:
         """Get object by UUID
 
         Fetches a single object by its UUID. Optional parameters determine whether to include views, properties, and relations in the response.
@@ -961,9 +991,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseCaraerObjectDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -995,7 +1027,7 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseCaraerObjectDTO]:
         """Get object by UUID
 
         Fetches a single object by its UUID. Optional parameters determine whether to include views, properties, and relations in the response.
@@ -1042,9 +1074,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseCaraerObjectDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1123,9 +1157,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseCaraerObjectDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1185,8 +1221,7 @@ class ObjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1217,7 +1252,7 @@ class ObjectsApi:
     @validate_call
     def get_objects(
         self,
-        body: Annotated[Optional[Any], Field(description="Pagination request details")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request details")],
         views: Optional[StrictStr] = None,
         properties: Optional[StrictStr] = None,
         relations: Optional[StrictStr] = None,
@@ -1233,13 +1268,13 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseCaraerObjectDTO:
         """Fetch paginated objects
 
         Fetches a paginated list of objects, optionally including views, properties, and/or relations. The request body should contain pagination details such as limit, page, filters, sort, and query.
 
-        :param body: Pagination request details (required)
-        :type body: object
+        :param pagination_request: Pagination request details (required)
+        :type pagination_request: PaginationRequest
         :param views:
         :type views: str
         :param properties:
@@ -1269,7 +1304,7 @@ class ObjectsApi:
         """ # noqa: E501
 
         _param = self._get_objects_serialize(
-            body=body,
+            pagination_request=pagination_request,
             views=views,
             properties=properties,
             relations=relations,
@@ -1280,9 +1315,12 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseCaraerObjectDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1298,7 +1336,7 @@ class ObjectsApi:
     @validate_call
     def get_objects_with_http_info(
         self,
-        body: Annotated[Optional[Any], Field(description="Pagination request details")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request details")],
         views: Optional[StrictStr] = None,
         properties: Optional[StrictStr] = None,
         relations: Optional[StrictStr] = None,
@@ -1314,13 +1352,13 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseCaraerObjectDTO]:
         """Fetch paginated objects
 
         Fetches a paginated list of objects, optionally including views, properties, and/or relations. The request body should contain pagination details such as limit, page, filters, sort, and query.
 
-        :param body: Pagination request details (required)
-        :type body: object
+        :param pagination_request: Pagination request details (required)
+        :type pagination_request: PaginationRequest
         :param views:
         :type views: str
         :param properties:
@@ -1350,7 +1388,7 @@ class ObjectsApi:
         """ # noqa: E501
 
         _param = self._get_objects_serialize(
-            body=body,
+            pagination_request=pagination_request,
             views=views,
             properties=properties,
             relations=relations,
@@ -1361,9 +1399,12 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseCaraerObjectDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1379,7 +1420,7 @@ class ObjectsApi:
     @validate_call
     def get_objects_without_preload_content(
         self,
-        body: Annotated[Optional[Any], Field(description="Pagination request details")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request details")],
         views: Optional[StrictStr] = None,
         properties: Optional[StrictStr] = None,
         relations: Optional[StrictStr] = None,
@@ -1400,8 +1441,8 @@ class ObjectsApi:
 
         Fetches a paginated list of objects, optionally including views, properties, and/or relations. The request body should contain pagination details such as limit, page, filters, sort, and query.
 
-        :param body: Pagination request details (required)
-        :type body: object
+        :param pagination_request: Pagination request details (required)
+        :type pagination_request: PaginationRequest
         :param views:
         :type views: str
         :param properties:
@@ -1431,7 +1472,7 @@ class ObjectsApi:
         """ # noqa: E501
 
         _param = self._get_objects_serialize(
-            body=body,
+            pagination_request=pagination_request,
             views=views,
             properties=properties,
             relations=relations,
@@ -1442,9 +1483,12 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseCaraerObjectDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1455,7 +1499,7 @@ class ObjectsApi:
 
     def _get_objects_serialize(
         self,
-        body,
+        pagination_request,
         views,
         properties,
         relations,
@@ -1496,8 +1540,8 @@ class ObjectsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -1562,7 +1606,7 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponsePreviewDTO:
         """Get specific preview by name
 
         Fetches a preview for an object by the object's UUID and the preview name. Returns the preview data wrapped in a ShowResponse.
@@ -1603,9 +1647,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePreviewDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1635,7 +1681,7 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponsePreviewDTO]:
         """Get specific preview by name
 
         Fetches a preview for an object by the object's UUID and the preview name. Returns the preview data wrapped in a ShowResponse.
@@ -1676,9 +1722,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePreviewDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1749,9 +1797,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePreviewDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1830,7 +1880,7 @@ class ObjectsApi:
     @validate_call
     def get_previews(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1843,13 +1893,13 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponsePreviewDTO:
         """Get all previews over all objects
 
         Fetches all previews over all objects. Returns a PaginationResponse containing a list of preview DTOs.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1873,7 +1923,7 @@ class ObjectsApi:
         """ # noqa: E501
 
         _param = self._get_previews_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1881,8 +1931,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePreviewDTO",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1898,7 +1951,7 @@ class ObjectsApi:
     @validate_call
     def get_previews_with_http_info(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1911,13 +1964,13 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponsePreviewDTO]:
         """Get all previews over all objects
 
         Fetches all previews over all objects. Returns a PaginationResponse containing a list of preview DTOs.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1941,7 +1994,7 @@ class ObjectsApi:
         """ # noqa: E501
 
         _param = self._get_previews_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1949,8 +2002,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePreviewDTO",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1966,7 +2022,7 @@ class ObjectsApi:
     @validate_call
     def get_previews_without_preload_content(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1984,8 +2040,8 @@ class ObjectsApi:
 
         Fetches all previews over all objects. Returns a PaginationResponse containing a list of preview DTOs.
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2009,7 +2065,7 @@ class ObjectsApi:
         """ # noqa: E501
 
         _param = self._get_previews_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2017,8 +2073,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePreviewDTO",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2029,7 +2088,7 @@ class ObjectsApi:
 
     def _get_previews_serialize(
         self,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2055,8 +2114,8 @@ class ObjectsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -2121,7 +2180,7 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponsePreviewDTO:
         """Get all previews of an object
 
         Fetches all previews associated with a specific object. Returns a PaginationResponse containing a list of preview DTOs.
@@ -2162,9 +2221,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePreviewDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2194,7 +2255,7 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponsePreviewDTO]:
         """Get all previews of an object
 
         Fetches all previews associated with a specific object. Returns a PaginationResponse containing a list of preview DTOs.
@@ -2235,9 +2296,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePreviewDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2308,9 +2371,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePreviewDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2449,6 +2514,9 @@ class ObjectsApi:
             '202': "SuccessResponseVoid",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2522,6 +2590,9 @@ class ObjectsApi:
             '202': "SuccessResponseVoid",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2595,6 +2666,9 @@ class ObjectsApi:
             '202': "SuccessResponseVoid",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2740,6 +2814,9 @@ class ObjectsApi:
             '200': "DeleteResponse",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2809,6 +2886,9 @@ class ObjectsApi:
             '200': "DeleteResponse",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2878,6 +2958,9 @@ class ObjectsApi:
             '200': "DeleteResponse",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3016,6 +3099,8 @@ class ObjectsApi:
             '201': "CreateResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3093,6 +3178,8 @@ class ObjectsApi:
             '201': "CreateResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3170,6 +3257,8 @@ class ObjectsApi:
             '201': "CreateResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3277,7 +3366,7 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseMapStringInteger:
         """Sync extended objects for existing records
 
         Synchronizes existing records for an object after extended configuration changes. The object path variable accepts UUID or object name. Records that reference the object as primary object, extended object, or label are re-extended.
@@ -3315,9 +3404,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringInteger",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3346,7 +3437,7 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseMapStringInteger]:
         """Sync extended objects for existing records
 
         Synchronizes existing records for an object after extended configuration changes. The object path variable accepts UUID or object name. Records that reference the object as primary object, extended object, or label are re-extended.
@@ -3384,9 +3475,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringInteger",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3453,9 +3546,11 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseMapStringInteger",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3500,8 +3595,7 @@ class ObjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -3532,7 +3626,7 @@ class ObjectsApi:
     @validate_call
     def update_indices3(
         self,
-        body: Annotated[StrictStr, Field(description="Mapping of object indices")],
+        request_body: Annotated[Dict[str, StrictInt], Field(description="Mapping of object indices")],
         views: Optional[StrictStr] = None,
         properties: Optional[StrictStr] = None,
         relations: Optional[StrictStr] = None,
@@ -3548,13 +3642,13 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> SuccessResponseListCaraerObjectDTO:
         """Update object indices
 
         Updates indices of objects based on the provided mapping. The request body should contain a mapping of object UUIDs to index values. Optional request parameters determine if views, properties, and relations should be included in the response.
 
-        :param body: Mapping of object indices (required)
-        :type body: str
+        :param request_body: Mapping of object indices (required)
+        :type request_body: Dict[str, int]
         :param views:
         :type views: str
         :param properties:
@@ -3584,7 +3678,7 @@ class ObjectsApi:
         """ # noqa: E501
 
         _param = self._update_indices3_serialize(
-            body=body,
+            request_body=request_body,
             views=views,
             properties=properties,
             relations=relations,
@@ -3595,9 +3689,12 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "SuccessResponseListCaraerObjectDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3613,7 +3710,7 @@ class ObjectsApi:
     @validate_call
     def update_indices3_with_http_info(
         self,
-        body: Annotated[StrictStr, Field(description="Mapping of object indices")],
+        request_body: Annotated[Dict[str, StrictInt], Field(description="Mapping of object indices")],
         views: Optional[StrictStr] = None,
         properties: Optional[StrictStr] = None,
         relations: Optional[StrictStr] = None,
@@ -3629,13 +3726,13 @@ class ObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[SuccessResponseListCaraerObjectDTO]:
         """Update object indices
 
         Updates indices of objects based on the provided mapping. The request body should contain a mapping of object UUIDs to index values. Optional request parameters determine if views, properties, and relations should be included in the response.
 
-        :param body: Mapping of object indices (required)
-        :type body: str
+        :param request_body: Mapping of object indices (required)
+        :type request_body: Dict[str, int]
         :param views:
         :type views: str
         :param properties:
@@ -3665,7 +3762,7 @@ class ObjectsApi:
         """ # noqa: E501
 
         _param = self._update_indices3_serialize(
-            body=body,
+            request_body=request_body,
             views=views,
             properties=properties,
             relations=relations,
@@ -3676,9 +3773,12 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "SuccessResponseListCaraerObjectDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3694,7 +3794,7 @@ class ObjectsApi:
     @validate_call
     def update_indices3_without_preload_content(
         self,
-        body: Annotated[StrictStr, Field(description="Mapping of object indices")],
+        request_body: Annotated[Dict[str, StrictInt], Field(description="Mapping of object indices")],
         views: Optional[StrictStr] = None,
         properties: Optional[StrictStr] = None,
         relations: Optional[StrictStr] = None,
@@ -3715,8 +3815,8 @@ class ObjectsApi:
 
         Updates indices of objects based on the provided mapping. The request body should contain a mapping of object UUIDs to index values. Optional request parameters determine if views, properties, and relations should be included in the response.
 
-        :param body: Mapping of object indices (required)
-        :type body: str
+        :param request_body: Mapping of object indices (required)
+        :type request_body: Dict[str, int]
         :param views:
         :type views: str
         :param properties:
@@ -3746,7 +3846,7 @@ class ObjectsApi:
         """ # noqa: E501
 
         _param = self._update_indices3_serialize(
-            body=body,
+            request_body=request_body,
             views=views,
             properties=properties,
             relations=relations,
@@ -3757,9 +3857,12 @@ class ObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "SuccessResponseListCaraerObjectDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3770,7 +3873,7 @@ class ObjectsApi:
 
     def _update_indices3_serialize(
         self,
-        body,
+        request_body,
         views,
         properties,
         relations,
@@ -3811,8 +3914,8 @@ class ObjectsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if request_body is not None:
+            _body_params = request_body
 
 
         # set the HTTP header `Accept`
@@ -3921,6 +4024,9 @@ class ObjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UpdateResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3993,6 +4099,9 @@ class ObjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UpdateResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4065,6 +4174,9 @@ class ObjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UpdateResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4227,6 +4339,8 @@ class ObjectsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4313,6 +4427,8 @@ class ObjectsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4399,6 +4515,8 @@ class ObjectsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

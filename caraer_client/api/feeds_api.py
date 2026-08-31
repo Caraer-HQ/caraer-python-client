@@ -15,7 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from typing import Any, Optional
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_feed_dto import PaginationResponseFeedDTO
 
 from caraer_client.api_client import ApiClient, RequestSerialized
 from caraer_client.api_response import ApiResponse
@@ -38,7 +39,7 @@ class FeedsApi:
     @validate_call
     def index1(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -51,12 +52,12 @@ class FeedsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> PaginationResponseFeedDTO:
         """List feeds
 
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -80,7 +81,7 @@ class FeedsApi:
         """ # noqa: E501
 
         _param = self._index1_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -88,7 +89,11 @@ class FeedsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "PaginationResponseFeedDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -104,7 +109,7 @@ class FeedsApi:
     @validate_call
     def index1_with_http_info(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -117,12 +122,12 @@ class FeedsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[PaginationResponseFeedDTO]:
         """List feeds
 
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -146,7 +151,7 @@ class FeedsApi:
         """ # noqa: E501
 
         _param = self._index1_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -154,7 +159,11 @@ class FeedsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "PaginationResponseFeedDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -170,7 +179,7 @@ class FeedsApi:
     @validate_call
     def index1_without_preload_content(
         self,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -187,8 +196,8 @@ class FeedsApi:
         """List feeds
 
 
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -212,7 +221,7 @@ class FeedsApi:
         """ # noqa: E501
 
         _param = self._index1_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -220,7 +229,11 @@ class FeedsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "PaginationResponseFeedDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -231,7 +244,7 @@ class FeedsApi:
 
     def _index1_serialize(
         self,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -257,8 +270,8 @@ class FeedsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`

@@ -29,11 +29,22 @@ from caraer_client.models.bulk_edit_records_response import BulkEditRecordsRespo
 from caraer_client.models.create_response import CreateResponse
 from caraer_client.models.cross_object_record_search_request import CrossObjectRecordSearchRequest
 from caraer_client.models.extend_record_request import ExtendRecordRequest
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.flow_pagination_request import FlowPaginationRequest
+from caraer_client.models.pagination_response_object import PaginationResponseObject
+from caraer_client.models.pagination_response_preview_dto import PaginationResponsePreviewDTO
 from caraer_client.models.record_dto import RecordDTO
+from caraer_client.models.record_pagination_request import RecordPaginationRequest
 from caraer_client.models.relation_edge_request_dto import RelationEdgeRequestDTO
-from caraer_client.models.show_response import ShowResponse
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.search_request import SearchRequest
+from caraer_client.models.show_response_object import ShowResponseObject
+from caraer_client.models.show_response_preview_dto import ShowResponsePreviewDTO
+from caraer_client.models.success_response_aggregate_response import SuccessResponseAggregateResponse
+from caraer_client.models.success_response_flow import SuccessResponseFlow
+from caraer_client.models.success_response_list_aggregate_response import SuccessResponseListAggregateResponse
+from caraer_client.models.success_response_object import SuccessResponseObject
+from caraer_client.models.success_response_string import SuccessResponseString
+from caraer_client.models.success_response_suggest_analytics_widgets_response import SuccessResponseSuggestAnalyticsWidgetsResponse
+from caraer_client.models.success_response_table import SuccessResponseTable
 from caraer_client.models.suggest_analytics_widgets_request import SuggestAnalyticsWidgetsRequest
 from caraer_client.models.update_response import UpdateResponse
 
@@ -71,7 +82,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseAggregateResponse:
         """Aggregate records for analytics charts
 
         Groups Neo4j records by property or time bucket and returns series points with optional drilldown filters.
@@ -109,8 +120,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseAggregateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -139,7 +154,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseAggregateResponse]:
         """Aggregate records for analytics charts
 
         Groups Neo4j records by property or time bucket and returns series points with optional drilldown filters.
@@ -177,8 +192,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseAggregateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -245,8 +264,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseAggregateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -348,7 +371,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseListAggregateResponse:
         """Batch aggregate records for analytics dashboards
 
         Runs multiple aggregation requests for dashboard widgets.
@@ -386,8 +409,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListAggregateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -416,7 +443,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseListAggregateResponse]:
         """Batch aggregate records for analytics dashboards
 
         Runs multiple aggregation requests for dashboard widgets.
@@ -454,8 +481,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListAggregateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -522,8 +553,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseListAggregateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -669,6 +704,10 @@ class RecordsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BulkDeleteRecordsResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -741,6 +780,10 @@ class RecordsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BulkDeleteRecordsResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -813,6 +856,10 @@ class RecordsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BulkDeleteRecordsResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -966,6 +1013,10 @@ class RecordsApi:
             '201': "BulkEditRecordsResponse",
             '200': "BulkEditRecordsResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1043,6 +1094,10 @@ class RecordsApi:
             '201': "BulkEditRecordsResponse",
             '200': "BulkEditRecordsResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1120,6 +1175,10 @@ class RecordsApi:
             '201': "BulkEditRecordsResponse",
             '200': "BulkEditRecordsResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1286,6 +1345,9 @@ class RecordsApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1371,6 +1433,9 @@ class RecordsApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1456,6 +1521,9 @@ class RecordsApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1579,7 +1647,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> UpdateResponse:
         """Create or update a record
 
         Creates a new record or updates an existing one. Match order: body/path uuid already in the graph, then unique property values. If a matching record exists, it is updated; otherwise, a new record is created. Returns a CreateResponse or UpdateResponse with the record details. Validation: Record properties are validated according to the property rules defined for the object. Each property may have validation rules such as required, type constraints, character limits, uniqueness, etc.
@@ -1629,10 +1697,13 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '201': None,
+            '200': "UpdateResponse",
+            '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1665,7 +1736,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[UpdateResponse]:
         """Create or update a record
 
         Creates a new record or updates an existing one. Match order: body/path uuid already in the graph, then unique property values. If a matching record exists, it is updated; otherwise, a new record is created. Returns a CreateResponse or UpdateResponse with the record details. Validation: Record properties are validated according to the property rules defined for the object. Each property may have validation rules such as required, type constraints, character limits, uniqueness, etc.
@@ -1715,10 +1786,13 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '201': None,
+            '200': "UpdateResponse",
+            '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1801,10 +1875,13 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '201': None,
+            '200': "UpdateResponse",
+            '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1928,7 +2005,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseString:
         """Create a relation between records
 
         Creates a relation between two records identified by their UUIDs using the provided relation name.
@@ -1978,9 +2055,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2013,7 +2092,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseString]:
         """Create a relation between records
 
         Creates a relation between two records identified by their UUIDs using the provided relation name.
@@ -2063,9 +2142,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2148,9 +2229,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2267,7 +2350,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseString:
         """Delete a record
 
         Deletes a record specified by its UUID.
@@ -2308,9 +2391,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2340,7 +2425,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseString]:
         """Delete a record
 
         Deletes a record specified by its UUID.
@@ -2381,9 +2466,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2454,9 +2541,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2552,7 +2641,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseString:
         """Delete a relation between records
 
         Deletes a relation between two records identified by their UUIDs and the relation name.
@@ -2596,9 +2685,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2629,7 +2720,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseString]:
         """Delete a relation between records
 
         Deletes a relation between two records identified by their UUIDs and the relation name.
@@ -2673,9 +2764,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2750,9 +2843,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2850,7 +2945,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseObject:
         """Extend a record
 
         Extends a record identified by its UUID to one or more objects. You can use this to move a record or add it to another object so it'll be visible in the new object.Returns a SuccessResponse confirming that the record has been extended.
@@ -2897,9 +2992,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseObject",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2931,7 +3028,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseObject]:
         """Extend a record
 
         Extends a record identified by its UUID to one or more objects. You can use this to move a record or add it to another object so it'll be visible in the new object.Returns a SuccessResponse confirming that the record has been extended.
@@ -2978,9 +3075,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseObject",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3059,9 +3158,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseObject",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3163,7 +3264,7 @@ class RecordsApi:
     @validate_call
     def index(
         self,
-        body: Annotated[StrictStr, Field(description="Pagination request for records")],
+        record_pagination_request: Annotated[RecordPaginationRequest, Field(description="Pagination request for records")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         archived: Annotated[Optional[StrictBool], Field(description="When 'true', archived records are returned instead of active records. Defaults to 'false'.")] = None,
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
@@ -3180,13 +3281,13 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseObject:
         """Fetch paginated records
 
         Retrieves a paginated list of records. If a preview type is specified in the request, returns records formatted for preview; otherwise, returns full record details.
 
-        :param body: Pagination request for records (required)
-        :type body: str
+        :param record_pagination_request: Pagination request for records (required)
+        :type record_pagination_request: RecordPaginationRequest
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
         :param archived: When 'true', archived records are returned instead of active records. Defaults to 'false'.
@@ -3218,7 +3319,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._index_serialize(
-            body=body,
+            record_pagination_request=record_pagination_request,
             parse=parse,
             archived=archived,
             related_record_uuid=related_record_uuid,
@@ -3230,9 +3331,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseObject",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3248,7 +3352,7 @@ class RecordsApi:
     @validate_call
     def index_with_http_info(
         self,
-        body: Annotated[StrictStr, Field(description="Pagination request for records")],
+        record_pagination_request: Annotated[RecordPaginationRequest, Field(description="Pagination request for records")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         archived: Annotated[Optional[StrictBool], Field(description="When 'true', archived records are returned instead of active records. Defaults to 'false'.")] = None,
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
@@ -3265,13 +3369,13 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseObject]:
         """Fetch paginated records
 
         Retrieves a paginated list of records. If a preview type is specified in the request, returns records formatted for preview; otherwise, returns full record details.
 
-        :param body: Pagination request for records (required)
-        :type body: str
+        :param record_pagination_request: Pagination request for records (required)
+        :type record_pagination_request: RecordPaginationRequest
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
         :param archived: When 'true', archived records are returned instead of active records. Defaults to 'false'.
@@ -3303,7 +3407,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._index_serialize(
-            body=body,
+            record_pagination_request=record_pagination_request,
             parse=parse,
             archived=archived,
             related_record_uuid=related_record_uuid,
@@ -3315,9 +3419,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseObject",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3333,7 +3440,7 @@ class RecordsApi:
     @validate_call
     def index_without_preload_content(
         self,
-        body: Annotated[StrictStr, Field(description="Pagination request for records")],
+        record_pagination_request: Annotated[RecordPaginationRequest, Field(description="Pagination request for records")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         archived: Annotated[Optional[StrictBool], Field(description="When 'true', archived records are returned instead of active records. Defaults to 'false'.")] = None,
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
@@ -3355,8 +3462,8 @@ class RecordsApi:
 
         Retrieves a paginated list of records. If a preview type is specified in the request, returns records formatted for preview; otherwise, returns full record details.
 
-        :param body: Pagination request for records (required)
-        :type body: str
+        :param record_pagination_request: Pagination request for records (required)
+        :type record_pagination_request: RecordPaginationRequest
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
         :param archived: When 'true', archived records are returned instead of active records. Defaults to 'false'.
@@ -3388,7 +3495,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._index_serialize(
-            body=body,
+            record_pagination_request=record_pagination_request,
             parse=parse,
             archived=archived,
             related_record_uuid=related_record_uuid,
@@ -3400,9 +3507,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseObject",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3413,7 +3523,7 @@ class RecordsApi:
 
     def _index_serialize(
         self,
-        body,
+        record_pagination_request,
         parse,
         archived,
         related_record_uuid,
@@ -3459,8 +3569,8 @@ class RecordsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if record_pagination_request is not None:
+            _body_params = record_pagination_request
 
 
         # set the HTTP header `Accept`
@@ -3511,7 +3621,7 @@ class RecordsApi:
     @validate_call
     def index_flow(
         self,
-        body: Annotated[StrictStr, Field(description="Pagination request for flow view")],
+        flow_pagination_request: Annotated[FlowPaginationRequest, Field(description="Pagination request for flow view")],
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
@@ -3526,13 +3636,13 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseFlow:
         """Fetch records for flow view
 
         Retrieves a list of records formatted for flow view based on a specific property. If the property is not provided in the request, defaults to the 'status' property of the main object. Returns a SuccessResponse containing the flow records.
 
-        :param body: Pagination request for flow view (required)
-        :type body: str
+        :param flow_pagination_request: Pagination request for flow view (required)
+        :type flow_pagination_request: FlowPaginationRequest
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
         :type related_record_uuid: str
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
@@ -3560,7 +3670,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._index_flow_serialize(
-            body=body,
+            flow_pagination_request=flow_pagination_request,
             related_record_uuid=related_record_uuid,
             parse=parse,
             _request_auth=_request_auth,
@@ -3570,9 +3680,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseFlow",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3588,7 +3701,7 @@ class RecordsApi:
     @validate_call
     def index_flow_with_http_info(
         self,
-        body: Annotated[StrictStr, Field(description="Pagination request for flow view")],
+        flow_pagination_request: Annotated[FlowPaginationRequest, Field(description="Pagination request for flow view")],
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
@@ -3603,13 +3716,13 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseFlow]:
         """Fetch records for flow view
 
         Retrieves a list of records formatted for flow view based on a specific property. If the property is not provided in the request, defaults to the 'status' property of the main object. Returns a SuccessResponse containing the flow records.
 
-        :param body: Pagination request for flow view (required)
-        :type body: str
+        :param flow_pagination_request: Pagination request for flow view (required)
+        :type flow_pagination_request: FlowPaginationRequest
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
         :type related_record_uuid: str
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
@@ -3637,7 +3750,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._index_flow_serialize(
-            body=body,
+            flow_pagination_request=flow_pagination_request,
             related_record_uuid=related_record_uuid,
             parse=parse,
             _request_auth=_request_auth,
@@ -3647,9 +3760,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseFlow",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3665,7 +3781,7 @@ class RecordsApi:
     @validate_call
     def index_flow_without_preload_content(
         self,
-        body: Annotated[StrictStr, Field(description="Pagination request for flow view")],
+        flow_pagination_request: Annotated[FlowPaginationRequest, Field(description="Pagination request for flow view")],
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
@@ -3685,8 +3801,8 @@ class RecordsApi:
 
         Retrieves a list of records formatted for flow view based on a specific property. If the property is not provided in the request, defaults to the 'status' property of the main object. Returns a SuccessResponse containing the flow records.
 
-        :param body: Pagination request for flow view (required)
-        :type body: str
+        :param flow_pagination_request: Pagination request for flow view (required)
+        :type flow_pagination_request: FlowPaginationRequest
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
         :type related_record_uuid: str
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
@@ -3714,7 +3830,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._index_flow_serialize(
-            body=body,
+            flow_pagination_request=flow_pagination_request,
             related_record_uuid=related_record_uuid,
             parse=parse,
             _request_auth=_request_auth,
@@ -3724,9 +3840,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseFlow",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3737,7 +3856,7 @@ class RecordsApi:
 
     def _index_flow_serialize(
         self,
-        body,
+        flow_pagination_request,
         related_record_uuid,
         parse,
         _request_auth,
@@ -3773,8 +3892,8 @@ class RecordsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if flow_pagination_request is not None:
+            _body_params = flow_pagination_request
 
 
         # set the HTTP header `Accept`
@@ -3825,7 +3944,7 @@ class RecordsApi:
     @validate_call
     def index_page(
         self,
-        body: Annotated[StrictStr, Field(description="Pagination request for page view")],
+        record_pagination_request: Annotated[RecordPaginationRequest, Field(description="Pagination request for page view")],
         environment: Annotated[Optional[StrictStr], Field(description="Target environment for resolving webpages (for example 'staging' or 'production'). Defaults to 'staging'.")] = None,
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
         fields: Annotated[Optional[StrictStr], Field(description="Comma-separated WebpageDTO fields to return (for example: uuid,title). When omitted, the full WebpageDTO is returned.")] = None,
@@ -3843,13 +3962,13 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseObject:
         """Fetch records for page view
 
         Retrieves a paginated list of webpages for page view. The search query is temporarily removed from the pagination request and passed separately. Returns a PaginationResponse containing WebpageDTO objects.
 
-        :param body: Pagination request for page view (required)
-        :type body: str
+        :param record_pagination_request: Pagination request for page view (required)
+        :type record_pagination_request: RecordPaginationRequest
         :param environment: Target environment for resolving webpages (for example 'staging' or 'production'). Defaults to 'staging'.
         :type environment: str
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
@@ -3883,7 +4002,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._index_page_serialize(
-            body=body,
+            record_pagination_request=record_pagination_request,
             environment=environment,
             related_record_uuid=related_record_uuid,
             fields=fields,
@@ -3896,8 +4015,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseObject",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3913,7 +4036,7 @@ class RecordsApi:
     @validate_call
     def index_page_with_http_info(
         self,
-        body: Annotated[StrictStr, Field(description="Pagination request for page view")],
+        record_pagination_request: Annotated[RecordPaginationRequest, Field(description="Pagination request for page view")],
         environment: Annotated[Optional[StrictStr], Field(description="Target environment for resolving webpages (for example 'staging' or 'production'). Defaults to 'staging'.")] = None,
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
         fields: Annotated[Optional[StrictStr], Field(description="Comma-separated WebpageDTO fields to return (for example: uuid,title). When omitted, the full WebpageDTO is returned.")] = None,
@@ -3931,13 +4054,13 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseObject]:
         """Fetch records for page view
 
         Retrieves a paginated list of webpages for page view. The search query is temporarily removed from the pagination request and passed separately. Returns a PaginationResponse containing WebpageDTO objects.
 
-        :param body: Pagination request for page view (required)
-        :type body: str
+        :param record_pagination_request: Pagination request for page view (required)
+        :type record_pagination_request: RecordPaginationRequest
         :param environment: Target environment for resolving webpages (for example 'staging' or 'production'). Defaults to 'staging'.
         :type environment: str
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
@@ -3971,7 +4094,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._index_page_serialize(
-            body=body,
+            record_pagination_request=record_pagination_request,
             environment=environment,
             related_record_uuid=related_record_uuid,
             fields=fields,
@@ -3984,8 +4107,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseObject",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4001,7 +4128,7 @@ class RecordsApi:
     @validate_call
     def index_page_without_preload_content(
         self,
-        body: Annotated[StrictStr, Field(description="Pagination request for page view")],
+        record_pagination_request: Annotated[RecordPaginationRequest, Field(description="Pagination request for page view")],
         environment: Annotated[Optional[StrictStr], Field(description="Target environment for resolving webpages (for example 'staging' or 'production'). Defaults to 'staging'.")] = None,
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
         fields: Annotated[Optional[StrictStr], Field(description="Comma-separated WebpageDTO fields to return (for example: uuid,title). When omitted, the full WebpageDTO is returned.")] = None,
@@ -4024,8 +4151,8 @@ class RecordsApi:
 
         Retrieves a paginated list of webpages for page view. The search query is temporarily removed from the pagination request and passed separately. Returns a PaginationResponse containing WebpageDTO objects.
 
-        :param body: Pagination request for page view (required)
-        :type body: str
+        :param record_pagination_request: Pagination request for page view (required)
+        :type record_pagination_request: RecordPaginationRequest
         :param environment: Target environment for resolving webpages (for example 'staging' or 'production'). Defaults to 'staging'.
         :type environment: str
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
@@ -4059,7 +4186,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._index_page_serialize(
-            body=body,
+            record_pagination_request=record_pagination_request,
             environment=environment,
             related_record_uuid=related_record_uuid,
             fields=fields,
@@ -4072,8 +4199,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseObject",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4084,7 +4215,7 @@ class RecordsApi:
 
     def _index_page_serialize(
         self,
-        body,
+        record_pagination_request,
         environment,
         related_record_uuid,
         fields,
@@ -4135,8 +4266,8 @@ class RecordsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if record_pagination_request is not None:
+            _body_params = record_pagination_request
 
 
         # set the HTTP header `Accept`
@@ -4187,7 +4318,7 @@ class RecordsApi:
     @validate_call
     def index_table(
         self,
-        body: Annotated[StrictStr, Field(description="Pagination request for table view")],
+        record_pagination_request: Annotated[RecordPaginationRequest, Field(description="Pagination request for table view")],
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
         _request_timeout: Union[
             None,
@@ -4201,13 +4332,13 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> SuccessResponseTable:
         """Fetch records for table view
 
         Retrieves records formatted for table display. Returns a PaginationResponse containing records formatted for table view.
 
-        :param body: Pagination request for table view (required)
-        :type body: str
+        :param record_pagination_request: Pagination request for table view (required)
+        :type record_pagination_request: RecordPaginationRequest
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
         :type related_record_uuid: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4233,7 +4364,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._index_table_serialize(
-            body=body,
+            record_pagination_request=record_pagination_request,
             related_record_uuid=related_record_uuid,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4242,8 +4373,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "SuccessResponseTable",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4259,7 +4394,7 @@ class RecordsApi:
     @validate_call
     def index_table_with_http_info(
         self,
-        body: Annotated[StrictStr, Field(description="Pagination request for table view")],
+        record_pagination_request: Annotated[RecordPaginationRequest, Field(description="Pagination request for table view")],
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
         _request_timeout: Union[
             None,
@@ -4273,13 +4408,13 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[SuccessResponseTable]:
         """Fetch records for table view
 
         Retrieves records formatted for table display. Returns a PaginationResponse containing records formatted for table view.
 
-        :param body: Pagination request for table view (required)
-        :type body: str
+        :param record_pagination_request: Pagination request for table view (required)
+        :type record_pagination_request: RecordPaginationRequest
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
         :type related_record_uuid: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4305,7 +4440,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._index_table_serialize(
-            body=body,
+            record_pagination_request=record_pagination_request,
             related_record_uuid=related_record_uuid,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4314,8 +4449,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "SuccessResponseTable",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4331,7 +4470,7 @@ class RecordsApi:
     @validate_call
     def index_table_without_preload_content(
         self,
-        body: Annotated[StrictStr, Field(description="Pagination request for table view")],
+        record_pagination_request: Annotated[RecordPaginationRequest, Field(description="Pagination request for table view")],
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
         _request_timeout: Union[
             None,
@@ -4350,8 +4489,8 @@ class RecordsApi:
 
         Retrieves records formatted for table display. Returns a PaginationResponse containing records formatted for table view.
 
-        :param body: Pagination request for table view (required)
-        :type body: str
+        :param record_pagination_request: Pagination request for table view (required)
+        :type record_pagination_request: RecordPaginationRequest
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
         :type related_record_uuid: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4377,7 +4516,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._index_table_serialize(
-            body=body,
+            record_pagination_request=record_pagination_request,
             related_record_uuid=related_record_uuid,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4386,8 +4525,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "SuccessResponseTable",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4398,7 +4541,7 @@ class RecordsApi:
 
     def _index_table_serialize(
         self,
-        body,
+        record_pagination_request,
         related_record_uuid,
         _request_auth,
         _content_type,
@@ -4429,8 +4572,8 @@ class RecordsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if record_pagination_request is not None:
+            _body_params = record_pagination_request
 
 
         # set the HTTP header `Accept`
@@ -4497,7 +4640,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponsePreviewDTO:
         """Get record preview
 
         Retrieves a preview for a record specified by its UUID and preview name. Returns a ShowResponse containing the preview data.
@@ -4544,8 +4687,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePreviewDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4577,7 +4723,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponsePreviewDTO]:
         """Get record preview
 
         Retrieves a preview for a record specified by its UUID and preview name. Returns a ShowResponse containing the preview data.
@@ -4624,8 +4770,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePreviewDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4704,8 +4853,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponsePreviewDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4847,6 +4999,10 @@ class RecordsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AdvancedRecordQueryResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4915,6 +5071,10 @@ class RecordsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AdvancedRecordQueryResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4983,6 +5143,10 @@ class RecordsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AdvancedRecordQueryResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5084,7 +5248,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseString:
         """Restore a deleted record
 
         Restores a soft-deleted record identified by its UUID. Returns a SuccessResponse confirming that the record has been restored.
@@ -5122,9 +5286,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5153,7 +5319,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseString]:
         """Restore a deleted record
 
         Restores a soft-deleted record identified by its UUID. Returns a SuccessResponse confirming that the record has been restored.
@@ -5191,9 +5357,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5260,9 +5428,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5338,7 +5508,7 @@ class RecordsApi:
     @validate_call
     def search(
         self,
-        body: Annotated[StrictStr, Field(description="Search criteria")],
+        search_request: Annotated[SearchRequest, Field(description="Search criteria")],
         archived: Annotated[Optional[StrictBool], Field(description="When set to 'true', includes soft-deleted records in the search results.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
@@ -5354,13 +5524,13 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseObject:
         """Search records
 
         Performs a search for records based on the specified criteria in the request body. Returns a PaginationResponse containing matching records.
 
-        :param body: Search criteria (required)
-        :type body: str
+        :param search_request: Search criteria (required)
+        :type search_request: SearchRequest
         :param archived: When set to 'true', includes soft-deleted records in the search results.
         :type archived: bool
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
@@ -5390,7 +5560,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._search_serialize(
-            body=body,
+            search_request=search_request,
             archived=archived,
             parse=parse,
             record_return_format=record_return_format,
@@ -5401,9 +5571,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseObject",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5419,7 +5592,7 @@ class RecordsApi:
     @validate_call
     def search_with_http_info(
         self,
-        body: Annotated[StrictStr, Field(description="Search criteria")],
+        search_request: Annotated[SearchRequest, Field(description="Search criteria")],
         archived: Annotated[Optional[StrictBool], Field(description="When set to 'true', includes soft-deleted records in the search results.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
@@ -5435,13 +5608,13 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseObject]:
         """Search records
 
         Performs a search for records based on the specified criteria in the request body. Returns a PaginationResponse containing matching records.
 
-        :param body: Search criteria (required)
-        :type body: str
+        :param search_request: Search criteria (required)
+        :type search_request: SearchRequest
         :param archived: When set to 'true', includes soft-deleted records in the search results.
         :type archived: bool
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
@@ -5471,7 +5644,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._search_serialize(
-            body=body,
+            search_request=search_request,
             archived=archived,
             parse=parse,
             record_return_format=record_return_format,
@@ -5482,9 +5655,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseObject",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5500,7 +5676,7 @@ class RecordsApi:
     @validate_call
     def search_without_preload_content(
         self,
-        body: Annotated[StrictStr, Field(description="Search criteria")],
+        search_request: Annotated[SearchRequest, Field(description="Search criteria")],
         archived: Annotated[Optional[StrictBool], Field(description="When set to 'true', includes soft-deleted records in the search results.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
@@ -5521,8 +5697,8 @@ class RecordsApi:
 
         Performs a search for records based on the specified criteria in the request body. Returns a PaginationResponse containing matching records.
 
-        :param body: Search criteria (required)
-        :type body: str
+        :param search_request: Search criteria (required)
+        :type search_request: SearchRequest
         :param archived: When set to 'true', includes soft-deleted records in the search results.
         :type archived: bool
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
@@ -5552,7 +5728,7 @@ class RecordsApi:
         """ # noqa: E501
 
         _param = self._search_serialize(
-            body=body,
+            search_request=search_request,
             archived=archived,
             parse=parse,
             record_return_format=record_return_format,
@@ -5563,9 +5739,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseObject",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5576,7 +5755,7 @@ class RecordsApi:
 
     def _search_serialize(
         self,
-        body,
+        search_request,
         archived,
         parse,
         record_return_format,
@@ -5617,8 +5796,8 @@ class RecordsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if search_request is not None:
+            _body_params = search_request
 
 
         # set the HTTP header `Accept`
@@ -5684,7 +5863,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponsePreviewDTO:
         """Search records across objects
 
         Searches records across multiple object types in one request. Use fromObjectUuid + relationName to limit to relation target objects (e.g. event attendees), or objectUuids for an explicit list, or omit both to search all company objects (capped). Returns preview-shaped results suitable for relation pickers.
@@ -5728,8 +5907,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePreviewDTO",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5760,7 +5943,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponsePreviewDTO]:
         """Search records across objects
 
         Searches records across multiple object types in one request. Use fromObjectUuid + relationName to limit to relation target objects (e.g. event attendees), or objectUuids for an explicit list, or omit both to search all company objects (capped). Returns preview-shaped results suitable for relation pickers.
@@ -5804,8 +5987,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePreviewDTO",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5880,8 +6067,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponsePreviewDTO",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5997,7 +6188,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseObject:
         """Get record details
 
         Retrieves detailed information about a record by its UUID. Returns a ShowResponse containing the record details. Prefer GET /{objectName}/{uuid} when the object context is known.
@@ -6047,8 +6238,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseObject",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6081,7 +6275,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseObject]:
         """Get record details
 
         Retrieves detailed information about a record by its UUID. Returns a ShowResponse containing the record details. Prefer GET /{objectName}/{uuid} when the object context is known.
@@ -6131,8 +6325,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseObject",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6215,8 +6412,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseObject",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6328,7 +6528,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseObject:
         """Get record details by object
 
         Retrieves a record by object name and UUID. Same response as GET /{uuid}?object={objectName}.
@@ -6375,8 +6575,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseObject",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6408,7 +6611,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseObject]:
         """Get record details by object
 
         Retrieves a record by object name and UUID. Same response as GET /{uuid}?object={objectName}.
@@ -6455,8 +6658,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseObject",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6535,8 +6741,11 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseObject",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6638,7 +6847,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseSuggestAnalyticsWidgetsResponse:
         """Suggest analytics widgets with AI
 
         Uses structured OpenAI output plus schema validation to propose dashboard charts for an object. Returns an empty list when AI is unavailable.
@@ -6676,9 +6885,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseSuggestAnalyticsWidgetsResponse",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6707,7 +6919,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseSuggestAnalyticsWidgetsResponse]:
         """Suggest analytics widgets with AI
 
         Uses structured OpenAI output plus schema validation to propose dashboard charts for an object. Returns an empty list when AI is unavailable.
@@ -6745,9 +6957,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseSuggestAnalyticsWidgetsResponse",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6814,9 +7029,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseSuggestAnalyticsWidgetsResponse",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6980,6 +7198,8 @@ class RecordsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7070,6 +7290,8 @@ class RecordsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7160,6 +7382,8 @@ class RecordsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7344,6 +7568,8 @@ class RecordsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7434,6 +7660,8 @@ class RecordsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7524,6 +7752,8 @@ class RecordsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7651,7 +7881,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseString:
         """Update relation edge properties
 
         Patches values stored on an existing relation edge. Only keys present in edgeProperties are written; a null value clears a key.
@@ -7698,9 +7928,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7732,7 +7965,7 @@ class RecordsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseString]:
         """Update relation edge properties
 
         Patches values stored on an existing relation edge. Only keys present in edgeProperties are written; a null value clears a key.
@@ -7779,9 +8012,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7860,9 +8096,12 @@ class RecordsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

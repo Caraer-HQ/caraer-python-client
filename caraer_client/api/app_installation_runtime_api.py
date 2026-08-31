@@ -103,6 +103,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponseVoid",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -173,6 +177,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponseVoid",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -243,6 +251,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponseVoid",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -376,6 +388,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -446,6 +462,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -516,6 +536,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -649,6 +673,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -719,6 +747,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -789,6 +821,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -935,6 +971,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1005,6 +1045,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1075,6 +1119,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1205,6 +1253,9 @@ class AppInstallationRuntimeApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
             '403': "ErrorResponse",
+            '401': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1272,6 +1323,9 @@ class AppInstallationRuntimeApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
             '403': "ErrorResponse",
+            '401': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1339,6 +1393,9 @@ class AppInstallationRuntimeApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
             '403': "ErrorResponse",
+            '401': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1469,6 +1526,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1539,6 +1600,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1609,6 +1674,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1738,6 +1807,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseListAppConnectionStatusDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1804,6 +1877,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseListAppConnectionStatusDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1870,6 +1947,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseListAppConnectionStatusDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1996,6 +2077,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseListString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2062,6 +2147,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseListString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2128,6 +2217,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseListString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2259,6 +2352,9 @@ class AppInstallationRuntimeApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
             '403': "ErrorResponse",
+            '401': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2330,6 +2426,9 @@ class AppInstallationRuntimeApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
             '403': "ErrorResponse",
+            '401': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2401,6 +2500,9 @@ class AppInstallationRuntimeApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
             '403': "ErrorResponse",
+            '401': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2552,6 +2654,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseVoid",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2626,6 +2732,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseVoid",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2700,6 +2810,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseVoid",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2849,6 +2963,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2919,6 +3037,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2989,6 +3111,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseMapStringObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3139,6 +3265,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3213,6 +3343,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3287,6 +3421,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseObject",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3436,6 +3574,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponseVoid",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3506,6 +3648,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponseVoid",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3576,6 +3722,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponseVoid",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3709,6 +3859,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseVoid",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3779,6 +3933,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseVoid",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3849,6 +4007,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseVoid",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4000,6 +4162,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseAppOAuthStartResponseDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4074,6 +4240,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseAppOAuthStartResponseDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4148,6 +4318,10 @@ class AppInstallationRuntimeApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ShowResponseAppOAuthStartResponseDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

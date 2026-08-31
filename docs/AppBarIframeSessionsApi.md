@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **create_iframe_session**
-> create_iframe_session(app_bar_uuid, app_bar_iframe_session_request=app_bar_iframe_session_request)
+> ShowResponseAppBarIframeSessionTokenDTO create_iframe_session(app_bar_uuid, app_bar_iframe_session_request=app_bar_iframe_session_request)
 
 Create an iframe session token
 
@@ -22,6 +22,7 @@ Issues a short-lived opaque token for an iframe-based app bar. The token can be 
 ```python
 import caraer_client
 from caraer_client.models.app_bar_iframe_session_request import AppBarIframeSessionRequest
+from caraer_client.models.show_response_app_bar_iframe_session_token_dto import ShowResponseAppBarIframeSessionTokenDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -50,7 +51,9 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Create an iframe session token
-        api_instance.create_iframe_session(app_bar_uuid, app_bar_iframe_session_request=app_bar_iframe_session_request)
+        api_response = api_instance.create_iframe_session(app_bar_uuid, app_bar_iframe_session_request=app_bar_iframe_session_request)
+        print("The response of AppBarIframeSessionsApi->create_iframe_session:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AppBarIframeSessionsApi->create_iframe_session: %s\n" % e)
 ```
@@ -67,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ShowResponseAppBarIframeSessionTokenDTO**](ShowResponseAppBarIframeSessionTokenDTO.md)
 
 ### Authorization
 
@@ -85,11 +88,14 @@ void (empty response body)
 **200** | Token created |  -  |
 **400** | Invalid request |  -  |
 **404** | App bar not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **validate_iframe_session**
-> validate_iframe_session(app_bar_iframe_session_validate_request)
+> ShowResponseAppBarIframeSessionContextDTO validate_iframe_session(app_bar_iframe_session_validate_request)
 
 Validate an iframe session token
 
@@ -102,6 +108,7 @@ Public endpoint for embedded apps to validate a caraer_iframe_token and receive 
 ```python
 import caraer_client
 from caraer_client.models.app_bar_iframe_session_validate_request import AppBarIframeSessionValidateRequest
+from caraer_client.models.show_response_app_bar_iframe_session_context_dto import ShowResponseAppBarIframeSessionContextDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -129,7 +136,9 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Validate an iframe session token
-        api_instance.validate_iframe_session(app_bar_iframe_session_validate_request)
+        api_response = api_instance.validate_iframe_session(app_bar_iframe_session_validate_request)
+        print("The response of AppBarIframeSessionsApi->validate_iframe_session:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AppBarIframeSessionsApi->validate_iframe_session: %s\n" % e)
 ```
@@ -145,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ShowResponseAppBarIframeSessionContextDTO**](ShowResponseAppBarIframeSessionContextDTO.md)
 
 ### Authorization
 
@@ -162,6 +171,9 @@ void (empty response body)
 |-------------|-------------|------------------|
 **200** | Token validated |  -  |
 **401** | Invalid or expired token |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

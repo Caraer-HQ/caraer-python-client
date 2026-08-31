@@ -36,7 +36,25 @@ class TestPaginationResponseWebpageAccessGrantDTO(unittest.TestCase):
         if include_optional:
             return PaginationResponseWebpageAccessGrantDTO(
                 message = 'Success',
-                data = [{id=1, name=Item1}, {id=2, name=Item2}],
+                data = [
+                    caraer_client.models.webpage_access_grant_dto.WebpageAccessGrantDTO(
+                        uuid = '0', 
+                        name = '0', 
+                        label = '', 
+                        created_at = 56, 
+                        created_by = null, 
+                        updated_at = 56, 
+                        updated_by = null, 
+                        deleted_at = 56, 
+                        deleted_by = null, 
+                        index = 56, 
+                        record_uuid = '', 
+                        expires_at = 56, 
+                        revoked_at = 56, 
+                        active = True, 
+                        token_hash = '', 
+                        token = '', )
+                    ],
                 total = 100,
                 page = 1,
                 per_page = 10,

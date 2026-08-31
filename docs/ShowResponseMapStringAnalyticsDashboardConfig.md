@@ -1,0 +1,31 @@
+# ShowResponseMapStringAnalyticsDashboardConfig
+
+Success response (ShowResponseMapStringAnalyticsDashboardConfig).
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**message** | **str** |  | [optional] 
+**data** | **Dict[str, object]** |  | [optional] 
+
+## Example
+
+```python
+from caraer_client.models.show_response_map_string_analytics_dashboard_config import ShowResponseMapStringAnalyticsDashboardConfig
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ShowResponseMapStringAnalyticsDashboardConfig from a JSON string
+show_response_map_string_analytics_dashboard_config_instance = ShowResponseMapStringAnalyticsDashboardConfig.from_json(json)
+# print the JSON string representation of the object
+print(ShowResponseMapStringAnalyticsDashboardConfig.to_json())
+
+# convert the object into a dict
+show_response_map_string_analytics_dashboard_config_dict = show_response_map_string_analytics_dashboard_config_instance.to_dict()
+# create an instance of ShowResponseMapStringAnalyticsDashboardConfig from a dict
+show_response_map_string_analytics_dashboard_config_from_dict = ShowResponseMapStringAnalyticsDashboardConfig.from_dict(show_response_map_string_analytics_dashboard_config_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

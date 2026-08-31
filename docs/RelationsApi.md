@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **add_connection**
-> SuccessResponse add_connection(relation_uuid, var_from, to)
+> SuccessResponseString add_connection(relation_uuid, var_from, to)
 
 Add a connection to a relation
 
@@ -31,7 +31,7 @@ Creates a connection between two objects for a given relation. The 'from' and 't
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -90,15 +90,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Connection created successfully |  -  |
-**404** | One or more entities not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -182,12 +184,15 @@ Name | Type | Description  | Notes
 **200** | Relation updated successfully |  -  |
 **201** | Relation created successfully |  -  |
 **400** | Invalid input data |  -  |
-**500** | Internal server error |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_connection**
-> SuccessResponse delete_connection(relation_uuid, var_from, to)
+> SuccessResponseString delete_connection(relation_uuid, var_from, to)
 
 Delete a connection from a relation
 
@@ -199,7 +204,7 @@ Deletes a connection between two objects for a given relation using the specifie
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -249,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -258,15 +263,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Connection deleted successfully |  -  |
-**404** | One or more entities not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -338,20 +345,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Relation deleted successfully |  -  |
-**404** | Relation not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_relation**
-> ShowResponse get_relation(relation_uuid)
+> ShowResponseRelationDTO get_relation(relation_uuid)
 
 Get relation details
 
@@ -363,7 +372,7 @@ Retrieves the details of a relation by its UUID. Returns a ShowResponse containi
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_relation_dto import ShowResponseRelationDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -409,7 +418,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseRelationDTO**](ShowResponseRelationDTO.md)
 
 ### Authorization
 
@@ -418,19 +427,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Relation retrieved successfully |  -  |
-**404** | Relation not found |  -  |
+**404** | The requested resource was not found. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_relation_for_object**
-> ShowResponse get_relation_for_object(relation_uuid, object_uuid)
+> ShowResponseRelationDTO get_relation_for_object(relation_uuid, object_uuid)
 
 Get relation details for a specific object
 
@@ -442,7 +454,7 @@ Retrieves a relation by its UUID and associates it with the specified object, re
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_relation_dto import ShowResponseRelationDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -490,7 +502,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseRelationDTO**](ShowResponseRelationDTO.md)
 
 ### Authorization
 
@@ -507,11 +519,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Relation for object retrieved successfully |  -  |
 **404** | Relation or object not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_relations**
-> PaginationResponse get_relations(body)
+> PaginationResponseRelationDTO get_relations(pagination_request)
 
 Fetch paginated relations
 
@@ -523,7 +538,8 @@ Retrieves a paginated list of relations. Returns a PaginationResponse containing
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_relation_dto import PaginationResponseRelationDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -547,11 +563,11 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.RelationsApi(api_client)
-    body = None # object | Pagination request for relations
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | Pagination request for relations
 
     try:
         # Fetch paginated relations
-        api_response = api_instance.get_relations(body)
+        api_response = api_instance.get_relations(pagination_request)
         print("The response of RelationsApi->get_relations:\n")
         pprint(api_response)
     except Exception as e:
@@ -565,11 +581,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **object**| Pagination request for relations | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)| Pagination request for relations | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseRelationDTO**](PaginationResponseRelationDTO.md)
 
 ### Authorization
 
@@ -587,11 +603,14 @@ Name | Type | Description  | Notes
 **200** | Relations fetched successfully |  -  |
 **400** | Invalid pagination request |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_relations_between_objects**
-> PaginationResponse get_relations_between_objects(from_object_uuid, to_object_uuid, body)
+> PaginationResponseRelationDTO get_relations_between_objects(from_object_uuid, to_object_uuid, pagination_request)
 
 Get all relations between two objects
 
@@ -603,7 +622,8 @@ Retrieves all relations between two objects based on the provided object UUIDs.
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_relation_dto import PaginationResponseRelationDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -629,11 +649,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     api_instance = caraer_client.RelationsApi(api_client)
     from_object_uuid = 'from_object_uuid_example' # str | 
     to_object_uuid = 'to_object_uuid_example' # str | 
-    body = None # object | 
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | 
 
     try:
         # Get all relations between two objects
-        api_response = api_instance.get_relations_between_objects(from_object_uuid, to_object_uuid, body)
+        api_response = api_instance.get_relations_between_objects(from_object_uuid, to_object_uuid, pagination_request)
         print("The response of RelationsApi->get_relations_between_objects:\n")
         pprint(api_response)
     except Exception as e:
@@ -649,11 +669,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **from_object_uuid** | **str**|  | 
  **to_object_uuid** | **str**|  | 
- **body** | **object**|  | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)|  | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseRelationDTO**](PaginationResponseRelationDTO.md)
 
 ### Authorization
 
@@ -670,11 +690,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Relations retrieved successfully |  -  |
 **404** | One or more objects not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_relations_by_object**
-> PaginationResponse get_relations_by_object(object_uuid, body)
+> PaginationResponseRelationDTO get_relations_by_object(object_uuid, pagination_request)
 
 Fetch relations for a specific object
 
@@ -686,7 +709,8 @@ Returns relation definitions where this object participates in the **schema** gr
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_relation_dto import PaginationResponseRelationDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -711,11 +735,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.RelationsApi(api_client)
     object_uuid = 'object_uuid_example' # str | 
-    body = None # object | Pagination request for relations
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | Pagination request for relations
 
     try:
         # Fetch relations for a specific object
-        api_response = api_instance.get_relations_by_object(object_uuid, body)
+        api_response = api_instance.get_relations_by_object(object_uuid, pagination_request)
         print("The response of RelationsApi->get_relations_by_object:\n")
         pprint(api_response)
     except Exception as e:
@@ -730,11 +754,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **object_uuid** | **str**|  | 
- **body** | **object**| Pagination request for relations | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)| Pagination request for relations | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseRelationDTO**](PaginationResponseRelationDTO.md)
 
 ### Authorization
 
@@ -752,6 +776,8 @@ Name | Type | Description  | Notes
 **200** | Relations fetched successfully |  -  |
 **404** | Object not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -831,7 +857,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Relation permanently deleted |  -  |
 **400** | Relation is not archived |  -  |
-**404** | Relation not found |  -  |
+**404** | The requested resource was not found. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -903,20 +932,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Relation restored successfully |  -  |
-**404** | Relation not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_indices**
-> SuccessResponse update_indices(body)
+> SuccessResponseCollectionRelation update_indices(request_body)
 
 Update relation indices
 
@@ -928,7 +959,7 @@ Updates the indices for relations. The request body should contain a mapping of 
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_collection_relation import SuccessResponseCollectionRelation
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -952,11 +983,11 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.RelationsApi(api_client)
-    body = 'body_example' # str | Mapping of relation UUIDs to new index values
+    request_body = {'key': 56} # Dict[str, int] | Mapping of relation UUIDs to new index values
 
     try:
         # Update relation indices
-        api_response = api_instance.update_indices(body)
+        api_response = api_instance.update_indices(request_body)
         print("The response of RelationsApi->update_indices:\n")
         pprint(api_response)
     except Exception as e:
@@ -970,11 +1001,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **str**| Mapping of relation UUIDs to new index values | 
+ **request_body** | [**Dict[str, int]**](int.md)| Mapping of relation UUIDs to new index values | 
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseCollectionRelation**](SuccessResponseCollectionRelation.md)
 
 ### Authorization
 
@@ -991,7 +1022,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Indices updated successfully |  -  |
 **400** | Invalid input provided |  -  |
-**500** | Internal server error |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

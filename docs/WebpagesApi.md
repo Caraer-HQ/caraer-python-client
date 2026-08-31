@@ -118,6 +118,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Editing session claimed or blocked |  -  |
 **404** | Template webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -200,11 +203,13 @@ Name | Type | Description  | Notes
 **200** | Editing session claimed |  -  |
 **403** | Missing write access on webpage fields for this environment |  -  |
 **404** | Webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **copy_property_to_environments**
-> ShowResponse copy_property_to_environments(copy_property_to_environments_request)
+> ShowResponseListPropertyDTO copy_property_to_environments(copy_property_to_environments_request)
 
 Copy properties to environments
 
@@ -217,7 +222,7 @@ Copies selected properties for the chosen environments (e.g. production_title â†
 ```python
 import caraer_client
 from caraer_client.models.copy_property_to_environments_request import CopyPropertyToEnvironmentsRequest
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_list_property_dto import ShowResponseListPropertyDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -263,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseListPropertyDTO**](ShowResponseListPropertyDTO.md)
 
 ### Authorization
 
@@ -281,6 +286,9 @@ Name | Type | Description  | Notes
 **200** | Environment properties copied successfully |  -  |
 **400** | Invalid input data |  -  |
 **404** | Object or property not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -364,6 +372,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Template webpage copied successfully |  -  |
 **404** | Template webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -447,11 +458,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Webpage copied successfully |  -  |
 **404** | Webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_environments**
-> ShowResponse create_environments(create_or_update_environment_request)
+> ShowResponseString create_environments(create_or_update_environment_request)
 
 Create an environment
 
@@ -464,7 +478,7 @@ Creates an environment.
 ```python
 import caraer_client
 from caraer_client.models.create_or_update_environment_request import CreateOrUpdateEnvironmentRequest
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_string import ShowResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -510,7 +524,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseString**](ShowResponseString.md)
 
 ### Authorization
 
@@ -527,6 +541,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Environments created or updated successfully |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -613,6 +630,8 @@ Name | Type | Description  | Notes
 **201** | Template webpage created successfully |  -  |
 **404** | Template webpage not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -694,6 +713,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -777,11 +800,14 @@ Name | Type | Description  | Notes
 **201** | Webpage created successfully |  -  |
 **400** | Invalid input data |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_environment**
-> ShowResponse delete_environment(environment)
+> ShowResponseString delete_environment(environment)
 
 Delete an environment
 
@@ -793,7 +819,7 @@ Soft deletes an environment.
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_string import ShowResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -839,7 +865,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseString**](ShowResponseString.md)
 
 ### Authorization
 
@@ -856,11 +882,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Environment deleted successfully |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_all_slugs**
-> PaginationResponse get_all_slugs(x_caraer_subdomain, x_caraer_environment=x_caraer_environment, x_caraer_primary_environment=x_caraer_primary_environment)
+> PaginationResponsePublicEnvironmentDTO get_all_slugs(x_caraer_subdomain, x_caraer_environment=x_caraer_environment, x_caraer_primary_environment=x_caraer_primary_environment)
 
 Get all public webpage slugs
 
@@ -872,7 +901,7 @@ Retrieves a list of all webpage slugs for the public site. Returns a PaginationR
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_response_public_environment_dto import PaginationResponsePublicEnvironmentDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -922,7 +951,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponsePublicEnvironmentDTO**](PaginationResponsePublicEnvironmentDTO.md)
 
 ### Authorization
 
@@ -939,6 +968,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Slugs retrieved successfully |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1022,11 +1054,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Company settings retrieved successfully |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_environments**
-> ShowResponse get_environments()
+> ShowResponseListEnvironmentDTO get_environments()
 
 Get all environments
 
@@ -1038,7 +1073,7 @@ Retrieves a list of all environments.
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_list_environment_dto import ShowResponseListEnvironmentDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1080,7 +1115,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseListEnvironmentDTO**](ShowResponseListEnvironmentDTO.md)
 
 ### Authorization
 
@@ -1097,11 +1132,14 @@ This endpoint does not need any parameter.
 |-------------|-------------|------------------|
 **200** | Environments retrieved successfully |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_menus**
-> PaginationResponse get_menus(x_caraer_subdomain, x_caraer_environment=x_caraer_environment, x_caraer_primary_environment=x_caraer_primary_environment)
+> PaginationResponseWebMenuDTO get_menus(x_caraer_subdomain, x_caraer_environment=x_caraer_environment, x_caraer_primary_environment=x_caraer_primary_environment)
 
 Fetch public web menus
 
@@ -1113,7 +1151,7 @@ Retrieves a list of web menus for the public site. Returns a PaginationResponse 
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_response_web_menu_dto import PaginationResponseWebMenuDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1163,7 +1201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseWebMenuDTO**](PaginationResponseWebMenuDTO.md)
 
 ### Authorization
 
@@ -1180,6 +1218,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Menus retrieved successfully |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1276,6 +1317,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1371,6 +1416,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Webpage retrieved successfully |  -  |
 **404** | Webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1464,6 +1512,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Webpage retrieved successfully |  -  |
 **404** | Webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1548,6 +1599,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1629,11 +1684,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Module retrieved successfully |  -  |
 **404** | Module not found or not exposed |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_template_webpage**
-> ShowResponse get_template_webpage(object_name, environment)
+> ShowResponseTemplateWebpageDTO get_template_webpage(object_name, environment)
 
 Get template webpage
 
@@ -1645,7 +1703,7 @@ Retrieves the template webpage for the given object name by querying the Templat
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_template_webpage_dto import ShowResponseTemplateWebpageDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1693,7 +1751,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseTemplateWebpageDTO**](ShowResponseTemplateWebpageDTO.md)
 
 ### Authorization
 
@@ -1710,6 +1768,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Template webpage retrieved successfully |  -  |
 **404** | Template webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1791,6 +1852,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Editing status retrieved successfully |  -  |
 **404** | Template webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1875,6 +1939,8 @@ Name | Type | Description  | Notes
 **200** | Webpage retrieved successfully |  -  |
 **403** | Missing read access on one or more webpage fields for this environment |  -  |
 **404** | Webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1957,11 +2023,13 @@ Name | Type | Description  | Notes
 **200** | Editing status retrieved successfully |  -  |
 **403** | Missing read access on webpage fields for this environment |  -  |
 **404** | Webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_webpage_picker_pages**
-> ShowResponse get_webpage_picker_pages(environment=environment, published_only=published_only, exclude_template_related=exclude_template_related)
+> ShowResponseListWebpagePickerItemDTO get_webpage_picker_pages(environment=environment, published_only=published_only, exclude_template_related=exclude_template_related)
 
 List webpages for picker dropdowns
 
@@ -1973,7 +2041,7 @@ Returns uuid and title for all webpage records across objects with a Page trait.
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_list_webpage_picker_item_dto import ShowResponseListWebpagePickerItemDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -2023,7 +2091,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseListWebpagePickerItemDTO**](ShowResponseListWebpagePickerItemDTO.md)
 
 ### Authorization
 
@@ -2039,6 +2107,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Webpages retrieved successfully |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2117,6 +2189,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2202,11 +2278,13 @@ Name | Type | Description  | Notes
 **400** | Webpage failed publish validation |  -  |
 **403** | Missing read or write access on webpage property fields for this environment |  -  |
 **404** | Webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **release_template_webpage_editing_session**
-> ShowResponse release_template_webpage_editing_session(object_name, environment)
+> ShowResponseString release_template_webpage_editing_session(object_name, environment)
 
 Release a template webpage editing session
 
@@ -2218,7 +2296,7 @@ Releases the editing session held by the current user for this template webpage.
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_string import ShowResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -2266,7 +2344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseString**](ShowResponseString.md)
 
 ### Authorization
 
@@ -2282,11 +2360,15 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Editing session released |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **release_webpage_editing_session**
-> ShowResponse release_webpage_editing_session(uuid)
+> ShowResponseString release_webpage_editing_session(uuid)
 
 Release a webpage editing session
 
@@ -2298,7 +2380,7 @@ Releases the editing session held by the current user for this webpage.
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_string import ShowResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -2344,7 +2426,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseString**](ShowResponseString.md)
 
 ### Authorization
 
@@ -2361,6 +2443,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Editing session released |  -  |
 **404** | Webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2441,6 +2526,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2528,6 +2617,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2611,6 +2704,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Webpage unpublished successfully |  -  |
 **404** | Webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2697,11 +2793,13 @@ Name | Type | Description  | Notes
 **400** | Invalid input data |  -  |
 **403** | Missing write access on one or more webpage fields for this environment |  -  |
 **404** | Webpage not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_file**
-> SuccessResponse upload_file(uuid)
+> SuccessResponseString upload_file(uuid)
 
 Upload a file for a webpage
 
@@ -2713,7 +2811,7 @@ Uploads a file to S3 storage under the specified webpage's attachments folder, s
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -2759,7 +2857,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -2777,11 +2875,14 @@ Name | Type | Description  | Notes
 **200** | File uploaded successfully |  -  |
 **400** | Invalid file provided |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_file1**
-> SuccessResponse upload_file1(file)
+> SuccessResponseString upload_file1(file)
 
 Upload a file
 
@@ -2793,7 +2894,7 @@ Uploads a file to S3 storage and returns the public URL for the file in a Succes
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -2839,7 +2940,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -2857,6 +2958,9 @@ Name | Type | Description  | Notes
 **200** | File uploaded successfully |  -  |
 **400** | Invalid file provided |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -29,7 +29,7 @@ class PaginationResponseWebpageAccessGrantDTO(BaseModel):
     Response object for paginated data.
     """ # noqa: E501
     message: Optional[StrictStr] = Field(default=None, description="A message detailing the result of the operation.", json_schema_extra={"examples": ["Success"]})
-    data: Optional[List[WebpageAccessGrantDTO]] = Field(default=None, description="The data returned in the current page of the pagination.", json_schema_extra={"examples": [[{"id": 1, "name": "Item1"}, {"id": 2, "name": "Item2"}]]})
+    data: Optional[List[WebpageAccessGrantDTO]] = Field(default=None, description="The data returned in the current page of the pagination.")
     total: Optional[StrictInt] = Field(default=None, description="The total number of items available.", json_schema_extra={"examples": [100]})
     page: Optional[StrictInt] = Field(default=None, description="The current page number (starts from 1).", json_schema_extra={"examples": [1]})
     per_page: Optional[StrictInt] = Field(default=None, description="The number of items displayed per page.", alias="perPage", json_schema_extra={"examples": [10]})

@@ -93,7 +93,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Module created successfully |  -  |
 **400** | Invalid input data |  -  |
-**500** | Internal server error |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -174,7 +177,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Module created successfully |  -  |
 **400** | Invalid input data |  -  |
-**500** | Internal server error |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -246,15 +252,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Module deleted successfully |  -  |
-**404** | Module not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -326,21 +334,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Module deleted successfully |  -  |
-**403** | Not authorized |  -  |
-**404** | Module not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_module**
-> ShowResponse get_module(module_id)
+> ShowResponsePageContentDTO get_module(module_id)
 
 Fetch a specific module
 
@@ -352,7 +361,7 @@ Retrieves details of a module by its UUID.
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_page_content_dto import ShowResponsePageContentDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -398,7 +407,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponsePageContentDTO**](ShowResponsePageContentDTO.md)
 
 ### Authorization
 
@@ -407,20 +416,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Module retrieved successfully |  -  |
-**404** | Module not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_modules**
-> PaginationResponse get_modules(body)
+> PaginationResponsePageContentDTO get_modules(pagination_request)
 
 Fetch paginated modules
 
@@ -432,7 +443,8 @@ Retrieves a paginated list of modules.
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_page_content_dto import PaginationResponsePageContentDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -456,11 +468,11 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.ModuleApi(api_client)
-    body = None # object | Pagination details
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | Pagination details
 
     try:
         # Fetch paginated modules
-        api_response = api_instance.get_modules(body)
+        api_response = api_instance.get_modules(pagination_request)
         print("The response of ModuleApi->get_modules:\n")
         pprint(api_response)
     except Exception as e:
@@ -474,11 +486,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **object**| Pagination details | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)| Pagination details | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponsePageContentDTO**](PaginationResponsePageContentDTO.md)
 
 ### Authorization
 
@@ -496,11 +508,14 @@ Name | Type | Description  | Notes
 **200** | Modules fetched successfully |  -  |
 **400** | Invalid pagination request |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_personal_module**
-> ShowResponse get_personal_module(module_id)
+> ShowResponsePageContentDTO get_personal_module(module_id)
 
 Fetch a personal module
 
@@ -512,7 +527,7 @@ Retrieves a personal module by UUID for the logged-in user.
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_page_content_dto import ShowResponsePageContentDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -558,7 +573,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponsePageContentDTO**](ShowResponsePageContentDTO.md)
 
 ### Authorization
 
@@ -567,21 +582,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Module retrieved successfully |  -  |
-**403** | Not authorized |  -  |
-**404** | Module not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_personal_modules**
-> PaginationResponse get_personal_modules(body)
+> PaginationResponsePageContentDTO get_personal_modules(pagination_request)
 
 Fetch paginated personal modules
 
@@ -593,7 +609,8 @@ Retrieves personal modules for the logged-in user.
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_page_content_dto import PaginationResponsePageContentDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -617,11 +634,11 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.ModuleApi(api_client)
-    body = None # object | 
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | 
 
     try:
         # Fetch paginated personal modules
-        api_response = api_instance.get_personal_modules(body)
+        api_response = api_instance.get_personal_modules(pagination_request)
         print("The response of ModuleApi->get_personal_modules:\n")
         pprint(api_response)
     except Exception as e:
@@ -635,11 +652,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **object**|  | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)|  | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponsePageContentDTO**](PaginationResponsePageContentDTO.md)
 
 ### Authorization
 
@@ -657,6 +674,9 @@ Name | Type | Description  | Notes
 **200** | Modules fetched successfully |  -  |
 **400** | Invalid pagination request |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -739,8 +759,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Module updated successfully |  -  |
 **400** | Invalid input data |  -  |
-**404** | Module not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -815,16 +837,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Module updated successfully |  -  |
-**403** | Not authorized |  -  |
-**404** | Module not found |  -  |
-**500** | Internal server error |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

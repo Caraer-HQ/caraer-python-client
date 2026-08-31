@@ -89,6 +89,9 @@ Name | Type | Description  | Notes
 **201** | Filter created successfully |  -  |
 **400** | Invalid input data |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -169,11 +172,13 @@ Name | Type | Description  | Notes
 **200** | Filter deleted successfully |  -  |
 **404** | Filter not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_filter**
-> ShowResponse get_filter(filter_uuid)
+> ShowResponseSavedFilterDTO get_filter(filter_uuid)
 
 Fetch a specific saved filter
 
@@ -185,7 +190,7 @@ Retrieves details of a saved filter by its UUID.
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_saved_filter_dto import ShowResponseSavedFilterDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -231,7 +236,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseSavedFilterDTO**](ShowResponseSavedFilterDTO.md)
 
 ### Authorization
 
@@ -249,11 +254,13 @@ Name | Type | Description  | Notes
 **200** | Filter retrieved successfully |  -  |
 **404** | Filter not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_filters**
-> PaginationResponse get_filters(object_uuid, body)
+> PaginationResponseSavedFilterDTO get_filters(object_uuid, pagination_request)
 
 Fetch paginated saved filters
 
@@ -265,7 +272,8 @@ Fetches a paginated list of saved filters. The request body should contain pagin
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_saved_filter_dto import PaginationResponseSavedFilterDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -290,11 +298,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.FilterApi(api_client)
     object_uuid = 'object_uuid_example' # str | 
-    body = None # object | Pagination request details
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | Pagination request details
 
     try:
         # Fetch paginated saved filters
-        api_response = api_instance.get_filters(object_uuid, body)
+        api_response = api_instance.get_filters(object_uuid, pagination_request)
         print("The response of FilterApi->get_filters:\n")
         pprint(api_response)
     except Exception as e:
@@ -309,11 +317,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **object_uuid** | **str**|  | 
- **body** | **object**| Pagination request details | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)| Pagination request details | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseSavedFilterDTO**](PaginationResponseSavedFilterDTO.md)
 
 ### Authorization
 
@@ -331,6 +339,9 @@ Name | Type | Description  | Notes
 **200** | Filters fetched successfully |  -  |
 **400** | Bad request |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -415,6 +426,8 @@ Name | Type | Description  | Notes
 **400** | Invalid input data |  -  |
 **404** | Filter not found |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

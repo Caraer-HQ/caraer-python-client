@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **create_company**
-> SuccessResponse create_company(create_company_request)
+> SuccessResponseCompanyDTO create_company(create_company_request)
 
 Create a new company
 
@@ -33,7 +33,7 @@ Creates a new company based on the provided request data.
 ```python
 import caraer_client
 from caraer_client.models.create_company_request import CreateCompanyRequest
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_company_dto import SuccessResponseCompanyDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseCompanyDTO**](SuccessResponseCompanyDTO.md)
 
 ### Authorization
 
@@ -98,11 +98,13 @@ Name | Type | Description  | Notes
 **400** | Invalid input |  -  |
 **401** | Unauthorized |  -  |
 **403** | Insufficient scope |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_company**
-> ShowResponse get_company()
+> ShowResponseCompanyDTO get_company()
 
 Get current company
 
@@ -114,7 +116,7 @@ Returns the company currently selected by the logged-in user. Requires TOOLS_COM
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_company_dto import ShowResponseCompanyDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -156,7 +158,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseCompanyDTO**](ShowResponseCompanyDTO.md)
 
 ### Authorization
 
@@ -174,11 +176,13 @@ This endpoint does not need any parameter.
 **200** | Company returned successfully |  -  |
 **401** | Unauthorized |  -  |
 **403** | Insufficient scope |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_company_by_uuid**
-> ShowResponse get_company_by_uuid(uuid)
+> ShowResponseCompanyDTO get_company_by_uuid(uuid)
 
 Get company by UUID
 
@@ -190,7 +194,7 @@ Returns a company by its UUID. Requires TOOLS_COMPANY_SETTINGS_READ scope.
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_company_dto import ShowResponseCompanyDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -236,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseCompanyDTO**](ShowResponseCompanyDTO.md)
 
 ### Authorization
 
@@ -255,11 +259,12 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Insufficient scope |  -  |
 **404** | Company not found |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_digital_identity**
-> ShowResponse get_digital_identity()
+> ShowResponseDigitalIdentityDTO get_digital_identity()
 
 Get digital identity
 
@@ -271,7 +276,7 @@ Returns the digital identity (branding) for the company currently selected by th
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_digital_identity_dto import ShowResponseDigitalIdentityDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -313,7 +318,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseDigitalIdentityDTO**](ShowResponseDigitalIdentityDTO.md)
 
 ### Authorization
 
@@ -331,11 +336,13 @@ This endpoint does not need any parameter.
 **200** | Digital identity returned successfully |  -  |
 **401** | Unauthorized |  -  |
 **403** | Insufficient scope |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_suite_dashboard**
-> ShowResponse get_suite_dashboard(suite_name)
+> ShowResponseAnalyticsDashboardConfig get_suite_dashboard(suite_name)
 
 Get suite dashboard
 
@@ -347,7 +354,7 @@ Returns the home analytics dashboard for a suite. Empty dashboard when none is s
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_analytics_dashboard_config import ShowResponseAnalyticsDashboardConfig
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -393,7 +400,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseAnalyticsDashboardConfig**](ShowResponseAnalyticsDashboardConfig.md)
 
 ### Authorization
 
@@ -410,11 +417,14 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Suite dashboard returned |  -  |
 **401** | Unauthorized |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_suite_dashboards**
-> ShowResponse get_suite_dashboards()
+> ShowResponseMapStringAnalyticsDashboardConfig get_suite_dashboards()
 
 List suite dashboards
 
@@ -426,7 +436,7 @@ Returns all home analytics dashboards keyed by suite name for the selected compa
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_map_string_analytics_dashboard_config import ShowResponseMapStringAnalyticsDashboardConfig
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -468,7 +478,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseMapStringAnalyticsDashboardConfig**](ShowResponseMapStringAnalyticsDashboardConfig.md)
 
 ### Authorization
 
@@ -485,11 +495,14 @@ This endpoint does not need any parameter.
 |-------------|-------------|------------------|
 **200** | Suite dashboards returned |  -  |
 **401** | Unauthorized |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_website_settings**
-> ShowResponse get_website_settings()
+> ShowResponseWebsiteSettingsDTO get_website_settings()
 
 Get website settings
 
@@ -501,7 +514,7 @@ Returns the website settings for the company currently selected by the logged-in
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_website_settings_dto import ShowResponseWebsiteSettingsDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -543,7 +556,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseWebsiteSettingsDTO**](ShowResponseWebsiteSettingsDTO.md)
 
 ### Authorization
 
@@ -561,11 +574,13 @@ This endpoint does not need any parameter.
 **200** | Website settings returned successfully |  -  |
 **401** | Unauthorized |  -  |
 **403** | Insufficient scope |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resume_webhook_dispatch**
-> SuccessResponse resume_webhook_dispatch(company_uuid)
+> SuccessResponseMapStringObject resume_webhook_dispatch(company_uuid)
 
 Resume webhook dispatch
 
@@ -577,7 +592,7 @@ Clears the per-company webhook circuit breaker so outbound deliveries resume imm
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_map_string_object import SuccessResponseMapStringObject
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -623,7 +638,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseMapStringObject**](SuccessResponseMapStringObject.md)
 
 ### Authorization
 
@@ -641,6 +656,8 @@ Name | Type | Description  | Notes
 **200** | Circuit breaker cleared |  -  |
 **401** | Unauthorized |  -  |
 **403** | Insufficient scope |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -725,6 +742,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Insufficient scope |  -  |
 **404** | Company not found |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -807,6 +825,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Insufficient scope |  -  |
 **404** | Digital identity not found for company |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -890,6 +909,9 @@ Name | Type | Description  | Notes
 **200** | Suite dashboard saved |  -  |
 **400** | Invalid dashboard config |  -  |
 **401** | Unauthorized |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -972,11 +994,12 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Insufficient scope |  -  |
 **404** | Website settings not found for company |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_font**
-> SuccessResponse upload_font(file)
+> SuccessResponseString upload_font(file)
 
 Upload a font file
 
@@ -988,7 +1011,7 @@ Uploads a font file to S3 storage and returns the public URL.
 
 ```python
 import caraer_client
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1034,7 +1057,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SuccessResponse**](SuccessResponse.md)
+[**SuccessResponseString**](SuccessResponseString.md)
 
 ### Authorization
 
@@ -1052,6 +1075,9 @@ Name | Type | Description  | Notes
 **200** | Font uploaded successfully |  -  |
 **400** | Invalid file provided |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

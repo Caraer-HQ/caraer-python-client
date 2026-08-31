@@ -15,14 +15,15 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
-from typing import Any, Optional
+from pydantic import Field, StrictInt, StrictStr
+from typing import Dict
 from typing_extensions import Annotated
 from caraer_client.models.create_response import CreateResponse
 from caraer_client.models.delete_response import DeleteResponse
-from caraer_client.models.pagination_response import PaginationResponse
-from caraer_client.models.show_response import ShowResponse
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_view_dto import PaginationResponseViewDTO
+from caraer_client.models.show_response_view_dto import ShowResponseViewDTO
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.models.update_response import UpdateResponse
 from caraer_client.models.view_dto import ViewDTO
 
@@ -105,6 +106,9 @@ class ViewsApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -178,6 +182,9 @@ class ViewsApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -251,6 +258,9 @@ class ViewsApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -401,6 +411,8 @@ class ViewsApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -474,6 +486,8 @@ class ViewsApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -547,6 +561,8 @@ class ViewsApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -594,8 +610,7 @@ class ViewsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -684,6 +699,8 @@ class ViewsApi:
             '200': "UpdateResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -757,6 +774,8 @@ class ViewsApi:
             '200': "UpdateResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -830,6 +849,8 @@ class ViewsApi:
             '200': "UpdateResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -877,8 +898,7 @@ class ViewsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -923,7 +943,7 @@ class ViewsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseViewDTO:
         """Get view details
 
         Retrieves detailed information for a view identified by its UUID for the specified object. Returns a ShowResponse containing the ViewDTO.
@@ -964,9 +984,11 @@ class ViewsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseViewDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -996,7 +1018,7 @@ class ViewsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseViewDTO]:
         """Get view details
 
         Retrieves detailed information for a view identified by its UUID for the specified object. Returns a ShowResponse containing the ViewDTO.
@@ -1037,9 +1059,11 @@ class ViewsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseViewDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1110,9 +1134,11 @@ class ViewsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseViewDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1160,8 +1186,7 @@ class ViewsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1193,7 +1218,7 @@ class ViewsApi:
     def get_views(
         self,
         object_uuid: StrictStr,
-        body: Annotated[Optional[Any], Field(description="Pagination request details (limit, page, filters, sort, query)")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request details (limit, page, filters, sort, query)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1206,15 +1231,15 @@ class ViewsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseViewDTO:
         """Fetch paginated views for an object
 
         Retrieves a paginated list of views for the specified object. A custom Cypher query is used to filter views based on the object's UUID. Returns a PaginationResponse containing ViewDTO objects.
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Pagination request details (limit, page, filters, sort, query) (required)
-        :type body: object
+        :param pagination_request: Pagination request details (limit, page, filters, sort, query) (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1239,7 +1264,7 @@ class ViewsApi:
 
         _param = self._get_views_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1247,9 +1272,12 @@ class ViewsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseViewDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1266,7 +1294,7 @@ class ViewsApi:
     def get_views_with_http_info(
         self,
         object_uuid: StrictStr,
-        body: Annotated[Optional[Any], Field(description="Pagination request details (limit, page, filters, sort, query)")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request details (limit, page, filters, sort, query)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1279,15 +1307,15 @@ class ViewsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseViewDTO]:
         """Fetch paginated views for an object
 
         Retrieves a paginated list of views for the specified object. A custom Cypher query is used to filter views based on the object's UUID. Returns a PaginationResponse containing ViewDTO objects.
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Pagination request details (limit, page, filters, sort, query) (required)
-        :type body: object
+        :param pagination_request: Pagination request details (limit, page, filters, sort, query) (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1312,7 +1340,7 @@ class ViewsApi:
 
         _param = self._get_views_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1320,9 +1348,12 @@ class ViewsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseViewDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1339,7 +1370,7 @@ class ViewsApi:
     def get_views_without_preload_content(
         self,
         object_uuid: StrictStr,
-        body: Annotated[Optional[Any], Field(description="Pagination request details (limit, page, filters, sort, query)")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request details (limit, page, filters, sort, query)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1359,8 +1390,8 @@ class ViewsApi:
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Pagination request details (limit, page, filters, sort, query) (required)
-        :type body: object
+        :param pagination_request: Pagination request details (limit, page, filters, sort, query) (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1385,7 +1416,7 @@ class ViewsApi:
 
         _param = self._get_views_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1393,9 +1424,12 @@ class ViewsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseViewDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1407,7 +1441,7 @@ class ViewsApi:
     def _get_views_serialize(
         self,
         object_uuid,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1435,8 +1469,8 @@ class ViewsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -1488,7 +1522,7 @@ class ViewsApi:
     def update_indices1(
         self,
         object_uuid: StrictStr,
-        body: Annotated[StrictStr, Field(description="Mapping of view UUIDs to new index values")],
+        request_body: Annotated[Dict[str, StrictInt], Field(description="Mapping of view UUIDs to new index values")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1501,15 +1535,15 @@ class ViewsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseString:
         """Update view indices
 
         Updates the indices for views associated with the specified object. The request body must include a mapping of view UUIDs to their new index values. Returns a SuccessResponse with the updated view DTOs.
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Mapping of view UUIDs to new index values (required)
-        :type body: str
+        :param request_body: Mapping of view UUIDs to new index values (required)
+        :type request_body: Dict[str, int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1534,7 +1568,7 @@ class ViewsApi:
 
         _param = self._update_indices1_serialize(
             object_uuid=object_uuid,
-            body=body,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1542,9 +1576,12 @@ class ViewsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1561,7 +1598,7 @@ class ViewsApi:
     def update_indices1_with_http_info(
         self,
         object_uuid: StrictStr,
-        body: Annotated[StrictStr, Field(description="Mapping of view UUIDs to new index values")],
+        request_body: Annotated[Dict[str, StrictInt], Field(description="Mapping of view UUIDs to new index values")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1574,15 +1611,15 @@ class ViewsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseString]:
         """Update view indices
 
         Updates the indices for views associated with the specified object. The request body must include a mapping of view UUIDs to their new index values. Returns a SuccessResponse with the updated view DTOs.
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Mapping of view UUIDs to new index values (required)
-        :type body: str
+        :param request_body: Mapping of view UUIDs to new index values (required)
+        :type request_body: Dict[str, int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1607,7 +1644,7 @@ class ViewsApi:
 
         _param = self._update_indices1_serialize(
             object_uuid=object_uuid,
-            body=body,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1615,9 +1652,12 @@ class ViewsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1634,7 +1674,7 @@ class ViewsApi:
     def update_indices1_without_preload_content(
         self,
         object_uuid: StrictStr,
-        body: Annotated[StrictStr, Field(description="Mapping of view UUIDs to new index values")],
+        request_body: Annotated[Dict[str, StrictInt], Field(description="Mapping of view UUIDs to new index values")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1654,8 +1694,8 @@ class ViewsApi:
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Mapping of view UUIDs to new index values (required)
-        :type body: str
+        :param request_body: Mapping of view UUIDs to new index values (required)
+        :type request_body: Dict[str, int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1680,7 +1720,7 @@ class ViewsApi:
 
         _param = self._update_indices1_serialize(
             object_uuid=object_uuid,
-            body=body,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1688,9 +1728,12 @@ class ViewsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1702,7 +1745,7 @@ class ViewsApi:
     def _update_indices1_serialize(
         self,
         object_uuid,
-        body,
+        request_body,
         _request_auth,
         _content_type,
         _headers,
@@ -1730,8 +1773,8 @@ class ViewsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if request_body is not None:
+            _body_params = request_body
 
 
         # set the HTTP header `Accept`
@@ -1846,6 +1889,8 @@ class ViewsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1924,6 +1969,8 @@ class ViewsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2002,6 +2049,8 @@ class ViewsApi:
             '400': "ErrorResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

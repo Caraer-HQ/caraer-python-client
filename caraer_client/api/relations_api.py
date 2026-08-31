@@ -15,15 +15,17 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
-from typing import Any, Optional
+from pydantic import Field, StrictInt, StrictStr
+from typing import Dict
 from typing_extensions import Annotated
 from caraer_client.models.delete_response import DeleteResponse
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_relation_dto import PaginationResponseRelationDTO
 from caraer_client.models.relation_dto import RelationDTO
 from caraer_client.models.restore_response import RestoreResponse
-from caraer_client.models.show_response import ShowResponse
-from caraer_client.models.success_response import SuccessResponse
+from caraer_client.models.show_response_relation_dto import ShowResponseRelationDTO
+from caraer_client.models.success_response_collection_relation import SuccessResponseCollectionRelation
+from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.models.update_response import UpdateResponse
 
 from caraer_client.api_client import ApiClient, RequestSerialized
@@ -62,7 +64,7 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseString:
         """Add a connection to a relation
 
         Creates a connection between two objects for a given relation. The 'from' and 'to' UUIDs identify the objects to connect.
@@ -106,9 +108,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -139,7 +143,7 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseString]:
         """Add a connection to a relation
 
         Creates a connection between two objects for a given relation. The 'from' and 'to' UUIDs identify the objects to connect.
@@ -183,9 +187,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -260,9 +266,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -313,8 +321,7 @@ class RelationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -404,6 +411,9 @@ class RelationsApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -478,6 +488,9 @@ class RelationsApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -552,6 +565,9 @@ class RelationsApi:
             '201': "CreateResponse",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -659,7 +675,7 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseString:
         """Delete a connection from a relation
 
         Deletes a connection between two objects for a given relation using the specified UUIDs.
@@ -703,9 +719,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -736,7 +754,7 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseString]:
         """Delete a connection from a relation
 
         Deletes a connection between two objects for a given relation using the specified UUIDs.
@@ -780,9 +798,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -857,9 +877,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseString",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -910,8 +932,7 @@ class RelationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -996,6 +1017,8 @@ class RelationsApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1065,6 +1088,8 @@ class RelationsApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1134,6 +1159,8 @@ class RelationsApi:
             '200': "DeleteResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1178,8 +1205,7 @@ class RelationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1223,7 +1249,7 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseRelationDTO:
         """Get relation details
 
         Retrieves the details of a relation by its UUID. Returns a ShowResponse containing a RelationDTO.
@@ -1261,8 +1287,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseRelationDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1291,7 +1320,7 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseRelationDTO]:
         """Get relation details
 
         Retrieves the details of a relation by its UUID. Returns a ShowResponse containing a RelationDTO.
@@ -1329,8 +1358,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseRelationDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1397,8 +1429,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseRelationDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1443,8 +1478,7 @@ class RelationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1489,7 +1523,7 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ShowResponse:
+    ) -> ShowResponseRelationDTO:
         """Get relation details for a specific object
 
         Retrieves a relation by its UUID and associates it with the specified object, returning a RelationDTO that includes details from the related object.
@@ -1530,8 +1564,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseRelationDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1561,7 +1598,7 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ShowResponse]:
+    ) -> ApiResponse[ShowResponseRelationDTO]:
         """Get relation details for a specific object
 
         Retrieves a relation by its UUID and associates it with the specified object, returning a RelationDTO that includes details from the related object.
@@ -1602,8 +1639,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseRelationDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1674,8 +1714,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ShowResponse",
+            '200': "ShowResponseRelationDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1754,7 +1797,7 @@ class RelationsApi:
     @validate_call
     def get_relations(
         self,
-        body: Annotated[Optional[Any], Field(description="Pagination request for relations")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request for relations")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1767,13 +1810,13 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseRelationDTO:
         """Fetch paginated relations
 
         Retrieves a paginated list of relations. Returns a PaginationResponse containing RelationDTO objects based on the provided pagination criteria.
 
-        :param body: Pagination request for relations (required)
-        :type body: object
+        :param pagination_request: Pagination request for relations (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1797,7 +1840,7 @@ class RelationsApi:
         """ # noqa: E501
 
         _param = self._get_relations_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1805,9 +1848,12 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseRelationDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1823,7 +1869,7 @@ class RelationsApi:
     @validate_call
     def get_relations_with_http_info(
         self,
-        body: Annotated[Optional[Any], Field(description="Pagination request for relations")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request for relations")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1836,13 +1882,13 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseRelationDTO]:
         """Fetch paginated relations
 
         Retrieves a paginated list of relations. Returns a PaginationResponse containing RelationDTO objects based on the provided pagination criteria.
 
-        :param body: Pagination request for relations (required)
-        :type body: object
+        :param pagination_request: Pagination request for relations (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1866,7 +1912,7 @@ class RelationsApi:
         """ # noqa: E501
 
         _param = self._get_relations_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1874,9 +1920,12 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseRelationDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1892,7 +1941,7 @@ class RelationsApi:
     @validate_call
     def get_relations_without_preload_content(
         self,
-        body: Annotated[Optional[Any], Field(description="Pagination request for relations")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request for relations")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1910,8 +1959,8 @@ class RelationsApi:
 
         Retrieves a paginated list of relations. Returns a PaginationResponse containing RelationDTO objects based on the provided pagination criteria.
 
-        :param body: Pagination request for relations (required)
-        :type body: object
+        :param pagination_request: Pagination request for relations (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1935,7 +1984,7 @@ class RelationsApi:
         """ # noqa: E501
 
         _param = self._get_relations_serialize(
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1943,9 +1992,12 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseRelationDTO",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1956,7 +2008,7 @@ class RelationsApi:
 
     def _get_relations_serialize(
         self,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1982,8 +2034,8 @@ class RelationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -2036,7 +2088,7 @@ class RelationsApi:
         self,
         from_object_uuid: StrictStr,
         to_object_uuid: StrictStr,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2049,7 +2101,7 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseRelationDTO:
         """Get all relations between two objects
 
         Retrieves all relations between two objects based on the provided object UUIDs.
@@ -2058,8 +2110,8 @@ class RelationsApi:
         :type from_object_uuid: str
         :param to_object_uuid: (required)
         :type to_object_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2085,7 +2137,7 @@ class RelationsApi:
         _param = self._get_relations_between_objects_serialize(
             from_object_uuid=from_object_uuid,
             to_object_uuid=to_object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2093,8 +2145,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseRelationDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2112,7 +2167,7 @@ class RelationsApi:
         self,
         from_object_uuid: StrictStr,
         to_object_uuid: StrictStr,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2125,7 +2180,7 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseRelationDTO]:
         """Get all relations between two objects
 
         Retrieves all relations between two objects based on the provided object UUIDs.
@@ -2134,8 +2189,8 @@ class RelationsApi:
         :type from_object_uuid: str
         :param to_object_uuid: (required)
         :type to_object_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2161,7 +2216,7 @@ class RelationsApi:
         _param = self._get_relations_between_objects_serialize(
             from_object_uuid=from_object_uuid,
             to_object_uuid=to_object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2169,8 +2224,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseRelationDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2188,7 +2246,7 @@ class RelationsApi:
         self,
         from_object_uuid: StrictStr,
         to_object_uuid: StrictStr,
-        body: Optional[Any],
+        pagination_request: PaginationRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2210,8 +2268,8 @@ class RelationsApi:
         :type from_object_uuid: str
         :param to_object_uuid: (required)
         :type to_object_uuid: str
-        :param body: (required)
-        :type body: object
+        :param pagination_request: (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2237,7 +2295,7 @@ class RelationsApi:
         _param = self._get_relations_between_objects_serialize(
             from_object_uuid=from_object_uuid,
             to_object_uuid=to_object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2245,8 +2303,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseRelationDTO",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2259,7 +2320,7 @@ class RelationsApi:
         self,
         from_object_uuid,
         to_object_uuid,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2289,8 +2350,8 @@ class RelationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -2342,7 +2403,7 @@ class RelationsApi:
     def get_relations_by_object(
         self,
         object_uuid: StrictStr,
-        body: Annotated[Optional[Any], Field(description="Pagination request for relations")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request for relations")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2355,15 +2416,15 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginationResponse:
+    ) -> PaginationResponseRelationDTO:
         """Fetch relations for a specific object
 
         Returns relation definitions where this object participates in the **schema** graph for that relation name: either as origin `(thisObject)-[:relationName]->(:Object)` or as target `(:Object)-[:relationName]->(thisObject)`. Unrelated relations (same name elsewhere, or no typed edge touching this object) are excluded. Uses the object’s `name` to filter; request path uses object UUID.
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Pagination request for relations (required)
-        :type body: object
+        :param pagination_request: Pagination request for relations (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2388,7 +2449,7 @@ class RelationsApi:
 
         _param = self._get_relations_by_object_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2396,9 +2457,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseRelationDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2415,7 +2478,7 @@ class RelationsApi:
     def get_relations_by_object_with_http_info(
         self,
         object_uuid: StrictStr,
-        body: Annotated[Optional[Any], Field(description="Pagination request for relations")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request for relations")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2428,15 +2491,15 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginationResponse]:
+    ) -> ApiResponse[PaginationResponseRelationDTO]:
         """Fetch relations for a specific object
 
         Returns relation definitions where this object participates in the **schema** graph for that relation name: either as origin `(thisObject)-[:relationName]->(:Object)` or as target `(:Object)-[:relationName]->(thisObject)`. Unrelated relations (same name elsewhere, or no typed edge touching this object) are excluded. Uses the object’s `name` to filter; request path uses object UUID.
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Pagination request for relations (required)
-        :type body: object
+        :param pagination_request: Pagination request for relations (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2461,7 +2524,7 @@ class RelationsApi:
 
         _param = self._get_relations_by_object_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2469,9 +2532,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseRelationDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2488,7 +2553,7 @@ class RelationsApi:
     def get_relations_by_object_without_preload_content(
         self,
         object_uuid: StrictStr,
-        body: Annotated[Optional[Any], Field(description="Pagination request for relations")],
+        pagination_request: Annotated[PaginationRequest, Field(description="Pagination request for relations")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2508,8 +2573,8 @@ class RelationsApi:
 
         :param object_uuid: (required)
         :type object_uuid: str
-        :param body: Pagination request for relations (required)
-        :type body: object
+        :param pagination_request: Pagination request for relations (required)
+        :type pagination_request: PaginationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2534,7 +2599,7 @@ class RelationsApi:
 
         _param = self._get_relations_by_object_serialize(
             object_uuid=object_uuid,
-            body=body,
+            pagination_request=pagination_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2542,9 +2607,11 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginationResponse",
+            '200': "PaginationResponseRelationDTO",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2556,7 +2623,7 @@ class RelationsApi:
     def _get_relations_by_object_serialize(
         self,
         object_uuid,
-        body,
+        pagination_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2584,8 +2651,8 @@ class RelationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if pagination_request is not None:
+            _body_params = pagination_request
 
 
         # set the HTTP header `Accept`
@@ -2690,6 +2757,9 @@ class RelationsApi:
             '200': "DeleteResponse",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2759,6 +2829,9 @@ class RelationsApi:
             '200': "DeleteResponse",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2828,6 +2901,9 @@ class RelationsApi:
             '200': "DeleteResponse",
             '400': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2958,6 +3034,8 @@ class RelationsApi:
             '200': "RestoreResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3027,6 +3105,8 @@ class RelationsApi:
             '200': "RestoreResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3096,6 +3176,8 @@ class RelationsApi:
             '200': "RestoreResponse",
             '404': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3140,8 +3222,7 @@ class RelationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -3172,7 +3253,7 @@ class RelationsApi:
     @validate_call
     def update_indices(
         self,
-        body: Annotated[StrictStr, Field(description="Mapping of relation UUIDs to new index values")],
+        request_body: Annotated[Dict[str, StrictInt], Field(description="Mapping of relation UUIDs to new index values")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3185,13 +3266,13 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessResponse:
+    ) -> SuccessResponseCollectionRelation:
         """Update relation indices
 
         Updates the indices for relations. The request body should contain a mapping of relation UUIDs to their new index values. Returns a SuccessResponse containing the updated relation objects.
 
-        :param body: Mapping of relation UUIDs to new index values (required)
-        :type body: str
+        :param request_body: Mapping of relation UUIDs to new index values (required)
+        :type request_body: Dict[str, int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3215,7 +3296,7 @@ class RelationsApi:
         """ # noqa: E501
 
         _param = self._update_indices_serialize(
-            body=body,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3223,9 +3304,12 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseCollectionRelation",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3241,7 +3325,7 @@ class RelationsApi:
     @validate_call
     def update_indices_with_http_info(
         self,
-        body: Annotated[StrictStr, Field(description="Mapping of relation UUIDs to new index values")],
+        request_body: Annotated[Dict[str, StrictInt], Field(description="Mapping of relation UUIDs to new index values")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3254,13 +3338,13 @@ class RelationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessResponse]:
+    ) -> ApiResponse[SuccessResponseCollectionRelation]:
         """Update relation indices
 
         Updates the indices for relations. The request body should contain a mapping of relation UUIDs to their new index values. Returns a SuccessResponse containing the updated relation objects.
 
-        :param body: Mapping of relation UUIDs to new index values (required)
-        :type body: str
+        :param request_body: Mapping of relation UUIDs to new index values (required)
+        :type request_body: Dict[str, int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3284,7 +3368,7 @@ class RelationsApi:
         """ # noqa: E501
 
         _param = self._update_indices_serialize(
-            body=body,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3292,9 +3376,12 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseCollectionRelation",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3310,7 +3397,7 @@ class RelationsApi:
     @validate_call
     def update_indices_without_preload_content(
         self,
-        body: Annotated[StrictStr, Field(description="Mapping of relation UUIDs to new index values")],
+        request_body: Annotated[Dict[str, StrictInt], Field(description="Mapping of relation UUIDs to new index values")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3328,8 +3415,8 @@ class RelationsApi:
 
         Updates the indices for relations. The request body should contain a mapping of relation UUIDs to their new index values. Returns a SuccessResponse containing the updated relation objects.
 
-        :param body: Mapping of relation UUIDs to new index values (required)
-        :type body: str
+        :param request_body: Mapping of relation UUIDs to new index values (required)
+        :type request_body: Dict[str, int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3353,7 +3440,7 @@ class RelationsApi:
         """ # noqa: E501
 
         _param = self._update_indices_serialize(
-            body=body,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3361,9 +3448,12 @@ class RelationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessResponse",
+            '200': "SuccessResponseCollectionRelation",
             '400': "ErrorResponse",
             '500': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3374,7 +3464,7 @@ class RelationsApi:
 
     def _update_indices_serialize(
         self,
-        body,
+        request_body,
         _request_auth,
         _content_type,
         _headers,
@@ -3400,8 +3490,8 @@ class RelationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if request_body is not None:
+            _body_params = request_body
 
 
         # set the HTTP header `Accept`

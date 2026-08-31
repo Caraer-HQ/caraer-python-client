@@ -90,6 +90,9 @@ Name | Type | Description  | Notes
 **200** | Sync created successfully |  -  |
 **400** | Invalid sync data |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -173,6 +176,9 @@ Name | Type | Description  | Notes
 **200** | Sync deleted successfully |  -  |
 **400** | Invalid sync data |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -255,11 +261,14 @@ Name | Type | Description  | Notes
 **200** | Sync fetched successfully |  -  |
 **400** | Invalid sync data |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_syncs**
-> PaginationResponse get_syncs(body)
+> PaginationResponseSyncDTO get_syncs(pagination_request)
 
 Fetch paginated syncs
 
@@ -271,7 +280,8 @@ Retrieves a paginated list of syncs. Returns a PaginationResponse containing Syn
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_request import PaginationRequest
+from caraer_client.models.pagination_response_sync_dto import PaginationResponseSyncDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -295,11 +305,11 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.SyncApi(api_client)
-    body = None # object | Pagination request for syncs
+    pagination_request = caraer_client.PaginationRequest() # PaginationRequest | Pagination request for syncs
 
     try:
         # Fetch paginated syncs
-        api_response = api_instance.get_syncs(body)
+        api_response = api_instance.get_syncs(pagination_request)
         print("The response of SyncApi->get_syncs:\n")
         pprint(api_response)
     except Exception as e:
@@ -313,11 +323,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **object**| Pagination request for syncs | 
+ **pagination_request** | [**PaginationRequest**](PaginationRequest.md)| Pagination request for syncs | 
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseSyncDTO**](PaginationResponseSyncDTO.md)
 
 ### Authorization
 
@@ -335,6 +345,9 @@ Name | Type | Description  | Notes
 **200** | Syncs fetched successfully |  -  |
 **400** | Invalid pagination request |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -406,15 +419,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Sync restored successfully |  -  |
-**404** | Sync not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -498,6 +513,9 @@ Name | Type | Description  | Notes
 **200** | Sync updated successfully |  -  |
 **400** | Invalid sync data |  -  |
 **500** | Internal server error |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

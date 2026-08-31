@@ -91,6 +91,9 @@ Name | Type | Description  | Notes
 **200** | Project created or fetched |  -  |
 **400** | appUuid is required |  -  |
 **403** | Caller is not the app creator |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -173,6 +176,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Build recorded (may still have status FAILED if parsing/upload failed) |  -  |
 **400** | archiveBase64 is required |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -257,6 +264,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Deploy recorded |  -  |
 **400** | Build is not ready to deploy |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -332,11 +343,14 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **404** | Build not found for this project |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_builds**
-> object list_builds(project_uuid)
+> SuccessResponseListProjectBuildDTO list_builds(project_uuid)
 
 List project builds
 
@@ -346,6 +360,7 @@ List project builds
 
 ```python
 import caraer_client
+from caraer_client.models.success_response_list_project_build_dto import SuccessResponseListProjectBuildDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -391,7 +406,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**SuccessResponseListProjectBuildDTO**](SuccessResponseListProjectBuildDTO.md)
 
 ### Authorization
 
@@ -407,11 +422,15 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_deploys**
-> object list_deploys(project_uuid)
+> SuccessResponseListProjectDeployDTO list_deploys(project_uuid)
 
 List project deploys
 
@@ -421,6 +440,7 @@ List project deploys
 
 ```python
 import caraer_client
+from caraer_client.models.success_response_list_project_deploy_dto import SuccessResponseListProjectDeployDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -466,7 +486,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**SuccessResponseListProjectDeployDTO**](SuccessResponseListProjectDeployDTO.md)
 
 ### Authorization
 
@@ -482,11 +502,15 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **show3**
-> ShowResponse show3(uuid)
+> ShowResponseDeveloperProjectDTO show3(uuid)
 
 Get a developer project
 
@@ -496,7 +520,7 @@ Get a developer project
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_developer_project_dto import ShowResponseDeveloperProjectDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -542,7 +566,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseDeveloperProjectDTO**](ShowResponseDeveloperProjectDTO.md)
 
 ### Authorization
 
@@ -559,6 +583,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Project retrieved |  -  |
 **404** | Project not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -53,7 +53,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     api_instance = caraer_client.TraitsApi(api_client)
     object_uuid = 'object_uuid_example' # str | 
     trait_name = 'trait_name_example' # str | 
-    body = 'body_example' # str | Trait details as a JSON map
+    body = None # object | Trait details as a JSON map
 
     try:
         # Create or update a trait for an object
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **object_uuid** | **str**|  | 
  **trait_name** | **str**|  | 
- **body** | **str**| Trait details as a JSON map | 
+ **body** | **object**| Trait details as a JSON map | 
 
 ### Return type
 
@@ -94,8 +94,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Trait created successfully |  -  |
 **400** | Invalid input data |  -  |
-**404** | Trait type not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -169,20 +171,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Trait removed successfully |  -  |
-**404** | Trait not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_trait**
-> ShowResponse get_trait(object_uuid, trait_name)
+> ShowResponseTraitDTO get_trait(object_uuid, trait_name)
 
 Fetch a specific trait for an object
 
@@ -194,7 +198,7 @@ Retrieves details of a specific trait associated with the specified object, iden
 
 ```python
 import caraer_client
-from caraer_client.models.show_response import ShowResponse
+from caraer_client.models.show_response_trait_dto import ShowResponseTraitDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -242,7 +246,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowResponse**](ShowResponse.md)
+[**ShowResponseTraitDTO**](ShowResponseTraitDTO.md)
 
 ### Authorization
 
@@ -251,20 +255,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Trait retrieved successfully |  -  |
-**404** | Trait not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_traits**
-> PaginationResponse get_traits(object_uuid)
+> PaginationResponseTraitDTO get_traits(object_uuid)
 
 Fetch all traits for an object
 
@@ -276,7 +282,7 @@ Retrieves a list of traits associated with the specified object. Returns a pagin
 
 ```python
 import caraer_client
-from caraer_client.models.pagination_response import PaginationResponse
+from caraer_client.models.pagination_response_trait_dto import PaginationResponseTraitDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -322,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginationResponse**](PaginationResponse.md)
+[**PaginationResponseTraitDTO**](PaginationResponseTraitDTO.md)
 
 ### Authorization
 
@@ -331,15 +337,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Traits retrieved successfully |  -  |
-**404** | Object or traits not found |  -  |
-**500** | Internal server error |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -418,7 +426,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/html
+ - **Accept**: text/html, application/json
 
 ### HTTP response details
 
@@ -426,9 +434,10 @@ void (empty response body)
 |-------------|-------------|------------------|
 **200** | HTML choice, login, success, or error page |  -  |
 **400** | Invalid partstat or scope |  -  |
-**401** | Login required for JSON clients |  -  |
-**403** | Not the invited attendee |  -  |
-**404** | Event, attendee, or invitation not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -507,13 +516,17 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -590,13 +603,17 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -686,6 +703,7 @@ Name | Type | Description  | Notes
 **401** | Login required |  -  |
 **403** | Not the invited attendee |  -  |
 **404** | Event, attendee, or invitation not found |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

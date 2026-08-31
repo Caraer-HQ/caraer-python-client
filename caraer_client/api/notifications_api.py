@@ -17,6 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
 from typing_extensions import Annotated
+from caraer_client.models.create_response_map_string_string import CreateResponseMapStringString
 from caraer_client.models.delete_response_string import DeleteResponseString
 from caraer_client.models.send_notification_request import SendNotificationRequest
 from caraer_client.models.success_response_string import SuccessResponseString
@@ -94,6 +95,9 @@ class NotificationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponseString",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -161,6 +165,9 @@ class NotificationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponseString",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -228,6 +235,9 @@ class NotificationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeleteResponseString",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -350,6 +360,10 @@ class NotificationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -412,6 +426,10 @@ class NotificationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -474,6 +492,10 @@ class NotificationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseString",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -598,6 +620,9 @@ class NotificationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseString",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -665,6 +690,9 @@ class NotificationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseString",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -732,6 +760,9 @@ class NotificationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessResponseString",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -820,7 +851,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> CreateResponseMapStringString:
         """Send a notification (app token)
 
         Installed apps call this endpoint after async work completes. Authenticate with the installation token (Authorization: Bearer or X-CARAER-TOKEN). The target user must belong to the app's company.
@@ -858,10 +889,13 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '201': "CreateResponseMapStringString",
             '400': "ErrorResponse",
             '403': "ErrorResponse",
             '429': "ErrorResponse",
+            '401': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -890,7 +924,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[CreateResponseMapStringString]:
         """Send a notification (app token)
 
         Installed apps call this endpoint after async work completes. Authenticate with the installation token (Authorization: Bearer or X-CARAER-TOKEN). The target user must belong to the app's company.
@@ -928,10 +962,13 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '201': "CreateResponseMapStringString",
             '400': "ErrorResponse",
             '403': "ErrorResponse",
             '429': "ErrorResponse",
+            '401': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -998,10 +1035,13 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '201': "CreateResponseMapStringString",
             '400': "ErrorResponse",
             '403': "ErrorResponse",
             '429': "ErrorResponse",
+            '401': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

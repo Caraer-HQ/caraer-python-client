@@ -86,11 +86,15 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Sandbox created |  -  |
 **400** | name is required |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> object list()
+> SuccessResponseListDeveloperSandboxDTO list()
 
 List developer sandboxes
 
@@ -102,6 +106,7 @@ Lists sandboxes owned by the caller's selected company.
 
 ```python
 import caraer_client
+from caraer_client.models.success_response_list_developer_sandbox_dto import SuccessResponseListDeveloperSandboxDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -143,7 +148,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**object**
+[**SuccessResponseListDeveloperSandboxDTO**](SuccessResponseListDeveloperSandboxDTO.md)
 
 ### Authorization
 
@@ -159,6 +164,10 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -233,6 +242,8 @@ void (empty response body)
 |-------------|-------------|------------------|
 **403** | Caller does not own this sandbox |  -  |
 **404** | Sandbox not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

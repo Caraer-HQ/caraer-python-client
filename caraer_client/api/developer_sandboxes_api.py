@@ -16,10 +16,10 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
-from typing import Any
 from typing_extensions import Annotated
 from caraer_client.models.create_developer_sandbox_request import CreateDeveloperSandboxRequest
 from caraer_client.models.create_response import CreateResponse
+from caraer_client.models.success_response_list_developer_sandbox_dto import SuccessResponseListDeveloperSandboxDTO
 
 from caraer_client.api_client import ApiClient, RequestSerialized
 from caraer_client.api_response import ApiResponse
@@ -95,6 +95,10 @@ class DeveloperSandboxesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -163,6 +167,10 @@ class DeveloperSandboxesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -231,6 +239,10 @@ class DeveloperSandboxesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CreateResponse",
             '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -331,7 +343,7 @@ class DeveloperSandboxesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> SuccessResponseListDeveloperSandboxDTO:
         """List developer sandboxes
 
         Lists sandboxes owned by the caller's selected company.
@@ -366,7 +378,11 @@ class DeveloperSandboxesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseListDeveloperSandboxDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -394,7 +410,7 @@ class DeveloperSandboxesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[SuccessResponseListDeveloperSandboxDTO]:
         """List developer sandboxes
 
         Lists sandboxes owned by the caller's selected company.
@@ -429,7 +445,11 @@ class DeveloperSandboxesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseListDeveloperSandboxDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -492,7 +512,11 @@ class DeveloperSandboxesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessResponseListDeveloperSandboxDTO",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -617,6 +641,8 @@ class DeveloperSandboxesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -684,6 +710,8 @@ class DeveloperSandboxesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -751,6 +779,8 @@ class DeveloperSandboxesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '401': "ErrorResponse",
+            '500': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
