@@ -6863,7 +6863,7 @@ class ApplicationsApi:
     ) -> None:
         """Test a webhook for an app (auto-resolve)
 
-        Generates a test webhook payload using the latest updated record that matches the webhook filter (if any) for the topic object. Form-submission topics prefer a record that submitted that form; includeRelations prefer a record that has as many of those related objects as possible. Uses the event type from the webhook topic (updated when the topic action is all).
+        Generates a test webhook payload using the latest matching record for the topic object. Form-submission topics prefer a record that submitted that form; includeRelations prefer a record that has as many of those related objects as possible. If no record exists, a simulated record is used. Missing includeRelations and simulated samples are explained in context.testNote and the X-Webhook-Test-Note header. Uses the event type from the webhook topic (updated when the topic action is all).
 
         :param app_uuid: UUID of the app that owns the webhook (required)
         :type app_uuid: str
@@ -6937,7 +6937,7 @@ class ApplicationsApi:
     ) -> ApiResponse[None]:
         """Test a webhook for an app (auto-resolve)
 
-        Generates a test webhook payload using the latest updated record that matches the webhook filter (if any) for the topic object. Form-submission topics prefer a record that submitted that form; includeRelations prefer a record that has as many of those related objects as possible. Uses the event type from the webhook topic (updated when the topic action is all).
+        Generates a test webhook payload using the latest matching record for the topic object. Form-submission topics prefer a record that submitted that form; includeRelations prefer a record that has as many of those related objects as possible. If no record exists, a simulated record is used. Missing includeRelations and simulated samples are explained in context.testNote and the X-Webhook-Test-Note header. Uses the event type from the webhook topic (updated when the topic action is all).
 
         :param app_uuid: UUID of the app that owns the webhook (required)
         :type app_uuid: str
@@ -7011,7 +7011,7 @@ class ApplicationsApi:
     ) -> RESTResponseType:
         """Test a webhook for an app (auto-resolve)
 
-        Generates a test webhook payload using the latest updated record that matches the webhook filter (if any) for the topic object. Form-submission topics prefer a record that submitted that form; includeRelations prefer a record that has as many of those related objects as possible. Uses the event type from the webhook topic (updated when the topic action is all).
+        Generates a test webhook payload using the latest matching record for the topic object. Form-submission topics prefer a record that submitted that form; includeRelations prefer a record that has as many of those related objects as possible. If no record exists, a simulated record is used. Missing includeRelations and simulated samples are explained in context.testNote and the X-Webhook-Test-Note header. Uses the event type from the webhook topic (updated when the topic action is all).
 
         :param app_uuid: UUID of the app that owns the webhook (required)
         :type app_uuid: str
@@ -7148,7 +7148,7 @@ class ApplicationsApi:
     ) -> None:
         """Test an unsaved webhook for an app
 
-        Generates a test webhook payload from webhook configuration supplied in the request body without persisting the webhook. When recordUuid is omitted, auto-resolves the latest updated record that matches the webhook filter (if any), prefers records that submitted the topic form and that have as many includeRelations as possible, and uses the event from the webhook topic.
+        Generates a test webhook payload from webhook configuration supplied in the request body without persisting the webhook. When recordUuid is omitted, auto-resolves the latest matching record, prefers records that submitted the topic form and that have as many includeRelations as possible, and uses the event from the webhook topic. If no record exists, a simulated record is used and context.testNote (also X-Webhook-Test-Note) explains that plus any missing includeRelations.
 
         :param app_uuid: UUID of the app the webhook belongs to (required)
         :type app_uuid: str
@@ -7222,7 +7222,7 @@ class ApplicationsApi:
     ) -> ApiResponse[None]:
         """Test an unsaved webhook for an app
 
-        Generates a test webhook payload from webhook configuration supplied in the request body without persisting the webhook. When recordUuid is omitted, auto-resolves the latest updated record that matches the webhook filter (if any), prefers records that submitted the topic form and that have as many includeRelations as possible, and uses the event from the webhook topic.
+        Generates a test webhook payload from webhook configuration supplied in the request body without persisting the webhook. When recordUuid is omitted, auto-resolves the latest matching record, prefers records that submitted the topic form and that have as many includeRelations as possible, and uses the event from the webhook topic. If no record exists, a simulated record is used and context.testNote (also X-Webhook-Test-Note) explains that plus any missing includeRelations.
 
         :param app_uuid: UUID of the app the webhook belongs to (required)
         :type app_uuid: str
@@ -7296,7 +7296,7 @@ class ApplicationsApi:
     ) -> RESTResponseType:
         """Test an unsaved webhook for an app
 
-        Generates a test webhook payload from webhook configuration supplied in the request body without persisting the webhook. When recordUuid is omitted, auto-resolves the latest updated record that matches the webhook filter (if any), prefers records that submitted the topic form and that have as many includeRelations as possible, and uses the event from the webhook topic.
+        Generates a test webhook payload from webhook configuration supplied in the request body without persisting the webhook. When recordUuid is omitted, auto-resolves the latest matching record, prefers records that submitted the topic form and that have as many includeRelations as possible, and uses the event from the webhook topic. If no record exists, a simulated record is used and context.testNote (also X-Webhook-Test-Note) explains that plus any missing includeRelations.
 
         :param app_uuid: UUID of the app the webhook belongs to (required)
         :type app_uuid: str
