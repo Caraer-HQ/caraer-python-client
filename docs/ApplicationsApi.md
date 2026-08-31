@@ -1982,7 +1982,7 @@ void (empty response body)
 
 Test a webhook for an app (auto-resolve)
 
-Generates a test webhook payload using the latest updated record for the webhook topic object and the event type from the webhook topic (uses updated when the topic action is all).
+Generates a test webhook payload using the latest updated record that matches the webhook filter (if any) for the topic object. Form-submission topics prefer a record that submitted that form; includeRelations prefer a record that has as many of those related objects as possible. Uses the event type from the webhook topic (updated when the topic action is all).
 
 ### Example
 
@@ -2062,7 +2062,7 @@ void (empty response body)
 
 Test an unsaved webhook for an app
 
-Generates a test webhook payload from webhook configuration supplied in the request body without persisting the webhook. When recordUuid is omitted, auto-resolves the record and event from the webhook topic (same as the saved-webhook auto test endpoint).
+Generates a test webhook payload from webhook configuration supplied in the request body without persisting the webhook. When recordUuid is omitted, auto-resolves the latest updated record that matches the webhook filter (if any), prefers records that submitted the topic form and that have as many includeRelations as possible, and uses the event from the webhook topic.
 
 ### Example
 
