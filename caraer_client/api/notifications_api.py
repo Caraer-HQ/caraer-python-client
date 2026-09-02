@@ -873,7 +873,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SuccessResponseString:
-        """Mark all notifications as read for the current company
+        """Mark all notifications as read
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -939,7 +939,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SuccessResponseString]:
-        """Mark all notifications as read for the current company
+        """Mark all notifications as read
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -1005,7 +1005,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Mark all notifications as read for the current company
+        """Mark all notifications as read
 
 
         :param _request_timeout: timeout setting for this request. If one

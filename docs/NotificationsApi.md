@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**dismiss_notification**](NotificationsApi.md#dismiss_notification) | **DELETE** /api/v2/notifications/{notificationId} | Dismiss a notification
 [**firebase_token**](NotificationsApi.md#firebase_token) | **GET** /api/v2/notifications/firebase-token | Mint a Firebase custom token so the app can listen to its inbox
 [**list_notifications**](NotificationsApi.md#list_notifications) | **GET** /api/v2/notifications | List in-app notifications for the logged-in user
-[**mark_all_as_read**](NotificationsApi.md#mark_all_as_read) | **PATCH** /api/v2/notifications/read-all | Mark all notifications as read for the current company
+[**mark_all_as_read**](NotificationsApi.md#mark_all_as_read) | **PATCH** /api/v2/notifications/read-all | Mark all notifications as read
 [**mark_as_read**](NotificationsApi.md#mark_as_read) | **PATCH** /api/v2/notifications/{notificationId}/read | Mark a notification as read
 [**send_notification**](NotificationsApi.md#send_notification) | **POST** /api/v2/notifications | Send a notification (app token)
 
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 # **mark_all_as_read**
 > SuccessResponseString mark_all_as_read()
 
-Mark all notifications as read for the current company
+Mark all notifications as read
 
 ### Example
 
@@ -287,7 +287,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     api_instance = caraer_client.NotificationsApi(api_client)
 
     try:
-        # Mark all notifications as read for the current company
+        # Mark all notifications as read
         api_response = api_instance.mark_all_as_read()
         print("The response of NotificationsApi->mark_all_as_read:\n")
         pprint(api_response)

@@ -50,7 +50,7 @@ class TestNotificationsApi(unittest.TestCase):
     def test_mark_all_as_read(self) -> None:
         """Test case for mark_all_as_read
 
-        Mark all notifications as read for the current company
+        Mark all notifications as read
         """
         pass
 
