@@ -33,6 +33,13 @@ class TestNotificationsApi(unittest.TestCase):
         """
         pass
 
+    def test_firebase_token(self) -> None:
+        """Test case for firebase_token
+
+        Mint a Firebase custom token so the app can listen to its inbox
+        """
+        pass
+
     def test_list_notifications(self) -> None:
         """Test case for list_notifications
 

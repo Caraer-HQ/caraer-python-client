@@ -25,10 +25,10 @@ from pydantic_core import to_jsonable_python
 
 class ShowResponseMapStringString(BaseModel):
     """
-    Success response (ShowResponseMapStringString).
+    Represents the response for viewing or showing a specific resource.
     """ # noqa: E501
-    message: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["Success"]})
-    data: Optional[Dict[str, Any]] = None
+    message: Optional[StrictStr] = Field(default=None, description="A message detailing the result of the operation.", json_schema_extra={"examples": ["Success"]})
+    data: Optional[Dict[str, StrictStr]] = Field(default=None, description="The data payload of the response, if any.")
     __properties: ClassVar[List[str]] = ["message", "data"]
 
     model_config = ConfigDict(

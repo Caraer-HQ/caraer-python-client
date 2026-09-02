@@ -5,6 +5,7 @@ All URIs are relative to *https://v2.api.caraer.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**dismiss_notification**](NotificationsApi.md#dismiss_notification) | **DELETE** /api/v2/notifications/{notificationId} | Dismiss a notification
+[**firebase_token**](NotificationsApi.md#firebase_token) | **GET** /api/v2/notifications/firebase-token | Mint a Firebase custom token so the app can listen to its inbox
 [**list_notifications**](NotificationsApi.md#list_notifications) | **GET** /api/v2/notifications | List in-app notifications for the logged-in user
 [**mark_all_as_read**](NotificationsApi.md#mark_all_as_read) | **PATCH** /api/v2/notifications/read-all | Mark all notifications as read for the current company
 [**mark_as_read**](NotificationsApi.md#mark_as_read) | **PATCH** /api/v2/notifications/{notificationId}/read | Mark a notification as read
@@ -87,6 +88,82 @@ Name | Type | Description  | Notes
 **404** | Notification not found |  -  |
 **401** | Authentication is required or the token is invalid. |  -  |
 **403** | The caller is missing a required role or scope. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **firebase_token**
+> ShowResponseMapStringString firebase_token()
+
+Mint a Firebase custom token so the app can listen to its inbox
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response_map_string_string import ShowResponseMapStringString
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.NotificationsApi(api_client)
+
+    try:
+        # Mint a Firebase custom token so the app can listen to its inbox
+        api_response = api_instance.firebase_token()
+        print("The response of NotificationsApi->firebase_token:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling NotificationsApi->firebase_token: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ShowResponseMapStringString**](ShowResponseMapStringString.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 **500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

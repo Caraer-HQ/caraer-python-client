@@ -36,7 +36,9 @@ class TestShowResponseMapStringString(unittest.TestCase):
         if include_optional:
             return ShowResponseMapStringString(
                 message = 'Success',
-                data = { }
+                data = {
+                    'key' : ''
+                    }
             )
         else:
             return ShowResponseMapStringString(
