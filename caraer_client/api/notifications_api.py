@@ -588,6 +588,7 @@ class NotificationsApi:
     ) -> ShowResponseNotificationInboxDTO:
         """List in-app notifications for the logged-in user
 
+        Returns notifications for the selected company plus user-general notifications that have no company. Other companies are never included.
 
         :param company:
         :type company: str
@@ -662,6 +663,7 @@ class NotificationsApi:
     ) -> ApiResponse[ShowResponseNotificationInboxDTO]:
         """List in-app notifications for the logged-in user
 
+        Returns notifications for the selected company plus user-general notifications that have no company. Other companies are never included.
 
         :param company:
         :type company: str
@@ -736,6 +738,7 @@ class NotificationsApi:
     ) -> RESTResponseType:
         """List in-app notifications for the logged-in user
 
+        Returns notifications for the selected company plus user-general notifications that have no company. Other companies are never included.
 
         :param company:
         :type company: str
@@ -1401,7 +1404,7 @@ class NotificationsApi:
     ) -> CreateResponseMapStringString:
         """Send a notification (app token)
 
-        Installed apps call this endpoint after async work completes. Authenticate with the installation token (Authorization: Bearer or X-CARAER-TOKEN). The target user must belong to the app's company.
+        Installed apps call this endpoint after async work completes. Authenticate with the installation token (Authorization: Bearer or X-CARAER-TOKEN). Every notification is scoped to the app's company. Omit targetUserUuid to notify every user in that company, or set it to aim the notification at one member.
 
         :param send_notification_request: (required)
         :type send_notification_request: SendNotificationRequest
@@ -1474,7 +1477,7 @@ class NotificationsApi:
     ) -> ApiResponse[CreateResponseMapStringString]:
         """Send a notification (app token)
 
-        Installed apps call this endpoint after async work completes. Authenticate with the installation token (Authorization: Bearer or X-CARAER-TOKEN). The target user must belong to the app's company.
+        Installed apps call this endpoint after async work completes. Authenticate with the installation token (Authorization: Bearer or X-CARAER-TOKEN). Every notification is scoped to the app's company. Omit targetUserUuid to notify every user in that company, or set it to aim the notification at one member.
 
         :param send_notification_request: (required)
         :type send_notification_request: SendNotificationRequest
@@ -1547,7 +1550,7 @@ class NotificationsApi:
     ) -> RESTResponseType:
         """Send a notification (app token)
 
-        Installed apps call this endpoint after async work completes. Authenticate with the installation token (Authorization: Bearer or X-CARAER-TOKEN). The target user must belong to the app's company.
+        Installed apps call this endpoint after async work completes. Authenticate with the installation token (Authorization: Bearer or X-CARAER-TOKEN). Every notification is scoped to the app's company. Omit targetUserUuid to notify every user in that company, or set it to aim the notification at one member.
 
         :param send_notification_request: (required)
         :type send_notification_request: SendNotificationRequest

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **data** | **Dict[str, Optional[object]]** |  | [optional] 
 **sender** | **str** |  | [optional] 
 **company** | **str** |  | [optional] 
+**target_user_uuid** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 **read_at** | **str** |  | [optional] 

@@ -48,7 +48,6 @@ class TestSendNotificationRequest(unittest.TestCase):
             )
         else:
             return SendNotificationRequest(
-                target_user_uuid = '',
                 title = '',
                 body = '',
         )

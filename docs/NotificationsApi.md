@@ -173,6 +173,8 @@ This endpoint does not need any parameter.
 
 List in-app notifications for the logged-in user
 
+Returns notifications for the selected company plus user-general notifications that have no company. Other companies are never included.
+
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
@@ -411,7 +413,7 @@ Name | Type | Description  | Notes
 
 Send a notification (app token)
 
-Installed apps call this endpoint after async work completes. Authenticate with the installation token (Authorization: Bearer or X-CARAER-TOKEN). The target user must belong to the app's company.
+Installed apps call this endpoint after async work completes. Authenticate with the installation token (Authorization: Bearer or X-CARAER-TOKEN). Every notification is scoped to the app's company. Omit targetUserUuid to notify every user in that company, or set it to aim the notification at one member.
 
 ### Example
 

@@ -37,12 +37,13 @@ class Item(BaseModel):
     data: Optional[Dict[str, Any]] = None
     sender: Optional[StrictStr] = None
     company: Optional[StrictStr] = None
+    target_user_uuid: Optional[StrictStr] = Field(default=None, alias="targetUserUuid")
     created_at: Optional[StrictStr] = Field(default=None, alias="createdAt")
     updated_at: Optional[StrictStr] = Field(default=None, alias="updatedAt")
     read_at: Optional[StrictStr] = Field(default=None, alias="readAt")
     source_app_uuid: Optional[StrictStr] = Field(default=None, alias="sourceAppUuid")
     app_logo: Optional[StrictStr] = Field(default=None, alias="appLogo")
-    __properties: ClassVar[List[str]] = ["id", "title", "body", "type", "icon", "actionTitle", "action", "data", "sender", "company", "createdAt", "updatedAt", "readAt", "sourceAppUuid", "appLogo"]
+    __properties: ClassVar[List[str]] = ["id", "title", "body", "type", "icon", "actionTitle", "action", "data", "sender", "company", "targetUserUuid", "createdAt", "updatedAt", "readAt", "sourceAppUuid", "appLogo"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -105,6 +106,7 @@ class Item(BaseModel):
             "data": obj.get("data"),
             "sender": obj.get("sender"),
             "company": obj.get("company"),
+            "targetUserUuid": obj.get("targetUserUuid"),
             "createdAt": obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt"),
             "readAt": obj.get("readAt"),

@@ -35,8 +35,8 @@ class TestExistingWidgetSummary(unittest.TestCase):
         model = ExistingWidgetSummary()
         if include_optional:
             return ExistingWidgetSummary(
-                yproperty = '',
                 xproperty = '',
+                yproperty = '',
                 ymetric = '',
                 title = '',
                 chart_type = '',

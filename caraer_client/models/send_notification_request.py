@@ -25,9 +25,9 @@ from pydantic_core import to_jsonable_python
 
 class SendNotificationRequest(BaseModel):
     """
-    Request body for sending an in-app notification to a user
+    Request body for sending an in-app notification in a company
     """ # noqa: E501
-    target_user_uuid: StrictStr = Field(description="UUID of the user who should receive the notification", alias="targetUserUuid")
+    target_user_uuid: Optional[StrictStr] = Field(default=None, description="Optional. Aim this notification at one user in the company. Omit to notify every user who has access to the company.", alias="targetUserUuid")
     title: StrictStr = Field(description="Notification title")
     body: StrictStr = Field(description="Notification body (supports Markdown for links)")
     type: Optional[StrictStr] = Field(default=None, description="Notification type identifier")
