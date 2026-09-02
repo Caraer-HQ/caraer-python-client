@@ -39,7 +39,20 @@ class TestBulkEditRecordsRequest(unittest.TestCase):
                     caraer_client.models.bulk_edit_record_item.BulkEditRecordItem(
                         uuid = '', 
                         client_ref = '', 
-                        properties = {email=a@b.com}, )
+                        properties = {email=a@b.com}, 
+                        relations = [
+                            caraer_client.models.record_relation_request_dto.RecordRelationRequestDTO(
+                                relation_name = 'works_at', 
+                                uuid = '', 
+                                properties = {
+                                    'key' : null
+                                    }, 
+                                edge_properties = {partstat=ACCEPTED}, 
+                                record = null, 
+                                object_name = '', 
+                                primary = False, 
+                                merge = True, )
+                            ], )
                     ]
             )
         else:

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **uuid** | **str** | UUID of an existing record to update. Omit to create a new record. | [optional] 
 **client_ref** | **str** | Client-side reference for matching the item back after create (e.g. row-3). | [optional] 
 **properties** | **Dict[str, Optional[object]]** | Property values to set on the record. | [optional] 
+**relations** | [**List[RecordRelationRequestDTO]**](RecordRelationRequestDTO.md) | Relations to create or merge after the record is saved. Same shape as createOrUpdate. | [optional] 
 
 ## Example
 

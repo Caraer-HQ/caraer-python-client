@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from caraer_client.models.record_relation_request_dto import RecordRelationRequestDTO
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -30,7 +31,8 @@ class BulkEditRecordItem(BaseModel):
     uuid: Optional[StrictStr] = Field(default=None, description="UUID of an existing record to update. Omit to create a new record.")
     client_ref: Optional[StrictStr] = Field(default=None, description="Client-side reference for matching the item back after create (e.g. row-3).", alias="clientRef")
     properties: Optional[Dict[str, Any]] = Field(default=None, description="Property values to set on the record.", json_schema_extra={"examples": [{"email": "a@b.com"}]})
-    __properties: ClassVar[List[str]] = ["uuid", "clientRef", "properties"]
+    relations: Optional[List[RecordRelationRequestDTO]] = Field(default=None, description="Relations to create or merge after the record is saved. Same shape as createOrUpdate.")
+    __properties: ClassVar[List[str]] = ["uuid", "clientRef", "properties", "relations"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -71,6 +73,12 @@ class BulkEditRecordItem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in relations (list)
+        _items = []
+        if self.relations:
+            for _item_relations in self.relations:
+                _items.append(_item_relations.to_dict() if _item_relations is not None else None)
+            _dict['relations'] = _items
         return _dict
 
     @classmethod
@@ -85,7 +93,8 @@ class BulkEditRecordItem(BaseModel):
         _obj = cls.model_validate({
             "uuid": obj.get("uuid"),
             "clientRef": obj.get("clientRef"),
-            "properties": obj.get("properties")
+            "properties": obj.get("properties"),
+            "relations": [RecordRelationRequestDTO.from_dict(_item) for _item in obj["relations"]] if obj.get("relations") is not None else None
         })
         return _obj
 
