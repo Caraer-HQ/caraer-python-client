@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.455"
+__version__ = "2.0.456"
 
 # Define package exports
 __all__ = [
@@ -162,6 +162,7 @@ __all__ = [
     "GridItemSettingsDTO",
     "HasAppDTO",
     "InstallAppRequest",
+    "Item",
     "Leadscore",
     "LinkedProperty",
     "LoadAppSettingOptionsRequest",
@@ -176,6 +177,7 @@ __all__ = [
     "NotFoundError",
     "NotFoundErrorCause",
     "NotFoundErrorCauseStackTraceInner",
+    "NotificationInboxDTO",
     "Number",
     "NumberRange",
     "OAuthRegistrationRequest",
@@ -281,6 +283,7 @@ __all__ = [
     "ShowResponseMapStringBoolean",
     "ShowResponseMapStringObject",
     "ShowResponseMapStringString",
+    "ShowResponseNotificationInboxDTO",
     "ShowResponseObject",
     "ShowResponseObjectAccessGrantCandidatesDTO",
     "ShowResponsePageContentDTO",
@@ -524,6 +527,7 @@ from caraer_client.models.grid_item_dto import GridItemDTO as GridItemDTO
 from caraer_client.models.grid_item_settings_dto import GridItemSettingsDTO as GridItemSettingsDTO
 from caraer_client.models.has_app_dto import HasAppDTO as HasAppDTO
 from caraer_client.models.install_app_request import InstallAppRequest as InstallAppRequest
+from caraer_client.models.item import Item as Item
 from caraer_client.models.leadscore import Leadscore as Leadscore
 from caraer_client.models.linked_property import LinkedProperty as LinkedProperty
 from caraer_client.models.load_app_setting_options_request import LoadAppSettingOptionsRequest as LoadAppSettingOptionsRequest
@@ -538,6 +542,7 @@ from caraer_client.models.multi_value_map_string_string import MultiValueMapStri
 from caraer_client.models.not_found_error import NotFoundError as NotFoundError
 from caraer_client.models.not_found_error_cause import NotFoundErrorCause as NotFoundErrorCause
 from caraer_client.models.not_found_error_cause_stack_trace_inner import NotFoundErrorCauseStackTraceInner as NotFoundErrorCauseStackTraceInner
+from caraer_client.models.notification_inbox_dto import NotificationInboxDTO as NotificationInboxDTO
 from caraer_client.models.number import Number as Number
 from caraer_client.models.number_range import NumberRange as NumberRange
 from caraer_client.models.o_auth_registration_request import OAuthRegistrationRequest as OAuthRegistrationRequest
@@ -643,6 +648,7 @@ from caraer_client.models.show_response_map_string_analytics_dashboard_config im
 from caraer_client.models.show_response_map_string_boolean import ShowResponseMapStringBoolean as ShowResponseMapStringBoolean
 from caraer_client.models.show_response_map_string_object import ShowResponseMapStringObject as ShowResponseMapStringObject
 from caraer_client.models.show_response_map_string_string import ShowResponseMapStringString as ShowResponseMapStringString
+from caraer_client.models.show_response_notification_inbox_dto import ShowResponseNotificationInboxDTO as ShowResponseNotificationInboxDTO
 from caraer_client.models.show_response_object import ShowResponseObject as ShowResponseObject
 from caraer_client.models.show_response_object_access_grant_candidates_dto import ShowResponseObjectAccessGrantCandidatesDTO as ShowResponseObjectAccessGrantCandidatesDTO
 from caraer_client.models.show_response_page_content_dto import ShowResponsePageContentDTO as ShowResponsePageContentDTO

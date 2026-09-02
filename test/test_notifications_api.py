@@ -33,6 +33,13 @@ class TestNotificationsApi(unittest.TestCase):
         """
         pass
 
+    def test_list_notifications(self) -> None:
+        """Test case for list_notifications
+
+        List in-app notifications for the logged-in user
+        """
+        pass
+
     def test_mark_all_as_read(self) -> None:
         """Test case for mark_all_as_read
 

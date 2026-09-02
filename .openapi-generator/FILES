@@ -146,6 +146,7 @@ caraer_client/models/grid_item_dto.py
 caraer_client/models/grid_item_settings_dto.py
 caraer_client/models/has_app_dto.py
 caraer_client/models/install_app_request.py
+caraer_client/models/item.py
 caraer_client/models/leadscore.py
 caraer_client/models/linked_property.py
 caraer_client/models/load_app_setting_options_request.py
@@ -160,6 +161,7 @@ caraer_client/models/multi_value_map_string_string.py
 caraer_client/models/not_found_error.py
 caraer_client/models/not_found_error_cause.py
 caraer_client/models/not_found_error_cause_stack_trace_inner.py
+caraer_client/models/notification_inbox_dto.py
 caraer_client/models/number.py
 caraer_client/models/number_range.py
 caraer_client/models/o_auth_registration_request.py
@@ -265,6 +267,7 @@ caraer_client/models/show_response_map_string_analytics_dashboard_config.py
 caraer_client/models/show_response_map_string_boolean.py
 caraer_client/models/show_response_map_string_object.py
 caraer_client/models/show_response_map_string_string.py
+caraer_client/models/show_response_notification_inbox_dto.py
 caraer_client/models/show_response_object.py
 caraer_client/models/show_response_object_access_grant_candidates_dto.py
 caraer_client/models/show_response_page_content_dto.py
@@ -471,6 +474,7 @@ docs/GridItemDTO.md
 docs/GridItemSettingsDTO.md
 docs/HasAppDTO.md
 docs/InstallAppRequest.md
+docs/Item.md
 docs/Leadscore.md
 docs/LinkedProperty.md
 docs/LoadAppSettingOptionsRequest.md
@@ -486,6 +490,7 @@ docs/MultiValueMapStringString.md
 docs/NotFoundError.md
 docs/NotFoundErrorCause.md
 docs/NotFoundErrorCauseStackTraceInner.md
+docs/NotificationInboxDTO.md
 docs/NotificationsApi.md
 docs/Number.md
 docs/NumberRange.md
@@ -597,6 +602,7 @@ docs/ShowResponseMapStringAnalyticsDashboardConfig.md
 docs/ShowResponseMapStringBoolean.md
 docs/ShowResponseMapStringObject.md
 docs/ShowResponseMapStringString.md
+docs/ShowResponseNotificationInboxDTO.md
 docs/ShowResponseObject.md
 docs/ShowResponseObjectAccessGrantCandidatesDTO.md
 docs/ShowResponsePageContentDTO.md
@@ -813,6 +819,7 @@ test/test_grid_item_dto.py
 test/test_grid_item_settings_dto.py
 test/test_has_app_dto.py
 test/test_install_app_request.py
+test/test_item.py
 test/test_leadscore.py
 test/test_linked_property.py
 test/test_load_app_setting_options_request.py
@@ -828,6 +835,7 @@ test/test_multi_value_map_string_string.py
 test/test_not_found_error.py
 test/test_not_found_error_cause.py
 test/test_not_found_error_cause_stack_trace_inner.py
+test/test_notification_inbox_dto.py
 test/test_notifications_api.py
 test/test_number.py
 test/test_number_range.py
@@ -939,6 +947,7 @@ test/test_show_response_map_string_analytics_dashboard_config.py
 test/test_show_response_map_string_boolean.py
 test/test_show_response_map_string_object.py
 test/test_show_response_map_string_string.py
+test/test_show_response_notification_inbox_dto.py
 test/test_show_response_object.py
 test/test_show_response_object_access_grant_candidates_dto.py
 test/test_show_response_page_content_dto.py
