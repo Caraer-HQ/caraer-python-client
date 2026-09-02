@@ -90,6 +90,11 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                             ], 
                                         searchable = True, 
                                         min_query_length = 56, ), 
+                                    action_source = caraer_client.models.app_setting_action_source.AppSettingActionSource(
+                                        type = '', 
+                                        serverless_function_uuid = '', 
+                                        serverless_function_name = '', 
+                                        enqueue = True, ), 
                                     default_value = null, 
                                     hidden = True, 
                                     visible_when = [
@@ -116,7 +121,8 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                                     ], 
                                                 property_name = '', )
                                             ], ), 
-                                    value_scope = '', )
+                                    value_scope = '', 
+                                    action = True, )
                                 ], 
                             webhook = null, )
                         ], 
@@ -154,7 +160,8 @@ class TestShowResponseAppDTO(unittest.TestCase):
                             hidden = True, 
                             value = null, 
                             has_value = True, 
-                            value_scope = '', )
+                            value_scope = '', 
+                            action = True, )
                         ], 
                     settings_sections = [
                         caraer_client.models.app_settings_section.AppSettingsSection(

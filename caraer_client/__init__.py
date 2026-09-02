@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.454"
+__version__ = "2.0.455"
 
 # Define package exports
 __all__ = [
@@ -83,6 +83,7 @@ __all__ = [
     "AppPublishDTO",
     "AppRequest",
     "AppScheduleDTO",
+    "AppSettingActionSource",
     "AppSettingCondition",
     "AppSettingFieldMappingStructure",
     "AppSettingFieldMappingStructureItem",
@@ -444,6 +445,7 @@ from caraer_client.models.app_o_auth_start_response_dto import AppOAuthStartResp
 from caraer_client.models.app_publish_dto import AppPublishDTO as AppPublishDTO
 from caraer_client.models.app_request import AppRequest as AppRequest
 from caraer_client.models.app_schedule_dto import AppScheduleDTO as AppScheduleDTO
+from caraer_client.models.app_setting_action_source import AppSettingActionSource as AppSettingActionSource
 from caraer_client.models.app_setting_condition import AppSettingCondition as AppSettingCondition
 from caraer_client.models.app_setting_field_mapping_structure import AppSettingFieldMappingStructure as AppSettingFieldMappingStructure
 from caraer_client.models.app_setting_field_mapping_structure_item import AppSettingFieldMappingStructureItem as AppSettingFieldMappingStructureItem

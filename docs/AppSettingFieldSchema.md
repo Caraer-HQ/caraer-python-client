@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **help_text** | **str** |  | [optional] 
 **options** | [**List[SettingOption]**](SettingOption.md) |  | [optional] 
 **options_source** | [**AppSettingOptionsSource**](AppSettingOptionsSource.md) |  | [optional] 
+**action_source** | [**AppSettingActionSource**](AppSettingActionSource.md) |  | [optional] 
 **default_value** | **object** |  | [optional] 
 **hidden** | **bool** |  | [optional] 
 **visible_when** | [**List[AppSettingCondition]**](AppSettingCondition.md) |  | [optional] 
@@ -19,6 +20,7 @@ Name | Type | Description | Notes
 **has_value** | **bool** |  | [optional] 
 **mapping_value** | [**AppSettingFieldMappingStructure**](AppSettingFieldMappingStructure.md) |  | [optional] 
 **value_scope** | **str** |  | [optional] 
+**action** | **bool** |  | [optional] 
 
 ## Example
 

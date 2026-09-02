@@ -57,6 +57,11 @@ class TestInstallAppRequest(unittest.TestCase):
                                 ], 
                             searchable = True, 
                             min_query_length = 56, ), 
+                        action_source = caraer_client.models.app_setting_action_source.AppSettingActionSource(
+                            type = '', 
+                            serverless_function_uuid = '', 
+                            serverless_function_name = '', 
+                            enqueue = True, ), 
                         default_value = null, 
                         hidden = True, 
                         visible_when = [
@@ -83,7 +88,8 @@ class TestInstallAppRequest(unittest.TestCase):
                                         ], 
                                     property_name = '', )
                                 ], ), 
-                        value_scope = '', )
+                        value_scope = '', 
+                        action = True, )
                     ],
                 scopes = [
                     ''

@@ -44,6 +44,7 @@ from caraer_client.models.app_o_auth_start_response_dto import AppOAuthStartResp
 from caraer_client.models.app_publish_dto import AppPublishDTO
 from caraer_client.models.app_request import AppRequest
 from caraer_client.models.app_schedule_dto import AppScheduleDTO
+from caraer_client.models.app_setting_action_source import AppSettingActionSource
 from caraer_client.models.app_setting_condition import AppSettingCondition
 from caraer_client.models.app_setting_field_mapping_structure import AppSettingFieldMappingStructure
 from caraer_client.models.app_setting_field_mapping_structure_item import AppSettingFieldMappingStructureItem

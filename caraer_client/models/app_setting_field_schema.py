@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from caraer_client.models.app_setting_action_source import AppSettingActionSource
 from caraer_client.models.app_setting_condition import AppSettingCondition
 from caraer_client.models.app_setting_field_mapping_structure import AppSettingFieldMappingStructure
 from caraer_client.models.app_setting_options_source import AppSettingOptionsSource
@@ -38,6 +39,7 @@ class AppSettingFieldSchema(BaseModel):
     help_text: Optional[StrictStr] = Field(default=None, alias="helpText")
     options: Optional[List[SettingOption]] = None
     options_source: Optional[AppSettingOptionsSource] = Field(default=None, alias="optionsSource")
+    action_source: Optional[AppSettingActionSource] = Field(default=None, alias="actionSource")
     default_value: Optional[Any] = Field(default=None, alias="defaultValue")
     hidden: Optional[StrictBool] = None
     visible_when: Optional[List[AppSettingCondition]] = Field(default=None, alias="visibleWhen")
@@ -45,7 +47,8 @@ class AppSettingFieldSchema(BaseModel):
     has_value: Optional[StrictBool] = Field(default=None, alias="hasValue")
     mapping_value: Optional[AppSettingFieldMappingStructure] = Field(default=None, alias="mappingValue")
     value_scope: Optional[StrictStr] = Field(default=None, alias="valueScope")
-    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "options", "optionsSource", "defaultValue", "hidden", "visibleWhen", "value", "hasValue", "mappingValue", "valueScope"]
+    action: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "options", "optionsSource", "actionSource", "defaultValue", "hidden", "visibleWhen", "value", "hasValue", "mappingValue", "valueScope", "action"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -95,6 +98,9 @@ class AppSettingFieldSchema(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of options_source
         if self.options_source:
             _dict['optionsSource'] = self.options_source.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of action_source
+        if self.action_source:
+            _dict['actionSource'] = self.action_source.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in visible_when (list)
         _items = []
         if self.visible_when:
@@ -133,13 +139,15 @@ class AppSettingFieldSchema(BaseModel):
             "helpText": obj.get("helpText"),
             "options": [SettingOption.from_dict(_item) for _item in obj["options"]] if obj.get("options") is not None else None,
             "optionsSource": AppSettingOptionsSource.from_dict(obj["optionsSource"]) if obj.get("optionsSource") is not None else None,
+            "actionSource": AppSettingActionSource.from_dict(obj["actionSource"]) if obj.get("actionSource") is not None else None,
             "defaultValue": obj.get("defaultValue"),
             "hidden": obj.get("hidden"),
             "visibleWhen": [AppSettingCondition.from_dict(_item) for _item in obj["visibleWhen"]] if obj.get("visibleWhen") is not None else None,
             "value": obj.get("value"),
             "hasValue": obj.get("hasValue"),
             "mappingValue": AppSettingFieldMappingStructure.from_dict(obj["mappingValue"]) if obj.get("mappingValue") is not None else None,
-            "valueScope": obj.get("valueScope")
+            "valueScope": obj.get("valueScope"),
+            "action": obj.get("action")
         })
         return _obj
 

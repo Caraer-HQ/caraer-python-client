@@ -131,6 +131,13 @@ class TestAppInstallationRuntimeApi(unittest.TestCase):
         """
         pass
 
+    def test_trigger_setting_action(self) -> None:
+        """Test case for trigger_setting_action
+
+        Trigger an ACTION setting without saving settings
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

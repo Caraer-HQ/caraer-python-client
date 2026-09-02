@@ -67,6 +67,7 @@ caraer_client/models/app_o_auth_start_response_dto.py
 caraer_client/models/app_publish_dto.py
 caraer_client/models/app_request.py
 caraer_client/models/app_schedule_dto.py
+caraer_client/models/app_setting_action_source.py
 caraer_client/models/app_setting_condition.py
 caraer_client/models/app_setting_field_mapping_structure.py
 caraer_client/models/app_setting_field_mapping_structure_item.py
@@ -381,6 +382,7 @@ docs/AppOAuthStartResponseDTO.md
 docs/AppPublishDTO.md
 docs/AppRequest.md
 docs/AppScheduleDTO.md
+docs/AppSettingActionSource.md
 docs/AppSettingCondition.md
 docs/AppSettingFieldMappingStructure.md
 docs/AppSettingFieldMappingStructureItem.md
@@ -722,6 +724,7 @@ test/test_app_o_auth_start_response_dto.py
 test/test_app_publish_dto.py
 test/test_app_request.py
 test/test_app_schedule_dto.py
+test/test_app_setting_action_source.py
 test/test_app_setting_condition.py
 test/test_app_setting_field_mapping_structure.py
 test/test_app_setting_field_mapping_structure_item.py
