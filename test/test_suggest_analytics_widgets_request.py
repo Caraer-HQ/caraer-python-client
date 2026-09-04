@@ -40,8 +40,8 @@ class TestSuggestAnalyticsWidgetsRequest(unittest.TestCase):
                 existing_widgets = [
                     caraer_client.models.existing_widget_summary.ExistingWidgetSummary(
                         xproperty = '', 
-                        ymetric = '', 
                         yproperty = '', 
+                        ymetric = '', 
                         title = '', 
                         chart_type = '', 
                         x_property = '', 
