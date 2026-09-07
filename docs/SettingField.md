@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **hidden** | **bool** |  | [optional] 
 **disabled** | **bool** |  | [optional] 
 **options** | [**List[SettingOption]**](SettingOption.md) |  | [optional] 
-**value** | **object** |  | [optional] 
 **default_value** | **object** |  | [optional] 
+**value** | **object** |  | [optional] 
 
 ## Example
 
