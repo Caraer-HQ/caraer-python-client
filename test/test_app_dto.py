@@ -276,6 +276,9 @@ class TestAppDTO(unittest.TestCase):
                                     enqueue = True, ), 
                                 default_value = null, 
                                 hidden = True, 
+                                filter_traits = [
+                                    ''
+                                    ], 
                                 visible_when = [
                                     caraer_client.models.app_setting_condition.AppSettingCondition(
                                         field = '', 
@@ -505,6 +508,9 @@ class TestAppDTO(unittest.TestCase):
                             enqueue = True, ), 
                         default_value = null, 
                         hidden = True, 
+                        filter_traits = [
+                            ''
+                            ], 
                         visible_when = [
                             caraer_client.models.app_setting_condition.AppSettingCondition(
                                 field = '', 

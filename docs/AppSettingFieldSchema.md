@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **action_source** | [**AppSettingActionSource**](AppSettingActionSource.md) |  | [optional] 
 **default_value** | **object** |  | [optional] 
 **hidden** | **bool** |  | [optional] 
+**filter_traits** | **List[str]** |  | [optional] 
 **visible_when** | [**List[AppSettingCondition]**](AppSettingCondition.md) |  | [optional] 
 **value** | **object** |  | [optional] 
 **has_value** | **bool** |  | [optional] 

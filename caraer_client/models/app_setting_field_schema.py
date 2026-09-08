@@ -42,13 +42,14 @@ class AppSettingFieldSchema(BaseModel):
     action_source: Optional[AppSettingActionSource] = Field(default=None, alias="actionSource")
     default_value: Optional[Any] = Field(default=None, alias="defaultValue")
     hidden: Optional[StrictBool] = None
+    filter_traits: Optional[List[StrictStr]] = Field(default=None, alias="filterTraits")
     visible_when: Optional[List[AppSettingCondition]] = Field(default=None, alias="visibleWhen")
     value: Optional[Any] = None
     has_value: Optional[StrictBool] = Field(default=None, alias="hasValue")
     mapping_value: Optional[AppSettingFieldMappingStructure] = Field(default=None, alias="mappingValue")
     value_scope: Optional[StrictStr] = Field(default=None, alias="valueScope")
     action: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "options", "optionsSource", "actionSource", "defaultValue", "hidden", "visibleWhen", "value", "hasValue", "mappingValue", "valueScope", "action"]
+    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "options", "optionsSource", "actionSource", "defaultValue", "hidden", "filterTraits", "visibleWhen", "value", "hasValue", "mappingValue", "valueScope", "action"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -142,6 +143,7 @@ class AppSettingFieldSchema(BaseModel):
             "actionSource": AppSettingActionSource.from_dict(obj["actionSource"]) if obj.get("actionSource") is not None else None,
             "defaultValue": obj.get("defaultValue"),
             "hidden": obj.get("hidden"),
+            "filterTraits": obj.get("filterTraits"),
             "visibleWhen": [AppSettingCondition.from_dict(_item) for _item in obj["visibleWhen"]] if obj.get("visibleWhen") is not None else None,
             "value": obj.get("value"),
             "hasValue": obj.get("hasValue"),
