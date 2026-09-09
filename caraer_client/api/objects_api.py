@@ -3369,7 +3369,7 @@ class ObjectsApi:
     ) -> SuccessResponseMapStringInteger:
         """Sync extended objects for existing records
 
-        Synchronizes existing records for an object after extended configuration changes. The object path variable accepts UUID or object name. Records that reference the object as primary object, extended object, or label are re-extended.
+        Synchronizes existing records for an object after extended configuration changes. The object path variable accepts UUID or object name. Leftover nodes with a unique object label and no primary_object are stamped first. Records that reference the object as primary object, extended object, or label are re-extended.
 
         :param uuid: (required)
         :type uuid: str
@@ -3440,7 +3440,7 @@ class ObjectsApi:
     ) -> ApiResponse[SuccessResponseMapStringInteger]:
         """Sync extended objects for existing records
 
-        Synchronizes existing records for an object after extended configuration changes. The object path variable accepts UUID or object name. Records that reference the object as primary object, extended object, or label are re-extended.
+        Synchronizes existing records for an object after extended configuration changes. The object path variable accepts UUID or object name. Leftover nodes with a unique object label and no primary_object are stamped first. Records that reference the object as primary object, extended object, or label are re-extended.
 
         :param uuid: (required)
         :type uuid: str
@@ -3511,7 +3511,7 @@ class ObjectsApi:
     ) -> RESTResponseType:
         """Sync extended objects for existing records
 
-        Synchronizes existing records for an object after extended configuration changes. The object path variable accepts UUID or object name. Records that reference the object as primary object, extended object, or label are re-extended.
+        Synchronizes existing records for an object after extended configuration changes. The object path variable accepts UUID or object name. Leftover nodes with a unique object label and no primary_object are stamped first. Records that reference the object as primary object, extended object, or label are re-extended.
 
         :param uuid: (required)
         :type uuid: str
