@@ -43,10 +43,10 @@ class Team(BaseModel):
     filters_string: Optional[StrictStr] = Field(default=None, alias="filtersString")
     filters: Optional[Dict[str, Filter]] = None
     member_count: Optional[StrictInt] = Field(default=None, alias="memberCount")
-    deleted: Optional[StrictBool] = None
     complete: Optional[StrictBool] = None
+    deleted: Optional[StrictBool] = None
     uuid: Annotated[str, Field(min_length=1, strict=True)]
-    __properties: ClassVar[List[str]] = ["name", "label", "createdAt", "updatedAt", "deletedAt", "createdByUuid", "updatedByUuid", "deletedByUuid", "index", "description", "scopes", "filtersString", "filters", "memberCount", "deleted", "complete", "uuid"]
+    __properties: ClassVar[List[str]] = ["name", "label", "createdAt", "updatedAt", "deletedAt", "createdByUuid", "updatedByUuid", "deletedByUuid", "index", "description", "scopes", "filtersString", "filters", "memberCount", "complete", "deleted", "uuid"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -124,8 +124,8 @@ class Team(BaseModel):
             if obj.get("filters") is not None
             else None,
             "memberCount": obj.get("memberCount"),
-            "deleted": obj.get("deleted"),
             "complete": obj.get("complete"),
+            "deleted": obj.get("deleted"),
             "uuid": obj.get("uuid")
         })
         return _obj

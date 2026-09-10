@@ -57,8 +57,8 @@ class TestTeam(unittest.TestCase):
                             ], )
                     },
                 member_count = 56,
-                deleted = True,
                 complete = True,
+                deleted = True,
                 uuid = '0'
             )
         else:
