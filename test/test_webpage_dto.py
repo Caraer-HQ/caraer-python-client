@@ -177,7 +177,6 @@ class TestWebpageDTO(unittest.TestCase):
                                 ''
                                 ], 
                             icon = '', 
-                            show_in_menu = True, 
                             default_trait = '', 
                             traits = [
                                 ''
@@ -388,7 +387,6 @@ class TestWebpageDTO(unittest.TestCase):
                                     plural = '', 
                                     description = '', 
                                     icon = '', 
-                                    show_in_menu = True, 
                                     default_trait = '', 
                                     editable = True, )
                                 ], 
@@ -413,7 +411,6 @@ class TestWebpageDTO(unittest.TestCase):
                         ''
                         ], 
                     icon = '', 
-                    show_in_menu = True, 
                     default_trait = '', 
                     traits = [
                         ''
@@ -618,7 +615,6 @@ class TestWebpageDTO(unittest.TestCase):
                                     plural = '', 
                                     description = '', 
                                     icon = '', 
-                                    show_in_menu = True, 
                                     default_trait = '', 
                                     suites = [
                                         ''
@@ -655,7 +651,6 @@ class TestWebpageDTO(unittest.TestCase):
                         ''
                         ], 
                     icon = '', 
-                    show_in_menu = True, 
                     default_trait = '', 
                     traits = [
                         ''
@@ -860,7 +855,6 @@ class TestWebpageDTO(unittest.TestCase):
                                     plural = '', 
                                     description = '', 
                                     icon = '', 
-                                    show_in_menu = True, 
                                     default_trait = '', 
                                     suites = [
                                         ''

@@ -66,7 +66,6 @@ class TestFormRelationDTO(unittest.TestCase):
                                 ''
                                 ], 
                             icon = '', 
-                            show_in_menu = True, 
                             default_trait = '', 
                             traits = [
                                 ''
@@ -277,7 +276,6 @@ class TestFormRelationDTO(unittest.TestCase):
                                     plural = '', 
                                     description = '', 
                                     icon = '', 
-                                    show_in_menu = True, 
                                     default_trait = '', 
                                     editable = True, )
                                 ], 
@@ -315,7 +313,6 @@ class TestFormRelationDTO(unittest.TestCase):
                                 ''
                                 ], 
                             icon = '', 
-                            show_in_menu = True, 
                             default_trait = '', 
                             traits = [
                                 ''
@@ -526,7 +523,6 @@ class TestFormRelationDTO(unittest.TestCase):
                                     plural = '', 
                                     description = '', 
                                     icon = '', 
-                                    show_in_menu = True, 
                                     default_trait = '', 
                                     editable = True, )
                                 ], 
@@ -551,7 +547,6 @@ class TestFormRelationDTO(unittest.TestCase):
                         ''
                         ], 
                     icon = '', 
-                    show_in_menu = True, 
                     default_trait = '', 
                     traits = [
                         ''
@@ -756,7 +751,6 @@ class TestFormRelationDTO(unittest.TestCase):
                                     plural = '', 
                                     description = '', 
                                     icon = '', 
-                                    show_in_menu = True, 
                                     default_trait = '', 
                                     suites = [
                                         ''

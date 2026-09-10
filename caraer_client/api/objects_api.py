@@ -75,7 +75,7 @@ class ObjectsApi:
     ) -> CreateResponse:
         """Create new object
 
-        Creates a new Caraer object using the provided details. Optional request parameters specify whether to include views, properties, and relations in the response. Validation rules: label (required, must be a string, maximum 32 characters), plural (required, must be a string, maximum 32 characters), name (required, must be a string, must be lowercase, must be unique, must match name pattern (lowercase letters, numbers, underscores)), description (optional, maximum 255 characters), groups (required, must be an array of string, no duplicate values allowed), showInMenu (required, must be a boolean).
+        Creates a new Caraer object using the provided details. Optional request parameters specify whether to include views, properties, and relations in the response. Validation rules: label (required, must be a string, maximum 32 characters), plural (required, must be a string, maximum 32 characters), name (required, must be a string, must be lowercase, must be unique, must match name pattern (lowercase letters, numbers, underscores)), description (optional, maximum 255 characters), groups (required, must be an array of string, no duplicate values allowed).
 
         :param caraer_object_dto: Details of the object to create (required)
         :type caraer_object_dto: CaraerObjectDTO
@@ -159,7 +159,7 @@ class ObjectsApi:
     ) -> ApiResponse[CreateResponse]:
         """Create new object
 
-        Creates a new Caraer object using the provided details. Optional request parameters specify whether to include views, properties, and relations in the response. Validation rules: label (required, must be a string, maximum 32 characters), plural (required, must be a string, maximum 32 characters), name (required, must be a string, must be lowercase, must be unique, must match name pattern (lowercase letters, numbers, underscores)), description (optional, maximum 255 characters), groups (required, must be an array of string, no duplicate values allowed), showInMenu (required, must be a boolean).
+        Creates a new Caraer object using the provided details. Optional request parameters specify whether to include views, properties, and relations in the response. Validation rules: label (required, must be a string, maximum 32 characters), plural (required, must be a string, maximum 32 characters), name (required, must be a string, must be lowercase, must be unique, must match name pattern (lowercase letters, numbers, underscores)), description (optional, maximum 255 characters), groups (required, must be an array of string, no duplicate values allowed).
 
         :param caraer_object_dto: Details of the object to create (required)
         :type caraer_object_dto: CaraerObjectDTO
@@ -243,7 +243,7 @@ class ObjectsApi:
     ) -> RESTResponseType:
         """Create new object
 
-        Creates a new Caraer object using the provided details. Optional request parameters specify whether to include views, properties, and relations in the response. Validation rules: label (required, must be a string, maximum 32 characters), plural (required, must be a string, maximum 32 characters), name (required, must be a string, must be lowercase, must be unique, must match name pattern (lowercase letters, numbers, underscores)), description (optional, maximum 255 characters), groups (required, must be an array of string, no duplicate values allowed), showInMenu (required, must be a boolean).
+        Creates a new Caraer object using the provided details. Optional request parameters specify whether to include views, properties, and relations in the response. Validation rules: label (required, must be a string, maximum 32 characters), plural (required, must be a string, maximum 32 characters), name (required, must be a string, must be lowercase, must be unique, must match name pattern (lowercase letters, numbers, underscores)), description (optional, maximum 255 characters), groups (required, must be an array of string, no duplicate values allowed).
 
         :param caraer_object_dto: Details of the object to create (required)
         :type caraer_object_dto: CaraerObjectDTO
@@ -4288,7 +4288,7 @@ class ObjectsApi:
     ) -> UpdateResponse:
         """Update object by UUID
 
-        Updates an existing object identified by its UUID with new details. Optional parameters determine if views, properties, and relations should be included in the response. Validation rules: label (required, must be a string, maximum 32 characters), plural (required, must be a string, maximum 32 characters), name (required, must be a string, must be lowercase, must be unique, must match name pattern (lowercase letters, numbers, underscores), cannot be changed after creation), description (optional, maximum 255 characters), groups (required, must be an array of string, no duplicate values allowed), showInMenu (required, must be a boolean).
+        Updates an existing object identified by its UUID with new details. Optional parameters determine if views, properties, and relations should be included in the response. Validation rules: label (required, must be a string, maximum 32 characters), plural (required, must be a string, maximum 32 characters), name (required, must be a string, must be lowercase, must be unique, must match name pattern (lowercase letters, numbers, underscores), cannot be changed after creation), description (optional, maximum 255 characters), groups (required, must be an array of string, no duplicate values allowed).
 
         :param uuid: (required)
         :type uuid: str
@@ -4376,7 +4376,7 @@ class ObjectsApi:
     ) -> ApiResponse[UpdateResponse]:
         """Update object by UUID
 
-        Updates an existing object identified by its UUID with new details. Optional parameters determine if views, properties, and relations should be included in the response. Validation rules: label (required, must be a string, maximum 32 characters), plural (required, must be a string, maximum 32 characters), name (required, must be a string, must be lowercase, must be unique, must match name pattern (lowercase letters, numbers, underscores), cannot be changed after creation), description (optional, maximum 255 characters), groups (required, must be an array of string, no duplicate values allowed), showInMenu (required, must be a boolean).
+        Updates an existing object identified by its UUID with new details. Optional parameters determine if views, properties, and relations should be included in the response. Validation rules: label (required, must be a string, maximum 32 characters), plural (required, must be a string, maximum 32 characters), name (required, must be a string, must be lowercase, must be unique, must match name pattern (lowercase letters, numbers, underscores), cannot be changed after creation), description (optional, maximum 255 characters), groups (required, must be an array of string, no duplicate values allowed).
 
         :param uuid: (required)
         :type uuid: str
@@ -4464,7 +4464,7 @@ class ObjectsApi:
     ) -> RESTResponseType:
         """Update object by UUID
 
-        Updates an existing object identified by its UUID with new details. Optional parameters determine if views, properties, and relations should be included in the response. Validation rules: label (required, must be a string, maximum 32 characters), plural (required, must be a string, maximum 32 characters), name (required, must be a string, must be lowercase, must be unique, must match name pattern (lowercase letters, numbers, underscores), cannot be changed after creation), description (optional, maximum 255 characters), groups (required, must be an array of string, no duplicate values allowed), showInMenu (required, must be a boolean).
+        Updates an existing object identified by its UUID with new details. Optional parameters determine if views, properties, and relations should be included in the response. Validation rules: label (required, must be a string, maximum 32 characters), plural (required, must be a string, maximum 32 characters), name (required, must be a string, must be lowercase, must be unique, must match name pattern (lowercase letters, numbers, underscores), cannot be changed after creation), description (optional, maximum 255 characters), groups (required, must be an array of string, no duplicate values allowed).
 
         :param uuid: (required)
         :type uuid: str

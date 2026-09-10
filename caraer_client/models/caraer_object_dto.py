@@ -45,7 +45,6 @@ class CaraerObjectDTO(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="Detailed description of the object's purpose and usage")
     groups: Optional[List[StrictStr]] = Field(default=None, description="Collection of group names this object belongs to")
     icon: Optional[StrictStr] = Field(default=None, description="Icon identifier for visual representation of the object")
-    show_in_menu: Optional[StrictBool] = Field(default=None, description="Indicates if this object should be displayed in navigation menus", alias="showInMenu")
     default_trait: Optional[StrictStr] = Field(default=None, description="Name of the default trait applied to this object", alias="defaultTrait")
     traits: Optional[List[StrictStr]] = Field(default=None, description="List of trait names associated with this object")
     views: Optional[List[ViewDTO]] = Field(default=None, description="List of view configurations for displaying this object")
@@ -54,7 +53,7 @@ class CaraerObjectDTO(BaseModel):
     suites: Optional[List[StrictStr]] = Field(default=None, description="List of suite names this object belongs to")
     extends_to: Optional[List[CaraerObjectDTO]] = Field(default=None, description="List of objects this object extends to", alias="extendsTo")
     editable: Optional[StrictBool] = Field(default=None, description="When false, the object schema cannot be updated or deleted via the API")
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "plural", "description", "groups", "icon", "showInMenu", "defaultTrait", "traits", "views", "properties", "relations", "suites", "extendsTo", "editable"]
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "plural", "description", "groups", "icon", "defaultTrait", "traits", "views", "properties", "relations", "suites", "extendsTo", "editable"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -154,7 +153,6 @@ class CaraerObjectDTO(BaseModel):
             "description": obj.get("description"),
             "groups": obj.get("groups"),
             "icon": obj.get("icon"),
-            "showInMenu": obj.get("showInMenu"),
             "defaultTrait": obj.get("defaultTrait"),
             "traits": obj.get("traits"),
             "views": [ViewDTO.from_dict(_item) for _item in obj["views"]] if obj.get("views") is not None else None,

@@ -53,7 +53,6 @@ class TestRestoreResponseCaraerObjectDTO(unittest.TestCase):
                         ''
                         ], 
                     icon = '', 
-                    show_in_menu = True, 
                     default_trait = '', 
                     traits = [
                         ''
@@ -258,7 +257,6 @@ class TestRestoreResponseCaraerObjectDTO(unittest.TestCase):
                                     plural = '', 
                                     description = '', 
                                     icon = '', 
-                                    show_in_menu = True, 
                                     default_trait = '', 
                                     suites = [
                                         ''

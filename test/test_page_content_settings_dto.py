@@ -129,7 +129,6 @@ class TestPageContentSettingsDTO(unittest.TestCase):
                         ''
                         ], 
                     icon = '', 
-                    show_in_menu = True, 
                     default_trait = '', 
                     traits = [
                         ''
@@ -334,7 +333,6 @@ class TestPageContentSettingsDTO(unittest.TestCase):
                                     plural = '', 
                                     description = '', 
                                     icon = '', 
-                                    show_in_menu = True, 
                                     default_trait = '', 
                                     suites = [
                                         ''

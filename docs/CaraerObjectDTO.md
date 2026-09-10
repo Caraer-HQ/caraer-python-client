@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **description** | **str** | Detailed description of the object&#39;s purpose and usage | [optional] 
 **groups** | **List[str]** | Collection of group names this object belongs to | [optional] 
 **icon** | **str** | Icon identifier for visual representation of the object | [optional] 
-**show_in_menu** | **bool** | Indicates if this object should be displayed in navigation menus | [optional] 
 **default_trait** | **str** | Name of the default trait applied to this object | [optional] 
 **traits** | **List[str]** | List of trait names associated with this object | [optional] 
 **views** | [**List[ViewDTO]**](ViewDTO.md) | List of view configurations for displaying this object | [optional] 

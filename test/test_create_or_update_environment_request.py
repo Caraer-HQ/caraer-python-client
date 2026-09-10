@@ -54,7 +54,6 @@ class TestCreateOrUpdateEnvironmentRequest(unittest.TestCase):
                             ''
                             ], 
                         icon = '', 
-                        show_in_menu = True, 
                         default_trait = '', 
                         traits = [
                             ''
@@ -259,7 +258,6 @@ class TestCreateOrUpdateEnvironmentRequest(unittest.TestCase):
                                         plural = '', 
                                         description = '', 
                                         icon = '', 
-                                        show_in_menu = True, 
                                         default_trait = '', 
                                         suites = [
                                             ''

@@ -65,7 +65,6 @@ class TestGridItemSettingsDTO(unittest.TestCase):
                                 ''
                                 ], 
                             icon = '', 
-                            show_in_menu = True, 
                             default_trait = '', 
                             traits = [
                                 ''
@@ -276,7 +275,6 @@ class TestGridItemSettingsDTO(unittest.TestCase):
                                     plural = '', 
                                     description = '', 
                                     icon = '', 
-                                    show_in_menu = True, 
                                     default_trait = '', 
                                     editable = True, )
                                 ], 
@@ -294,8 +292,8 @@ class TestGridItemSettingsDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    complete = True, 
                     deleted = True, 
+                    complete = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -335,8 +333,8 @@ class TestGridItemSettingsDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            complete = True, 
                             deleted = True, 
+                            complete = True, 
                             uuid = '0', ), ), ),
                 aiprompt = '',
                 label = '',

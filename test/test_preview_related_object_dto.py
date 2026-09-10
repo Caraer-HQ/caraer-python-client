@@ -52,7 +52,6 @@ class TestPreviewRelatedObjectDTO(unittest.TestCase):
                         ''
                         ], 
                     icon = '', 
-                    show_in_menu = True, 
                     default_trait = '', 
                     traits = [
                         ''
@@ -257,7 +256,6 @@ class TestPreviewRelatedObjectDTO(unittest.TestCase):
                                     plural = '', 
                                     description = '', 
                                     icon = '', 
-                                    show_in_menu = True, 
                                     default_trait = '', 
                                     suites = [
                                         ''
@@ -307,7 +305,6 @@ class TestPreviewRelatedObjectDTO(unittest.TestCase):
                                 ''
                                 ], 
                             icon = '', 
-                            show_in_menu = True, 
                             default_trait = '', 
                             traits = [
                                 ''
@@ -518,7 +515,6 @@ class TestPreviewRelatedObjectDTO(unittest.TestCase):
                                     plural = '', 
                                     description = '', 
                                     icon = '', 
-                                    show_in_menu = True, 
                                     default_trait = '', 
                                     editable = True, )
                                 ], 

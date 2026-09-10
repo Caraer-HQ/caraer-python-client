@@ -53,7 +53,6 @@ class TestExtendRecordRequest(unittest.TestCase):
                             ''
                             ], 
                         icon = '', 
-                        show_in_menu = True, 
                         default_trait = '', 
                         traits = [
                             ''
@@ -258,7 +257,6 @@ class TestExtendRecordRequest(unittest.TestCase):
                                         plural = '', 
                                         description = '', 
                                         icon = '', 
-                                        show_in_menu = True, 
                                         default_trait = '', 
                                         suites = [
                                             ''
