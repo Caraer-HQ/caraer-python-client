@@ -124,6 +124,12 @@ class TestFormRelationDTO(unittest.TestCase):
                                     task_expanded_task_uuids = [
                                         ''
                                         ], 
+                                    calendar_overlay = '', 
+                                    visible_calendar_uuids = [
+                                        ''
+                                        ], 
+                                    selected_calendar_uuid = '', 
+                                    calendar_color_by = '', 
                                     default_view = True, 
                                     is_internally_public = True, 
                                     analytics = caraer_client.models.analytics_dashboard_config.AnalyticsDashboardConfig(
@@ -371,6 +377,12 @@ class TestFormRelationDTO(unittest.TestCase):
                                     task_expanded_task_uuids = [
                                         ''
                                         ], 
+                                    calendar_overlay = '', 
+                                    visible_calendar_uuids = [
+                                        ''
+                                        ], 
+                                    selected_calendar_uuid = '', 
+                                    calendar_color_by = '', 
                                     default_view = True, 
                                     is_internally_public = True, 
                                     analytics = caraer_client.models.analytics_dashboard_config.AnalyticsDashboardConfig(
@@ -605,6 +617,12 @@ class TestFormRelationDTO(unittest.TestCase):
                             task_expanded_task_uuids = [
                                 ''
                                 ], 
+                            calendar_overlay = '', 
+                            visible_calendar_uuids = [
+                                ''
+                                ], 
+                            selected_calendar_uuid = '', 
+                            calendar_color_by = '', 
                             default_view = True, 
                             is_internally_public = True, 
                             analytics = caraer_client.models.analytics_dashboard_config.AnalyticsDashboardConfig(

@@ -63,10 +63,14 @@ class ViewDTO(BaseModel):
     task_expand_subtasks: Optional[StrictBool] = Field(default=None, alias="taskExpandSubtasks")
     task_collapsed_group_keys: Optional[List[StrictStr]] = Field(default=None, alias="taskCollapsedGroupKeys")
     task_expanded_task_uuids: Optional[List[StrictStr]] = Field(default=None, alias="taskExpandedTaskUuids")
+    calendar_overlay: Optional[StrictStr] = Field(default=None, alias="calendarOverlay")
+    visible_calendar_uuids: Optional[List[StrictStr]] = Field(default=None, alias="visibleCalendarUuids")
+    selected_calendar_uuid: Optional[StrictStr] = Field(default=None, alias="selectedCalendarUuid")
+    calendar_color_by: Optional[StrictStr] = Field(default=None, alias="calendarColorBy")
     default_view: Optional[StrictBool] = Field(default=None, alias="defaultView")
     is_internally_public: Optional[StrictBool] = Field(default=None, alias="isInternallyPublic")
     analytics: Optional[AnalyticsDashboardConfig] = None
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "favorite", "team", "shared", "personal", "trait", "filters", "shows", "sorts", "limit", "showIcons", "rowHeight", "query", "icon", "flowProperty", "flowPreview", "taskProgressProperty", "taskGroupProperty", "taskExpandSubtasks", "taskCollapsedGroupKeys", "taskExpandedTaskUuids", "defaultView", "isInternallyPublic", "analytics"]
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "favorite", "team", "shared", "personal", "trait", "filters", "shows", "sorts", "limit", "showIcons", "rowHeight", "query", "icon", "flowProperty", "flowPreview", "taskProgressProperty", "taskGroupProperty", "taskExpandSubtasks", "taskCollapsedGroupKeys", "taskExpandedTaskUuids", "calendarOverlay", "visibleCalendarUuids", "selectedCalendarUuid", "calendarColorBy", "defaultView", "isInternallyPublic", "analytics"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -176,6 +180,10 @@ class ViewDTO(BaseModel):
             "taskExpandSubtasks": obj.get("taskExpandSubtasks"),
             "taskCollapsedGroupKeys": obj.get("taskCollapsedGroupKeys"),
             "taskExpandedTaskUuids": obj.get("taskExpandedTaskUuids"),
+            "calendarOverlay": obj.get("calendarOverlay"),
+            "visibleCalendarUuids": obj.get("visibleCalendarUuids"),
+            "selectedCalendarUuid": obj.get("selectedCalendarUuid"),
+            "calendarColorBy": obj.get("calendarColorBy"),
             "defaultView": obj.get("defaultView"),
             "isInternallyPublic": obj.get("isInternallyPublic"),
             "analytics": AnalyticsDashboardConfig.from_dict(obj["analytics"]) if obj.get("analytics") is not None else None

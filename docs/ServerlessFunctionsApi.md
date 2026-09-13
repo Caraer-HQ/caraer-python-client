@@ -4,7 +4,7 @@ All URIs are relative to *https://v2.api.caraer.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create3**](ServerlessFunctionsApi.md#create3) | **POST** /api/v2/apps/{appUuid}/serverless-functions | Create a serverless function
+[**create4**](ServerlessFunctionsApi.md#create4) | **POST** /api/v2/apps/{appUuid}/serverless-functions | Create a serverless function
 [**delete1**](ServerlessFunctionsApi.md#delete1) | **DELETE** /api/v2/apps/{appUuid}/serverless-functions/{uuid} | Delete a serverless function
 [**index2**](ServerlessFunctionsApi.md#index2) | **POST** /api/v2/apps/{appUuid}/serverless-functions/index | List serverless functions for an app
 [**logs**](ServerlessFunctionsApi.md#logs) | **GET** /api/v2/apps/{appUuid}/serverless-functions/{uuid}/logs | Get serverless function logs
@@ -14,8 +14,8 @@ Method | HTTP request | Description
 [**update1**](ServerlessFunctionsApi.md#update1) | **PUT** /api/v2/apps/{appUuid}/serverless-functions/{uuid} | Update a serverless function
 
 
-# **create3**
-> CreateResponse create3(app_uuid, serverless_function_dto)
+# **create4**
+> CreateResponse create4(app_uuid, serverless_function_dto)
 
 Create a serverless function
 
@@ -57,11 +57,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Create a serverless function
-        api_response = api_instance.create3(app_uuid, serverless_function_dto)
-        print("The response of ServerlessFunctionsApi->create3:\n")
+        api_response = api_instance.create4(app_uuid, serverless_function_dto)
+        print("The response of ServerlessFunctionsApi->create4:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ServerlessFunctionsApi->create3: %s\n" % e)
+        print("Exception when calling ServerlessFunctionsApi->create4: %s\n" % e)
 ```
 
 

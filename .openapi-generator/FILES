@@ -12,6 +12,7 @@ caraer_client/api/app_installation_runtime_api.py
 caraer_client/api/applications_api.py
 caraer_client/api/automations_api.py
 caraer_client/api/billing_api.py
+caraer_client/api/calendars_api.py
 caraer_client/api/company_api.py
 caraer_client/api/developer_projects_api.py
 caraer_client/api/developer_sandboxes_api.py
@@ -84,6 +85,11 @@ caraer_client/models/bulk_edit_record_result_item.py
 caraer_client/models/bulk_edit_records_data.py
 caraer_client/models/bulk_edit_records_request.py
 caraer_client/models/bulk_edit_records_response.py
+caraer_client/models/calendar_bootstrap_dto.py
+caraer_client/models/calendar_create_request.py
+caraer_client/models/calendar_record_dto.py
+caraer_client/models/calendar_team_member_dto.py
+caraer_client/models/calendar_team_option_dto.py
 caraer_client/models/caraer_error_type.py
 caraer_client/models/caraer_object_dto.py
 caraer_client/models/company_details_dto.py
@@ -100,6 +106,7 @@ caraer_client/models/create_response.py
 caraer_client/models/create_response_app_external_o_auth_provider_dto.py
 caraer_client/models/create_response_app_inbound_route_dto.py
 caraer_client/models/create_response_app_schedule_dto.py
+caraer_client/models/create_response_calendar_record_dto.py
 caraer_client/models/create_response_feed_dto.py
 caraer_client/models/create_response_map_string_string.py
 caraer_client/models/create_response_signed_url_result_dto.py
@@ -296,6 +303,7 @@ caraer_client/models/structure.py
 caraer_client/models/style_set_dto.py
 caraer_client/models/subscribe_webhook_dto.py
 caraer_client/models/success_response_aggregate_response.py
+caraer_client/models/success_response_calendar_bootstrap_dto.py
 caraer_client/models/success_response_collection_relation.py
 caraer_client/models/success_response_company_dto.py
 caraer_client/models/success_response_feed_dto.py
@@ -304,6 +312,8 @@ caraer_client/models/success_response_list_aggregate_response.py
 caraer_client/models/success_response_list_app_external_o_auth_provider_dto.py
 caraer_client/models/success_response_list_app_inbound_route_dto.py
 caraer_client/models/success_response_list_app_schedule_dto.py
+caraer_client/models/success_response_list_calendar_record_dto.py
+caraer_client/models/success_response_list_calendar_team_option_dto.py
 caraer_client/models/success_response_list_caraer_object_dto.py
 caraer_client/models/success_response_list_developer_sandbox_dto.py
 caraer_client/models/success_response_list_map_string_object.py
@@ -406,6 +416,12 @@ docs/BulkEditRecordsData.md
 docs/BulkEditRecordsRequest.md
 docs/BulkEditRecordsResponse.md
 docs/CRUD.md
+docs/CalendarBootstrapDTO.md
+docs/CalendarCreateRequest.md
+docs/CalendarRecordDTO.md
+docs/CalendarTeamMemberDTO.md
+docs/CalendarTeamOptionDTO.md
+docs/CalendarsApi.md
 docs/CaraerErrorType.md
 docs/CaraerObjectDTO.md
 docs/CompanyApi.md
@@ -423,6 +439,7 @@ docs/CreateResponse.md
 docs/CreateResponseAppExternalOAuthProviderDTO.md
 docs/CreateResponseAppInboundRouteDTO.md
 docs/CreateResponseAppScheduleDTO.md
+docs/CreateResponseCalendarRecordDTO.md
 docs/CreateResponseFeedDTO.md
 docs/CreateResponseMapStringString.md
 docs/CreateResponseSignedUrlResultDTO.md
@@ -631,6 +648,7 @@ docs/Structure.md
 docs/StyleSetDTO.md
 docs/SubscribeWebhookDTO.md
 docs/SuccessResponseAggregateResponse.md
+docs/SuccessResponseCalendarBootstrapDTO.md
 docs/SuccessResponseCollectionRelation.md
 docs/SuccessResponseCompanyDTO.md
 docs/SuccessResponseFeedDTO.md
@@ -639,6 +657,8 @@ docs/SuccessResponseListAggregateResponse.md
 docs/SuccessResponseListAppExternalOAuthProviderDTO.md
 docs/SuccessResponseListAppInboundRouteDTO.md
 docs/SuccessResponseListAppScheduleDTO.md
+docs/SuccessResponseListCalendarRecordDTO.md
+docs/SuccessResponseListCalendarTeamOptionDTO.md
 docs/SuccessResponseListCaraerObjectDTO.md
 docs/SuccessResponseListDeveloperSandboxDTO.md
 docs/SuccessResponseListMapStringObject.md
@@ -750,6 +770,12 @@ test/test_bulk_edit_record_result_item.py
 test/test_bulk_edit_records_data.py
 test/test_bulk_edit_records_request.py
 test/test_bulk_edit_records_response.py
+test/test_calendar_bootstrap_dto.py
+test/test_calendar_create_request.py
+test/test_calendar_record_dto.py
+test/test_calendar_team_member_dto.py
+test/test_calendar_team_option_dto.py
+test/test_calendars_api.py
 test/test_caraer_error_type.py
 test/test_caraer_object_dto.py
 test/test_company_api.py
@@ -767,6 +793,7 @@ test/test_create_response.py
 test/test_create_response_app_external_o_auth_provider_dto.py
 test/test_create_response_app_inbound_route_dto.py
 test/test_create_response_app_schedule_dto.py
+test/test_create_response_calendar_record_dto.py
 test/test_create_response_feed_dto.py
 test/test_create_response_map_string_string.py
 test/test_create_response_signed_url_result_dto.py
@@ -976,6 +1003,7 @@ test/test_structure.py
 test/test_style_set_dto.py
 test/test_subscribe_webhook_dto.py
 test/test_success_response_aggregate_response.py
+test/test_success_response_calendar_bootstrap_dto.py
 test/test_success_response_collection_relation.py
 test/test_success_response_company_dto.py
 test/test_success_response_feed_dto.py
@@ -984,6 +1012,8 @@ test/test_success_response_list_aggregate_response.py
 test/test_success_response_list_app_external_o_auth_provider_dto.py
 test/test_success_response_list_app_inbound_route_dto.py
 test/test_success_response_list_app_schedule_dto.py
+test/test_success_response_list_calendar_record_dto.py
+test/test_success_response_list_calendar_team_option_dto.py
 test/test_success_response_list_caraer_object_dto.py
 test/test_success_response_list_developer_sandbox_dto.py
 test/test_success_response_list_map_string_object.py

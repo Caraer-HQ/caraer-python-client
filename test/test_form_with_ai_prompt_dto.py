@@ -52,17 +52,6 @@ class TestFormWithAiPromptDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -92,7 +81,29 @@ class TestFormWithAiPromptDTO(unittest.TestCase):
                             index = 56, 
                             deleted = True, 
                             complete = True, 
-                            uuid = '0', ), ), ),
+                            uuid = '0', 
+                            properties = [
+                                caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
+                                    name = '', 
+                                    value = null, 
+                                    type = '', 
+                                    label = '', )
+                                ], 
+                            objects = {
+                                'key' : null
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -107,17 +118,6 @@ class TestFormWithAiPromptDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -147,7 +147,29 @@ class TestFormWithAiPromptDTO(unittest.TestCase):
                             index = 56, 
                             deleted = True, 
                             complete = True, 
-                            uuid = '0', ), ), ),
+                            uuid = '0', 
+                            properties = [
+                                caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
+                                    name = '', 
+                                    value = null, 
+                                    type = '', 
+                                    label = '', )
+                                ], 
+                            objects = {
+                                'key' : null
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -162,17 +184,6 @@ class TestFormWithAiPromptDTO(unittest.TestCase):
                     deleted = True, 
                     complete = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -202,7 +213,29 @@ class TestFormWithAiPromptDTO(unittest.TestCase):
                             index = 56, 
                             deleted = True, 
                             complete = True, 
-                            uuid = '0', ), ), ),
+                            uuid = '0', 
+                            properties = [
+                                caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
+                                    name = '', 
+                                    value = null, 
+                                    type = '', 
+                                    label = '', )
+                                ], 
+                            objects = {
+                                'key' : null
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 index = 56,
                 object = caraer_client.models.caraer_object_dto.CaraerObjectDTO(
                     uuid = '0', 
@@ -279,6 +312,12 @@ class TestFormWithAiPromptDTO(unittest.TestCase):
                             task_expanded_task_uuids = [
                                 ''
                                 ], 
+                            calendar_overlay = '', 
+                            visible_calendar_uuids = [
+                                ''
+                                ], 
+                            selected_calendar_uuid = '', 
+                            calendar_color_by = '', 
                             default_view = True, 
                             is_internally_public = True, 
                             analytics = caraer_client.models.analytics_dashboard_config.AnalyticsDashboardConfig(

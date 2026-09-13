@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.486"
+__version__ = "2.0.487"
 
 # Define package exports
 __all__ = [
@@ -24,6 +24,7 @@ __all__ = [
     "ApplicationsApi",
     "AutomationsApi",
     "BillingApi",
+    "CalendarsApi",
     "CompanyApi",
     "DeveloperProjectsApi",
     "DeveloperSandboxesApi",
@@ -101,6 +102,11 @@ __all__ = [
     "BulkEditRecordsRequest",
     "BulkEditRecordsResponse",
     "CRUD",
+    "CalendarBootstrapDTO",
+    "CalendarCreateRequest",
+    "CalendarRecordDTO",
+    "CalendarTeamMemberDTO",
+    "CalendarTeamOptionDTO",
     "CaraerErrorType",
     "CaraerObjectDTO",
     "CompanyDTO",
@@ -117,6 +123,7 @@ __all__ = [
     "CreateResponseAppExternalOAuthProviderDTO",
     "CreateResponseAppInboundRouteDTO",
     "CreateResponseAppScheduleDTO",
+    "CreateResponseCalendarRecordDTO",
     "CreateResponseFeedDTO",
     "CreateResponseMapStringString",
     "CreateResponseSignedUrlResultDTO",
@@ -312,6 +319,7 @@ __all__ = [
     "StyleSetDTO",
     "SubscribeWebhookDTO",
     "SuccessResponseAggregateResponse",
+    "SuccessResponseCalendarBootstrapDTO",
     "SuccessResponseCollectionRelation",
     "SuccessResponseCompanyDTO",
     "SuccessResponseFeedDTO",
@@ -320,6 +328,8 @@ __all__ = [
     "SuccessResponseListAppExternalOAuthProviderDTO",
     "SuccessResponseListAppInboundRouteDTO",
     "SuccessResponseListAppScheduleDTO",
+    "SuccessResponseListCalendarRecordDTO",
+    "SuccessResponseListCalendarTeamOptionDTO",
     "SuccessResponseListCaraerObjectDTO",
     "SuccessResponseListDeveloperSandboxDTO",
     "SuccessResponseListMapStringObject",
@@ -385,6 +395,7 @@ from caraer_client.api.app_installation_runtime_api import AppInstallationRuntim
 from caraer_client.api.applications_api import ApplicationsApi as ApplicationsApi
 from caraer_client.api.automations_api import AutomationsApi as AutomationsApi
 from caraer_client.api.billing_api import BillingApi as BillingApi
+from caraer_client.api.calendars_api import CalendarsApi as CalendarsApi
 from caraer_client.api.company_api import CompanyApi as CompanyApi
 from caraer_client.api.developer_projects_api import DeveloperProjectsApi as DeveloperProjectsApi
 from caraer_client.api.developer_sandboxes_api import DeveloperSandboxesApi as DeveloperSandboxesApi
@@ -466,6 +477,11 @@ from caraer_client.models.bulk_edit_records_data import BulkEditRecordsData as B
 from caraer_client.models.bulk_edit_records_request import BulkEditRecordsRequest as BulkEditRecordsRequest
 from caraer_client.models.bulk_edit_records_response import BulkEditRecordsResponse as BulkEditRecordsResponse
 from caraer_client.models.crud import CRUD as CRUD
+from caraer_client.models.calendar_bootstrap_dto import CalendarBootstrapDTO as CalendarBootstrapDTO
+from caraer_client.models.calendar_create_request import CalendarCreateRequest as CalendarCreateRequest
+from caraer_client.models.calendar_record_dto import CalendarRecordDTO as CalendarRecordDTO
+from caraer_client.models.calendar_team_member_dto import CalendarTeamMemberDTO as CalendarTeamMemberDTO
+from caraer_client.models.calendar_team_option_dto import CalendarTeamOptionDTO as CalendarTeamOptionDTO
 from caraer_client.models.caraer_error_type import CaraerErrorType as CaraerErrorType
 from caraer_client.models.caraer_object_dto import CaraerObjectDTO as CaraerObjectDTO
 from caraer_client.models.company_dto import CompanyDTO as CompanyDTO
@@ -482,6 +498,7 @@ from caraer_client.models.create_response import CreateResponse as CreateRespons
 from caraer_client.models.create_response_app_external_o_auth_provider_dto import CreateResponseAppExternalOAuthProviderDTO as CreateResponseAppExternalOAuthProviderDTO
 from caraer_client.models.create_response_app_inbound_route_dto import CreateResponseAppInboundRouteDTO as CreateResponseAppInboundRouteDTO
 from caraer_client.models.create_response_app_schedule_dto import CreateResponseAppScheduleDTO as CreateResponseAppScheduleDTO
+from caraer_client.models.create_response_calendar_record_dto import CreateResponseCalendarRecordDTO as CreateResponseCalendarRecordDTO
 from caraer_client.models.create_response_feed_dto import CreateResponseFeedDTO as CreateResponseFeedDTO
 from caraer_client.models.create_response_map_string_string import CreateResponseMapStringString as CreateResponseMapStringString
 from caraer_client.models.create_response_signed_url_result_dto import CreateResponseSignedUrlResultDTO as CreateResponseSignedUrlResultDTO
@@ -677,6 +694,7 @@ from caraer_client.models.structure import Structure as Structure
 from caraer_client.models.style_set_dto import StyleSetDTO as StyleSetDTO
 from caraer_client.models.subscribe_webhook_dto import SubscribeWebhookDTO as SubscribeWebhookDTO
 from caraer_client.models.success_response_aggregate_response import SuccessResponseAggregateResponse as SuccessResponseAggregateResponse
+from caraer_client.models.success_response_calendar_bootstrap_dto import SuccessResponseCalendarBootstrapDTO as SuccessResponseCalendarBootstrapDTO
 from caraer_client.models.success_response_collection_relation import SuccessResponseCollectionRelation as SuccessResponseCollectionRelation
 from caraer_client.models.success_response_company_dto import SuccessResponseCompanyDTO as SuccessResponseCompanyDTO
 from caraer_client.models.success_response_feed_dto import SuccessResponseFeedDTO as SuccessResponseFeedDTO
@@ -685,6 +703,8 @@ from caraer_client.models.success_response_list_aggregate_response import Succes
 from caraer_client.models.success_response_list_app_external_o_auth_provider_dto import SuccessResponseListAppExternalOAuthProviderDTO as SuccessResponseListAppExternalOAuthProviderDTO
 from caraer_client.models.success_response_list_app_inbound_route_dto import SuccessResponseListAppInboundRouteDTO as SuccessResponseListAppInboundRouteDTO
 from caraer_client.models.success_response_list_app_schedule_dto import SuccessResponseListAppScheduleDTO as SuccessResponseListAppScheduleDTO
+from caraer_client.models.success_response_list_calendar_record_dto import SuccessResponseListCalendarRecordDTO as SuccessResponseListCalendarRecordDTO
+from caraer_client.models.success_response_list_calendar_team_option_dto import SuccessResponseListCalendarTeamOptionDTO as SuccessResponseListCalendarTeamOptionDTO
 from caraer_client.models.success_response_list_caraer_object_dto import SuccessResponseListCaraerObjectDTO as SuccessResponseListCaraerObjectDTO
 from caraer_client.models.success_response_list_developer_sandbox_dto import SuccessResponseListDeveloperSandboxDTO as SuccessResponseListDeveloperSandboxDTO
 from caraer_client.models.success_response_list_map_string_object import SuccessResponseListMapStringObject as SuccessResponseListMapStringObject

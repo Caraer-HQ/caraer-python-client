@@ -48,7 +48,7 @@ class ServerlessFunctionsApi:
 
 
     @validate_call
-    def create3(
+    def create4(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app to attach the serverless function to")],
         serverless_function_dto: Annotated[ServerlessFunctionDTO, Field(description="Serverless function payload (runtime and code)")],
@@ -95,7 +95,7 @@ class ServerlessFunctionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create3_serialize(
+        _param = self._create4_serialize(
             app_uuid=app_uuid,
             serverless_function_dto=serverless_function_dto,
             _request_auth=_request_auth,
@@ -124,7 +124,7 @@ class ServerlessFunctionsApi:
 
 
     @validate_call
-    def create3_with_http_info(
+    def create4_with_http_info(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app to attach the serverless function to")],
         serverless_function_dto: Annotated[ServerlessFunctionDTO, Field(description="Serverless function payload (runtime and code)")],
@@ -171,7 +171,7 @@ class ServerlessFunctionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create3_serialize(
+        _param = self._create4_serialize(
             app_uuid=app_uuid,
             serverless_function_dto=serverless_function_dto,
             _request_auth=_request_auth,
@@ -200,7 +200,7 @@ class ServerlessFunctionsApi:
 
 
     @validate_call
-    def create3_without_preload_content(
+    def create4_without_preload_content(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app to attach the serverless function to")],
         serverless_function_dto: Annotated[ServerlessFunctionDTO, Field(description="Serverless function payload (runtime and code)")],
@@ -247,7 +247,7 @@ class ServerlessFunctionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create3_serialize(
+        _param = self._create4_serialize(
             app_uuid=app_uuid,
             serverless_function_dto=serverless_function_dto,
             _request_auth=_request_auth,
@@ -271,7 +271,7 @@ class ServerlessFunctionsApi:
         return response_data.response
 
 
-    def _create3_serialize(
+    def _create4_serialize(
         self,
         app_uuid,
         serverless_function_dto,
