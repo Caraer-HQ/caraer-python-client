@@ -110,6 +110,7 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                     has_value = True, 
                                     mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
                                         object_name = '', 
+                                        target_kind = '', 
                                         items = [
                                             caraer_client.models.app_setting_field_mapping_structure_item.AppSettingFieldMappingStructureItem(
                                                 field_label = '', 
@@ -122,8 +123,10 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                                 allowed_property_formats = [
                                                     ''
                                                     ], 
-                                                property_name = '', )
-                                            ], ), 
+                                                property_name = '', 
+                                                record_uuid = '', )
+                                            ], 
+                                        record_target = True, ), 
                                     value_scope = '', 
                                     action = True, )
                                 ], 

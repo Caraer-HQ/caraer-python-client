@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from caraer_client.models.app_setting_field_mapping_structure_item import AppSettingFieldMappingStructureItem
 from typing import Optional, Set
@@ -29,8 +29,10 @@ class AppSettingFieldMappingStructure(BaseModel):
     AppSettingFieldMappingStructure
     """ # noqa: E501
     object_name: Optional[StrictStr] = Field(default=None, alias="objectName")
+    target_kind: Optional[StrictStr] = Field(default=None, alias="targetKind")
     items: Optional[List[AppSettingFieldMappingStructureItem]] = None
-    __properties: ClassVar[List[str]] = ["objectName", "items"]
+    record_target: Optional[StrictBool] = Field(default=None, alias="recordTarget")
+    __properties: ClassVar[List[str]] = ["objectName", "targetKind", "items", "recordTarget"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -90,7 +92,9 @@ class AppSettingFieldMappingStructure(BaseModel):
 
         _obj = cls.model_validate({
             "objectName": obj.get("objectName"),
-            "items": [AppSettingFieldMappingStructureItem.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None
+            "targetKind": obj.get("targetKind"),
+            "items": [AppSettingFieldMappingStructureItem.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
+            "recordTarget": obj.get("recordTarget")
         })
         return _obj
 

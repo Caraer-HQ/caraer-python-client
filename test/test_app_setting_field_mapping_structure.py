@@ -36,6 +36,7 @@ class TestAppSettingFieldMappingStructure(unittest.TestCase):
         if include_optional:
             return AppSettingFieldMappingStructure(
                 object_name = '',
+                target_kind = '',
                 items = [
                     caraer_client.models.app_setting_field_mapping_structure_item.AppSettingFieldMappingStructureItem(
                         field_label = '', 
@@ -48,8 +49,10 @@ class TestAppSettingFieldMappingStructure(unittest.TestCase):
                         allowed_property_formats = [
                             ''
                             ], 
-                        property_name = '', )
-                    ]
+                        property_name = '', 
+                        record_uuid = '', )
+                    ],
+                record_target = True
             )
         else:
             return AppSettingFieldMappingStructure(

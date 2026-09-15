@@ -34,7 +34,8 @@ class AppSettingFieldMappingStructureItem(BaseModel):
     allowed_property_types: Optional[List[StrictStr]] = Field(default=None, alias="allowedPropertyTypes")
     allowed_property_formats: Optional[List[StrictStr]] = Field(default=None, alias="allowedPropertyFormats")
     property_name: Optional[StrictStr] = Field(default=None, alias="propertyName")
-    __properties: ClassVar[List[str]] = ["fieldLabel", "fieldName", "fieldHelpText", "isRequired", "allowedPropertyTypes", "allowedPropertyFormats", "propertyName"]
+    record_uuid: Optional[StrictStr] = Field(default=None, alias="recordUuid")
+    __properties: ClassVar[List[str]] = ["fieldLabel", "fieldName", "fieldHelpText", "isRequired", "allowedPropertyTypes", "allowedPropertyFormats", "propertyName", "recordUuid"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -93,7 +94,8 @@ class AppSettingFieldMappingStructureItem(BaseModel):
             "isRequired": obj.get("isRequired"),
             "allowedPropertyTypes": obj.get("allowedPropertyTypes"),
             "allowedPropertyFormats": obj.get("allowedPropertyFormats"),
-            "propertyName": obj.get("propertyName")
+            "propertyName": obj.get("propertyName"),
+            "recordUuid": obj.get("recordUuid")
         })
         return _obj
 

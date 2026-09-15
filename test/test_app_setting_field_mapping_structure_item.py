@@ -45,7 +45,8 @@ class TestAppSettingFieldMappingStructureItem(unittest.TestCase):
                 allowed_property_formats = [
                     ''
                     ],
-                property_name = ''
+                property_name = '',
+                record_uuid = ''
             )
         else:
             return AppSettingFieldMappingStructureItem(

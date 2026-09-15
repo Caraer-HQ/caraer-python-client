@@ -6,7 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object_name** | **str** |  | [optional] 
+**target_kind** | **str** |  | [optional] 
 **items** | [**List[AppSettingFieldMappingStructureItem]**](AppSettingFieldMappingStructureItem.md) |  | [optional] 
+**record_target** | **bool** |  | [optional] 
 
 ## Example
 
