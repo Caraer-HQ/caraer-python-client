@@ -39,8 +39,8 @@ class TestSuggestAnalyticsWidgetsRequest(unittest.TestCase):
                 goal = '',
                 existing_widgets = [
                     caraer_client.models.existing_widget_summary.ExistingWidgetSummary(
-                        ymetric = '', 
                         yproperty = '', 
+                        ymetric = '', 
                         xproperty = '', 
                         title = '', 
                         chart_type = '', 
