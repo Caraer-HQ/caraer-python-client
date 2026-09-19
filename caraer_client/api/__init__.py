@@ -7,6 +7,11 @@ from caraer_client.api.app_installation_runtime_api import AppInstallationRuntim
 from caraer_client.api.applications_api import ApplicationsApi
 from caraer_client.api.automations_api import AutomationsApi
 from caraer_client.api.billing_api import BillingApi
+from caraer_client.api.cms_modules_api import CMSModulesApi
+from caraer_client.api.cmsv2_environments_api import CMSV2EnvironmentsApi
+from caraer_client.api.cmsv2_pages_api import CMSV2PagesApi
+from caraer_client.api.cmsv2_public_api import CMSV2PublicApi
+from caraer_client.api.cmsv2_transfer_api import CMSV2TransferApi
 from caraer_client.api.calendars_api import CalendarsApi
 from caraer_client.api.company_api import CompanyApi
 from caraer_client.api.developer_projects_api import DeveloperProjectsApi

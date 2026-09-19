@@ -30,7 +30,8 @@ class SettingOption(BaseModel):
     name: Optional[StrictStr] = None
     label: Optional[StrictStr] = None
     help_text: Optional[StrictStr] = Field(default=None, alias="helpText")
-    __properties: ClassVar[List[str]] = ["name", "label", "helpText"]
+    preview: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["name", "label", "helpText", "preview"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,7 +86,8 @@ class SettingOption(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "label": obj.get("label"),
-            "helpText": obj.get("helpText")
+            "helpText": obj.get("helpText"),
+            "preview": obj.get("preview")
         })
         return _obj
 

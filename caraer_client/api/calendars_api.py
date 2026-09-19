@@ -298,7 +298,7 @@ class CalendarsApi:
 
 
     @validate_call
-    def create3(
+    def create4(
         self,
         calendar_create_request: CalendarCreateRequest,
         _request_timeout: Union[
@@ -341,7 +341,7 @@ class CalendarsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create3_serialize(
+        _param = self._create4_serialize(
             calendar_create_request=calendar_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -369,7 +369,7 @@ class CalendarsApi:
 
 
     @validate_call
-    def create3_with_http_info(
+    def create4_with_http_info(
         self,
         calendar_create_request: CalendarCreateRequest,
         _request_timeout: Union[
@@ -412,7 +412,7 @@ class CalendarsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create3_serialize(
+        _param = self._create4_serialize(
             calendar_create_request=calendar_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -440,7 +440,7 @@ class CalendarsApi:
 
 
     @validate_call
-    def create3_without_preload_content(
+    def create4_without_preload_content(
         self,
         calendar_create_request: CalendarCreateRequest,
         _request_timeout: Union[
@@ -483,7 +483,7 @@ class CalendarsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create3_serialize(
+        _param = self._create4_serialize(
             calendar_create_request=calendar_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -506,7 +506,7 @@ class CalendarsApi:
         return response_data.response
 
 
-    def _create3_serialize(
+    def _create4_serialize(
         self,
         calendar_create_request,
         _request_auth,
@@ -584,7 +584,7 @@ class CalendarsApi:
 
 
     @validate_call
-    def list1(
+    def list3(
         self,
         _request_timeout: Union[
             None,
@@ -624,7 +624,7 @@ class CalendarsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list1_serialize(
+        _param = self._list3_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -650,7 +650,7 @@ class CalendarsApi:
 
 
     @validate_call
-    def list1_with_http_info(
+    def list3_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -690,7 +690,7 @@ class CalendarsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list1_serialize(
+        _param = self._list3_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -716,7 +716,7 @@ class CalendarsApi:
 
 
     @validate_call
-    def list1_without_preload_content(
+    def list3_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -756,7 +756,7 @@ class CalendarsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list1_serialize(
+        _param = self._list3_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -777,7 +777,7 @@ class CalendarsApi:
         return response_data.response
 
 
-    def _list1_serialize(
+    def _list3_serialize(
         self,
         _request_auth,
         _content_type,

@@ -56,10 +56,11 @@ class TemplateWebpageDTO(BaseModel):
     sidebar: Optional[PreviewDTO] = Field(default=None, description="Preview of the sidebar")
     sidebar_relation: Optional[RelationDTO] = Field(default=None, description="Relation of the sidebar", alias="sidebarRelation")
     sidebar_object: Optional[CaraerObjectDTO] = Field(default=None, description="Object of the sidebar", alias="sidebarObject")
+    floating_action_bar_module_uuid: Optional[StrictStr] = Field(default=None, description="UUID of the CMS module rendered as a floating action bar on this page. Null or empty disables the bar.", alias="floatingActionBarModuleUuid")
     options: Optional[WebpageOptionsDTO] = Field(default=None, description="Custom options and configurations specific to the webpage.")
     meta_data: Optional[Dict[str, Any]] = Field(default=None, description="Map of additional metadata and attributes for the webpage.", alias="metaData", json_schema_extra={"examples": [{"author": "John Doe", "category": "blog"}]})
     object: Optional[CaraerObjectDTO] = Field(default=None, description="Represents the associated Caraer object")
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "environment", "title", "excerpt", "slug", "image", "customCss", "customJsHead", "customJsBody", "content", "sidebar", "sidebarRelation", "sidebarObject", "options", "metaData", "object"]
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "environment", "title", "excerpt", "slug", "image", "customCss", "customJsHead", "customJsBody", "content", "sidebar", "sidebarRelation", "sidebarObject", "floatingActionBarModuleUuid", "options", "metaData", "object"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -161,6 +162,7 @@ class TemplateWebpageDTO(BaseModel):
             "sidebar": PreviewDTO.from_dict(obj["sidebar"]) if obj.get("sidebar") is not None else None,
             "sidebarRelation": RelationDTO.from_dict(obj["sidebarRelation"]) if obj.get("sidebarRelation") is not None else None,
             "sidebarObject": CaraerObjectDTO.from_dict(obj["sidebarObject"]) if obj.get("sidebarObject") is not None else None,
+            "floatingActionBarModuleUuid": obj.get("floatingActionBarModuleUuid"),
             "options": WebpageOptionsDTO.from_dict(obj["options"]) if obj.get("options") is not None else None,
             "metaData": obj.get("metaData"),
             "object": CaraerObjectDTO.from_dict(obj["object"]) if obj.get("object") is not None else None

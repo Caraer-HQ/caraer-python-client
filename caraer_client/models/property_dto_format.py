@@ -23,7 +23,9 @@ from caraer_client.models.date_range import DateRange
 from caraer_client.models.duration import Duration
 from caraer_client.models.email import Email
 from caraer_client.models.file import File
+from caraer_client.models.location import Location
 from caraer_client.models.model_date import ModelDate
+from caraer_client.models.multi_file import MultiFile
 from caraer_client.models.multi_line import MultiLine
 from caraer_client.models.multi_select import MultiSelect
 from caraer_client.models.number import Number
@@ -40,7 +42,7 @@ from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-PROPERTYDTOFORMAT_ONE_OF_SCHEMAS = ["Currency", "CurrencyRange", "DateRange", "Duration", "Email", "File", "LinkedProperty", "ModelDate", "MultiLine", "MultiSelect", "Number", "NumberRange", "Phone", "Progress", "Recurrence", "SingleCheckbox", "SingleLine", "SingleSelect", "Structure", "Tag", "Url"]
+PROPERTYDTOFORMAT_ONE_OF_SCHEMAS = ["Currency", "CurrencyRange", "DateRange", "Duration", "Email", "File", "LinkedProperty", "Location", "ModelDate", "MultiFile", "MultiLine", "MultiSelect", "Number", "NumberRange", "Phone", "Progress", "Recurrence", "SingleCheckbox", "SingleLine", "SingleSelect", "Structure", "Tag", "Url"]
 
 class PropertyDTOFormat(BaseModel):
     """
@@ -62,34 +64,38 @@ class PropertyDTOFormat(BaseModel):
     oneof_schema_7_validator: Optional[File] = None
     # data type: LinkedProperty
     oneof_schema_8_validator: Optional[LinkedProperty] = None
+    # data type: Location
+    oneof_schema_9_validator: Optional[Location] = None
+    # data type: MultiFile
+    oneof_schema_10_validator: Optional[MultiFile] = None
     # data type: MultiLine
-    oneof_schema_9_validator: Optional[MultiLine] = None
+    oneof_schema_11_validator: Optional[MultiLine] = None
     # data type: MultiSelect
-    oneof_schema_10_validator: Optional[MultiSelect] = None
+    oneof_schema_12_validator: Optional[MultiSelect] = None
     # data type: Number
-    oneof_schema_11_validator: Optional[Number] = None
+    oneof_schema_13_validator: Optional[Number] = None
     # data type: NumberRange
-    oneof_schema_12_validator: Optional[NumberRange] = None
+    oneof_schema_14_validator: Optional[NumberRange] = None
     # data type: Phone
-    oneof_schema_13_validator: Optional[Phone] = None
+    oneof_schema_15_validator: Optional[Phone] = None
     # data type: Progress
-    oneof_schema_14_validator: Optional[Progress] = None
+    oneof_schema_16_validator: Optional[Progress] = None
     # data type: Recurrence
-    oneof_schema_15_validator: Optional[Recurrence] = None
+    oneof_schema_17_validator: Optional[Recurrence] = None
     # data type: SingleCheckbox
-    oneof_schema_16_validator: Optional[SingleCheckbox] = None
+    oneof_schema_18_validator: Optional[SingleCheckbox] = None
     # data type: SingleLine
-    oneof_schema_17_validator: Optional[SingleLine] = None
+    oneof_schema_19_validator: Optional[SingleLine] = None
     # data type: SingleSelect
-    oneof_schema_18_validator: Optional[SingleSelect] = None
+    oneof_schema_20_validator: Optional[SingleSelect] = None
     # data type: Structure
-    oneof_schema_19_validator: Optional[Structure] = None
+    oneof_schema_21_validator: Optional[Structure] = None
     # data type: Tag
-    oneof_schema_20_validator: Optional[Tag] = None
+    oneof_schema_22_validator: Optional[Tag] = None
     # data type: Url
-    oneof_schema_21_validator: Optional[Url] = None
-    actual_instance: Optional[Union[Currency, CurrencyRange, DateRange, Duration, Email, File, LinkedProperty, ModelDate, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url]] = None
-    one_of_schemas: Set[str] = { "Currency", "CurrencyRange", "DateRange", "Duration", "Email", "File", "LinkedProperty", "ModelDate", "MultiLine", "MultiSelect", "Number", "NumberRange", "Phone", "Progress", "Recurrence", "SingleCheckbox", "SingleLine", "SingleSelect", "Structure", "Tag", "Url" }
+    oneof_schema_23_validator: Optional[Url] = None
+    actual_instance: Optional[Union[Currency, CurrencyRange, DateRange, Duration, Email, File, LinkedProperty, Location, ModelDate, MultiFile, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url]] = None
+    one_of_schemas: Set[str] = { "Currency", "CurrencyRange", "DateRange", "Duration", "Email", "File", "LinkedProperty", "Location", "ModelDate", "MultiFile", "MultiLine", "MultiSelect", "Number", "NumberRange", "Phone", "Progress", "Recurrence", "SingleCheckbox", "SingleLine", "SingleSelect", "Structure", "Tag", "Url" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -150,6 +156,16 @@ class PropertyDTOFormat(BaseModel):
         # validate data type: LinkedProperty
         if not isinstance(v, LinkedProperty):
             error_messages.append(f"Error! Input type `{type(v)}` is not `LinkedProperty`")
+        else:
+            match += 1
+        # validate data type: Location
+        if not isinstance(v, Location):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `Location`")
+        else:
+            match += 1
+        # validate data type: MultiFile
+        if not isinstance(v, MultiFile):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `MultiFile`")
         else:
             match += 1
         # validate data type: MultiLine
@@ -219,10 +235,10 @@ class PropertyDTOFormat(BaseModel):
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in PropertyDTOFormat with oneOf schemas: Currency, CurrencyRange, DateRange, Duration, Email, File, LinkedProperty, ModelDate, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in PropertyDTOFormat with oneOf schemas: Currency, CurrencyRange, DateRange, Duration, Email, File, LinkedProperty, Location, ModelDate, MultiFile, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in PropertyDTOFormat with oneOf schemas: Currency, CurrencyRange, DateRange, Duration, Email, File, LinkedProperty, ModelDate, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in PropertyDTOFormat with oneOf schemas: Currency, CurrencyRange, DateRange, Duration, Email, File, LinkedProperty, Location, ModelDate, MultiFile, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -282,6 +298,18 @@ class PropertyDTOFormat(BaseModel):
         # deserialize data into LinkedProperty
         try:
             instance.actual_instance = LinkedProperty.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into Location
+        try:
+            instance.actual_instance = Location.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into MultiFile
+        try:
+            instance.actual_instance = MultiFile.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
@@ -366,10 +394,10 @@ class PropertyDTOFormat(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into PropertyDTOFormat with oneOf schemas: Currency, CurrencyRange, DateRange, Duration, Email, File, LinkedProperty, ModelDate, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into PropertyDTOFormat with oneOf schemas: Currency, CurrencyRange, DateRange, Duration, Email, File, LinkedProperty, Location, ModelDate, MultiFile, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into PropertyDTOFormat with oneOf schemas: Currency, CurrencyRange, DateRange, Duration, Email, File, LinkedProperty, ModelDate, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into PropertyDTOFormat with oneOf schemas: Currency, CurrencyRange, DateRange, Duration, Email, File, LinkedProperty, Location, ModelDate, MultiFile, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -383,7 +411,7 @@ class PropertyDTOFormat(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], Currency, CurrencyRange, DateRange, Duration, Email, File, LinkedProperty, ModelDate, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], Currency, CurrencyRange, DateRange, Duration, Email, File, LinkedProperty, Location, ModelDate, MultiFile, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from caraer_client.models.app_setting_action_source import AppSettingActionSource
 from caraer_client.models.app_setting_condition import AppSettingCondition
@@ -42,14 +42,19 @@ class AppSettingFieldSchema(BaseModel):
     action_source: Optional[AppSettingActionSource] = Field(default=None, alias="actionSource")
     default_value: Optional[Any] = Field(default=None, alias="defaultValue")
     hidden: Optional[StrictBool] = None
+    advanced: Optional[StrictBool] = None
     filter_traits: Optional[List[StrictStr]] = Field(default=None, alias="filterTraits")
     visible_when: Optional[List[AppSettingCondition]] = Field(default=None, alias="visibleWhen")
+    item_fields: Optional[List[AppSettingFieldSchema]] = Field(default=None, alias="itemFields")
+    min: Optional[StrictInt] = None
+    max: Optional[StrictInt] = None
+    item_label: Optional[StrictStr] = Field(default=None, alias="itemLabel")
     value: Optional[Any] = None
     has_value: Optional[StrictBool] = Field(default=None, alias="hasValue")
     mapping_value: Optional[AppSettingFieldMappingStructure] = Field(default=None, alias="mappingValue")
     value_scope: Optional[StrictStr] = Field(default=None, alias="valueScope")
     action: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "options", "optionsSource", "actionSource", "defaultValue", "hidden", "filterTraits", "visibleWhen", "value", "hasValue", "mappingValue", "valueScope", "action"]
+    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "options", "optionsSource", "actionSource", "defaultValue", "hidden", "advanced", "filterTraits", "visibleWhen", "itemFields", "min", "max", "itemLabel", "value", "hasValue", "mappingValue", "valueScope", "action"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -108,6 +113,12 @@ class AppSettingFieldSchema(BaseModel):
             for _item_visible_when in self.visible_when:
                 _items.append(_item_visible_when.to_dict() if _item_visible_when is not None else None)
             _dict['visibleWhen'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in item_fields (list)
+        _items = []
+        if self.item_fields:
+            for _item_item_fields in self.item_fields:
+                _items.append(_item_item_fields.to_dict() if _item_item_fields is not None else None)
+            _dict['itemFields'] = _items
         # override the default output from pydantic by calling `to_dict()` of mapping_value
         if self.mapping_value:
             _dict['mappingValue'] = self.mapping_value.to_dict()
@@ -143,8 +154,13 @@ class AppSettingFieldSchema(BaseModel):
             "actionSource": AppSettingActionSource.from_dict(obj["actionSource"]) if obj.get("actionSource") is not None else None,
             "defaultValue": obj.get("defaultValue"),
             "hidden": obj.get("hidden"),
+            "advanced": obj.get("advanced"),
             "filterTraits": obj.get("filterTraits"),
             "visibleWhen": [AppSettingCondition.from_dict(_item) for _item in obj["visibleWhen"]] if obj.get("visibleWhen") is not None else None,
+            "itemFields": [AppSettingFieldSchema.from_dict(_item) for _item in obj["itemFields"]] if obj.get("itemFields") is not None else None,
+            "min": obj.get("min"),
+            "max": obj.get("max"),
+            "itemLabel": obj.get("itemLabel"),
             "value": obj.get("value"),
             "hasValue": obj.get("hasValue"),
             "mappingValue": AppSettingFieldMappingStructure.from_dict(obj["mappingValue"]) if obj.get("mappingValue") is not None else None,
@@ -153,4 +169,6 @@ class AppSettingFieldSchema(BaseModel):
         })
         return _obj
 
+# TODO: Rewrite to not use raise_errors
+AppSettingFieldSchema.model_rebuild(raise_errors=False)
 

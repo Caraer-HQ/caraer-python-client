@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **sidebar** | [**PreviewDTO**](PreviewDTO.md) | Preview of the sidebar | [optional] 
 **sidebar_relation** | [**RelationDTO**](RelationDTO.md) | Relation of the sidebar | [optional] 
 **sidebar_object** | [**CaraerObjectDTO**](CaraerObjectDTO.md) | Object of the sidebar | [optional] 
+**floating_action_bar_module_uuid** | **str** | UUID of the CMS module rendered as a floating action bar on this page. Null or empty disables the bar. | [optional] 
 **options** | [**WebpageOptionsDTO**](WebpageOptionsDTO.md) | Custom options and configurations specific to the webpage. | [optional] 
 **meta_data** | **Dict[str, Optional[object]]** | Map of additional metadata and attributes for the webpage. | [optional] 
 **object** | [**CaraerObjectDTO**](CaraerObjectDTO.md) | Represents the associated Caraer object | [optional] 

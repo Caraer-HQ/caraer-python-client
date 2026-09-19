@@ -36,7 +36,53 @@ class TestShowResponsePreviewDTO(unittest.TestCase):
         if include_optional:
             return ShowResponsePreviewDTO(
                 message = 'Success',
-                data = { }
+                data = caraer_client.models.preview_dto.PreviewDTO(
+                    description = 'Preview description example', 
+                    object = null, 
+                    record_uuid = 'abcdef12-3456-7890-abcd-ef1234567890', 
+                    primary = True, 
+                    edge_properties = {partstat=ACCEPTED}, 
+                    grid = [
+                        [
+                            caraer_client.models.preview_item_dto.PreviewItemDTO(
+                                property = null, 
+                                text = 'Sample text', 
+                                value = null, 
+                                related_object = null, 
+                                related_object_value = null, 
+                                divider = 'solid', 
+                                button_text = 'Sample text', 
+                                button_url = 'https://www.google.com', 
+                                button_text_value = null, 
+                                button_url_value = null, 
+                                settings = null, 
+                                styling = null, )
+                            ]
+                        ], 
+                    preview_type = 'detail', 
+                    profile_image = null, 
+                    profile_image_position = 'top', 
+                    profile_image_styling = null, 
+                    first_initial_property = null, 
+                    second_initial_property = null, 
+                    profile_image_value = '', 
+                    first_initial_property_value = '', 
+                    second_initial_property_value = '', 
+                    custom_css = '', 
+                    url = '', 
+                    styling = null, 
+                    sort_property = '', 
+                    sort_value = null, 
+                    uuid = '0', 
+                    name = '0', 
+                    label = '', 
+                    created_at = 56, 
+                    created_by = null, 
+                    updated_at = 56, 
+                    updated_by = null, 
+                    deleted_at = 56, 
+                    deleted_by = null, 
+                    index = 56, )
             )
         else:
             return ShowResponsePreviewDTO(

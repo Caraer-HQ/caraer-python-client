@@ -44,7 +44,8 @@ class TestAppSettingFieldSchema(unittest.TestCase):
                     caraer_client.models.setting_option.SettingOption(
                         name = '', 
                         label = '', 
-                        help_text = '', )
+                        help_text = '', 
+                        preview = '', )
                     ],
                 options_source = caraer_client.models.app_setting_options_source.AppSettingOptionsSource(
                     type = '', 
@@ -62,6 +63,7 @@ class TestAppSettingFieldSchema(unittest.TestCase):
                     enqueue = True, ),
                 default_value = None,
                 hidden = True,
+                advanced = True,
                 filter_traits = [
                     ''
                     ],
@@ -71,6 +73,98 @@ class TestAppSettingFieldSchema(unittest.TestCase):
                         operator = '', 
                         value = null, )
                     ],
+                item_fields = [
+                    caraer_client.models.app_setting_field_schema.AppSettingFieldSchema(
+                        name = '', 
+                        label = '', 
+                        type = '', 
+                        required = True, 
+                        help_text = '', 
+                        options = [
+                            caraer_client.models.setting_option.SettingOption(
+                                name = '', 
+                                label = '', 
+                                help_text = '', 
+                                preview = '', )
+                            ], 
+                        options_source = caraer_client.models.app_setting_options_source.AppSettingOptionsSource(
+                            type = '', 
+                            serverless_function_uuid = '', 
+                            serverless_function_name = '', 
+                            depends_on = [
+                                ''
+                                ], 
+                            searchable = True, 
+                            min_query_length = 56, ), 
+                        action_source = caraer_client.models.app_setting_action_source.AppSettingActionSource(
+                            type = '', 
+                            serverless_function_uuid = '', 
+                            serverless_function_name = '', 
+                            enqueue = True, ), 
+                        default_value = null, 
+                        hidden = True, 
+                        advanced = True, 
+                        filter_traits = [
+                            ''
+                            ], 
+                        visible_when = [
+                            caraer_client.models.app_setting_condition.AppSettingCondition(
+                                field = '', 
+                                operator = '', 
+                                value = null, )
+                            ], 
+                        item_fields = [
+                            caraer_client.models.app_setting_field_schema.AppSettingFieldSchema(
+                                name = '', 
+                                label = '', 
+                                type = '', 
+                                required = True, 
+                                help_text = '', 
+                                default_value = null, 
+                                hidden = True, 
+                                advanced = True, 
+                                min = 56, 
+                                max = 56, 
+                                item_label = '', 
+                                value = null, 
+                                has_value = True, 
+                                mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
+                                    object_name = '', 
+                                    target_kind = '', 
+                                    items = [
+                                        caraer_client.models.app_setting_field_mapping_structure_item.AppSettingFieldMappingStructureItem(
+                                            field_label = '', 
+                                            field_name = '', 
+                                            field_help_text = '', 
+                                            is_required = True, 
+                                            allowed_property_types = [
+                                                ''
+                                                ], 
+                                            allowed_property_formats = [
+                                                ''
+                                                ], 
+                                            property_name = '', 
+                                            record_uuid = '', )
+                                        ], 
+                                    record_target = True, ), 
+                                value_scope = '', 
+                                action = True, )
+                            ], 
+                        min = 56, 
+                        max = 56, 
+                        item_label = '', 
+                        value = null, 
+                        has_value = True, 
+                        mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
+                            object_name = '', 
+                            target_kind = '', 
+                            record_target = True, ), 
+                        value_scope = '', 
+                        action = True, )
+                    ],
+                min = 56,
+                max = 56,
+                item_label = '',
                 value = None,
                 has_value = True,
                 mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(

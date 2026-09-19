@@ -363,7 +363,38 @@ class TestPageContentDTO(unittest.TestCase):
                     cta_button_link = '', 
                     platforms = [
                         ''
-                        ], ),
+                        ], 
+                    map_latitude = 1.337, 
+                    map_longitude = 1.337, 
+                    map_locations = [
+                        caraer_client.models.map_location_dto.MapLocationDTO(
+                            latitude = 1.337, 
+                            longitude = 1.337, 
+                            property_uuid = '', 
+                            property_name = '', 
+                            object_uuid = '', 
+                            object_name = '', 
+                            icon = '', 
+                            icon_color = '', 
+                            icon_background_color = '', 
+                            marker_size = 1.337, 
+                            icon_size = 1.337, 
+                            label = '', 
+                            label_property_uuid = '', 
+                            label_property_name = '', 
+                            hover_preview_uuid = '', 
+                            hover_preview_name = '', 
+                            record_uuid = '', 
+                            click_link_type = '', 
+                            click_link_url = '', 
+                            click_link_open_in_new_window = True, 
+                            href = '', 
+                            filter_values = {
+                                'key' : null
+                                }, )
+                        ], 
+                    distance_filter_enabled = True, 
+                    location_contains_filter_enabled = True, ),
                 children = [
                     caraer_client.models.page_content_dto.PageContentDTO(
                         uuid = '0', 

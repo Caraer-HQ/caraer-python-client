@@ -19,16 +19,17 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from caraer_client.models.preview_dto import PreviewDTO
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
 class ShowResponsePreviewDTO(BaseModel):
     """
-    Success response (ShowResponsePreviewDTO).
+    Represents the response for viewing or showing a specific resource.
     """ # noqa: E501
-    message: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["Success"]})
-    data: Optional[Dict[str, Any]] = None
+    message: Optional[StrictStr] = Field(default=None, description="A message detailing the result of the operation.", json_schema_extra={"examples": ["Success"]})
+    data: Optional[PreviewDTO] = Field(default=None, description="The data payload of the response, if any.")
     __properties: ClassVar[List[str]] = ["message", "data"]
 
     model_config = ConfigDict(
@@ -70,6 +71,9 @@ class ShowResponsePreviewDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of data
+        if self.data:
+            _dict['data'] = self.data.to_dict()
         return _dict
 
     @classmethod
@@ -83,7 +87,7 @@ class ShowResponsePreviewDTO(BaseModel):
 
         _obj = cls.model_validate({
             "message": obj.get("message"),
-            "data": obj.get("data")
+            "data": PreviewDTO.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 

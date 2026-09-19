@@ -814,6 +814,7 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                         
                         ], 
                     editable = True, ),
+                floating_action_bar_module_uuid = '',
                 options = caraer_client.models.webpage_options_dto.WebpageOptionsDTO(
                     related_to_template = True, 
                     protection_override = '', 

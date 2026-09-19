@@ -50,7 +50,11 @@ class TestSuccessResponseCompanyDTO(unittest.TestCase):
                     details = null, 
                     digital_identity = null, 
                     website_settings = null, 
-                    billing_settings = null, )
+                    billing_settings = null, 
+                    cms_version = 56, 
+                    cms_v2_preview_origin = '', 
+                    cms_v2_project_id = '', 
+                    cms_v1_project_id = '', )
             )
         else:
             return SuccessResponseCompanyDTO(

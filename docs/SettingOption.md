@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **label** | **str** |  | [optional] 
 **help_text** | **str** |  | [optional] 
+**preview** | **str** |  | [optional] 
 
 ## Example
 

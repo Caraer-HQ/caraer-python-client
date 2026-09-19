@@ -5,7 +5,7 @@ All URIs are relative to *https://v2.api.caraer.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create1**](DeveloperSandboxesApi.md#create1) | **POST** /api/v2/developer-sandboxes | Create a developer sandbox
-[**list**](DeveloperSandboxesApi.md#list) | **GET** /api/v2/developer-sandboxes | List developer sandboxes
+[**list1**](DeveloperSandboxesApi.md#list1) | **GET** /api/v2/developer-sandboxes | List developer sandboxes
 [**show2**](DeveloperSandboxesApi.md#show2) | **GET** /api/v2/developer-sandboxes/{uuid} | Get a developer sandbox
 
 
@@ -93,8 +93,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list**
-> SuccessResponseListDeveloperSandboxDTO list()
+# **list1**
+> SuccessResponseListDeveloperSandboxDTO list1()
 
 List developer sandboxes
 
@@ -133,11 +133,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # List developer sandboxes
-        api_response = api_instance.list()
-        print("The response of DeveloperSandboxesApi->list:\n")
+        api_response = api_instance.list1()
+        print("The response of DeveloperSandboxesApi->list1:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DeveloperSandboxesApi->list: %s\n" % e)
+        print("Exception when calling DeveloperSandboxesApi->list1: %s\n" % e)
 ```
 
 

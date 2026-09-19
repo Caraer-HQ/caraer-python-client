@@ -124,6 +124,20 @@ class TestWebpagesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_public_map_locations(self) -> None:
+        """Test case for get_public_map_locations
+
+        Get filtered map markers for a public webpage
+        """
+        pass
+
+    def test_get_public_map_marker_preview(self) -> None:
+        """Test case for get_public_map_marker_preview
+
+        Get a hydrated preview for one public map marker
+        """
+        pass
+
     def test_get_public_previews(self) -> None:
         """Test case for get_public_previews
 

@@ -22,6 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from caraer_client.models.caraer_object_dto import CaraerObjectDTO
 from caraer_client.models.filter import Filter
 from caraer_client.models.form_dto import FormDTO
+from caraer_client.models.map_location_dto import MapLocationDTO
 from caraer_client.models.preview_dto import PreviewDTO
 from caraer_client.models.property_dto import PropertyDTO
 from typing import Optional, Set
@@ -78,7 +79,12 @@ class PageContentSettingsDTO(BaseModel):
     cta_button_text: Optional[StrictStr] = Field(default=None, description="The button text of the CTA", alias="ctaButtonText")
     cta_button_link: Optional[StrictStr] = Field(default=None, description="The button link of the CTA", alias="ctaButtonLink")
     platforms: Optional[List[StrictStr]] = Field(default=None, description="The platforms shown in the share component")
-    __properties: ClassVar[List[str]] = ["form", "openIcon", "closeIcon", "alt", "key", "playVideo", "startMuted", "loopVideo", "startOffset", "link", "style", "ctaId", "openInNewWindow", "sliderType", "carouselSpeed", "enableControls", "previewObject", "previews", "previewLayoutOrder", "filter", "orderBy", "orderByDirection", "asWebpages", "loop", "limit", "groupBy", "hideOnNoResults", "filterType", "searchResultSingleString", "searchResultPluralString", "noResultsString", "searchFieldEnabled", "searchFieldPlaceholder", "filterBlockEnabled", "filterTitle", "filterSubtitle", "filterProperties", "enableFilterTiles", "enableFilterQuery", "enableRemoveAllFiltersButton", "ctaEnabled", "ctaTitle", "ctaText", "ctaButtonText", "ctaButtonLink", "platforms"]
+    map_latitude: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Latitude for the map component", alias="mapLatitude")
+    map_longitude: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Longitude for the map component", alias="mapLongitude")
+    map_locations: Optional[List[MapLocationDTO]] = Field(default=None, description="Multiple map markers", alias="mapLocations")
+    distance_filter_enabled: Optional[StrictBool] = Field(default=None, description="Show a public distance-from-location filter on this map", alias="distanceFilterEnabled")
+    location_contains_filter_enabled: Optional[StrictBool] = Field(default=None, description="Show a public contains filter for city, street, or postcode on this map", alias="locationContainsFilterEnabled")
+    __properties: ClassVar[List[str]] = ["form", "openIcon", "closeIcon", "alt", "key", "playVideo", "startMuted", "loopVideo", "startOffset", "link", "style", "ctaId", "openInNewWindow", "sliderType", "carouselSpeed", "enableControls", "previewObject", "previews", "previewLayoutOrder", "filter", "orderBy", "orderByDirection", "asWebpages", "loop", "limit", "groupBy", "hideOnNoResults", "filterType", "searchResultSingleString", "searchResultPluralString", "noResultsString", "searchFieldEnabled", "searchFieldPlaceholder", "filterBlockEnabled", "filterTitle", "filterSubtitle", "filterProperties", "enableFilterTiles", "enableFilterQuery", "enableRemoveAllFiltersButton", "ctaEnabled", "ctaTitle", "ctaText", "ctaButtonText", "ctaButtonLink", "platforms", "mapLatitude", "mapLongitude", "mapLocations", "distanceFilterEnabled", "locationContainsFilterEnabled"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -146,6 +152,12 @@ class PageContentSettingsDTO(BaseModel):
             for _item_filter_properties in self.filter_properties:
                 _items.append(_item_filter_properties.to_dict() if _item_filter_properties is not None else None)
             _dict['filterProperties'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in map_locations (list)
+        _items = []
+        if self.map_locations:
+            for _item_map_locations in self.map_locations:
+                _items.append(_item_map_locations.to_dict() if _item_map_locations is not None else None)
+            _dict['mapLocations'] = _items
         return _dict
 
     @classmethod
@@ -208,7 +220,12 @@ class PageContentSettingsDTO(BaseModel):
             "ctaText": obj.get("ctaText"),
             "ctaButtonText": obj.get("ctaButtonText"),
             "ctaButtonLink": obj.get("ctaButtonLink"),
-            "platforms": obj.get("platforms")
+            "platforms": obj.get("platforms"),
+            "mapLatitude": obj.get("mapLatitude"),
+            "mapLongitude": obj.get("mapLongitude"),
+            "mapLocations": [MapLocationDTO.from_dict(_item) for _item in obj["mapLocations"]] if obj.get("mapLocations") is not None else None,
+            "distanceFilterEnabled": obj.get("distanceFilterEnabled"),
+            "locationContainsFilterEnabled": obj.get("locationContainsFilterEnabled")
         })
         return _obj
 

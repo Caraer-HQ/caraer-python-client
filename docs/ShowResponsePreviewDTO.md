@@ -1,13 +1,13 @@
 # ShowResponsePreviewDTO
 
-Success response (ShowResponsePreviewDTO).
+Represents the response for viewing or showing a specific resource.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **str** |  | [optional] 
-**data** | **Dict[str, object]** |  | [optional] 
+**message** | **str** | A message detailing the result of the operation. | [optional] 
+**data** | [**PreviewDTO**](PreviewDTO.md) | The data payload of the response, if any. | [optional] 
 
 ## Example
 

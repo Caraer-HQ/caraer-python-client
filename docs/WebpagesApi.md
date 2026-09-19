@@ -18,6 +18,8 @@ Method | HTTP request | Description
 [**get_company_settings**](WebpagesApi.md#get_company_settings) | **GET** /api/v2/webpages/public/companySettings | Fetch public company settings
 [**get_environments**](WebpagesApi.md#get_environments) | **GET** /api/v2/webpages/environments | Get all environments
 [**get_menus**](WebpagesApi.md#get_menus) | **GET** /api/v2/webpages/public/getMenus | Fetch public web menus
+[**get_public_map_locations**](WebpagesApi.md#get_public_map_locations) | **POST** /api/v2/webpages/public/maps/{pageUuid}/{componentUuid} | Get filtered map markers for a public webpage
+[**get_public_map_marker_preview**](WebpagesApi.md#get_public_map_marker_preview) | **POST** /api/v2/webpages/public/maps/{pageUuid}/{componentUuid}/marker-preview | Get a hydrated preview for one public map marker
 [**get_public_previews**](WebpagesApi.md#get_public_previews) | **POST** /api/v2/webpages/public/previews/{pageUuid}/{componentUuid}/{layout} | Get previews for a public webpage
 [**get_public_webpage**](WebpagesApi.md#get_public_webpage) | **GET** /api/v2/webpages/public/{rootSlug}/{slug} | Get a public webpage by slug
 [**get_public_webpage_by_uuid**](WebpagesApi.md#get_public_webpage_by_uuid) | **GET** /api/v2/webpages/public/uuid/{uuid} | Get a public webpage by UUID
@@ -1221,6 +1223,208 @@ Name | Type | Description  | Notes
 **401** | Authentication is required or the token is invalid. |  -  |
 **403** | The caller is missing a required role or scope. |  -  |
 **404** | The requested resource was not found. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_public_map_locations**
+> ShowResponseWebpageMapLocationsDTO get_public_map_locations(x_caraer_subdomain, page_uuid, component_uuid, record_pagination_request, x_caraer_environment=x_caraer_environment, x_caraer_primary_environment=x_caraer_primary_environment, authorization=authorization, x_caraer_webpage_access=x_caraer_webpage_access, access=access, token=token)
+
+Get filtered map markers for a public webpage
+
+Resolves map markers for a public map component. Object-bound sources are filtered in Cypher before the 500-marker cap.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.record_pagination_request import RecordPaginationRequest
+from caraer_client.models.show_response_webpage_map_locations_dto import ShowResponseWebpageMapLocationsDTO
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.WebpagesApi(api_client)
+    x_caraer_subdomain = 'x_caraer_subdomain_example' # str | 
+    page_uuid = 'page_uuid_example' # str | 
+    component_uuid = 'component_uuid_example' # str | 
+    record_pagination_request = caraer_client.RecordPaginationRequest() # RecordPaginationRequest | 
+    x_caraer_environment = 'production' # str |  (optional) (default to 'production')
+    x_caraer_primary_environment = 'production' # str |  (optional) (default to 'production')
+    authorization = 'authorization_example' # str |  (optional)
+    x_caraer_webpage_access = 'x_caraer_webpage_access_example' # str |  (optional)
+    access = 'access_example' # str |  (optional)
+    token = 'token_example' # str |  (optional)
+
+    try:
+        # Get filtered map markers for a public webpage
+        api_response = api_instance.get_public_map_locations(x_caraer_subdomain, page_uuid, component_uuid, record_pagination_request, x_caraer_environment=x_caraer_environment, x_caraer_primary_environment=x_caraer_primary_environment, authorization=authorization, x_caraer_webpage_access=x_caraer_webpage_access, access=access, token=token)
+        print("The response of WebpagesApi->get_public_map_locations:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WebpagesApi->get_public_map_locations: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_caraer_subdomain** | **str**|  | 
+ **page_uuid** | **str**|  | 
+ **component_uuid** | **str**|  | 
+ **record_pagination_request** | [**RecordPaginationRequest**](RecordPaginationRequest.md)|  | 
+ **x_caraer_environment** | **str**|  | [optional] [default to &#39;production&#39;]
+ **x_caraer_primary_environment** | **str**|  | [optional] [default to &#39;production&#39;]
+ **authorization** | **str**|  | [optional] 
+ **x_caraer_webpage_access** | **str**|  | [optional] 
+ **access** | **str**|  | [optional] 
+ **token** | **str**|  | [optional] 
+
+### Return type
+
+[**ShowResponseWebpageMapLocationsDTO**](ShowResponseWebpageMapLocationsDTO.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_public_map_marker_preview**
+> ShowResponsePreviewDTO get_public_map_marker_preview(x_caraer_subdomain, page_uuid, component_uuid, map_marker_preview_request, x_caraer_environment=x_caraer_environment, x_caraer_primary_environment=x_caraer_primary_environment, authorization=authorization, x_caraer_webpage_access=x_caraer_webpage_access, access=access, token=token)
+
+Get a hydrated preview for one public map marker
+
+Hydrates the hover preview selected on a bound map location for a published record.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.map_marker_preview_request import MapMarkerPreviewRequest
+from caraer_client.models.show_response_preview_dto import ShowResponsePreviewDTO
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.WebpagesApi(api_client)
+    x_caraer_subdomain = 'x_caraer_subdomain_example' # str | 
+    page_uuid = 'page_uuid_example' # str | 
+    component_uuid = 'component_uuid_example' # str | 
+    map_marker_preview_request = caraer_client.MapMarkerPreviewRequest() # MapMarkerPreviewRequest | 
+    x_caraer_environment = 'production' # str |  (optional) (default to 'production')
+    x_caraer_primary_environment = 'production' # str |  (optional) (default to 'production')
+    authorization = 'authorization_example' # str |  (optional)
+    x_caraer_webpage_access = 'x_caraer_webpage_access_example' # str |  (optional)
+    access = 'access_example' # str |  (optional)
+    token = 'token_example' # str |  (optional)
+
+    try:
+        # Get a hydrated preview for one public map marker
+        api_response = api_instance.get_public_map_marker_preview(x_caraer_subdomain, page_uuid, component_uuid, map_marker_preview_request, x_caraer_environment=x_caraer_environment, x_caraer_primary_environment=x_caraer_primary_environment, authorization=authorization, x_caraer_webpage_access=x_caraer_webpage_access, access=access, token=token)
+        print("The response of WebpagesApi->get_public_map_marker_preview:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WebpagesApi->get_public_map_marker_preview: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_caraer_subdomain** | **str**|  | 
+ **page_uuid** | **str**|  | 
+ **component_uuid** | **str**|  | 
+ **map_marker_preview_request** | [**MapMarkerPreviewRequest**](MapMarkerPreviewRequest.md)|  | 
+ **x_caraer_environment** | **str**|  | [optional] [default to &#39;production&#39;]
+ **x_caraer_primary_environment** | **str**|  | [optional] [default to &#39;production&#39;]
+ **authorization** | **str**|  | [optional] 
+ **x_caraer_webpage_access** | **str**|  | [optional] 
+ **access** | **str**|  | [optional] 
+ **token** | **str**|  | [optional] 
+
+### Return type
+
+[**ShowResponsePreviewDTO**](ShowResponsePreviewDTO.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

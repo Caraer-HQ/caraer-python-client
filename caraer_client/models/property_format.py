@@ -35,6 +35,8 @@ if TYPE_CHECKING:
     from caraer_client.models.email import Email
     from caraer_client.models.file import File
     from caraer_client.models.linked_property import LinkedProperty
+    from caraer_client.models.location import Location
+    from caraer_client.models.multi_file import MultiFile
     from caraer_client.models.multi_line import MultiLine
     from caraer_client.models.multi_select import MultiSelect
     from caraer_client.models.number import Number
@@ -75,7 +77,7 @@ class PropertyFormat(BaseModel):
 
     # discriminator mappings
     __discriminator_value_class_map: ClassVar[Dict[str, str]] = {
-        'Currency': 'Currency','CurrencyRange': 'CurrencyRange','Date': 'ModelDate','DateRange': 'DateRange','Duration': 'Duration','Email': 'Email','File': 'File','LinkedProperty': 'LinkedProperty','MultiLine': 'MultiLine','MultiSelect': 'MultiSelect','Number': 'Number','NumberRange': 'NumberRange','Phone': 'Phone','Progress': 'Progress','Recurrence': 'Recurrence','SingleCheckbox': 'SingleCheckbox','SingleLine': 'SingleLine','SingleSelect': 'SingleSelect','Structure': 'Structure','Tag': 'Tag','Url': 'Url'
+        'Currency': 'Currency','CurrencyRange': 'CurrencyRange','Date': 'ModelDate','DateRange': 'DateRange','Duration': 'Duration','Email': 'Email','File': 'File','LinkedProperty': 'LinkedProperty','Location': 'Location','MultiFile': 'MultiFile','MultiLine': 'MultiLine','MultiSelect': 'MultiSelect','Number': 'Number','NumberRange': 'NumberRange','Phone': 'Phone','Progress': 'Progress','Recurrence': 'Recurrence','SingleCheckbox': 'SingleCheckbox','SingleLine': 'SingleLine','SingleSelect': 'SingleSelect','Structure': 'Structure','Tag': 'Tag','Url': 'Url'
     }
 
     @classmethod
@@ -96,7 +98,7 @@ class PropertyFormat(BaseModel):
         return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Union[Currency, CurrencyRange, ModelDate, DateRange, Duration, Email, File, LinkedProperty, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url]]:
+    def from_json(cls, json_str: str) -> Optional[Union[Currency, CurrencyRange, ModelDate, DateRange, Duration, Email, File, LinkedProperty, Location, MultiFile, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url]]:
         """Create an instance of PropertyFormat from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -127,7 +129,7 @@ class PropertyFormat(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict[str, Any]) -> Optional[Union[Currency, CurrencyRange, ModelDate, DateRange, Duration, Email, File, LinkedProperty, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url]]:
+    def from_dict(cls, obj: Dict[str, Any]) -> Optional[Union[Currency, CurrencyRange, ModelDate, DateRange, Duration, Email, File, LinkedProperty, Location, MultiFile, MultiLine, MultiSelect, Number, NumberRange, Phone, Progress, Recurrence, SingleCheckbox, SingleLine, SingleSelect, Structure, Tag, Url]]:
         """Create an instance of PropertyFormat from a dict"""
         # look up the object type based on discriminator mapping
         object_type = cls.get_discriminator_value(obj)
@@ -147,6 +149,10 @@ class PropertyFormat(BaseModel):
             return import_module("caraer_client.models.file").File.from_dict(obj)
         if object_type ==  'LinkedProperty':
             return import_module("caraer_client.models.linked_property").LinkedProperty.from_dict(obj)
+        if object_type ==  'Location':
+            return import_module("caraer_client.models.location").Location.from_dict(obj)
+        if object_type ==  'MultiFile':
+            return import_module("caraer_client.models.multi_file").MultiFile.from_dict(obj)
         if object_type ==  'MultiLine':
             return import_module("caraer_client.models.multi_line").MultiLine.from_dict(obj)
         if object_type ==  'MultiSelect':

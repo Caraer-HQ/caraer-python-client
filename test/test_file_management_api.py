@@ -47,6 +47,13 @@ class TestFileManagementApi(unittest.TestCase):
         """
         pass
 
+    def test_list_library(self) -> None:
+        """Test case for list_library
+
+        List company files with metadata for the media library
+        """
+        pass
+
     def test_upload_file2(self) -> None:
         """Test case for upload_file2
 

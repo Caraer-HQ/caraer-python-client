@@ -36,7 +36,25 @@ class TestShowResponseCompanyDTO(unittest.TestCase):
         if include_optional:
             return ShowResponseCompanyDTO(
                 message = 'Success',
-                data = { }
+                data = caraer_client.models.company_dto.CompanyDTO(
+                    uuid = '0', 
+                    name = '0', 
+                    label = '', 
+                    created_at = 56, 
+                    created_by = null, 
+                    updated_at = 56, 
+                    updated_by = null, 
+                    deleted_at = 56, 
+                    deleted_by = null, 
+                    index = 56, 
+                    details = null, 
+                    digital_identity = null, 
+                    website_settings = null, 
+                    billing_settings = null, 
+                    cms_version = 56, 
+                    cms_v2_preview_origin = '', 
+                    cms_v2_project_id = '', 
+                    cms_v1_project_id = '', )
             )
         else:
             return ShowResponseCompanyDTO(

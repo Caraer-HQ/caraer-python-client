@@ -52,6 +52,11 @@ Name | Type | Description | Notes
 **cta_button_text** | **str** | The button text of the CTA | [optional] 
 **cta_button_link** | **str** | The button link of the CTA | [optional] 
 **platforms** | **List[str]** | The platforms shown in the share component | [optional] 
+**map_latitude** | **float** | Latitude for the map component | [optional] 
+**map_longitude** | **float** | Longitude for the map component | [optional] 
+**map_locations** | [**List[MapLocationDTO]**](MapLocationDTO.md) | Multiple map markers | [optional] 
+**distance_filter_enabled** | **bool** | Show a public distance-from-location filter on this map | [optional] 
+**location_contains_filter_enabled** | **bool** | Show a public contains filter for city, street, or postcode on this map | [optional] 
 
 ## Example
 

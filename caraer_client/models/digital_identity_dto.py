@@ -44,6 +44,32 @@ class DigitalIdentityDTO(BaseModel):
     light_secondary_color: Optional[StrictStr] = Field(default=None, description="The secondary color of the company in light mode.", alias="lightSecondaryColor")
     light_primary100_color: Optional[StrictStr] = Field(default=None, description="The primary 100 color of the company in light mode.", alias="lightPrimary100Color")
     light_accent_color: Optional[StrictStr] = Field(default=None, description="The accent color of the company in light mode.", alias="lightAccentColor")
+    light_primary50_color: Optional[StrictStr] = Field(default=None, description="The lightPrimary50Color of the company.", alias="lightPrimary50Color")
+    light_primary200_color: Optional[StrictStr] = Field(default=None, description="The lightPrimary200Color of the company.", alias="lightPrimary200Color")
+    light_primary300_color: Optional[StrictStr] = Field(default=None, description="The lightPrimary300Color of the company.", alias="lightPrimary300Color")
+    light_primary400_color: Optional[StrictStr] = Field(default=None, description="The lightPrimary400Color of the company.", alias="lightPrimary400Color")
+    light_primary600_color: Optional[StrictStr] = Field(default=None, description="The lightPrimary600Color of the company.", alias="lightPrimary600Color")
+    light_primary700_color: Optional[StrictStr] = Field(default=None, description="The lightPrimary700Color of the company.", alias="lightPrimary700Color")
+    light_primary800_color: Optional[StrictStr] = Field(default=None, description="The lightPrimary800Color of the company.", alias="lightPrimary800Color")
+    light_primary900_color: Optional[StrictStr] = Field(default=None, description="The lightPrimary900Color of the company.", alias="lightPrimary900Color")
+    light_secondary50_color: Optional[StrictStr] = Field(default=None, description="The lightSecondary50Color of the company.", alias="lightSecondary50Color")
+    light_secondary100_color: Optional[StrictStr] = Field(default=None, description="The lightSecondary100Color of the company.", alias="lightSecondary100Color")
+    light_secondary200_color: Optional[StrictStr] = Field(default=None, description="The lightSecondary200Color of the company.", alias="lightSecondary200Color")
+    light_secondary300_color: Optional[StrictStr] = Field(default=None, description="The lightSecondary300Color of the company.", alias="lightSecondary300Color")
+    light_secondary400_color: Optional[StrictStr] = Field(default=None, description="The lightSecondary400Color of the company.", alias="lightSecondary400Color")
+    light_secondary600_color: Optional[StrictStr] = Field(default=None, description="The lightSecondary600Color of the company.", alias="lightSecondary600Color")
+    light_secondary700_color: Optional[StrictStr] = Field(default=None, description="The lightSecondary700Color of the company.", alias="lightSecondary700Color")
+    light_secondary800_color: Optional[StrictStr] = Field(default=None, description="The lightSecondary800Color of the company.", alias="lightSecondary800Color")
+    light_secondary900_color: Optional[StrictStr] = Field(default=None, description="The lightSecondary900Color of the company.", alias="lightSecondary900Color")
+    light_accent50_color: Optional[StrictStr] = Field(default=None, description="The lightAccent50Color of the company.", alias="lightAccent50Color")
+    light_accent100_color: Optional[StrictStr] = Field(default=None, description="The lightAccent100Color of the company.", alias="lightAccent100Color")
+    light_accent200_color: Optional[StrictStr] = Field(default=None, description="The lightAccent200Color of the company.", alias="lightAccent200Color")
+    light_accent300_color: Optional[StrictStr] = Field(default=None, description="The lightAccent300Color of the company.", alias="lightAccent300Color")
+    light_accent400_color: Optional[StrictStr] = Field(default=None, description="The lightAccent400Color of the company.", alias="lightAccent400Color")
+    light_accent600_color: Optional[StrictStr] = Field(default=None, description="The lightAccent600Color of the company.", alias="lightAccent600Color")
+    light_accent700_color: Optional[StrictStr] = Field(default=None, description="The lightAccent700Color of the company.", alias="lightAccent700Color")
+    light_accent800_color: Optional[StrictStr] = Field(default=None, description="The lightAccent800Color of the company.", alias="lightAccent800Color")
+    light_accent900_color: Optional[StrictStr] = Field(default=None, description="The lightAccent900Color of the company.", alias="lightAccent900Color")
     light_black_color: Optional[StrictStr] = Field(default=None, description="The black color of the company in light mode.", alias="lightBlackColor")
     light_gray900_color: Optional[StrictStr] = Field(default=None, description="The gray 900 color of the company in light mode.", alias="lightGray900Color")
     light_gray800_color: Optional[StrictStr] = Field(default=None, description="The gray 800 color of the company in light mode.", alias="lightGray800Color")
@@ -63,6 +89,32 @@ class DigitalIdentityDTO(BaseModel):
     dark_secondary_color: Optional[StrictStr] = Field(default=None, description="The secondary color of the company in dark mode.", alias="darkSecondaryColor")
     dark_primary100_color: Optional[StrictStr] = Field(default=None, description="The primary 100 color of the company in dark mode.", alias="darkPrimary100Color")
     dark_accent_color: Optional[StrictStr] = Field(default=None, description="The accent color of the company in dark mode.", alias="darkAccentColor")
+    dark_primary50_color: Optional[StrictStr] = Field(default=None, description="The darkPrimary50Color of the company.", alias="darkPrimary50Color")
+    dark_primary200_color: Optional[StrictStr] = Field(default=None, description="The darkPrimary200Color of the company.", alias="darkPrimary200Color")
+    dark_primary300_color: Optional[StrictStr] = Field(default=None, description="The darkPrimary300Color of the company.", alias="darkPrimary300Color")
+    dark_primary400_color: Optional[StrictStr] = Field(default=None, description="The darkPrimary400Color of the company.", alias="darkPrimary400Color")
+    dark_primary600_color: Optional[StrictStr] = Field(default=None, description="The darkPrimary600Color of the company.", alias="darkPrimary600Color")
+    dark_primary700_color: Optional[StrictStr] = Field(default=None, description="The darkPrimary700Color of the company.", alias="darkPrimary700Color")
+    dark_primary800_color: Optional[StrictStr] = Field(default=None, description="The darkPrimary800Color of the company.", alias="darkPrimary800Color")
+    dark_primary900_color: Optional[StrictStr] = Field(default=None, description="The darkPrimary900Color of the company.", alias="darkPrimary900Color")
+    dark_secondary50_color: Optional[StrictStr] = Field(default=None, description="The darkSecondary50Color of the company.", alias="darkSecondary50Color")
+    dark_secondary100_color: Optional[StrictStr] = Field(default=None, description="The darkSecondary100Color of the company.", alias="darkSecondary100Color")
+    dark_secondary200_color: Optional[StrictStr] = Field(default=None, description="The darkSecondary200Color of the company.", alias="darkSecondary200Color")
+    dark_secondary300_color: Optional[StrictStr] = Field(default=None, description="The darkSecondary300Color of the company.", alias="darkSecondary300Color")
+    dark_secondary400_color: Optional[StrictStr] = Field(default=None, description="The darkSecondary400Color of the company.", alias="darkSecondary400Color")
+    dark_secondary600_color: Optional[StrictStr] = Field(default=None, description="The darkSecondary600Color of the company.", alias="darkSecondary600Color")
+    dark_secondary700_color: Optional[StrictStr] = Field(default=None, description="The darkSecondary700Color of the company.", alias="darkSecondary700Color")
+    dark_secondary800_color: Optional[StrictStr] = Field(default=None, description="The darkSecondary800Color of the company.", alias="darkSecondary800Color")
+    dark_secondary900_color: Optional[StrictStr] = Field(default=None, description="The darkSecondary900Color of the company.", alias="darkSecondary900Color")
+    dark_accent50_color: Optional[StrictStr] = Field(default=None, description="The darkAccent50Color of the company.", alias="darkAccent50Color")
+    dark_accent100_color: Optional[StrictStr] = Field(default=None, description="The darkAccent100Color of the company.", alias="darkAccent100Color")
+    dark_accent200_color: Optional[StrictStr] = Field(default=None, description="The darkAccent200Color of the company.", alias="darkAccent200Color")
+    dark_accent300_color: Optional[StrictStr] = Field(default=None, description="The darkAccent300Color of the company.", alias="darkAccent300Color")
+    dark_accent400_color: Optional[StrictStr] = Field(default=None, description="The darkAccent400Color of the company.", alias="darkAccent400Color")
+    dark_accent600_color: Optional[StrictStr] = Field(default=None, description="The darkAccent600Color of the company.", alias="darkAccent600Color")
+    dark_accent700_color: Optional[StrictStr] = Field(default=None, description="The darkAccent700Color of the company.", alias="darkAccent700Color")
+    dark_accent800_color: Optional[StrictStr] = Field(default=None, description="The darkAccent800Color of the company.", alias="darkAccent800Color")
+    dark_accent900_color: Optional[StrictStr] = Field(default=None, description="The darkAccent900Color of the company.", alias="darkAccent900Color")
     dark_black_color: Optional[StrictStr] = Field(default=None, description="The black color of the company in dark mode.", alias="darkBlackColor")
     dark_gray900_color: Optional[StrictStr] = Field(default=None, description="The gray 900 color of the company in dark mode.", alias="darkGray900Color")
     dark_gray800_color: Optional[StrictStr] = Field(default=None, description="The gray 800 color of the company in dark mode.", alias="darkGray800Color")
@@ -77,7 +129,7 @@ class DigitalIdentityDTO(BaseModel):
     dark_white_color: Optional[StrictStr] = Field(default=None, description="The white color of the company in dark mode.", alias="darkWhiteColor")
     dark_background_color: Optional[StrictStr] = Field(default=None, description="The background color of the company in dark mode.", alias="darkBackgroundColor")
     dark_destructive_color: Optional[StrictStr] = Field(default=None, description="The destructive color of the company in dark mode.", alias="darkDestructiveColor")
-    __properties: ClassVar[List[str]] = ["lightPrimaryColor", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "lightFontColor", "lightSecondaryColor", "lightPrimary100Color", "lightAccentColor", "lightBlackColor", "lightGray900Color", "lightGray800Color", "lightGray700Color", "lightGray600Color", "lightGray500Color", "lightGray400Color", "lightGray300Color", "lightGray200Color", "lightGray100Color", "lightGray50Color", "lightWhiteColor", "lightBackgroundColor", "lightDestructiveColor", "darkFontColor", "darkPrimaryColor", "darkSecondaryColor", "darkPrimary100Color", "darkAccentColor", "darkBlackColor", "darkGray900Color", "darkGray800Color", "darkGray700Color", "darkGray600Color", "darkGray500Color", "darkGray400Color", "darkGray300Color", "darkGray200Color", "darkGray100Color", "darkGray50Color", "darkWhiteColor", "darkBackgroundColor", "darkDestructiveColor"]
+    __properties: ClassVar[List[str]] = ["lightPrimaryColor", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "lightFontColor", "lightSecondaryColor", "lightPrimary100Color", "lightAccentColor", "lightPrimary50Color", "lightPrimary200Color", "lightPrimary300Color", "lightPrimary400Color", "lightPrimary600Color", "lightPrimary700Color", "lightPrimary800Color", "lightPrimary900Color", "lightSecondary50Color", "lightSecondary100Color", "lightSecondary200Color", "lightSecondary300Color", "lightSecondary400Color", "lightSecondary600Color", "lightSecondary700Color", "lightSecondary800Color", "lightSecondary900Color", "lightAccent50Color", "lightAccent100Color", "lightAccent200Color", "lightAccent300Color", "lightAccent400Color", "lightAccent600Color", "lightAccent700Color", "lightAccent800Color", "lightAccent900Color", "lightBlackColor", "lightGray900Color", "lightGray800Color", "lightGray700Color", "lightGray600Color", "lightGray500Color", "lightGray400Color", "lightGray300Color", "lightGray200Color", "lightGray100Color", "lightGray50Color", "lightWhiteColor", "lightBackgroundColor", "lightDestructiveColor", "darkFontColor", "darkPrimaryColor", "darkSecondaryColor", "darkPrimary100Color", "darkAccentColor", "darkPrimary50Color", "darkPrimary200Color", "darkPrimary300Color", "darkPrimary400Color", "darkPrimary600Color", "darkPrimary700Color", "darkPrimary800Color", "darkPrimary900Color", "darkSecondary50Color", "darkSecondary100Color", "darkSecondary200Color", "darkSecondary300Color", "darkSecondary400Color", "darkSecondary600Color", "darkSecondary700Color", "darkSecondary800Color", "darkSecondary900Color", "darkAccent50Color", "darkAccent100Color", "darkAccent200Color", "darkAccent300Color", "darkAccent400Color", "darkAccent600Color", "darkAccent700Color", "darkAccent800Color", "darkAccent900Color", "darkBlackColor", "darkGray900Color", "darkGray800Color", "darkGray700Color", "darkGray600Color", "darkGray500Color", "darkGray400Color", "darkGray300Color", "darkGray200Color", "darkGray100Color", "darkGray50Color", "darkWhiteColor", "darkBackgroundColor", "darkDestructiveColor"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -154,6 +206,32 @@ class DigitalIdentityDTO(BaseModel):
             "lightSecondaryColor": obj.get("lightSecondaryColor"),
             "lightPrimary100Color": obj.get("lightPrimary100Color"),
             "lightAccentColor": obj.get("lightAccentColor"),
+            "lightPrimary50Color": obj.get("lightPrimary50Color"),
+            "lightPrimary200Color": obj.get("lightPrimary200Color"),
+            "lightPrimary300Color": obj.get("lightPrimary300Color"),
+            "lightPrimary400Color": obj.get("lightPrimary400Color"),
+            "lightPrimary600Color": obj.get("lightPrimary600Color"),
+            "lightPrimary700Color": obj.get("lightPrimary700Color"),
+            "lightPrimary800Color": obj.get("lightPrimary800Color"),
+            "lightPrimary900Color": obj.get("lightPrimary900Color"),
+            "lightSecondary50Color": obj.get("lightSecondary50Color"),
+            "lightSecondary100Color": obj.get("lightSecondary100Color"),
+            "lightSecondary200Color": obj.get("lightSecondary200Color"),
+            "lightSecondary300Color": obj.get("lightSecondary300Color"),
+            "lightSecondary400Color": obj.get("lightSecondary400Color"),
+            "lightSecondary600Color": obj.get("lightSecondary600Color"),
+            "lightSecondary700Color": obj.get("lightSecondary700Color"),
+            "lightSecondary800Color": obj.get("lightSecondary800Color"),
+            "lightSecondary900Color": obj.get("lightSecondary900Color"),
+            "lightAccent50Color": obj.get("lightAccent50Color"),
+            "lightAccent100Color": obj.get("lightAccent100Color"),
+            "lightAccent200Color": obj.get("lightAccent200Color"),
+            "lightAccent300Color": obj.get("lightAccent300Color"),
+            "lightAccent400Color": obj.get("lightAccent400Color"),
+            "lightAccent600Color": obj.get("lightAccent600Color"),
+            "lightAccent700Color": obj.get("lightAccent700Color"),
+            "lightAccent800Color": obj.get("lightAccent800Color"),
+            "lightAccent900Color": obj.get("lightAccent900Color"),
             "lightBlackColor": obj.get("lightBlackColor"),
             "lightGray900Color": obj.get("lightGray900Color"),
             "lightGray800Color": obj.get("lightGray800Color"),
@@ -173,6 +251,32 @@ class DigitalIdentityDTO(BaseModel):
             "darkSecondaryColor": obj.get("darkSecondaryColor"),
             "darkPrimary100Color": obj.get("darkPrimary100Color"),
             "darkAccentColor": obj.get("darkAccentColor"),
+            "darkPrimary50Color": obj.get("darkPrimary50Color"),
+            "darkPrimary200Color": obj.get("darkPrimary200Color"),
+            "darkPrimary300Color": obj.get("darkPrimary300Color"),
+            "darkPrimary400Color": obj.get("darkPrimary400Color"),
+            "darkPrimary600Color": obj.get("darkPrimary600Color"),
+            "darkPrimary700Color": obj.get("darkPrimary700Color"),
+            "darkPrimary800Color": obj.get("darkPrimary800Color"),
+            "darkPrimary900Color": obj.get("darkPrimary900Color"),
+            "darkSecondary50Color": obj.get("darkSecondary50Color"),
+            "darkSecondary100Color": obj.get("darkSecondary100Color"),
+            "darkSecondary200Color": obj.get("darkSecondary200Color"),
+            "darkSecondary300Color": obj.get("darkSecondary300Color"),
+            "darkSecondary400Color": obj.get("darkSecondary400Color"),
+            "darkSecondary600Color": obj.get("darkSecondary600Color"),
+            "darkSecondary700Color": obj.get("darkSecondary700Color"),
+            "darkSecondary800Color": obj.get("darkSecondary800Color"),
+            "darkSecondary900Color": obj.get("darkSecondary900Color"),
+            "darkAccent50Color": obj.get("darkAccent50Color"),
+            "darkAccent100Color": obj.get("darkAccent100Color"),
+            "darkAccent200Color": obj.get("darkAccent200Color"),
+            "darkAccent300Color": obj.get("darkAccent300Color"),
+            "darkAccent400Color": obj.get("darkAccent400Color"),
+            "darkAccent600Color": obj.get("darkAccent600Color"),
+            "darkAccent700Color": obj.get("darkAccent700Color"),
+            "darkAccent800Color": obj.get("darkAccent800Color"),
+            "darkAccent900Color": obj.get("darkAccent900Color"),
             "darkBlackColor": obj.get("darkBlackColor"),
             "darkGray900Color": obj.get("darkGray900Color"),
             "darkGray800Color": obj.get("darkGray800Color"),

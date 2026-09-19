@@ -20,6 +20,10 @@ Name | Type | Description | Notes
 **digital_identity** | [**DigitalIdentityDTO**](DigitalIdentityDTO.md) | The digital identity of the company. | [optional] 
 **website_settings** | [**WebsiteSettingsDTO**](WebsiteSettingsDTO.md) | The website settings of the company. | [optional] 
 **billing_settings** | [**BillingSettingsDTO**](BillingSettingsDTO.md) | The billing settings of the company. | [optional] 
+**cms_version** | **int** | Which CMS serves this company: 1 &#x3D; WerkenBij, 2 &#x3D; caraer-web | [optional] 
+**cms_v2_preview_origin** | **str** | Origin of the v2 sidecar site while the live hostname is still v1 | [optional] 
+**cms_v2_project_id** | **str** |  | [optional] 
+**cms_v1_project_id** | **str** |  | [optional] 
 
 ## Example
 

@@ -37,7 +37,8 @@ class TestSettingOption(unittest.TestCase):
             return SettingOption(
                 name = '',
                 label = '',
-                help_text = ''
+                help_text = '',
+                preview = ''
             )
         else:
             return SettingOption(

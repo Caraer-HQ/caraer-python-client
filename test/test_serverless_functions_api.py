@@ -26,15 +26,15 @@ class TestServerlessFunctionsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_create4(self) -> None:
-        """Test case for create4
+    def test_create5(self) -> None:
+        """Test case for create5
 
         Create a serverless function
         """
         pass
 
-    def test_delete1(self) -> None:
-        """Test case for delete1
+    def test_delete2(self) -> None:
+        """Test case for delete2
 
         Delete a serverless function
         """
@@ -75,8 +75,8 @@ class TestServerlessFunctionsApi(unittest.TestCase):
         """
         pass
 
-    def test_update1(self) -> None:
-        """Test case for update1
+    def test_update2(self) -> None:
+        """Test case for update2
 
         Update a serverless function
         """

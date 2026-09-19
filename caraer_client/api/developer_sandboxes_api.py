@@ -329,7 +329,7 @@ class DeveloperSandboxesApi:
 
 
     @validate_call
-    def list(
+    def list1(
         self,
         _request_timeout: Union[
             None,
@@ -370,7 +370,7 @@ class DeveloperSandboxesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_serialize(
+        _param = self._list1_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -396,7 +396,7 @@ class DeveloperSandboxesApi:
 
 
     @validate_call
-    def list_with_http_info(
+    def list1_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -437,7 +437,7 @@ class DeveloperSandboxesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_serialize(
+        _param = self._list1_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -463,7 +463,7 @@ class DeveloperSandboxesApi:
 
 
     @validate_call
-    def list_without_preload_content(
+    def list1_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -504,7 +504,7 @@ class DeveloperSandboxesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_serialize(
+        _param = self._list1_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -525,7 +525,7 @@ class DeveloperSandboxesApi:
         return response_data.response
 
 
-    def _list_serialize(
+    def _list1_serialize(
         self,
         _request_auth,
         _content_type,

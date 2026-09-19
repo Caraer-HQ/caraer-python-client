@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**delete_file**](FileManagementApi.md#delete_file) | **DELETE** /api/v2/files/ | Delete file
 [**download_file**](FileManagementApi.md#download_file) | **GET** /api/v2/files/ | Download file
 [**list_files**](FileManagementApi.md#list_files) | **GET** /api/v2/files/list | List files
+[**list_library**](FileManagementApi.md#list_library) | **GET** /api/v2/files/library | List company files with metadata for the media library
 [**upload_file2**](FileManagementApi.md#upload_file2) | **POST** /api/v2/files/ | Upload files
 
 
@@ -257,6 +258,86 @@ Name | Type | Description  | Notes
 **401** | Authentication is required or the token is invalid. |  -  |
 **403** | The caller is missing a required role or scope. |  -  |
 **404** | The requested resource was not found. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_library**
+> SuccessResponseListFileListItemDTO list_library(record_uuid=record_uuid)
+
+List company files with metadata for the media library
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.success_response_list_file_list_item_dto import SuccessResponseListFileListItemDTO
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.FileManagementApi(api_client)
+    record_uuid = 'record_uuid_example' # str |  (optional)
+
+    try:
+        # List company files with metadata for the media library
+        api_response = api_instance.list_library(record_uuid=record_uuid)
+        print("The response of FileManagementApi->list_library:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FileManagementApi->list_library: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **record_uuid** | **str**|  | [optional] 
+
+### Return type
+
+[**SuccessResponseListFileListItemDTO**](SuccessResponseListFileListItemDTO.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

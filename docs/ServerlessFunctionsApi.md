@@ -4,18 +4,18 @@ All URIs are relative to *https://v2.api.caraer.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create4**](ServerlessFunctionsApi.md#create4) | **POST** /api/v2/apps/{appUuid}/serverless-functions | Create a serverless function
-[**delete1**](ServerlessFunctionsApi.md#delete1) | **DELETE** /api/v2/apps/{appUuid}/serverless-functions/{uuid} | Delete a serverless function
+[**create5**](ServerlessFunctionsApi.md#create5) | **POST** /api/v2/apps/{appUuid}/serverless-functions | Create a serverless function
+[**delete2**](ServerlessFunctionsApi.md#delete2) | **DELETE** /api/v2/apps/{appUuid}/serverless-functions/{uuid} | Delete a serverless function
 [**index2**](ServerlessFunctionsApi.md#index2) | **POST** /api/v2/apps/{appUuid}/serverless-functions/index | List serverless functions for an app
 [**logs**](ServerlessFunctionsApi.md#logs) | **GET** /api/v2/apps/{appUuid}/serverless-functions/{uuid}/logs | Get serverless function logs
 [**sample_payload**](ServerlessFunctionsApi.md#sample_payload) | **POST** /api/v2/apps/{appUuid}/serverless-functions/sample-payload | Generate a sample webhook payload
 [**show1**](ServerlessFunctionsApi.md#show1) | **GET** /api/v2/apps/{appUuid}/serverless-functions/{uuid} | Get a serverless function
 [**test_serverless_function**](ServerlessFunctionsApi.md#test_serverless_function) | **POST** /api/v2/apps/{appUuid}/serverless-functions/{uuid}/test | Test a serverless function
-[**update1**](ServerlessFunctionsApi.md#update1) | **PUT** /api/v2/apps/{appUuid}/serverless-functions/{uuid} | Update a serverless function
+[**update2**](ServerlessFunctionsApi.md#update2) | **PUT** /api/v2/apps/{appUuid}/serverless-functions/{uuid} | Update a serverless function
 
 
-# **create4**
-> CreateResponse create4(app_uuid, serverless_function_dto)
+# **create5**
+> CreateResponse create5(app_uuid, serverless_function_dto)
 
 Create a serverless function
 
@@ -57,11 +57,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Create a serverless function
-        api_response = api_instance.create4(app_uuid, serverless_function_dto)
-        print("The response of ServerlessFunctionsApi->create4:\n")
+        api_response = api_instance.create5(app_uuid, serverless_function_dto)
+        print("The response of ServerlessFunctionsApi->create5:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ServerlessFunctionsApi->create4: %s\n" % e)
+        print("Exception when calling ServerlessFunctionsApi->create5: %s\n" % e)
 ```
 
 
@@ -100,8 +100,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete1**
-> DeleteResponse delete1(app_uuid, uuid)
+# **delete2**
+> DeleteResponse delete2(app_uuid, uuid)
 
 Delete a serverless function
 
@@ -142,11 +142,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete a serverless function
-        api_response = api_instance.delete1(app_uuid, uuid)
-        print("The response of ServerlessFunctionsApi->delete1:\n")
+        api_response = api_instance.delete2(app_uuid, uuid)
+        print("The response of ServerlessFunctionsApi->delete2:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ServerlessFunctionsApi->delete1: %s\n" % e)
+        print("Exception when calling ServerlessFunctionsApi->delete2: %s\n" % e)
 ```
 
 
@@ -616,8 +616,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update1**
-> ShowResponseServerlessFunctionDTO update1(app_uuid, uuid, serverless_function_dto)
+# **update2**
+> ShowResponseServerlessFunctionDTO update2(app_uuid, uuid, serverless_function_dto)
 
 Update a serverless function
 
@@ -660,11 +660,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Update a serverless function
-        api_response = api_instance.update1(app_uuid, uuid, serverless_function_dto)
-        print("The response of ServerlessFunctionsApi->update1:\n")
+        api_response = api_instance.update2(app_uuid, uuid, serverless_function_dto)
+        print("The response of ServerlessFunctionsApi->update2:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ServerlessFunctionsApi->update1: %s\n" % e)
+        print("Exception when calling ServerlessFunctionsApi->update2: %s\n" % e)
 ```
 
 

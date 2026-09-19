@@ -46,6 +46,8 @@ class WebpageDTO(BaseModel):
     sidebar: Optional[PreviewDTO] = Field(default=None, description="Preview of the sidebar")
     sidebar_relation: Optional[RelationDTO] = Field(default=None, description="Relation of the sidebar", alias="sidebarRelation")
     sidebar_object: Optional[CaraerObjectDTO] = Field(default=None, description="Object of the sidebar", alias="sidebarObject")
+    floating_action_bar_module_uuid: Optional[StrictStr] = Field(default=None, description="UUID of the CMS module rendered as a floating action bar on this page. Null or empty disables the bar.", alias="floatingActionBarModuleUuid")
+    floating_action_bar: Optional[PageContentDTO] = Field(default=None, description="Hydrated module tree for the floating action bar. Set only on public page responses.", alias="floatingActionBar")
     object: Optional[CaraerObjectDTO] = Field(default=None, description="The Object object associated with the webpage, representing application data.")
     record: Optional[WebpagePublicRecordDTO] = Field(default=None, description="Webpage-public backing record values (internal + parsed). Set only on public page responses.")
     options: Optional[WebpageOptionsDTO] = Field(default=None, description="Custom options and configurations specific to the webpage.")
@@ -58,7 +60,7 @@ class WebpageDTO(BaseModel):
     unpublish_at: Optional[StrictInt] = Field(default=None, description="Scheduled timestamp for when the webpage will be unpublished", alias="unpublishAt", json_schema_extra={"examples": [1686702457000]})
     is_published: Optional[StrictBool] = Field(default=False, description="Flag indicating whether the webpage is currently published", alias="isPublished")
     live_url: Optional[StrictStr] = Field(default=None, description="Fully qualified public URL of the webpage, including the page trait root slug.", alias="liveUrl", json_schema_extra={"examples": ["https://example.com/blog/my-page"]})
-    __properties: ClassVar[List[str]] = ["environment", "uuid", "title", "excerpt", "slug", "image", "customCss", "customJsHead", "customJsBody", "content", "sidebar", "sidebarRelation", "sidebarObject", "object", "record", "options", "metaData", "publishedBy", "publishedAt", "unpublishedBy", "unpublishedAt", "publishAt", "unpublishAt", "isPublished", "liveUrl"]
+    __properties: ClassVar[List[str]] = ["environment", "uuid", "title", "excerpt", "slug", "image", "customCss", "customJsHead", "customJsBody", "content", "sidebar", "sidebarRelation", "sidebarObject", "floatingActionBarModuleUuid", "floatingActionBar", "object", "record", "options", "metaData", "publishedBy", "publishedAt", "unpublishedBy", "unpublishedAt", "publishAt", "unpublishAt", "isPublished", "liveUrl"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -111,6 +113,9 @@ class WebpageDTO(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of sidebar_object
         if self.sidebar_object:
             _dict['sidebarObject'] = self.sidebar_object.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of floating_action_bar
+        if self.floating_action_bar:
+            _dict['floatingActionBar'] = self.floating_action_bar.to_dict()
         # override the default output from pydantic by calling `to_dict()` of object
         if self.object:
             _dict['object'] = self.object.to_dict()
@@ -145,6 +150,8 @@ class WebpageDTO(BaseModel):
             "sidebar": PreviewDTO.from_dict(obj["sidebar"]) if obj.get("sidebar") is not None else None,
             "sidebarRelation": RelationDTO.from_dict(obj["sidebarRelation"]) if obj.get("sidebarRelation") is not None else None,
             "sidebarObject": CaraerObjectDTO.from_dict(obj["sidebarObject"]) if obj.get("sidebarObject") is not None else None,
+            "floatingActionBarModuleUuid": obj.get("floatingActionBarModuleUuid"),
+            "floatingActionBar": PageContentDTO.from_dict(obj["floatingActionBar"]) if obj.get("floatingActionBar") is not None else None,
             "object": CaraerObjectDTO.from_dict(obj["object"]) if obj.get("object") is not None else None,
             "record": WebpagePublicRecordDTO.from_dict(obj["record"]) if obj.get("record") is not None else None,
             "options": WebpageOptionsDTO.from_dict(obj["options"]) if obj.get("options") is not None else None,

@@ -53,7 +53,8 @@ class TestPropertyDTOFormat(unittest.TestCase):
                             caraer_client.models.setting_option.SettingOption(
                                 name = '', 
                                 label = '', 
-                                help_text = '', )
+                                help_text = '', 
+                                preview = '', )
                             ], 
                         value = null, 
                         default_value = null, )

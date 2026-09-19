@@ -48,7 +48,7 @@ class ServerlessFunctionsApi:
 
 
     @validate_call
-    def create4(
+    def create5(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app to attach the serverless function to")],
         serverless_function_dto: Annotated[ServerlessFunctionDTO, Field(description="Serverless function payload (runtime and code)")],
@@ -95,7 +95,7 @@ class ServerlessFunctionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create4_serialize(
+        _param = self._create5_serialize(
             app_uuid=app_uuid,
             serverless_function_dto=serverless_function_dto,
             _request_auth=_request_auth,
@@ -124,7 +124,7 @@ class ServerlessFunctionsApi:
 
 
     @validate_call
-    def create4_with_http_info(
+    def create5_with_http_info(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app to attach the serverless function to")],
         serverless_function_dto: Annotated[ServerlessFunctionDTO, Field(description="Serverless function payload (runtime and code)")],
@@ -171,7 +171,7 @@ class ServerlessFunctionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create4_serialize(
+        _param = self._create5_serialize(
             app_uuid=app_uuid,
             serverless_function_dto=serverless_function_dto,
             _request_auth=_request_auth,
@@ -200,7 +200,7 @@ class ServerlessFunctionsApi:
 
 
     @validate_call
-    def create4_without_preload_content(
+    def create5_without_preload_content(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app to attach the serverless function to")],
         serverless_function_dto: Annotated[ServerlessFunctionDTO, Field(description="Serverless function payload (runtime and code)")],
@@ -247,7 +247,7 @@ class ServerlessFunctionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create4_serialize(
+        _param = self._create5_serialize(
             app_uuid=app_uuid,
             serverless_function_dto=serverless_function_dto,
             _request_auth=_request_auth,
@@ -271,7 +271,7 @@ class ServerlessFunctionsApi:
         return response_data.response
 
 
-    def _create4_serialize(
+    def _create5_serialize(
         self,
         app_uuid,
         serverless_function_dto,
@@ -352,7 +352,7 @@ class ServerlessFunctionsApi:
 
 
     @validate_call
-    def delete1(
+    def delete2(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app")],
         uuid: Annotated[StrictStr, Field(description="UUID of the serverless function to delete")],
@@ -399,7 +399,7 @@ class ServerlessFunctionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete1_serialize(
+        _param = self._delete2_serialize(
             app_uuid=app_uuid,
             uuid=uuid,
             _request_auth=_request_auth,
@@ -427,7 +427,7 @@ class ServerlessFunctionsApi:
 
 
     @validate_call
-    def delete1_with_http_info(
+    def delete2_with_http_info(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app")],
         uuid: Annotated[StrictStr, Field(description="UUID of the serverless function to delete")],
@@ -474,7 +474,7 @@ class ServerlessFunctionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete1_serialize(
+        _param = self._delete2_serialize(
             app_uuid=app_uuid,
             uuid=uuid,
             _request_auth=_request_auth,
@@ -502,7 +502,7 @@ class ServerlessFunctionsApi:
 
 
     @validate_call
-    def delete1_without_preload_content(
+    def delete2_without_preload_content(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app")],
         uuid: Annotated[StrictStr, Field(description="UUID of the serverless function to delete")],
@@ -549,7 +549,7 @@ class ServerlessFunctionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete1_serialize(
+        _param = self._delete2_serialize(
             app_uuid=app_uuid,
             uuid=uuid,
             _request_auth=_request_auth,
@@ -572,7 +572,7 @@ class ServerlessFunctionsApi:
         return response_data.response
 
 
-    def _delete1_serialize(
+    def _delete2_serialize(
         self,
         app_uuid,
         uuid,
@@ -2177,7 +2177,7 @@ class ServerlessFunctionsApi:
 
 
     @validate_call
-    def update1(
+    def update2(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app")],
         uuid: Annotated[StrictStr, Field(description="UUID of the serverless function to update")],
@@ -2227,7 +2227,7 @@ class ServerlessFunctionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update1_serialize(
+        _param = self._update2_serialize(
             app_uuid=app_uuid,
             uuid=uuid,
             serverless_function_dto=serverless_function_dto,
@@ -2256,7 +2256,7 @@ class ServerlessFunctionsApi:
 
 
     @validate_call
-    def update1_with_http_info(
+    def update2_with_http_info(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app")],
         uuid: Annotated[StrictStr, Field(description="UUID of the serverless function to update")],
@@ -2306,7 +2306,7 @@ class ServerlessFunctionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update1_serialize(
+        _param = self._update2_serialize(
             app_uuid=app_uuid,
             uuid=uuid,
             serverless_function_dto=serverless_function_dto,
@@ -2335,7 +2335,7 @@ class ServerlessFunctionsApi:
 
 
     @validate_call
-    def update1_without_preload_content(
+    def update2_without_preload_content(
         self,
         app_uuid: Annotated[StrictStr, Field(description="UUID of the app")],
         uuid: Annotated[StrictStr, Field(description="UUID of the serverless function to update")],
@@ -2385,7 +2385,7 @@ class ServerlessFunctionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update1_serialize(
+        _param = self._update2_serialize(
             app_uuid=app_uuid,
             uuid=uuid,
             serverless_function_dto=serverless_function_dto,
@@ -2409,7 +2409,7 @@ class ServerlessFunctionsApi:
         return response_data.response
 
 
-    def _update1_serialize(
+    def _update2_serialize(
         self,
         app_uuid,
         uuid,

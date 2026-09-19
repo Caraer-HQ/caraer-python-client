@@ -141,6 +141,10 @@ class TestWebsiteSettingsDTO(unittest.TestCase):
                 footer_company_text = '',
                 custom_footer_enabled = True,
                 custom_footer_module_uuid = '',
+                cms_header_module = '',
+                cms_footer_module = '',
+                cms_cookie_banner_module = '',
+                cms_module_defaults = '',
                 footer_background_color = '',
                 footer_foreground_color = '',
                 footer_show_social_buttons = True,
@@ -220,6 +224,11 @@ class TestWebsiteSettingsDTO(unittest.TestCase):
                     tablet = null, 
                     desktop = null, ),
                 video_styling = caraer_client.models.page_content_styling_dto.PageContentStylingDTO(
+                    all = null, 
+                    mobile = null, 
+                    tablet = null, 
+                    desktop = null, ),
+                map_styling = caraer_client.models.page_content_styling_dto.PageContentStylingDTO(
                     all = null, 
                     mobile = null, 
                     tablet = null, 

@@ -47,7 +47,11 @@ class CompanyDTO(BaseModel):
     digital_identity: Optional[DigitalIdentityDTO] = Field(default=None, description="The digital identity of the company.", alias="digitalIdentity")
     website_settings: Optional[WebsiteSettingsDTO] = Field(default=None, description="The website settings of the company.", alias="websiteSettings")
     billing_settings: Optional[BillingSettingsDTO] = Field(default=None, description="The billing settings of the company.", alias="billingSettings")
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "details", "digitalIdentity", "websiteSettings", "billingSettings"]
+    cms_version: Optional[StrictInt] = Field(default=None, description="Which CMS serves this company: 1 = WerkenBij, 2 = caraer-web", alias="cmsVersion")
+    cms_v2_preview_origin: Optional[StrictStr] = Field(default=None, description="Origin of the v2 sidecar site while the live hostname is still v1", alias="cmsV2PreviewOrigin")
+    cms_v2_project_id: Optional[StrictStr] = Field(default=None, alias="cmsV2ProjectId")
+    cms_v1_project_id: Optional[StrictStr] = Field(default=None, alias="cmsV1ProjectId")
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "details", "digitalIdentity", "websiteSettings", "billingSettings", "cmsVersion", "cmsV2PreviewOrigin", "cmsV2ProjectId", "cmsV1ProjectId"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -134,7 +138,11 @@ class CompanyDTO(BaseModel):
             "details": CompanyDetailsDTO.from_dict(obj["details"]) if obj.get("details") is not None else None,
             "digitalIdentity": DigitalIdentityDTO.from_dict(obj["digitalIdentity"]) if obj.get("digitalIdentity") is not None else None,
             "websiteSettings": WebsiteSettingsDTO.from_dict(obj["websiteSettings"]) if obj.get("websiteSettings") is not None else None,
-            "billingSettings": BillingSettingsDTO.from_dict(obj["billingSettings"]) if obj.get("billingSettings") is not None else None
+            "billingSettings": BillingSettingsDTO.from_dict(obj["billingSettings"]) if obj.get("billingSettings") is not None else None,
+            "cmsVersion": obj.get("cmsVersion"),
+            "cmsV2PreviewOrigin": obj.get("cmsV2PreviewOrigin"),
+            "cmsV2ProjectId": obj.get("cmsV2ProjectId"),
+            "cmsV1ProjectId": obj.get("cmsV1ProjectId")
         })
         return _obj
 

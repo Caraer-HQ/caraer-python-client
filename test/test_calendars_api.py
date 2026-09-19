@@ -33,15 +33,15 @@ class TestCalendarsApi(unittest.TestCase):
         """
         pass
 
-    def test_create3(self) -> None:
-        """Test case for create3
+    def test_create4(self) -> None:
+        """Test case for create4
 
         Create a calendar owned by the current user
         """
         pass
 
-    def test_list1(self) -> None:
-        """Test case for list1
+    def test_list3(self) -> None:
+        """Test case for list3
 
         List calendars visible to the current company
         """
