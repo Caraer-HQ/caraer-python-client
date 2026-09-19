@@ -180,6 +180,13 @@ class TestCMSV2PagesApi(unittest.TestCase):
         """
         pass
 
+    def test_update_module_fork_fields(self) -> None:
+        """Test case for update_module_fork_fields
+
+        Preview field values on the forked module
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
