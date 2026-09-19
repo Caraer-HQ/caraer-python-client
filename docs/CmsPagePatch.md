@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **op** | **str** |  | [optional] 
 **module_id** | **str** |  | [optional] 
+**ref** | **str** |  | [optional] 
 **var_field** | **str** |  | [optional] 
 **value** | **object** |  | [optional] 
 **fields** | **Dict[str, Optional[object]]** |  | [optional] 

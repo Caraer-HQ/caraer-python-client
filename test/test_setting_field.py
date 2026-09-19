@@ -50,8 +50,8 @@ class TestSettingField(unittest.TestCase):
                         help_text = '', 
                         preview = '', )
                     ],
-                default_value = None,
-                value = None
+                value = None,
+                default_value = None
             )
         else:
             return SettingField(

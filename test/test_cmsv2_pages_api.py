@@ -40,6 +40,13 @@ class TestCMSV2PagesApi(unittest.TestCase):
         """
         pass
 
+    def test_discard_module_fork(self) -> None:
+        """Test case for discard_module_fork
+
+        Discard a Modify-this-module playground session
+        """
+        pass
+
     def test_ensure_not_found(self) -> None:
         """Test case for ensure_not_found
 
@@ -103,6 +110,13 @@ class TestCMSV2PagesApi(unittest.TestCase):
         """
         pass
 
+    def test_prompt_module_fork(self) -> None:
+        """Test case for prompt_module_fork
+
+        Rewrite forked module source from a prompt
+        """
+        pass
+
     def test_publish(self) -> None:
         """Test case for publish
 
@@ -131,10 +145,24 @@ class TestCMSV2PagesApi(unittest.TestCase):
         """
         pass
 
+    def test_save_module_fork(self) -> None:
+        """Test case for save_module_fork
+
+        Publish the forked module into a private app
+        """
+        pass
+
     def test_save_template(self) -> None:
         """Test case for save_template
 
         Replace a CMS v2 object template
+        """
+        pass
+
+    def test_start_module_fork(self) -> None:
+        """Test case for start_module_fork
+
+        Start a Modify-this-module playground session
         """
         pass
 

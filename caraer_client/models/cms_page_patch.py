@@ -30,6 +30,7 @@ class CmsPagePatch(BaseModel):
     """ # noqa: E501
     op: Optional[StrictStr] = None
     module_id: Optional[StrictStr] = Field(default=None, alias="moduleId")
+    ref: Optional[StrictStr] = None
     var_field: Optional[StrictStr] = Field(default=None, alias="field")
     value: Optional[Any] = None
     fields: Optional[Dict[str, Any]] = None
@@ -39,7 +40,7 @@ class CmsPagePatch(BaseModel):
     hidden: Optional[StrictBool] = None
     modules: Optional[List[CmsPageModuleInstance]] = None
     seo: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["op", "moduleId", "field", "value", "fields", "module", "index", "toIndex", "hidden", "modules", "seo"]
+    __properties: ClassVar[List[str]] = ["op", "moduleId", "ref", "field", "value", "fields", "module", "index", "toIndex", "hidden", "modules", "seo"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -108,6 +109,7 @@ class CmsPagePatch(BaseModel):
         _obj = cls.model_validate({
             "op": obj.get("op"),
             "moduleId": obj.get("moduleId"),
+            "ref": obj.get("ref"),
             "field": obj.get("field"),
             "value": obj.get("value"),
             "fields": obj.get("fields"),
