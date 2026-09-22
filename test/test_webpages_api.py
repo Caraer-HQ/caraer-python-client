@@ -215,6 +215,20 @@ class TestWebpagesApi(unittest.TestCase):
         """
         pass
 
+    def test_publish_file(self) -> None:
+        """Test case for publish_file
+
+        Publish a library file for a webpage
+        """
+        pass
+
+    def test_publish_file1(self) -> None:
+        """Test case for publish_file1
+
+        Publish a library file for a webpage
+        """
+        pass
+
     def test_publish_webpage(self) -> None:
         """Test case for publish_webpage
 
