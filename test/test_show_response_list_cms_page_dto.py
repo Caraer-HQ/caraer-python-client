@@ -65,7 +65,8 @@ class TestShowResponseListCmsPageDTO(unittest.TestCase):
                             excerpt = '', 
                             css = '', 
                             head_js = '', 
-                            body_js = '', ), 
+                            body_js = '', 
+                            related_to_template = True, ), 
                         record = caraer_client.models.record_summary.RecordSummary(
                             uuid = '', 
                             object = '', 

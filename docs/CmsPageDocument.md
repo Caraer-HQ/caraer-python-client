@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **css** | **str** |  | [optional] 
 **head_js** | **str** |  | [optional] 
 **body_js** | **str** |  | [optional] 
+**related_to_template** | **bool** |  | [optional] 
 
 ## Example
 

@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from caraer_client.models.cms_page_module_instance import CmsPageModuleInstance
 from typing import Optional, Set
@@ -38,7 +38,8 @@ class CmsPageDocument(BaseModel):
     css: Optional[StrictStr] = None
     head_js: Optional[StrictStr] = Field(default=None, alias="headJs")
     body_js: Optional[StrictStr] = Field(default=None, alias="bodyJs")
-    __properties: ClassVar[List[str]] = ["version", "revision", "modules", "seo", "title", "slug", "excerpt", "css", "headJs", "bodyJs"]
+    related_to_template: Optional[StrictBool] = Field(default=None, alias="relatedToTemplate")
+    __properties: ClassVar[List[str]] = ["version", "revision", "modules", "seo", "title", "slug", "excerpt", "css", "headJs", "bodyJs", "relatedToTemplate"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -106,7 +107,8 @@ class CmsPageDocument(BaseModel):
             "excerpt": obj.get("excerpt"),
             "css": obj.get("css"),
             "headJs": obj.get("headJs"),
-            "bodyJs": obj.get("bodyJs")
+            "bodyJs": obj.get("bodyJs"),
+            "relatedToTemplate": obj.get("relatedToTemplate")
         })
         return _obj
 
