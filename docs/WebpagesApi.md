@@ -31,8 +31,7 @@ Method | HTTP request | Description
 [**get_webpage_editing_status**](WebpagesApi.md#get_webpage_editing_status) | **GET** /api/v2/webpages/{uuid}/editing-status | Check if a webpage is being edited
 [**get_webpage_picker_pages**](WebpagesApi.md#get_webpage_picker_pages) | **GET** /api/v2/webpages/picker/pages | List webpages for picker dropdowns
 [**list_protection_grants**](WebpagesApi.md#list_protection_grants) | **GET** /api/v2/webpages/{uuid}/protection/grants | List signed URL grants for a webpage
-[**publish_file**](WebpagesApi.md#publish_file) | **POST** /api/v2/webpages/{uuid}/publishFile | Publish a library file for a webpage
-[**publish_file1**](WebpagesApi.md#publish_file1) | **POST** /api/v2/webpages/publishFile | Publish a library file for a webpage
+[**publish_file**](WebpagesApi.md#publish_file) | **POST** /api/v2/webpages/publishFile | Public URL for a library file
 [**publish_webpage**](WebpagesApi.md#publish_webpage) | **PUT** /api/v2/webpages/{uuid}/publish | Publish a webpage
 [**release_template_webpage_editing_session**](WebpagesApi.md#release_template_webpage_editing_session) | **DELETE** /api/v2/webpages/template/{objectName}/{environment}/editing-session | Release a template webpage editing session
 [**release_webpage_editing_session**](WebpagesApi.md#release_webpage_editing_session) | **DELETE** /api/v2/webpages/{uuid}/editing-session | Release a webpage editing session
@@ -2403,11 +2402,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publish_file**
-> SuccessResponseString publish_file(uuid, key)
+> SuccessResponseString publish_file(key)
 
-Publish a library file for a webpage
+Public URL for a library file
 
-Copies an existing company file into this webpage's public attachments folder and returns its public URL.
+Makes an existing company file public and returns its stable public URL. The file is not copied and is not tied to a webpage.
 
 ### Example
 
@@ -2439,99 +2438,15 @@ configuration = caraer_client.Configuration(
 with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.WebpagesApi(api_client)
-    uuid = 'uuid_example' # str | 
     key = 'key_example' # str | 
 
     try:
-        # Publish a library file for a webpage
-        api_response = api_instance.publish_file(uuid, key)
+        # Public URL for a library file
+        api_response = api_instance.publish_file(key)
         print("The response of WebpagesApi->publish_file:\n")
         pprint(api_response)
     except Exception as e:
         print("Exception when calling WebpagesApi->publish_file: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **uuid** | **str**|  | 
- **key** | **str**|  | 
-
-### Return type
-
-[**SuccessResponseString**](SuccessResponseString.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**401** | Authentication is required or the token is invalid. |  -  |
-**403** | The caller is missing a required role or scope. |  -  |
-**404** | The requested resource was not found. |  -  |
-**500** | An internal server error occurred. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **publish_file1**
-> SuccessResponseString publish_file1(key)
-
-Publish a library file for a webpage
-
-Copies an existing company file into the public webpage attachments folder and returns its public URL.
-
-### Example
-
-* Bearer (Opaque) Authentication (bearerAuth):
-
-```python
-import caraer_client
-from caraer_client.models.success_response_string import SuccessResponseString
-from caraer_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://v2.api.caraer.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = caraer_client.Configuration(
-    host = "https://v2.api.caraer.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (Opaque): bearerAuth
-configuration = caraer_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with caraer_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = caraer_client.WebpagesApi(api_client)
-    key = 'key_example' # str | 
-
-    try:
-        # Publish a library file for a webpage
-        api_response = api_instance.publish_file1(key)
-        print("The response of WebpagesApi->publish_file1:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling WebpagesApi->publish_file1: %s\n" % e)
 ```
 
 
