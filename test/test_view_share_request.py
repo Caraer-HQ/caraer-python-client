@@ -49,17 +49,6 @@ class TestViewShareRequest(unittest.TestCase):
                         deleted = True, 
                         complete = True, 
                         uuid = '0', 
-                        properties = [
-                            caraer_client.models.filled_property.FilledProperty(
-                                icon = '', 
-                                name = '', 
-                                value = null, 
-                                type = '', 
-                                label = '', )
-                            ], 
-                        objects = {
-                            'key' : null
-                            }, 
                         user = caraer_client.models.public_user_dto.PublicUserDTO(
                             uuid = '', 
                             email = '', 
@@ -89,7 +78,29 @@ class TestViewShareRequest(unittest.TestCase):
                                 index = 56, 
                                 deleted = True, 
                                 complete = True, 
-                                uuid = '0', ), ), )
+                                uuid = '0', 
+                                properties = [
+                                    caraer_client.models.filled_property.FilledProperty(
+                                        icon = '', 
+                                        name = '', 
+                                        value = null, 
+                                        type = '', 
+                                        label = '', )
+                                    ], 
+                                objects = {
+                                    'key' : null
+                                    }, ), ), 
+                        properties = [
+                            caraer_client.models.filled_property.FilledProperty(
+                                icon = '', 
+                                name = '', 
+                                value = null, 
+                                type = '', 
+                                label = '', )
+                            ], 
+                        objects = {
+                            'key' : null
+                            }, )
                     ],
                 teams = [
                     caraer_client.models.record.Record(
@@ -105,17 +116,6 @@ class TestViewShareRequest(unittest.TestCase):
                         deleted = True, 
                         complete = True, 
                         uuid = '0', 
-                        properties = [
-                            caraer_client.models.filled_property.FilledProperty(
-                                icon = '', 
-                                name = '', 
-                                value = null, 
-                                type = '', 
-                                label = '', )
-                            ], 
-                        objects = {
-                            'key' : null
-                            }, 
                         user = caraer_client.models.public_user_dto.PublicUserDTO(
                             uuid = '', 
                             email = '', 
@@ -145,7 +145,29 @@ class TestViewShareRequest(unittest.TestCase):
                                 index = 56, 
                                 deleted = True, 
                                 complete = True, 
-                                uuid = '0', ), ), )
+                                uuid = '0', 
+                                properties = [
+                                    caraer_client.models.filled_property.FilledProperty(
+                                        icon = '', 
+                                        name = '', 
+                                        value = null, 
+                                        type = '', 
+                                        label = '', )
+                                    ], 
+                                objects = {
+                                    'key' : null
+                                    }, ), ), 
+                        properties = [
+                            caraer_client.models.filled_property.FilledProperty(
+                                icon = '', 
+                                name = '', 
+                                value = null, 
+                                type = '', 
+                                label = '', )
+                            ], 
+                        objects = {
+                            'key' : null
+                            }, )
                     ],
                 is_internally_public = True
             )
