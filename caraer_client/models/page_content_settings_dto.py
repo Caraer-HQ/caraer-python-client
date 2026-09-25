@@ -78,13 +78,16 @@ class PageContentSettingsDTO(BaseModel):
     cta_text: Optional[StrictStr] = Field(default=None, description="The text of the CTA", alias="ctaText")
     cta_button_text: Optional[StrictStr] = Field(default=None, description="The button text of the CTA", alias="ctaButtonText")
     cta_button_link: Optional[StrictStr] = Field(default=None, description="The button link of the CTA", alias="ctaButtonLink")
+    target_page_path: Optional[StrictStr] = Field(default=None, description="Public path of the page that owns the linked preview, for the search component", alias="targetPagePath")
+    target_page_uuid: Optional[StrictStr] = Field(default=None, description="Webpage uuid of the page that owns the linked preview", alias="targetPageUuid")
+    target_preview_uuid: Optional[StrictStr] = Field(default=None, description="Page content uuid of the preview component the search component links to", alias="targetPreviewUuid")
     platforms: Optional[List[StrictStr]] = Field(default=None, description="The platforms shown in the share component")
     map_latitude: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Latitude for the map component", alias="mapLatitude")
     map_longitude: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Longitude for the map component", alias="mapLongitude")
     map_locations: Optional[List[MapLocationDTO]] = Field(default=None, description="Multiple map markers", alias="mapLocations")
     distance_filter_enabled: Optional[StrictBool] = Field(default=None, description="Show a public distance-from-location filter on this map", alias="distanceFilterEnabled")
     location_contains_filter_enabled: Optional[StrictBool] = Field(default=None, description="Show a public contains filter for city, street, or postcode on this map", alias="locationContainsFilterEnabled")
-    __properties: ClassVar[List[str]] = ["form", "openIcon", "closeIcon", "alt", "key", "playVideo", "startMuted", "loopVideo", "startOffset", "link", "style", "ctaId", "openInNewWindow", "sliderType", "carouselSpeed", "enableControls", "previewObject", "previews", "previewLayoutOrder", "filter", "orderBy", "orderByDirection", "asWebpages", "loop", "limit", "groupBy", "hideOnNoResults", "filterType", "searchResultSingleString", "searchResultPluralString", "noResultsString", "searchFieldEnabled", "searchFieldPlaceholder", "filterBlockEnabled", "filterTitle", "filterSubtitle", "filterProperties", "enableFilterTiles", "enableFilterQuery", "enableRemoveAllFiltersButton", "ctaEnabled", "ctaTitle", "ctaText", "ctaButtonText", "ctaButtonLink", "platforms", "mapLatitude", "mapLongitude", "mapLocations", "distanceFilterEnabled", "locationContainsFilterEnabled"]
+    __properties: ClassVar[List[str]] = ["form", "openIcon", "closeIcon", "alt", "key", "playVideo", "startMuted", "loopVideo", "startOffset", "link", "style", "ctaId", "openInNewWindow", "sliderType", "carouselSpeed", "enableControls", "previewObject", "previews", "previewLayoutOrder", "filter", "orderBy", "orderByDirection", "asWebpages", "loop", "limit", "groupBy", "hideOnNoResults", "filterType", "searchResultSingleString", "searchResultPluralString", "noResultsString", "searchFieldEnabled", "searchFieldPlaceholder", "filterBlockEnabled", "filterTitle", "filterSubtitle", "filterProperties", "enableFilterTiles", "enableFilterQuery", "enableRemoveAllFiltersButton", "ctaEnabled", "ctaTitle", "ctaText", "ctaButtonText", "ctaButtonLink", "targetPagePath", "targetPageUuid", "targetPreviewUuid", "platforms", "mapLatitude", "mapLongitude", "mapLocations", "distanceFilterEnabled", "locationContainsFilterEnabled"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -220,6 +223,9 @@ class PageContentSettingsDTO(BaseModel):
             "ctaText": obj.get("ctaText"),
             "ctaButtonText": obj.get("ctaButtonText"),
             "ctaButtonLink": obj.get("ctaButtonLink"),
+            "targetPagePath": obj.get("targetPagePath"),
+            "targetPageUuid": obj.get("targetPageUuid"),
+            "targetPreviewUuid": obj.get("targetPreviewUuid"),
             "platforms": obj.get("platforms"),
             "mapLatitude": obj.get("mapLatitude"),
             "mapLongitude": obj.get("mapLongitude"),

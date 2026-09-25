@@ -586,6 +586,9 @@ class TestPageContentSettingsDTO(unittest.TestCase):
                 cta_text = '',
                 cta_button_text = '',
                 cta_button_link = '',
+                target_page_path = '',
+                target_page_uuid = '',
+                target_preview_uuid = '',
                 platforms = [
                     ''
                     ],
