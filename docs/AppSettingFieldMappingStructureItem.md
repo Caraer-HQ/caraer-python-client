@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **relation_name** | **str** |  | [optional] 
 **object_name** | **str** |  | [optional] 
 **record_uuid** | **str** |  | [optional] 
+**format_pattern** | **str** |  | [optional] 
+**format_replacement** | **str** |  | [optional] 
 
 ## Example
 

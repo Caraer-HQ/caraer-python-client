@@ -14,10 +14,10 @@
 
 import unittest
 
-from caraer_client.models.existing_widget_summary import ExistingWidgetSummary
+from caraer_client.models.feed_format_preview_request import FeedFormatPreviewRequest
 
-class TestExistingWidgetSummary(unittest.TestCase):
-    """ExistingWidgetSummary unit test stubs"""
+class TestFeedFormatPreviewRequest(unittest.TestCase):
+    """FeedFormatPreviewRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,32 +25,29 @@ class TestExistingWidgetSummary(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ExistingWidgetSummary:
-        """Test ExistingWidgetSummary
+    def make_instance(self, include_optional) -> FeedFormatPreviewRequest:
+        """Test FeedFormatPreviewRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ExistingWidgetSummary`
+        # uncomment below to create an instance of `FeedFormatPreviewRequest`
         """
-        model = ExistingWidgetSummary()
+        model = FeedFormatPreviewRequest()
         if include_optional:
-            return ExistingWidgetSummary(
-                xproperty = '',
-                yproperty = '',
-                ymetric = '',
-                title = '',
-                chart_type = '',
-                x_property = '',
-                y_metric = '',
-                y_property = ''
+            return FeedFormatPreviewRequest(
+                sample = '',
+                format_pattern = '',
+                format_replacement = '',
+                property_name = '',
+                object_name = ''
             )
         else:
-            return ExistingWidgetSummary(
+            return FeedFormatPreviewRequest(
         )
         """
 
-    def testExistingWidgetSummary(self):
-        """Test ExistingWidgetSummary"""
+    def testFeedFormatPreviewRequest(self):
+        """Test FeedFormatPreviewRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

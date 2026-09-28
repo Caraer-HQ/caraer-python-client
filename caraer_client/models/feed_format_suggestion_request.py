@@ -17,30 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from caraer_client.models.feed_dto import FeedDTO
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class AppSettingFieldMappingStructureItem(BaseModel):
+class FeedFormatSuggestionRequest(BaseModel):
     """
-    AppSettingFieldMappingStructureItem
+    FeedFormatSuggestionRequest
     """ # noqa: E501
-    field_label: Optional[StrictStr] = Field(default=None, alias="fieldLabel")
+    feed: Optional[FeedDTO] = None
     field_name: Optional[StrictStr] = Field(default=None, alias="fieldName")
-    field_help_text: Optional[StrictStr] = Field(default=None, alias="fieldHelpText")
-    is_required: Optional[StrictBool] = Field(default=None, alias="isRequired")
-    allowed_property_types: Optional[List[StrictStr]] = Field(default=None, alias="allowedPropertyTypes")
-    allowed_property_formats: Optional[List[StrictStr]] = Field(default=None, alias="allowedPropertyFormats")
     property_name: Optional[StrictStr] = Field(default=None, alias="propertyName")
-    literal_value: Optional[StrictStr] = Field(default=None, alias="literalValue")
-    relation_name: Optional[StrictStr] = Field(default=None, alias="relationName")
     object_name: Optional[StrictStr] = Field(default=None, alias="objectName")
-    record_uuid: Optional[StrictStr] = Field(default=None, alias="recordUuid")
-    format_pattern: Optional[StrictStr] = Field(default=None, alias="formatPattern")
-    format_replacement: Optional[StrictStr] = Field(default=None, alias="formatReplacement")
-    __properties: ClassVar[List[str]] = ["fieldLabel", "fieldName", "fieldHelpText", "isRequired", "allowedPropertyTypes", "allowedPropertyFormats", "propertyName", "literalValue", "relationName", "objectName", "recordUuid", "formatPattern", "formatReplacement"]
+    __properties: ClassVar[List[str]] = ["feed", "fieldName", "propertyName", "objectName"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -60,7 +52,7 @@ class AppSettingFieldMappingStructureItem(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AppSettingFieldMappingStructureItem from a JSON string"""
+        """Create an instance of FeedFormatSuggestionRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,11 +73,14 @@ class AppSettingFieldMappingStructureItem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of feed
+        if self.feed:
+            _dict['feed'] = self.feed.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AppSettingFieldMappingStructureItem from a dict"""
+        """Create an instance of FeedFormatSuggestionRequest from a dict"""
         if obj is None:
             return None
 
@@ -93,19 +88,10 @@ class AppSettingFieldMappingStructureItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "fieldLabel": obj.get("fieldLabel"),
+            "feed": FeedDTO.from_dict(obj["feed"]) if obj.get("feed") is not None else None,
             "fieldName": obj.get("fieldName"),
-            "fieldHelpText": obj.get("fieldHelpText"),
-            "isRequired": obj.get("isRequired"),
-            "allowedPropertyTypes": obj.get("allowedPropertyTypes"),
-            "allowedPropertyFormats": obj.get("allowedPropertyFormats"),
             "propertyName": obj.get("propertyName"),
-            "literalValue": obj.get("literalValue"),
-            "relationName": obj.get("relationName"),
-            "objectName": obj.get("objectName"),
-            "recordUuid": obj.get("recordUuid"),
-            "formatPattern": obj.get("formatPattern"),
-            "formatReplacement": obj.get("formatReplacement")
+            "objectName": obj.get("objectName")
         })
         return _obj
 

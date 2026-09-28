@@ -142,7 +142,9 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                                         literal_value = '', 
                                                         relation_name = '', 
                                                         object_name = '', 
-                                                        record_uuid = '', )
+                                                        record_uuid = '', 
+                                                        format_pattern = '', 
+                                                        format_replacement = '', )
                                                     ], 
                                                 record_target = True, ), 
                                             value_scope = '', 

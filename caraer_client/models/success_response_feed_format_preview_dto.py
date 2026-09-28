@@ -19,23 +19,18 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from caraer_client.models.feed_format_preview_dto import FeedFormatPreviewDTO
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ExistingWidgetSummary(BaseModel):
+class SuccessResponseFeedFormatPreviewDTO(BaseModel):
     """
-    ExistingWidgetSummary
+    Represents a standard successful response with a message and optional data.
     """ # noqa: E501
-    xproperty: Optional[StrictStr] = None
-    yproperty: Optional[StrictStr] = None
-    ymetric: Optional[StrictStr] = None
-    title: Optional[StrictStr] = None
-    chart_type: Optional[StrictStr] = Field(default=None, alias="chartType")
-    x_property: Optional[StrictStr] = Field(default=None, alias="xProperty")
-    y_metric: Optional[StrictStr] = Field(default=None, alias="yMetric")
-    y_property: Optional[StrictStr] = Field(default=None, alias="yProperty")
-    __properties: ClassVar[List[str]] = ["xproperty", "yproperty", "ymetric", "title", "chartType", "xProperty", "yMetric", "yProperty"]
+    message: Optional[StrictStr] = Field(default=None, description="A message detailing the result of the operation.", json_schema_extra={"examples": ["Success"]})
+    data: Optional[FeedFormatPreviewDTO] = Field(default=None, description="The data payload of the response, if any.")
+    __properties: ClassVar[List[str]] = ["message", "data"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -55,7 +50,7 @@ class ExistingWidgetSummary(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ExistingWidgetSummary from a JSON string"""
+        """Create an instance of SuccessResponseFeedFormatPreviewDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,11 +71,14 @@ class ExistingWidgetSummary(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of data
+        if self.data:
+            _dict['data'] = self.data.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ExistingWidgetSummary from a dict"""
+        """Create an instance of SuccessResponseFeedFormatPreviewDTO from a dict"""
         if obj is None:
             return None
 
@@ -88,14 +86,8 @@ class ExistingWidgetSummary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "xproperty": obj.get("xproperty"),
-            "yproperty": obj.get("yproperty"),
-            "ymetric": obj.get("ymetric"),
-            "title": obj.get("title"),
-            "chartType": obj.get("chartType"),
-            "xProperty": obj.get("xProperty"),
-            "yMetric": obj.get("yMetric"),
-            "yProperty": obj.get("yProperty")
+            "message": obj.get("message"),
+            "data": FeedFormatPreviewDTO.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 

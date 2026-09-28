@@ -23,24 +23,19 @@ from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class AppSettingFieldMappingStructureItem(BaseModel):
+class FeedFormatPreviewDTO(BaseModel):
     """
-    AppSettingFieldMappingStructureItem
+    FeedFormatPreviewDTO
     """ # noqa: E501
-    field_label: Optional[StrictStr] = Field(default=None, alias="fieldLabel")
-    field_name: Optional[StrictStr] = Field(default=None, alias="fieldName")
-    field_help_text: Optional[StrictStr] = Field(default=None, alias="fieldHelpText")
-    is_required: Optional[StrictBool] = Field(default=None, alias="isRequired")
-    allowed_property_types: Optional[List[StrictStr]] = Field(default=None, alias="allowedPropertyTypes")
-    allowed_property_formats: Optional[List[StrictStr]] = Field(default=None, alias="allowedPropertyFormats")
-    property_name: Optional[StrictStr] = Field(default=None, alias="propertyName")
-    literal_value: Optional[StrictStr] = Field(default=None, alias="literalValue")
-    relation_name: Optional[StrictStr] = Field(default=None, alias="relationName")
-    object_name: Optional[StrictStr] = Field(default=None, alias="objectName")
-    record_uuid: Optional[StrictStr] = Field(default=None, alias="recordUuid")
+    sample: Optional[StrictStr] = None
     format_pattern: Optional[StrictStr] = Field(default=None, alias="formatPattern")
     format_replacement: Optional[StrictStr] = Field(default=None, alias="formatReplacement")
-    __properties: ClassVar[List[str]] = ["fieldLabel", "fieldName", "fieldHelpText", "isRequired", "allowedPropertyTypes", "allowedPropertyFormats", "propertyName", "literalValue", "relationName", "objectName", "recordUuid", "formatPattern", "formatReplacement"]
+    output: Optional[StrictStr] = None
+    matches: Optional[StrictBool] = None
+    stored_value_pattern: Optional[StrictStr] = Field(default=None, alias="storedValuePattern")
+    stored_value_hint: Optional[StrictStr] = Field(default=None, alias="storedValueHint")
+    format_name: Optional[StrictStr] = Field(default=None, alias="formatName")
+    __properties: ClassVar[List[str]] = ["sample", "formatPattern", "formatReplacement", "output", "matches", "storedValuePattern", "storedValueHint", "formatName"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -60,7 +55,7 @@ class AppSettingFieldMappingStructureItem(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AppSettingFieldMappingStructureItem from a JSON string"""
+        """Create an instance of FeedFormatPreviewDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -85,7 +80,7 @@ class AppSettingFieldMappingStructureItem(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AppSettingFieldMappingStructureItem from a dict"""
+        """Create an instance of FeedFormatPreviewDTO from a dict"""
         if obj is None:
             return None
 
@@ -93,19 +88,14 @@ class AppSettingFieldMappingStructureItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "fieldLabel": obj.get("fieldLabel"),
-            "fieldName": obj.get("fieldName"),
-            "fieldHelpText": obj.get("fieldHelpText"),
-            "isRequired": obj.get("isRequired"),
-            "allowedPropertyTypes": obj.get("allowedPropertyTypes"),
-            "allowedPropertyFormats": obj.get("allowedPropertyFormats"),
-            "propertyName": obj.get("propertyName"),
-            "literalValue": obj.get("literalValue"),
-            "relationName": obj.get("relationName"),
-            "objectName": obj.get("objectName"),
-            "recordUuid": obj.get("recordUuid"),
+            "sample": obj.get("sample"),
             "formatPattern": obj.get("formatPattern"),
-            "formatReplacement": obj.get("formatReplacement")
+            "formatReplacement": obj.get("formatReplacement"),
+            "output": obj.get("output"),
+            "matches": obj.get("matches"),
+            "storedValuePattern": obj.get("storedValuePattern"),
+            "storedValueHint": obj.get("storedValueHint"),
+            "formatName": obj.get("formatName")
         })
         return _obj
 
