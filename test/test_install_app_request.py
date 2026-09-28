@@ -106,6 +106,9 @@ class TestInstallAppRequest(unittest.TestCase):
                                                 ''
                                                 ], 
                                             property_name = '', 
+                                            literal_value = '', 
+                                            relation_name = '', 
+                                            object_name = '', 
                                             record_uuid = '', )
                                         ], 
                                     record_target = True, ), 

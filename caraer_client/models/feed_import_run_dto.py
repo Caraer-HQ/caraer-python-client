@@ -17,25 +17,31 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ExistingWidgetSummary(BaseModel):
+class FeedImportRunDTO(BaseModel):
     """
-    ExistingWidgetSummary
+    FeedImportRunDTO
     """ # noqa: E501
-    yproperty: Optional[StrictStr] = None
-    ymetric: Optional[StrictStr] = None
-    xproperty: Optional[StrictStr] = None
-    title: Optional[StrictStr] = None
-    chart_type: Optional[StrictStr] = Field(default=None, alias="chartType")
-    x_property: Optional[StrictStr] = Field(default=None, alias="xProperty")
-    y_metric: Optional[StrictStr] = Field(default=None, alias="yMetric")
-    y_property: Optional[StrictStr] = Field(default=None, alias="yProperty")
-    __properties: ClassVar[List[str]] = ["yproperty", "ymetric", "xproperty", "title", "chartType", "xProperty", "yMetric", "yProperty"]
+    dry_run: Optional[StrictBool] = Field(default=None, alias="dryRun")
+    status: Optional[StrictStr] = None
+    message: Optional[StrictStr] = None
+    item_count: Optional[StrictInt] = Field(default=None, alias="itemCount")
+    created: Optional[StrictInt] = None
+    updated: Optional[StrictInt] = None
+    failed: Optional[StrictInt] = None
+    published: Optional[StrictInt] = None
+    unpublished: Optional[StrictInt] = None
+    skipped: Optional[StrictInt] = None
+    sample_incomplete: Optional[StrictBool] = Field(default=None, alias="sampleIncomplete")
+    errors: Optional[List[StrictStr]] = None
+    items: Optional[List[Dict[str, Any]]] = None
+    keys: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = ["dryRun", "status", "message", "itemCount", "created", "updated", "failed", "published", "unpublished", "skipped", "sampleIncomplete", "errors", "items", "keys"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -55,7 +61,7 @@ class ExistingWidgetSummary(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ExistingWidgetSummary from a JSON string"""
+        """Create an instance of FeedImportRunDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -80,7 +86,7 @@ class ExistingWidgetSummary(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ExistingWidgetSummary from a dict"""
+        """Create an instance of FeedImportRunDTO from a dict"""
         if obj is None:
             return None
 
@@ -88,14 +94,20 @@ class ExistingWidgetSummary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "yproperty": obj.get("yproperty"),
-            "ymetric": obj.get("ymetric"),
-            "xproperty": obj.get("xproperty"),
-            "title": obj.get("title"),
-            "chartType": obj.get("chartType"),
-            "xProperty": obj.get("xProperty"),
-            "yMetric": obj.get("yMetric"),
-            "yProperty": obj.get("yProperty")
+            "dryRun": obj.get("dryRun"),
+            "status": obj.get("status"),
+            "message": obj.get("message"),
+            "itemCount": obj.get("itemCount"),
+            "created": obj.get("created"),
+            "updated": obj.get("updated"),
+            "failed": obj.get("failed"),
+            "published": obj.get("published"),
+            "unpublished": obj.get("unpublished"),
+            "skipped": obj.get("skipped"),
+            "sampleIncomplete": obj.get("sampleIncomplete"),
+            "errors": obj.get("errors"),
+            "items": obj.get("items"),
+            "keys": obj.get("keys")
         })
         return _obj
 

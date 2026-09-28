@@ -34,8 +34,11 @@ class AppSettingFieldMappingStructureItem(BaseModel):
     allowed_property_types: Optional[List[StrictStr]] = Field(default=None, alias="allowedPropertyTypes")
     allowed_property_formats: Optional[List[StrictStr]] = Field(default=None, alias="allowedPropertyFormats")
     property_name: Optional[StrictStr] = Field(default=None, alias="propertyName")
+    literal_value: Optional[StrictStr] = Field(default=None, alias="literalValue")
+    relation_name: Optional[StrictStr] = Field(default=None, alias="relationName")
+    object_name: Optional[StrictStr] = Field(default=None, alias="objectName")
     record_uuid: Optional[StrictStr] = Field(default=None, alias="recordUuid")
-    __properties: ClassVar[List[str]] = ["fieldLabel", "fieldName", "fieldHelpText", "isRequired", "allowedPropertyTypes", "allowedPropertyFormats", "propertyName", "recordUuid"]
+    __properties: ClassVar[List[str]] = ["fieldLabel", "fieldName", "fieldHelpText", "isRequired", "allowedPropertyTypes", "allowedPropertyFormats", "propertyName", "literalValue", "relationName", "objectName", "recordUuid"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -95,6 +98,9 @@ class AppSettingFieldMappingStructureItem(BaseModel):
             "allowedPropertyTypes": obj.get("allowedPropertyTypes"),
             "allowedPropertyFormats": obj.get("allowedPropertyFormats"),
             "propertyName": obj.get("propertyName"),
+            "literalValue": obj.get("literalValue"),
+            "relationName": obj.get("relationName"),
+            "objectName": obj.get("objectName"),
             "recordUuid": obj.get("recordUuid")
         })
         return _obj

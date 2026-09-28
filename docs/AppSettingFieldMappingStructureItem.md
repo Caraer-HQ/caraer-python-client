@@ -12,6 +12,9 @@ Name | Type | Description | Notes
 **allowed_property_types** | **List[str]** |  | [optional] 
 **allowed_property_formats** | **List[str]** |  | [optional] 
 **property_name** | **str** |  | [optional] 
+**literal_value** | **str** |  | [optional] 
+**relation_name** | **str** |  | [optional] 
+**object_name** | **str** |  | [optional] 
 **record_uuid** | **str** |  | [optional] 
 
 ## Example

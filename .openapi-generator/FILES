@@ -149,6 +149,7 @@ caraer_client/models/event_rsvp_request.py
 caraer_client/models/existing_widget_summary.py
 caraer_client/models/extend_record_request.py
 caraer_client/models/feed_dto.py
+caraer_client/models/feed_import_run_dto.py
 caraer_client/models/file.py
 caraer_client/models/file_list_item_dto.py
 caraer_client/models/filled_property.py
@@ -337,6 +338,7 @@ caraer_client/models/success_response_calendar_bootstrap_dto.py
 caraer_client/models/success_response_collection_relation.py
 caraer_client/models/success_response_company_dto.py
 caraer_client/models/success_response_feed_dto.py
+caraer_client/models/success_response_feed_import_run_dto.py
 caraer_client/models/success_response_flow.py
 caraer_client/models/success_response_list_aggregate_response.py
 caraer_client/models/success_response_list_app_external_o_auth_provider_dto.py
@@ -515,6 +517,7 @@ docs/EventRsvpRequest.md
 docs/ExistingWidgetSummary.md
 docs/ExtendRecordRequest.md
 docs/FeedDTO.md
+docs/FeedImportRunDTO.md
 docs/FeedsApi.md
 docs/File.md
 docs/FileListItemDTO.md
@@ -714,6 +717,7 @@ docs/SuccessResponseCalendarBootstrapDTO.md
 docs/SuccessResponseCollectionRelation.md
 docs/SuccessResponseCompanyDTO.md
 docs/SuccessResponseFeedDTO.md
+docs/SuccessResponseFeedImportRunDTO.md
 docs/SuccessResponseFlow.md
 docs/SuccessResponseListAggregateResponse.md
 docs/SuccessResponseListAppExternalOAuthProviderDTO.md
@@ -902,6 +906,7 @@ test/test_event_rsvp_request.py
 test/test_existing_widget_summary.py
 test/test_extend_record_request.py
 test/test_feed_dto.py
+test/test_feed_import_run_dto.py
 test/test_feeds_api.py
 test/test_file.py
 test/test_file_list_item_dto.py
@@ -1101,6 +1106,7 @@ test/test_success_response_calendar_bootstrap_dto.py
 test/test_success_response_collection_relation.py
 test/test_success_response_company_dto.py
 test/test_success_response_feed_dto.py
+test/test_success_response_feed_import_run_dto.py
 test/test_success_response_flow.py
 test/test_success_response_list_aggregate_response.py
 test/test_success_response_list_app_external_o_auth_provider_dto.py

@@ -46,6 +46,9 @@ class TestAppSettingFieldMappingStructureItem(unittest.TestCase):
                     ''
                     ],
                 property_name = '',
+                literal_value = '',
+                relation_name = '',
+                object_name = '',
                 record_uuid = ''
             )
         else:

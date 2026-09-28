@@ -59,8 +59,37 @@ class TestSuccessResponseFeedDTO(unittest.TestCase):
                     parse_record = True, 
                     root_element = '', 
                     item_element = '', 
+                    item_path = '', 
                     cache_ttl_seconds = 56, 
-                    active = True, )
+                    active = True, 
+                    direction = '', 
+                    source_url = '', 
+                    source_auth_type = '', 
+                    source_auth_key = '', 
+                    source_auth_value = '', 
+                    source_auth_username = '', 
+                    import_interval = '', 
+                    publish_mode = '', 
+                    publish_environment = '', 
+                    publish_filter = null, 
+                    publish_filter_json = '', 
+                    unpublish_filter = null, 
+                    unpublish_filter_json = '', 
+                    last_import_at = 56, 
+                    last_import_status = '', 
+                    last_import_message = '', 
+                    last_import_json = '', 
+                    import_running_at = 56, 
+                    next_import_at = 56, 
+                    warnings = [
+                        ''
+                        ], 
+                    available_environments = [
+                        ''
+                        ], 
+                    sibling_import_feeds = [
+                        ''
+                        ], )
             )
         else:
             return SuccessResponseFeedDTO(
