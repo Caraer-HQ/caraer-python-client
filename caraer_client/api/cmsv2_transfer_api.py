@@ -56,7 +56,7 @@ class CMSV2TransferApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ShowResponseCompanyDTO:
-        """Attach a manually created caraer-web project
+        """Attach a project, link Caraer-HQ/caraer-web, write its v2 environment, and deploy
 
 
         :param company_uuid: (required)
@@ -130,7 +130,7 @@ class CMSV2TransferApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ShowResponseCompanyDTO]:
-        """Attach a manually created caraer-web project
+        """Attach a project, link Caraer-HQ/caraer-web, write its v2 environment, and deploy
 
 
         :param company_uuid: (required)
@@ -204,7 +204,7 @@ class CMSV2TransferApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Attach a manually created caraer-web project
+        """Attach a project, link Caraer-HQ/caraer-web, write its v2 environment, and deploy
 
 
         :param company_uuid: (required)

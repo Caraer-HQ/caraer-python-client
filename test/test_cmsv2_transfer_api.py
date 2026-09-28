@@ -29,7 +29,7 @@ class TestCMSV2TransferApi(unittest.TestCase):
     def test_attach(self) -> None:
         """Test case for attach
 
-        Attach a manually created caraer-web project
+        Attach a project, link Caraer-HQ/caraer-web, write its v2 environment, and deploy
         """
         pass
 

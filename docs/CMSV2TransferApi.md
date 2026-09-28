@@ -4,7 +4,7 @@ All URIs are relative to *https://v2.api.caraer.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**attach**](CMSV2TransferApi.md#attach) | **POST** /api/v2/company/{companyUuid}/cms-transfer/attach | Attach a manually created caraer-web project
+[**attach**](CMSV2TransferApi.md#attach) | **POST** /api/v2/company/{companyUuid}/cms-transfer/attach | Attach a project, link Caraer-HQ/caraer-web, write its v2 environment, and deploy
 [**cutover**](CMSV2TransferApi.md#cutover) | **POST** /api/v2/company/{companyUuid}/cms-transfer/cutover | Switch the live site to CMS v2: schema, caraer-web repo, and hostname
 [**rollback**](CMSV2TransferApi.md#rollback) | **POST** /api/v2/company/{companyUuid}/cms-transfer/rollback | Restore the live hostname to the stored v1 project
 [**status**](CMSV2TransferApi.md#status) | **GET** /api/v2/company/{companyUuid}/cms-transfer | Transfer status for one company
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 # **attach**
 > ShowResponseCompanyDTO attach(company_uuid, request_body)
 
-Attach a manually created caraer-web project
+Attach a project, link Caraer-HQ/caraer-web, write its v2 environment, and deploy
 
 ### Example
 
@@ -49,7 +49,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     request_body = {'key': 'request_body_example'} # Dict[str, str] | 
 
     try:
-        # Attach a manually created caraer-web project
+        # Attach a project, link Caraer-HQ/caraer-web, write its v2 environment, and deploy
         api_response = api_instance.attach(company_uuid, request_body)
         print("The response of CMSV2TransferApi->attach:\n")
         pprint(api_response)
