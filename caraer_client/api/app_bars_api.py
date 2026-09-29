@@ -48,6 +48,7 @@ class AppBarsApi:
         record_uuid: Annotated[Optional[StrictStr], Field(description="Record UUID in context")] = None,
         view_id: Annotated[Optional[StrictStr], Field(description="View ID in context")] = None,
         trait: Annotated[Optional[StrictStr], Field(description="Trait name in context")] = None,
+        suite: Annotated[Optional[StrictStr], Field(description="Suite selected in the UI. A tool bar is included when this suite is saved on the bar.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -75,6 +76,8 @@ class AppBarsApi:
         :type view_id: str
         :param trait: Trait name in context
         :type trait: str
+        :param suite: Suite selected in the UI. A tool bar is included when this suite is saved on the bar.
+        :type suite: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -103,6 +106,7 @@ class AppBarsApi:
             record_uuid=record_uuid,
             view_id=view_id,
             trait=trait,
+            suite=suite,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -136,6 +140,7 @@ class AppBarsApi:
         record_uuid: Annotated[Optional[StrictStr], Field(description="Record UUID in context")] = None,
         view_id: Annotated[Optional[StrictStr], Field(description="View ID in context")] = None,
         trait: Annotated[Optional[StrictStr], Field(description="Trait name in context")] = None,
+        suite: Annotated[Optional[StrictStr], Field(description="Suite selected in the UI. A tool bar is included when this suite is saved on the bar.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -163,6 +168,8 @@ class AppBarsApi:
         :type view_id: str
         :param trait: Trait name in context
         :type trait: str
+        :param suite: Suite selected in the UI. A tool bar is included when this suite is saved on the bar.
+        :type suite: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -191,6 +198,7 @@ class AppBarsApi:
             record_uuid=record_uuid,
             view_id=view_id,
             trait=trait,
+            suite=suite,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -224,6 +232,7 @@ class AppBarsApi:
         record_uuid: Annotated[Optional[StrictStr], Field(description="Record UUID in context")] = None,
         view_id: Annotated[Optional[StrictStr], Field(description="View ID in context")] = None,
         trait: Annotated[Optional[StrictStr], Field(description="Trait name in context")] = None,
+        suite: Annotated[Optional[StrictStr], Field(description="Suite selected in the UI. A tool bar is included when this suite is saved on the bar.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -251,6 +260,8 @@ class AppBarsApi:
         :type view_id: str
         :param trait: Trait name in context
         :type trait: str
+        :param suite: Suite selected in the UI. A tool bar is included when this suite is saved on the bar.
+        :type suite: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -279,6 +290,7 @@ class AppBarsApi:
             record_uuid=record_uuid,
             view_id=view_id,
             trait=trait,
+            suite=suite,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -307,6 +319,7 @@ class AppBarsApi:
         record_uuid,
         view_id,
         trait,
+        suite,
         _request_auth,
         _content_type,
         _headers,
@@ -348,6 +361,10 @@ class AppBarsApi:
         if trait is not None:
             
             _query_params.append(('trait', trait))
+            
+        if suite is not None:
+            
+            _query_params.append(('suite', suite))
             
         # process the header parameters
         # process the form parameters

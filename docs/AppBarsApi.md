@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **list_app_bars**
-> ShowResponseListInstalledAppBarDTO list_app_bars(location, object=object, record_uuid=record_uuid, view_id=view_id, trait=trait)
+> ShowResponseListInstalledAppBarDTO list_app_bars(location, object=object, record_uuid=record_uuid, view_id=view_id, trait=trait, suite=suite)
 
 List installed app bars for a location
 
@@ -50,10 +50,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     record_uuid = 'record_uuid_example' # str | Record UUID in context (optional)
     view_id = 'view_id_example' # str | View ID in context (optional)
     trait = 'trait_example' # str | Trait name in context (optional)
+    suite = 'suite_example' # str | Suite selected in the UI. A tool bar is included when this suite is saved on the bar. (optional)
 
     try:
         # List installed app bars for a location
-        api_response = api_instance.list_app_bars(location, object=object, record_uuid=record_uuid, view_id=view_id, trait=trait)
+        api_response = api_instance.list_app_bars(location, object=object, record_uuid=record_uuid, view_id=view_id, trait=trait, suite=suite)
         print("The response of AppBarsApi->list_app_bars:\n")
         pprint(api_response)
     except Exception as e:
@@ -72,6 +73,7 @@ Name | Type | Description  | Notes
  **record_uuid** | **str**| Record UUID in context | [optional] 
  **view_id** | **str**| View ID in context | [optional] 
  **trait** | **str**| Trait name in context | [optional] 
+ **suite** | **str**| Suite selected in the UI. A tool bar is included when this suite is saved on the bar. | [optional] 
 
 ### Return type
 
