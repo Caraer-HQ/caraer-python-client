@@ -68,6 +68,13 @@ class TestApplicationsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_app_webhook_deliveries(self) -> None:
+        """Test case for get_app_webhook_deliveries
+
+        Recent webhook delivery decisions
+        """
+        pass
+
     def test_get_app_webhooks(self) -> None:
         """Test case for get_app_webhooks
 

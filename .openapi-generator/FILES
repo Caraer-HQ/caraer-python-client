@@ -293,6 +293,7 @@ caraer_client/models/show_response_list_cms_environment_dto.py
 caraer_client/models/show_response_list_cms_module_dto.py
 caraer_client/models/show_response_list_cms_page_dto.py
 caraer_client/models/show_response_list_cms_public_menu_dto.py
+caraer_client/models/show_response_list_entry.py
 caraer_client/models/show_response_list_environment_dto.py
 caraer_client/models/show_response_list_form_object_summary_dto.py
 caraer_client/models/show_response_list_installed_app_bar_dto.py
@@ -676,6 +677,7 @@ docs/ShowResponseListCmsEnvironmentDTO.md
 docs/ShowResponseListCmsModuleDTO.md
 docs/ShowResponseListCmsPageDTO.md
 docs/ShowResponseListCmsPublicMenuDTO.md
+docs/ShowResponseListEntry.md
 docs/ShowResponseListEnvironmentDTO.md
 docs/ShowResponseListFormObjectSummaryDTO.md
 docs/ShowResponseListInstalledAppBarDTO.md
@@ -1069,6 +1071,7 @@ test/test_show_response_list_cms_environment_dto.py
 test/test_show_response_list_cms_module_dto.py
 test/test_show_response_list_cms_page_dto.py
 test/test_show_response_list_cms_public_menu_dto.py
+test/test_show_response_list_entry.py
 test/test_show_response_list_environment_dto.py
 test/test_show_response_list_form_object_summary_dto.py
 test/test_show_response_list_installed_app_bar_dto.py

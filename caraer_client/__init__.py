@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.534"
+__version__ = "2.0.535"
 
 # Define package exports
 __all__ = [
@@ -309,6 +309,7 @@ __all__ = [
     "ShowResponseListCmsModuleDTO",
     "ShowResponseListCmsPageDTO",
     "ShowResponseListCmsPublicMenuDTO",
+    "ShowResponseListEntry",
     "ShowResponseListEnvironmentDTO",
     "ShowResponseListFormObjectSummaryDTO",
     "ShowResponseListInstalledAppBarDTO",
@@ -722,6 +723,7 @@ from caraer_client.models.show_response_list_cms_environment_dto import ShowResp
 from caraer_client.models.show_response_list_cms_module_dto import ShowResponseListCmsModuleDTO as ShowResponseListCmsModuleDTO
 from caraer_client.models.show_response_list_cms_page_dto import ShowResponseListCmsPageDTO as ShowResponseListCmsPageDTO
 from caraer_client.models.show_response_list_cms_public_menu_dto import ShowResponseListCmsPublicMenuDTO as ShowResponseListCmsPublicMenuDTO
+from caraer_client.models.show_response_list_entry import ShowResponseListEntry as ShowResponseListEntry
 from caraer_client.models.show_response_list_environment_dto import ShowResponseListEnvironmentDTO as ShowResponseListEnvironmentDTO
 from caraer_client.models.show_response_list_form_object_summary_dto import ShowResponseListFormObjectSummaryDTO as ShowResponseListFormObjectSummaryDTO
 from caraer_client.models.show_response_list_installed_app_bar_dto import ShowResponseListInstalledAppBarDTO as ShowResponseListInstalledAppBarDTO

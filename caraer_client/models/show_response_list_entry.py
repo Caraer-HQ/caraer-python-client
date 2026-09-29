@@ -23,19 +23,13 @@ from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ExistingWidgetSummary(BaseModel):
+class ShowResponseListEntry(BaseModel):
     """
-    ExistingWidgetSummary
+    Success response (ShowResponseListEntry).
     """ # noqa: E501
-    ymetric: Optional[StrictStr] = None
-    xproperty: Optional[StrictStr] = None
-    yproperty: Optional[StrictStr] = None
-    title: Optional[StrictStr] = None
-    chart_type: Optional[StrictStr] = Field(default=None, alias="chartType")
-    x_property: Optional[StrictStr] = Field(default=None, alias="xProperty")
-    y_metric: Optional[StrictStr] = Field(default=None, alias="yMetric")
-    y_property: Optional[StrictStr] = Field(default=None, alias="yProperty")
-    __properties: ClassVar[List[str]] = ["ymetric", "xproperty", "yproperty", "title", "chartType", "xProperty", "yMetric", "yProperty"]
+    message: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["Success"]})
+    data: Optional[List[Dict[str, Any]]] = None
+    __properties: ClassVar[List[str]] = ["message", "data"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -55,7 +49,7 @@ class ExistingWidgetSummary(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ExistingWidgetSummary from a JSON string"""
+        """Create an instance of ShowResponseListEntry from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -80,7 +74,7 @@ class ExistingWidgetSummary(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ExistingWidgetSummary from a dict"""
+        """Create an instance of ShowResponseListEntry from a dict"""
         if obj is None:
             return None
 
@@ -88,14 +82,8 @@ class ExistingWidgetSummary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "ymetric": obj.get("ymetric"),
-            "xproperty": obj.get("xproperty"),
-            "yproperty": obj.get("yproperty"),
-            "title": obj.get("title"),
-            "chartType": obj.get("chartType"),
-            "xProperty": obj.get("xProperty"),
-            "yMetric": obj.get("yMetric"),
-            "yProperty": obj.get("yProperty")
+            "message": obj.get("message"),
+            "data": obj.get("data")
         })
         return _obj
 

@@ -14,10 +14,10 @@
 
 import unittest
 
-from caraer_client.models.existing_widget_summary import ExistingWidgetSummary
+from caraer_client.models.show_response_list_entry import ShowResponseListEntry
 
-class TestExistingWidgetSummary(unittest.TestCase):
-    """ExistingWidgetSummary unit test stubs"""
+class TestShowResponseListEntry(unittest.TestCase):
+    """ShowResponseListEntry unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,32 +25,28 @@ class TestExistingWidgetSummary(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ExistingWidgetSummary:
-        """Test ExistingWidgetSummary
+    def make_instance(self, include_optional) -> ShowResponseListEntry:
+        """Test ShowResponseListEntry
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ExistingWidgetSummary`
+        # uncomment below to create an instance of `ShowResponseListEntry`
         """
-        model = ExistingWidgetSummary()
+        model = ShowResponseListEntry()
         if include_optional:
-            return ExistingWidgetSummary(
-                ymetric = '',
-                xproperty = '',
-                yproperty = '',
-                title = '',
-                chart_type = '',
-                x_property = '',
-                y_metric = '',
-                y_property = ''
+            return ShowResponseListEntry(
+                message = 'Success',
+                data = [
+                    None
+                    ]
             )
         else:
-            return ExistingWidgetSummary(
+            return ShowResponseListEntry(
         )
         """
 
-    def testExistingWidgetSummary(self):
-        """Test ExistingWidgetSummary"""
+    def testShowResponseListEntry(self):
+        """Test ShowResponseListEntry"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
