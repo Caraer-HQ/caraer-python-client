@@ -117,6 +117,13 @@ class TestAppInstallationRuntimeApi(unittest.TestCase):
         """
         pass
 
+    def test_run_installation_sql(self) -> None:
+        """Test case for run_installation_sql
+
+        Run SQL in this installation's Postgres schema
+        """
+        pass
+
     def test_save_user_settings(self) -> None:
         """Test case for save_user_settings
 

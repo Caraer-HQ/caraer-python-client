@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**put_state**](AppInstallationRuntimeApi.md#put_state) | **PUT** /api/v2/apps/{appUuid}/installation/state | Replace/merge installation state (shallow merge)
 [**put_state_key**](AppInstallationRuntimeApi.md#put_state_key) | **PUT** /api/v2/apps/{appUuid}/installation/state/{key} | Put a single state key
 [**revoke_connection**](AppInstallationRuntimeApi.md#revoke_connection) | **DELETE** /api/v2/apps/{appUuid}/installation/connections/{providerOrConnectionId} | Revoke external OAuth connection tokens by connection id or provider name
+[**run_installation_sql**](AppInstallationRuntimeApi.md#run_installation_sql) | **POST** /api/v2/apps/{appUuid}/installation/db | Run SQL in this installation&#39;s Postgres schema
 [**save_user_settings**](AppInstallationRuntimeApi.md#save_user_settings) | **PUT** /api/v2/apps/{appUuid}/installation/settings/user | Save USER-scoped installation settings for the current user
 [**start_o_auth**](AppInstallationRuntimeApi.md#start_o_auth) | **POST** /api/v2/apps/{appUuid}/installation/oauth/{provider}/start | Start external OAuth authorize (returns provider authorize URL)
 [**trigger_setting_action**](AppInstallationRuntimeApi.md#trigger_setting_action) | **POST** /api/v2/apps/{appUuid}/installation/settings/{fieldName}/trigger | Trigger an ACTION setting without saving settings
@@ -1073,6 +1074,88 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **run_installation_sql**
+> ShowResponseMapStringObject run_installation_sql(app_uuid, request_body)
+
+Run SQL in this installation's Postgres schema
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response_map_string_object import ShowResponseMapStringObject
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.AppInstallationRuntimeApi(api_client)
+    app_uuid = 'app_uuid_example' # str | 
+    request_body = None # Dict[str, Optional[object]] | 
+
+    try:
+        # Run SQL in this installation's Postgres schema
+        api_response = api_instance.run_installation_sql(app_uuid, request_body)
+        print("The response of AppInstallationRuntimeApi->run_installation_sql:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AppInstallationRuntimeApi->run_installation_sql: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**|  | 
+ **request_body** | [**Dict[str, Optional[object]]**](object.md)|  | 
+
+### Return type
+
+[**ShowResponseMapStringObject**](ShowResponseMapStringObject.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
