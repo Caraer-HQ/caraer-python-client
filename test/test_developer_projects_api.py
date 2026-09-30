@@ -47,6 +47,13 @@ class TestDeveloperProjectsApi(unittest.TestCase):
         """
         pass
 
+    def test_deployed_source(self) -> None:
+        """Test case for deployed_source
+
+        Download the deployed project source
+        """
+        pass
+
     def test_get_build(self) -> None:
         """Test case for get_build
 

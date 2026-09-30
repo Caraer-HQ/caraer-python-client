@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create2**](DeveloperProjectsApi.md#create2) | **POST** /api/v2/developer-projects | Create or fetch a developer project
 [**create_build**](DeveloperProjectsApi.md#create_build) | **POST** /api/v2/developer-projects/{projectUuid}/builds | Upload a project build
 [**deploy**](DeveloperProjectsApi.md#deploy) | **POST** /api/v2/developer-projects/{projectUuid}/builds/{buildUuid}/deploy | Deploy a project build
+[**deployed_source**](DeveloperProjectsApi.md#deployed_source) | **GET** /api/v2/developer-projects/{projectUuid}/source | Download the deployed project source
 [**get_build**](DeveloperProjectsApi.md#get_build) | **GET** /api/v2/developer-projects/{projectUuid}/builds/{buildUuid} | Get a project build
 [**list_builds**](DeveloperProjectsApi.md#list_builds) | **GET** /api/v2/developer-projects/{projectUuid}/builds | List project builds
 [**list_deploys**](DeveloperProjectsApi.md#list_deploys) | **GET** /api/v2/developer-projects/{projectUuid}/deploys | List project deploys
@@ -267,6 +268,87 @@ Name | Type | Description  | Notes
 **401** | Authentication is required or the token is invalid. |  -  |
 **403** | The caller is missing a required role or scope. |  -  |
 **404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deployed_source**
+> bytes deployed_source(project_uuid)
+
+Download the deployed project source
+
+Returns the zip of the build currently deployed for this project. That archive is the source of truth for functions and CMS modules.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.DeveloperProjectsApi(api_client)
+    project_uuid = 'project_uuid_example' # str | UUID of the developer project
+
+    try:
+        # Download the deployed project source
+        api_response = api_instance.deployed_source(project_uuid)
+        print("The response of DeveloperProjectsApi->deployed_source:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DeveloperProjectsApi->deployed_source: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_uuid** | **str**| UUID of the developer project | 
+
+### Return type
+
+**bytes**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/zip, application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Deployed source archive |  -  |
+**404** | The requested resource was not found. |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
 **500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
