@@ -37,6 +37,8 @@ class AppSettingFieldSchema(BaseModel):
     type: Optional[StrictStr] = None
     required: Optional[StrictBool] = None
     help_text: Optional[StrictStr] = Field(default=None, alias="helpText")
+    text: Optional[StrictStr] = None
+    paragraph: Optional[StrictStr] = None
     options: Optional[List[SettingOption]] = None
     options_source: Optional[AppSettingOptionsSource] = Field(default=None, alias="optionsSource")
     action_source: Optional[AppSettingActionSource] = Field(default=None, alias="actionSource")
@@ -59,7 +61,7 @@ class AppSettingFieldSchema(BaseModel):
     action: Optional[StrictBool] = None
     filter_property_types: Optional[List[StrictStr]] = Field(default=None, alias="filterPropertyTypes")
     filter_property_formats: Optional[List[StrictStr]] = Field(default=None, alias="filterPropertyFormats")
-    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "options", "optionsSource", "actionSource", "defaultValue", "hidden", "advanced", "group", "fields", "filterTraits", "visibleWhen", "itemFields", "min", "max", "itemLabel", "value", "hasValue", "mappingValue", "valueScope", "settingsGroup", "action", "filterPropertyTypes", "filterPropertyFormats"]
+    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "text", "paragraph", "options", "optionsSource", "actionSource", "defaultValue", "hidden", "advanced", "group", "fields", "filterTraits", "visibleWhen", "itemFields", "min", "max", "itemLabel", "value", "hasValue", "mappingValue", "valueScope", "settingsGroup", "action", "filterPropertyTypes", "filterPropertyFormats"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -160,6 +162,8 @@ class AppSettingFieldSchema(BaseModel):
             "type": obj.get("type"),
             "required": obj.get("required"),
             "helpText": obj.get("helpText"),
+            "text": obj.get("text"),
+            "paragraph": obj.get("paragraph"),
             "options": [SettingOption.from_dict(_item) for _item in obj["options"]] if obj.get("options") is not None else None,
             "optionsSource": AppSettingOptionsSource.from_dict(obj["optionsSource"]) if obj.get("optionsSource") is not None else None,
             "actionSource": AppSettingActionSource.from_dict(obj["actionSource"]) if obj.get("actionSource") is not None else None,

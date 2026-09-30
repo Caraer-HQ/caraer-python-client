@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **type** | **str** |  | [optional] 
 **required** | **bool** |  | [optional] 
 **help_text** | **str** |  | [optional] 
+**text** | **str** |  | [optional] 
+**paragraph** | **str** |  | [optional] 
 **options** | [**List[SettingOption]**](SettingOption.md) |  | [optional] 
 **options_source** | [**AppSettingOptionsSource**](AppSettingOptionsSource.md) |  | [optional] 
 **action_source** | [**AppSettingActionSource**](AppSettingActionSource.md) |  | [optional] 

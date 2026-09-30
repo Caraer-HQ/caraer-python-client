@@ -254,6 +254,8 @@ class TestAppDTO(unittest.TestCase):
                                 type = '', 
                                 required = True, 
                                 help_text = '', 
+                                text = '', 
+                                paragraph = '', 
                                 options = [
                                     caraer_client.models.setting_option.SettingOption(
                                         name = '', 
@@ -286,6 +288,8 @@ class TestAppDTO(unittest.TestCase):
                                         type = '', 
                                         required = True, 
                                         help_text = '', 
+                                        text = '', 
+                                        paragraph = '', 
                                         default_value = null, 
                                         hidden = True, 
                                         advanced = True, 
@@ -552,6 +556,8 @@ class TestAppDTO(unittest.TestCase):
                         type = '', 
                         required = True, 
                         help_text = '', 
+                        text = '', 
+                        paragraph = '', 
                         options = [
                             caraer_client.models.setting_option.SettingOption(
                                 name = '', 
@@ -584,6 +590,8 @@ class TestAppDTO(unittest.TestCase):
                                 type = '', 
                                 required = True, 
                                 help_text = '', 
+                                text = '', 
+                                paragraph = '', 
                                 default_value = null, 
                                 hidden = True, 
                                 advanced = True, 
