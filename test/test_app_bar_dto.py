@@ -295,8 +295,8 @@ class TestAppBarDTO(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                action = True, 
                                 settings_group = True, 
+                                action = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -326,8 +326,8 @@ class TestAppBarDTO(unittest.TestCase):
                             target_kind = '', 
                             record_target = True, ), 
                         value_scope = '', 
-                        action = True, 
                         settings_group = True, 
+                        action = True, 
                         filter_property_types = [
                             ''
                             ], 
