@@ -98,7 +98,6 @@ caraer_client/models/calendar_team_option_dto.py
 caraer_client/models/caraer_error_type.py
 caraer_client/models/caraer_object_dto.py
 caraer_client/models/cms_environment_dto.py
-caraer_client/models/cms_module_component.py
 caraer_client/models/cms_module_dto.py
 caraer_client/models/cms_page_document.py
 caraer_client/models/cms_page_dto.py
@@ -470,7 +469,6 @@ docs/CalendarsApi.md
 docs/CaraerErrorType.md
 docs/CaraerObjectDTO.md
 docs/CmsEnvironmentDTO.md
-docs/CmsModuleComponent.md
 docs/CmsModuleDTO.md
 docs/CmsPageDTO.md
 docs/CmsPageDocument.md
@@ -859,7 +857,6 @@ test/test_calendars_api.py
 test/test_caraer_error_type.py
 test/test_caraer_object_dto.py
 test/test_cms_environment_dto.py
-test/test_cms_module_component.py
 test/test_cms_module_dto.py
 test/test_cms_modules_api.py
 test/test_cms_page_document.py
