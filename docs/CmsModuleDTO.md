@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **version** | **str** |  | [optional] 
 **retired** | **bool** |  | [optional] 
 **fields** | [**List[AppSettingFieldSchema]**](AppSettingFieldSchema.md) |  | [optional] 
+**components** | [**List[CmsModuleComponent]**](CmsModuleComponent.md) |  | [optional] 
 **frameworks** | **Dict[str, str]** |  | [optional] 
 
 ## Example

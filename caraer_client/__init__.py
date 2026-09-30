@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.537"
+__version__ = "2.0.540"
 
 # Define package exports
 __all__ = [
@@ -115,6 +115,7 @@ __all__ = [
     "CaraerErrorType",
     "CaraerObjectDTO",
     "CmsEnvironmentDTO",
+    "CmsModuleComponent",
     "CmsModuleDTO",
     "CmsPageDTO",
     "CmsPageDocument",
@@ -529,6 +530,7 @@ from caraer_client.models.calendar_team_option_dto import CalendarTeamOptionDTO 
 from caraer_client.models.caraer_error_type import CaraerErrorType as CaraerErrorType
 from caraer_client.models.caraer_object_dto import CaraerObjectDTO as CaraerObjectDTO
 from caraer_client.models.cms_environment_dto import CmsEnvironmentDTO as CmsEnvironmentDTO
+from caraer_client.models.cms_module_component import CmsModuleComponent as CmsModuleComponent
 from caraer_client.models.cms_module_dto import CmsModuleDTO as CmsModuleDTO
 from caraer_client.models.cms_page_dto import CmsPageDTO as CmsPageDTO
 from caraer_client.models.cms_page_document import CmsPageDocument as CmsPageDocument

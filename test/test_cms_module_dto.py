@@ -144,6 +144,14 @@ class TestCmsModuleDTO(unittest.TestCase):
                         value_scope = '', 
                         action = True, )
                     ],
+                components = [
+                    caraer_client.models.cms_module_component.CmsModuleComponent(
+                        name = '', 
+                        label = '', 
+                        fields = [
+                            ''
+                            ], )
+                    ],
                 frameworks = {
                     'key' : ''
                     }

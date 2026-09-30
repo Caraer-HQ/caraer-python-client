@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**create_private_app**](ApplicationsApi.md#create_private_app) | **POST** /api/v2/apps/private | Create a private app
 [**create_public_app**](ApplicationsApi.md#create_public_app) | **POST** /api/v2/apps/public | Create a public app
 [**delete_app_webhook**](ApplicationsApi.md#delete_app_webhook) | **DELETE** /api/v2/apps/{appUuid}/webhooks/{webhookUuid} | Delete a webhook for an app
+[**delete_private_app**](ApplicationsApi.md#delete_private_app) | **DELETE** /api/v2/apps/private/{uuid} | Delete a private app
 [**get_app**](ApplicationsApi.md#get_app) | **GET** /api/v2/apps/{uuid} | Retrieve application details by UUID
 [**get_app_webhook**](ApplicationsApi.md#get_app_webhook) | **GET** /api/v2/apps/{appUuid}/webhooks/{webhookUuid} | Get a webhook for an app
 [**get_app_webhook_deliveries**](ApplicationsApi.md#get_app_webhook_deliveries) | **GET** /api/v2/apps/{appUuid}/webhooks/{webhookUuid}/deliveries | Recent webhook delivery decisions
@@ -371,6 +372,89 @@ Name | Type | Description  | Notes
 **500** | Internal server error |  -  |
 **401** | Authentication is required or the token is invalid. |  -  |
 **403** | The caller is missing a required role or scope. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_private_app**
+> DeleteResponse delete_private_app(uuid)
+
+Delete a private app
+
+Deletes a private app owned by the current company. An active installation is uninstalled first. The app then disappears from the company.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.delete_response import DeleteResponse
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    uuid = 'uuid_example' # str | UUID of the private app to delete
+
+    try:
+        # Delete a private app
+        api_response = api_instance.delete_private_app(uuid)
+        print("The response of ApplicationsApi->delete_private_app:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->delete_private_app: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**| UUID of the private app to delete | 
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Private app deleted |  -  |
+**400** | The app is not private |  -  |
+**403** | Only the creator company can delete the app |  -  |
+**404** | Application not found |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

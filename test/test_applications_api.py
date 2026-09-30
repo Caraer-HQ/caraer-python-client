@@ -54,6 +54,13 @@ class TestApplicationsApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_private_app(self) -> None:
+        """Test case for delete_private_app
+
+        Delete a private app
+        """
+        pass
+
     def test_get_app(self) -> None:
         """Test case for get_app
 

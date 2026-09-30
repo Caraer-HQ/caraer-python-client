@@ -20,6 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from caraer_client.models.app_setting_field_schema import AppSettingFieldSchema
+from caraer_client.models.cms_module_component import CmsModuleComponent
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -44,8 +45,9 @@ class CmsModuleDTO(BaseModel):
     version: Optional[StrictStr] = None
     retired: Optional[StrictBool] = None
     fields: Optional[List[AppSettingFieldSchema]] = None
+    components: Optional[List[CmsModuleComponent]] = None
     frameworks: Optional[Dict[str, StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "ref", "kind", "description", "category", "icon", "preview", "appUuid", "appName", "appLabel", "packageName", "version", "retired", "fields", "frameworks"]
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "ref", "kind", "description", "category", "icon", "preview", "appUuid", "appName", "appLabel", "packageName", "version", "retired", "fields", "components", "frameworks"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -92,6 +94,12 @@ class CmsModuleDTO(BaseModel):
             for _item_fields in self.fields:
                 _items.append(_item_fields.to_dict() if _item_fields is not None else None)
             _dict['fields'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in components (list)
+        _items = []
+        if self.components:
+            for _item_components in self.components:
+                _items.append(_item_components.to_dict() if _item_components is not None else None)
+            _dict['components'] = _items
         return _dict
 
     @classmethod
@@ -120,6 +128,7 @@ class CmsModuleDTO(BaseModel):
             "version": obj.get("version"),
             "retired": obj.get("retired"),
             "fields": [AppSettingFieldSchema.from_dict(_item) for _item in obj["fields"]] if obj.get("fields") is not None else None,
+            "components": [CmsModuleComponent.from_dict(_item) for _item in obj["components"]] if obj.get("components") is not None else None,
             "frameworks": obj.get("frameworks")
         })
         return _obj
