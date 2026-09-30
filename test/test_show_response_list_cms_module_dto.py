@@ -84,6 +84,7 @@ class TestShowResponseListCmsModuleDTO(unittest.TestCase):
                                 default_value = null, 
                                 hidden = True, 
                                 advanced = True, 
+                                group = '', 
                                 filter_traits = [
                                     ''
                                     ], 
@@ -103,6 +104,7 @@ class TestShowResponseListCmsModuleDTO(unittest.TestCase):
                                         default_value = null, 
                                         hidden = True, 
                                         advanced = True, 
+                                        group = '', 
                                         min = 56, 
                                         max = 56, 
                                         item_label = '', 
@@ -133,7 +135,14 @@ class TestShowResponseListCmsModuleDTO(unittest.TestCase):
                                                 ], 
                                             record_target = True, ), 
                                         value_scope = '', 
-                                        action = True, )
+                                        settings_group = True, 
+                                        action = True, 
+                                        filter_property_types = [
+                                            ''
+                                            ], 
+                                        filter_property_formats = [
+                                            ''
+                                            ], )
                                     ], 
                                 min = 56, 
                                 max = 56, 
@@ -145,7 +154,14 @@ class TestShowResponseListCmsModuleDTO(unittest.TestCase):
                                     target_kind = '', 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                action = True, )
+                                settings_group = True, 
+                                action = True, 
+                                filter_property_types = [
+                                    ''
+                                    ], 
+                                filter_property_formats = [
+                                    ''
+                                    ], )
                             ], 
                         components = [
                             caraer_client.models.cms_module_component.CmsModuleComponent(

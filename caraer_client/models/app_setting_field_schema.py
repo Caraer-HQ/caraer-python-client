@@ -43,6 +43,8 @@ class AppSettingFieldSchema(BaseModel):
     default_value: Optional[Any] = Field(default=None, alias="defaultValue")
     hidden: Optional[StrictBool] = None
     advanced: Optional[StrictBool] = None
+    group: Optional[StrictStr] = None
+    fields: Optional[List[AppSettingFieldSchema]] = None
     filter_traits: Optional[List[StrictStr]] = Field(default=None, alias="filterTraits")
     visible_when: Optional[List[AppSettingCondition]] = Field(default=None, alias="visibleWhen")
     item_fields: Optional[List[AppSettingFieldSchema]] = Field(default=None, alias="itemFields")
@@ -53,8 +55,11 @@ class AppSettingFieldSchema(BaseModel):
     has_value: Optional[StrictBool] = Field(default=None, alias="hasValue")
     mapping_value: Optional[AppSettingFieldMappingStructure] = Field(default=None, alias="mappingValue")
     value_scope: Optional[StrictStr] = Field(default=None, alias="valueScope")
+    settings_group: Optional[StrictBool] = Field(default=None, alias="settingsGroup")
     action: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "options", "optionsSource", "actionSource", "defaultValue", "hidden", "advanced", "filterTraits", "visibleWhen", "itemFields", "min", "max", "itemLabel", "value", "hasValue", "mappingValue", "valueScope", "action"]
+    filter_property_types: Optional[List[StrictStr]] = Field(default=None, alias="filterPropertyTypes")
+    filter_property_formats: Optional[List[StrictStr]] = Field(default=None, alias="filterPropertyFormats")
+    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "options", "optionsSource", "actionSource", "defaultValue", "hidden", "advanced", "group", "fields", "filterTraits", "visibleWhen", "itemFields", "min", "max", "itemLabel", "value", "hasValue", "mappingValue", "valueScope", "settingsGroup", "action", "filterPropertyTypes", "filterPropertyFormats"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -107,6 +112,12 @@ class AppSettingFieldSchema(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of action_source
         if self.action_source:
             _dict['actionSource'] = self.action_source.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in fields (list)
+        _items = []
+        if self.fields:
+            for _item_fields in self.fields:
+                _items.append(_item_fields.to_dict() if _item_fields is not None else None)
+            _dict['fields'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in visible_when (list)
         _items = []
         if self.visible_when:
@@ -155,6 +166,8 @@ class AppSettingFieldSchema(BaseModel):
             "defaultValue": obj.get("defaultValue"),
             "hidden": obj.get("hidden"),
             "advanced": obj.get("advanced"),
+            "group": obj.get("group"),
+            "fields": [AppSettingFieldSchema.from_dict(_item) for _item in obj["fields"]] if obj.get("fields") is not None else None,
             "filterTraits": obj.get("filterTraits"),
             "visibleWhen": [AppSettingCondition.from_dict(_item) for _item in obj["visibleWhen"]] if obj.get("visibleWhen") is not None else None,
             "itemFields": [AppSettingFieldSchema.from_dict(_item) for _item in obj["itemFields"]] if obj.get("itemFields") is not None else None,
@@ -165,7 +178,10 @@ class AppSettingFieldSchema(BaseModel):
             "hasValue": obj.get("hasValue"),
             "mappingValue": AppSettingFieldMappingStructure.from_dict(obj["mappingValue"]) if obj.get("mappingValue") is not None else None,
             "valueScope": obj.get("valueScope"),
-            "action": obj.get("action")
+            "settingsGroup": obj.get("settingsGroup"),
+            "action": obj.get("action"),
+            "filterPropertyTypes": obj.get("filterPropertyTypes"),
+            "filterPropertyFormats": obj.get("filterPropertyFormats")
         })
         return _obj
 

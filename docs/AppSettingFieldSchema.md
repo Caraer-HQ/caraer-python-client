@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **default_value** | **object** |  | [optional] 
 **hidden** | **bool** |  | [optional] 
 **advanced** | **bool** |  | [optional] 
+**group** | **str** |  | [optional] 
+**fields** | [**List[AppSettingFieldSchema]**](AppSettingFieldSchema.md) |  | [optional] 
 **filter_traits** | **List[str]** |  | [optional] 
 **visible_when** | [**List[AppSettingCondition]**](AppSettingCondition.md) |  | [optional] 
 **item_fields** | [**List[AppSettingFieldSchema]**](AppSettingFieldSchema.md) |  | [optional] 
@@ -26,7 +28,10 @@ Name | Type | Description | Notes
 **has_value** | **bool** |  | [optional] 
 **mapping_value** | [**AppSettingFieldMappingStructure**](AppSettingFieldMappingStructure.md) |  | [optional] 
 **value_scope** | **str** |  | [optional] 
+**settings_group** | **bool** |  | [optional] 
 **action** | **bool** |  | [optional] 
+**filter_property_types** | **List[str]** |  | [optional] 
+**filter_property_formats** | **List[str]** |  | [optional] 
 
 ## Example
 

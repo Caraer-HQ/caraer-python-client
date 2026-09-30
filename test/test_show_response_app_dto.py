@@ -99,16 +99,8 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                     default_value = null, 
                                     hidden = True, 
                                     advanced = True, 
-                                    filter_traits = [
-                                        ''
-                                        ], 
-                                    visible_when = [
-                                        caraer_client.models.app_setting_condition.AppSettingCondition(
-                                            field = '', 
-                                            operator = '', 
-                                            value = null, )
-                                        ], 
-                                    item_fields = [
+                                    group = '', 
+                                    fields = [
                                         caraer_client.models.app_setting_field_schema.AppSettingFieldSchema(
                                             name = '', 
                                             label = '', 
@@ -118,6 +110,19 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                             default_value = null, 
                                             hidden = True, 
                                             advanced = True, 
+                                            group = '', 
+                                            filter_traits = [
+                                                ''
+                                                ], 
+                                            visible_when = [
+                                                caraer_client.models.app_setting_condition.AppSettingCondition(
+                                                    field = '', 
+                                                    operator = '', 
+                                                    value = null, )
+                                                ], 
+                                            item_fields = [
+                                                
+                                                ], 
                                             min = 56, 
                                             max = 56, 
                                             item_label = '', 
@@ -148,7 +153,26 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                                     ], 
                                                 record_target = True, ), 
                                             value_scope = '', 
-                                            action = True, )
+                                            settings_group = True, 
+                                            action = True, 
+                                            filter_property_types = [
+                                                ''
+                                                ], 
+                                            filter_property_formats = [
+                                                ''
+                                                ], )
+                                        ], 
+                                    filter_traits = [
+                                        ''
+                                        ], 
+                                    visible_when = [
+                                        caraer_client.models.app_setting_condition.AppSettingCondition(
+                                            field = '', 
+                                            operator = '', 
+                                            value = null, )
+                                        ], 
+                                    item_fields = [
+                                        
                                         ], 
                                     min = 56, 
                                     max = 56, 
@@ -160,7 +184,14 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                         target_kind = '', 
                                         record_target = True, ), 
                                     value_scope = '', 
-                                    action = True, )
+                                    settings_group = True, 
+                                    action = True, 
+                                    filter_property_types = [
+                                        ''
+                                        ], 
+                                    filter_property_formats = [
+                                        ''
+                                        ], )
                                 ], 
                             webhook = null, )
                         ], 
