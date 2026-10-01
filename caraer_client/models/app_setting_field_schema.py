@@ -57,11 +57,11 @@ class AppSettingFieldSchema(BaseModel):
     has_value: Optional[StrictBool] = Field(default=None, alias="hasValue")
     mapping_value: Optional[AppSettingFieldMappingStructure] = Field(default=None, alias="mappingValue")
     value_scope: Optional[StrictStr] = Field(default=None, alias="valueScope")
-    action: Optional[StrictBool] = None
     settings_group: Optional[StrictBool] = Field(default=None, alias="settingsGroup")
+    action: Optional[StrictBool] = None
     filter_property_types: Optional[List[StrictStr]] = Field(default=None, alias="filterPropertyTypes")
     filter_property_formats: Optional[List[StrictStr]] = Field(default=None, alias="filterPropertyFormats")
-    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "text", "paragraph", "options", "optionsSource", "actionSource", "defaultValue", "hidden", "advanced", "group", "fields", "filterTraits", "visibleWhen", "itemFields", "min", "max", "itemLabel", "value", "hasValue", "mappingValue", "valueScope", "action", "settingsGroup", "filterPropertyTypes", "filterPropertyFormats"]
+    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "text", "paragraph", "options", "optionsSource", "actionSource", "defaultValue", "hidden", "advanced", "group", "fields", "filterTraits", "visibleWhen", "itemFields", "min", "max", "itemLabel", "value", "hasValue", "mappingValue", "valueScope", "settingsGroup", "action", "filterPropertyTypes", "filterPropertyFormats"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -182,8 +182,8 @@ class AppSettingFieldSchema(BaseModel):
             "hasValue": obj.get("hasValue"),
             "mappingValue": AppSettingFieldMappingStructure.from_dict(obj["mappingValue"]) if obj.get("mappingValue") is not None else None,
             "valueScope": obj.get("valueScope"),
-            "action": obj.get("action"),
             "settingsGroup": obj.get("settingsGroup"),
+            "action": obj.get("action"),
             "filterPropertyTypes": obj.get("filterPropertyTypes"),
             "filterPropertyFormats": obj.get("filterPropertyFormats")
         })
