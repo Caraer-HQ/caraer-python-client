@@ -55,10 +55,10 @@ class TestTeamDTO(unittest.TestCase):
                         deleted = True, 
                         properties = [
                             caraer_client.models.filled_property.FilledProperty(
-                                icon = '', 
                                 name = '', 
                                 value = null, 
                                 type = '', 
+                                icon = '', 
                                 label = '', )
                             ], 
                         objects = {
@@ -92,10 +92,10 @@ class TestTeamDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -147,10 +147,10 @@ class TestTeamDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -202,10 +202,10 @@ class TestTeamDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {

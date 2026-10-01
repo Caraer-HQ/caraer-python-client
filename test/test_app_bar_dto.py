@@ -54,10 +54,10 @@ class TestAppBarDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -109,10 +109,10 @@ class TestAppBarDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -164,10 +164,10 @@ class TestAppBarDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -299,8 +299,8 @@ class TestAppBarDTO(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                settings_group = True, 
                                 action = True, 
+                                settings_group = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -330,8 +330,8 @@ class TestAppBarDTO(unittest.TestCase):
                             target_kind = '', 
                             record_target = True, ), 
                         value_scope = '', 
-                        settings_group = True, 
                         action = True, 
+                        settings_group = True, 
                         filter_property_types = [
                             ''
                             ], 
