@@ -49,8 +49,8 @@ class TestAppBarDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    complete = True, 
                     deleted = True, 
+                    complete = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -90,8 +90,8 @@ class TestAppBarDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            complete = True, 
                             deleted = True, 
+                            complete = True, 
                             uuid = '0', ), ), ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
@@ -104,8 +104,8 @@ class TestAppBarDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    complete = True, 
                     deleted = True, 
+                    complete = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -145,8 +145,8 @@ class TestAppBarDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            complete = True, 
                             deleted = True, 
+                            complete = True, 
                             uuid = '0', ), ), ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
@@ -159,8 +159,8 @@ class TestAppBarDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    complete = True, 
                     deleted = True, 
+                    complete = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -200,8 +200,8 @@ class TestAppBarDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            complete = True, 
                             deleted = True, 
+                            complete = True, 
                             uuid = '0', ), ), ),
                 index = 56,
                 location = 'RECORD_PREVIEW',
@@ -299,8 +299,8 @@ class TestAppBarDTO(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                action = True, 
                                 settings_group = True, 
+                                action = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -330,8 +330,8 @@ class TestAppBarDTO(unittest.TestCase):
                             target_kind = '', 
                             record_target = True, ), 
                         value_scope = '', 
-                        action = True, 
                         settings_group = True, 
+                        action = True, 
                         filter_property_types = [
                             ''
                             ], 
