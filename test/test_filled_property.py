@@ -35,10 +35,10 @@ class TestFilledProperty(unittest.TestCase):
         model = FilledProperty()
         if include_optional:
             return FilledProperty(
+                icon = '',
                 name = '',
                 value = None,
                 type = '',
-                icon = '',
                 label = ''
             )
         else:
