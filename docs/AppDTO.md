@@ -38,7 +38,7 @@ Name | Type | Description | Notes
 **installed** | **bool** | Whether the app is installed for the current company | [optional] 
 **required_scopes** | **List[str]** | Required scopes requested by the app (macro patterns or concrete scope strings). | [optional] 
 **resolved_required_scopes** | **List[str]** | Resolved concrete required scopes derived from requiredScopes and dynamic availableScopes. | [optional] 
-**auth_method** | **str** | Authentication method for this app (API_KEY default, OAUTH2 for OAuth 2.0) | [optional] 
+**auth_method** | **str** | App credentials: NONE for platform-managed installation tokens, API_KEY (legacy default), or OAUTH2 | [optional] 
 **oauth_client_id** | **str** | OAuth 2.0 client identifier (OAuth apps only) | [optional] 
 **oauth_client_secret** | **str** | OAuth 2.0 client secret; only returned once on create or secret rotation | [optional] 
 **oauth_client_secret_configured** | **bool** | Whether an OAuth client secret is stored for this app (plain value is not re-readable) | [optional] 
