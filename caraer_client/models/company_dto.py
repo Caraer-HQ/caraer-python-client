@@ -43,6 +43,7 @@ class CompanyDTO(BaseModel):
     deleted_at: Optional[StrictInt] = Field(default=None, description="Unix timestamp when the entity was deleted (null if not deleted)", alias="deletedAt")
     deleted_by: Optional[Record] = Field(default=None, description="Identifier of the user who deleted the entity", alias="deletedBy")
     index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
+    subdomain: Optional[StrictStr] = Field(default=None, description="The company's canonical subdomain, independent of website settings.")
     details: Optional[CompanyDetailsDTO] = Field(default=None, description="The details of the company.")
     digital_identity: Optional[DigitalIdentityDTO] = Field(default=None, description="The digital identity of the company.", alias="digitalIdentity")
     website_settings: Optional[WebsiteSettingsDTO] = Field(default=None, description="The website settings of the company.", alias="websiteSettings")
@@ -51,7 +52,7 @@ class CompanyDTO(BaseModel):
     cms_v2_preview_origin: Optional[StrictStr] = Field(default=None, description="Origin of the v2 sidecar site while the live hostname is still v1", alias="cmsV2PreviewOrigin")
     cms_v2_project_id: Optional[StrictStr] = Field(default=None, alias="cmsV2ProjectId")
     cms_v1_project_id: Optional[StrictStr] = Field(default=None, alias="cmsV1ProjectId")
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "details", "digitalIdentity", "websiteSettings", "billingSettings", "cmsVersion", "cmsV2PreviewOrigin", "cmsV2ProjectId", "cmsV1ProjectId"]
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "subdomain", "details", "digitalIdentity", "websiteSettings", "billingSettings", "cmsVersion", "cmsV2PreviewOrigin", "cmsV2ProjectId", "cmsV1ProjectId"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -83,8 +84,10 @@ class CompanyDTO(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "subdomain",
         ])
 
         _dict = self.model_dump(
@@ -135,6 +138,7 @@ class CompanyDTO(BaseModel):
             "deletedAt": obj.get("deletedAt"),
             "deletedBy": Record.from_dict(obj["deletedBy"]) if obj.get("deletedBy") is not None else None,
             "index": obj.get("index"),
+            "subdomain": obj.get("subdomain"),
             "details": CompanyDetailsDTO.from_dict(obj["details"]) if obj.get("details") is not None else None,
             "digitalIdentity": DigitalIdentityDTO.from_dict(obj["digitalIdentity"]) if obj.get("digitalIdentity") is not None else None,
             "websiteSettings": WebsiteSettingsDTO.from_dict(obj["websiteSettings"]) if obj.get("websiteSettings") is not None else None,

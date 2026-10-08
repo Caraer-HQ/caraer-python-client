@@ -48,6 +48,7 @@ class TestPaginationResponseCompanyDTO(unittest.TestCase):
                         deleted_at = 56, 
                         deleted_by = null, 
                         index = 56, 
+                        subdomain = '', 
                         details = null, 
                         digital_identity = null, 
                         website_settings = null, 
