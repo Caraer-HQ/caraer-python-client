@@ -160,8 +160,8 @@ class TestCmsModuleDTO(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                settings_group = True, 
                                 action = True, 
+                                settings_group = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -254,8 +254,8 @@ class TestCmsModuleDTO(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                settings_group = True, 
                                 action = True, 
+                                settings_group = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -293,8 +293,8 @@ class TestCmsModuleDTO(unittest.TestCase):
                                 ], 
                             record_target = True, ), 
                         value_scope = '', 
-                        settings_group = True, 
                         action = True, 
+                        settings_group = True, 
                         filter_property_types = [
                             ''
                             ], 

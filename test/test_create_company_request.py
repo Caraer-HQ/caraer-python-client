@@ -39,7 +39,8 @@ class TestCreateCompanyRequest(unittest.TestCase):
                 subdomain = 'tech-solutions',
                 company_name = 'Tech Solutions',
                 copy_database_id = 'caraer',
-                include_records = True
+                include_records = True,
+                cms_version = 1
             )
         else:
             return CreateCompanyRequest(

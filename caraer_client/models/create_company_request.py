@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,7 +32,18 @@ class CreateCompanyRequest(BaseModel):
     company_name: Optional[StrictStr] = Field(default=None, description="The company name.", alias="companyName", json_schema_extra={"examples": ["Tech Solutions"]})
     copy_database_id: Optional[StrictStr] = Field(default=None, description="The copy database id.", alias="copyDatabaseId", json_schema_extra={"examples": ["caraer"]})
     include_records: Optional[StrictBool] = Field(default=None, description="Whether to include records in the company.", alias="includeRecords", json_schema_extra={"examples": [True]})
-    __properties: ClassVar[List[str]] = ["name", "subdomain", "companyName", "copyDatabaseId", "includeRecords"]
+    cms_version: Optional[StrictInt] = Field(default=None, description="CMS version for the new company: 1 = CMS v1, 2 = CMS v2. When omitted, the server's configured default is used.", alias="cmsVersion", json_schema_extra={"examples": [1]})
+    __properties: ClassVar[List[str]] = ["name", "subdomain", "companyName", "copyDatabaseId", "includeRecords", "cmsVersion"]
+
+    @field_validator('cms_version')
+    def cms_version_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set([1, 2]):
+            raise ValueError("must be one of enum values (1, 2)")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -89,7 +100,8 @@ class CreateCompanyRequest(BaseModel):
             "subdomain": obj.get("subdomain"),
             "companyName": obj.get("companyName"),
             "copyDatabaseId": obj.get("copyDatabaseId"),
-            "includeRecords": obj.get("includeRecords")
+            "includeRecords": obj.get("includeRecords"),
+            "cmsVersion": obj.get("cmsVersion")
         })
         return _obj
 
