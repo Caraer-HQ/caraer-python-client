@@ -96,9 +96,12 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
+                    objects = {
+                        'key' : null
+                        }, 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
                             icon = '', 
@@ -107,9 +110,6 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             type = '', 
                             label = '', )
                         ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -127,6 +127,9 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                                     ], )
                             }, 
                         role = '', 
+                        roles = [
+                            ''
+                            ], 
                         record = caraer_client.models.record.Record(
                             name = '0', 
                             label = '', 
@@ -137,9 +140,12 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', 
+                            objects = {
+                                'key' : null
+                                }, 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
                                     icon = '', 
@@ -147,10 +153,7 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                                     value = null, 
                                     type = '', 
                                     label = '', )
-                                ], 
-                            objects = {
-                                'key' : null
-                                }, ), ), ),
+                                ], ), ), ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -162,9 +165,12 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
+                    objects = {
+                        'key' : null
+                        }, 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
                             icon = '', 
@@ -173,9 +179,6 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             type = '', 
                             label = '', )
                         ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -193,6 +196,9 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                                     ], )
                             }, 
                         role = '', 
+                        roles = [
+                            ''
+                            ], 
                         record = caraer_client.models.record.Record(
                             name = '0', 
                             label = '', 
@@ -203,9 +209,12 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', 
+                            objects = {
+                                'key' : null
+                                }, 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
                                     icon = '', 
@@ -213,10 +222,7 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                                     value = null, 
                                     type = '', 
                                     label = '', )
-                                ], 
-                            objects = {
-                                'key' : null
-                                }, ), ), ),
+                                ], ), ), ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -228,9 +234,12 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
+                    objects = {
+                        'key' : null
+                        }, 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
                             icon = '', 
@@ -239,9 +248,6 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             type = '', 
                             label = '', )
                         ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -259,6 +265,9 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                                     ], )
                             }, 
                         role = '', 
+                        roles = [
+                            ''
+                            ], 
                         record = caraer_client.models.record.Record(
                             name = '0', 
                             label = '', 
@@ -269,9 +278,12 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', 
+                            objects = {
+                                'key' : null
+                                }, 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
                                     icon = '', 
@@ -279,10 +291,7 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                                     value = null, 
                                     type = '', 
                                     label = '', )
-                                ], 
-                            objects = {
-                                'key' : null
-                                }, ), ), ),
+                                ], ), ), ),
                 index = 56
             )
         else:

@@ -36,8 +36,9 @@ class PublicUserDTO(BaseModel):
     scopes: Optional[List[StrictStr]] = None
     filters: Optional[Dict[str, Filter]] = None
     role: Optional[StrictStr] = None
+    roles: Optional[List[StrictStr]] = None
     record: Optional[Record] = None
-    __properties: ClassVar[List[str]] = ["uuid", "email", "firstname", "lastname", "initials", "scopes", "filters", "role", "record"]
+    __properties: ClassVar[List[str]] = ["uuid", "email", "firstname", "lastname", "initials", "scopes", "filters", "role", "roles", "record"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -112,6 +113,7 @@ class PublicUserDTO(BaseModel):
             if obj.get("filters") is not None
             else None,
             "role": obj.get("role"),
+            "roles": obj.get("roles"),
             "record": Record.from_dict(obj["record"]) if obj.get("record") is not None else None
         })
         return _obj

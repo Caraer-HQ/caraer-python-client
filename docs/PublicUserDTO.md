@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **scopes** | **List[str]** |  | [optional] 
 **filters** | [**Dict[str, Filter]**](Filter.md) |  | [optional] 
 **role** | **str** |  | [optional] 
+**roles** | **List[str]** |  | [optional] 
 **record** | [**Record**](Record.md) |  | [optional] 
 
 ## Example

@@ -50,9 +50,12 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
+                    objects = {
+                        'key' : null
+                        }, 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
                             icon = '', 
@@ -61,9 +64,6 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                             type = '', 
                             label = '', )
                         ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -81,6 +81,9 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                                     ], )
                             }, 
                         role = '', 
+                        roles = [
+                            ''
+                            ], 
                         record = caraer_client.models.record.Record(
                             name = '0', 
                             label = '', 
@@ -91,9 +94,12 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', 
+                            objects = {
+                                'key' : null
+                                }, 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
                                     icon = '', 
@@ -101,10 +107,7 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                                     value = null, 
                                     type = '', 
                                     label = '', )
-                                ], 
-                            objects = {
-                                'key' : null
-                                }, ), ), ),
+                                ], ), ), ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -116,9 +119,12 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
+                    objects = {
+                        'key' : null
+                        }, 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
                             icon = '', 
@@ -127,9 +133,6 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                             type = '', 
                             label = '', )
                         ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -147,6 +150,9 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                                     ], )
                             }, 
                         role = '', 
+                        roles = [
+                            ''
+                            ], 
                         record = caraer_client.models.record.Record(
                             name = '0', 
                             label = '', 
@@ -157,9 +163,12 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', 
+                            objects = {
+                                'key' : null
+                                }, 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
                                     icon = '', 
@@ -167,10 +176,7 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                                     value = null, 
                                     type = '', 
                                     label = '', )
-                                ], 
-                            objects = {
-                                'key' : null
-                                }, ), ), ),
+                                ], ), ), ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -182,9 +188,12 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
+                    objects = {
+                        'key' : null
+                        }, 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
                             icon = '', 
@@ -193,9 +202,6 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                             type = '', 
                             label = '', )
                         ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -213,6 +219,9 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                                     ], )
                             }, 
                         role = '', 
+                        roles = [
+                            ''
+                            ], 
                         record = caraer_client.models.record.Record(
                             name = '0', 
                             label = '', 
@@ -223,9 +232,12 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', 
+                            objects = {
+                                'key' : null
+                                }, 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
                                     icon = '', 
@@ -233,10 +245,7 @@ class TestDigitalIdentityDTO(unittest.TestCase):
                                     value = null, 
                                     type = '', 
                                     label = '', )
-                                ], 
-                            objects = {
-                                'key' : null
-                                }, ), ), ),
+                                ], ), ), ),
                 index = 56,
                 light_font_color = '',
                 light_secondary_color = '',
