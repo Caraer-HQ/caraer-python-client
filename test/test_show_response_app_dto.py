@@ -626,7 +626,7 @@ class TestShowResponseAppDTO(unittest.TestCase):
                     resolved_required_scopes = [
                         ''
                         ], 
-                    auth_method = 'API_KEY', 
+                    auth_method = 'NONE', 
                     oauth_client_id = '', 
                     oauth_client_secret = '', 
                     oauth_client_secret_configured = True, 

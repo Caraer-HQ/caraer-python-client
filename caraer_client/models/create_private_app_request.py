@@ -41,8 +41,8 @@ class CreatePrivateAppRequest(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['API_KEY', 'OAUTH2']):
-            raise ValueError("must be one of enum values ('API_KEY', 'OAUTH2')")
+        if value not in set(['NONE', 'API_KEY', 'OAUTH2']):
+            raise ValueError("must be one of enum values ('NONE', 'API_KEY', 'OAUTH2')")
         return value
 
     model_config = ConfigDict(

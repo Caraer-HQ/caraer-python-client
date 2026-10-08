@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **company_name** | **str** | The company name. | [optional] 
 **copy_database_id** | **str** | The copy database id. | [optional] 
 **include_records** | **bool** | Whether to include records in the company. | [optional] 
+**cms_version** | **int** | CMS version for the new company: 1 &#x3D; CMS v1, 2 &#x3D; CMS v2. When omitted, the server&#39;s configured default is used. | [optional] 
 
 ## Example
 

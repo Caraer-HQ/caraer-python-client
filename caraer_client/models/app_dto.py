@@ -70,7 +70,7 @@ class AppDTO(BaseModel):
     installed: Optional[StrictBool] = Field(default=None, description="Whether the app is installed for the current company")
     required_scopes: Optional[List[StrictStr]] = Field(default=None, description="Required scopes requested by the app (macro patterns or concrete scope strings).", alias="requiredScopes")
     resolved_required_scopes: Optional[List[StrictStr]] = Field(default=None, description="Resolved concrete required scopes derived from requiredScopes and dynamic availableScopes.", alias="resolvedRequiredScopes")
-    auth_method: Optional[StrictStr] = Field(default=None, description="Authentication method for this app (API_KEY default, OAUTH2 for OAuth 2.0)", alias="authMethod")
+    auth_method: Optional[StrictStr] = Field(default=None, description="App credentials: NONE for platform-managed installation tokens, API_KEY (legacy default), or OAUTH2", alias="authMethod")
     oauth_client_id: Optional[StrictStr] = Field(default=None, description="OAuth 2.0 client identifier (OAuth apps only)", alias="oauthClientId")
     oauth_client_secret: Optional[StrictStr] = Field(default=None, description="OAuth 2.0 client secret; only returned once on create or secret rotation", alias="oauthClientSecret")
     oauth_client_secret_configured: Optional[StrictBool] = Field(default=None, description="Whether an OAuth client secret is stored for this app (plain value is not re-readable)", alias="oauthClientSecretConfigured")
@@ -95,8 +95,8 @@ class AppDTO(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['API_KEY', 'OAUTH2']):
-            raise ValueError("must be one of enum values ('API_KEY', 'OAUTH2')")
+        if value not in set(['NONE', 'API_KEY', 'OAUTH2']):
+            raise ValueError("must be one of enum values ('NONE', 'API_KEY', 'OAUTH2')")
         return value
 
     model_config = ConfigDict(

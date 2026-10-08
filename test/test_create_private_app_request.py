@@ -37,7 +37,7 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
             return CreatePrivateAppRequest(
                 label = 'My Custom App',
                 description = 'A custom app for internal use',
-                auth_method = 'API_KEY',
+                auth_method = 'NONE',
                 oauth_redirect_uris = [
                     ''
                     ],
