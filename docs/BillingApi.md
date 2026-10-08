@@ -5,6 +5,7 @@ All URIs are relative to *https://v2.api.caraer.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_status**](BillingApi.md#get_status) | **GET** /api/v2/billing/status | Get billing enforcement status
+[**send_jortt_invoice**](BillingApi.md#send_jortt_invoice) | **POST** /api/v2/billing/invoices/{jortt_invoice_id}/send | Send a Jortt draft invoice
 [**send_setup_email**](BillingApi.md#send_setup_email) | **POST** /api/v2/billing/setup-email | Send billing setup email
 
 
