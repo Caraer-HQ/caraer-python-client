@@ -92,7 +92,22 @@ class TestAdvancedRecordQueryResultItem(unittest.TestCase):
                                 relation = '', 
                                 timestamp = 56, 
                                 recency_weight = 1.337, 
-                                confidence = 1.337, )
+                                confidence = 1.337, 
+                                properties = {
+                                    'key' : null
+                                    }, 
+                                paths = [
+                                    caraer_client.models.graph_path_evidence.GraphPathEvidence(
+                                        path = [
+                                            {
+                                                'key' : null
+                                                }
+                                            ], 
+                                        summary = '', 
+                                        relation = '', 
+                                        target_object = '', 
+                                        record_uuid = '', )
+                                    ], )
                             ], )
                     ],
                 supporting_evidence = [

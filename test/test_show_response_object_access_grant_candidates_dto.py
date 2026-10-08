@@ -50,7 +50,10 @@ class TestShowResponseObjectAccessGrantCandidatesDTO(unittest.TestCase):
                             subtitle = '', )
                         ], 
                     apps = [
-                        
+                        caraer_client.models.access_grant_target_dto.AccessGrantTargetDTO(
+                            uuid = '', 
+                            label = '', 
+                            subtitle = '', )
                         ], )
             )
         else:

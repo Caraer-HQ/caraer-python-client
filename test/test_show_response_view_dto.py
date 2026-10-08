@@ -114,7 +114,11 @@ class TestShowResponseViewDTO(unittest.TestCase):
                                 y = 56, 
                                 w = 56, 
                                 h = 56, 
-                                filter = caraer_client.models.filter.Filter(), 
+                                filter = caraer_client.models.filter.Filter(
+                                    groups = [
+                                        caraer_client.models.filter_group.FilterGroup(
+                                            items = null, )
+                                        ], ), 
                                 x_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                     property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
                                         object = '', 
@@ -127,6 +131,10 @@ class TestShowResponseViewDTO(unittest.TestCase):
                                     metric = '', 
                                     label = '', ), 
                                 y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
+                                    property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                        object = '', 
+                                        relation = '', 
+                                        property_name = '', ), 
                                     time_bucket = '', 
                                     time_zone = '', 
                                     window_days = 56, 
@@ -142,9 +150,29 @@ class TestShowResponseViewDTO(unittest.TestCase):
                                     caraer_client.models.analytics_comparison_metric.AnalyticsComparisonMetric(
                                         key = '', 
                                         label = '', 
-                                        main_object = '', )
+                                        main_object = '', 
+                                        filter = caraer_client.models.filter.Filter(
+                                            groups = [
+                                                caraer_client.models.filter_group.FilterGroup(
+                                                    items = null, )
+                                                ], ), 
+                                        y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
+                                            property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                object = '', 
+                                                relation = '', 
+                                                property_name = '', ), 
+                                            time_bucket = '', 
+                                            time_zone = '', 
+                                            window_days = 56, 
+                                            bin_count = 56, 
+                                            metric = '', 
+                                            label = '', ), )
                                     ], 
                                 trend = caraer_client.models.analytics_trend_config.AnalyticsTrendConfig(
+                                    property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                        object = '', 
+                                        relation = '', 
+                                        property_name = '', ), 
                                     window_days = 56, ), 
                                 limit = 56, 
                                 sort = '', 

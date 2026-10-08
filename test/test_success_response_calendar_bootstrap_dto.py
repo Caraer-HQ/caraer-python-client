@@ -72,7 +72,14 @@ class TestSuccessResponseCalendarBootstrapDTO(unittest.TestCase):
                             team_uuid = '', 
                             team_name = '', 
                             company_calendar = True, 
-                            company_name = '', )
+                            company_name = '', 
+                            members = [
+                                caraer_client.models.calendar_team_member_dto.CalendarTeamMemberDTO(
+                                    uuid = '', 
+                                    label = '', 
+                                    object_name = '', 
+                                    has_user_trait = True, )
+                                ], )
                         ], 
                     backfilled = 56, 
                     team_calendars_created = 56, 

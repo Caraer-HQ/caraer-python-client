@@ -48,6 +48,9 @@ class TestCmsPagePatchRequest(unittest.TestCase):
                             }, 
                         module = caraer_client.models.cms_page_module_instance.CmsPageModuleInstance(
                             id = '', 
+                            fields = {
+                                'key' : null
+                                }, 
                             hidden = True, ), 
                         index = 56, 
                         to_index = 56, 
@@ -55,6 +58,10 @@ class TestCmsPagePatchRequest(unittest.TestCase):
                         modules = [
                             caraer_client.models.cms_page_module_instance.CmsPageModuleInstance(
                                 id = '', 
+                                module = '', 
+                                fields = {
+                                    'key' : null
+                                    }, 
                                 hidden = True, )
                             ], 
                         seo = {

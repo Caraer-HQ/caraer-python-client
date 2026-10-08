@@ -74,7 +74,11 @@ class TestRestoreResponseCaraerObjectDTO(unittest.TestCase):
                             shared = True, 
                             personal = True, 
                             trait = '', 
-                            filters = caraer_client.models.filter.Filter(), 
+                            filters = caraer_client.models.filter.Filter(
+                                groups = [
+                                    caraer_client.models.filter_group.FilterGroup(
+                                        items = null, )
+                                    ], ), 
                             shows = [
                                 caraer_client.models.show_item.ShowItem(
                                     object = 'User', 
@@ -132,7 +136,11 @@ class TestRestoreResponseCaraerObjectDTO(unittest.TestCase):
                                         y = 56, 
                                         w = 56, 
                                         h = 56, 
-                                        filter = caraer_client.models.filter.Filter(), 
+                                        filter = caraer_client.models.filter.Filter(
+                                            groups = [
+                                                caraer_client.models.filter_group.FilterGroup(
+                                                    items = null, )
+                                                ], ), 
                                         x_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                             property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
                                                 object = '', 
@@ -145,6 +153,10 @@ class TestRestoreResponseCaraerObjectDTO(unittest.TestCase):
                                             metric = '', 
                                             label = '', ), 
                                         y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
+                                            property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                object = '', 
+                                                relation = '', 
+                                                property_name = '', ), 
                                             time_bucket = '', 
                                             time_zone = '', 
                                             window_days = 56, 
@@ -160,9 +172,29 @@ class TestRestoreResponseCaraerObjectDTO(unittest.TestCase):
                                             caraer_client.models.analytics_comparison_metric.AnalyticsComparisonMetric(
                                                 key = '', 
                                                 label = '', 
-                                                main_object = '', )
+                                                main_object = '', 
+                                                filter = caraer_client.models.filter.Filter(
+                                                    groups = [
+                                                        caraer_client.models.filter_group.FilterGroup(
+                                                            items = null, )
+                                                        ], ), 
+                                                y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
+                                                    property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                        object = '', 
+                                                        relation = '', 
+                                                        property_name = '', ), 
+                                                    time_bucket = '', 
+                                                    time_zone = '', 
+                                                    window_days = 56, 
+                                                    bin_count = 56, 
+                                                    metric = '', 
+                                                    label = '', ), )
                                             ], 
                                         trend = caraer_client.models.analytics_trend_config.AnalyticsTrendConfig(
+                                            property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                object = '', 
+                                                relation = '', 
+                                                property_name = '', ), 
                                             window_days = 56, ), 
                                         limit = 56, 
                                         sort = '', 
@@ -262,8 +294,224 @@ class TestRestoreResponseCaraerObjectDTO(unittest.TestCase):
                                     index = 56, 
                                     plural = '', 
                                     description = '', 
+                                    groups = [
+                                        ''
+                                        ], 
                                     icon = '', 
                                     default_trait = '', 
+                                    traits = [
+                                        ''
+                                        ], 
+                                    views = [
+                                        caraer_client.models.view_dto.ViewDTO(
+                                            uuid = '0', 
+                                            name = '', 
+                                            label = '', 
+                                            created_at = 56, 
+                                            created_by = null, 
+                                            updated_at = 56, 
+                                            updated_by = null, 
+                                            deleted_at = 56, 
+                                            deleted_by = null, 
+                                            index = 56, 
+                                            favorite = True, 
+                                            team = True, 
+                                            shared = True, 
+                                            personal = True, 
+                                            trait = '', 
+                                            filters = caraer_client.models.filter.Filter(
+                                                groups = [
+                                                    caraer_client.models.filter_group.FilterGroup(
+                                                        items = null, )
+                                                    ], ), 
+                                            shows = [
+                                                caraer_client.models.show_item.ShowItem(
+                                                    object = 'User', 
+                                                    relation = 'hasProperty', 
+                                                    relation_direction = 'outgoing', 
+                                                    property = 'email', 
+                                                    separator = '|', 
+                                                    sticky = True, 
+                                                    width = 100, 
+                                                    calculation_function = 'max', 
+                                                    calculation_result = 100, )
+                                                ], 
+                                            sorts = [
+                                                caraer_client.models.sort_item.SortItem(
+                                                    object = 'User', 
+                                                    relation = 'hasProperty', 
+                                                    relation_direction = 'outgoing', 
+                                                    property = 'email', 
+                                                    direction = 'ASC', )
+                                                ], 
+                                            limit = 56, 
+                                            show_icons = True, 
+                                            row_height = '', 
+                                            query = '', 
+                                            icon = '', 
+                                            flow_property = '', 
+                                            flow_preview = '', 
+                                            task_progress_property = '', 
+                                            task_group_property = '', 
+                                            task_expand_subtasks = True, 
+                                            task_collapsed_group_keys = [
+                                                ''
+                                                ], 
+                                            task_expanded_task_uuids = [
+                                                ''
+                                                ], 
+                                            calendar_overlay = '', 
+                                            visible_calendar_uuids = [
+                                                ''
+                                                ], 
+                                            selected_calendar_uuid = '', 
+                                            calendar_color_by = '', 
+                                            default_view = True, 
+                                            is_internally_public = True, 
+                                            analytics = caraer_client.models.analytics_dashboard_config.AnalyticsDashboardConfig(
+                                                version = 56, 
+                                                columns = 56, 
+                                                widgets = [
+                                                    caraer_client.models.analytics_widget_config.AnalyticsWidgetConfig(
+                                                        id = '', 
+                                                        title = '', 
+                                                        chart_type = '', 
+                                                        main_object = '', 
+                                                        x = 56, 
+                                                        y = 56, 
+                                                        w = 56, 
+                                                        h = 56, 
+                                                        filter = caraer_client.models.filter.Filter(
+                                                            groups = [
+                                                                caraer_client.models.filter_group.FilterGroup(
+                                                                    items = null, )
+                                                                ], ), 
+                                                        x_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
+                                                            property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                                object = '', 
+                                                                relation = '', 
+                                                                property_name = '', ), 
+                                                            time_bucket = '', 
+                                                            time_zone = '', 
+                                                            window_days = 56, 
+                                                            bin_count = 56, 
+                                                            metric = '', 
+                                                            label = '', ), 
+                                                        y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
+                                                            property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                                object = '', 
+                                                                relation = '', 
+                                                                property_name = '', ), 
+                                                            time_bucket = '', 
+                                                            time_zone = '', 
+                                                            window_days = 56, 
+                                                            bin_count = 56, 
+                                                            metric = '', 
+                                                            label = '', ), 
+                                                        series = caraer_client.models.analytics_series_config.AnalyticsSeriesConfig(
+                                                            group_by = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                                object = '', 
+                                                                relation = '', 
+                                                                property_name = '', ), ), 
+                                                        comparison_metrics = [
+                                                            caraer_client.models.analytics_comparison_metric.AnalyticsComparisonMetric(
+                                                                key = '', 
+                                                                label = '', 
+                                                                main_object = '', 
+                                                                filter = caraer_client.models.filter.Filter(
+                                                                    groups = [
+                                                                        caraer_client.models.filter_group.FilterGroup(
+                                                                            items = null, )
+                                                                        ], ), 
+                                                                y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
+                                                                    property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                                        object = '', 
+                                                                        relation = '', 
+                                                                        property_name = '', ), 
+                                                                    time_bucket = '', 
+                                                                    time_zone = '', 
+                                                                    window_days = 56, 
+                                                                    bin_count = 56, 
+                                                                    metric = '', 
+                                                                    label = '', ), )
+                                                            ], 
+                                                        trend = caraer_client.models.analytics_trend_config.AnalyticsTrendConfig(
+                                                            property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                                object = '', 
+                                                                relation = '', 
+                                                                property_name = '', ), 
+                                                            window_days = 56, ), 
+                                                        limit = 56, 
+                                                        sort = '', 
+                                                        exclude_empty_values = True, 
+                                                        style = caraer_client.models.analytics_widget_style.AnalyticsWidgetStyle(
+                                                            show_legend = True, 
+                                                            show_grid = True, 
+                                                            show_value_labels = True, 
+                                                            bar_orientation = '', 
+                                                            bar_grouping = '', 
+                                                            colors = {
+                                                                'key' : ''
+                                                                }, 
+                                                            reference_lines = [
+                                                                caraer_client.models.analytics_reference_line.AnalyticsReferenceLine(
+                                                                    value = 1.337, 
+                                                                    label = '', 
+                                                                    color = '', )
+                                                                ], ), )
+                                                    ], ), )
+                                        ], 
+                                    properties = [
+                                        caraer_client.models.property_dto.PropertyDTO(
+                                            uuid = '0', 
+                                            name = '', 
+                                            label = '', 
+                                            created_at = 56, 
+                                            created_by = null, 
+                                            updated_at = 56, 
+                                            updated_by = null, 
+                                            deleted_at = 56, 
+                                            deleted_by = null, 
+                                            index = 56, 
+                                            description = '', 
+                                            type = '', 
+                                            options = [
+                                                caraer_client.models.property_option.PropertyOption(
+                                                    name = '', 
+                                                    label = '', 
+                                                    icon = '', 
+                                                    color = '', 
+                                                    disabled = True, 
+                                                    completed = True, 
+                                                    used_in = caraer_client.models.used_in_result.UsedInResult(
+                                                        record_uuids = [
+                                                            ''
+                                                            ], 
+                                                        count = 56, ), )
+                                                ], 
+                                            group = '', 
+                                            format = null, 
+                                            rules = [
+                                                ''
+                                                ], 
+                                            immutable = True, 
+                                            hidden = True, 
+                                            lifecycle_active = True, 
+                                            required_filter = null, 
+                                            non_public = True, 
+                                            indexed = True, 
+                                            editable = True, 
+                                            format_settings = {
+                                                'key' : null
+                                                }, 
+                                            used_in = null, 
+                                            icon = '', 
+                                            webpage_public = True, 
+                                            embeddable = True, 
+                                            sensitive = True, 
+                                            min_and_max_value = null, 
+                                            pinned = True, )
+                                        ], 
                                     suites = [
                                         ''
                                         ], 
@@ -279,7 +527,260 @@ class TestRestoreResponseCaraerObjectDTO(unittest.TestCase):
                         ''
                         ], 
                     extends_to = [
-                        
+                        caraer_client.models.caraer_object_dto.CaraerObjectDTO(
+                            uuid = '0', 
+                            name = '', 
+                            label = '', 
+                            created_at = 56, 
+                            created_by = null, 
+                            updated_at = 56, 
+                            updated_by = null, 
+                            deleted_at = 56, 
+                            deleted_by = null, 
+                            index = 56, 
+                            plural = '', 
+                            description = '', 
+                            groups = [
+                                ''
+                                ], 
+                            icon = '', 
+                            default_trait = '', 
+                            traits = [
+                                ''
+                                ], 
+                            views = [
+                                caraer_client.models.view_dto.ViewDTO(
+                                    uuid = '0', 
+                                    name = '', 
+                                    label = '', 
+                                    created_at = 56, 
+                                    created_by = null, 
+                                    updated_at = 56, 
+                                    updated_by = null, 
+                                    deleted_at = 56, 
+                                    deleted_by = null, 
+                                    index = 56, 
+                                    favorite = True, 
+                                    team = True, 
+                                    shared = True, 
+                                    personal = True, 
+                                    trait = '', 
+                                    filters = caraer_client.models.filter.Filter(
+                                        groups = [
+                                            caraer_client.models.filter_group.FilterGroup(
+                                                items = null, )
+                                            ], ), 
+                                    shows = [
+                                        caraer_client.models.show_item.ShowItem(
+                                            object = 'User', 
+                                            relation = 'hasProperty', 
+                                            relation_direction = 'outgoing', 
+                                            property = 'email', 
+                                            separator = '|', 
+                                            sticky = True, 
+                                            width = 100, 
+                                            calculation_function = 'max', 
+                                            calculation_result = 100, )
+                                        ], 
+                                    sorts = [
+                                        caraer_client.models.sort_item.SortItem(
+                                            object = 'User', 
+                                            relation = 'hasProperty', 
+                                            relation_direction = 'outgoing', 
+                                            property = 'email', 
+                                            direction = 'ASC', )
+                                        ], 
+                                    limit = 56, 
+                                    show_icons = True, 
+                                    row_height = '', 
+                                    query = '', 
+                                    icon = '', 
+                                    flow_property = '', 
+                                    flow_preview = '', 
+                                    task_progress_property = '', 
+                                    task_group_property = '', 
+                                    task_expand_subtasks = True, 
+                                    task_collapsed_group_keys = [
+                                        ''
+                                        ], 
+                                    task_expanded_task_uuids = [
+                                        ''
+                                        ], 
+                                    calendar_overlay = '', 
+                                    visible_calendar_uuids = [
+                                        ''
+                                        ], 
+                                    selected_calendar_uuid = '', 
+                                    calendar_color_by = '', 
+                                    default_view = True, 
+                                    is_internally_public = True, 
+                                    analytics = caraer_client.models.analytics_dashboard_config.AnalyticsDashboardConfig(
+                                        version = 56, 
+                                        columns = 56, 
+                                        widgets = [
+                                            caraer_client.models.analytics_widget_config.AnalyticsWidgetConfig(
+                                                id = '', 
+                                                title = '', 
+                                                chart_type = '', 
+                                                main_object = '', 
+                                                x = 56, 
+                                                y = 56, 
+                                                w = 56, 
+                                                h = 56, 
+                                                filter = caraer_client.models.filter.Filter(
+                                                    groups = [
+                                                        caraer_client.models.filter_group.FilterGroup(
+                                                            items = null, )
+                                                        ], ), 
+                                                x_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
+                                                    property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                        object = '', 
+                                                        relation = '', 
+                                                        property_name = '', ), 
+                                                    time_bucket = '', 
+                                                    time_zone = '', 
+                                                    window_days = 56, 
+                                                    bin_count = 56, 
+                                                    metric = '', 
+                                                    label = '', ), 
+                                                y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
+                                                    property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                        object = '', 
+                                                        relation = '', 
+                                                        property_name = '', ), 
+                                                    time_bucket = '', 
+                                                    time_zone = '', 
+                                                    window_days = 56, 
+                                                    bin_count = 56, 
+                                                    metric = '', 
+                                                    label = '', ), 
+                                                series = caraer_client.models.analytics_series_config.AnalyticsSeriesConfig(
+                                                    group_by = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                        object = '', 
+                                                        relation = '', 
+                                                        property_name = '', ), ), 
+                                                comparison_metrics = [
+                                                    caraer_client.models.analytics_comparison_metric.AnalyticsComparisonMetric(
+                                                        key = '', 
+                                                        label = '', 
+                                                        main_object = '', 
+                                                        filter = caraer_client.models.filter.Filter(
+                                                            groups = [
+                                                                caraer_client.models.filter_group.FilterGroup(
+                                                                    items = null, )
+                                                                ], ), 
+                                                        y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
+                                                            property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                                object = '', 
+                                                                relation = '', 
+                                                                property_name = '', ), 
+                                                            time_bucket = '', 
+                                                            time_zone = '', 
+                                                            window_days = 56, 
+                                                            bin_count = 56, 
+                                                            metric = '', 
+                                                            label = '', ), )
+                                                    ], 
+                                                trend = caraer_client.models.analytics_trend_config.AnalyticsTrendConfig(
+                                                    property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
+                                                        object = '', 
+                                                        relation = '', 
+                                                        property_name = '', ), 
+                                                    window_days = 56, ), 
+                                                limit = 56, 
+                                                sort = '', 
+                                                exclude_empty_values = True, 
+                                                style = caraer_client.models.analytics_widget_style.AnalyticsWidgetStyle(
+                                                    show_legend = True, 
+                                                    show_grid = True, 
+                                                    show_value_labels = True, 
+                                                    bar_orientation = '', 
+                                                    bar_grouping = '', 
+                                                    colors = {
+                                                        'key' : ''
+                                                        }, 
+                                                    reference_lines = [
+                                                        caraer_client.models.analytics_reference_line.AnalyticsReferenceLine(
+                                                            value = 1.337, 
+                                                            label = '', 
+                                                            color = '', )
+                                                        ], ), )
+                                            ], ), )
+                                ], 
+                            properties = [
+                                caraer_client.models.property_dto.PropertyDTO(
+                                    uuid = '0', 
+                                    name = '', 
+                                    label = '', 
+                                    created_at = 56, 
+                                    created_by = null, 
+                                    updated_at = 56, 
+                                    updated_by = null, 
+                                    deleted_at = 56, 
+                                    deleted_by = null, 
+                                    index = 56, 
+                                    description = '', 
+                                    type = '', 
+                                    options = [
+                                        caraer_client.models.property_option.PropertyOption(
+                                            name = '', 
+                                            label = '', 
+                                            icon = '', 
+                                            color = '', 
+                                            disabled = True, 
+                                            completed = True, 
+                                            used_in = caraer_client.models.used_in_result.UsedInResult(
+                                                record_uuids = [
+                                                    ''
+                                                    ], 
+                                                count = 56, ), )
+                                        ], 
+                                    group = '', 
+                                    format = null, 
+                                    rules = [
+                                        ''
+                                        ], 
+                                    immutable = True, 
+                                    hidden = True, 
+                                    lifecycle_active = True, 
+                                    required_filter = null, 
+                                    non_public = True, 
+                                    indexed = True, 
+                                    editable = True, 
+                                    format_settings = {
+                                        'key' : null
+                                        }, 
+                                    used_in = null, 
+                                    icon = '', 
+                                    webpage_public = True, 
+                                    embeddable = True, 
+                                    sensitive = True, 
+                                    min_and_max_value = null, 
+                                    pinned = True, )
+                                ], 
+                            relations = [
+                                caraer_client.models.relation_dto.RelationDTO(
+                                    uuid = '0', 
+                                    name = '', 
+                                    label = '', 
+                                    created_at = 56, 
+                                    created_by = null, 
+                                    updated_at = 56, 
+                                    updated_by = null, 
+                                    deleted_at = 56, 
+                                    deleted_by = null, 
+                                    index = 56, 
+                                    description = '', 
+                                    objects = [
+                                        
+                                        ], 
+                                    immutable = True, 
+                                    editable = True, )
+                                ], 
+                            suites = [
+                                ''
+                                ], 
+                            editable = True, )
                         ], 
                     editable = True, )
             )

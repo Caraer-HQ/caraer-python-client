@@ -2279,7 +2279,7 @@ class RecordsApi:
         # process the query parameters
         if primary is not None:
             
-            _query_params.append(('primary', primary))
+            _query_params.extend(self.api_client.explode_query_object('primary', primary))
             
         # process the header parameters
         # process the form parameters
