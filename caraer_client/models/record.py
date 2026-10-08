@@ -41,10 +41,10 @@ class Record(BaseModel):
     complete: Optional[StrictBool] = None
     deleted: Optional[StrictBool] = None
     uuid: Annotated[str, Field(min_length=1, strict=True)]
-    objects: Optional[Dict[str, Any]] = None
     properties: Optional[List[FilledProperty]] = None
+    objects: Optional[Dict[str, Any]] = None
     user: Optional[PublicUserDTO] = None
-    __properties: ClassVar[List[str]] = ["name", "label", "createdAt", "updatedAt", "deletedAt", "createdByUuid", "updatedByUuid", "deletedByUuid", "index", "complete", "deleted", "uuid", "objects", "properties", "user"]
+    __properties: ClassVar[List[str]] = ["name", "label", "createdAt", "updatedAt", "deletedAt", "createdByUuid", "updatedByUuid", "deletedByUuid", "index", "complete", "deleted", "uuid", "properties", "objects", "user"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -118,8 +118,8 @@ class Record(BaseModel):
             "complete": obj.get("complete"),
             "deleted": obj.get("deleted"),
             "uuid": obj.get("uuid"),
-            "objects": obj.get("objects"),
             "properties": [FilledProperty.from_dict(_item) for _item in obj["properties"]] if obj.get("properties") is not None else None,
+            "objects": obj.get("objects"),
             "user": PublicUserDTO.from_dict(obj["user"]) if obj.get("user") is not None else None
         })
         return _obj
