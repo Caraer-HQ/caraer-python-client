@@ -1,17 +1,60 @@
 # CreatePrivateAppRequest
 
-Private app creation request with label and optional description
+Private app creator manifest; label is required and internal name is optional
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**label** | **str** | The display label for the private app. | 
-**description** | **str** | Optional description text for the app. | [optional] 
-**auth_method** | **str** | Authentication method (API_KEY default, OAUTH2 for OAuth 2.0) | [optional] 
-**oauth_redirect_uris** | **List[str]** | Registered OAuth redirect URIs (required when authMethod is OAUTH2) | [optional] 
-**platform_version** | **int** | Ignored; new private apps are always platform version 2 (async container runtime). | [optional] 
-**runtime** | **str** | Serverless runtime for the app: nodejs22 or python312. Defaults to nodejs22. | [optional] 
+**uuid** | **str** | Unique identifier for the entity | 
+**name** | **str** | The name of the entity | 
+**label** | **str** | Display label for the entity, can be different from name | 
+**created_at** | **int** | Unix timestamp when the entity was created | [optional] 
+**created_by** | [**Record**](Record.md) | Identifier of the user who created the entity | [optional] 
+**updated_at** | **int** | Unix timestamp when the entity was last updated | [optional] 
+**updated_by** | [**Record**](Record.md) | Identifier of the user who last updated the entity | [optional] 
+**deleted_at** | **int** | Unix timestamp when the entity was deleted (null if not deleted) | [optional] 
+**deleted_by** | [**Record**](Record.md) | Identifier of the user who deleted the entity | [optional] 
+**index** | **int** | Index number for ordering entities | [optional] 
+**private_app** | **bool** | Indicates whether this app is private (only available to the creator&#39;s company) | [optional] 
+**hide_api_key_field** | **bool** | Whether to hide the API token field in marketplace installer UI. Defaults to true when omitted. Private apps show the key regardless. | [optional] 
+**details** | [**AppDetailsDTO**](AppDetailsDTO.md) | Additional details and specifications about the application | [optional] 
+**app_bars** | [**List[AppBarDTO]**](AppBarDTO.md) | App bars (location-specific configuration and actions) | [optional] 
+**serverless_functions** | [**List[ServerlessFunctionDTO]**](ServerlessFunctionDTO.md) | Serverless functions owned by this app | [optional] 
+**install_webhook** | [**SubscribeWebhookDTO**](SubscribeWebhookDTO.md) | Webhook triggered when the app is installed | [optional] 
+**uninstall_webhook** | [**SubscribeWebhookDTO**](SubscribeWebhookDTO.md) | Webhook triggered when the app is uninstalled | [optional] 
+**rotate_webhook** | [**SubscribeWebhookDTO**](SubscribeWebhookDTO.md) | Webhook triggered when the app installation token is rotated | [optional] 
+**update_webhook** | [**SubscribeWebhookDTO**](SubscribeWebhookDTO.md) | Webhook triggered when an already installed app is saved again | [optional] 
+**settings_schema** | [**List[AppSettingFieldSchema]**](AppSettingFieldSchema.md) | JSON array of AppSettingFieldSchema (app-level setting field definitions) | [optional] 
+**settings_sections** | [**List[AppSettingsSection]**](AppSettingsSection.md) | Optional UI grouping of settingsSchema fields into installer cards | [optional] 
+**external_o_auth_providers** | [**List[AppExternalOAuthProviderSummaryDTO]**](AppExternalOAuthProviderSummaryDTO.md) | External OAuth providers installers can Connect (name/logo only; no secrets) | [optional] 
+**webhook_rate_limit_per_minute** | **int** | Webhook rate limit per minute | [optional] 
+**job_rate_limit_per_minute** | **int** | App job enqueue rate limit per minute per installation | [optional] 
+**app_publish** | [**AppPublishDTO**](AppPublishDTO.md) | Publish and review state for the app in the marketplace (creator view) | [optional] 
+**has_app** | [**HasAppDTO**](HasAppDTO.md) | Installation link (company–app) with token, scopes, and per-installation settingsValues; present when includeSettings is true | [optional] 
+**image** | **str** | URL to the application&#39;s image or icon (derived from details.image) | [optional] 
+**url** | **str** | URL where the application can be accessed (derived from details.url) | [optional] 
+**category** | **str** | Category the application belongs to (derived from details.category) | [optional] 
+**installed** | **bool** | Whether the app is installed for the current company | [optional] 
+**required_scopes** | **List[str]** | Required scopes requested by the app (macro patterns or concrete scope strings). | [optional] 
+**resolved_required_scopes** | **List[str]** | Resolved concrete required scopes derived from requiredScopes and dynamic availableScopes. | [optional] 
+**auth_method** | **str** | App credentials: NONE for platform-managed installation tokens, API_KEY (legacy default), or OAUTH2 | [optional] 
+**oauth_client_id** | **str** | OAuth 2.0 client identifier (OAuth apps only) | [optional] 
+**oauth_client_secret** | **str** | OAuth 2.0 client secret; only returned once on create or secret rotation | [optional] 
+**oauth_client_secret_configured** | **bool** | Whether an OAuth client secret is stored for this app (plain value is not re-readable) | [optional] 
+**oauth_redirect_uris** | **List[str]** | Registered OAuth redirect URIs (OAuth apps only) | [optional] 
+**oauth_authorize_url** | **str** | OAuth authorization endpoint URL | [optional] 
+**oauth_token_url** | **str** | OAuth token endpoint URL | [optional] 
+**install_url** | **str** | External URL where end users install this app (e.g. ChatGPT connector page) | [optional] 
+**brandmark** | **str** | Square brandmark URL used in compact app surfaces | [optional] 
+**description** | **str** | Internal app description used in Caraer admin views | [optional] 
+**platform_version** | **int** | App platform version: 1 &#x3D; legacy per-function Cloud Functions; 2 &#x3D; one container per app | [optional] 
+**runtime** | **str** | Serverless runtime for platform V2 apps (nodejs22 or python312) | [optional] 
+**runtime_base_url** | **str** | Base HTTPS URL of the V2 app container runtime | [optional] 
+**runtime_revision** | **str** | Last deployed runtime revision id | [optional] 
+**runtime_status** | **str** | V2 runtime status: PENDING, PROVISIONING, READY, FAILED | [optional] 
+**runtime_error** | **str** | Last V2 runtime error message when FAILED | [optional] 
+**runtime_generation** | **int** | Monotonic generation for async runtime jobs | [optional] 
 
 ## Example
 

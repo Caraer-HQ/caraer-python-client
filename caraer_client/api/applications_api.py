@@ -381,7 +381,7 @@ class ApplicationsApi:
     ) -> CreateResponse:
         """Create a private app
 
-        Creates a new private app with the provided label and optional description. Private apps are automatically installed for the creating user's company. Returns the created app details as a CreateResponse wrapping an AppDTO.
+        Creates a private app from its creator manifest, validating the supplied name, settings and app bars before saving. An omitted name is generated. Private apps are automatically installed for the creating user's company. Returns the created app details as a CreateResponse wrapping an AppDTO.
 
         :param create_private_app_request: (required)
         :type create_private_app_request: CreatePrivateAppRequest
@@ -453,7 +453,7 @@ class ApplicationsApi:
     ) -> ApiResponse[CreateResponse]:
         """Create a private app
 
-        Creates a new private app with the provided label and optional description. Private apps are automatically installed for the creating user's company. Returns the created app details as a CreateResponse wrapping an AppDTO.
+        Creates a private app from its creator manifest, validating the supplied name, settings and app bars before saving. An omitted name is generated. Private apps are automatically installed for the creating user's company. Returns the created app details as a CreateResponse wrapping an AppDTO.
 
         :param create_private_app_request: (required)
         :type create_private_app_request: CreatePrivateAppRequest
@@ -525,7 +525,7 @@ class ApplicationsApi:
     ) -> RESTResponseType:
         """Create a private app
 
-        Creates a new private app with the provided label and optional description. Private apps are automatically installed for the creating user's company. Returns the created app details as a CreateResponse wrapping an AppDTO.
+        Creates a private app from its creator manifest, validating the supplied name, settings and app bars before saving. An omitted name is generated. Private apps are automatically installed for the creating user's company. Returns the created app details as a CreateResponse wrapping an AppDTO.
 
         :param create_private_app_request: (required)
         :type create_private_app_request: CreatePrivateAppRequest

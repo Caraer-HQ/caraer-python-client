@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 Create a private app
 
-Creates a new private app with the provided label and optional description. Private apps are automatically installed for the creating user's company. Returns the created app details as a CreateResponse wrapping an AppDTO.
+Creates a private app from its creator manifest, validating the supplied name, settings and app bars before saving. An omitted name is generated. Private apps are automatically installed for the creating user's company. Returns the created app details as a CreateResponse wrapping an AppDTO.
 
 ### Example
 

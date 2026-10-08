@@ -17,23 +17,77 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from caraer_client.models.app_bar_dto import AppBarDTO
+from caraer_client.models.app_details_dto import AppDetailsDTO
+from caraer_client.models.app_external_o_auth_provider_summary_dto import AppExternalOAuthProviderSummaryDTO
+from caraer_client.models.app_publish_dto import AppPublishDTO
+from caraer_client.models.app_setting_field_schema import AppSettingFieldSchema
+from caraer_client.models.app_settings_section import AppSettingsSection
+from caraer_client.models.has_app_dto import HasAppDTO
+from caraer_client.models.record import Record
+from caraer_client.models.serverless_function_dto import ServerlessFunctionDTO
+from caraer_client.models.subscribe_webhook_dto import SubscribeWebhookDTO
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
 class CreatePrivateAppRequest(BaseModel):
     """
-    Private app creation request with label and optional description
+    Private app creator manifest; label is required and internal name is optional
     """ # noqa: E501
-    label: StrictStr = Field(description="The display label for the private app.", json_schema_extra={"examples": ["My Custom App"]})
-    description: Optional[StrictStr] = Field(default=None, description="Optional description text for the app.", json_schema_extra={"examples": ["A custom app for internal use"]})
-    auth_method: Optional[StrictStr] = Field(default=None, description="Authentication method (API_KEY default, OAUTH2 for OAuth 2.0)", alias="authMethod")
-    oauth_redirect_uris: Optional[List[StrictStr]] = Field(default=None, description="Registered OAuth redirect URIs (required when authMethod is OAUTH2)", alias="oauthRedirectUris")
-    platform_version: Optional[StrictInt] = Field(default=None, description="Ignored; new private apps are always platform version 2 (async container runtime).", alias="platformVersion")
-    runtime: Optional[StrictStr] = Field(default=None, description="Serverless runtime for the app: nodejs22 or python312. Defaults to nodejs22.")
-    __properties: ClassVar[List[str]] = ["label", "description", "authMethod", "oauthRedirectUris", "platformVersion", "runtime"]
+    uuid: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Unique identifier for the entity")
+    name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The name of the entity")
+    label: StrictStr = Field(description="Display label for the entity, can be different from name")
+    created_at: Optional[StrictInt] = Field(default=None, description="Unix timestamp when the entity was created", alias="createdAt")
+    created_by: Optional[Record] = Field(default=None, description="Identifier of the user who created the entity", alias="createdBy")
+    updated_at: Optional[StrictInt] = Field(default=None, description="Unix timestamp when the entity was last updated", alias="updatedAt")
+    updated_by: Optional[Record] = Field(default=None, description="Identifier of the user who last updated the entity", alias="updatedBy")
+    deleted_at: Optional[StrictInt] = Field(default=None, description="Unix timestamp when the entity was deleted (null if not deleted)", alias="deletedAt")
+    deleted_by: Optional[Record] = Field(default=None, description="Identifier of the user who deleted the entity", alias="deletedBy")
+    index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
+    private_app: Optional[StrictBool] = Field(default=None, description="Indicates whether this app is private (only available to the creator's company)", alias="privateApp")
+    hide_api_key_field: Optional[StrictBool] = Field(default=None, description="Whether to hide the API token field in marketplace installer UI. Defaults to true when omitted. Private apps show the key regardless.", alias="hideApiKeyField")
+    details: Optional[AppDetailsDTO] = Field(default=None, description="Additional details and specifications about the application")
+    app_bars: Optional[List[AppBarDTO]] = Field(default=None, description="App bars (location-specific configuration and actions)", alias="appBars")
+    serverless_functions: Optional[List[ServerlessFunctionDTO]] = Field(default=None, description="Serverless functions owned by this app", alias="serverlessFunctions")
+    install_webhook: Optional[SubscribeWebhookDTO] = Field(default=None, description="Webhook triggered when the app is installed", alias="installWebhook")
+    uninstall_webhook: Optional[SubscribeWebhookDTO] = Field(default=None, description="Webhook triggered when the app is uninstalled", alias="uninstallWebhook")
+    rotate_webhook: Optional[SubscribeWebhookDTO] = Field(default=None, description="Webhook triggered when the app installation token is rotated", alias="rotateWebhook")
+    update_webhook: Optional[SubscribeWebhookDTO] = Field(default=None, description="Webhook triggered when an already installed app is saved again", alias="updateWebhook")
+    settings_schema: Optional[List[AppSettingFieldSchema]] = Field(default=None, description="JSON array of AppSettingFieldSchema (app-level setting field definitions)", alias="settingsSchema")
+    settings_sections: Optional[List[AppSettingsSection]] = Field(default=None, description="Optional UI grouping of settingsSchema fields into installer cards", alias="settingsSections")
+    external_o_auth_providers: Optional[List[AppExternalOAuthProviderSummaryDTO]] = Field(default=None, description="External OAuth providers installers can Connect (name/logo only; no secrets)", alias="externalOAuthProviders")
+    webhook_rate_limit_per_minute: Optional[StrictInt] = Field(default=None, description="Webhook rate limit per minute", alias="webhookRateLimitPerMinute")
+    job_rate_limit_per_minute: Optional[StrictInt] = Field(default=None, description="App job enqueue rate limit per minute per installation", alias="jobRateLimitPerMinute")
+    app_publish: Optional[AppPublishDTO] = Field(default=None, description="Publish and review state for the app in the marketplace (creator view)", alias="appPublish")
+    has_app: Optional[HasAppDTO] = Field(default=None, description="Installation link (company–app) with token, scopes, and per-installation settingsValues; present when includeSettings is true", alias="hasApp")
+    image: Optional[StrictStr] = Field(default=None, description="URL to the application's image or icon (derived from details.image)")
+    url: Optional[StrictStr] = Field(default=None, description="URL where the application can be accessed (derived from details.url)")
+    category: Optional[StrictStr] = Field(default=None, description="Category the application belongs to (derived from details.category)")
+    installed: Optional[StrictBool] = Field(default=None, description="Whether the app is installed for the current company")
+    required_scopes: Optional[List[StrictStr]] = Field(default=None, description="Required scopes requested by the app (macro patterns or concrete scope strings).", alias="requiredScopes")
+    resolved_required_scopes: Optional[List[StrictStr]] = Field(default=None, description="Resolved concrete required scopes derived from requiredScopes and dynamic availableScopes.", alias="resolvedRequiredScopes")
+    auth_method: Optional[StrictStr] = Field(default=None, description="App credentials: NONE for platform-managed installation tokens, API_KEY (legacy default), or OAUTH2", alias="authMethod")
+    oauth_client_id: Optional[StrictStr] = Field(default=None, description="OAuth 2.0 client identifier (OAuth apps only)", alias="oauthClientId")
+    oauth_client_secret: Optional[StrictStr] = Field(default=None, description="OAuth 2.0 client secret; only returned once on create or secret rotation", alias="oauthClientSecret")
+    oauth_client_secret_configured: Optional[StrictBool] = Field(default=None, description="Whether an OAuth client secret is stored for this app (plain value is not re-readable)", alias="oauthClientSecretConfigured")
+    oauth_redirect_uris: Optional[List[StrictStr]] = Field(default=None, description="Registered OAuth redirect URIs (OAuth apps only)", alias="oauthRedirectUris")
+    oauth_authorize_url: Optional[StrictStr] = Field(default=None, description="OAuth authorization endpoint URL", alias="oauthAuthorizeUrl")
+    oauth_token_url: Optional[StrictStr] = Field(default=None, description="OAuth token endpoint URL", alias="oauthTokenUrl")
+    install_url: Optional[StrictStr] = Field(default=None, description="External URL where end users install this app (e.g. ChatGPT connector page)", alias="installUrl")
+    brandmark: Optional[StrictStr] = Field(default=None, description="Square brandmark URL used in compact app surfaces")
+    description: Optional[StrictStr] = Field(default=None, description="Internal app description used in Caraer admin views")
+    platform_version: Optional[StrictInt] = Field(default=None, description="App platform version: 1 = legacy per-function Cloud Functions; 2 = one container per app", alias="platformVersion")
+    runtime: Optional[StrictStr] = Field(default=None, description="Serverless runtime for platform V2 apps (nodejs22 or python312)")
+    runtime_base_url: Optional[StrictStr] = Field(default=None, description="Base HTTPS URL of the V2 app container runtime", alias="runtimeBaseUrl")
+    runtime_revision: Optional[StrictStr] = Field(default=None, description="Last deployed runtime revision id", alias="runtimeRevision")
+    runtime_status: Optional[StrictStr] = Field(default=None, description="V2 runtime status: PENDING, PROVISIONING, READY, FAILED", alias="runtimeStatus")
+    runtime_error: Optional[StrictStr] = Field(default=None, description="Last V2 runtime error message when FAILED", alias="runtimeError")
+    runtime_generation: Optional[StrictInt] = Field(default=None, description="Monotonic generation for async runtime jobs", alias="runtimeGeneration")
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "privateApp", "hideApiKeyField", "details", "appBars", "serverlessFunctions", "installWebhook", "uninstallWebhook", "rotateWebhook", "updateWebhook", "settingsSchema", "settingsSections", "externalOAuthProviders", "webhookRateLimitPerMinute", "jobRateLimitPerMinute", "appPublish", "hasApp", "image", "url", "category", "installed", "requiredScopes", "resolvedRequiredScopes", "authMethod", "oauthClientId", "oauthClientSecret", "oauthClientSecretConfigured", "oauthRedirectUris", "oauthAuthorizeUrl", "oauthTokenUrl", "installUrl", "brandmark", "description", "platformVersion", "runtime", "runtimeBaseUrl", "runtimeRevision", "runtimeStatus", "runtimeError", "runtimeGeneration"]
 
     @field_validator('auth_method')
     def auth_method_validate_enum(cls, value):
@@ -84,6 +138,66 @@ class CreatePrivateAppRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of created_by
+        if self.created_by:
+            _dict['createdBy'] = self.created_by.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of updated_by
+        if self.updated_by:
+            _dict['updatedBy'] = self.updated_by.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of deleted_by
+        if self.deleted_by:
+            _dict['deletedBy'] = self.deleted_by.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of details
+        if self.details:
+            _dict['details'] = self.details.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in app_bars (list)
+        _items = []
+        if self.app_bars:
+            for _item_app_bars in self.app_bars:
+                _items.append(_item_app_bars.to_dict() if _item_app_bars is not None else None)
+            _dict['appBars'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in serverless_functions (list)
+        _items = []
+        if self.serverless_functions:
+            for _item_serverless_functions in self.serverless_functions:
+                _items.append(_item_serverless_functions.to_dict() if _item_serverless_functions is not None else None)
+            _dict['serverlessFunctions'] = _items
+        # override the default output from pydantic by calling `to_dict()` of install_webhook
+        if self.install_webhook:
+            _dict['installWebhook'] = self.install_webhook.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of uninstall_webhook
+        if self.uninstall_webhook:
+            _dict['uninstallWebhook'] = self.uninstall_webhook.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of rotate_webhook
+        if self.rotate_webhook:
+            _dict['rotateWebhook'] = self.rotate_webhook.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of update_webhook
+        if self.update_webhook:
+            _dict['updateWebhook'] = self.update_webhook.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in settings_schema (list)
+        _items = []
+        if self.settings_schema:
+            for _item_settings_schema in self.settings_schema:
+                _items.append(_item_settings_schema.to_dict() if _item_settings_schema is not None else None)
+            _dict['settingsSchema'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in settings_sections (list)
+        _items = []
+        if self.settings_sections:
+            for _item_settings_sections in self.settings_sections:
+                _items.append(_item_settings_sections.to_dict() if _item_settings_sections is not None else None)
+            _dict['settingsSections'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in external_o_auth_providers (list)
+        _items = []
+        if self.external_o_auth_providers:
+            for _item_external_o_auth_providers in self.external_o_auth_providers:
+                _items.append(_item_external_o_auth_providers.to_dict() if _item_external_o_auth_providers is not None else None)
+            _dict['externalOAuthProviders'] = _items
+        # override the default output from pydantic by calling `to_dict()` of app_publish
+        if self.app_publish:
+            _dict['appPublish'] = self.app_publish.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of has_app
+        if self.has_app:
+            _dict['hasApp'] = self.has_app.to_dict()
         return _dict
 
     @classmethod
@@ -96,12 +210,55 @@ class CreatePrivateAppRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "uuid": obj.get("uuid"),
+            "name": obj.get("name"),
             "label": obj.get("label"),
-            "description": obj.get("description"),
+            "createdAt": obj.get("createdAt"),
+            "createdBy": Record.from_dict(obj["createdBy"]) if obj.get("createdBy") is not None else None,
+            "updatedAt": obj.get("updatedAt"),
+            "updatedBy": Record.from_dict(obj["updatedBy"]) if obj.get("updatedBy") is not None else None,
+            "deletedAt": obj.get("deletedAt"),
+            "deletedBy": Record.from_dict(obj["deletedBy"]) if obj.get("deletedBy") is not None else None,
+            "index": obj.get("index"),
+            "privateApp": obj.get("privateApp"),
+            "hideApiKeyField": obj.get("hideApiKeyField"),
+            "details": AppDetailsDTO.from_dict(obj["details"]) if obj.get("details") is not None else None,
+            "appBars": [AppBarDTO.from_dict(_item) for _item in obj["appBars"]] if obj.get("appBars") is not None else None,
+            "serverlessFunctions": [ServerlessFunctionDTO.from_dict(_item) for _item in obj["serverlessFunctions"]] if obj.get("serverlessFunctions") is not None else None,
+            "installWebhook": SubscribeWebhookDTO.from_dict(obj["installWebhook"]) if obj.get("installWebhook") is not None else None,
+            "uninstallWebhook": SubscribeWebhookDTO.from_dict(obj["uninstallWebhook"]) if obj.get("uninstallWebhook") is not None else None,
+            "rotateWebhook": SubscribeWebhookDTO.from_dict(obj["rotateWebhook"]) if obj.get("rotateWebhook") is not None else None,
+            "updateWebhook": SubscribeWebhookDTO.from_dict(obj["updateWebhook"]) if obj.get("updateWebhook") is not None else None,
+            "settingsSchema": [AppSettingFieldSchema.from_dict(_item) for _item in obj["settingsSchema"]] if obj.get("settingsSchema") is not None else None,
+            "settingsSections": [AppSettingsSection.from_dict(_item) for _item in obj["settingsSections"]] if obj.get("settingsSections") is not None else None,
+            "externalOAuthProviders": [AppExternalOAuthProviderSummaryDTO.from_dict(_item) for _item in obj["externalOAuthProviders"]] if obj.get("externalOAuthProviders") is not None else None,
+            "webhookRateLimitPerMinute": obj.get("webhookRateLimitPerMinute"),
+            "jobRateLimitPerMinute": obj.get("jobRateLimitPerMinute"),
+            "appPublish": AppPublishDTO.from_dict(obj["appPublish"]) if obj.get("appPublish") is not None else None,
+            "hasApp": HasAppDTO.from_dict(obj["hasApp"]) if obj.get("hasApp") is not None else None,
+            "image": obj.get("image"),
+            "url": obj.get("url"),
+            "category": obj.get("category"),
+            "installed": obj.get("installed"),
+            "requiredScopes": obj.get("requiredScopes"),
+            "resolvedRequiredScopes": obj.get("resolvedRequiredScopes"),
             "authMethod": obj.get("authMethod"),
+            "oauthClientId": obj.get("oauthClientId"),
+            "oauthClientSecret": obj.get("oauthClientSecret"),
+            "oauthClientSecretConfigured": obj.get("oauthClientSecretConfigured"),
             "oauthRedirectUris": obj.get("oauthRedirectUris"),
+            "oauthAuthorizeUrl": obj.get("oauthAuthorizeUrl"),
+            "oauthTokenUrl": obj.get("oauthTokenUrl"),
+            "installUrl": obj.get("installUrl"),
+            "brandmark": obj.get("brandmark"),
+            "description": obj.get("description"),
             "platformVersion": obj.get("platformVersion"),
-            "runtime": obj.get("runtime")
+            "runtime": obj.get("runtime"),
+            "runtimeBaseUrl": obj.get("runtimeBaseUrl"),
+            "runtimeRevision": obj.get("runtimeRevision"),
+            "runtimeStatus": obj.get("runtimeStatus"),
+            "runtimeError": obj.get("runtimeError"),
+            "runtimeGeneration": obj.get("runtimeGeneration")
         })
         return _obj
 
