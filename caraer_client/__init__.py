@@ -29,6 +29,7 @@ __all__ = [
     "CMSV2PagesApi",
     "CMSV2PublicApi",
     "CMSV2TransferApi",
+    "CMSWebsiteUpdatesApi",
     "CalendarsApi",
     "CompanyApi",
     "DeveloperProjectsApi",
@@ -439,6 +440,7 @@ from caraer_client.api.cmsv2_environments_api import CMSV2EnvironmentsApi as CMS
 from caraer_client.api.cmsv2_pages_api import CMSV2PagesApi as CMSV2PagesApi
 from caraer_client.api.cmsv2_public_api import CMSV2PublicApi as CMSV2PublicApi
 from caraer_client.api.cmsv2_transfer_api import CMSV2TransferApi as CMSV2TransferApi
+from caraer_client.api.cms_website_updates_api import CMSWebsiteUpdatesApi as CMSWebsiteUpdatesApi
 from caraer_client.api.calendars_api import CalendarsApi as CalendarsApi
 from caraer_client.api.company_api import CompanyApi as CompanyApi
 from caraer_client.api.developer_projects_api import DeveloperProjectsApi as DeveloperProjectsApi

@@ -135,6 +135,7 @@ class TestCmsModuleDTO(unittest.TestCase):
                                 item_label = '', 
                                 value = null, 
                                 has_value = True, 
+                                clear_value = True, 
                                 mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
                                     object_name = '', 
                                     target_kind = '', 
@@ -160,8 +161,8 @@ class TestCmsModuleDTO(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                settings_group = True, 
                                 action = True, 
+                                settings_group = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -229,6 +230,7 @@ class TestCmsModuleDTO(unittest.TestCase):
                                 item_label = '', 
                                 value = null, 
                                 has_value = True, 
+                                clear_value = True, 
                                 mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
                                     object_name = '', 
                                     target_kind = '', 
@@ -254,8 +256,8 @@ class TestCmsModuleDTO(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                settings_group = True, 
                                 action = True, 
+                                settings_group = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -268,6 +270,7 @@ class TestCmsModuleDTO(unittest.TestCase):
                         item_label = '', 
                         value = null, 
                         has_value = True, 
+                        clear_value = True, 
                         mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
                             object_name = '', 
                             target_kind = '', 
@@ -293,8 +296,8 @@ class TestCmsModuleDTO(unittest.TestCase):
                                 ], 
                             record_target = True, ), 
                         value_scope = '', 
-                        settings_group = True, 
                         action = True, 
+                        settings_group = True, 
                         filter_property_types = [
                             ''
                             ], 

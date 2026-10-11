@@ -14,6 +14,7 @@ caraer_client/api/automations_api.py
 caraer_client/api/billing_api.py
 caraer_client/api/calendars_api.py
 caraer_client/api/cms_modules_api.py
+caraer_client/api/cms_website_updates_api.py
 caraer_client/api/cmsv2_environments_api.py
 caraer_client/api/cmsv2_pages_api.py
 caraer_client/api/cmsv2_public_api.py
@@ -459,6 +460,7 @@ docs/CMSV2EnvironmentsApi.md
 docs/CMSV2PagesApi.md
 docs/CMSV2PublicApi.md
 docs/CMSV2TransferApi.md
+docs/CMSWebsiteUpdatesApi.md
 docs/CRUD.md
 docs/CalendarBootstrapDTO.md
 docs/CalendarCreateRequest.md
@@ -865,6 +867,7 @@ test/test_cms_page_module_instance.py
 test/test_cms_page_patch.py
 test/test_cms_page_patch_request.py
 test/test_cms_public_menu_dto.py
+test/test_cms_website_updates_api.py
 test/test_cmsv2_environments_api.py
 test/test_cmsv2_pages_api.py
 test/test_cmsv2_public_api.py

@@ -197,7 +197,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **build_manifest**
-> ShowResponseMapStringObject build_manifest(x_caraer_subdomain)
+> ShowResponseMapStringObject build_manifest(x_caraer_subdomain, channel=channel)
 
 Installed apps and modules for a company's website build
 
@@ -232,10 +232,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.CMSV2PublicApi(api_client)
     x_caraer_subdomain = 'x_caraer_subdomain_example' # str | 
+    channel = 'channel_example' # str |  (optional)
 
     try:
         # Installed apps and modules for a company's website build
-        api_response = api_instance.build_manifest(x_caraer_subdomain)
+        api_response = api_instance.build_manifest(x_caraer_subdomain, channel=channel)
         print("The response of CMSV2PublicApi->build_manifest:\n")
         pprint(api_response)
     except Exception as e:
@@ -250,6 +251,7 @@ with caraer_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_caraer_subdomain** | **str**|  | 
+ **channel** | **str**|  | [optional] 
 
 ### Return type
 

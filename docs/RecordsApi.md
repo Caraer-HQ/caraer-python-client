@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**index_flow**](RecordsApi.md#index_flow) | **POST** /api/v2/records/index/flow | Fetch records for flow view
 [**index_page**](RecordsApi.md#index_page) | **POST** /api/v2/records/index/page | Fetch records for page view
 [**index_table**](RecordsApi.md#index_table) | **POST** /api/v2/records/index/table | Fetch records for table view
-[**preview**](RecordsApi.md#preview) | **GET** /api/v2/records/{uuid}/previews/{name} | Get record preview
+[**preview1**](RecordsApi.md#preview1) | **GET** /api/v2/records/{uuid}/previews/{name} | Get record preview
 [**query**](RecordsApi.md#query) | **POST** /api/v2/records/query | Advanced graph-aware record query
 [**restore**](RecordsApi.md#restore) | **POST** /api/v2/records/{uuid}/restore | Restore a deleted record
 [**search**](RecordsApi.md#search) | **POST** /api/v2/records/search | Search records
@@ -1269,8 +1269,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **preview**
-> ShowResponsePreviewDTO preview(uuid, name, object=object, parse=parse)
+# **preview1**
+> ShowResponsePreviewDTO preview1(uuid, name, object=object, parse=parse)
 
 Get record preview
 
@@ -1313,11 +1313,11 @@ with caraer_client.ApiClient(configuration) as api_client:
 
     try:
         # Get record preview
-        api_response = api_instance.preview(uuid, name, object=object, parse=parse)
-        print("The response of RecordsApi->preview:\n")
+        api_response = api_instance.preview1(uuid, name, object=object, parse=parse)
+        print("The response of RecordsApi->preview1:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling RecordsApi->preview: %s\n" % e)
+        print("Exception when calling RecordsApi->preview1: %s\n" % e)
 ```
 
 

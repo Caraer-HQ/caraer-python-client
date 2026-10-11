@@ -2393,7 +2393,7 @@ class PropertyApi:
     ) -> DeleteResponse:
         """Permanently remove archived property
 
-        Deletes the soft-deleted HAS_PROPERTY link to this object. If the property is not linked to any other object, the property node is hard-deleted.
+        Deletes only the soft-deleted HAS_PROPERTY link to this object. Other object links and their stored values are preserved. If no object links remain, the property node and this object's stored field values are permanently deleted.
 
         :param object_uuid: (required)
         :type object_uuid: str
@@ -2469,7 +2469,7 @@ class PropertyApi:
     ) -> ApiResponse[DeleteResponse]:
         """Permanently remove archived property
 
-        Deletes the soft-deleted HAS_PROPERTY link to this object. If the property is not linked to any other object, the property node is hard-deleted.
+        Deletes only the soft-deleted HAS_PROPERTY link to this object. Other object links and their stored values are preserved. If no object links remain, the property node and this object's stored field values are permanently deleted.
 
         :param object_uuid: (required)
         :type object_uuid: str
@@ -2545,7 +2545,7 @@ class PropertyApi:
     ) -> RESTResponseType:
         """Permanently remove archived property
 
-        Deletes the soft-deleted HAS_PROPERTY link to this object. If the property is not linked to any other object, the property node is hard-deleted.
+        Deletes only the soft-deleted HAS_PROPERTY link to this object. Other object links and their stored values are preserved. If no object links remain, the property node and this object's stored field values are permanently deleted.
 
         :param object_uuid: (required)
         :type object_uuid: str

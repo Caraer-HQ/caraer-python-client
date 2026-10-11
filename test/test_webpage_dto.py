@@ -35,6 +35,8 @@ class TestWebpageDTO(unittest.TestCase):
         model = WebpageDTO()
         if include_optional:
             return WebpageDTO(
+                canonical_url = '',
+                last_modified = '',
                 environment = '',
                 uuid = '',
                 title = 'Homepage',

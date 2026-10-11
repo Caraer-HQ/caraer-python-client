@@ -3,3 +3,6 @@ LICENSE
 .gitignore
 .openapi-generator-ignore
 .github/
+# Hand-written serverless payload helpers (re-injected by backend sync after clear).
+# Top-level stash used when caraer_client/ is wiped during regenerate:
+_overlays/

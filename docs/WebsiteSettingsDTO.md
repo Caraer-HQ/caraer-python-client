@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **subdomain** | **str** |  | [optional] 
 **custom_domain** | **str** |  | [optional] 
+**primary_environment** | **str** |  | [optional] 
 **record_type** | **str** |  | [optional] 
 **record_value** | **str** |  | [optional] 
 **favicon** | **str** |  | [optional] 

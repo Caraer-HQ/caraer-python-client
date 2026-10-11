@@ -124,8 +124,8 @@ class TestRecordsApi(unittest.TestCase):
         """
         pass
 
-    def test_preview(self) -> None:
-        """Test case for preview
+    def test_preview1(self) -> None:
+        """Test case for preview1
 
         Get record preview
         """

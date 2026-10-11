@@ -52,7 +52,7 @@ class TestRecordRelationRequestDTO(unittest.TestCase):
                     deleted_at = 56, 
                     deleted_by = null, 
                     index = 56, 
-                    properties = {key1=value1, key2=123}, 
+                    properties = {resume_file={fileName=notes.txt, contentBase64=SGVsbG8gQ2FyYWVyIQ==, contentType=text/plain}}, 
                     user = null, 
                     relations = [
                         caraer_client.models.record_relation_request_dto.RecordRelationRequestDTO(

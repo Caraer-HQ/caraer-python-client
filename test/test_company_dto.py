@@ -380,6 +380,7 @@ class TestCompanyDTO(unittest.TestCase):
                 website_settings = caraer_client.models.website_settings_dto.WebsiteSettingsDTO(
                     subdomain = '', 
                     custom_domain = '', 
+                    primary_environment = '', 
                     record_type = '', 
                     record_value = '', 
                     favicon = '', 

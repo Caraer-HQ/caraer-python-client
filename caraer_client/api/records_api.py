@@ -4622,7 +4622,7 @@ class RecordsApi:
 
 
     @validate_call
-    def preview(
+    def preview1(
         self,
         uuid: StrictStr,
         name: StrictStr,
@@ -4675,7 +4675,7 @@ class RecordsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preview_serialize(
+        _param = self._preview1_serialize(
             uuid=uuid,
             name=name,
             object=object,
@@ -4705,7 +4705,7 @@ class RecordsApi:
 
 
     @validate_call
-    def preview_with_http_info(
+    def preview1_with_http_info(
         self,
         uuid: StrictStr,
         name: StrictStr,
@@ -4758,7 +4758,7 @@ class RecordsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preview_serialize(
+        _param = self._preview1_serialize(
             uuid=uuid,
             name=name,
             object=object,
@@ -4788,7 +4788,7 @@ class RecordsApi:
 
 
     @validate_call
-    def preview_without_preload_content(
+    def preview1_without_preload_content(
         self,
         uuid: StrictStr,
         name: StrictStr,
@@ -4841,7 +4841,7 @@ class RecordsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preview_serialize(
+        _param = self._preview1_serialize(
             uuid=uuid,
             name=name,
             object=object,
@@ -4866,7 +4866,7 @@ class RecordsApi:
         return response_data.response
 
 
-    def _preview_serialize(
+    def _preview1_serialize(
         self,
         uuid,
         name,

@@ -33,6 +33,8 @@ class WebpageDTO(BaseModel):
     """
     Data transfer object representing a webpage with its various states, properties, and associated form/versions
     """ # noqa: E501
+    canonical_url: Optional[StrictStr] = Field(default=None, alias="canonicalUrl")
+    last_modified: Optional[StrictStr] = Field(default=None, alias="lastModified")
     environment: Optional[StrictStr] = Field(default=None, description="The environment of the webpage.")
     uuid: Optional[StrictStr] = Field(default=None, description="The UUID of the webpage.")
     title: Optional[StrictStr] = Field(default=None, description="The title of the webpage.", json_schema_extra={"examples": ["Homepage"]})
@@ -60,7 +62,7 @@ class WebpageDTO(BaseModel):
     unpublish_at: Optional[StrictInt] = Field(default=None, description="Scheduled timestamp for when the webpage will be unpublished", alias="unpublishAt", json_schema_extra={"examples": [1686702457000]})
     is_published: Optional[StrictBool] = Field(default=False, description="Flag indicating whether the webpage is currently published", alias="isPublished")
     live_url: Optional[StrictStr] = Field(default=None, description="Fully qualified public URL of the webpage, including the page trait root slug.", alias="liveUrl", json_schema_extra={"examples": ["https://example.com/blog/my-page"]})
-    __properties: ClassVar[List[str]] = ["environment", "uuid", "title", "excerpt", "slug", "image", "customCss", "customJsHead", "customJsBody", "content", "sidebar", "sidebarRelation", "sidebarObject", "floatingActionBarModuleUuid", "floatingActionBar", "object", "record", "options", "metaData", "publishedBy", "publishedAt", "unpublishedBy", "unpublishedAt", "publishAt", "unpublishAt", "isPublished", "liveUrl"]
+    __properties: ClassVar[List[str]] = ["canonicalUrl", "lastModified", "environment", "uuid", "title", "excerpt", "slug", "image", "customCss", "customJsHead", "customJsBody", "content", "sidebar", "sidebarRelation", "sidebarObject", "floatingActionBarModuleUuid", "floatingActionBar", "object", "record", "options", "metaData", "publishedBy", "publishedAt", "unpublishedBy", "unpublishedAt", "publishAt", "unpublishAt", "isPublished", "liveUrl"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -137,6 +139,8 @@ class WebpageDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "canonicalUrl": obj.get("canonicalUrl"),
+            "lastModified": obj.get("lastModified"),
             "environment": obj.get("environment"),
             "uuid": obj.get("uuid"),
             "title": obj.get("title"),

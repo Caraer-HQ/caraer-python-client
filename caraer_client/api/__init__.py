@@ -12,6 +12,7 @@ from caraer_client.api.cmsv2_environments_api import CMSV2EnvironmentsApi
 from caraer_client.api.cmsv2_pages_api import CMSV2PagesApi
 from caraer_client.api.cmsv2_public_api import CMSV2PublicApi
 from caraer_client.api.cmsv2_transfer_api import CMSV2TransferApi
+from caraer_client.api.cms_website_updates_api import CMSWebsiteUpdatesApi
 from caraer_client.api.calendars_api import CalendarsApi
 from caraer_client.api.company_api import CompanyApi
 from caraer_client.api.developer_projects_api import DeveloperProjectsApi

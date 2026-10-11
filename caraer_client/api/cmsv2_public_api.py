@@ -766,6 +766,7 @@ class CMSV2PublicApi:
     def build_manifest(
         self,
         x_caraer_subdomain: StrictStr,
+        channel: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -784,6 +785,8 @@ class CMSV2PublicApi:
 
         :param x_caraer_subdomain: (required)
         :type x_caraer_subdomain: str
+        :param channel:
+        :type channel: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -808,6 +811,7 @@ class CMSV2PublicApi:
 
         _param = self._build_manifest_serialize(
             x_caraer_subdomain=x_caraer_subdomain,
+            channel=channel,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -836,6 +840,7 @@ class CMSV2PublicApi:
     def build_manifest_with_http_info(
         self,
         x_caraer_subdomain: StrictStr,
+        channel: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -854,6 +859,8 @@ class CMSV2PublicApi:
 
         :param x_caraer_subdomain: (required)
         :type x_caraer_subdomain: str
+        :param channel:
+        :type channel: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -878,6 +885,7 @@ class CMSV2PublicApi:
 
         _param = self._build_manifest_serialize(
             x_caraer_subdomain=x_caraer_subdomain,
+            channel=channel,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -906,6 +914,7 @@ class CMSV2PublicApi:
     def build_manifest_without_preload_content(
         self,
         x_caraer_subdomain: StrictStr,
+        channel: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -924,6 +933,8 @@ class CMSV2PublicApi:
 
         :param x_caraer_subdomain: (required)
         :type x_caraer_subdomain: str
+        :param channel:
+        :type channel: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -948,6 +959,7 @@ class CMSV2PublicApi:
 
         _param = self._build_manifest_serialize(
             x_caraer_subdomain=x_caraer_subdomain,
+            channel=channel,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -971,6 +983,7 @@ class CMSV2PublicApi:
     def _build_manifest_serialize(
         self,
         x_caraer_subdomain,
+        channel,
         _request_auth,
         _content_type,
         _headers,
@@ -993,6 +1006,10 @@ class CMSV2PublicApi:
 
         # process the path parameters
         # process the query parameters
+        if channel is not None:
+            
+            _query_params.append(('channel', channel))
+            
         # process the header parameters
         if x_caraer_subdomain is not None:
             _header_params['X-Caraer-Subdomain'] = x_caraer_subdomain

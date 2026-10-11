@@ -37,6 +37,7 @@ class TestWebsiteSettingsDTO(unittest.TestCase):
             return WebsiteSettingsDTO(
                 subdomain = '',
                 custom_domain = '',
+                primary_environment = '',
                 record_type = '',
                 record_value = '',
                 favicon = '',

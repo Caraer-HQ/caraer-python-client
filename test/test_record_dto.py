@@ -246,7 +246,7 @@ class TestRecordDTO(unittest.TestCase):
                                 'key' : null
                                 }, ), ), ),
                 index = 56,
-                properties = {key1=value1, key2=123},
+                properties = {resume_file={fileName=notes.txt, contentBase64=SGVsbG8gQ2FyYWVyIQ==, contentType=text/plain}},
                 user = caraer_client.models.public_user_dto.PublicUserDTO(
                     uuid = '', 
                     email = '', 

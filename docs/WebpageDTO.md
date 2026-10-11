@@ -6,6 +6,8 @@ Data transfer object representing a webpage with its various states, properties,
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**canonical_url** | **str** |  | [optional] 
+**last_modified** | **str** |  | [optional] 
 **environment** | **str** | The environment of the webpage. | [optional] 
 **uuid** | **str** | The UUID of the webpage. | [optional] 
 **title** | **str** | The title of the webpage. | [optional] 
