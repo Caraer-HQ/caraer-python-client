@@ -35,18 +35,1034 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
         model = CreatePrivateAppRequest()
         if include_optional:
             return CreatePrivateAppRequest(
-                label = 'My Custom App',
-                description = 'A custom app for internal use',
+                uuid = '0',
+                name = '0',
+                label = '',
+                created_at = 56,
+                created_by = caraer_client.models.record.Record(
+                    name = '0', 
+                    label = '', 
+                    created_at = 56, 
+                    updated_at = 56, 
+                    deleted_at = 56, 
+                    created_by_uuid = '', 
+                    updated_by_uuid = '', 
+                    deleted_by_uuid = '', 
+                    index = 56, 
+                    complete = True, 
+                    deleted = True, 
+                    uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
+                    user = caraer_client.models.public_user_dto.PublicUserDTO(
+                        uuid = '', 
+                        email = '', 
+                        firstname = '', 
+                        lastname = '', 
+                        initials = '', 
+                        scopes = [
+                            ''
+                            ], 
+                        filters = {
+                            'key' : caraer_client.models.filter.Filter(
+                                groups = [
+                                    caraer_client.models.filter_group.FilterGroup(
+                                        items = null, )
+                                    ], )
+                            }, 
+                        role = '', 
+                        roles = [
+                            ''
+                            ], 
+                        record = caraer_client.models.record.Record(
+                            name = '0', 
+                            label = '', 
+                            created_at = 56, 
+                            updated_at = 56, 
+                            deleted_at = 56, 
+                            created_by_uuid = '', 
+                            updated_by_uuid = '', 
+                            deleted_by_uuid = '', 
+                            index = 56, 
+                            complete = True, 
+                            deleted = True, 
+                            uuid = '0', 
+                            properties = [
+                                caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
+                                    name = '', 
+                                    value = null, 
+                                    type = '', 
+                                    label = '', )
+                                ], 
+                            objects = {
+                                'key' : null
+                                }, ), ), ),
+                updated_at = 56,
+                updated_by = caraer_client.models.record.Record(
+                    name = '0', 
+                    label = '', 
+                    created_at = 56, 
+                    updated_at = 56, 
+                    deleted_at = 56, 
+                    created_by_uuid = '', 
+                    updated_by_uuid = '', 
+                    deleted_by_uuid = '', 
+                    index = 56, 
+                    complete = True, 
+                    deleted = True, 
+                    uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
+                    user = caraer_client.models.public_user_dto.PublicUserDTO(
+                        uuid = '', 
+                        email = '', 
+                        firstname = '', 
+                        lastname = '', 
+                        initials = '', 
+                        scopes = [
+                            ''
+                            ], 
+                        filters = {
+                            'key' : caraer_client.models.filter.Filter(
+                                groups = [
+                                    caraer_client.models.filter_group.FilterGroup(
+                                        items = null, )
+                                    ], )
+                            }, 
+                        role = '', 
+                        roles = [
+                            ''
+                            ], 
+                        record = caraer_client.models.record.Record(
+                            name = '0', 
+                            label = '', 
+                            created_at = 56, 
+                            updated_at = 56, 
+                            deleted_at = 56, 
+                            created_by_uuid = '', 
+                            updated_by_uuid = '', 
+                            deleted_by_uuid = '', 
+                            index = 56, 
+                            complete = True, 
+                            deleted = True, 
+                            uuid = '0', 
+                            properties = [
+                                caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
+                                    name = '', 
+                                    value = null, 
+                                    type = '', 
+                                    label = '', )
+                                ], 
+                            objects = {
+                                'key' : null
+                                }, ), ), ),
+                deleted_at = 56,
+                deleted_by = caraer_client.models.record.Record(
+                    name = '0', 
+                    label = '', 
+                    created_at = 56, 
+                    updated_at = 56, 
+                    deleted_at = 56, 
+                    created_by_uuid = '', 
+                    updated_by_uuid = '', 
+                    deleted_by_uuid = '', 
+                    index = 56, 
+                    complete = True, 
+                    deleted = True, 
+                    uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
+                    user = caraer_client.models.public_user_dto.PublicUserDTO(
+                        uuid = '', 
+                        email = '', 
+                        firstname = '', 
+                        lastname = '', 
+                        initials = '', 
+                        scopes = [
+                            ''
+                            ], 
+                        filters = {
+                            'key' : caraer_client.models.filter.Filter(
+                                groups = [
+                                    caraer_client.models.filter_group.FilterGroup(
+                                        items = null, )
+                                    ], )
+                            }, 
+                        role = '', 
+                        roles = [
+                            ''
+                            ], 
+                        record = caraer_client.models.record.Record(
+                            name = '0', 
+                            label = '', 
+                            created_at = 56, 
+                            updated_at = 56, 
+                            deleted_at = 56, 
+                            created_by_uuid = '', 
+                            updated_by_uuid = '', 
+                            deleted_by_uuid = '', 
+                            index = 56, 
+                            complete = True, 
+                            deleted = True, 
+                            uuid = '0', 
+                            properties = [
+                                caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
+                                    name = '', 
+                                    value = null, 
+                                    type = '', 
+                                    label = '', )
+                                ], 
+                            objects = {
+                                'key' : null
+                                }, ), ), ),
+                index = 56,
+                private_app = True,
+                hide_api_key_field = True,
+                details = caraer_client.models.app_details_dto.AppDetailsDTO(
+                    title = '', 
+                    description = '', 
+                    image = '', 
+                    brand_color = '#E74363', 
+                    text_color = '#FFFFFF', 
+                    url = '', 
+                    category = 'productivity', 
+                    subcategories = [tasks, automation], 
+                    privacy_policy = '', 
+                    terms_and_conditions = '', 
+                    processing_agreement = '', 
+                    disclaimer = '', 
+                    uuid = '0', 
+                    name = '0', 
+                    label = '', 
+                    created_at = 56, 
+                    created_by = null, 
+                    updated_at = 56, 
+                    updated_by = null, 
+                    deleted_at = 56, 
+                    deleted_by = null, 
+                    index = 56, ),
+                app_bars = [
+                    caraer_client.models.app_bar_dto.AppBarDTO(
+                        uuid = '0', 
+                        name = '0', 
+                        label = '', 
+                        created_at = 56, 
+                        created_by = null, 
+                        updated_at = 56, 
+                        updated_by = null, 
+                        deleted_at = 56, 
+                        deleted_by = null, 
+                        index = 56, 
+                        location = 'RECORD_PREVIEW', 
+                        iframe_url = '', 
+                        icon = '', 
+                        description = '', 
+                        tooltip_label = '', 
+                        action_label = '', 
+                        settings_schema = [
+                            caraer_client.models.app_setting_field_schema.AppSettingFieldSchema(
+                                name = '', 
+                                label = '', 
+                                type = '', 
+                                required = True, 
+                                help_text = '', 
+                                text = '', 
+                                paragraph = '', 
+                                options = [
+                                    caraer_client.models.setting_option.SettingOption(
+                                        name = '', 
+                                        label = '', 
+                                        help_text = '', 
+                                        preview = '', )
+                                    ], 
+                                options_source = caraer_client.models.app_setting_options_source.AppSettingOptionsSource(
+                                    type = '', 
+                                    serverless_function_uuid = '', 
+                                    serverless_function_name = '', 
+                                    depends_on = [
+                                        ''
+                                        ], 
+                                    searchable = True, 
+                                    min_query_length = 56, ), 
+                                action_source = caraer_client.models.app_setting_action_source.AppSettingActionSource(
+                                    type = '', 
+                                    serverless_function_uuid = '', 
+                                    serverless_function_name = '', 
+                                    enqueue = True, ), 
+                                default_value = null, 
+                                hidden = True, 
+                                advanced = True, 
+                                group = '', 
+                                fields = [
+                                    caraer_client.models.app_setting_field_schema.AppSettingFieldSchema(
+                                        name = '', 
+                                        label = '', 
+                                        type = '', 
+                                        required = True, 
+                                        help_text = '', 
+                                        text = '', 
+                                        paragraph = '', 
+                                        options = [
+                                            caraer_client.models.setting_option.SettingOption(
+                                                name = '', 
+                                                label = '', 
+                                                help_text = '', 
+                                                preview = '', )
+                                            ], 
+                                        options_source = caraer_client.models.app_setting_options_source.AppSettingOptionsSource(
+                                            type = '', 
+                                            serverless_function_uuid = '', 
+                                            serverless_function_name = '', 
+                                            depends_on = [
+                                                ''
+                                                ], 
+                                            searchable = True, 
+                                            min_query_length = 56, ), 
+                                        action_source = caraer_client.models.app_setting_action_source.AppSettingActionSource(
+                                            type = '', 
+                                            serverless_function_uuid = '', 
+                                            serverless_function_name = '', 
+                                            enqueue = True, ), 
+                                        default_value = null, 
+                                        hidden = True, 
+                                        advanced = True, 
+                                        group = '', 
+                                        filter_traits = [
+                                            ''
+                                            ], 
+                                        visible_when = [
+                                            caraer_client.models.app_setting_condition.AppSettingCondition(
+                                                field = '', 
+                                                operator = '', 
+                                                value = null, )
+                                            ], 
+                                        item_fields = [
+                                            
+                                            ], 
+                                        min = 56, 
+                                        max = 56, 
+                                        item_label = '', 
+                                        value = null, 
+                                        has_value = True, 
+                                        mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
+                                            object_name = '', 
+                                            target_kind = '', 
+                                            items = [
+                                                caraer_client.models.app_setting_field_mapping_structure_item.AppSettingFieldMappingStructureItem(
+                                                    field_label = '', 
+                                                    field_name = '', 
+                                                    field_help_text = '', 
+                                                    is_required = True, 
+                                                    allowed_property_types = [
+                                                        ''
+                                                        ], 
+                                                    allowed_property_formats = [
+                                                        ''
+                                                        ], 
+                                                    property_name = '', 
+                                                    literal_value = '', 
+                                                    relation_name = '', 
+                                                    object_name = '', 
+                                                    record_uuid = '', 
+                                                    format_pattern = '', 
+                                                    format_replacement = '', )
+                                                ], 
+                                            record_target = True, ), 
+                                        value_scope = '', 
+                                        settings_group = True, 
+                                        action = True, 
+                                        filter_property_types = [
+                                            ''
+                                            ], 
+                                        filter_property_formats = [
+                                            ''
+                                            ], )
+                                    ], 
+                                filter_traits = [
+                                    ''
+                                    ], 
+                                visible_when = [
+                                    caraer_client.models.app_setting_condition.AppSettingCondition(
+                                        field = '', 
+                                        operator = '', 
+                                        value = null, )
+                                    ], 
+                                item_fields = [
+                                    caraer_client.models.app_setting_field_schema.AppSettingFieldSchema(
+                                        name = '', 
+                                        label = '', 
+                                        type = '', 
+                                        required = True, 
+                                        help_text = '', 
+                                        text = '', 
+                                        paragraph = '', 
+                                        options = [
+                                            caraer_client.models.setting_option.SettingOption(
+                                                name = '', 
+                                                label = '', 
+                                                help_text = '', 
+                                                preview = '', )
+                                            ], 
+                                        options_source = caraer_client.models.app_setting_options_source.AppSettingOptionsSource(
+                                            type = '', 
+                                            serverless_function_uuid = '', 
+                                            serverless_function_name = '', 
+                                            depends_on = [
+                                                ''
+                                                ], 
+                                            searchable = True, 
+                                            min_query_length = 56, ), 
+                                        action_source = caraer_client.models.app_setting_action_source.AppSettingActionSource(
+                                            type = '', 
+                                            serverless_function_uuid = '', 
+                                            serverless_function_name = '', 
+                                            enqueue = True, ), 
+                                        default_value = null, 
+                                        hidden = True, 
+                                        advanced = True, 
+                                        group = '', 
+                                        fields = [
+                                            
+                                            ], 
+                                        filter_traits = [
+                                            ''
+                                            ], 
+                                        visible_when = [
+                                            caraer_client.models.app_setting_condition.AppSettingCondition(
+                                                field = '', 
+                                                operator = '', 
+                                                value = null, )
+                                            ], 
+                                        min = 56, 
+                                        max = 56, 
+                                        item_label = '', 
+                                        value = null, 
+                                        has_value = True, 
+                                        mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
+                                            object_name = '', 
+                                            target_kind = '', 
+                                            items = [
+                                                caraer_client.models.app_setting_field_mapping_structure_item.AppSettingFieldMappingStructureItem(
+                                                    field_label = '', 
+                                                    field_name = '', 
+                                                    field_help_text = '', 
+                                                    is_required = True, 
+                                                    allowed_property_types = [
+                                                        ''
+                                                        ], 
+                                                    allowed_property_formats = [
+                                                        ''
+                                                        ], 
+                                                    property_name = '', 
+                                                    literal_value = '', 
+                                                    relation_name = '', 
+                                                    object_name = '', 
+                                                    record_uuid = '', 
+                                                    format_pattern = '', 
+                                                    format_replacement = '', )
+                                                ], 
+                                            record_target = True, ), 
+                                        value_scope = '', 
+                                        settings_group = True, 
+                                        action = True, 
+                                        filter_property_types = [
+                                            ''
+                                            ], 
+                                        filter_property_formats = [
+                                            ''
+                                            ], )
+                                    ], 
+                                min = 56, 
+                                max = 56, 
+                                item_label = '', 
+                                value = null, 
+                                has_value = True, 
+                                mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
+                                    object_name = '', 
+                                    target_kind = '', 
+                                    items = [
+                                        caraer_client.models.app_setting_field_mapping_structure_item.AppSettingFieldMappingStructureItem(
+                                            field_label = '', 
+                                            field_name = '', 
+                                            field_help_text = '', 
+                                            is_required = True, 
+                                            allowed_property_types = [
+                                                ''
+                                                ], 
+                                            allowed_property_formats = [
+                                                ''
+                                                ], 
+                                            property_name = '', 
+                                            literal_value = '', 
+                                            relation_name = '', 
+                                            object_name = '', 
+                                            record_uuid = '', 
+                                            format_pattern = '', 
+                                            format_replacement = '', )
+                                        ], 
+                                    record_target = True, ), 
+                                value_scope = '', 
+                                settings_group = True, 
+                                action = True, 
+                                filter_property_types = [
+                                    ''
+                                    ], 
+                                filter_property_formats = [
+                                    ''
+                                    ], )
+                            ], 
+                        webhook = null, )
+                    ],
+                serverless_functions = [
+                    caraer_client.models.serverless_function_dto.ServerlessFunctionDTO(
+                        uuid = '0', 
+                        name = '0', 
+                        label = '', 
+                        created_at = 56, 
+                        created_by = null, 
+                        updated_at = 56, 
+                        updated_by = null, 
+                        deleted_at = 56, 
+                        deleted_by = null, 
+                        index = 56, 
+                        runtime = '', 
+                        code = '', 
+                        source_files = {
+                            'key' : ''
+                            }, 
+                        description = '', )
+                    ],
+                install_webhook = caraer_client.models.subscribe_webhook_dto.SubscribeWebhookDTO(
+                    url = 'https://example.com/webhook', 
+                    serverless_function = null, 
+                    delivery_mode = '', 
+                    wait_until_complete = True, 
+                    secret = 'abcd1234', 
+                    topic = 'user.created', 
+                    description = '', 
+                    webhook_format = 'LEGACY', 
+                    parse_record = True, 
+                    filter = null, 
+                    include_relations = [candidate, vacancy], 
+                    relation_filters = {
+                        'key' : caraer_client.models.filter.Filter(
+                            groups = [
+                                caraer_client.models.filter_group.FilterGroup(
+                                    items = null, )
+                                ], )
+                        }, 
+                    relation_limit = 10, 
+                    retry_enabled = True, 
+                    max_retries = 3, 
+                    retry_backoff_ms = 1000, 
+                    trigger_offset_seconds = 604800, 
+                    schedule_direction = 'BEFORE', 
+                    schedule_recurring = 'YEARLY', 
+                    schedule_cron_expression = '0', 
+                    schedule_version = 56, 
+                    uuid = '0', 
+                    name = '0', 
+                    label = '', 
+                    created_at = 56, 
+                    created_by = null, 
+                    updated_at = 56, 
+                    updated_by = null, 
+                    deleted_at = 56, 
+                    deleted_by = null, 
+                    index = 56, ),
+                uninstall_webhook = caraer_client.models.subscribe_webhook_dto.SubscribeWebhookDTO(
+                    url = 'https://example.com/webhook', 
+                    serverless_function = null, 
+                    delivery_mode = '', 
+                    wait_until_complete = True, 
+                    secret = 'abcd1234', 
+                    topic = 'user.created', 
+                    description = '', 
+                    webhook_format = 'LEGACY', 
+                    parse_record = True, 
+                    filter = null, 
+                    include_relations = [candidate, vacancy], 
+                    relation_filters = {
+                        'key' : caraer_client.models.filter.Filter(
+                            groups = [
+                                caraer_client.models.filter_group.FilterGroup(
+                                    items = null, )
+                                ], )
+                        }, 
+                    relation_limit = 10, 
+                    retry_enabled = True, 
+                    max_retries = 3, 
+                    retry_backoff_ms = 1000, 
+                    trigger_offset_seconds = 604800, 
+                    schedule_direction = 'BEFORE', 
+                    schedule_recurring = 'YEARLY', 
+                    schedule_cron_expression = '0', 
+                    schedule_version = 56, 
+                    uuid = '0', 
+                    name = '0', 
+                    label = '', 
+                    created_at = 56, 
+                    created_by = null, 
+                    updated_at = 56, 
+                    updated_by = null, 
+                    deleted_at = 56, 
+                    deleted_by = null, 
+                    index = 56, ),
+                rotate_webhook = caraer_client.models.subscribe_webhook_dto.SubscribeWebhookDTO(
+                    url = 'https://example.com/webhook', 
+                    serverless_function = null, 
+                    delivery_mode = '', 
+                    wait_until_complete = True, 
+                    secret = 'abcd1234', 
+                    topic = 'user.created', 
+                    description = '', 
+                    webhook_format = 'LEGACY', 
+                    parse_record = True, 
+                    filter = null, 
+                    include_relations = [candidate, vacancy], 
+                    relation_filters = {
+                        'key' : caraer_client.models.filter.Filter(
+                            groups = [
+                                caraer_client.models.filter_group.FilterGroup(
+                                    items = null, )
+                                ], )
+                        }, 
+                    relation_limit = 10, 
+                    retry_enabled = True, 
+                    max_retries = 3, 
+                    retry_backoff_ms = 1000, 
+                    trigger_offset_seconds = 604800, 
+                    schedule_direction = 'BEFORE', 
+                    schedule_recurring = 'YEARLY', 
+                    schedule_cron_expression = '0', 
+                    schedule_version = 56, 
+                    uuid = '0', 
+                    name = '0', 
+                    label = '', 
+                    created_at = 56, 
+                    created_by = null, 
+                    updated_at = 56, 
+                    updated_by = null, 
+                    deleted_at = 56, 
+                    deleted_by = null, 
+                    index = 56, ),
+                update_webhook = caraer_client.models.subscribe_webhook_dto.SubscribeWebhookDTO(
+                    url = 'https://example.com/webhook', 
+                    serverless_function = null, 
+                    delivery_mode = '', 
+                    wait_until_complete = True, 
+                    secret = 'abcd1234', 
+                    topic = 'user.created', 
+                    description = '', 
+                    webhook_format = 'LEGACY', 
+                    parse_record = True, 
+                    filter = null, 
+                    include_relations = [candidate, vacancy], 
+                    relation_filters = {
+                        'key' : caraer_client.models.filter.Filter(
+                            groups = [
+                                caraer_client.models.filter_group.FilterGroup(
+                                    items = null, )
+                                ], )
+                        }, 
+                    relation_limit = 10, 
+                    retry_enabled = True, 
+                    max_retries = 3, 
+                    retry_backoff_ms = 1000, 
+                    trigger_offset_seconds = 604800, 
+                    schedule_direction = 'BEFORE', 
+                    schedule_recurring = 'YEARLY', 
+                    schedule_cron_expression = '0', 
+                    schedule_version = 56, 
+                    uuid = '0', 
+                    name = '0', 
+                    label = '', 
+                    created_at = 56, 
+                    created_by = null, 
+                    updated_at = 56, 
+                    updated_by = null, 
+                    deleted_at = 56, 
+                    deleted_by = null, 
+                    index = 56, ),
+                settings_schema = [
+                    caraer_client.models.app_setting_field_schema.AppSettingFieldSchema(
+                        name = '', 
+                        label = '', 
+                        type = '', 
+                        required = True, 
+                        help_text = '', 
+                        text = '', 
+                        paragraph = '', 
+                        options = [
+                            caraer_client.models.setting_option.SettingOption(
+                                name = '', 
+                                label = '', 
+                                help_text = '', 
+                                preview = '', )
+                            ], 
+                        options_source = caraer_client.models.app_setting_options_source.AppSettingOptionsSource(
+                            type = '', 
+                            serverless_function_uuid = '', 
+                            serverless_function_name = '', 
+                            depends_on = [
+                                ''
+                                ], 
+                            searchable = True, 
+                            min_query_length = 56, ), 
+                        action_source = caraer_client.models.app_setting_action_source.AppSettingActionSource(
+                            type = '', 
+                            serverless_function_uuid = '', 
+                            serverless_function_name = '', 
+                            enqueue = True, ), 
+                        default_value = null, 
+                        hidden = True, 
+                        advanced = True, 
+                        group = '', 
+                        fields = [
+                            caraer_client.models.app_setting_field_schema.AppSettingFieldSchema(
+                                name = '', 
+                                label = '', 
+                                type = '', 
+                                required = True, 
+                                help_text = '', 
+                                text = '', 
+                                paragraph = '', 
+                                options = [
+                                    caraer_client.models.setting_option.SettingOption(
+                                        name = '', 
+                                        label = '', 
+                                        help_text = '', 
+                                        preview = '', )
+                                    ], 
+                                options_source = caraer_client.models.app_setting_options_source.AppSettingOptionsSource(
+                                    type = '', 
+                                    serverless_function_uuid = '', 
+                                    serverless_function_name = '', 
+                                    depends_on = [
+                                        ''
+                                        ], 
+                                    searchable = True, 
+                                    min_query_length = 56, ), 
+                                action_source = caraer_client.models.app_setting_action_source.AppSettingActionSource(
+                                    type = '', 
+                                    serverless_function_uuid = '', 
+                                    serverless_function_name = '', 
+                                    enqueue = True, ), 
+                                default_value = null, 
+                                hidden = True, 
+                                advanced = True, 
+                                group = '', 
+                                filter_traits = [
+                                    ''
+                                    ], 
+                                visible_when = [
+                                    caraer_client.models.app_setting_condition.AppSettingCondition(
+                                        field = '', 
+                                        operator = '', 
+                                        value = null, )
+                                    ], 
+                                item_fields = [
+                                    
+                                    ], 
+                                min = 56, 
+                                max = 56, 
+                                item_label = '', 
+                                value = null, 
+                                has_value = True, 
+                                mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
+                                    object_name = '', 
+                                    target_kind = '', 
+                                    items = [
+                                        caraer_client.models.app_setting_field_mapping_structure_item.AppSettingFieldMappingStructureItem(
+                                            field_label = '', 
+                                            field_name = '', 
+                                            field_help_text = '', 
+                                            is_required = True, 
+                                            allowed_property_types = [
+                                                ''
+                                                ], 
+                                            allowed_property_formats = [
+                                                ''
+                                                ], 
+                                            property_name = '', 
+                                            literal_value = '', 
+                                            relation_name = '', 
+                                            object_name = '', 
+                                            record_uuid = '', 
+                                            format_pattern = '', 
+                                            format_replacement = '', )
+                                        ], 
+                                    record_target = True, ), 
+                                value_scope = '', 
+                                settings_group = True, 
+                                action = True, 
+                                filter_property_types = [
+                                    ''
+                                    ], 
+                                filter_property_formats = [
+                                    ''
+                                    ], )
+                            ], 
+                        filter_traits = [
+                            ''
+                            ], 
+                        visible_when = [
+                            caraer_client.models.app_setting_condition.AppSettingCondition(
+                                field = '', 
+                                operator = '', 
+                                value = null, )
+                            ], 
+                        item_fields = [
+                            caraer_client.models.app_setting_field_schema.AppSettingFieldSchema(
+                                name = '', 
+                                label = '', 
+                                type = '', 
+                                required = True, 
+                                help_text = '', 
+                                text = '', 
+                                paragraph = '', 
+                                options = [
+                                    caraer_client.models.setting_option.SettingOption(
+                                        name = '', 
+                                        label = '', 
+                                        help_text = '', 
+                                        preview = '', )
+                                    ], 
+                                options_source = caraer_client.models.app_setting_options_source.AppSettingOptionsSource(
+                                    type = '', 
+                                    serverless_function_uuid = '', 
+                                    serverless_function_name = '', 
+                                    depends_on = [
+                                        ''
+                                        ], 
+                                    searchable = True, 
+                                    min_query_length = 56, ), 
+                                action_source = caraer_client.models.app_setting_action_source.AppSettingActionSource(
+                                    type = '', 
+                                    serverless_function_uuid = '', 
+                                    serverless_function_name = '', 
+                                    enqueue = True, ), 
+                                default_value = null, 
+                                hidden = True, 
+                                advanced = True, 
+                                group = '', 
+                                fields = [
+                                    
+                                    ], 
+                                filter_traits = [
+                                    ''
+                                    ], 
+                                visible_when = [
+                                    caraer_client.models.app_setting_condition.AppSettingCondition(
+                                        field = '', 
+                                        operator = '', 
+                                        value = null, )
+                                    ], 
+                                min = 56, 
+                                max = 56, 
+                                item_label = '', 
+                                value = null, 
+                                has_value = True, 
+                                mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
+                                    object_name = '', 
+                                    target_kind = '', 
+                                    items = [
+                                        caraer_client.models.app_setting_field_mapping_structure_item.AppSettingFieldMappingStructureItem(
+                                            field_label = '', 
+                                            field_name = '', 
+                                            field_help_text = '', 
+                                            is_required = True, 
+                                            allowed_property_types = [
+                                                ''
+                                                ], 
+                                            allowed_property_formats = [
+                                                ''
+                                                ], 
+                                            property_name = '', 
+                                            literal_value = '', 
+                                            relation_name = '', 
+                                            object_name = '', 
+                                            record_uuid = '', 
+                                            format_pattern = '', 
+                                            format_replacement = '', )
+                                        ], 
+                                    record_target = True, ), 
+                                value_scope = '', 
+                                settings_group = True, 
+                                action = True, 
+                                filter_property_types = [
+                                    ''
+                                    ], 
+                                filter_property_formats = [
+                                    ''
+                                    ], )
+                            ], 
+                        min = 56, 
+                        max = 56, 
+                        item_label = '', 
+                        value = null, 
+                        has_value = True, 
+                        mapping_value = caraer_client.models.app_setting_field_mapping_structure.AppSettingFieldMappingStructure(
+                            object_name = '', 
+                            target_kind = '', 
+                            items = [
+                                caraer_client.models.app_setting_field_mapping_structure_item.AppSettingFieldMappingStructureItem(
+                                    field_label = '', 
+                                    field_name = '', 
+                                    field_help_text = '', 
+                                    is_required = True, 
+                                    allowed_property_types = [
+                                        ''
+                                        ], 
+                                    allowed_property_formats = [
+                                        ''
+                                        ], 
+                                    property_name = '', 
+                                    literal_value = '', 
+                                    relation_name = '', 
+                                    object_name = '', 
+                                    record_uuid = '', 
+                                    format_pattern = '', 
+                                    format_replacement = '', )
+                                ], 
+                            record_target = True, ), 
+                        value_scope = '', 
+                        settings_group = True, 
+                        action = True, 
+                        filter_property_types = [
+                            ''
+                            ], 
+                        filter_property_formats = [
+                            ''
+                            ], )
+                    ],
+                settings_sections = [
+                    caraer_client.models.app_settings_section.AppSettingsSection(
+                        title = '', 
+                        subtitle = '', 
+                        settings = [
+                            ''
+                            ], )
+                    ],
+                external_o_auth_providers = [
+                    caraer_client.models.app_external_o_auth_provider_summary_dto.AppExternalOAuthProviderSummaryDTO(
+                        name = '', 
+                        label = '', 
+                        logo = '', 
+                        connection_owner = '', )
+                    ],
+                webhook_rate_limit_per_minute = 56,
+                job_rate_limit_per_minute = 56,
+                app_publish = caraer_client.models.app_publish_dto.AppPublishDTO(
+                    uuid = '0', 
+                    name = '0', 
+                    label = '', 
+                    created_at = 56, 
+                    created_by = null, 
+                    updated_at = 56, 
+                    updated_by = null, 
+                    deleted_at = 56, 
+                    deleted_by = null, 
+                    index = 56, 
+                    publish_state = '', 
+                    submitted_at = 56, 
+                    reviewed_at = 56, 
+                    published_at = 56, 
+                    feedback = '', 
+                    reviewer_notes = '', ),
+                has_app = caraer_client.models.has_app_dto.HasAppDTO(
+                    uuid = '', 
+                    token = '', 
+                    scopes = [
+                        ''
+                        ], 
+                    settings_values = '', 
+                    filters = {
+                        'key' : caraer_client.models.filter.Filter(
+                            groups = [
+                                caraer_client.models.filter_group.FilterGroup(
+                                    items = null, )
+                                ], )
+                        }, 
+                    app_bar_visibility = {
+                        'key' : caraer_client.models.app_bar_visibility_entry.AppBarVisibilityEntry(
+                            objects = [
+                                ''
+                                ], 
+                            suites = [
+                                ''
+                                ], 
+                            traits = [
+                                ''
+                                ], )
+                        }, 
+                    oauth_connected = True, 
+                    oauth_access_token_expires_at = 56, ),
+                image = '',
+                url = '',
+                category = '',
+                installed = True,
+                required_scopes = [
+                    ''
+                    ],
+                resolved_required_scopes = [
+                    ''
+                    ],
                 auth_method = 'NONE',
+                oauth_client_id = '',
+                oauth_client_secret = '',
+                oauth_client_secret_configured = True,
                 oauth_redirect_uris = [
                     ''
                     ],
+                oauth_authorize_url = '',
+                oauth_token_url = '',
+                install_url = '',
+                brandmark = '',
+                description = '',
                 platform_version = 56,
-                runtime = ''
+                runtime = '',
+                runtime_base_url = '',
+                runtime_revision = '',
+                runtime_status = '',
+                runtime_error = '',
+                runtime_generation = 56
             )
         else:
             return CreatePrivateAppRequest(
-                label = 'My Custom App',
+                uuid = '0',
+                name = '0',
+                label = '',
         )
         """
 

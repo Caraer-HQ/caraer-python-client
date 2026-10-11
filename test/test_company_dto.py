@@ -246,6 +246,7 @@ class TestCompanyDTO(unittest.TestCase):
                                 'key' : null
                                 }, ), ), ),
                 index = 56,
+                subdomain = '',
                 details = caraer_client.models.company_details_dto.CompanyDetailsDTO(
                     uuid = '0', 
                     name = '0', 

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **deleted_at** | **int** | Unix timestamp when the entity was deleted (null if not deleted) | [optional] 
 **deleted_by** | [**Record**](Record.md) | Identifier of the user who deleted the entity | [optional] 
 **index** | **int** | Index number for ordering entities | [optional] 
+**subdomain** | **str** | The company&#39;s canonical subdomain, independent of website settings. | [optional] [readonly] 
 **details** | [**CompanyDetailsDTO**](CompanyDetailsDTO.md) | The details of the company. | [optional] 
 **digital_identity** | [**DigitalIdentityDTO**](DigitalIdentityDTO.md) | The digital identity of the company. | [optional] 
 **website_settings** | [**WebsiteSettingsDTO**](WebsiteSettingsDTO.md) | The website settings of the company. | [optional] 
