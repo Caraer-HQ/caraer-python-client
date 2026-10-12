@@ -2678,7 +2678,7 @@ class ApplicationsApi:
     ) -> PaginationResponseAppDTO:
         """Retrieve a paginated list of applications
 
-        Fetches a paginated and optionally filtered list of applications. The list is sorted alphabetically by category and name. On success, returns a PaginationResponse containing AppSummaryDTO objects.
+        Fetches a paginated and optionally filtered list of applications. The list is sorted alphabetically by category and name. Unpublished public apps are visible only when the selected company is their creator. The native tools list includes only published apps. On success, returns a PaginationResponse containing AppSummaryDTO objects.
 
         :param pagination_request: (required)
         :type pagination_request: PaginationRequest
@@ -2758,7 +2758,7 @@ class ApplicationsApi:
     ) -> ApiResponse[PaginationResponseAppDTO]:
         """Retrieve a paginated list of applications
 
-        Fetches a paginated and optionally filtered list of applications. The list is sorted alphabetically by category and name. On success, returns a PaginationResponse containing AppSummaryDTO objects.
+        Fetches a paginated and optionally filtered list of applications. The list is sorted alphabetically by category and name. Unpublished public apps are visible only when the selected company is their creator. The native tools list includes only published apps. On success, returns a PaginationResponse containing AppSummaryDTO objects.
 
         :param pagination_request: (required)
         :type pagination_request: PaginationRequest
@@ -2838,7 +2838,7 @@ class ApplicationsApi:
     ) -> RESTResponseType:
         """Retrieve a paginated list of applications
 
-        Fetches a paginated and optionally filtered list of applications. The list is sorted alphabetically by category and name. On success, returns a PaginationResponse containing AppSummaryDTO objects.
+        Fetches a paginated and optionally filtered list of applications. The list is sorted alphabetically by category and name. Unpublished public apps are visible only when the selected company is their creator. The native tools list includes only published apps. On success, returns a PaginationResponse containing AppSummaryDTO objects.
 
         :param pagination_request: (required)
         :type pagination_request: PaginationRequest

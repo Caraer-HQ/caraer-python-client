@@ -31,8 +31,8 @@ Name | Type | Description | Notes
 **clear_value** | **bool** |  | [optional] 
 **mapping_value** | [**AppSettingFieldMappingStructure**](AppSettingFieldMappingStructure.md) |  | [optional] 
 **value_scope** | **str** |  | [optional] 
-**action** | **bool** |  | [optional] 
 **settings_group** | **bool** |  | [optional] 
+**action** | **bool** |  | [optional] 
 **filter_property_types** | **List[str]** |  | [optional] 
 **filter_property_formats** | **List[str]** |  | [optional] 
 

@@ -170,8 +170,8 @@ class TestShowResponseListCmsModuleDTO(unittest.TestCase):
                                                 ], 
                                             record_target = True, ), 
                                         value_scope = '', 
-                                        action = True, 
                                         settings_group = True, 
+                                        action = True, 
                                         filter_property_types = [
                                             ''
                                             ], 
@@ -210,8 +210,8 @@ class TestShowResponseListCmsModuleDTO(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                action = True, 
                                 settings_group = True, 
+                                action = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
