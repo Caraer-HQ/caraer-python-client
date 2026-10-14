@@ -568,9 +568,6 @@ class TestGridItemSettingsDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -604,9 +601,6 @@ class TestGridItemSettingsDTO(unittest.TestCase):
                             complete = True, 
                             deleted = True, 
                             uuid = '0', 
-                            objects = {
-                                'key' : null
-                                }, 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
                                     icon = '', 
@@ -614,7 +608,10 @@ class TestGridItemSettingsDTO(unittest.TestCase):
                                     value = null, 
                                     type = '', 
                                     label = '', )
-                                ], ), ), 
+                                ], 
+                            objects = {
+                                'key' : null
+                                }, ), ), 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
                             icon = '', 
@@ -622,7 +619,10 @@ class TestGridItemSettingsDTO(unittest.TestCase):
                             value = null, 
                             type = '', 
                             label = '', )
-                        ], ),
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 aiprompt = '',
                 label = '',
                 default_value = '',

@@ -67,9 +67,6 @@ class TestPublicUserDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -97,7 +94,10 @@ class TestPublicUserDTO(unittest.TestCase):
                             value = null, 
                             type = '', 
                             label = '', )
-                        ], )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, )
             )
         else:
             return PublicUserDTO(
