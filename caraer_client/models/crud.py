@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,20 +27,9 @@ class CRUD(BaseModel):
     """
     CRUD
     """ # noqa: E501
-    session_type: Optional[StrictStr] = Field(default=None, alias="sessionType")
     http_session_id: Optional[StrictStr] = Field(default=None, alias="httpSessionId")
     turn_off_meta_relationships: Optional[StrictBool] = Field(default=None, alias="turnOffMetaRelationships")
-    __properties: ClassVar[List[str]] = ["sessionType", "httpSessionId", "turnOffMetaRelationships"]
-
-    @field_validator('session_type')
-    def session_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['MAIN', 'USER']):
-            raise ValueError("must be one of enum values ('MAIN', 'USER')")
-        return value
+    __properties: ClassVar[List[str]] = ["httpSessionId", "turnOffMetaRelationships"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -93,7 +82,6 @@ class CRUD(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "sessionType": obj.get("sessionType"),
             "httpSessionId": obj.get("httpSessionId"),
             "turnOffMetaRelationships": obj.get("turnOffMetaRelationships")
         })

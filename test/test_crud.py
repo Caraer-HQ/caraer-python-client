@@ -35,7 +35,6 @@ class TestCRUD(unittest.TestCase):
         model = CRUD()
         if include_optional:
             return CRUD(
-                session_type = 'MAIN',
                 http_session_id = '',
                 turn_off_meta_relationships = True
             )

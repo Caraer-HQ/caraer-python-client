@@ -47,14 +47,6 @@ class TestRecord(unittest.TestCase):
                 complete = True,
                 deleted = True,
                 uuid = '0',
-                properties = [
-                    caraer_client.models.filled_property.FilledProperty(
-                        icon = '', 
-                        name = '', 
-                        value = null, 
-                        type = '', 
-                        label = '', )
-                    ],
                 objects = {
                     'key' : null
                     },
@@ -91,6 +83,9 @@ class TestRecord(unittest.TestCase):
                         complete = True, 
                         deleted = True, 
                         uuid = '0', 
+                        objects = {
+                            'key' : null
+                            }, 
                         properties = [
                             caraer_client.models.filled_property.FilledProperty(
                                 icon = '', 
@@ -98,10 +93,15 @@ class TestRecord(unittest.TestCase):
                                 value = null, 
                                 type = '', 
                                 label = '', )
-                            ], 
-                        objects = {
-                            'key' : null
-                            }, ), )
+                            ], ), ),
+                properties = [
+                    caraer_client.models.filled_property.FilledProperty(
+                        icon = '', 
+                        name = '', 
+                        value = null, 
+                        type = '', 
+                        label = '', )
+                    ]
             )
         else:
             return Record(

@@ -36,7 +36,6 @@ class TestFlowPaginationRequest(unittest.TestCase):
         if include_optional:
             return FlowPaginationRequest(
                 crud = caraer_client.models.crud.CRUD(
-                    session_type = 'MAIN', 
                     http_session_id = '', 
                     turn_off_meta_relationships = True, ),
                 show_items = [

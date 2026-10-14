@@ -67,14 +67,6 @@ class TestPublicUserDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
                     objects = {
                         'key' : null
                         }, 
@@ -97,7 +89,15 @@ class TestPublicUserDTO(unittest.TestCase):
                         role = '', 
                         roles = [
                             ''
-                            ], ), )
+                            ], ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], )
             )
         else:
             return PublicUserDTO(

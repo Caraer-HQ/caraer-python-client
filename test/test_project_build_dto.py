@@ -52,14 +52,6 @@ class TestProjectBuildDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
                     objects = {
                         'key' : null
                         }, 
@@ -96,6 +88,9 @@ class TestProjectBuildDTO(unittest.TestCase):
                             complete = True, 
                             deleted = True, 
                             uuid = '0', 
+                            objects = {
+                                'key' : null
+                                }, 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
                                     icon = '', 
@@ -103,10 +98,15 @@ class TestProjectBuildDTO(unittest.TestCase):
                                     value = null, 
                                     type = '', 
                                     label = '', )
-                                ], 
-                            objects = {
-                                'key' : null
-                                }, ), ), ),
+                                ], ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -121,14 +121,6 @@ class TestProjectBuildDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
                     objects = {
                         'key' : null
                         }, 
@@ -165,6 +157,9 @@ class TestProjectBuildDTO(unittest.TestCase):
                             complete = True, 
                             deleted = True, 
                             uuid = '0', 
+                            objects = {
+                                'key' : null
+                                }, 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
                                     icon = '', 
@@ -172,10 +167,15 @@ class TestProjectBuildDTO(unittest.TestCase):
                                     value = null, 
                                     type = '', 
                                     label = '', )
-                                ], 
-                            objects = {
-                                'key' : null
-                                }, ), ), ),
+                                ], ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -190,14 +190,6 @@ class TestProjectBuildDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
                     objects = {
                         'key' : null
                         }, 
@@ -234,6 +226,9 @@ class TestProjectBuildDTO(unittest.TestCase):
                             complete = True, 
                             deleted = True, 
                             uuid = '0', 
+                            objects = {
+                                'key' : null
+                                }, 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
                                     icon = '', 
@@ -241,10 +236,15 @@ class TestProjectBuildDTO(unittest.TestCase):
                                     value = null, 
                                     type = '', 
                                     label = '', )
-                                ], 
-                            objects = {
-                                'key' : null
-                                }, ), ), ),
+                                ], ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], ),
                 index = 56,
                 project_uuid = '',
                 status = '',
