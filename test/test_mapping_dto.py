@@ -52,17 +52,6 @@ class TestMappingDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -106,7 +95,18 @@ class TestMappingDTO(unittest.TestCase):
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), ),
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -121,17 +121,6 @@ class TestMappingDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -175,7 +164,18 @@ class TestMappingDTO(unittest.TestCase):
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), ),
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -190,17 +190,6 @@ class TestMappingDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -244,7 +233,18 @@ class TestMappingDTO(unittest.TestCase):
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), ),
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 index = 56,
                 source_url = '',
                 sync_rate = 56,
@@ -744,7 +744,9 @@ class TestMappingDTO(unittest.TestCase):
                                             extends_to = [
                                                 
                                                 ], 
-                                            editable = True, )
+                                            editable = True, 
+                                            number_id_enabled = True, 
+                                            number_id_backfill_status = '', )
                                         ], 
                                     immutable = True, 
                                     editable = True, )
@@ -1006,9 +1008,13 @@ class TestMappingDTO(unittest.TestCase):
                                     suites = [
                                         ''
                                         ], 
-                                    editable = True, )
+                                    editable = True, 
+                                    number_id_enabled = True, 
+                                    number_id_backfill_status = '', )
                                 ], 
-                            editable = True, ), 
+                            editable = True, 
+                            number_id_enabled = True, 
+                            number_id_backfill_status = '', ), 
                         target_property = caraer_client.models.property_dto.PropertyDTO(
                             uuid = '0', 
                             name = '', 
@@ -1542,7 +1548,9 @@ class TestMappingDTO(unittest.TestCase):
                                     extends_to = [
                                         
                                         ], 
-                                    editable = True, )
+                                    editable = True, 
+                                    number_id_enabled = True, 
+                                    number_id_backfill_status = '', )
                                 ], 
                             immutable = True, 
                             editable = True, )
@@ -1804,9 +1812,13 @@ class TestMappingDTO(unittest.TestCase):
                             suites = [
                                 ''
                                 ], 
-                            editable = True, )
+                            editable = True, 
+                            number_id_enabled = True, 
+                            number_id_backfill_status = '', )
                         ], 
-                    editable = True, ),
+                    editable = True, 
+                    number_id_enabled = True, 
+                    number_id_backfill_status = '', ),
                 unpublish_when_not_in_source = True
             )
         else:

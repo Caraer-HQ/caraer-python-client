@@ -517,7 +517,9 @@ class TestPreviewRelatedObjectDTO(unittest.TestCase):
                                     extends_to = [
                                         
                                         ], 
-                                    editable = True, )
+                                    editable = True, 
+                                    number_id_enabled = True, 
+                                    number_id_backfill_status = '', )
                                 ], 
                             immutable = True, 
                             editable = True, )
@@ -779,9 +781,13 @@ class TestPreviewRelatedObjectDTO(unittest.TestCase):
                             suites = [
                                 ''
                                 ], 
-                            editable = True, )
+                            editable = True, 
+                            number_id_enabled = True, 
+                            number_id_backfill_status = '', )
                         ], 
-                    editable = True, ),
+                    editable = True, 
+                    number_id_enabled = True, 
+                    number_id_backfill_status = '', ),
                 relation = caraer_client.models.relation_dto.RelationDTO(
                     uuid = '0', 
                     name = '', 
@@ -1296,9 +1302,13 @@ class TestPreviewRelatedObjectDTO(unittest.TestCase):
                                     suites = [
                                         ''
                                         ], 
-                                    editable = True, )
+                                    editable = True, 
+                                    number_id_enabled = True, 
+                                    number_id_backfill_status = '', )
                                 ], 
-                            editable = True, )
+                            editable = True, 
+                            number_id_enabled = True, 
+                            number_id_backfill_status = '', )
                         ], 
                     immutable = True, 
                     editable = True, )

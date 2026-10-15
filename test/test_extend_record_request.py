@@ -518,7 +518,9 @@ class TestExtendRecordRequest(unittest.TestCase):
                                         extends_to = [
                                             
                                             ], 
-                                        editable = True, )
+                                        editable = True, 
+                                        number_id_enabled = True, 
+                                        number_id_backfill_status = '', )
                                     ], 
                                 immutable = True, 
                                 editable = True, )
@@ -780,9 +782,13 @@ class TestExtendRecordRequest(unittest.TestCase):
                                 suites = [
                                     ''
                                     ], 
-                                editable = True, )
+                                editable = True, 
+                                number_id_enabled = True, 
+                                number_id_backfill_status = '', )
                             ], 
-                        editable = True, )
+                        editable = True, 
+                        number_id_enabled = True, 
+                        number_id_backfill_status = '', )
                     ]
             )
         else:

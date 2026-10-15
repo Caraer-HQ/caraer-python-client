@@ -550,9 +550,13 @@ class TestFormRelationDTO(unittest.TestCase):
                                     suites = [
                                         ''
                                         ], 
-                                    editable = True, )
+                                    editable = True, 
+                                    number_id_enabled = True, 
+                                    number_id_backfill_status = '', )
                                 ], 
-                            editable = True, )
+                            editable = True, 
+                            number_id_enabled = True, 
+                            number_id_backfill_status = '', )
                         ], 
                     immutable = True, 
                     editable = True, ),
@@ -1070,9 +1074,13 @@ class TestFormRelationDTO(unittest.TestCase):
                                     suites = [
                                         ''
                                         ], 
-                                    editable = True, )
+                                    editable = True, 
+                                    number_id_enabled = True, 
+                                    number_id_backfill_status = '', )
                                 ], 
-                            editable = True, )
+                            editable = True, 
+                            number_id_enabled = True, 
+                            number_id_backfill_status = '', )
                         ], 
                     immutable = True, 
                     editable = True, ),
@@ -1558,7 +1566,9 @@ class TestFormRelationDTO(unittest.TestCase):
                                     extends_to = [
                                         
                                         ], 
-                                    editable = True, )
+                                    editable = True, 
+                                    number_id_enabled = True, 
+                                    number_id_backfill_status = '', )
                                 ], 
                             immutable = True, 
                             editable = True, )
@@ -1820,9 +1830,13 @@ class TestFormRelationDTO(unittest.TestCase):
                             suites = [
                                 ''
                                 ], 
-                            editable = True, )
+                            editable = True, 
+                            number_id_enabled = True, 
+                            number_id_backfill_status = '', )
                         ], 
-                    editable = True, ),
+                    editable = True, 
+                    number_id_enabled = True, 
+                    number_id_backfill_status = '', ),
                 record_uuid = 'fc453abc-123e-4567-890a-6789abcd1234',
                 related_object_connection = 'PRIMARY'
             )

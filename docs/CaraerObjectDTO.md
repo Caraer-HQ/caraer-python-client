@@ -28,6 +28,8 @@ Name | Type | Description | Notes
 **suites** | **List[str]** | List of suite names this object belongs to | [optional] 
 **extends_to** | [**List[CaraerObjectDTO]**](CaraerObjectDTO.md) | List of objects this object extends to | [optional] 
 **editable** | **bool** | When false, the object schema cannot be updated or deleted via the API | [optional] 
+**number_id_enabled** | **bool** | Permanently enable company-wide Number ID generation for this object and its descendants | [optional] 
+**number_id_backfill_status** | **str** | Existing-record numbering status: PENDING, COMPLETE, or FAILED | [optional] [readonly] 
 
 ## Example
 

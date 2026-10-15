@@ -594,7 +594,9 @@ class TestPageContentSettingsDTO(unittest.TestCase):
                                     extends_to = [
                                         
                                         ], 
-                                    editable = True, )
+                                    editable = True, 
+                                    number_id_enabled = True, 
+                                    number_id_backfill_status = '', )
                                 ], 
                             immutable = True, 
                             editable = True, )
@@ -856,9 +858,13 @@ class TestPageContentSettingsDTO(unittest.TestCase):
                             suites = [
                                 ''
                                 ], 
-                            editable = True, )
+                            editable = True, 
+                            number_id_enabled = True, 
+                            number_id_backfill_status = '', )
                         ], 
-                    editable = True, ),
+                    editable = True, 
+                    number_id_enabled = True, 
+                    number_id_backfill_status = '', ),
                 previews = {
                     'key' : caraer_client.models.preview_dto.PreviewDTO(
                         description = 'Preview description example', 

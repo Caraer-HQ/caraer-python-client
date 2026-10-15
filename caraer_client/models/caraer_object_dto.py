@@ -53,7 +53,9 @@ class CaraerObjectDTO(BaseModel):
     suites: Optional[List[StrictStr]] = Field(default=None, description="List of suite names this object belongs to")
     extends_to: Optional[List[CaraerObjectDTO]] = Field(default=None, description="List of objects this object extends to", alias="extendsTo")
     editable: Optional[StrictBool] = Field(default=None, description="When false, the object schema cannot be updated or deleted via the API")
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "plural", "description", "groups", "icon", "defaultTrait", "traits", "views", "properties", "relations", "suites", "extendsTo", "editable"]
+    number_id_enabled: Optional[StrictBool] = Field(default=None, description="Permanently enable company-wide Number ID generation for this object and its descendants", alias="numberIdEnabled")
+    number_id_backfill_status: Optional[StrictStr] = Field(default=None, description="Existing-record numbering status: PENDING, COMPLETE, or FAILED", alias="numberIdBackfillStatus")
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "plural", "description", "groups", "icon", "defaultTrait", "traits", "views", "properties", "relations", "suites", "extendsTo", "editable", "numberIdEnabled", "numberIdBackfillStatus"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,8 +87,10 @@ class CaraerObjectDTO(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "number_id_backfill_status",
         ])
 
         _dict = self.model_dump(
@@ -160,7 +164,9 @@ class CaraerObjectDTO(BaseModel):
             "relations": [RelationDTO.from_dict(_item) for _item in obj["relations"]] if obj.get("relations") is not None else None,
             "suites": obj.get("suites"),
             "extendsTo": [CaraerObjectDTO.from_dict(_item) for _item in obj["extendsTo"]] if obj.get("extendsTo") is not None else None,
-            "editable": obj.get("editable")
+            "editable": obj.get("editable"),
+            "numberIdEnabled": obj.get("numberIdEnabled"),
+            "numberIdBackfillStatus": obj.get("numberIdBackfillStatus")
         })
         return _obj
 
