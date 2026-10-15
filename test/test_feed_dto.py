@@ -52,6 +52,17 @@ class TestFeedDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -95,18 +106,7 @@ class TestFeedDTO(unittest.TestCase):
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, ),
+                                }, ), ), ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -121,6 +121,17 @@ class TestFeedDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -164,18 +175,7 @@ class TestFeedDTO(unittest.TestCase):
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, ),
+                                }, ), ), ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -190,6 +190,17 @@ class TestFeedDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -233,18 +244,7 @@ class TestFeedDTO(unittest.TestCase):
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, ),
+                                }, ), ), ),
                 index = 56,
                 slug = '',
                 format = '',
@@ -261,34 +261,7 @@ class TestFeedDTO(unittest.TestCase):
                 item_path = '',
                 cache_ttl_seconds = 56,
                 active = True,
-                direction = '',
-                source_url = '',
-                source_auth_type = '',
-                source_auth_key = '',
-                source_auth_value = '',
-                source_auth_username = '',
-                import_interval = '',
-                publish_mode = '',
-                publish_environment = '',
-                publish_filter = None,
-                publish_filter_json = '',
-                unpublish_filter = None,
-                unpublish_filter_json = '',
-                last_import_at = 56,
-                last_import_status = '',
-                last_import_message = '',
-                last_import_json = '',
-                import_running_at = 56,
-                next_import_at = 56,
-                warnings = [
-                    ''
-                    ],
-                available_environments = [
-                    ''
-                    ],
-                sibling_import_feeds = [
-                    ''
-                    ]
+                direction = ''
             )
         else:
             return FeedDTO(

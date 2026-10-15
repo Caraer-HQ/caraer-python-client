@@ -55,28 +55,7 @@ class FeedDTO(BaseModel):
     cache_ttl_seconds: Optional[StrictInt] = Field(default=None, alias="cacheTtlSeconds")
     active: Optional[StrictBool] = None
     direction: Optional[StrictStr] = None
-    source_url: Optional[StrictStr] = Field(default=None, alias="sourceUrl")
-    source_auth_type: Optional[StrictStr] = Field(default=None, alias="sourceAuthType")
-    source_auth_key: Optional[StrictStr] = Field(default=None, alias="sourceAuthKey")
-    source_auth_value: Optional[StrictStr] = Field(default=None, alias="sourceAuthValue")
-    source_auth_username: Optional[StrictStr] = Field(default=None, alias="sourceAuthUsername")
-    import_interval: Optional[StrictStr] = Field(default=None, alias="importInterval")
-    publish_mode: Optional[StrictStr] = Field(default=None, alias="publishMode")
-    publish_environment: Optional[StrictStr] = Field(default=None, alias="publishEnvironment")
-    publish_filter: Optional[Any] = Field(default=None, alias="publishFilter")
-    publish_filter_json: Optional[StrictStr] = Field(default=None, alias="publishFilterJson")
-    unpublish_filter: Optional[Any] = Field(default=None, alias="unpublishFilter")
-    unpublish_filter_json: Optional[StrictStr] = Field(default=None, alias="unpublishFilterJson")
-    last_import_at: Optional[StrictInt] = Field(default=None, alias="lastImportAt")
-    last_import_status: Optional[StrictStr] = Field(default=None, alias="lastImportStatus")
-    last_import_message: Optional[StrictStr] = Field(default=None, alias="lastImportMessage")
-    last_import_json: Optional[StrictStr] = Field(default=None, alias="lastImportJson")
-    import_running_at: Optional[StrictInt] = Field(default=None, alias="importRunningAt")
-    next_import_at: Optional[StrictInt] = Field(default=None, alias="nextImportAt")
-    warnings: Optional[List[StrictStr]] = None
-    available_environments: Optional[List[StrictStr]] = Field(default=None, alias="availableEnvironments")
-    sibling_import_feeds: Optional[List[StrictStr]] = Field(default=None, alias="siblingImportFeeds")
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "slug", "format", "mainObject", "isPublic", "publicToken", "filter", "filterJson", "mapping", "mappingJson", "parseRecord", "rootElement", "itemElement", "itemPath", "cacheTtlSeconds", "active", "direction", "sourceUrl", "sourceAuthType", "sourceAuthKey", "sourceAuthValue", "sourceAuthUsername", "importInterval", "publishMode", "publishEnvironment", "publishFilter", "publishFilterJson", "unpublishFilter", "unpublishFilterJson", "lastImportAt", "lastImportStatus", "lastImportMessage", "lastImportJson", "importRunningAt", "nextImportAt", "warnings", "availableEnvironments", "siblingImportFeeds"]
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "slug", "format", "mainObject", "isPublic", "publicToken", "filter", "filterJson", "mapping", "mappingJson", "parseRecord", "rootElement", "itemElement", "itemPath", "cacheTtlSeconds", "active", "direction"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -136,16 +115,6 @@ class FeedDTO(BaseModel):
         if self.mapping is None and "mapping" in self.model_fields_set:
             _dict['mapping'] = None
 
-        # set to None if publish_filter (nullable) is None
-        # and model_fields_set contains the field
-        if self.publish_filter is None and "publish_filter" in self.model_fields_set:
-            _dict['publishFilter'] = None
-
-        # set to None if unpublish_filter (nullable) is None
-        # and model_fields_set contains the field
-        if self.unpublish_filter is None and "unpublish_filter" in self.model_fields_set:
-            _dict['unpublishFilter'] = None
-
         return _dict
 
     @classmethod
@@ -183,28 +152,7 @@ class FeedDTO(BaseModel):
             "itemPath": obj.get("itemPath"),
             "cacheTtlSeconds": obj.get("cacheTtlSeconds"),
             "active": obj.get("active"),
-            "direction": obj.get("direction"),
-            "sourceUrl": obj.get("sourceUrl"),
-            "sourceAuthType": obj.get("sourceAuthType"),
-            "sourceAuthKey": obj.get("sourceAuthKey"),
-            "sourceAuthValue": obj.get("sourceAuthValue"),
-            "sourceAuthUsername": obj.get("sourceAuthUsername"),
-            "importInterval": obj.get("importInterval"),
-            "publishMode": obj.get("publishMode"),
-            "publishEnvironment": obj.get("publishEnvironment"),
-            "publishFilter": obj.get("publishFilter"),
-            "publishFilterJson": obj.get("publishFilterJson"),
-            "unpublishFilter": obj.get("unpublishFilter"),
-            "unpublishFilterJson": obj.get("unpublishFilterJson"),
-            "lastImportAt": obj.get("lastImportAt"),
-            "lastImportStatus": obj.get("lastImportStatus"),
-            "lastImportMessage": obj.get("lastImportMessage"),
-            "lastImportJson": obj.get("lastImportJson"),
-            "importRunningAt": obj.get("importRunningAt"),
-            "nextImportAt": obj.get("nextImportAt"),
-            "warnings": obj.get("warnings"),
-            "availableEnvironments": obj.get("availableEnvironments"),
-            "siblingImportFeeds": obj.get("siblingImportFeeds")
+            "direction": obj.get("direction")
         })
         return _obj
 
