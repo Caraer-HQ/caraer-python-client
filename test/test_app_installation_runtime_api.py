@@ -145,6 +145,13 @@ class TestAppInstallationRuntimeApi(unittest.TestCase):
         """
         pass
 
+    def test_update_connection_label(self) -> None:
+        """Test case for update_connection_label
+
+        Update an external OAuth connection display label
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
