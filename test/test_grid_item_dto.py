@@ -125,7 +125,7 @@ class TestGridItemDTO(unittest.TestCase):
                             relation_direction = 'outgoing', 
                             property = 'email', 
                             relation_included = True, 
-                            operator = 'EQUALS', 
+                            operator = 'equals_exactly', 
                             value = 12345, 
                             smart_content = True, 
                             edge_property = False, 
