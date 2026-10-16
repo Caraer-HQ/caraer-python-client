@@ -54,6 +54,13 @@ class TestAppInstallationRuntimeApi(unittest.TestCase):
         """
         pass
 
+    def test_get_setting_content(self) -> None:
+        """Test case for get_setting_content
+
+        Load read-only Markdown content for a setting
+        """
+        pass
+
     def test_get_state(self) -> None:
         """Test case for get_state
 

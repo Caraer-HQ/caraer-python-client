@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**delete_state_key**](AppInstallationRuntimeApi.md#delete_state_key) | **DELETE** /api/v2/apps/{appUuid}/installation/state/{key} | Delete a state key
 [**enqueue_job**](AppInstallationRuntimeApi.md#enqueue_job) | **POST** /api/v2/apps/{appUuid}/installation/jobs | Enqueue an async serverless function job
 [**get_job**](AppInstallationRuntimeApi.md#get_job) | **GET** /api/v2/apps/{appUuid}/installation/jobs/{jobId} | Get async job status
+[**get_setting_content**](AppInstallationRuntimeApi.md#get_setting_content) | **GET** /api/v2/apps/{appUuid}/installation/settings/{fieldName}/content | Load read-only Markdown content for a setting
 [**get_state**](AppInstallationRuntimeApi.md#get_state) | **GET** /api/v2/apps/{appUuid}/installation/state | Get installation state map
 [**get_state_key**](AppInstallationRuntimeApi.md#get_state_key) | **GET** /api/v2/apps/{appUuid}/installation/state/{key} | Get a single state key
 [**list_connections**](AppInstallationRuntimeApi.md#list_connections) | **GET** /api/v2/apps/{appUuid}/installation/connections | List external OAuth connection status
@@ -330,6 +331,88 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ShowResponseMapStringObject**](ShowResponseMapStringObject.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_setting_content**
+> ShowResponseMapStringString get_setting_content(app_uuid, field_name)
+
+Load read-only Markdown content for a setting
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response_map_string_string import ShowResponseMapStringString
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.AppInstallationRuntimeApi(api_client)
+    app_uuid = 'app_uuid_example' # str | 
+    field_name = 'field_name_example' # str | 
+
+    try:
+        # Load read-only Markdown content for a setting
+        api_response = api_instance.get_setting_content(app_uuid, field_name)
+        print("The response of AppInstallationRuntimeApi->get_setting_content:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AppInstallationRuntimeApi->get_setting_content: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**|  | 
+ **field_name** | **str**|  | 
+
+### Return type
+
+[**ShowResponseMapStringString**](ShowResponseMapStringString.md)
 
 ### Authorization
 

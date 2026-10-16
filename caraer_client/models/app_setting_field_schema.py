@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from caraer_client.models.app_setting_action_source import AppSettingActionSource
 from caraer_client.models.app_setting_condition import AppSettingCondition
+from caraer_client.models.app_setting_content_source import AppSettingContentSource
 from caraer_client.models.app_setting_field_mapping_structure import AppSettingFieldMappingStructure
 from caraer_client.models.app_setting_options_source import AppSettingOptionsSource
 from caraer_client.models.setting_option import SettingOption
@@ -42,6 +43,8 @@ class AppSettingFieldSchema(BaseModel):
     options: Optional[List[SettingOption]] = None
     options_source: Optional[AppSettingOptionsSource] = Field(default=None, alias="optionsSource")
     action_source: Optional[AppSettingActionSource] = Field(default=None, alias="actionSource")
+    content_source: Optional[AppSettingContentSource] = Field(default=None, alias="contentSource")
+    refresh_interval_seconds: Optional[StrictInt] = Field(default=None, alias="refreshIntervalSeconds")
     default_value: Optional[Any] = Field(default=None, alias="defaultValue")
     hidden: Optional[StrictBool] = None
     advanced: Optional[StrictBool] = None
@@ -58,11 +61,11 @@ class AppSettingFieldSchema(BaseModel):
     clear_value: Optional[StrictBool] = Field(default=None, alias="clearValue")
     mapping_value: Optional[AppSettingFieldMappingStructure] = Field(default=None, alias="mappingValue")
     value_scope: Optional[StrictStr] = Field(default=None, alias="valueScope")
-    action: Optional[StrictBool] = None
     settings_group: Optional[StrictBool] = Field(default=None, alias="settingsGroup")
+    action: Optional[StrictBool] = None
     filter_property_types: Optional[List[StrictStr]] = Field(default=None, alias="filterPropertyTypes")
     filter_property_formats: Optional[List[StrictStr]] = Field(default=None, alias="filterPropertyFormats")
-    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "text", "paragraph", "options", "optionsSource", "actionSource", "defaultValue", "hidden", "advanced", "group", "fields", "filterTraits", "visibleWhen", "itemFields", "min", "max", "itemLabel", "value", "hasValue", "clearValue", "mappingValue", "valueScope", "action", "settingsGroup", "filterPropertyTypes", "filterPropertyFormats"]
+    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "text", "paragraph", "options", "optionsSource", "actionSource", "contentSource", "refreshIntervalSeconds", "defaultValue", "hidden", "advanced", "group", "fields", "filterTraits", "visibleWhen", "itemFields", "min", "max", "itemLabel", "value", "hasValue", "clearValue", "mappingValue", "valueScope", "settingsGroup", "action", "filterPropertyTypes", "filterPropertyFormats"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -115,6 +118,9 @@ class AppSettingFieldSchema(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of action_source
         if self.action_source:
             _dict['actionSource'] = self.action_source.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of content_source
+        if self.content_source:
+            _dict['contentSource'] = self.content_source.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in fields (list)
         _items = []
         if self.fields:
@@ -168,6 +174,8 @@ class AppSettingFieldSchema(BaseModel):
             "options": [SettingOption.from_dict(_item) for _item in obj["options"]] if obj.get("options") is not None else None,
             "optionsSource": AppSettingOptionsSource.from_dict(obj["optionsSource"]) if obj.get("optionsSource") is not None else None,
             "actionSource": AppSettingActionSource.from_dict(obj["actionSource"]) if obj.get("actionSource") is not None else None,
+            "contentSource": AppSettingContentSource.from_dict(obj["contentSource"]) if obj.get("contentSource") is not None else None,
+            "refreshIntervalSeconds": obj.get("refreshIntervalSeconds"),
             "defaultValue": obj.get("defaultValue"),
             "hidden": obj.get("hidden"),
             "advanced": obj.get("advanced"),
@@ -184,8 +192,8 @@ class AppSettingFieldSchema(BaseModel):
             "clearValue": obj.get("clearValue"),
             "mappingValue": AppSettingFieldMappingStructure.from_dict(obj["mappingValue"]) if obj.get("mappingValue") is not None else None,
             "valueScope": obj.get("valueScope"),
-            "action": obj.get("action"),
             "settingsGroup": obj.get("settingsGroup"),
+            "action": obj.get("action"),
             "filterPropertyTypes": obj.get("filterPropertyTypes"),
             "filterPropertyFormats": obj.get("filterPropertyFormats")
         })

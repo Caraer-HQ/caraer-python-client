@@ -319,6 +319,11 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                     serverless_function_uuid = '', 
                                     serverless_function_name = '', 
                                     enqueue = True, ), 
+                                content_source = caraer_client.models.app_setting_content_source.AppSettingContentSource(
+                                    type = '', 
+                                    serverless_function_uuid = '', 
+                                    serverless_function_name = '', ), 
+                                refresh_interval_seconds = 56, 
                                 default_value = null, 
                                 hidden = True, 
                                 advanced = True, 
@@ -353,6 +358,11 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                             serverless_function_uuid = '', 
                                             serverless_function_name = '', 
                                             enqueue = True, ), 
+                                        content_source = caraer_client.models.app_setting_content_source.AppSettingContentSource(
+                                            type = '', 
+                                            serverless_function_uuid = '', 
+                                            serverless_function_name = '', ), 
+                                        refresh_interval_seconds = 56, 
                                         default_value = null, 
                                         hidden = True, 
                                         advanced = True, 
@@ -400,8 +410,8 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                                 ], 
                                             record_target = True, ), 
                                         value_scope = '', 
-                                        action = True, 
                                         settings_group = True, 
+                                        action = True, 
                                         filter_property_types = [
                                             ''
                                             ], 
@@ -448,6 +458,11 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                             serverless_function_uuid = '', 
                                             serverless_function_name = '', 
                                             enqueue = True, ), 
+                                        content_source = caraer_client.models.app_setting_content_source.AppSettingContentSource(
+                                            type = '', 
+                                            serverless_function_uuid = '', 
+                                            serverless_function_name = '', ), 
+                                        refresh_interval_seconds = 56, 
                                         default_value = null, 
                                         hidden = True, 
                                         advanced = True, 
@@ -495,8 +510,8 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                                 ], 
                                             record_target = True, ), 
                                         value_scope = '', 
-                                        action = True, 
                                         settings_group = True, 
+                                        action = True, 
                                         filter_property_types = [
                                             ''
                                             ], 
@@ -535,8 +550,8 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                action = True, 
                                 settings_group = True, 
+                                action = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -747,6 +762,11 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                             serverless_function_uuid = '', 
                             serverless_function_name = '', 
                             enqueue = True, ), 
+                        content_source = caraer_client.models.app_setting_content_source.AppSettingContentSource(
+                            type = '', 
+                            serverless_function_uuid = '', 
+                            serverless_function_name = '', ), 
+                        refresh_interval_seconds = 56, 
                         default_value = null, 
                         hidden = True, 
                         advanced = True, 
@@ -781,6 +801,11 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                     serverless_function_uuid = '', 
                                     serverless_function_name = '', 
                                     enqueue = True, ), 
+                                content_source = caraer_client.models.app_setting_content_source.AppSettingContentSource(
+                                    type = '', 
+                                    serverless_function_uuid = '', 
+                                    serverless_function_name = '', ), 
+                                refresh_interval_seconds = 56, 
                                 default_value = null, 
                                 hidden = True, 
                                 advanced = True, 
@@ -828,8 +853,8 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                action = True, 
                                 settings_group = True, 
+                                action = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -876,6 +901,11 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                     serverless_function_uuid = '', 
                                     serverless_function_name = '', 
                                     enqueue = True, ), 
+                                content_source = caraer_client.models.app_setting_content_source.AppSettingContentSource(
+                                    type = '', 
+                                    serverless_function_uuid = '', 
+                                    serverless_function_name = '', ), 
+                                refresh_interval_seconds = 56, 
                                 default_value = null, 
                                 hidden = True, 
                                 advanced = True, 
@@ -923,8 +953,8 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                action = True, 
                                 settings_group = True, 
+                                action = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -963,8 +993,8 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                 ], 
                             record_target = True, ), 
                         value_scope = '', 
-                        action = True, 
                         settings_group = True, 
+                        action = True, 
                         filter_property_types = [
                             ''
                             ], 

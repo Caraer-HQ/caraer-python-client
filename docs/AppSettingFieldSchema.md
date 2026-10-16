@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **options** | [**List[SettingOption]**](SettingOption.md) |  | [optional] 
 **options_source** | [**AppSettingOptionsSource**](AppSettingOptionsSource.md) |  | [optional] 
 **action_source** | [**AppSettingActionSource**](AppSettingActionSource.md) |  | [optional] 
+**content_source** | [**AppSettingContentSource**](AppSettingContentSource.md) |  | [optional] 
+**refresh_interval_seconds** | **int** |  | [optional] 
 **default_value** | **object** |  | [optional] 
 **hidden** | **bool** |  | [optional] 
 **advanced** | **bool** |  | [optional] 
@@ -31,8 +33,8 @@ Name | Type | Description | Notes
 **clear_value** | **bool** |  | [optional] 
 **mapping_value** | [**AppSettingFieldMappingStructure**](AppSettingFieldMappingStructure.md) |  | [optional] 
 **value_scope** | **str** |  | [optional] 
-**action** | **bool** |  | [optional] 
 **settings_group** | **bool** |  | [optional] 
+**action** | **bool** |  | [optional] 
 **filter_property_types** | **List[str]** |  | [optional] 
 **filter_property_formats** | **List[str]** |  | [optional] 
 
