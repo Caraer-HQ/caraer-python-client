@@ -64,6 +64,7 @@ caraer_client/models/app_bar_iframe_session_request.py
 caraer_client/models/app_bar_iframe_session_validate_request.py
 caraer_client/models/app_bar_trigger_request.py
 caraer_client/models/app_bar_visibility_entry.py
+caraer_client/models/app_category_dto.py
 caraer_client/models/app_connection_status_dto.py
 caraer_client/models/app_details_dto.py
 caraer_client/models/app_dto.py
@@ -82,6 +83,7 @@ caraer_client/models/app_setting_field_mapping_structure_item.py
 caraer_client/models/app_setting_field_schema.py
 caraer_client/models/app_setting_options_source.py
 caraer_client/models/app_settings_section.py
+caraer_client/models/app_subcategory_dto.py
 caraer_client/models/billing_settings_dto.py
 caraer_client/models/bulk_delete_records_data.py
 caraer_client/models/bulk_delete_records_request.py
@@ -419,6 +421,7 @@ docs/AppBarIframeSessionsApi.md
 docs/AppBarTriggerRequest.md
 docs/AppBarVisibilityEntry.md
 docs/AppBarsApi.md
+docs/AppCategoryDTO.md
 docs/AppConnectionStatusDTO.md
 docs/AppDTO.md
 docs/AppDetailsDTO.md
@@ -438,6 +441,7 @@ docs/AppSettingFieldMappingStructureItem.md
 docs/AppSettingFieldSchema.md
 docs/AppSettingOptionsSource.md
 docs/AppSettingsSection.md
+docs/AppSubcategoryDTO.md
 docs/ApplicationsApi.md
 docs/AutomationsApi.md
 docs/BillingApi.md
@@ -809,6 +813,7 @@ test/test_app_bar_iframe_sessions_api.py
 test/test_app_bar_trigger_request.py
 test/test_app_bar_visibility_entry.py
 test/test_app_bars_api.py
+test/test_app_category_dto.py
 test/test_app_connection_status_dto.py
 test/test_app_details_dto.py
 test/test_app_dto.py
@@ -828,6 +833,7 @@ test/test_app_setting_field_mapping_structure_item.py
 test/test_app_setting_field_schema.py
 test/test_app_setting_options_source.py
 test/test_app_settings_section.py
+test/test_app_subcategory_dto.py
 test/test_applications_api.py
 test/test_automations_api.py
 test/test_billing_api.py

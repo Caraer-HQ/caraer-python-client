@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**get_webhook_property_topics**](ApplicationsApi.md#get_webhook_property_topics) | **GET** /api/v2/apps/{appUuid}/webhooks/property-topics | Get webhook property topic options
 [**install_app**](ApplicationsApi.md#install_app) | **POST** /api/v2/apps/{uuid}/install | Install an application
 [**list_app_categories**](ApplicationsApi.md#list_app_categories) | **GET** /api/v2/apps/categories | List predefined marketplace app categories
+[**list_available_app_categories**](ApplicationsApi.md#list_available_app_categories) | **GET** /api/v2/apps/categories/available | List available app categories
 [**load_setting_options**](ApplicationsApi.md#load_setting_options) | **POST** /api/v2/apps/{uuid}/settings-schema/options | Load dynamic options for a setting select field
 [**migrate_to_v2**](ApplicationsApi.md#migrate_to_v2) | **POST** /api/v2/apps/{uuid}/migrate-v2 | Migrate an app from platform V1 to V2
 [**review_public_app**](ApplicationsApi.md#review_public_app) | **POST** /api/v2/apps/public/{uuid}/review | Review a public app
@@ -795,7 +796,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_apps**
-> PaginationResponseAppDTO get_apps(pagination_request, type=type, installed_only=installed_only)
+> PaginationResponseAppDTO get_apps(pagination_request, type=type, installed_only=installed_only, category=category, subcategory=subcategory)
 
 Retrieve a paginated list of applications
 
@@ -835,10 +836,12 @@ with caraer_client.ApiClient(configuration) as api_client:
     pagination_request = caraer_client.PaginationRequest() # PaginationRequest | 
     type = '' # str |  (optional) (default to '')
     installed_only = False # bool |  (optional) (default to False)
+    category = 'category_example' # str |  (optional)
+    subcategory = 'subcategory_example' # str |  (optional)
 
     try:
         # Retrieve a paginated list of applications
-        api_response = api_instance.get_apps(pagination_request, type=type, installed_only=installed_only)
+        api_response = api_instance.get_apps(pagination_request, type=type, installed_only=installed_only, category=category, subcategory=subcategory)
         print("The response of ApplicationsApi->get_apps:\n")
         pprint(api_response)
     except Exception as e:
@@ -855,6 +858,8 @@ Name | Type | Description  | Notes
  **pagination_request** | [**PaginationRequest**](PaginationRequest.md)|  | 
  **type** | **str**|  | [optional] [default to &#39;&#39;]
  **installed_only** | **bool**|  | [optional] [default to False]
+ **category** | **str**|  | [optional] 
+ **subcategory** | **str**|  | [optional] 
 
 ### Return type
 
@@ -1547,7 +1552,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_app_categories**
-> List[Dict[str, object]] list_app_categories()
+> List[AppCategoryDTO] list_app_categories()
 
 List predefined marketplace app categories
 
@@ -1559,6 +1564,7 @@ Returns the allowed category keys and labels for public app marketplace listings
 
 ```python
 import caraer_client
+from caraer_client.models.app_category_dto import AppCategoryDTO
 from caraer_client.rest import ApiException
 from pprint import pprint
 
@@ -1600,7 +1606,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List[Dict[str, object]]**
+[**List[AppCategoryDTO]**](AppCategoryDTO.md)
 
 ### Authorization
 
@@ -1616,6 +1622,90 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successfully retrieved app categories |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_available_app_categories**
+> List[AppCategoryDTO] list_available_app_categories(type=type, installed_only=installed_only)
+
+List available app categories
+
+Returns only categories and subcategories containing apps visible to the selected company. Uses the same type, installedOnly, publication and creator visibility rules as the app index. Independent of search and pagination.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.app_category_dto import AppCategoryDTO
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    type = '' # str |  (optional) (default to '')
+    installed_only = False # bool |  (optional) (default to False)
+
+    try:
+        # List available app categories
+        api_response = api_instance.list_available_app_categories(type=type, installed_only=installed_only)
+        print("The response of ApplicationsApi->list_available_app_categories:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->list_available_app_categories: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **str**|  | [optional] [default to &#39;&#39;]
+ **installed_only** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+[**List[AppCategoryDTO]**](AppCategoryDTO.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 **401** | Authentication is required or the token is invalid. |  -  |
 **403** | The caller is missing a required role or scope. |  -  |
 **404** | The requested resource was not found. |  -  |

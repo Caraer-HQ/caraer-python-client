@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.605"
+__version__ = "2.0.607"
 
 # Define package exports
 __all__ = [
@@ -80,6 +80,7 @@ __all__ = [
     "AppBarIframeSessionValidateRequest",
     "AppBarTriggerRequest",
     "AppBarVisibilityEntry",
+    "AppCategoryDTO",
     "AppConnectionStatusDTO",
     "AppDTO",
     "AppDetailsDTO",
@@ -98,6 +99,7 @@ __all__ = [
     "AppSettingFieldSchema",
     "AppSettingOptionsSource",
     "AppSettingsSection",
+    "AppSubcategoryDTO",
     "BillingSettingsDTO",
     "BulkDeleteRecordsData",
     "BulkDeleteRecordsRequest",
@@ -490,6 +492,7 @@ from caraer_client.models.app_bar_iframe_session_request import AppBarIframeSess
 from caraer_client.models.app_bar_iframe_session_validate_request import AppBarIframeSessionValidateRequest as AppBarIframeSessionValidateRequest
 from caraer_client.models.app_bar_trigger_request import AppBarTriggerRequest as AppBarTriggerRequest
 from caraer_client.models.app_bar_visibility_entry import AppBarVisibilityEntry as AppBarVisibilityEntry
+from caraer_client.models.app_category_dto import AppCategoryDTO as AppCategoryDTO
 from caraer_client.models.app_connection_status_dto import AppConnectionStatusDTO as AppConnectionStatusDTO
 from caraer_client.models.app_dto import AppDTO as AppDTO
 from caraer_client.models.app_details_dto import AppDetailsDTO as AppDetailsDTO
@@ -508,6 +511,7 @@ from caraer_client.models.app_setting_field_mapping_structure_item import AppSet
 from caraer_client.models.app_setting_field_schema import AppSettingFieldSchema as AppSettingFieldSchema
 from caraer_client.models.app_setting_options_source import AppSettingOptionsSource as AppSettingOptionsSource
 from caraer_client.models.app_settings_section import AppSettingsSection as AppSettingsSection
+from caraer_client.models.app_subcategory_dto import AppSubcategoryDTO as AppSubcategoryDTO
 from caraer_client.models.billing_settings_dto import BillingSettingsDTO as BillingSettingsDTO
 from caraer_client.models.bulk_delete_records_data import BulkDeleteRecordsData as BulkDeleteRecordsData
 from caraer_client.models.bulk_delete_records_request import BulkDeleteRecordsRequest as BulkDeleteRecordsRequest

@@ -34,6 +34,7 @@ from caraer_client.models.app_bar_iframe_session_request import AppBarIframeSess
 from caraer_client.models.app_bar_iframe_session_validate_request import AppBarIframeSessionValidateRequest
 from caraer_client.models.app_bar_trigger_request import AppBarTriggerRequest
 from caraer_client.models.app_bar_visibility_entry import AppBarVisibilityEntry
+from caraer_client.models.app_category_dto import AppCategoryDTO
 from caraer_client.models.app_connection_status_dto import AppConnectionStatusDTO
 from caraer_client.models.app_dto import AppDTO
 from caraer_client.models.app_details_dto import AppDetailsDTO
@@ -52,6 +53,7 @@ from caraer_client.models.app_setting_field_mapping_structure_item import AppSet
 from caraer_client.models.app_setting_field_schema import AppSettingFieldSchema
 from caraer_client.models.app_setting_options_source import AppSettingOptionsSource
 from caraer_client.models.app_settings_section import AppSettingsSection
+from caraer_client.models.app_subcategory_dto import AppSubcategoryDTO
 from caraer_client.models.billing_settings_dto import BillingSettingsDTO
 from caraer_client.models.bulk_delete_records_data import BulkDeleteRecordsData
 from caraer_client.models.bulk_delete_records_request import BulkDeleteRecordsRequest

@@ -159,6 +159,13 @@ class TestApplicationsApi(unittest.TestCase):
         """
         pass
 
+    def test_list_available_app_categories(self) -> None:
+        """Test case for list_available_app_categories
+
+        List available app categories
+        """
+        pass
+
     def test_load_setting_options(self) -> None:
         """Test case for load_setting_options
 
