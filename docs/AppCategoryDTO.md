@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **key** | **str** | Stable main category key stored on AppDetails.category | [optional] 
 **label** | **str** | Human-readable main category label | [optional] 
 **subcategories** | [**List[AppSubcategoryDTO]**](AppSubcategoryDTO.md) | Subcategories available under this main category | [optional] 
+**app_count** | **int** | Distinct visible apps in this category; provided by the available-category endpoint, independent of search and pagination | [optional] 
 
 ## Example
 

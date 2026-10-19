@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from caraer_client.models.app_subcategory_dto import AppSubcategoryDTO
 from typing import Optional, Set
@@ -31,7 +31,8 @@ class AppCategoryDTO(BaseModel):
     key: Optional[StrictStr] = Field(default=None, description="Stable main category key stored on AppDetails.category", json_schema_extra={"examples": ["productivity"]})
     label: Optional[StrictStr] = Field(default=None, description="Human-readable main category label", json_schema_extra={"examples": ["Productivity"]})
     subcategories: Optional[List[AppSubcategoryDTO]] = Field(default=None, description="Subcategories available under this main category")
-    __properties: ClassVar[List[str]] = ["key", "label", "subcategories"]
+    app_count: Optional[StrictInt] = Field(default=None, description="Distinct visible apps in this category; provided by the available-category endpoint, independent of search and pagination", alias="appCount")
+    __properties: ClassVar[List[str]] = ["key", "label", "subcategories", "appCount"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -92,7 +93,8 @@ class AppCategoryDTO(BaseModel):
         _obj = cls.model_validate({
             "key": obj.get("key"),
             "label": obj.get("label"),
-            "subcategories": [AppSubcategoryDTO.from_dict(_item) for _item in obj["subcategories"]] if obj.get("subcategories") is not None else None
+            "subcategories": [AppSubcategoryDTO.from_dict(_item) for _item in obj["subcategories"]] if obj.get("subcategories") is not None else None,
+            "appCount": obj.get("appCount")
         })
         return _obj
 

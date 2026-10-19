@@ -41,7 +41,8 @@ class TestAppCategoryDTO(unittest.TestCase):
                     caraer_client.models.app_subcategory_dto.AppSubcategoryDTO(
                         key = 'tasks', 
                         label = 'Tasks', )
-                    ]
+                    ],
+                app_count = 56
             )
         else:
             return AppCategoryDTO(
