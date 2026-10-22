@@ -52,8 +52,8 @@ class TestRecord(unittest.TestCase):
                         name = '', 
                         value = null, 
                         type = '', 
-                        icon = '', 
-                        label = '', )
+                        label = '', 
+                        icon = '', )
                     ],
                 objects = {
                     'key' : null
@@ -96,8 +96,8 @@ class TestRecord(unittest.TestCase):
                                 name = '', 
                                 value = null, 
                                 type = '', 
-                                icon = '', 
-                                label = '', )
+                                label = '', 
+                                icon = '', )
                             ], 
                         objects = {
                             'key' : null

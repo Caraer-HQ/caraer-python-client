@@ -57,8 +57,8 @@ class TestProjectBuildDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -101,8 +101,8 @@ class TestProjectBuildDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -126,8 +126,8 @@ class TestProjectBuildDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -170,8 +170,8 @@ class TestProjectBuildDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -195,8 +195,8 @@ class TestProjectBuildDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -239,8 +239,8 @@ class TestProjectBuildDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null

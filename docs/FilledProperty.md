@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **value** | **object** |  | [optional] 
 **type** | **str** |  | [optional] 
-**icon** | **str** |  | [optional] 
 **label** | **str** |  | [optional] 
+**icon** | **str** |  | [optional] 
 
 ## Example
 

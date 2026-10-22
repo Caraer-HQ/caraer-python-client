@@ -291,8 +291,8 @@ class TestWebsiteSettingsDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -335,8 +335,8 @@ class TestWebsiteSettingsDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -360,8 +360,8 @@ class TestWebsiteSettingsDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -404,8 +404,8 @@ class TestWebsiteSettingsDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -429,8 +429,8 @@ class TestWebsiteSettingsDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -473,8 +473,8 @@ class TestWebsiteSettingsDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null

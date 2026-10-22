@@ -30,9 +30,9 @@ class FilledProperty(BaseModel):
     name: Optional[StrictStr] = None
     value: Optional[Any] = None
     type: Optional[StrictStr] = None
-    icon: Optional[StrictStr] = None
     label: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["name", "value", "type", "icon", "label"]
+    icon: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["name", "value", "type", "label", "icon"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -93,8 +93,8 @@ class FilledProperty(BaseModel):
             "name": obj.get("name"),
             "value": obj.get("value"),
             "type": obj.get("type"),
-            "icon": obj.get("icon"),
-            "label": obj.get("label")
+            "label": obj.get("label"),
+            "icon": obj.get("icon")
         })
         return _obj
 

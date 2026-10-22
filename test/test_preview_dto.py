@@ -997,8 +997,8 @@ class TestPreviewDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -1041,8 +1041,8 @@ class TestPreviewDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -1066,8 +1066,8 @@ class TestPreviewDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -1110,8 +1110,8 @@ class TestPreviewDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -1135,8 +1135,8 @@ class TestPreviewDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -1179,8 +1179,8 @@ class TestPreviewDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null

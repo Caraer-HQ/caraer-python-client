@@ -105,8 +105,8 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -149,8 +149,8 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -174,8 +174,8 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -218,8 +218,8 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -243,8 +243,8 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -287,8 +287,8 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null

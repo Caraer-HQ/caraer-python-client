@@ -69,8 +69,8 @@ class TestAppDetailsDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -113,8 +113,8 @@ class TestAppDetailsDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -138,8 +138,8 @@ class TestAppDetailsDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -182,8 +182,8 @@ class TestAppDetailsDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -207,8 +207,8 @@ class TestAppDetailsDTO(unittest.TestCase):
                             name = '', 
                             value = null, 
                             type = '', 
-                            icon = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -251,8 +251,8 @@ class TestAppDetailsDTO(unittest.TestCase):
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null

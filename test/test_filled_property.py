@@ -38,8 +38,8 @@ class TestFilledProperty(unittest.TestCase):
                 name = '',
                 value = None,
                 type = '',
-                icon = '',
-                label = ''
+                label = '',
+                icon = ''
             )
         else:
             return FilledProperty(
