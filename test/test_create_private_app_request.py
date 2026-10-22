@@ -54,10 +54,10 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -98,10 +98,10 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
+                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
@@ -123,10 +123,10 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -167,10 +167,10 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
+                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
@@ -192,10 +192,10 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -236,10 +236,10 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
+                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
@@ -591,6 +591,7 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                     webhook_format = 'LEGACY', 
                     parse_record = True, 
                     filter = null, 
+                    fields = 'firstname,email', 
                     include_relations = [candidate, vacancy], 
                     relation_filters = {
                         'key' : caraer_client.models.filter.Filter(
@@ -629,6 +630,7 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                     webhook_format = 'LEGACY', 
                     parse_record = True, 
                     filter = null, 
+                    fields = 'firstname,email', 
                     include_relations = [candidate, vacancy], 
                     relation_filters = {
                         'key' : caraer_client.models.filter.Filter(
@@ -667,6 +669,7 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                     webhook_format = 'LEGACY', 
                     parse_record = True, 
                     filter = null, 
+                    fields = 'firstname,email', 
                     include_relations = [candidate, vacancy], 
                     relation_filters = {
                         'key' : caraer_client.models.filter.Filter(
@@ -705,6 +708,7 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                     webhook_format = 'LEGACY', 
                     parse_record = True, 
                     filter = null, 
+                    fields = 'firstname,email', 
                     include_relations = [candidate, vacancy], 
                     relation_filters = {
                         'key' : caraer_client.models.filter.Filter(

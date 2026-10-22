@@ -416,7 +416,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     record_dto = caraer_client.RecordDTO() # RecordDTO | Record data to create
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
     ignore_errors = False # bool | If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported. (optional) (default to False)
-    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. (optional) (default to 'LEGACY')
+    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. (optional) (default to 'LEGACY')
 
     try:
         # Create a new record
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
  **record_dto** | [**RecordDTO**](RecordDTO.md)| Record data to create | 
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
  **ignore_errors** | **bool**| If &#39;true&#39;, allows the creation to proceed while ignoring certain non-critical validation errors, when supported. | [optional] [default to False]
- **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. | [optional] [default to &#39;LEGACY&#39;]
+ **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. | [optional] [default to &#39;LEGACY&#39;]
 
 ### Return type
 
@@ -508,7 +508,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     record_dto = caraer_client.RecordDTO() # RecordDTO | Record data to create or update. Top-level uuid updates that record when it already exists.
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
     ignore_errors = False # bool |  (optional) (default to False)
-    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. (optional) (default to 'LEGACY')
+    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. (optional) (default to 'LEGACY')
 
     try:
         # Create or update a record
@@ -530,7 +530,7 @@ Name | Type | Description  | Notes
  **record_dto** | [**RecordDTO**](RecordDTO.md)| Record data to create or update. Top-level uuid updates that record when it already exists. | 
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
  **ignore_errors** | **bool**|  | [optional] [default to False]
- **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. | [optional] [default to &#39;LEGACY&#39;]
+ **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. | [optional] [default to &#39;LEGACY&#39;]
 
 ### Return type
 
@@ -860,7 +860,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     api_instance = caraer_client.RecordsApi(api_client)
     uuid = 'uuid_example' # str | 
     extend_record_request = caraer_client.ExtendRecordRequest() # ExtendRecordRequest | 
-    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. (optional) (default to 'LEGACY')
+    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. (optional) (default to 'LEGACY')
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
 
     try:
@@ -881,7 +881,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **uuid** | **str**|  | 
  **extend_record_request** | [**ExtendRecordRequest**](ExtendRecordRequest.md)|  | 
- **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. | [optional] [default to &#39;LEGACY&#39;]
+ **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. | [optional] [default to &#39;LEGACY&#39;]
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
 
 ### Return type
@@ -951,7 +951,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
     archived = False # bool | When 'true', archived records are returned instead of active records. Defaults to 'false'. (optional) (default to False)
     related_record_uuid = 'related_record_uuid_example' # str | UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record. (optional)
-    record_return_format = 'LEGACY' # str | Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED. (optional) (default to 'LEGACY')
+    record_return_format = 'LEGACY' # str | Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. (optional) (default to 'LEGACY')
 
     try:
         # Fetch paginated records
@@ -973,7 +973,7 @@ Name | Type | Description  | Notes
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
  **archived** | **bool**| When &#39;true&#39;, archived records are returned instead of active records. Defaults to &#39;false&#39;. | [optional] [default to False]
  **related_record_uuid** | **str**| UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record. | [optional] 
- **record_return_format** | **str**| Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED. | [optional] [default to &#39;LEGACY&#39;]
+ **record_return_format** | **str**| Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. | [optional] [default to &#39;LEGACY&#39;]
 
 ### Return type
 
@@ -1564,7 +1564,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     search_request = caraer_client.SearchRequest() # SearchRequest | Search criteria
     archived = False # bool | When set to 'true', includes soft-deleted records in the search results. (optional) (default to False)
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
-    record_return_format = 'LEGACY' # str | Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED. (optional) (default to 'LEGACY')
+    record_return_format = 'LEGACY' # str | Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. (optional) (default to 'LEGACY')
 
     try:
         # Search records
@@ -1585,7 +1585,7 @@ Name | Type | Description  | Notes
  **search_request** | [**SearchRequest**](SearchRequest.md)| Search criteria | 
  **archived** | **bool**| When set to &#39;true&#39;, includes soft-deleted records in the search results. | [optional] [default to False]
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
- **record_return_format** | **str**| Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED. | [optional] [default to &#39;LEGACY&#39;]
+ **record_return_format** | **str**| Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. | [optional] [default to &#39;LEGACY&#39;]
 
 ### Return type
 
@@ -1740,7 +1740,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     api_instance = caraer_client.RecordsApi(api_client)
     uuid = 'uuid_example' # str | 
     object = 'object_example' # str | Optional object name to resolve the record in a specific object context. (optional)
-    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. (optional) (default to 'LEGACY')
+    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. (optional) (default to 'LEGACY')
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
     fields = 'fields_example' # str | Comma-separated property names to include (for example: name,status). When omitted, all properties are returned. (optional)
 
@@ -1762,7 +1762,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **uuid** | **str**|  | 
  **object** | **str**| Optional object name to resolve the record in a specific object context. | [optional] 
- **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. | [optional] [default to &#39;LEGACY&#39;]
+ **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. | [optional] [default to &#39;LEGACY&#39;]
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
  **fields** | **str**| Comma-separated property names to include (for example: name,status). When omitted, all properties are returned. | [optional] 
 
@@ -1830,7 +1830,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     api_instance = caraer_client.RecordsApi(api_client)
     object_name = 'object_name_example' # str | 
     uuid = 'uuid_example' # str | 
-    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. (optional) (default to 'LEGACY')
+    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. (optional) (default to 'LEGACY')
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
 
     try:
@@ -1851,7 +1851,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **object_name** | **str**|  | 
  **uuid** | **str**|  | 
- **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. | [optional] [default to &#39;LEGACY&#39;]
+ **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. | [optional] [default to &#39;LEGACY&#39;]
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
 
 ### Return type
@@ -2006,7 +2006,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     record_dto = caraer_client.RecordDTO() # RecordDTO | Record data to update
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
     ignore_errors = False # bool | If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported. (optional) (default to False)
-    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. (optional) (default to 'LEGACY')
+    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. (optional) (default to 'LEGACY')
 
     try:
         # Update a record
@@ -2029,7 +2029,7 @@ Name | Type | Description  | Notes
  **record_dto** | [**RecordDTO**](RecordDTO.md)| Record data to update | 
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
  **ignore_errors** | **bool**| If &#39;true&#39;, allows the update to proceed while ignoring certain non-critical validation errors, when supported. | [optional] [default to False]
- **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. | [optional] [default to &#39;LEGACY&#39;]
+ **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. | [optional] [default to &#39;LEGACY&#39;]
 
 ### Return type
 
@@ -2100,7 +2100,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     object = 'object_example' # str | Optional object name to resolve the record in a specific object context. (optional)
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
     ignore_errors = False # bool | If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported. (optional) (default to False)
-    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. (optional) (default to 'LEGACY')
+    record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. (optional) (default to 'LEGACY')
 
     try:
         # Update a record by UUID
@@ -2123,7 +2123,7 @@ Name | Type | Description  | Notes
  **object** | **str**| Optional object name to resolve the record in a specific object context. | [optional] 
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
  **ignore_errors** | **bool**| If &#39;true&#39;, allows the update to proceed while ignoring certain non-critical validation errors, when supported. | [optional] [default to False]
- **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED. | [optional] [default to &#39;LEGACY&#39;]
+ **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. | [optional] [default to &#39;LEGACY&#39;]
 
 ### Return type
 

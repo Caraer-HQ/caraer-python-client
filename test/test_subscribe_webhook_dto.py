@@ -65,6 +65,7 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                         caraer_client.models.filter_group.FilterGroup(
                             items = null, )
                         ], ),
+                fields = 'firstname,email',
                 include_relations = [candidate, vacancy],
                 relation_filters = {
                     'key' : caraer_client.models.filter.Filter(
@@ -101,10 +102,10 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -145,10 +146,10 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
+                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
@@ -170,10 +171,10 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -214,10 +215,10 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
+                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
@@ -239,10 +240,10 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
+                            icon = '', 
                             label = '', )
                         ], 
                     objects = {
@@ -283,10 +284,10 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
+                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {

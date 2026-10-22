@@ -38,9 +38,10 @@ class SubscribeWebhookDTO(BaseModel):
     secret: Optional[StrictStr] = Field(default=None, description="The secret used for webhook validation.", json_schema_extra={"examples": ["abcd1234"]})
     topic: Optional[StrictStr] = Field(default=None, description="The topic for which the webhook is subscribed.", json_schema_extra={"examples": ["user.created"]})
     description: Optional[StrictStr] = Field(default=None, description="Optional human-readable description for this webhook")
-    webhook_format: Optional[StrictStr] = Field(default=None, description="Webhook payload format (LEGACY, USER_FRIENDLY)", alias="webhookFormat", json_schema_extra={"examples": ["LEGACY"]})
+    webhook_format: Optional[StrictStr] = Field(default=None, description="Webhook payload format (LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL)", alias="webhookFormat", json_schema_extra={"examples": ["LEGACY"]})
     parse_record: Optional[StrictBool] = Field(default=None, description="Whether to parse the record before returning it", alias="parseRecord", json_schema_extra={"examples": [True]})
     filter: Optional[Filter] = Field(default=None, description="Filter criteria for webhook triggers")
+    fields: Optional[StrictStr] = Field(default=None, description="Comma-separated property names to include on the main record. Omitted or blank returns all readable properties; record identity is always included.", json_schema_extra={"examples": ["firstname,email"]})
     include_relations: Optional[List[StrictStr]] = Field(default=None, description="Records to include in webhook payload", alias="includeRelations", json_schema_extra={"examples": [["candidate", "vacancy"]]})
     relation_filters: Optional[Dict[str, Filter]] = Field(default=None, description="Filter criteria for relations", alias="relationFilters")
     relation_limit: Optional[StrictInt] = Field(default=None, description="Maximum number of relations to include", alias="relationLimit", json_schema_extra={"examples": [10]})
@@ -62,7 +63,7 @@ class SubscribeWebhookDTO(BaseModel):
     deleted_at: Optional[StrictInt] = Field(default=None, description="Unix timestamp when the entity was deleted (null if not deleted)", alias="deletedAt")
     deleted_by: Optional[Record] = Field(default=None, description="Identifier of the user who deleted the entity", alias="deletedBy")
     index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
-    __properties: ClassVar[List[str]] = ["url", "serverlessFunction", "deliveryMode", "waitUntilComplete", "secret", "topic", "description", "webhookFormat", "parseRecord", "filter", "includeRelations", "relationFilters", "relationLimit", "retryEnabled", "maxRetries", "retryBackoffMs", "triggerOffsetSeconds", "scheduleDirection", "scheduleRecurring", "scheduleCronExpression", "scheduleVersion", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index"]
+    __properties: ClassVar[List[str]] = ["url", "serverlessFunction", "deliveryMode", "waitUntilComplete", "secret", "topic", "description", "webhookFormat", "parseRecord", "filter", "fields", "includeRelations", "relationFilters", "relationLimit", "retryEnabled", "maxRetries", "retryBackoffMs", "triggerOffsetSeconds", "scheduleDirection", "scheduleRecurring", "scheduleCronExpression", "scheduleVersion", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -146,6 +147,7 @@ class SubscribeWebhookDTO(BaseModel):
             "webhookFormat": obj.get("webhookFormat"),
             "parseRecord": obj.get("parseRecord"),
             "filter": Filter.from_dict(obj["filter"]) if obj.get("filter") is not None else None,
+            "fields": obj.get("fields"),
             "includeRelations": obj.get("includeRelations"),
             "relationFilters": dict(
                 (_k, Filter.from_dict(_v))

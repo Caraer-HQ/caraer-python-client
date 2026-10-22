@@ -1279,7 +1279,7 @@ class RecordsApi:
         record_dto: Annotated[RecordDTO, Field(description="Record data to create")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1305,7 +1305,7 @@ class RecordsApi:
         :type parse: str
         :param ignore_errors: If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1367,7 +1367,7 @@ class RecordsApi:
         record_dto: Annotated[RecordDTO, Field(description="Record data to create")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1393,7 +1393,7 @@ class RecordsApi:
         :type parse: str
         :param ignore_errors: If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1455,7 +1455,7 @@ class RecordsApi:
         record_dto: Annotated[RecordDTO, Field(description="Record data to create")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1481,7 +1481,7 @@ class RecordsApi:
         :type parse: str
         :param ignore_errors: If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1634,7 +1634,7 @@ class RecordsApi:
         record_dto: Annotated[RecordDTO, Field(description="Record data to create or update. Top-level uuid updates that record when it already exists.")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Optional[StrictBool] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1660,7 +1660,7 @@ class RecordsApi:
         :type parse: str
         :param ignore_errors:
         :type ignore_errors: bool
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1723,7 +1723,7 @@ class RecordsApi:
         record_dto: Annotated[RecordDTO, Field(description="Record data to create or update. Top-level uuid updates that record when it already exists.")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Optional[StrictBool] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1749,7 +1749,7 @@ class RecordsApi:
         :type parse: str
         :param ignore_errors:
         :type ignore_errors: bool
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1812,7 +1812,7 @@ class RecordsApi:
         record_dto: Annotated[RecordDTO, Field(description="Record data to create or update. Top-level uuid updates that record when it already exists.")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Optional[StrictBool] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1838,7 +1838,7 @@ class RecordsApi:
         :type parse: str
         :param ignore_errors:
         :type ignore_errors: bool
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2931,7 +2931,7 @@ class RecordsApi:
         self,
         uuid: StrictStr,
         extend_record_request: ExtendRecordRequest,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
             None,
@@ -2954,7 +2954,7 @@ class RecordsApi:
         :type uuid: str
         :param extend_record_request: (required)
         :type extend_record_request: ExtendRecordRequest
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -3014,7 +3014,7 @@ class RecordsApi:
         self,
         uuid: StrictStr,
         extend_record_request: ExtendRecordRequest,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
             None,
@@ -3037,7 +3037,7 @@ class RecordsApi:
         :type uuid: str
         :param extend_record_request: (required)
         :type extend_record_request: ExtendRecordRequest
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -3097,7 +3097,7 @@ class RecordsApi:
         self,
         uuid: StrictStr,
         extend_record_request: ExtendRecordRequest,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
             None,
@@ -3120,7 +3120,7 @@ class RecordsApi:
         :type uuid: str
         :param extend_record_request: (required)
         :type extend_record_request: ExtendRecordRequest
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -3268,7 +3268,7 @@ class RecordsApi:
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         archived: Annotated[Optional[StrictBool], Field(description="When 'true', archived records are returned instead of active records. Defaults to 'false'.")] = None,
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3294,7 +3294,7 @@ class RecordsApi:
         :type archived: bool
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
         :type related_record_uuid: str
-        :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3356,7 +3356,7 @@ class RecordsApi:
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         archived: Annotated[Optional[StrictBool], Field(description="When 'true', archived records are returned instead of active records. Defaults to 'false'.")] = None,
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3382,7 +3382,7 @@ class RecordsApi:
         :type archived: bool
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
         :type related_record_uuid: str
-        :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3444,7 +3444,7 @@ class RecordsApi:
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         archived: Annotated[Optional[StrictBool], Field(description="When 'true', archived records are returned instead of active records. Defaults to 'false'.")] = None,
         related_record_uuid: Annotated[Optional[StrictStr], Field(description="UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3470,7 +3470,7 @@ class RecordsApi:
         :type archived: bool
         :param related_record_uuid: UUID of a record used for relation-aware filtering. If supplied and the request body contains a filter, that filter will be smartened based on this related record. If no filter is supplied, a default filter will be applied that returns all records related in any way (any relation) to this record.
         :type related_record_uuid: str
-        :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5511,7 +5511,7 @@ class RecordsApi:
         search_request: Annotated[SearchRequest, Field(description="Search criteria")],
         archived: Annotated[Optional[StrictBool], Field(description="When set to 'true', includes soft-deleted records in the search results.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5535,7 +5535,7 @@ class RecordsApi:
         :type archived: bool
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
-        :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5595,7 +5595,7 @@ class RecordsApi:
         search_request: Annotated[SearchRequest, Field(description="Search criteria")],
         archived: Annotated[Optional[StrictBool], Field(description="When set to 'true', includes soft-deleted records in the search results.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5619,7 +5619,7 @@ class RecordsApi:
         :type archived: bool
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
-        :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5679,7 +5679,7 @@ class RecordsApi:
         search_request: Annotated[SearchRequest, Field(description="Search criteria")],
         archived: Annotated[Optional[StrictBool], Field(description="When set to 'true', includes soft-deleted records in the search results.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5703,7 +5703,7 @@ class RecordsApi:
         :type archived: bool
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
-        :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the records to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6173,7 +6173,7 @@ class RecordsApi:
         self,
         uuid: StrictStr,
         object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         fields: Annotated[Optional[StrictStr], Field(description="Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.")] = None,
         _request_timeout: Union[
@@ -6197,7 +6197,7 @@ class RecordsApi:
         :type uuid: str
         :param object: Optional object name to resolve the record in a specific object context.
         :type object: str
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -6260,7 +6260,7 @@ class RecordsApi:
         self,
         uuid: StrictStr,
         object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         fields: Annotated[Optional[StrictStr], Field(description="Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.")] = None,
         _request_timeout: Union[
@@ -6284,7 +6284,7 @@ class RecordsApi:
         :type uuid: str
         :param object: Optional object name to resolve the record in a specific object context.
         :type object: str
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -6347,7 +6347,7 @@ class RecordsApi:
         self,
         uuid: StrictStr,
         object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         fields: Annotated[Optional[StrictStr], Field(description="Comma-separated property names to include (for example: name,status). When omitted, all properties are returned.")] = None,
         _request_timeout: Union[
@@ -6371,7 +6371,7 @@ class RecordsApi:
         :type uuid: str
         :param object: Optional object name to resolve the record in a specific object context.
         :type object: str
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -6514,7 +6514,7 @@ class RecordsApi:
         self,
         object_name: StrictStr,
         uuid: StrictStr,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
             None,
@@ -6537,7 +6537,7 @@ class RecordsApi:
         :type object_name: str
         :param uuid: (required)
         :type uuid: str
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -6597,7 +6597,7 @@ class RecordsApi:
         self,
         object_name: StrictStr,
         uuid: StrictStr,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
             None,
@@ -6620,7 +6620,7 @@ class RecordsApi:
         :type object_name: str
         :param uuid: (required)
         :type uuid: str
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -6680,7 +6680,7 @@ class RecordsApi:
         self,
         object_name: StrictStr,
         uuid: StrictStr,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         _request_timeout: Union[
             None,
@@ -6703,7 +6703,7 @@ class RecordsApi:
         :type object_name: str
         :param uuid: (required)
         :type uuid: str
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -7128,7 +7128,7 @@ class RecordsApi:
         record_dto: Annotated[RecordDTO, Field(description="Record data to update")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7156,7 +7156,7 @@ class RecordsApi:
         :type parse: str
         :param ignore_errors: If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -7220,7 +7220,7 @@ class RecordsApi:
         record_dto: Annotated[RecordDTO, Field(description="Record data to update")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7248,7 +7248,7 @@ class RecordsApi:
         :type parse: str
         :param ignore_errors: If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -7312,7 +7312,7 @@ class RecordsApi:
         record_dto: Annotated[RecordDTO, Field(description="Record data to update")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7340,7 +7340,7 @@ class RecordsApi:
         :type parse: str
         :param ignore_errors: If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -7498,7 +7498,7 @@ class RecordsApi:
         object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7526,7 +7526,7 @@ class RecordsApi:
         :type parse: str
         :param ignore_errors: If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -7590,7 +7590,7 @@ class RecordsApi:
         object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7618,7 +7618,7 @@ class RecordsApi:
         :type parse: str
         :param ignore_errors: If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -7682,7 +7682,7 @@ class RecordsApi:
         object: Annotated[Optional[StrictStr], Field(description="Optional object name to resolve the record in a specific object context.")] = None,
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
-        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.")] = None,
+        record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7710,7 +7710,7 @@ class RecordsApi:
         :type parse: str
         :param ignore_errors: If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.
         :type ignore_errors: bool
-        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED.
+        :param record_return_format: Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.
         :type record_return_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

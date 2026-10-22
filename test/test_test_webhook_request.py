@@ -46,6 +46,7 @@ class TestTestWebhookRequest(unittest.TestCase):
                     webhook_format = 'LEGACY', 
                     parse_record = True, 
                     filter = null, 
+                    fields = 'firstname,email', 
                     include_relations = [candidate, vacancy], 
                     relation_filters = {
                         'key' : caraer_client.models.filter.Filter(
@@ -90,6 +91,7 @@ class TestTestWebhookRequest(unittest.TestCase):
                     webhook_format = 'LEGACY', 
                     parse_record = True, 
                     filter = null, 
+                    fields = 'firstname,email', 
                     include_relations = [candidate, vacancy], 
                     relation_filters = {
                         'key' : caraer_client.models.filter.Filter(
