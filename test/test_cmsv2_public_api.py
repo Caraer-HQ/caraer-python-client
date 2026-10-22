@@ -89,6 +89,13 @@ class TestCMSV2PublicApi(unittest.TestCase):
         """
         pass
 
+    def test_redirect(self) -> None:
+        """Test case for redirect
+
+        Resolve a historical CMS v2 path to its latest published route
+        """
+        pass
+
     def test_settings(self) -> None:
         """Test case for settings
 

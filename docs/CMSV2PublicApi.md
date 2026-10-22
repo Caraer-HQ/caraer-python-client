@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**page_gate**](CMSV2PublicApi.md#page_gate) | **GET** /api/v2/webpages/v2/public/page/gate | Protection info for a path, without the page document
 [**paths**](CMSV2PublicApi.md#paths) | **GET** /api/v2/webpages/v2/public/paths | Published paths per environment, for sitemaps and cache warming
 [**records**](CMSV2PublicApi.md#records) | **POST** /api/v2/webpages/v2/public/records | Public records visible in an environment
+[**redirect**](CMSV2PublicApi.md#redirect) | **GET** /api/v2/webpages/v2/public/redirect | Resolve a historical CMS v2 path to its latest published route
 [**settings**](CMSV2PublicApi.md#settings) | **GET** /api/v2/webpages/v2/public/settings | Company settings, branding and locales
 [**unlock**](CMSV2PublicApi.md#unlock) | **POST** /api/v2/webpages/v2/public/page/{uuid}/unlock | Unlock a password-protected CMS v2 page
 
@@ -800,6 +801,92 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **redirect**
+> ShowResponseMapStringString redirect(x_caraer_subdomain, path, environment=environment)
+
+Resolve a historical CMS v2 path to its latest published route
+
+Tenant and environment scoped. Returns 404 for current paths, unknown aliases or ambiguous aliases. No page content or access grant is returned.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response_map_string_string import ShowResponseMapStringString
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.CMSV2PublicApi(api_client)
+    x_caraer_subdomain = 'x_caraer_subdomain_example' # str | 
+    path = 'path_example' # str | 
+    environment = 'main' # str |  (optional) (default to 'main')
+
+    try:
+        # Resolve a historical CMS v2 path to its latest published route
+        api_response = api_instance.redirect(x_caraer_subdomain, path, environment=environment)
+        print("The response of CMSV2PublicApi->redirect:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CMSV2PublicApi->redirect: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_caraer_subdomain** | **str**|  | 
+ **path** | **str**|  | 
+ **environment** | **str**|  | [optional] [default to &#39;main&#39;]
+
+### Return type
+
+[**ShowResponseMapStringString**](ShowResponseMapStringString.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
