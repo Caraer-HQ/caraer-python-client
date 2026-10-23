@@ -28,6 +28,12 @@ Name | Type | Description | Notes
 **schedule_recurring** | **str** | Recurrence for date_due webhooks: NONE, DAILY, WEEKLY, MONTHLY, QUARTERLY, HALF_YEARLY, YEARLY, or CRON | [optional] 
 **schedule_cron_expression** | **str** | Spring cron expression used when scheduleRecurring is CRON | [optional] 
 **schedule_version** | **int** | Internal schedule version incremented when schedule config changes | [optional] 
+**deactivated** | **bool** | Company subscription runtime state | [optional] [readonly] 
+**failure_count** | **int** | Company subscription runtime state | [optional] [readonly] 
+**last_failure_status** | **int** | Company subscription runtime state | [optional] [readonly] 
+**last_failure_at** | **int** | Company subscription runtime state | [optional] [readonly] 
+**deactivated_at** | **int** | Company subscription runtime state | [optional] [readonly] 
+**deactivation_reason** | **str** | Company subscription runtime state | [optional] [readonly] 
 **uuid** | **str** | Unique identifier for the entity | 
 **name** | **str** | The name of the entity | 
 **label** | **str** | Display label for the entity, can be different from name | [optional] 

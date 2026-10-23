@@ -53,6 +53,12 @@ class SubscribeWebhookDTO(BaseModel):
     schedule_recurring: Optional[StrictStr] = Field(default=None, description="Recurrence for date_due webhooks: NONE, DAILY, WEEKLY, MONTHLY, QUARTERLY, HALF_YEARLY, YEARLY, or CRON", alias="scheduleRecurring", json_schema_extra={"examples": ["YEARLY"]})
     schedule_cron_expression: Optional[StrictStr] = Field(default=None, description="Spring cron expression used when scheduleRecurring is CRON", alias="scheduleCronExpression", json_schema_extra={"examples": [0]})
     schedule_version: Optional[StrictInt] = Field(default=None, description="Internal schedule version incremented when schedule config changes", alias="scheduleVersion")
+    deactivated: Optional[StrictBool] = Field(default=None, description="Company subscription runtime state")
+    failure_count: Optional[StrictInt] = Field(default=None, description="Company subscription runtime state", alias="failureCount")
+    last_failure_status: Optional[StrictInt] = Field(default=None, description="Company subscription runtime state", alias="lastFailureStatus")
+    last_failure_at: Optional[StrictInt] = Field(default=None, description="Company subscription runtime state", alias="lastFailureAt")
+    deactivated_at: Optional[StrictInt] = Field(default=None, description="Company subscription runtime state", alias="deactivatedAt")
+    deactivation_reason: Optional[StrictStr] = Field(default=None, description="Company subscription runtime state", alias="deactivationReason")
     uuid: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Unique identifier for the entity")
     name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The name of the entity")
     label: Optional[StrictStr] = Field(default=None, description="Display label for the entity, can be different from name")
@@ -63,7 +69,7 @@ class SubscribeWebhookDTO(BaseModel):
     deleted_at: Optional[StrictInt] = Field(default=None, description="Unix timestamp when the entity was deleted (null if not deleted)", alias="deletedAt")
     deleted_by: Optional[Record] = Field(default=None, description="Identifier of the user who deleted the entity", alias="deletedBy")
     index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
-    __properties: ClassVar[List[str]] = ["url", "serverlessFunction", "deliveryMode", "waitUntilComplete", "secret", "topic", "description", "webhookFormat", "parseRecord", "filter", "fields", "includeRelations", "relationFilters", "relationLimit", "retryEnabled", "maxRetries", "retryBackoffMs", "triggerOffsetSeconds", "scheduleDirection", "scheduleRecurring", "scheduleCronExpression", "scheduleVersion", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index"]
+    __properties: ClassVar[List[str]] = ["url", "serverlessFunction", "deliveryMode", "waitUntilComplete", "secret", "topic", "description", "webhookFormat", "parseRecord", "filter", "fields", "includeRelations", "relationFilters", "relationLimit", "retryEnabled", "maxRetries", "retryBackoffMs", "triggerOffsetSeconds", "scheduleDirection", "scheduleRecurring", "scheduleCronExpression", "scheduleVersion", "deactivated", "failureCount", "lastFailureStatus", "lastFailureAt", "deactivatedAt", "deactivationReason", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -95,8 +101,20 @@ class SubscribeWebhookDTO(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "deactivated",
+            "failure_count",
+            "last_failure_status",
+            "last_failure_at",
+            "deactivated_at",
+            "deactivation_reason",
         ])
 
         _dict = self.model_dump(
@@ -164,6 +182,12 @@ class SubscribeWebhookDTO(BaseModel):
             "scheduleRecurring": obj.get("scheduleRecurring"),
             "scheduleCronExpression": obj.get("scheduleCronExpression"),
             "scheduleVersion": obj.get("scheduleVersion"),
+            "deactivated": obj.get("deactivated"),
+            "failureCount": obj.get("failureCount"),
+            "lastFailureStatus": obj.get("lastFailureStatus"),
+            "lastFailureAt": obj.get("lastFailureAt"),
+            "deactivatedAt": obj.get("deactivatedAt"),
+            "deactivationReason": obj.get("deactivationReason"),
             "uuid": obj.get("uuid"),
             "name": obj.get("name"),
             "label": obj.get("label"),

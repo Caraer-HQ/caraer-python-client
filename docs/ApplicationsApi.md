@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**list_available_app_categories**](ApplicationsApi.md#list_available_app_categories) | **GET** /api/v2/apps/categories/available | List available app categories
 [**load_setting_options**](ApplicationsApi.md#load_setting_options) | **POST** /api/v2/apps/{uuid}/settings-schema/options | Load dynamic options for a setting select field
 [**migrate_to_v2**](ApplicationsApi.md#migrate_to_v2) | **POST** /api/v2/apps/{uuid}/migrate-v2 | Migrate an app from platform V1 to V2
+[**reactivate_app_webhook**](ApplicationsApi.md#reactivate_app_webhook) | **POST** /api/v2/apps/{appUuid}/webhooks/{webhookUuid}/reactivate | Reactivate a company webhook
 [**review_public_app**](ApplicationsApi.md#review_public_app) | **POST** /api/v2/apps/public/{uuid}/review | Review a public app
 [**rotate_app**](ApplicationsApi.md#rotate_app) | **POST** /api/v2/apps/{uuid}/rotate | Rotate application configurations
 [**stream_runtime_logs**](ApplicationsApi.md#stream_runtime_logs) | **GET** /api/v2/apps/{appUuid}/runtime/logs/stream | Stream app runtime logs (SSE)
@@ -1882,6 +1883,90 @@ Name | Type | Description  | Notes
 **403** | Not allowed to migrate this app |  -  |
 **404** | App not found |  -  |
 **401** | Authentication is required or the token is invalid. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **reactivate_app_webhook**
+> ShowResponseSubscribeWebhookDTO reactivate_app_webhook(app_uuid, webhook_uuid)
+
+Reactivate a company webhook
+
+Resumes future events for only the selected company and resets its failure counter.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response_subscribe_webhook_dto import ShowResponseSubscribeWebhookDTO
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.ApplicationsApi(api_client)
+    app_uuid = 'app_uuid_example' # str | 
+    webhook_uuid = 'webhook_uuid_example' # str | 
+
+    try:
+        # Reactivate a company webhook
+        api_response = api_instance.reactivate_app_webhook(app_uuid, webhook_uuid)
+        print("The response of ApplicationsApi->reactivate_app_webhook:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApplicationsApi->reactivate_app_webhook: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_uuid** | **str**|  | 
+ **webhook_uuid** | **str**|  | 
+
+### Return type
+
+[**ShowResponseSubscribeWebhookDTO**](ShowResponseSubscribeWebhookDTO.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
 **500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

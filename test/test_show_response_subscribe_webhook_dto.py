@@ -36,7 +36,51 @@ class TestShowResponseSubscribeWebhookDTO(unittest.TestCase):
         if include_optional:
             return ShowResponseSubscribeWebhookDTO(
                 message = 'Success',
-                data = { }
+                data = caraer_client.models.subscribe_webhook_dto.SubscribeWebhookDTO(
+                    url = 'https://example.com/webhook', 
+                    serverless_function = null, 
+                    delivery_mode = '', 
+                    wait_until_complete = True, 
+                    secret = 'abcd1234', 
+                    topic = 'user.created', 
+                    description = '', 
+                    webhook_format = 'LEGACY', 
+                    parse_record = True, 
+                    filter = null, 
+                    fields = 'firstname,email', 
+                    include_relations = [candidate, vacancy], 
+                    relation_filters = {
+                        'key' : caraer_client.models.filter.Filter(
+                            groups = [
+                                caraer_client.models.filter_group.FilterGroup(
+                                    items = null, )
+                                ], )
+                        }, 
+                    relation_limit = 10, 
+                    retry_enabled = True, 
+                    max_retries = 3, 
+                    retry_backoff_ms = 1000, 
+                    trigger_offset_seconds = 604800, 
+                    schedule_direction = 'BEFORE', 
+                    schedule_recurring = 'YEARLY', 
+                    schedule_cron_expression = '0', 
+                    schedule_version = 56, 
+                    deactivated = True, 
+                    failure_count = 56, 
+                    last_failure_status = 56, 
+                    last_failure_at = 56, 
+                    deactivated_at = 56, 
+                    deactivation_reason = '', 
+                    uuid = '0', 
+                    name = '0', 
+                    label = '', 
+                    created_at = 56, 
+                    created_by = null, 
+                    updated_at = 56, 
+                    updated_by = null, 
+                    deleted_at = 56, 
+                    deleted_by = null, 
+                    index = 56, )
             )
         else:
             return ShowResponseSubscribeWebhookDTO(

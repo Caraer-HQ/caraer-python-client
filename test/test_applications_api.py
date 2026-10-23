@@ -180,6 +180,13 @@ class TestApplicationsApi(unittest.TestCase):
         """
         pass
 
+    def test_reactivate_app_webhook(self) -> None:
+        """Test case for reactivate_app_webhook
+
+        Reactivate a company webhook
+        """
+        pass
+
     def test_review_public_app(self) -> None:
         """Test case for review_public_app
 
