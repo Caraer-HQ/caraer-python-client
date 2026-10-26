@@ -973,6 +973,7 @@ class TestPageContentSettingsDTO(unittest.TestCase):
                     pinned = True, ),
                 order_by_direction = '',
                 as_webpages = True,
+                published_only = True,
                 loop = True,
                 limit = 56,
                 group_by = caraer_client.models.property_dto.PropertyDTO(

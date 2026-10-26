@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **order_by** | [**PropertyDTO**](PropertyDTO.md) | The order by property associated with the settings | [optional] 
 **order_by_direction** | **str** | The order by direction associated with the settings. ASC or DESC, default is ASC | [optional] 
 **as_webpages** | **bool** | Whether the previews should be shown as webpages | [optional] 
+**published_only** | **bool** | In record mode (asWebpages&#x3D;false), require published pages. Defaults to true; false includes unpublished records while retaining protection checks. | [optional] 
 **loop** | **bool** | Whether the previews should loop | [optional] 
 **limit** | **int** | The limit associated with the settings | [optional] 
 **group_by** | [**PropertyDTO**](PropertyDTO.md) | The group by property associated with the settings | [optional] 

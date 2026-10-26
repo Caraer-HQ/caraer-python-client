@@ -56,6 +56,7 @@ class PageContentSettingsDTO(BaseModel):
     order_by: Optional[PropertyDTO] = Field(default=None, description="The order by property associated with the settings", alias="orderBy")
     order_by_direction: Optional[StrictStr] = Field(default=None, description="The order by direction associated with the settings. ASC or DESC, default is ASC", alias="orderByDirection")
     as_webpages: Optional[StrictBool] = Field(default=None, description="Whether the previews should be shown as webpages", alias="asWebpages")
+    published_only: Optional[StrictBool] = Field(default=None, description="In record mode (asWebpages=false), require published pages. Defaults to true; false includes unpublished records while retaining protection checks.", alias="publishedOnly")
     loop: Optional[StrictBool] = Field(default=None, description="Whether the previews should loop")
     limit: Optional[StrictInt] = Field(default=None, description="The limit associated with the settings")
     group_by: Optional[PropertyDTO] = Field(default=None, description="The group by property associated with the settings", alias="groupBy")
@@ -87,7 +88,7 @@ class PageContentSettingsDTO(BaseModel):
     map_locations: Optional[List[MapLocationDTO]] = Field(default=None, description="Multiple map markers", alias="mapLocations")
     distance_filter_enabled: Optional[StrictBool] = Field(default=None, description="Show a public distance-from-location filter on this map", alias="distanceFilterEnabled")
     location_contains_filter_enabled: Optional[StrictBool] = Field(default=None, description="Show a public contains filter for city, street, or postcode on this map", alias="locationContainsFilterEnabled")
-    __properties: ClassVar[List[str]] = ["form", "openIcon", "closeIcon", "alt", "key", "playVideo", "startMuted", "loopVideo", "startOffset", "link", "style", "ctaId", "openInNewWindow", "sliderType", "carouselSpeed", "enableControls", "previewObject", "previews", "previewLayoutOrder", "filter", "orderBy", "orderByDirection", "asWebpages", "loop", "limit", "groupBy", "hideOnNoResults", "filterType", "searchResultSingleString", "searchResultPluralString", "noResultsString", "searchFieldEnabled", "searchFieldPlaceholder", "filterBlockEnabled", "filterTitle", "filterSubtitle", "filterProperties", "enableFilterTiles", "enableFilterQuery", "enableRemoveAllFiltersButton", "ctaEnabled", "ctaTitle", "ctaText", "ctaButtonText", "ctaButtonLink", "targetPagePath", "targetPageUuid", "targetPreviewUuid", "platforms", "mapLatitude", "mapLongitude", "mapLocations", "distanceFilterEnabled", "locationContainsFilterEnabled"]
+    __properties: ClassVar[List[str]] = ["form", "openIcon", "closeIcon", "alt", "key", "playVideo", "startMuted", "loopVideo", "startOffset", "link", "style", "ctaId", "openInNewWindow", "sliderType", "carouselSpeed", "enableControls", "previewObject", "previews", "previewLayoutOrder", "filter", "orderBy", "orderByDirection", "asWebpages", "publishedOnly", "loop", "limit", "groupBy", "hideOnNoResults", "filterType", "searchResultSingleString", "searchResultPluralString", "noResultsString", "searchFieldEnabled", "searchFieldPlaceholder", "filterBlockEnabled", "filterTitle", "filterSubtitle", "filterProperties", "enableFilterTiles", "enableFilterQuery", "enableRemoveAllFiltersButton", "ctaEnabled", "ctaTitle", "ctaText", "ctaButtonText", "ctaButtonLink", "targetPagePath", "targetPageUuid", "targetPreviewUuid", "platforms", "mapLatitude", "mapLongitude", "mapLocations", "distanceFilterEnabled", "locationContainsFilterEnabled"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -201,6 +202,7 @@ class PageContentSettingsDTO(BaseModel):
             "orderBy": PropertyDTO.from_dict(obj["orderBy"]) if obj.get("orderBy") is not None else None,
             "orderByDirection": obj.get("orderByDirection"),
             "asWebpages": obj.get("asWebpages"),
+            "publishedOnly": obj.get("publishedOnly"),
             "loop": obj.get("loop"),
             "limit": obj.get("limit"),
             "groupBy": PropertyDTO.from_dict(obj["groupBy"]) if obj.get("groupBy") is not None else None,
