@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ymetric** | **str** |  | [optional] 
-**yproperty** | **str** |  | [optional] 
 **xproperty** | **str** |  | [optional] 
+**yproperty** | **str** |  | [optional] 
 **title** | **str** |  | [optional] 
 **chart_type** | **str** |  | [optional] 
 **x_property** | **str** |  | [optional] 
