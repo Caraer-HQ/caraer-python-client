@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.643"
+__version__ = "2.0.644"
 
 # Define package exports
 __all__ = [
@@ -100,6 +100,7 @@ __all__ = [
     "AppSettingOptionsSource",
     "AppSettingsSection",
     "AppSubcategoryDTO",
+    "ArchivedRecordObjectDTO",
     "BillingSettingsDTO",
     "BulkDeleteRecordsData",
     "BulkDeleteRecordsRequest",
@@ -363,6 +364,7 @@ __all__ = [
     "SuccessResponseListAppExternalOAuthProviderDTO",
     "SuccessResponseListAppInboundRouteDTO",
     "SuccessResponseListAppScheduleDTO",
+    "SuccessResponseListArchivedRecordObjectDTO",
     "SuccessResponseListCalendarRecordDTO",
     "SuccessResponseListCalendarTeamOptionDTO",
     "SuccessResponseListCaraerObjectDTO",
@@ -512,6 +514,7 @@ from caraer_client.models.app_setting_field_schema import AppSettingFieldSchema 
 from caraer_client.models.app_setting_options_source import AppSettingOptionsSource as AppSettingOptionsSource
 from caraer_client.models.app_settings_section import AppSettingsSection as AppSettingsSection
 from caraer_client.models.app_subcategory_dto import AppSubcategoryDTO as AppSubcategoryDTO
+from caraer_client.models.archived_record_object_dto import ArchivedRecordObjectDTO as ArchivedRecordObjectDTO
 from caraer_client.models.billing_settings_dto import BillingSettingsDTO as BillingSettingsDTO
 from caraer_client.models.bulk_delete_records_data import BulkDeleteRecordsData as BulkDeleteRecordsData
 from caraer_client.models.bulk_delete_records_request import BulkDeleteRecordsRequest as BulkDeleteRecordsRequest
@@ -775,6 +778,7 @@ from caraer_client.models.success_response_list_aggregate_response import Succes
 from caraer_client.models.success_response_list_app_external_o_auth_provider_dto import SuccessResponseListAppExternalOAuthProviderDTO as SuccessResponseListAppExternalOAuthProviderDTO
 from caraer_client.models.success_response_list_app_inbound_route_dto import SuccessResponseListAppInboundRouteDTO as SuccessResponseListAppInboundRouteDTO
 from caraer_client.models.success_response_list_app_schedule_dto import SuccessResponseListAppScheduleDTO as SuccessResponseListAppScheduleDTO
+from caraer_client.models.success_response_list_archived_record_object_dto import SuccessResponseListArchivedRecordObjectDTO as SuccessResponseListArchivedRecordObjectDTO
 from caraer_client.models.success_response_list_calendar_record_dto import SuccessResponseListCalendarRecordDTO as SuccessResponseListCalendarRecordDTO
 from caraer_client.models.success_response_list_calendar_team_option_dto import SuccessResponseListCalendarTeamOptionDTO as SuccessResponseListCalendarTeamOptionDTO
 from caraer_client.models.success_response_list_caraer_object_dto import SuccessResponseListCaraerObjectDTO as SuccessResponseListCaraerObjectDTO

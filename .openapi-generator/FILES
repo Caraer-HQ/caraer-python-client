@@ -84,6 +84,7 @@ caraer_client/models/app_setting_field_schema.py
 caraer_client/models/app_setting_options_source.py
 caraer_client/models/app_settings_section.py
 caraer_client/models/app_subcategory_dto.py
+caraer_client/models/archived_record_object_dto.py
 caraer_client/models/billing_settings_dto.py
 caraer_client/models/bulk_delete_records_data.py
 caraer_client/models/bulk_delete_records_request.py
@@ -347,6 +348,7 @@ caraer_client/models/success_response_list_aggregate_response.py
 caraer_client/models/success_response_list_app_external_o_auth_provider_dto.py
 caraer_client/models/success_response_list_app_inbound_route_dto.py
 caraer_client/models/success_response_list_app_schedule_dto.py
+caraer_client/models/success_response_list_archived_record_object_dto.py
 caraer_client/models/success_response_list_calendar_record_dto.py
 caraer_client/models/success_response_list_calendar_team_option_dto.py
 caraer_client/models/success_response_list_caraer_object_dto.py
@@ -443,6 +445,7 @@ docs/AppSettingOptionsSource.md
 docs/AppSettingsSection.md
 docs/AppSubcategoryDTO.md
 docs/ApplicationsApi.md
+docs/ArchivedRecordObjectDTO.md
 docs/AutomationsApi.md
 docs/BillingApi.md
 docs/BillingSettingsDTO.md
@@ -729,6 +732,7 @@ docs/SuccessResponseListAggregateResponse.md
 docs/SuccessResponseListAppExternalOAuthProviderDTO.md
 docs/SuccessResponseListAppInboundRouteDTO.md
 docs/SuccessResponseListAppScheduleDTO.md
+docs/SuccessResponseListArchivedRecordObjectDTO.md
 docs/SuccessResponseListCalendarRecordDTO.md
 docs/SuccessResponseListCalendarTeamOptionDTO.md
 docs/SuccessResponseListCaraerObjectDTO.md
@@ -835,6 +839,7 @@ test/test_app_setting_options_source.py
 test/test_app_settings_section.py
 test/test_app_subcategory_dto.py
 test/test_applications_api.py
+test/test_archived_record_object_dto.py
 test/test_automations_api.py
 test/test_billing_api.py
 test/test_billing_settings_dto.py
@@ -1121,6 +1126,7 @@ test/test_success_response_list_aggregate_response.py
 test/test_success_response_list_app_external_o_auth_provider_dto.py
 test/test_success_response_list_app_inbound_route_dto.py
 test/test_success_response_list_app_schedule_dto.py
+test/test_success_response_list_archived_record_object_dto.py
 test/test_success_response_list_calendar_record_dto.py
 test/test_success_response_list_calendar_team_option_dto.py
 test/test_success_response_list_caraer_object_dto.py

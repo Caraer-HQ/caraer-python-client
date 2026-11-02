@@ -40,6 +40,13 @@ class TestRecordsApi(unittest.TestCase):
         """
         pass
 
+    def test_archived_objects(self) -> None:
+        """Test case for archived_objects
+
+        List objects with visible archived records
+        """
+        pass
+
     def test_bulk_delete(self) -> None:
         """Test case for bulk_delete
 
