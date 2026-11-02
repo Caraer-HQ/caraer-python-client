@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **relation_name** | **str** | Name of the relation type | 
 **uuid** | **str** | UUID of an existing record to link to | [optional] 
-**properties** | **Dict[str, Optional[object]]** | Properties to update on the existing record referenced by uuid before linking | [optional] 
+**properties** | **Dict[str, Optional[object]]** | With uuid: patch the existing target before linking. Without uuid or record: create-or-update the target using its unique properties, then link. Use objectName when ambiguous. | [optional] 
 **edge_properties** | **Dict[str, Optional[object]]** | Values for properties declared on the relation schema, stored on the relation edge itself (not on either record). Omit to leave existing edge values untouched; a null value clears a key. | [optional] 
 **record** | [**RecordDTO**](RecordDTO.md) | Nested record to create or update (by uuid or unique properties) before linking | [optional] 
 **object_name** | **str** | Object name for nested record create when relation allows multiple target types | [optional] 

@@ -35,9 +35,9 @@ class TestValidationError(unittest.TestCase):
         model = ValidationError()
         if include_optional:
             return ValidationError(
-                cause = caraer_client.models.not_found_error_cause.NotFoundError_cause(
+                cause = caraer_client.models.not_found_error_cause.NotFoundErrorCause(
                     stack_trace = [
-                        caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundError_cause_stackTrace_inner(
+                        caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundErrorCauseStackTraceInner(
                             class_loader_name = '', 
                             module_name = '', 
                             module_version = '', 
@@ -50,7 +50,7 @@ class TestValidationError(unittest.TestCase):
                     message = '', 
                     localized_message = '', ),
                 stack_trace = [
-                    caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundError_cause_stackTrace_inner(
+                    caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundErrorCauseStackTraceInner(
                         class_loader_name = '', 
                         module_name = '', 
                         module_version = '', 
@@ -61,9 +61,9 @@ class TestValidationError(unittest.TestCase):
                         native_method = True, )
                     ],
                 suppressed = [
-                    caraer_client.models.not_found_error_cause.NotFoundError_cause(
+                    caraer_client.models.not_found_error_cause.NotFoundErrorCause(
                         stack_trace = [
-                            caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundError_cause_stackTrace_inner(
+                            caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundErrorCauseStackTraceInner(
                                 class_loader_name = '', 
                                 module_name = '', 
                                 module_version = '', 

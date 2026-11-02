@@ -37,7 +37,7 @@ class TestPaginationResponseFormDTO(unittest.TestCase):
             return PaginationResponseFormDTO(
                 message = 'Success',
                 data = [
-                    None
+                    { }
                     ],
                 total = 56,
                 page = 56,

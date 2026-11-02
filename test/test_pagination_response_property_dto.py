@@ -37,7 +37,7 @@ class TestPaginationResponsePropertyDTO(unittest.TestCase):
             return PaginationResponsePropertyDTO(
                 message = 'Success',
                 data = [
-                    None
+                    { }
                     ],
                 total = 56,
                 page = 56,

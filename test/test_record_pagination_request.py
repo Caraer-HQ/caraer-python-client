@@ -37,12 +37,12 @@ class TestRecordPaginationRequest(unittest.TestCase):
             return RecordPaginationRequest(
                 page = 1,
                 limit = 10,
-                filter = None,
+                filter = { },
                 sort = [
-                    None
+                    { }
                     ],
                 show = [
-                    None
+                    { }
                     ],
                 query = 'keyword',
                 preview = '',
