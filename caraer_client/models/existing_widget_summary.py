@@ -27,15 +27,15 @@ class ExistingWidgetSummary(BaseModel):
     """
     ExistingWidgetSummary
     """ # noqa: E501
-    ymetric: Optional[StrictStr] = None
     xproperty: Optional[StrictStr] = None
+    ymetric: Optional[StrictStr] = None
     yproperty: Optional[StrictStr] = None
     title: Optional[StrictStr] = None
     chart_type: Optional[StrictStr] = Field(default=None, alias="chartType")
     x_property: Optional[StrictStr] = Field(default=None, alias="xProperty")
     y_metric: Optional[StrictStr] = Field(default=None, alias="yMetric")
     y_property: Optional[StrictStr] = Field(default=None, alias="yProperty")
-    __properties: ClassVar[List[str]] = ["ymetric", "xproperty", "yproperty", "title", "chartType", "xProperty", "yMetric", "yProperty"]
+    __properties: ClassVar[List[str]] = ["xproperty", "ymetric", "yproperty", "title", "chartType", "xProperty", "yMetric", "yProperty"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -88,8 +88,8 @@ class ExistingWidgetSummary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "ymetric": obj.get("ymetric"),
             "xproperty": obj.get("xproperty"),
+            "ymetric": obj.get("ymetric"),
             "yproperty": obj.get("yproperty"),
             "title": obj.get("title"),
             "chartType": obj.get("chartType"),
