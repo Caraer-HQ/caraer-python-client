@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.666"
+__version__ = "2.0.668"
 
 # Define package exports
 __all__ = [
@@ -262,6 +262,8 @@ __all__ = [
     "RecordPaginationRequest",
     "RecordRelationRequestDTO",
     "RecordSummary",
+    "RecordWriteEnvelope",
+    "RecordWriteRequest",
     "Recurrence",
     "Reference",
     "RefreshTokenRequest",
@@ -677,6 +679,8 @@ from caraer_client.models.record_dto import RecordDTO as RecordDTO
 from caraer_client.models.record_pagination_request import RecordPaginationRequest as RecordPaginationRequest
 from caraer_client.models.record_relation_request_dto import RecordRelationRequestDTO as RecordRelationRequestDTO
 from caraer_client.models.record_summary import RecordSummary as RecordSummary
+from caraer_client.models.record_write_envelope import RecordWriteEnvelope as RecordWriteEnvelope
+from caraer_client.models.record_write_request import RecordWriteRequest as RecordWriteRequest
 from caraer_client.models.recurrence import Recurrence as Recurrence
 from caraer_client.models.reference import Reference as Reference
 from caraer_client.models.refresh_token_request import RefreshTokenRequest as RefreshTokenRequest

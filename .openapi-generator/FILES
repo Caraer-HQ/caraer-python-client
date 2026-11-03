@@ -246,6 +246,8 @@ caraer_client/models/record_dto.py
 caraer_client/models/record_pagination_request.py
 caraer_client/models/record_relation_request_dto.py
 caraer_client/models/record_summary.py
+caraer_client/models/record_write_envelope.py
+caraer_client/models/record_write_request.py
 caraer_client/models/recurrence.py
 caraer_client/models/reference.py
 caraer_client/models/refresh_token_request.py
@@ -628,6 +630,8 @@ docs/RecordDTO.md
 docs/RecordPaginationRequest.md
 docs/RecordRelationRequestDTO.md
 docs/RecordSummary.md
+docs/RecordWriteEnvelope.md
+docs/RecordWriteRequest.md
 docs/RecordsApi.md
 docs/Recurrence.md
 docs/Reference.md
@@ -1023,6 +1027,8 @@ test/test_record_dto.py
 test/test_record_pagination_request.py
 test/test_record_relation_request_dto.py
 test/test_record_summary.py
+test/test_record_write_envelope.py
+test/test_record_write_request.py
 test/test_records_api.py
 test/test_recurrence.py
 test/test_reference.py

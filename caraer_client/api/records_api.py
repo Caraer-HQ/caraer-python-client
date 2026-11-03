@@ -1535,7 +1535,7 @@ class RecordsApi:
     def create(
         self,
         object_name: StrictStr,
-        record_dto: Annotated[RecordDTO, Field(description="Record data to create")],
+        record_dto: Annotated[RecordDTO, Field(description="Direct record body or {objectName, record} envelope to create")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
@@ -1558,7 +1558,7 @@ class RecordsApi:
 
         :param object_name: (required)
         :type object_name: str
-        :param record_dto: Record data to create (required)
+        :param record_dto: Direct record body or {objectName, record} envelope to create (required)
         :type record_dto: RecordDTO
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -1623,7 +1623,7 @@ class RecordsApi:
     def create_with_http_info(
         self,
         object_name: StrictStr,
-        record_dto: Annotated[RecordDTO, Field(description="Record data to create")],
+        record_dto: Annotated[RecordDTO, Field(description="Direct record body or {objectName, record} envelope to create")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
@@ -1646,7 +1646,7 @@ class RecordsApi:
 
         :param object_name: (required)
         :type object_name: str
-        :param record_dto: Record data to create (required)
+        :param record_dto: Direct record body or {objectName, record} envelope to create (required)
         :type record_dto: RecordDTO
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -1711,7 +1711,7 @@ class RecordsApi:
     def create_without_preload_content(
         self,
         object_name: StrictStr,
-        record_dto: Annotated[RecordDTO, Field(description="Record data to create")],
+        record_dto: Annotated[RecordDTO, Field(description="Direct record body or {objectName, record} envelope to create")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
@@ -1734,7 +1734,7 @@ class RecordsApi:
 
         :param object_name: (required)
         :type object_name: str
-        :param record_dto: Record data to create (required)
+        :param record_dto: Direct record body or {objectName, record} envelope to create (required)
         :type record_dto: RecordDTO
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -1890,7 +1890,7 @@ class RecordsApi:
     def create_or_update(
         self,
         object_name: StrictStr,
-        record_dto: Annotated[RecordDTO, Field(description="Record data to create or update. Top-level uuid updates that record when it already exists.")],
+        record_dto: Annotated[RecordDTO, Field(description="Direct record body or {objectName, record} envelope. uuid belongs to the record and updates that record when it already exists.")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Optional[StrictBool] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
@@ -1913,7 +1913,7 @@ class RecordsApi:
 
         :param object_name: (required)
         :type object_name: str
-        :param record_dto: Record data to create or update. Top-level uuid updates that record when it already exists. (required)
+        :param record_dto: Direct record body or {objectName, record} envelope. uuid belongs to the record and updates that record when it already exists. (required)
         :type record_dto: RecordDTO
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -1979,7 +1979,7 @@ class RecordsApi:
     def create_or_update_with_http_info(
         self,
         object_name: StrictStr,
-        record_dto: Annotated[RecordDTO, Field(description="Record data to create or update. Top-level uuid updates that record when it already exists.")],
+        record_dto: Annotated[RecordDTO, Field(description="Direct record body or {objectName, record} envelope. uuid belongs to the record and updates that record when it already exists.")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Optional[StrictBool] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
@@ -2002,7 +2002,7 @@ class RecordsApi:
 
         :param object_name: (required)
         :type object_name: str
-        :param record_dto: Record data to create or update. Top-level uuid updates that record when it already exists. (required)
+        :param record_dto: Direct record body or {objectName, record} envelope. uuid belongs to the record and updates that record when it already exists. (required)
         :type record_dto: RecordDTO
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -2068,7 +2068,7 @@ class RecordsApi:
     def create_or_update_without_preload_content(
         self,
         object_name: StrictStr,
-        record_dto: Annotated[RecordDTO, Field(description="Record data to create or update. Top-level uuid updates that record when it already exists.")],
+        record_dto: Annotated[RecordDTO, Field(description="Direct record body or {objectName, record} envelope. uuid belongs to the record and updates that record when it already exists.")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Optional[StrictBool] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
@@ -2091,7 +2091,7 @@ class RecordsApi:
 
         :param object_name: (required)
         :type object_name: str
-        :param record_dto: Record data to create or update. Top-level uuid updates that record when it already exists. (required)
+        :param record_dto: Direct record body or {objectName, record} envelope. uuid belongs to the record and updates that record when it already exists. (required)
         :type record_dto: RecordDTO
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -7384,7 +7384,7 @@ class RecordsApi:
         self,
         uuid: StrictStr,
         object_name: StrictStr,
-        record_dto: Annotated[RecordDTO, Field(description="Record data to update")],
+        record_dto: Annotated[RecordDTO, Field(description="Direct record body or {objectName, record} envelope to update")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
@@ -7409,7 +7409,7 @@ class RecordsApi:
         :type uuid: str
         :param object_name: (required)
         :type object_name: str
-        :param record_dto: Record data to update (required)
+        :param record_dto: Direct record body or {objectName, record} envelope to update (required)
         :type record_dto: RecordDTO
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -7476,7 +7476,7 @@ class RecordsApi:
         self,
         uuid: StrictStr,
         object_name: StrictStr,
-        record_dto: Annotated[RecordDTO, Field(description="Record data to update")],
+        record_dto: Annotated[RecordDTO, Field(description="Direct record body or {objectName, record} envelope to update")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
@@ -7501,7 +7501,7 @@ class RecordsApi:
         :type uuid: str
         :param object_name: (required)
         :type object_name: str
-        :param record_dto: Record data to update (required)
+        :param record_dto: Direct record body or {objectName, record} envelope to update (required)
         :type record_dto: RecordDTO
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str
@@ -7568,7 +7568,7 @@ class RecordsApi:
         self,
         uuid: StrictStr,
         object_name: StrictStr,
-        record_dto: Annotated[RecordDTO, Field(description="Record data to update")],
+        record_dto: Annotated[RecordDTO, Field(description="Direct record body or {objectName, record} envelope to update")],
         parse: Annotated[Optional[StrictStr], Field(description="Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).")] = None,
         ignore_errors: Annotated[Optional[StrictBool], Field(description="If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported.")] = None,
         record_return_format: Annotated[Optional[StrictStr], Field(description="Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL.")] = None,
@@ -7593,7 +7593,7 @@ class RecordsApi:
         :type uuid: str
         :param object_name: (required)
         :type object_name: str
-        :param record_dto: Record data to update (required)
+        :param record_dto: Direct record body or {objectName, record} envelope to update (required)
         :type record_dto: RecordDTO
         :param parse: Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records).
         :type parse: str

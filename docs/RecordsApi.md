@@ -492,7 +492,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.RecordsApi(api_client)
     object_name = 'object_name_example' # str | 
-    record_dto = caraer_client.RecordDTO() # RecordDTO | Record data to create
+    record_dto = caraer_client.RecordDTO() # RecordDTO | Direct record body or {objectName, record} envelope to create
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
     ignore_errors = False # bool | If 'true', allows the creation to proceed while ignoring certain non-critical validation errors, when supported. (optional) (default to False)
     record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. (optional) (default to 'LEGACY')
@@ -514,7 +514,7 @@ with caraer_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **object_name** | **str**|  | 
- **record_dto** | [**RecordDTO**](RecordDTO.md)| Record data to create | 
+ **record_dto** | [**RecordDTO**](RecordDTO.md)| Direct record body or {objectName, record} envelope to create | 
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
  **ignore_errors** | **bool**| If &#39;true&#39;, allows the creation to proceed while ignoring certain non-critical validation errors, when supported. | [optional] [default to False]
  **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. | [optional] [default to &#39;LEGACY&#39;]
@@ -584,7 +584,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = caraer_client.RecordsApi(api_client)
     object_name = 'object_name_example' # str | 
-    record_dto = caraer_client.RecordDTO() # RecordDTO | Record data to create or update. Top-level uuid updates that record when it already exists.
+    record_dto = caraer_client.RecordDTO() # RecordDTO | Direct record body or {objectName, record} envelope. uuid belongs to the record and updates that record when it already exists.
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
     ignore_errors = False # bool |  (optional) (default to False)
     record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. (optional) (default to 'LEGACY')
@@ -606,7 +606,7 @@ with caraer_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **object_name** | **str**|  | 
- **record_dto** | [**RecordDTO**](RecordDTO.md)| Record data to create or update. Top-level uuid updates that record when it already exists. | 
+ **record_dto** | [**RecordDTO**](RecordDTO.md)| Direct record body or {objectName, record} envelope. uuid belongs to the record and updates that record when it already exists. | 
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
  **ignore_errors** | **bool**|  | [optional] [default to False]
  **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. | [optional] [default to &#39;LEGACY&#39;]
@@ -2082,7 +2082,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     api_instance = caraer_client.RecordsApi(api_client)
     uuid = 'uuid_example' # str | 
     object_name = 'object_name_example' # str | 
-    record_dto = caraer_client.RecordDTO() # RecordDTO | Record data to update
+    record_dto = caraer_client.RecordDTO() # RecordDTO | Direct record body or {objectName, record} envelope to update
     parse = 'parse_example' # str | Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). (optional)
     ignore_errors = False # bool | If 'true', allows the update to proceed while ignoring certain non-critical validation errors, when supported. (optional) (default to False)
     record_return_format = 'LEGACY' # str | Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. (optional) (default to 'LEGACY')
@@ -2105,7 +2105,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **uuid** | **str**|  | 
  **object_name** | **str**|  | 
- **record_dto** | [**RecordDTO**](RecordDTO.md)| Record data to update | 
+ **record_dto** | [**RecordDTO**](RecordDTO.md)| Direct record body or {objectName, record} envelope to update | 
  **parse** | **str**| Value presentation mode: omit/false/db for raw stored values; true/human_readable for display strings; structured for rich JSON (e.g. PropertyOption arrays, related records). | [optional] 
  **ignore_errors** | **bool**| If &#39;true&#39;, allows the update to proceed while ignoring certain non-critical validation errors, when supported. | [optional] [default to False]
  **record_return_format** | **str**| Format of the record to return. LEGACY, USER_FRIENDLY, EXPANDED, MINIMAL. | [optional] [default to &#39;LEGACY&#39;]

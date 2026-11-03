@@ -1,0 +1,43 @@
+# RecordWriteRequest
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**uuid** | **str** | Unique identifier for the entity | 
+**name** | **str** | The name of the entity | 
+**label** | **str** | Display label for the entity, can be different from name | [optional] 
+**created_at** | **int** | Unix timestamp when the entity was created | [optional] 
+**created_by** | [**Record**](Record.md) | Identifier of the user who created the entity | [optional] 
+**updated_at** | **int** | Unix timestamp when the entity was last updated | [optional] 
+**updated_by** | [**Record**](Record.md) | Identifier of the user who last updated the entity | [optional] 
+**deleted_at** | **int** | Unix timestamp when the entity was deleted (null if not deleted) | [optional] 
+**deleted_by** | [**Record**](Record.md) | Identifier of the user who deleted the entity | [optional] 
+**index** | **int** | Index number for ordering entities | [optional] 
+**properties** | **Dict[str, Optional[object]]** | Property values as a name→value map, or a LEGACY array of {name,type,value} objects (same shape as LEGACY GET responses). File properties accept existing company file keys/URLs, an inline upload object {fileName,contentBase64,contentType?}, or a base64 data URL. Bare base64 bytes require the object form with fileName. Multi-file properties also accept an ordered array mixing existing keys/URLs and inline uploads; semicolon-separated keys and null remain supported. Uploads are stored as ordinary file keys after authorization and property validation. File type and configured upload size limits apply; base64 text counts toward the request limit. | [optional] 
+**user** | [**PublicUserDTO**](PublicUserDTO.md) | The user of the record if the user trait is enabled. | [optional] 
+**relations** | [**List[RecordRelationRequestDTO]**](RecordRelationRequestDTO.md) | Relations to create or merge after the record is saved. Each item links to an existing record (uuid) or creates a nested record first. | [optional] 
+**object_name** | **str** | Optional object name; when provided it must match the URL. | [optional] 
+**record** | [**RecordDTO**](RecordDTO.md) | The record to create or update. | 
+
+## Example
+
+```python
+from caraer_client.models.record_write_request import RecordWriteRequest
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of RecordWriteRequest from a JSON string
+record_write_request_instance = RecordWriteRequest.from_json(json)
+# print the JSON string representation of the object
+print(RecordWriteRequest.to_json())
+
+# convert the object into a dict
+record_write_request_dict = record_write_request_instance.to_dict()
+# create an instance of RecordWriteRequest from a dict
+record_write_request_from_dict = RecordWriteRequest.from_dict(record_write_request_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

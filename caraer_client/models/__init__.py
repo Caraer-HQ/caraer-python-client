@@ -216,6 +216,8 @@ from caraer_client.models.record_dto import RecordDTO
 from caraer_client.models.record_pagination_request import RecordPaginationRequest
 from caraer_client.models.record_relation_request_dto import RecordRelationRequestDTO
 from caraer_client.models.record_summary import RecordSummary
+from caraer_client.models.record_write_envelope import RecordWriteEnvelope
+from caraer_client.models.record_write_request import RecordWriteRequest
 from caraer_client.models.recurrence import Recurrence
 from caraer_client.models.reference import Reference
 from caraer_client.models.refresh_token_request import RefreshTokenRequest
