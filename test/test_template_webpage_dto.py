@@ -52,17 +52,6 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            icon = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -98,15 +87,26 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), ),
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -121,17 +121,6 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            icon = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -167,15 +156,26 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), ),
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -190,17 +190,6 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                     complete = True, 
                     deleted = True, 
                     uuid = '0', 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            icon = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -236,15 +225,26 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), ),
+                                }, ), ), 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, ),
                 index = 56,
                 environment = '',
                 title = 'Homepage',
@@ -415,6 +415,7 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                                             ], ), 
                                     shows = [
                                         caraer_client.models.show_item.ShowItem(
+                                            relation_sort = null, 
                                             object = 'User', 
                                             relation = 'hasProperty', 
                                             relation_direction = 'outgoing', 
@@ -666,6 +667,7 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                                                     ], ), 
                                             shows = [
                                                 caraer_client.models.show_item.ShowItem(
+                                                    relation_sort = null, 
                                                     object = 'User', 
                                                     relation = 'hasProperty', 
                                                     relation_direction = 'outgoing', 
@@ -926,6 +928,7 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                                     ], ), 
                             shows = [
                                 caraer_client.models.show_item.ShowItem(
+                                    relation_sort = null, 
                                     object = 'User', 
                                     relation = 'hasProperty', 
                                     relation_direction = 'outgoing', 
@@ -1171,6 +1174,7 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                                                     ], ), 
                                             shows = [
                                                 caraer_client.models.show_item.ShowItem(
+                                                    relation_sort = null, 
                                                     object = 'User', 
                                                     relation = 'hasProperty', 
                                                     relation_direction = 'outgoing', 
@@ -1419,6 +1423,7 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                                             ], ), 
                                     shows = [
                                         caraer_client.models.show_item.ShowItem(
+                                            relation_sort = null, 
                                             object = 'User', 
                                             relation = 'hasProperty', 
                                             relation_direction = 'outgoing', 
@@ -1693,6 +1698,7 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                                     ], ), 
                             shows = [
                                 caraer_client.models.show_item.ShowItem(
+                                    relation_sort = null, 
                                     object = 'User', 
                                     relation = 'hasProperty', 
                                     relation_direction = 'outgoing', 
@@ -1938,6 +1944,7 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                                                     ], ), 
                                             shows = [
                                                 caraer_client.models.show_item.ShowItem(
+                                                    relation_sort = null, 
                                                     object = 'User', 
                                                     relation = 'hasProperty', 
                                                     relation_direction = 'outgoing', 
@@ -2186,6 +2193,7 @@ class TestTemplateWebpageDTO(unittest.TestCase):
                                             ], ), 
                                     shows = [
                                         caraer_client.models.show_item.ShowItem(
+                                            relation_sort = null, 
                                             object = 'User', 
                                             relation = 'hasProperty', 
                                             relation_direction = 'outgoing', 

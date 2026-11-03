@@ -35,6 +35,9 @@ class TestShowItem(unittest.TestCase):
         model = ShowItem()
         if include_optional:
             return ShowItem(
+                relation_sort = caraer_client.models.relation_pill_sort.RelationPillSort(
+                    property = 'createdAt', 
+                    direction = 'ASC', ),
                 object = 'User',
                 relation = 'hasProperty',
                 relation_direction = 'outgoing',

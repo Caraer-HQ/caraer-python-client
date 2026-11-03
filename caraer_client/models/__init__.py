@@ -222,6 +222,7 @@ from caraer_client.models.refresh_token_request import RefreshTokenRequest
 from caraer_client.models.register_request import RegisterRequest
 from caraer_client.models.relation_dto import RelationDTO
 from caraer_client.models.relation_edge_request_dto import RelationEdgeRequestDTO
+from caraer_client.models.relation_pill_sort import RelationPillSort
 from caraer_client.models.reset_password_request import ResetPasswordRequest
 from caraer_client.models.restore_response import RestoreResponse
 from caraer_client.models.restore_response_caraer_object_dto import RestoreResponseCaraerObjectDTO

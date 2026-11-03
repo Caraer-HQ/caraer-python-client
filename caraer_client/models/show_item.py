@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from caraer_client.models.relation_pill_sort import RelationPillSort
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -27,6 +28,7 @@ class ShowItem(BaseModel):
     """
     DTO representing an item with properties defined for displaying and handling in UI related operations.
     """ # noqa: E501
+    relation_sort: Optional[RelationPillSort] = Field(default=None, description="Ordering of related-record pills within this column; does not sort the result rows.", alias="relationSort")
     object: Optional[StrictStr] = Field(default=None, description="The name of the object to which this pagination item belongs.", json_schema_extra={"examples": ["User"]})
     relation: Optional[StrictStr] = Field(default=None, description="The relationship between objects.", json_schema_extra={"examples": ["hasProperty"]})
     relation_direction: Optional[StrictStr] = Field(default=None, description="Optional relation direction: outgoing (related→main), incoming (main→related), or omit for undirected.", alias="relationDirection", json_schema_extra={"examples": ["outgoing"]})
@@ -36,7 +38,7 @@ class ShowItem(BaseModel):
     width: Optional[StrictInt] = Field(default=None, description="Width of the item in pixels.", json_schema_extra={"examples": [100]})
     calculation_function: Optional[StrictStr] = Field(default=None, description="Calculation function used to calculate the value of the item.", alias="calculationFunction", json_schema_extra={"examples": ["max"]})
     calculation_result: Optional[Any] = Field(default=None, description="Result of the calculation.", alias="calculationResult", json_schema_extra={"examples": [100]})
-    __properties: ClassVar[List[str]] = ["object", "relation", "relationDirection", "property", "separator", "sticky", "width", "calculationFunction", "calculationResult"]
+    __properties: ClassVar[List[str]] = ["relationSort", "object", "relation", "relationDirection", "property", "separator", "sticky", "width", "calculationFunction", "calculationResult"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -77,6 +79,9 @@ class ShowItem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of relation_sort
+        if self.relation_sort:
+            _dict['relationSort'] = self.relation_sort.to_dict()
         # set to None if calculation_result (nullable) is None
         # and model_fields_set contains the field
         if self.calculation_result is None and "calculation_result" in self.model_fields_set:
@@ -94,6 +99,7 @@ class ShowItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "relationSort": RelationPillSort.from_dict(obj["relationSort"]) if obj.get("relationSort") is not None else None,
             "object": obj.get("object"),
             "relation": obj.get("relation"),
             "relationDirection": obj.get("relationDirection"),

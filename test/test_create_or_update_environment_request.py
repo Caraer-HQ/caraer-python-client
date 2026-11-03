@@ -82,6 +82,7 @@ class TestCreateOrUpdateEnvironmentRequest(unittest.TestCase):
                                         ], ), 
                                 shows = [
                                     caraer_client.models.show_item.ShowItem(
+                                        relation_sort = null, 
                                         object = 'User', 
                                         relation = 'hasProperty', 
                                         relation_direction = 'outgoing', 
@@ -327,6 +328,7 @@ class TestCreateOrUpdateEnvironmentRequest(unittest.TestCase):
                                                         ], ), 
                                                 shows = [
                                                     caraer_client.models.show_item.ShowItem(
+                                                        relation_sort = null, 
                                                         object = 'User', 
                                                         relation = 'hasProperty', 
                                                         relation_direction = 'outgoing', 
@@ -575,6 +577,7 @@ class TestCreateOrUpdateEnvironmentRequest(unittest.TestCase):
                                                 ], ), 
                                         shows = [
                                             caraer_client.models.show_item.ShowItem(
+                                                relation_sort = null, 
                                                 object = 'User', 
                                                 relation = 'hasProperty', 
                                                 relation_direction = 'outgoing', 

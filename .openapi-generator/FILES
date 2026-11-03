@@ -252,6 +252,7 @@ caraer_client/models/refresh_token_request.py
 caraer_client/models/register_request.py
 caraer_client/models/relation_dto.py
 caraer_client/models/relation_edge_request_dto.py
+caraer_client/models/relation_pill_sort.py
 caraer_client/models/reset_password_request.py
 caraer_client/models/restore_response.py
 caraer_client/models/restore_response_caraer_object_dto.py
@@ -634,6 +635,7 @@ docs/RefreshTokenRequest.md
 docs/RegisterRequest.md
 docs/RelationDTO.md
 docs/RelationEdgeRequestDTO.md
+docs/RelationPillSort.md
 docs/RelationsApi.md
 docs/ResetPasswordRequest.md
 docs/RestoreResponse.md
@@ -1028,6 +1030,7 @@ test/test_refresh_token_request.py
 test/test_register_request.py
 test/test_relation_dto.py
 test/test_relation_edge_request_dto.py
+test/test_relation_pill_sort.py
 test/test_relations_api.py
 test/test_reset_password_request.py
 test/test_restore_response.py

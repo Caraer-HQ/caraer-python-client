@@ -6,6 +6,7 @@ DTO representing an item with properties defined for displaying and handling in 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**relation_sort** | [**RelationPillSort**](RelationPillSort.md) | Ordering of related-record pills within this column; does not sort the result rows. | [optional] 
 **object** | **str** | The name of the object to which this pagination item belongs. | [optional] 
 **relation** | **str** | The relationship between objects. | [optional] 
 **relation_direction** | **str** | Optional relation direction: outgoing (related→main), incoming (main→related), or omit for undirected. | [optional] 

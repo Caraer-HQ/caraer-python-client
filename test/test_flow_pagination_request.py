@@ -40,6 +40,7 @@ class TestFlowPaginationRequest(unittest.TestCase):
                     turn_off_meta_relationships = True, ),
                 show_items = [
                     caraer_client.models.show_item.ShowItem(
+                        relation_sort = null, 
                         object = 'User', 
                         relation = 'hasProperty', 
                         relation_direction = 'outgoing', 
@@ -67,6 +68,7 @@ class TestFlowPaginationRequest(unittest.TestCase):
                     ],
                 show = [
                     caraer_client.models.show_item.ShowItem(
+                        relation_sort = null, 
                         object = 'User', 
                         relation = 'hasProperty', 
                         relation_direction = 'outgoing', 

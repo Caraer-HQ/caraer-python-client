@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.660"
+__version__ = "2.0.661"
 
 # Define package exports
 __all__ = [
@@ -268,6 +268,7 @@ __all__ = [
     "RegisterRequest",
     "RelationDTO",
     "RelationEdgeRequestDTO",
+    "RelationPillSort",
     "ResetPasswordRequest",
     "RestoreResponse",
     "RestoreResponseCaraerObjectDTO",
@@ -682,6 +683,7 @@ from caraer_client.models.refresh_token_request import RefreshTokenRequest as Re
 from caraer_client.models.register_request import RegisterRequest as RegisterRequest
 from caraer_client.models.relation_dto import RelationDTO as RelationDTO
 from caraer_client.models.relation_edge_request_dto import RelationEdgeRequestDTO as RelationEdgeRequestDTO
+from caraer_client.models.relation_pill_sort import RelationPillSort as RelationPillSort
 from caraer_client.models.reset_password_request import ResetPasswordRequest as ResetPasswordRequest
 from caraer_client.models.restore_response import RestoreResponse as RestoreResponse
 from caraer_client.models.restore_response_caraer_object_dto import RestoreResponseCaraerObjectDTO as RestoreResponseCaraerObjectDTO
