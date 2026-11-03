@@ -61,11 +61,11 @@ class AppSettingFieldSchema(BaseModel):
     clear_value: Optional[StrictBool] = Field(default=None, alias="clearValue")
     mapping_value: Optional[AppSettingFieldMappingStructure] = Field(default=None, alias="mappingValue")
     value_scope: Optional[StrictStr] = Field(default=None, alias="valueScope")
-    settings_group: Optional[StrictBool] = Field(default=None, alias="settingsGroup")
     action: Optional[StrictBool] = None
+    settings_group: Optional[StrictBool] = Field(default=None, alias="settingsGroup")
     filter_property_types: Optional[List[StrictStr]] = Field(default=None, alias="filterPropertyTypes")
     filter_property_formats: Optional[List[StrictStr]] = Field(default=None, alias="filterPropertyFormats")
-    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "text", "paragraph", "options", "optionsSource", "actionSource", "contentSource", "refreshIntervalSeconds", "defaultValue", "hidden", "advanced", "group", "fields", "filterTraits", "visibleWhen", "itemFields", "min", "max", "itemLabel", "value", "hasValue", "clearValue", "mappingValue", "valueScope", "settingsGroup", "action", "filterPropertyTypes", "filterPropertyFormats"]
+    __properties: ClassVar[List[str]] = ["name", "label", "type", "required", "helpText", "text", "paragraph", "options", "optionsSource", "actionSource", "contentSource", "refreshIntervalSeconds", "defaultValue", "hidden", "advanced", "group", "fields", "filterTraits", "visibleWhen", "itemFields", "min", "max", "itemLabel", "value", "hasValue", "clearValue", "mappingValue", "valueScope", "action", "settingsGroup", "filterPropertyTypes", "filterPropertyFormats"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -192,8 +192,8 @@ class AppSettingFieldSchema(BaseModel):
             "clearValue": obj.get("clearValue"),
             "mappingValue": AppSettingFieldMappingStructure.from_dict(obj["mappingValue"]) if obj.get("mappingValue") is not None else None,
             "valueScope": obj.get("valueScope"),
-            "settingsGroup": obj.get("settingsGroup"),
             "action": obj.get("action"),
+            "settingsGroup": obj.get("settingsGroup"),
             "filterPropertyTypes": obj.get("filterPropertyTypes"),
             "filterPropertyFormats": obj.get("filterPropertyFormats")
         })
