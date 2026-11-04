@@ -216,7 +216,7 @@ class RESTClientObject:
             )
 
         post_params = post_params or {}
-        headers = urllib3.HTTPHeaderDict(headers or {})
+        headers = headers or {}
 
         timeout = None
         if _request_timeout:

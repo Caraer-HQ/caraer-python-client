@@ -37,7 +37,7 @@ class TestPaginationResponsePublicEnvironmentDTO(unittest.TestCase):
             return PaginationResponsePublicEnvironmentDTO(
                 message = 'Success',
                 data = [
-                    { }
+                    None
                     ],
                 total = 56,
                 page = 56,

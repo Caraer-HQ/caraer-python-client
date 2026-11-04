@@ -37,7 +37,7 @@ class TestPaginationResponsePropertyFormat(unittest.TestCase):
             return PaginationResponsePropertyFormat(
                 message = 'Success',
                 data = [
-                    { }
+                    None
                     ],
                 total = 56,
                 page = 56,

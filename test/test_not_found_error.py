@@ -35,9 +35,9 @@ class TestNotFoundError(unittest.TestCase):
         model = NotFoundError()
         if include_optional:
             return NotFoundError(
-                cause = caraer_client.models.not_found_error_cause.NotFoundErrorCause(
+                cause = caraer_client.models.not_found_error_cause.NotFoundError_cause(
                     stack_trace = [
-                        caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundErrorCauseStackTraceInner(
+                        caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundError_cause_stackTrace_inner(
                             class_loader_name = '', 
                             module_name = '', 
                             module_version = '', 
@@ -50,7 +50,7 @@ class TestNotFoundError(unittest.TestCase):
                     message = '', 
                     localized_message = '', ),
                 stack_trace = [
-                    caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundErrorCauseStackTraceInner(
+                    caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundError_cause_stackTrace_inner(
                         class_loader_name = '', 
                         module_name = '', 
                         module_version = '', 
@@ -65,9 +65,9 @@ class TestNotFoundError(unittest.TestCase):
                 correction_suggestion = 'Try uploading a different file type.',
                 message = 'Invalid file type.',
                 suppressed = [
-                    caraer_client.models.not_found_error_cause.NotFoundErrorCause(
+                    caraer_client.models.not_found_error_cause.NotFoundError_cause(
                         stack_trace = [
-                            caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundErrorCauseStackTraceInner(
+                            caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundError_cause_stackTrace_inner(
                                 class_loader_name = '', 
                                 module_name = '', 
                                 module_version = '', 

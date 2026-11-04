@@ -37,7 +37,7 @@ class TestShowResponseListEnvironmentDTO(unittest.TestCase):
             return ShowResponseListEnvironmentDTO(
                 message = 'Success',
                 data = [
-                    { }
+                    None
                     ]
             )
         else:

@@ -37,7 +37,7 @@ class TestShowResponseListWebpagePickerItemDTO(unittest.TestCase):
             return ShowResponseListWebpagePickerItemDTO(
                 message = 'Success',
                 data = [
-                    { }
+                    None
                     ]
             )
         else:

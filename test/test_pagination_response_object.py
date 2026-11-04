@@ -37,7 +37,7 @@ class TestPaginationResponseObject(unittest.TestCase):
             return PaginationResponseObject(
                 message = 'Success',
                 data = [
-                    { }
+                    None
                     ],
                 total = 56,
                 page = 56,

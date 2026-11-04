@@ -19,8 +19,8 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "caraer-client"
-VERSION = "2.0.679"
-PYTHON_REQUIRES = ">= 3.11"
+VERSION = "2.0.681"
+PYTHON_REQUIRES = ">= 3.10"
 REQUIRES = [
     "urllib3 >= 2.7.0, < 3.0.0",
     "python-dateutil >= 2.8.2",

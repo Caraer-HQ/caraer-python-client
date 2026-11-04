@@ -37,7 +37,7 @@ class TestShowResponseListPropertyDTO(unittest.TestCase):
             return ShowResponseListPropertyDTO(
                 message = 'Success',
                 data = [
-                    { }
+                    None
                     ]
             )
         else:

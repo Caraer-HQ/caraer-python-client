@@ -37,7 +37,7 @@ class TestShowResponseListFormObjectSummaryDTO(unittest.TestCase):
             return ShowResponseListFormObjectSummaryDTO(
                 message = 'Success',
                 data = [
-                    { }
+                    None
                     ]
             )
         else:

@@ -37,7 +37,7 @@ class TestPaginationResponseSavedFilterDTO(unittest.TestCase):
             return PaginationResponseSavedFilterDTO(
                 message = 'Success',
                 data = [
-                    { }
+                    None
                     ],
                 total = 56,
                 page = 56,

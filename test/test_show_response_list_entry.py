@@ -37,7 +37,7 @@ class TestShowResponseListEntry(unittest.TestCase):
             return ShowResponseListEntry(
                 message = 'Success',
                 data = [
-                    { }
+                    None
                     ]
             )
         else:

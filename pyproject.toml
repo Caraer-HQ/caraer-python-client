@@ -1,13 +1,13 @@
 [project]
 name = "caraer-client"
-version = "2.0.679"
+version = "2.0.681"
 description = "Caraer API Documentation"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
 ]
 readme = "README.md"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Caraer API Documentation"]
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 
 dependencies = [
   "urllib3 (>=2.7.0,<3.0.0)",

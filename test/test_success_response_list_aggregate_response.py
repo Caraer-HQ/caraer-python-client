@@ -37,7 +37,7 @@ class TestSuccessResponseListAggregateResponse(unittest.TestCase):
             return SuccessResponseListAggregateResponse(
                 message = 'Success',
                 data = [
-                    { }
+                    None
                     ]
             )
         else:

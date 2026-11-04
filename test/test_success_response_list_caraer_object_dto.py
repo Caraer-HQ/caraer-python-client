@@ -37,7 +37,7 @@ class TestSuccessResponseListCaraerObjectDTO(unittest.TestCase):
             return SuccessResponseListCaraerObjectDTO(
                 message = 'Success',
                 data = [
-                    { }
+                    None
                     ]
             )
         else:
