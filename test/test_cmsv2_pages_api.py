@@ -152,6 +152,13 @@ class TestCMSV2PagesApi(unittest.TestCase):
         """
         pass
 
+    def test_save_seo(self) -> None:
+        """Test case for save_seo
+
+        Merge page SEO without publishing draft content
+        """
+        pass
+
     def test_save_template(self) -> None:
         """Test case for save_template
 

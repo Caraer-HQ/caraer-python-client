@@ -37,7 +37,7 @@ class TestPaginationResponseCaraerObjectDTO(unittest.TestCase):
             return PaginationResponseCaraerObjectDTO(
                 message = 'Success',
                 data = [
-                    None
+                    { }
                     ],
                 total = 56,
                 page = 56,

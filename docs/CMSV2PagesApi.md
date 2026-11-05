@@ -22,6 +22,7 @@ Method | HTTP request | Description
 [**save**](CMSV2PagesApi.md#save) | **PUT** /api/v2/webpages/v2/pages/{recordUuid} | Replace a page draft
 [**save_meta**](CMSV2PagesApi.md#save_meta) | **PUT** /api/v2/webpages/v2/pages/{recordUuid}/meta | Update slug, title, excerpt, SEO and page scripts
 [**save_module_fork**](CMSV2PagesApi.md#save_module_fork) | **POST** /api/v2/webpages/v2/pages/{recordUuid}/ai/module-fork/sessions/{sessionId}/save | Publish the forked module into a private app
+[**save_seo**](CMSV2PagesApi.md#save_seo) | **PUT** /api/v2/webpages/v2/pages/{recordUuid}/seo | Merge page SEO without publishing draft content
 [**save_template**](CMSV2PagesApi.md#save_template) | **PUT** /api/v2/webpages/v2/pages/templates/{objectUuid} | Replace a CMS v2 object template
 [**start_module_fork**](CMSV2PagesApi.md#start_module_fork) | **POST** /api/v2/webpages/v2/pages/{recordUuid}/ai/module-fork/sessions | Start a Modify-this-module playground session
 [**unpublish**](CMSV2PagesApi.md#unpublish) | **PUT** /api/v2/webpages/v2/pages/{recordUuid}/unpublish | Take one locale offline
@@ -1501,6 +1502,95 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ShowResponseMapStringObject**](ShowResponseMapStringObject.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **save_seo**
+> ShowResponseCmsPageDTO save_seo(record_uuid, cms_page_seo_request, locale=locale, state=state)
+
+Merge page SEO without publishing draft content
+
+Requires page-write, and publish permission for published SEO. The body contains seo and expectedRevision from the selected state's document.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.cms_page_seo_request import CmsPageSeoRequest
+from caraer_client.models.show_response_cms_page_dto import ShowResponseCmsPageDTO
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.CMSV2PagesApi(api_client)
+    record_uuid = 'record_uuid_example' # str | 
+    cms_page_seo_request = caraer_client.CmsPageSeoRequest() # CmsPageSeoRequest | 
+    locale = 'locale_example' # str |  (optional)
+    state = 'draft' # str |  (optional) (default to 'draft')
+
+    try:
+        # Merge page SEO without publishing draft content
+        api_response = api_instance.save_seo(record_uuid, cms_page_seo_request, locale=locale, state=state)
+        print("The response of CMSV2PagesApi->save_seo:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CMSV2PagesApi->save_seo: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **record_uuid** | **str**|  | 
+ **cms_page_seo_request** | [**CmsPageSeoRequest**](CmsPageSeoRequest.md)|  | 
+ **locale** | **str**|  | [optional] 
+ **state** | **str**|  | [optional] [default to &#39;draft&#39;]
+
+### Return type
+
+[**ShowResponseCmsPageDTO**](ShowResponseCmsPageDTO.md)
 
 ### Authorization
 

@@ -36,7 +36,7 @@ class TestNotFoundErrorCause(unittest.TestCase):
         if include_optional:
             return NotFoundErrorCause(
                 stack_trace = [
-                    caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundError_cause_stackTrace_inner(
+                    caraer_client.models.not_found_error_cause_stack_trace_inner.NotFoundErrorCauseStackTraceInner(
                         class_loader_name = '', 
                         module_name = '', 
                         module_version = '', 

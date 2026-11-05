@@ -37,7 +37,7 @@ class TestSuccessResponseCollectionRelation(unittest.TestCase):
             return SuccessResponseCollectionRelation(
                 message = 'Success',
                 data = [
-                    None
+                    { }
                     ]
             )
         else:

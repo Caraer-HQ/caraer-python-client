@@ -37,7 +37,7 @@ class TestPaginationResponseWebMenuDTO(unittest.TestCase):
             return PaginationResponseWebMenuDTO(
                 message = 'Success',
                 data = [
-                    None
+                    { }
                     ],
                 total = 56,
                 page = 56,

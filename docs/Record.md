@@ -17,9 +17,9 @@ Name | Type | Description | Notes
 **deleted** | **bool** |  | [optional] 
 **complete** | **bool** |  | [optional] 
 **uuid** | **str** |  | 
-**user** | [**PublicUserDTO**](PublicUserDTO.md) |  | [optional] 
 **properties** | [**List[FilledProperty]**](FilledProperty.md) |  | [optional] 
 **objects** | **Dict[str, Optional[object]]** |  | [optional] 
+**user** | [**PublicUserDTO**](PublicUserDTO.md) |  | [optional] 
 
 ## Example
 

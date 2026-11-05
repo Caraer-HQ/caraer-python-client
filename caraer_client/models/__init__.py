@@ -80,6 +80,7 @@ from caraer_client.models.cms_page_document import CmsPageDocument
 from caraer_client.models.cms_page_module_instance import CmsPageModuleInstance
 from caraer_client.models.cms_page_patch import CmsPagePatch
 from caraer_client.models.cms_page_patch_request import CmsPagePatchRequest
+from caraer_client.models.cms_page_seo_request import CmsPageSeoRequest
 from caraer_client.models.cms_public_menu_dto import CmsPublicMenuDTO
 from caraer_client.models.company_dto import CompanyDTO
 from caraer_client.models.company_details_dto import CompanyDetailsDTO

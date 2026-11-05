@@ -37,7 +37,7 @@ class TestPaginationResponseSubscribeWebhookDTO(unittest.TestCase):
             return PaginationResponseSubscribeWebhookDTO(
                 message = 'Success',
                 data = [
-                    None
+                    { }
                     ],
                 total = 56,
                 page = 56,

@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.681"
+__version__ = "2.0.683"
 
 # Define package exports
 __all__ = [
@@ -126,6 +126,7 @@ __all__ = [
     "CmsPageModuleInstance",
     "CmsPagePatch",
     "CmsPagePatchRequest",
+    "CmsPageSeoRequest",
     "CmsPublicMenuDTO",
     "CompanyDTO",
     "CompanyDetailsDTO",
@@ -543,6 +544,7 @@ from caraer_client.models.cms_page_document import CmsPageDocument as CmsPageDoc
 from caraer_client.models.cms_page_module_instance import CmsPageModuleInstance as CmsPageModuleInstance
 from caraer_client.models.cms_page_patch import CmsPagePatch as CmsPagePatch
 from caraer_client.models.cms_page_patch_request import CmsPagePatchRequest as CmsPagePatchRequest
+from caraer_client.models.cms_page_seo_request import CmsPageSeoRequest as CmsPageSeoRequest
 from caraer_client.models.cms_public_menu_dto import CmsPublicMenuDTO as CmsPublicMenuDTO
 from caraer_client.models.company_dto import CompanyDTO as CompanyDTO
 from caraer_client.models.company_details_dto import CompanyDetailsDTO as CompanyDetailsDTO

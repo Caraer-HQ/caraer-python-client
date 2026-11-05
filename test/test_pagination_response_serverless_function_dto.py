@@ -37,7 +37,7 @@ class TestPaginationResponseServerlessFunctionDTO(unittest.TestCase):
             return PaginationResponseServerlessFunctionDTO(
                 message = 'Success',
                 data = [
-                    None
+                    { }
                     ],
                 total = 56,
                 page = 56,

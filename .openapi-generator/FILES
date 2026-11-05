@@ -109,6 +109,7 @@ caraer_client/models/cms_page_dto.py
 caraer_client/models/cms_page_module_instance.py
 caraer_client/models/cms_page_patch.py
 caraer_client/models/cms_page_patch_request.py
+caraer_client/models/cms_page_seo_request.py
 caraer_client/models/cms_public_menu_dto.py
 caraer_client/models/company_details_dto.py
 caraer_client/models/company_dto.py
@@ -483,6 +484,7 @@ docs/CmsPageDocument.md
 docs/CmsPageModuleInstance.md
 docs/CmsPagePatch.md
 docs/CmsPagePatchRequest.md
+docs/CmsPageSeoRequest.md
 docs/CmsPublicMenuDTO.md
 docs/CompanyApi.md
 docs/CompanyDTO.md
@@ -874,6 +876,7 @@ test/test_cms_page_dto.py
 test/test_cms_page_module_instance.py
 test/test_cms_page_patch.py
 test/test_cms_page_patch_request.py
+test/test_cms_page_seo_request.py
 test/test_cms_public_menu_dto.py
 test/test_cms_website_updates_api.py
 test/test_cmsv2_environments_api.py

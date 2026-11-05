@@ -37,7 +37,7 @@ class TestShowResponseListInstalledAppBarDTO(unittest.TestCase):
             return ShowResponseListInstalledAppBarDTO(
                 message = 'Success',
                 data = [
-                    None
+                    { }
                     ]
             )
         else:
