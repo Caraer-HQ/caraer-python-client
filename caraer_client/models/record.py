@@ -38,13 +38,13 @@ class Record(BaseModel):
     updated_by_uuid: Optional[StrictStr] = Field(default=None, alias="updatedByUuid")
     deleted_by_uuid: Optional[StrictStr] = Field(default=None, alias="deletedByUuid")
     index: Optional[StrictInt] = None
-    deleted: Optional[StrictBool] = None
     complete: Optional[StrictBool] = None
+    deleted: Optional[StrictBool] = None
     uuid: Annotated[str, Field(min_length=1, strict=True)]
     properties: Optional[List[FilledProperty]] = None
     objects: Optional[Dict[str, Any]] = None
     user: Optional[PublicUserDTO] = None
-    __properties: ClassVar[List[str]] = ["name", "label", "createdAt", "updatedAt", "deletedAt", "createdByUuid", "updatedByUuid", "deletedByUuid", "index", "deleted", "complete", "uuid", "properties", "objects", "user"]
+    __properties: ClassVar[List[str]] = ["name", "label", "createdAt", "updatedAt", "deletedAt", "createdByUuid", "updatedByUuid", "deletedByUuid", "index", "complete", "deleted", "uuid", "properties", "objects", "user"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -115,8 +115,8 @@ class Record(BaseModel):
             "updatedByUuid": obj.get("updatedByUuid"),
             "deletedByUuid": obj.get("deletedByUuid"),
             "index": obj.get("index"),
-            "deleted": obj.get("deleted"),
             "complete": obj.get("complete"),
+            "deleted": obj.get("deleted"),
             "uuid": obj.get("uuid"),
             "properties": [FilledProperty.from_dict(_item) for _item in obj["properties"]] if obj.get("properties") is not None else None,
             "objects": obj.get("objects"),
