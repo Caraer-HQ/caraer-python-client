@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from caraer_client.models.crud_access_context import CrudAccessContext
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -29,7 +30,8 @@ class CRUD(BaseModel):
     """ # noqa: E501
     http_session_id: Optional[StrictStr] = Field(default=None, alias="httpSessionId")
     turn_off_meta_relationships: Optional[StrictBool] = Field(default=None, alias="turnOffMetaRelationships")
-    __properties: ClassVar[List[str]] = ["httpSessionId", "turnOffMetaRelationships"]
+    http_access_context: Optional[CrudAccessContext] = Field(default=None, alias="httpAccessContext")
+    __properties: ClassVar[List[str]] = ["httpSessionId", "turnOffMetaRelationships", "httpAccessContext"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -70,6 +72,9 @@ class CRUD(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of http_access_context
+        if self.http_access_context:
+            _dict['httpAccessContext'] = self.http_access_context.to_dict()
         return _dict
 
     @classmethod
@@ -83,7 +88,8 @@ class CRUD(BaseModel):
 
         _obj = cls.model_validate({
             "httpSessionId": obj.get("httpSessionId"),
-            "turnOffMetaRelationships": obj.get("turnOffMetaRelationships")
+            "turnOffMetaRelationships": obj.get("turnOffMetaRelationships"),
+            "httpAccessContext": CrudAccessContext.from_dict(obj["httpAccessContext"]) if obj.get("httpAccessContext") is not None else None
         })
         return _obj
 

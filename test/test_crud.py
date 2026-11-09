@@ -36,7 +36,27 @@ class TestCRUD(unittest.TestCase):
         if include_optional:
             return CRUD(
                 http_session_id = '',
-                turn_off_meta_relationships = True
+                turn_off_meta_relationships = True,
+                http_access_context = caraer_client.models.crud_access_context.CrudAccessContext(
+                    audience = caraer_client.models.audience.Audience(
+                        authentication = null, 
+                        principal = null, 
+                        authenticated = True, 
+                        database = '', 
+                        principal_database = '', 
+                        company_uuid = '', 
+                        principal_uuid = '', 
+                        authorities = [
+                            ''
+                            ], 
+                        roles = [
+                            ''
+                            ], ), 
+                    permissions = caraer_client.models.permissions.Permissions(
+                        scopes = [
+                            ''
+                            ], 
+                        filters = null, ), )
             )
         else:
             return CRUD(

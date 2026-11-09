@@ -37,7 +37,8 @@ class TestFlowPaginationRequest(unittest.TestCase):
             return FlowPaginationRequest(
                 crud = caraer_client.models.crud.CRUD(
                     http_session_id = '', 
-                    turn_off_meta_relationships = True, ),
+                    turn_off_meta_relationships = True, 
+                    http_access_context = null, ),
                 show_items = [
                     caraer_client.models.show_item.ShowItem(
                         relation_sort = null, 

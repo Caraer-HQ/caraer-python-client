@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.695"
+__version__ = "2.0.696"
 
 # Define package exports
 __all__ = [
@@ -101,6 +101,7 @@ __all__ = [
     "AppSettingsSection",
     "AppSubcategoryDTO",
     "ArchivedRecordObjectDTO",
+    "Audience",
     "BillingSettingsDTO",
     "BulkDeleteRecordsData",
     "BulkDeleteRecordsRequest",
@@ -149,6 +150,7 @@ __all__ = [
     "CreateSignedUrlRequest",
     "CriterionScore",
     "CrossObjectRecordSearchRequest",
+    "CrudAccessContext",
     "Currency",
     "CurrencyRange",
     "CursorLocation",
@@ -243,6 +245,7 @@ __all__ = [
     "PaginationResponseViewDTO",
     "PaginationResponseWebMenuDTO",
     "PaginationResponseWebpageAccessGrantDTO",
+    "Permissions",
     "Phone",
     "PreviewDTO",
     "PreviewItemDTO",
@@ -519,6 +522,7 @@ from caraer_client.models.app_setting_options_source import AppSettingOptionsSou
 from caraer_client.models.app_settings_section import AppSettingsSection as AppSettingsSection
 from caraer_client.models.app_subcategory_dto import AppSubcategoryDTO as AppSubcategoryDTO
 from caraer_client.models.archived_record_object_dto import ArchivedRecordObjectDTO as ArchivedRecordObjectDTO
+from caraer_client.models.audience import Audience as Audience
 from caraer_client.models.billing_settings_dto import BillingSettingsDTO as BillingSettingsDTO
 from caraer_client.models.bulk_delete_records_data import BulkDeleteRecordsData as BulkDeleteRecordsData
 from caraer_client.models.bulk_delete_records_request import BulkDeleteRecordsRequest as BulkDeleteRecordsRequest
@@ -567,6 +571,7 @@ from caraer_client.models.create_response_signed_url_result_dto import CreateRes
 from caraer_client.models.create_signed_url_request import CreateSignedUrlRequest as CreateSignedUrlRequest
 from caraer_client.models.criterion_score import CriterionScore as CriterionScore
 from caraer_client.models.cross_object_record_search_request import CrossObjectRecordSearchRequest as CrossObjectRecordSearchRequest
+from caraer_client.models.crud_access_context import CrudAccessContext as CrudAccessContext
 from caraer_client.models.currency import Currency as Currency
 from caraer_client.models.currency_range import CurrencyRange as CurrencyRange
 from caraer_client.models.cursor_location import CursorLocation as CursorLocation
@@ -661,6 +666,7 @@ from caraer_client.models.pagination_response_trait_dto import PaginationRespons
 from caraer_client.models.pagination_response_view_dto import PaginationResponseViewDTO as PaginationResponseViewDTO
 from caraer_client.models.pagination_response_web_menu_dto import PaginationResponseWebMenuDTO as PaginationResponseWebMenuDTO
 from caraer_client.models.pagination_response_webpage_access_grant_dto import PaginationResponseWebpageAccessGrantDTO as PaginationResponseWebpageAccessGrantDTO
+from caraer_client.models.permissions import Permissions as Permissions
 from caraer_client.models.phone import Phone as Phone
 from caraer_client.models.preview_dto import PreviewDTO as PreviewDTO
 from caraer_client.models.preview_item_dto import PreviewItemDTO as PreviewItemDTO

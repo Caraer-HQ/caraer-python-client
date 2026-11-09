@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **http_session_id** | **str** |  | [optional] 
 **turn_off_meta_relationships** | **bool** |  | [optional] 
+**http_access_context** | [**CrudAccessContext**](CrudAccessContext.md) |  | [optional] 
 
 ## Example
 
