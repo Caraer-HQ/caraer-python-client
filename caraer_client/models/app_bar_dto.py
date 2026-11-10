@@ -31,6 +31,9 @@ class AppBarDTO(BaseModel):
     """
     Data transfer object for an app bar (location-specific settings and action config)
     """ # noqa: E501
+    navigation_placement: Optional[StrictStr] = Field(default=None, description="TOOL_BAR navigation: SUITE (legacy default) or suite-independent SETTINGS. Omission preserves an existing value.", alias="navigationPlacement")
+    required_user_scopes: Optional[List[StrictStr]] = Field(default=None, description="Literal human caller scopes required for TOOL_BAR discovery and iframe access. Omission preserves; [] clears.", alias="requiredUserScopes")
+    route_aliases: Optional[List[StrictStr]] = Field(default=None, description="Unique unreserved settings-relative route slugs for a SETTINGS tool. Omission preserves; [] clears.", alias="routeAliases")
     uuid: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Unique identifier for the entity")
     name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The name of the entity")
     label: Optional[StrictStr] = Field(default=None, description="Display label for the entity, can be different from name")
@@ -49,7 +52,17 @@ class AppBarDTO(BaseModel):
     action_label: Optional[StrictStr] = Field(default=None, description="Primary button label in the action dialog", alias="actionLabel")
     settings_schema: Optional[List[AppSettingFieldSchema]] = Field(default=None, description="JSON array of AppSettingFieldSchema (field definitions for action locations)", alias="settingsSchema")
     webhook: Optional[SubscribeWebhookDTO] = Field(default=None, description="Webhook configuration for action-based locations")
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "location", "iframeUrl", "icon", "description", "tooltipLabel", "actionLabel", "settingsSchema", "webhook"]
+    __properties: ClassVar[List[str]] = ["navigationPlacement", "requiredUserScopes", "routeAliases", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "location", "iframeUrl", "icon", "description", "tooltipLabel", "actionLabel", "settingsSchema", "webhook"]
+
+    @field_validator('navigation_placement')
+    def navigation_placement_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['SUITE', 'SETTINGS']):
+            raise ValueError("must be one of enum values ('SUITE', 'SETTINGS')")
+        return value
 
     @field_validator('location')
     def location_validate_enum(cls, value):
@@ -130,6 +143,9 @@ class AppBarDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "navigationPlacement": obj.get("navigationPlacement"),
+            "requiredUserScopes": obj.get("requiredUserScopes"),
+            "routeAliases": obj.get("routeAliases"),
             "uuid": obj.get("uuid"),
             "name": obj.get("name"),
             "label": obj.get("label"),

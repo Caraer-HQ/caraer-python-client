@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **client_ref** | **str** | Client reference echoed from the request, if provided. | [optional] 
 **message** | **str** | Summary message for this record&#39;s failure. | [optional] 
 **errors** | [**List[CaraerErrorType]**](CaraerErrorType.md) | Field-level validation errors. | [optional] 
+**record_write_outcome** | **str** | Proof for this item only that its owning record command did not start record/relationship persistence. Other bulk items may have persisted; ancillary file ingestion is not covered. | [optional] 
 
 ## Example
 

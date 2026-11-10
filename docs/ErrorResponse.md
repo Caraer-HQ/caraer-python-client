@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **message** | **str** | The error message providing details about the failure. | [optional] 
 **errors** | [**List[CaraerErrorType]**](CaraerErrorType.md) | A list of error types providing further details about the error. | [optional] 
 **status** | **int** | The HTTP status code associated with the error. | [optional] 
+**record_write_outcome** | **str** | Present only when the owning direct-record command proves record/relationship persistence did not start. Does not imply no file-ingestion side effects or whole-request idempotency. | [optional] 
 **stack_trace** | **str** |  | [optional] 
 **roles** | **List[str]** | Roles the caller is missing when the failure is an authorization error. | [optional] 
 **scopes** | **List[str]** | Scopes the caller is missing when the failure is an authorization error. | [optional] 

@@ -15,7 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import Dict, Optional
 from typing_extensions import Annotated
 from caraer_client.models.caraer_object_dto import CaraerObjectDTO
@@ -932,6 +932,7 @@ class ObjectsApi:
         views: Optional[StrictStr] = None,
         properties: Optional[StrictStr] = None,
         relations: Optional[StrictStr] = None,
+        include_hidden_properties: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -947,7 +948,7 @@ class ObjectsApi:
     ) -> ShowResponseCaraerObjectDTO:
         """Get object by UUID
 
-        Fetches a single object by its UUID. Optional parameters determine whether to include views, properties, and relations in the response.
+        Fetches a single object by its UUID. Optional parameters determine whether to include views, properties, and relations in the response. Hidden property definitions require includeHiddenProperties=true together with properties=true; property read authorization still applies and archived definitions remain excluded.
 
         :param uuid: (required)
         :type uuid: str
@@ -957,6 +958,8 @@ class ObjectsApi:
         :type properties: str
         :param relations:
         :type relations: str
+        :param include_hidden_properties:
+        :type include_hidden_properties: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -984,6 +987,7 @@ class ObjectsApi:
             views=views,
             properties=properties,
             relations=relations,
+            include_hidden_properties=include_hidden_properties,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1015,6 +1019,7 @@ class ObjectsApi:
         views: Optional[StrictStr] = None,
         properties: Optional[StrictStr] = None,
         relations: Optional[StrictStr] = None,
+        include_hidden_properties: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1030,7 +1035,7 @@ class ObjectsApi:
     ) -> ApiResponse[ShowResponseCaraerObjectDTO]:
         """Get object by UUID
 
-        Fetches a single object by its UUID. Optional parameters determine whether to include views, properties, and relations in the response.
+        Fetches a single object by its UUID. Optional parameters determine whether to include views, properties, and relations in the response. Hidden property definitions require includeHiddenProperties=true together with properties=true; property read authorization still applies and archived definitions remain excluded.
 
         :param uuid: (required)
         :type uuid: str
@@ -1040,6 +1045,8 @@ class ObjectsApi:
         :type properties: str
         :param relations:
         :type relations: str
+        :param include_hidden_properties:
+        :type include_hidden_properties: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1067,6 +1074,7 @@ class ObjectsApi:
             views=views,
             properties=properties,
             relations=relations,
+            include_hidden_properties=include_hidden_properties,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1098,6 +1106,7 @@ class ObjectsApi:
         views: Optional[StrictStr] = None,
         properties: Optional[StrictStr] = None,
         relations: Optional[StrictStr] = None,
+        include_hidden_properties: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1113,7 +1122,7 @@ class ObjectsApi:
     ) -> RESTResponseType:
         """Get object by UUID
 
-        Fetches a single object by its UUID. Optional parameters determine whether to include views, properties, and relations in the response.
+        Fetches a single object by its UUID. Optional parameters determine whether to include views, properties, and relations in the response. Hidden property definitions require includeHiddenProperties=true together with properties=true; property read authorization still applies and archived definitions remain excluded.
 
         :param uuid: (required)
         :type uuid: str
@@ -1123,6 +1132,8 @@ class ObjectsApi:
         :type properties: str
         :param relations:
         :type relations: str
+        :param include_hidden_properties:
+        :type include_hidden_properties: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1150,6 +1161,7 @@ class ObjectsApi:
             views=views,
             properties=properties,
             relations=relations,
+            include_hidden_properties=include_hidden_properties,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1176,6 +1188,7 @@ class ObjectsApi:
         views,
         properties,
         relations,
+        include_hidden_properties,
         _request_auth,
         _content_type,
         _headers,
@@ -1211,6 +1224,10 @@ class ObjectsApi:
         if relations is not None:
             
             _query_params.append(('relations', relations))
+            
+        if include_hidden_properties is not None:
+            
+            _query_params.append(('includeHiddenProperties', include_hidden_properties))
             
         # process the header parameters
         # process the form parameters

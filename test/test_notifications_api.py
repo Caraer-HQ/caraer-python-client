@@ -40,6 +40,13 @@ class TestNotificationsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_notification(self) -> None:
+        """Test case for get_notification
+
+        Get an authoritative notification by ID
+        """
+        pass
+
     def test_list_notifications(self) -> None:
         """Test case for list_notifications
 
@@ -61,10 +68,24 @@ class TestNotificationsApi(unittest.TestCase):
         """
         pass
 
+    def test_register_device(self) -> None:
+        """Test case for register_device
+
+        Register this user's native notification device
+        """
+        pass
+
     def test_send_notification(self) -> None:
         """Test case for send_notification
 
         Send a notification (app token)
+        """
+        pass
+
+    def test_unregister_device(self) -> None:
+        """Test case for unregister_device
+
+        Unregister this user's native notification device
         """
         pass
 

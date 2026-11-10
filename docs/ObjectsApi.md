@@ -272,11 +272,11 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_object**
-> ShowResponseCaraerObjectDTO get_object(uuid, views=views, properties=properties, relations=relations)
+> ShowResponseCaraerObjectDTO get_object(uuid, views=views, properties=properties, relations=relations, include_hidden_properties=include_hidden_properties)
 
 Get object by UUID
 
-Fetches a single object by its UUID. Optional parameters determine whether to include views, properties, and relations in the response.
+Fetches a single object by its UUID. Optional parameters determine whether to include views, properties, and relations in the response. Hidden property definitions require includeHiddenProperties=true together with properties=true; property read authorization still applies and archived definitions remain excluded.
 
 ### Example
 
@@ -312,10 +312,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     views = 'false' # str |  (optional) (default to 'false')
     properties = 'false' # str |  (optional) (default to 'false')
     relations = 'false' # str |  (optional) (default to 'false')
+    include_hidden_properties = False # bool |  (optional) (default to False)
 
     try:
         # Get object by UUID
-        api_response = api_instance.get_object(uuid, views=views, properties=properties, relations=relations)
+        api_response = api_instance.get_object(uuid, views=views, properties=properties, relations=relations, include_hidden_properties=include_hidden_properties)
         print("The response of ObjectsApi->get_object:\n")
         pprint(api_response)
     except Exception as e:
@@ -333,6 +334,7 @@ Name | Type | Description  | Notes
  **views** | **str**|  | [optional] [default to &#39;false&#39;]
  **properties** | **str**|  | [optional] [default to &#39;false&#39;]
  **relations** | **str**|  | [optional] [default to &#39;false&#39;]
+ **include_hidden_properties** | **bool**|  | [optional] [default to False]
 
 ### Return type
 

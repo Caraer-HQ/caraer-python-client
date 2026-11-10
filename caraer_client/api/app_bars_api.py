@@ -49,6 +49,7 @@ class AppBarsApi:
         view_id: Annotated[Optional[StrictStr], Field(description="View ID in context")] = None,
         trait: Annotated[Optional[StrictStr], Field(description="Trait name in context")] = None,
         suite: Annotated[Optional[StrictStr], Field(description="Suite selected in the UI. A tool bar is included when this suite is saved on the bar.")] = None,
+        navigation_placement: Annotated[Optional[StrictStr], Field(description="TOOL_BAR placement. Omitted means legacy SUITE; SETTINGS is suite-independent.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -78,6 +79,8 @@ class AppBarsApi:
         :type trait: str
         :param suite: Suite selected in the UI. A tool bar is included when this suite is saved on the bar.
         :type suite: str
+        :param navigation_placement: TOOL_BAR placement. Omitted means legacy SUITE; SETTINGS is suite-independent.
+        :type navigation_placement: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -107,6 +110,7 @@ class AppBarsApi:
             view_id=view_id,
             trait=trait,
             suite=suite,
+            navigation_placement=navigation_placement,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -141,6 +145,7 @@ class AppBarsApi:
         view_id: Annotated[Optional[StrictStr], Field(description="View ID in context")] = None,
         trait: Annotated[Optional[StrictStr], Field(description="Trait name in context")] = None,
         suite: Annotated[Optional[StrictStr], Field(description="Suite selected in the UI. A tool bar is included when this suite is saved on the bar.")] = None,
+        navigation_placement: Annotated[Optional[StrictStr], Field(description="TOOL_BAR placement. Omitted means legacy SUITE; SETTINGS is suite-independent.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -170,6 +175,8 @@ class AppBarsApi:
         :type trait: str
         :param suite: Suite selected in the UI. A tool bar is included when this suite is saved on the bar.
         :type suite: str
+        :param navigation_placement: TOOL_BAR placement. Omitted means legacy SUITE; SETTINGS is suite-independent.
+        :type navigation_placement: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -199,6 +206,7 @@ class AppBarsApi:
             view_id=view_id,
             trait=trait,
             suite=suite,
+            navigation_placement=navigation_placement,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -233,6 +241,7 @@ class AppBarsApi:
         view_id: Annotated[Optional[StrictStr], Field(description="View ID in context")] = None,
         trait: Annotated[Optional[StrictStr], Field(description="Trait name in context")] = None,
         suite: Annotated[Optional[StrictStr], Field(description="Suite selected in the UI. A tool bar is included when this suite is saved on the bar.")] = None,
+        navigation_placement: Annotated[Optional[StrictStr], Field(description="TOOL_BAR placement. Omitted means legacy SUITE; SETTINGS is suite-independent.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -262,6 +271,8 @@ class AppBarsApi:
         :type trait: str
         :param suite: Suite selected in the UI. A tool bar is included when this suite is saved on the bar.
         :type suite: str
+        :param navigation_placement: TOOL_BAR placement. Omitted means legacy SUITE; SETTINGS is suite-independent.
+        :type navigation_placement: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -291,6 +302,7 @@ class AppBarsApi:
             view_id=view_id,
             trait=trait,
             suite=suite,
+            navigation_placement=navigation_placement,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -320,6 +332,7 @@ class AppBarsApi:
         view_id,
         trait,
         suite,
+        navigation_placement,
         _request_auth,
         _content_type,
         _headers,
@@ -365,6 +378,10 @@ class AppBarsApi:
         if suite is not None:
             
             _query_params.append(('suite', suite))
+            
+        if navigation_placement is not None:
+            
+            _query_params.append(('navigationPlacement', navigation_placement))
             
         # process the header parameters
         # process the form parameters

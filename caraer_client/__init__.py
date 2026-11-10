@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.696"
+__version__ = "2.0.701"
 
 # Define package exports
 __all__ = [
@@ -24,6 +24,7 @@ __all__ = [
     "ApplicationsApi",
     "AutomationsApi",
     "BillingApi",
+    "BrowserAuthenticationApi",
     "CMSModulesApi",
     "CMSV2EnvironmentsApi",
     "CMSV2PagesApi",
@@ -39,6 +40,7 @@ __all__ = [
     "FilterApi",
     "FormsApi",
     "ModuleApi",
+    "NavigationApi",
     "NotificationsApi",
     "ObjectsApi",
     "PropertyApi",
@@ -75,6 +77,7 @@ __all__ = [
     "AnalyticsTrendConfig",
     "AnalyticsWidgetConfig",
     "AnalyticsWidgetStyle",
+    "ApiTokenDTO",
     "AppBarDTO",
     "AppBarIframeSessionRequest",
     "AppBarIframeSessionValidateRequest",
@@ -103,6 +106,10 @@ __all__ = [
     "ArchivedRecordObjectDTO",
     "Audience",
     "BillingSettingsDTO",
+    "BrowserAuthExchangeRequest",
+    "BrowserAuthSessionResponse",
+    "BrowserAuthStartRequest",
+    "BrowserAuthStartResponse",
     "BulkDeleteRecordsData",
     "BulkDeleteRecordsRequest",
     "BulkDeleteRecordsResponse",
@@ -168,10 +175,12 @@ __all__ = [
     "Duration",
     "Email",
     "EngagementBatchRequest",
+    "EnsureRelationDTO",
     "ErrorResponse",
     "EventRsvpRequest",
     "ExistingWidgetSummary",
     "ExtendRecordRequest",
+    "FavoriteViewDTO",
     "FeedDTO",
     "File",
     "FileListItemDTO",
@@ -207,9 +216,14 @@ __all__ = [
     "MultiLine",
     "MultiSelect",
     "MultiValueMapStringString",
+    "NavigationDTO",
+    "NavigationObjectDTO",
+    "NavigationViewDTO",
     "NotFoundError",
     "NotFoundErrorCause",
     "NotFoundErrorCauseStackTraceInner",
+    "NotificationDeviceReceipt",
+    "NotificationDeviceRegistration",
     "NotificationInboxDTO",
     "Number",
     "NumberRange",
@@ -217,6 +231,7 @@ __all__ = [
     "ObjectAccessGrantCandidatesDTO",
     "ObjectAccessGrantRequestDTO",
     "ObjectAccessGrantSectionDTO",
+    "ObjectReferenceDTO",
     "PageContentDTO",
     "PageContentSettingsDTO",
     "PageContentStylingDTO",
@@ -245,6 +260,7 @@ __all__ = [
     "PaginationResponseViewDTO",
     "PaginationResponseWebMenuDTO",
     "PaginationResponseWebpageAccessGrantDTO",
+    "Palette",
     "Permissions",
     "Phone",
     "PreviewDTO",
@@ -272,6 +288,14 @@ __all__ = [
     "Reference",
     "RefreshTokenRequest",
     "RegisterRequest",
+    "RelationCapabilities",
+    "RelationCapabilityEdge",
+    "RelationCapabilityEdges",
+    "RelationCapabilityOperation",
+    "RelationCapabilityPair",
+    "RelationCapabilityPairCapability",
+    "RelationCapabilityPrimary",
+    "RelationCapabilityRequest",
     "RelationDTO",
     "RelationEdgeRequestDTO",
     "RelationPillSort",
@@ -303,6 +327,8 @@ __all__ = [
     "ShowResponseAppOAuthStartResponseDTO",
     "ShowResponseAppScheduleDTO",
     "ShowResponseBillingStatusDTO",
+    "ShowResponseBrowserAuthSessionResponse",
+    "ShowResponseBrowserAuthStartResponse",
     "ShowResponseCaraerObjectDTO",
     "ShowResponseCmsEnvironmentDTO",
     "ShowResponseCmsPageDTO",
@@ -312,6 +338,7 @@ __all__ = [
     "ShowResponseDigitalIdentityDTO",
     "ShowResponseFeedDTO",
     "ShowResponseFormDTO",
+    "ShowResponseItem",
     "ShowResponseListAppConnectionStatusDTO",
     "ShowResponseListCmsEnvironmentDTO",
     "ShowResponseListCmsModuleDTO",
@@ -331,6 +358,7 @@ __all__ = [
     "ShowResponseMapStringBoolean",
     "ShowResponseMapStringObject",
     "ShowResponseMapStringString",
+    "ShowResponseNotificationDeviceReceipt",
     "ShowResponseNotificationInboxDTO",
     "ShowResponseObject",
     "ShowResponseObjectAccessGrantCandidatesDTO",
@@ -338,6 +366,7 @@ __all__ = [
     "ShowResponsePreviewDTO",
     "ShowResponsePropertyDTO",
     "ShowResponsePublicFormDTO",
+    "ShowResponseRelationCapabilities",
     "ShowResponseRelationDTO",
     "ShowResponseSavedFilterDTO",
     "ShowResponseServerlessFunctionDTO",
@@ -348,10 +377,12 @@ __all__ = [
     "ShowResponseTraitDTO",
     "ShowResponseViewDTO",
     "ShowResponseWebMenuDTO",
+    "ShowResponseWebpageEditorDefaultsDTO",
     "ShowResponseWebpageMapLocationsDTO",
     "ShowResponseWebpageProtectionInfoDTO",
     "ShowResponseWebsiteSettingsDTO",
     "SignedUrlResultDTO",
+    "SimpleCompanyDTO",
     "SimplePublicCompanyDTO",
     "SingleCheckbox",
     "SingleLine",
@@ -365,6 +396,7 @@ __all__ = [
     "SuccessResponseCalendarBootstrapDTO",
     "SuccessResponseCollectionRelation",
     "SuccessResponseCompanyDTO",
+    "SuccessResponseEnsureRelationDTO",
     "SuccessResponseFeedDTO",
     "SuccessResponseFlow",
     "SuccessResponseListAggregateResponse",
@@ -376,14 +408,17 @@ __all__ = [
     "SuccessResponseListCalendarTeamOptionDTO",
     "SuccessResponseListCaraerObjectDTO",
     "SuccessResponseListDeveloperSandboxDTO",
+    "SuccessResponseListFavoriteViewDTO",
     "SuccessResponseListFileListItemDTO",
     "SuccessResponseListMapStringObject",
+    "SuccessResponseListNavigationViewDTO",
     "SuccessResponseListProjectBuildDTO",
     "SuccessResponseListProjectDeployDTO",
     "SuccessResponseListPropertyDTO",
     "SuccessResponseListString",
     "SuccessResponseMapStringInteger",
     "SuccessResponseMapStringObject",
+    "SuccessResponseNavigationDTO",
     "SuccessResponseObject",
     "SuccessResponseString",
     "SuccessResponseSuggestAnalyticsWidgetsResponse",
@@ -405,16 +440,19 @@ __all__ = [
     "UpdateResponseFeedDTO",
     "Url",
     "UsedInResult",
+    "UserDTO",
     "UserRecordResponseDTO",
     "UserWithCursorLocationDTO",
     "ValidationError",
     "ViewDTO",
+    "ViewNavigationPreferencesRequest",
     "ViewShareRequest",
     "WebMenuDTO",
     "WebMenuItem",
     "WebpageAccessGrantDTO",
     "WebpageDTO",
     "WebpageEditingStatusDTO",
+    "WebpageEditorDefaultsDTO",
     "WebpageMapLocationsDTO",
     "WebpageOptionsDTO",
     "WebpageProtectionInfoDTO",
@@ -441,6 +479,7 @@ from caraer_client.api.app_installation_runtime_api import AppInstallationRuntim
 from caraer_client.api.applications_api import ApplicationsApi as ApplicationsApi
 from caraer_client.api.automations_api import AutomationsApi as AutomationsApi
 from caraer_client.api.billing_api import BillingApi as BillingApi
+from caraer_client.api.browser_authentication_api import BrowserAuthenticationApi as BrowserAuthenticationApi
 from caraer_client.api.cms_modules_api import CMSModulesApi as CMSModulesApi
 from caraer_client.api.cmsv2_environments_api import CMSV2EnvironmentsApi as CMSV2EnvironmentsApi
 from caraer_client.api.cmsv2_pages_api import CMSV2PagesApi as CMSV2PagesApi
@@ -456,6 +495,7 @@ from caraer_client.api.file_management_api import FileManagementApi as FileManag
 from caraer_client.api.filter_api import FilterApi as FilterApi
 from caraer_client.api.forms_api import FormsApi as FormsApi
 from caraer_client.api.module_api import ModuleApi as ModuleApi
+from caraer_client.api.navigation_api import NavigationApi as NavigationApi
 from caraer_client.api.notifications_api import NotificationsApi as NotificationsApi
 from caraer_client.api.objects_api import ObjectsApi as ObjectsApi
 from caraer_client.api.property_api import PropertyApi as PropertyApi
@@ -496,6 +536,7 @@ from caraer_client.models.analytics_series_config import AnalyticsSeriesConfig a
 from caraer_client.models.analytics_trend_config import AnalyticsTrendConfig as AnalyticsTrendConfig
 from caraer_client.models.analytics_widget_config import AnalyticsWidgetConfig as AnalyticsWidgetConfig
 from caraer_client.models.analytics_widget_style import AnalyticsWidgetStyle as AnalyticsWidgetStyle
+from caraer_client.models.api_token_dto import ApiTokenDTO as ApiTokenDTO
 from caraer_client.models.app_bar_dto import AppBarDTO as AppBarDTO
 from caraer_client.models.app_bar_iframe_session_request import AppBarIframeSessionRequest as AppBarIframeSessionRequest
 from caraer_client.models.app_bar_iframe_session_validate_request import AppBarIframeSessionValidateRequest as AppBarIframeSessionValidateRequest
@@ -524,6 +565,10 @@ from caraer_client.models.app_subcategory_dto import AppSubcategoryDTO as AppSub
 from caraer_client.models.archived_record_object_dto import ArchivedRecordObjectDTO as ArchivedRecordObjectDTO
 from caraer_client.models.audience import Audience as Audience
 from caraer_client.models.billing_settings_dto import BillingSettingsDTO as BillingSettingsDTO
+from caraer_client.models.browser_auth_exchange_request import BrowserAuthExchangeRequest as BrowserAuthExchangeRequest
+from caraer_client.models.browser_auth_session_response import BrowserAuthSessionResponse as BrowserAuthSessionResponse
+from caraer_client.models.browser_auth_start_request import BrowserAuthStartRequest as BrowserAuthStartRequest
+from caraer_client.models.browser_auth_start_response import BrowserAuthStartResponse as BrowserAuthStartResponse
 from caraer_client.models.bulk_delete_records_data import BulkDeleteRecordsData as BulkDeleteRecordsData
 from caraer_client.models.bulk_delete_records_request import BulkDeleteRecordsRequest as BulkDeleteRecordsRequest
 from caraer_client.models.bulk_delete_records_response import BulkDeleteRecordsResponse as BulkDeleteRecordsResponse
@@ -589,10 +634,12 @@ from caraer_client.models.digital_identity_dto import DigitalIdentityDTO as Digi
 from caraer_client.models.duration import Duration as Duration
 from caraer_client.models.email import Email as Email
 from caraer_client.models.engagement_batch_request import EngagementBatchRequest as EngagementBatchRequest
+from caraer_client.models.ensure_relation_dto import EnsureRelationDTO as EnsureRelationDTO
 from caraer_client.models.error_response import ErrorResponse as ErrorResponse
 from caraer_client.models.event_rsvp_request import EventRsvpRequest as EventRsvpRequest
 from caraer_client.models.existing_widget_summary import ExistingWidgetSummary as ExistingWidgetSummary
 from caraer_client.models.extend_record_request import ExtendRecordRequest as ExtendRecordRequest
+from caraer_client.models.favorite_view_dto import FavoriteViewDTO as FavoriteViewDTO
 from caraer_client.models.feed_dto import FeedDTO as FeedDTO
 from caraer_client.models.file import File as File
 from caraer_client.models.file_list_item_dto import FileListItemDTO as FileListItemDTO
@@ -628,9 +675,14 @@ from caraer_client.models.multi_file import MultiFile as MultiFile
 from caraer_client.models.multi_line import MultiLine as MultiLine
 from caraer_client.models.multi_select import MultiSelect as MultiSelect
 from caraer_client.models.multi_value_map_string_string import MultiValueMapStringString as MultiValueMapStringString
+from caraer_client.models.navigation_dto import NavigationDTO as NavigationDTO
+from caraer_client.models.navigation_object_dto import NavigationObjectDTO as NavigationObjectDTO
+from caraer_client.models.navigation_view_dto import NavigationViewDTO as NavigationViewDTO
 from caraer_client.models.not_found_error import NotFoundError as NotFoundError
 from caraer_client.models.not_found_error_cause import NotFoundErrorCause as NotFoundErrorCause
 from caraer_client.models.not_found_error_cause_stack_trace_inner import NotFoundErrorCauseStackTraceInner as NotFoundErrorCauseStackTraceInner
+from caraer_client.models.notification_device_receipt import NotificationDeviceReceipt as NotificationDeviceReceipt
+from caraer_client.models.notification_device_registration import NotificationDeviceRegistration as NotificationDeviceRegistration
 from caraer_client.models.notification_inbox_dto import NotificationInboxDTO as NotificationInboxDTO
 from caraer_client.models.number import Number as Number
 from caraer_client.models.number_range import NumberRange as NumberRange
@@ -638,6 +690,7 @@ from caraer_client.models.o_auth_registration_request import OAuthRegistrationRe
 from caraer_client.models.object_access_grant_candidates_dto import ObjectAccessGrantCandidatesDTO as ObjectAccessGrantCandidatesDTO
 from caraer_client.models.object_access_grant_request_dto import ObjectAccessGrantRequestDTO as ObjectAccessGrantRequestDTO
 from caraer_client.models.object_access_grant_section_dto import ObjectAccessGrantSectionDTO as ObjectAccessGrantSectionDTO
+from caraer_client.models.object_reference_dto import ObjectReferenceDTO as ObjectReferenceDTO
 from caraer_client.models.page_content_dto import PageContentDTO as PageContentDTO
 from caraer_client.models.page_content_settings_dto import PageContentSettingsDTO as PageContentSettingsDTO
 from caraer_client.models.page_content_styling_dto import PageContentStylingDTO as PageContentStylingDTO
@@ -666,6 +719,7 @@ from caraer_client.models.pagination_response_trait_dto import PaginationRespons
 from caraer_client.models.pagination_response_view_dto import PaginationResponseViewDTO as PaginationResponseViewDTO
 from caraer_client.models.pagination_response_web_menu_dto import PaginationResponseWebMenuDTO as PaginationResponseWebMenuDTO
 from caraer_client.models.pagination_response_webpage_access_grant_dto import PaginationResponseWebpageAccessGrantDTO as PaginationResponseWebpageAccessGrantDTO
+from caraer_client.models.palette import Palette as Palette
 from caraer_client.models.permissions import Permissions as Permissions
 from caraer_client.models.phone import Phone as Phone
 from caraer_client.models.preview_dto import PreviewDTO as PreviewDTO
@@ -693,6 +747,14 @@ from caraer_client.models.recurrence import Recurrence as Recurrence
 from caraer_client.models.reference import Reference as Reference
 from caraer_client.models.refresh_token_request import RefreshTokenRequest as RefreshTokenRequest
 from caraer_client.models.register_request import RegisterRequest as RegisterRequest
+from caraer_client.models.relation_capabilities import RelationCapabilities as RelationCapabilities
+from caraer_client.models.relation_capability_edge import RelationCapabilityEdge as RelationCapabilityEdge
+from caraer_client.models.relation_capability_edges import RelationCapabilityEdges as RelationCapabilityEdges
+from caraer_client.models.relation_capability_operation import RelationCapabilityOperation as RelationCapabilityOperation
+from caraer_client.models.relation_capability_pair import RelationCapabilityPair as RelationCapabilityPair
+from caraer_client.models.relation_capability_pair_capability import RelationCapabilityPairCapability as RelationCapabilityPairCapability
+from caraer_client.models.relation_capability_primary import RelationCapabilityPrimary as RelationCapabilityPrimary
+from caraer_client.models.relation_capability_request import RelationCapabilityRequest as RelationCapabilityRequest
 from caraer_client.models.relation_dto import RelationDTO as RelationDTO
 from caraer_client.models.relation_edge_request_dto import RelationEdgeRequestDTO as RelationEdgeRequestDTO
 from caraer_client.models.relation_pill_sort import RelationPillSort as RelationPillSort
@@ -724,6 +786,8 @@ from caraer_client.models.show_response_app_inbound_route_dto import ShowRespons
 from caraer_client.models.show_response_app_o_auth_start_response_dto import ShowResponseAppOAuthStartResponseDTO as ShowResponseAppOAuthStartResponseDTO
 from caraer_client.models.show_response_app_schedule_dto import ShowResponseAppScheduleDTO as ShowResponseAppScheduleDTO
 from caraer_client.models.show_response_billing_status_dto import ShowResponseBillingStatusDTO as ShowResponseBillingStatusDTO
+from caraer_client.models.show_response_browser_auth_session_response import ShowResponseBrowserAuthSessionResponse as ShowResponseBrowserAuthSessionResponse
+from caraer_client.models.show_response_browser_auth_start_response import ShowResponseBrowserAuthStartResponse as ShowResponseBrowserAuthStartResponse
 from caraer_client.models.show_response_caraer_object_dto import ShowResponseCaraerObjectDTO as ShowResponseCaraerObjectDTO
 from caraer_client.models.show_response_cms_environment_dto import ShowResponseCmsEnvironmentDTO as ShowResponseCmsEnvironmentDTO
 from caraer_client.models.show_response_cms_page_dto import ShowResponseCmsPageDTO as ShowResponseCmsPageDTO
@@ -733,6 +797,7 @@ from caraer_client.models.show_response_developer_project_dto import ShowRespons
 from caraer_client.models.show_response_digital_identity_dto import ShowResponseDigitalIdentityDTO as ShowResponseDigitalIdentityDTO
 from caraer_client.models.show_response_feed_dto import ShowResponseFeedDTO as ShowResponseFeedDTO
 from caraer_client.models.show_response_form_dto import ShowResponseFormDTO as ShowResponseFormDTO
+from caraer_client.models.show_response_item import ShowResponseItem as ShowResponseItem
 from caraer_client.models.show_response_list_app_connection_status_dto import ShowResponseListAppConnectionStatusDTO as ShowResponseListAppConnectionStatusDTO
 from caraer_client.models.show_response_list_cms_environment_dto import ShowResponseListCmsEnvironmentDTO as ShowResponseListCmsEnvironmentDTO
 from caraer_client.models.show_response_list_cms_module_dto import ShowResponseListCmsModuleDTO as ShowResponseListCmsModuleDTO
@@ -752,6 +817,7 @@ from caraer_client.models.show_response_map_string_analytics_dashboard_config im
 from caraer_client.models.show_response_map_string_boolean import ShowResponseMapStringBoolean as ShowResponseMapStringBoolean
 from caraer_client.models.show_response_map_string_object import ShowResponseMapStringObject as ShowResponseMapStringObject
 from caraer_client.models.show_response_map_string_string import ShowResponseMapStringString as ShowResponseMapStringString
+from caraer_client.models.show_response_notification_device_receipt import ShowResponseNotificationDeviceReceipt as ShowResponseNotificationDeviceReceipt
 from caraer_client.models.show_response_notification_inbox_dto import ShowResponseNotificationInboxDTO as ShowResponseNotificationInboxDTO
 from caraer_client.models.show_response_object import ShowResponseObject as ShowResponseObject
 from caraer_client.models.show_response_object_access_grant_candidates_dto import ShowResponseObjectAccessGrantCandidatesDTO as ShowResponseObjectAccessGrantCandidatesDTO
@@ -759,6 +825,7 @@ from caraer_client.models.show_response_page_content_dto import ShowResponsePage
 from caraer_client.models.show_response_preview_dto import ShowResponsePreviewDTO as ShowResponsePreviewDTO
 from caraer_client.models.show_response_property_dto import ShowResponsePropertyDTO as ShowResponsePropertyDTO
 from caraer_client.models.show_response_public_form_dto import ShowResponsePublicFormDTO as ShowResponsePublicFormDTO
+from caraer_client.models.show_response_relation_capabilities import ShowResponseRelationCapabilities as ShowResponseRelationCapabilities
 from caraer_client.models.show_response_relation_dto import ShowResponseRelationDTO as ShowResponseRelationDTO
 from caraer_client.models.show_response_saved_filter_dto import ShowResponseSavedFilterDTO as ShowResponseSavedFilterDTO
 from caraer_client.models.show_response_serverless_function_dto import ShowResponseServerlessFunctionDTO as ShowResponseServerlessFunctionDTO
@@ -769,10 +836,12 @@ from caraer_client.models.show_response_template_webpage_dto import ShowResponse
 from caraer_client.models.show_response_trait_dto import ShowResponseTraitDTO as ShowResponseTraitDTO
 from caraer_client.models.show_response_view_dto import ShowResponseViewDTO as ShowResponseViewDTO
 from caraer_client.models.show_response_web_menu_dto import ShowResponseWebMenuDTO as ShowResponseWebMenuDTO
+from caraer_client.models.show_response_webpage_editor_defaults_dto import ShowResponseWebpageEditorDefaultsDTO as ShowResponseWebpageEditorDefaultsDTO
 from caraer_client.models.show_response_webpage_map_locations_dto import ShowResponseWebpageMapLocationsDTO as ShowResponseWebpageMapLocationsDTO
 from caraer_client.models.show_response_webpage_protection_info_dto import ShowResponseWebpageProtectionInfoDTO as ShowResponseWebpageProtectionInfoDTO
 from caraer_client.models.show_response_website_settings_dto import ShowResponseWebsiteSettingsDTO as ShowResponseWebsiteSettingsDTO
 from caraer_client.models.signed_url_result_dto import SignedUrlResultDTO as SignedUrlResultDTO
+from caraer_client.models.simple_company_dto import SimpleCompanyDTO as SimpleCompanyDTO
 from caraer_client.models.simple_public_company_dto import SimplePublicCompanyDTO as SimplePublicCompanyDTO
 from caraer_client.models.single_checkbox import SingleCheckbox as SingleCheckbox
 from caraer_client.models.single_line import SingleLine as SingleLine
@@ -786,6 +855,7 @@ from caraer_client.models.success_response_aggregate_response import SuccessResp
 from caraer_client.models.success_response_calendar_bootstrap_dto import SuccessResponseCalendarBootstrapDTO as SuccessResponseCalendarBootstrapDTO
 from caraer_client.models.success_response_collection_relation import SuccessResponseCollectionRelation as SuccessResponseCollectionRelation
 from caraer_client.models.success_response_company_dto import SuccessResponseCompanyDTO as SuccessResponseCompanyDTO
+from caraer_client.models.success_response_ensure_relation_dto import SuccessResponseEnsureRelationDTO as SuccessResponseEnsureRelationDTO
 from caraer_client.models.success_response_feed_dto import SuccessResponseFeedDTO as SuccessResponseFeedDTO
 from caraer_client.models.success_response_flow import SuccessResponseFlow as SuccessResponseFlow
 from caraer_client.models.success_response_list_aggregate_response import SuccessResponseListAggregateResponse as SuccessResponseListAggregateResponse
@@ -797,14 +867,17 @@ from caraer_client.models.success_response_list_calendar_record_dto import Succe
 from caraer_client.models.success_response_list_calendar_team_option_dto import SuccessResponseListCalendarTeamOptionDTO as SuccessResponseListCalendarTeamOptionDTO
 from caraer_client.models.success_response_list_caraer_object_dto import SuccessResponseListCaraerObjectDTO as SuccessResponseListCaraerObjectDTO
 from caraer_client.models.success_response_list_developer_sandbox_dto import SuccessResponseListDeveloperSandboxDTO as SuccessResponseListDeveloperSandboxDTO
+from caraer_client.models.success_response_list_favorite_view_dto import SuccessResponseListFavoriteViewDTO as SuccessResponseListFavoriteViewDTO
 from caraer_client.models.success_response_list_file_list_item_dto import SuccessResponseListFileListItemDTO as SuccessResponseListFileListItemDTO
 from caraer_client.models.success_response_list_map_string_object import SuccessResponseListMapStringObject as SuccessResponseListMapStringObject
+from caraer_client.models.success_response_list_navigation_view_dto import SuccessResponseListNavigationViewDTO as SuccessResponseListNavigationViewDTO
 from caraer_client.models.success_response_list_project_build_dto import SuccessResponseListProjectBuildDTO as SuccessResponseListProjectBuildDTO
 from caraer_client.models.success_response_list_project_deploy_dto import SuccessResponseListProjectDeployDTO as SuccessResponseListProjectDeployDTO
 from caraer_client.models.success_response_list_property_dto import SuccessResponseListPropertyDTO as SuccessResponseListPropertyDTO
 from caraer_client.models.success_response_list_string import SuccessResponseListString as SuccessResponseListString
 from caraer_client.models.success_response_map_string_integer import SuccessResponseMapStringInteger as SuccessResponseMapStringInteger
 from caraer_client.models.success_response_map_string_object import SuccessResponseMapStringObject as SuccessResponseMapStringObject
+from caraer_client.models.success_response_navigation_dto import SuccessResponseNavigationDTO as SuccessResponseNavigationDTO
 from caraer_client.models.success_response_object import SuccessResponseObject as SuccessResponseObject
 from caraer_client.models.success_response_string import SuccessResponseString as SuccessResponseString
 from caraer_client.models.success_response_suggest_analytics_widgets_response import SuccessResponseSuggestAnalyticsWidgetsResponse as SuccessResponseSuggestAnalyticsWidgetsResponse
@@ -826,16 +899,19 @@ from caraer_client.models.update_response import UpdateResponse as UpdateRespons
 from caraer_client.models.update_response_feed_dto import UpdateResponseFeedDTO as UpdateResponseFeedDTO
 from caraer_client.models.url import Url as Url
 from caraer_client.models.used_in_result import UsedInResult as UsedInResult
+from caraer_client.models.user_dto import UserDTO as UserDTO
 from caraer_client.models.user_record_response_dto import UserRecordResponseDTO as UserRecordResponseDTO
 from caraer_client.models.user_with_cursor_location_dto import UserWithCursorLocationDTO as UserWithCursorLocationDTO
 from caraer_client.models.validation_error import ValidationError as ValidationError
 from caraer_client.models.view_dto import ViewDTO as ViewDTO
+from caraer_client.models.view_navigation_preferences_request import ViewNavigationPreferencesRequest as ViewNavigationPreferencesRequest
 from caraer_client.models.view_share_request import ViewShareRequest as ViewShareRequest
 from caraer_client.models.web_menu_dto import WebMenuDTO as WebMenuDTO
 from caraer_client.models.web_menu_item import WebMenuItem as WebMenuItem
 from caraer_client.models.webpage_access_grant_dto import WebpageAccessGrantDTO as WebpageAccessGrantDTO
 from caraer_client.models.webpage_dto import WebpageDTO as WebpageDTO
 from caraer_client.models.webpage_editing_status_dto import WebpageEditingStatusDTO as WebpageEditingStatusDTO
+from caraer_client.models.webpage_editor_defaults_dto import WebpageEditorDefaultsDTO as WebpageEditorDefaultsDTO
 from caraer_client.models.webpage_map_locations_dto import WebpageMapLocationsDTO as WebpageMapLocationsDTO
 from caraer_client.models.webpage_options_dto import WebpageOptionsDTO as WebpageOptionsDTO
 from caraer_client.models.webpage_protection_info_dto import WebpageProtectionInfoDTO as WebpageProtectionInfoDTO

@@ -37,6 +37,8 @@ class TestShowResponseAppDTO(unittest.TestCase):
             return ShowResponseAppDTO(
                 message = 'Success',
                 data = caraer_client.models.app_dto.AppDTO(
+                    brandmark_reference = '', 
+                    image_reference = '', 
                     uuid = '0', 
                     name = '0', 
                     label = '', 
@@ -52,6 +54,13 @@ class TestShowResponseAppDTO(unittest.TestCase):
                     details = null, 
                     app_bars = [
                         caraer_client.models.app_bar_dto.AppBarDTO(
+                            navigation_placement = 'SUITE', 
+                            required_user_scopes = [
+                                ''
+                                ], 
+                            route_aliases = [
+                                ''
+                                ], 
                             uuid = '0', 
                             name = '0', 
                             label = '', 
@@ -189,8 +198,8 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                                     ], 
                                                 record_target = True, ), 
                                             value_scope = '', 
-                                            action = True, 
                                             settings_group = True, 
+                                            action = True, 
                                             filter_property_types = [
                                                 ''
                                                 ], 
@@ -289,8 +298,8 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                                     ], 
                                                 record_target = True, ), 
                                             value_scope = '', 
-                                            action = True, 
                                             settings_group = True, 
+                                            action = True, 
                                             filter_property_types = [
                                                 ''
                                                 ], 
@@ -329,8 +338,8 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                             ], 
                                         record_target = True, ), 
                                     value_scope = '', 
-                                    action = True, 
                                     settings_group = True, 
+                                    action = True, 
                                     filter_property_types = [
                                         ''
                                         ], 
@@ -484,8 +493,8 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                             ], 
                                         record_target = True, ), 
                                     value_scope = '', 
-                                    action = True, 
                                     settings_group = True, 
+                                    action = True, 
                                     filter_property_types = [
                                         ''
                                         ], 
@@ -584,8 +593,8 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                             ], 
                                         record_target = True, ), 
                                     value_scope = '', 
-                                    action = True, 
                                     settings_group = True, 
+                                    action = True, 
                                     filter_property_types = [
                                         ''
                                         ], 
@@ -624,8 +633,8 @@ class TestShowResponseAppDTO(unittest.TestCase):
                                     ], 
                                 record_target = True, ), 
                             value_scope = '', 
-                            action = True, 
                             settings_group = True, 
+                            action = True, 
                             filter_property_types = [
                                 ''
                                 ], 

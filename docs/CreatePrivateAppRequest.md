@@ -6,6 +6,8 @@ Private app creator manifest; label is required and internal name is optional
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**brandmark_reference** | **str** | Stable creator input for brandmark; display uses brandmark URL | [optional] [readonly] 
+**image_reference** | **str** | Stable creator input for details.image; display uses image URL | [optional] [readonly] 
 **uuid** | **str** | Unique identifier for the entity | 
 **name** | **str** | The name of the entity | 
 **label** | **str** | Display label for the entity, can be different from name | 

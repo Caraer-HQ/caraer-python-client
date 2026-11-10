@@ -9,11 +9,13 @@ Method | HTTP request | Description
 [**archived_objects**](RecordsApi.md#archived_objects) | **GET** /api/v2/records/archived/objects | List objects with visible archived records
 [**bulk_delete**](RecordsApi.md#bulk_delete) | **POST** /api/v2/records/{objectName}/bulk-delete | Bulk delete records
 [**bulk_edit**](RecordsApi.md#bulk_edit) | **PUT** /api/v2/records/{objectName}/bulk | Bulk create or update records
+[**capabilities**](RecordsApi.md#capabilities) | **POST** /api/v2/records/relations/capabilities | Inspect bounded record relation operations
 [**create**](RecordsApi.md#create) | **POST** /api/v2/records/{objectName} | Create a new record
 [**create_or_update**](RecordsApi.md#create_or_update) | **POST** /api/v2/records/{objectName}/createOrUpdate | Create or update a record
 [**create_relation**](RecordsApi.md#create_relation) | **POST** /api/v2/records/relations/{fromUuid}/{relationName}/{toUuid} | Create a relation between records
 [**delete**](RecordsApi.md#delete) | **DELETE** /api/v2/records/{uuid} | Delete a record
 [**delete_relation**](RecordsApi.md#delete_relation) | **DELETE** /api/v2/records/relations/{fromUuid}/{relationName}/{toUuid} | Delete a relation between records
+[**ensure**](RecordsApi.md#ensure) | **PUT** /api/v2/records/relations/{fromUuid}/{relationName}/{toUuid} | Ensure a relation without changing an existing edge
 [**extend**](RecordsApi.md#extend) | **POST** /api/v2/records/{uuid}/extend | Extend a record
 [**index**](RecordsApi.md#index) | **POST** /api/v2/records/index | Fetch paginated records
 [**index_flow**](RecordsApi.md#index_flow) | **POST** /api/v2/records/index/flow | Fetch records for flow view
@@ -446,6 +448,89 @@ Name | Type | Description  | Notes
 **201** | All records saved successfully |  -  |
 **200** | Partial success with per-record validation errors |  -  |
 **400** | Invalid request |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **capabilities**
+> ShowResponseRelationCapabilities capabilities(relation_capability_request)
+
+Inspect bounded record relation operations
+
+Read-only current eligibility for up to 50 explicit pairs. Uses ordinary record visibility and named-relation scopes; never a mutation grant. Unavailable items disclose no edge state.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.relation_capability_request import RelationCapabilityRequest
+from caraer_client.models.show_response_relation_capabilities import ShowResponseRelationCapabilities
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.RecordsApi(api_client)
+    relation_capability_request = caraer_client.RelationCapabilityRequest() # RelationCapabilityRequest | 
+
+    try:
+        # Inspect bounded record relation operations
+        api_response = api_instance.capabilities(relation_capability_request)
+        print("The response of RecordsApi->capabilities:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling RecordsApi->capabilities: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **relation_capability_request** | [**RelationCapabilityRequest**](RelationCapabilityRequest.md)|  | 
+
+### Return type
+
+[**ShowResponseRelationCapabilities**](ShowResponseRelationCapabilities.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 **401** | Authentication is required or the token is invalid. |  -  |
 **403** | The caller is missing a required role or scope. |  -  |
 **404** | The requested resource was not found. |  -  |
@@ -896,6 +981,92 @@ Name | Type | Description  | Notes
 **500** | Internal server error |  -  |
 **401** | Authentication is required or the token is invalid. |  -  |
 **403** | The caller is missing a required role or scope. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ensure**
+> SuccessResponseEnsureRelationDTO ensure(from_uuid, relation_name, to_uuid)
+
+Ensure a relation without changing an existing edge
+
+Bodyless atomic ensure-link using ordinary record reads, relation normalization, immutability and exact relation-write scopes. Existing edges retain all properties and primary flags. New edges are non-primary. No edge-property/primary settings are accepted by this operation; use the existing POST/PATCH operations to change edge values. Receipt identities echo request endpoints.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.success_response_ensure_relation_dto import SuccessResponseEnsureRelationDTO
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.RecordsApi(api_client)
+    from_uuid = 'from_uuid_example' # str | 
+    relation_name = 'relation_name_example' # str | 
+    to_uuid = 'to_uuid_example' # str | 
+
+    try:
+        # Ensure a relation without changing an existing edge
+        api_response = api_instance.ensure(from_uuid, relation_name, to_uuid)
+        print("The response of RecordsApi->ensure:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling RecordsApi->ensure: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from_uuid** | **str**|  | 
+ **relation_name** | **str**|  | 
+ **to_uuid** | **str**|  | 
+
+### Return type
+
+[**SuccessResponseEnsureRelationDTO**](SuccessResponseEnsureRelationDTO.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

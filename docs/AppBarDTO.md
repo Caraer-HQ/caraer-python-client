@@ -6,6 +6,9 @@ Data transfer object for an app bar (location-specific settings and action confi
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**navigation_placement** | **str** | TOOL_BAR navigation: SUITE (legacy default) or suite-independent SETTINGS. Omission preserves an existing value. | [optional] 
+**required_user_scopes** | **List[str]** | Literal human caller scopes required for TOOL_BAR discovery and iframe access. Omission preserves; [] clears. | [optional] 
+**route_aliases** | **List[str]** | Unique unreserved settings-relative route slugs for a SETTINGS tool. Omission preserves; [] clears. | [optional] 
 **uuid** | **str** | Unique identifier for the entity | 
 **name** | **str** | The name of the entity | 
 **label** | **str** | Display label for the entity, can be different from name | [optional] 

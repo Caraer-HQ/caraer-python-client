@@ -35,6 +35,8 @@ class TestAppBarIframeSessionRequest(unittest.TestCase):
         model = AppBarIframeSessionRequest()
         if include_optional:
             return AppBarIframeSessionRequest(
+                suite = '',
+                navigation_placement = 'SUITE',
                 object = '',
                 record_uuid = '',
                 view_id = '',

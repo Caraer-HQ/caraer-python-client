@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from caraer_client.models.caraer_error_type import CaraerErrorType
 from typing import Optional, Set
@@ -32,7 +32,18 @@ class BulkEditRecordErrorItem(BaseModel):
     client_ref: Optional[StrictStr] = Field(default=None, description="Client reference echoed from the request, if provided.", alias="clientRef")
     message: Optional[StrictStr] = Field(default=None, description="Summary message for this record's failure.")
     errors: Optional[List[CaraerErrorType]] = Field(default=None, description="Field-level validation errors.")
-    __properties: ClassVar[List[str]] = ["uuid", "clientRef", "message", "errors"]
+    record_write_outcome: Optional[StrictStr] = Field(default=None, description="Proof for this item only that its owning record command did not start record/relationship persistence. Other bulk items may have persisted; ancillary file ingestion is not covered.", alias="recordWriteOutcome")
+    __properties: ClassVar[List[str]] = ["uuid", "clientRef", "message", "errors", "recordWriteOutcome"]
+
+    @field_validator('record_write_outcome')
+    def record_write_outcome_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['NOT_STARTED']):
+            raise ValueError("must be one of enum values ('NOT_STARTED')")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -94,7 +105,8 @@ class BulkEditRecordErrorItem(BaseModel):
             "uuid": obj.get("uuid"),
             "clientRef": obj.get("clientRef"),
             "message": obj.get("message"),
-            "errors": [CaraerErrorType.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None
+            "errors": [CaraerErrorType.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
+            "recordWriteOutcome": obj.get("recordWriteOutcome")
         })
         return _obj
 

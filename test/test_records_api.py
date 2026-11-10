@@ -61,6 +61,13 @@ class TestRecordsApi(unittest.TestCase):
         """
         pass
 
+    def test_capabilities(self) -> None:
+        """Test case for capabilities
+
+        Inspect bounded record relation operations
+        """
+        pass
+
     def test_create(self) -> None:
         """Test case for create
 
@@ -93,6 +100,13 @@ class TestRecordsApi(unittest.TestCase):
         """Test case for delete_relation
 
         Delete a relation between records
+        """
+        pass
+
+    def test_ensure(self) -> None:
+        """Test case for ensure
+
+        Ensure a relation without changing an existing edge
         """
         pass
 

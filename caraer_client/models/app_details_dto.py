@@ -32,6 +32,7 @@ class AppDetailsDTO(BaseModel):
     title: Optional[StrictStr] = None
     description: Optional[StrictStr] = Field(default=None, description="Short marketplace description shown on app cards and detail pages")
     image: Optional[StrictStr] = None
+    image_reference: Optional[StrictStr] = Field(default=None, description="Stable creator input for image; never persist a signed display URL", alias="imageReference")
     brand_color: Optional[StrictStr] = Field(default=None, description="Hex accent color (#RRGGBB) for installed app-bar action buttons and toolbar icons", alias="brandColor", json_schema_extra={"examples": ["#E74363"]})
     text_color: Optional[StrictStr] = Field(default=None, description="Hex text color (#RRGGBB) for text on brand-colored marketplace UI elements", alias="textColor", json_schema_extra={"examples": ["#FFFFFF"]})
     url: Optional[StrictStr] = None
@@ -51,7 +52,7 @@ class AppDetailsDTO(BaseModel):
     deleted_at: Optional[StrictInt] = Field(default=None, description="Unix timestamp when the entity was deleted (null if not deleted)", alias="deletedAt")
     deleted_by: Optional[Record] = Field(default=None, description="Identifier of the user who deleted the entity", alias="deletedBy")
     index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
-    __properties: ClassVar[List[str]] = ["title", "description", "image", "brandColor", "textColor", "url", "category", "subcategories", "privacyPolicy", "termsAndConditions", "processingAgreement", "disclaimer", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index"]
+    __properties: ClassVar[List[str]] = ["title", "description", "image", "imageReference", "brandColor", "textColor", "url", "category", "subcategories", "privacyPolicy", "termsAndConditions", "processingAgreement", "disclaimer", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -83,8 +84,10 @@ class AppDetailsDTO(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "image_reference",
         ])
 
         _dict = self.model_dump(
@@ -116,6 +119,7 @@ class AppDetailsDTO(BaseModel):
             "title": obj.get("title"),
             "description": obj.get("description"),
             "image": obj.get("image"),
+            "imageReference": obj.get("imageReference"),
             "brandColor": obj.get("brandColor"),
             "textColor": obj.get("textColor"),
             "url": obj.get("url"),

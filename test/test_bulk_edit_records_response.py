@@ -53,7 +53,8 @@ class TestBulkEditRecordsResponse(unittest.TestCase):
                                 message = 'Invalid file type.', 
                                 type = 'INVALID_FILE_TYPE', 
                                 correction_suggestion = 'Try uploading a different file type.', )
-                            ], )
+                            ], 
+                        record_write_outcome = 'NOT_STARTED', )
                     ]
             )
         else:

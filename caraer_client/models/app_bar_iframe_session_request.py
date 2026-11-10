@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,12 +27,24 @@ class AppBarIframeSessionRequest(BaseModel):
     """
     Request body for creating an iframe session token
     """ # noqa: E501
+    suite: Optional[StrictStr] = Field(default=None, description="Selected suite for explicit SUITE tool requests; omitted legacy requests retain configured-suite behavior")
+    navigation_placement: Optional[StrictStr] = Field(default=None, description="Explicit TOOL_BAR placement; must match the stored descriptor", alias="navigationPlacement")
     object: Optional[StrictStr] = Field(default=None, description="Object name in context")
     record_uuid: Optional[StrictStr] = Field(default=None, description="UUID of the record in context", alias="recordUuid")
     view_id: Optional[StrictStr] = Field(default=None, description="View ID in context", alias="viewId")
     trait: Optional[StrictStr] = Field(default=None, description="Trait name in context")
     view_data: Optional[Dict[str, Any]] = Field(default=None, description="Current view data for rebuilding the active index", alias="viewData")
-    __properties: ClassVar[List[str]] = ["object", "recordUuid", "viewId", "trait", "viewData"]
+    __properties: ClassVar[List[str]] = ["suite", "navigationPlacement", "object", "recordUuid", "viewId", "trait", "viewData"]
+
+    @field_validator('navigation_placement')
+    def navigation_placement_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['SUITE', 'SETTINGS']):
+            raise ValueError("must be one of enum values ('SUITE', 'SETTINGS')")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,6 +97,8 @@ class AppBarIframeSessionRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "suite": obj.get("suite"),
+            "navigationPlacement": obj.get("navigationPlacement"),
             "object": obj.get("object"),
             "recordUuid": obj.get("recordUuid"),
             "viewId": obj.get("viewId"),

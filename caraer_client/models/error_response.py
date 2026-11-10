@@ -31,11 +31,22 @@ class ErrorResponse(BaseModel):
     message: Optional[StrictStr] = Field(default=None, description="The error message providing details about the failure.", json_schema_extra={"examples": ["Resource not found."]})
     errors: Optional[List[CaraerErrorType]] = Field(default=None, description="A list of error types providing further details about the error.")
     status: Optional[StrictInt] = Field(default=None, description="The HTTP status code associated with the error.", json_schema_extra={"examples": [400]})
+    record_write_outcome: Optional[StrictStr] = Field(default=None, description="Present only when the owning direct-record command proves record/relationship persistence did not start. Does not imply no file-ingestion side effects or whole-request idempotency.", alias="recordWriteOutcome")
     stack_trace: Optional[StrictStr] = Field(default=None, alias="stackTrace")
     roles: Optional[List[StrictStr]] = Field(default=None, description="Roles the caller is missing when the failure is an authorization error.")
     scopes: Optional[List[StrictStr]] = Field(default=None, description="Scopes the caller is missing when the failure is an authorization error.")
     request_id: Optional[StrictStr] = Field(default=None, description="Request correlation ID for support and log tracing.", alias="requestId", json_schema_extra={"examples": ["a1b2c3d4-e5f6-7890-abcd-ef1234567890"]})
-    __properties: ClassVar[List[str]] = ["message", "errors", "status", "stackTrace", "roles", "scopes", "requestId"]
+    __properties: ClassVar[List[str]] = ["message", "errors", "status", "recordWriteOutcome", "stackTrace", "roles", "scopes", "requestId"]
+
+    @field_validator('record_write_outcome')
+    def record_write_outcome_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['NOT_STARTED']):
+            raise ValueError("must be one of enum values ('NOT_STARTED')")
+        return value
 
     @field_validator('roles')
     def roles_validate_enum(cls, value):
@@ -108,6 +119,7 @@ class ErrorResponse(BaseModel):
             "message": obj.get("message"),
             "errors": [CaraerErrorType.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
             "status": obj.get("status"),
+            "recordWriteOutcome": obj.get("recordWriteOutcome"),
             "stackTrace": obj.get("stackTrace"),
             "roles": obj.get("roles"),
             "scopes": obj.get("scopes"),

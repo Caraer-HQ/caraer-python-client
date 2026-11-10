@@ -6,6 +6,8 @@ Request body for creating an iframe session token
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**suite** | **str** | Selected suite for explicit SUITE tool requests; omitted legacy requests retain configured-suite behavior | [optional] 
+**navigation_placement** | **str** | Explicit TOOL_BAR placement; must match the stored descriptor | [optional] 
 **object** | **str** | Object name in context | [optional] 
 **record_uuid** | **str** | UUID of the record in context | [optional] 
 **view_id** | **str** | View ID in context | [optional] 

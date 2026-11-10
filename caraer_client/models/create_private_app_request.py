@@ -38,6 +38,8 @@ class CreatePrivateAppRequest(BaseModel):
     """
     Private app creator manifest; label is required and internal name is optional
     """ # noqa: E501
+    brandmark_reference: Optional[StrictStr] = Field(default=None, description="Stable creator input for brandmark; display uses brandmark URL", alias="brandmarkReference")
+    image_reference: Optional[StrictStr] = Field(default=None, description="Stable creator input for details.image; display uses image URL", alias="imageReference")
     uuid: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Unique identifier for the entity")
     name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The name of the entity")
     label: StrictStr = Field(description="Display label for the entity, can be different from name")
@@ -87,7 +89,7 @@ class CreatePrivateAppRequest(BaseModel):
     runtime_status: Optional[StrictStr] = Field(default=None, description="V2 runtime status: PENDING, PROVISIONING, READY, FAILED", alias="runtimeStatus")
     runtime_error: Optional[StrictStr] = Field(default=None, description="Last V2 runtime error message when FAILED", alias="runtimeError")
     runtime_generation: Optional[StrictInt] = Field(default=None, description="Monotonic generation for async runtime jobs", alias="runtimeGeneration")
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "privateApp", "hideApiKeyField", "details", "appBars", "serverlessFunctions", "installWebhook", "uninstallWebhook", "rotateWebhook", "updateWebhook", "settingsSchema", "settingsSections", "externalOAuthProviders", "webhookRateLimitPerMinute", "jobRateLimitPerMinute", "appPublish", "hasApp", "image", "url", "category", "installed", "requiredScopes", "resolvedRequiredScopes", "authMethod", "oauthClientId", "oauthClientSecret", "oauthClientSecretConfigured", "oauthRedirectUris", "oauthAuthorizeUrl", "oauthTokenUrl", "installUrl", "brandmark", "description", "platformVersion", "runtime", "runtimeBaseUrl", "runtimeRevision", "runtimeStatus", "runtimeError", "runtimeGeneration"]
+    __properties: ClassVar[List[str]] = ["brandmarkReference", "imageReference", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "privateApp", "hideApiKeyField", "details", "appBars", "serverlessFunctions", "installWebhook", "uninstallWebhook", "rotateWebhook", "updateWebhook", "settingsSchema", "settingsSections", "externalOAuthProviders", "webhookRateLimitPerMinute", "jobRateLimitPerMinute", "appPublish", "hasApp", "image", "url", "category", "installed", "requiredScopes", "resolvedRequiredScopes", "authMethod", "oauthClientId", "oauthClientSecret", "oauthClientSecretConfigured", "oauthRedirectUris", "oauthAuthorizeUrl", "oauthTokenUrl", "installUrl", "brandmark", "description", "platformVersion", "runtime", "runtimeBaseUrl", "runtimeRevision", "runtimeStatus", "runtimeError", "runtimeGeneration"]
 
     @field_validator('auth_method')
     def auth_method_validate_enum(cls, value):
@@ -129,8 +131,12 @@ class CreatePrivateAppRequest(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "brandmark_reference",
+            "image_reference",
         ])
 
         _dict = self.model_dump(
@@ -210,6 +216,8 @@ class CreatePrivateAppRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "brandmarkReference": obj.get("brandmarkReference"),
+            "imageReference": obj.get("imageReference"),
             "uuid": obj.get("uuid"),
             "name": obj.get("name"),
             "label": obj.get("label"),

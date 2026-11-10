@@ -7,6 +7,7 @@ from caraer_client.api.app_installation_runtime_api import AppInstallationRuntim
 from caraer_client.api.applications_api import ApplicationsApi
 from caraer_client.api.automations_api import AutomationsApi
 from caraer_client.api.billing_api import BillingApi
+from caraer_client.api.browser_authentication_api import BrowserAuthenticationApi
 from caraer_client.api.cms_modules_api import CMSModulesApi
 from caraer_client.api.cmsv2_environments_api import CMSV2EnvironmentsApi
 from caraer_client.api.cmsv2_pages_api import CMSV2PagesApi
@@ -22,6 +23,7 @@ from caraer_client.api.file_management_api import FileManagementApi
 from caraer_client.api.filter_api import FilterApi
 from caraer_client.api.forms_api import FormsApi
 from caraer_client.api.module_api import ModuleApi
+from caraer_client.api.navigation_api import NavigationApi
 from caraer_client.api.notifications_api import NotificationsApi
 from caraer_client.api.objects_api import ObjectsApi
 from caraer_client.api.property_api import PropertyApi

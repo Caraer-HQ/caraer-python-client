@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **title** | **str** |  | [optional] 
 **description** | **str** | Short marketplace description shown on app cards and detail pages | [optional] 
 **image** | **str** |  | [optional] 
+**image_reference** | **str** | Stable creator input for image; never persist a signed display URL | [optional] [readonly] 
 **brand_color** | **str** | Hex accent color (#RRGGBB) for installed app-bar action buttons and toolbar icons | [optional] 
 **text_color** | **str** | Hex text color (#RRGGBB) for text on brand-colored marketplace UI elements | [optional] 
 **url** | **str** |  | [optional] 

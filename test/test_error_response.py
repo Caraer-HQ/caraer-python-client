@@ -43,6 +43,7 @@ class TestErrorResponse(unittest.TestCase):
                         correction_suggestion = 'Try uploading a different file type.', )
                     ],
                 status = 400,
+                record_write_outcome = 'NOT_STARTED',
                 stack_trace = '',
                 roles = [
                     'USER'

@@ -215,6 +215,13 @@ class TestWebpagesApi(unittest.TestCase):
         """
         pass
 
+    def test_page(self) -> None:
+        """Test case for page
+
+        Get authorized webpage editor defaults
+        """
+        pass
+
     def test_publish_file(self) -> None:
         """Test case for publish_file
 
@@ -247,6 +254,13 @@ class TestWebpagesApi(unittest.TestCase):
         """Test case for revoke_protection_grant
 
         Revoke a signed URL grant
+        """
+        pass
+
+    def test_template(self) -> None:
+        """Test case for template
+
+        Get authorized template editor defaults
         """
         pass
 

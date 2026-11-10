@@ -31,11 +31,13 @@ Method | HTTP request | Description
 [**get_webpage_editing_status**](WebpagesApi.md#get_webpage_editing_status) | **GET** /api/v2/webpages/{uuid}/editing-status | Check if a webpage is being edited
 [**get_webpage_picker_pages**](WebpagesApi.md#get_webpage_picker_pages) | **GET** /api/v2/webpages/picker/pages | List webpages for picker dropdowns
 [**list_protection_grants**](WebpagesApi.md#list_protection_grants) | **GET** /api/v2/webpages/{uuid}/protection/grants | List signed URL grants for a webpage
+[**page**](WebpagesApi.md#page) | **GET** /api/v2/webpages/{uuid}/editor-defaults | Get authorized webpage editor defaults
 [**publish_file**](WebpagesApi.md#publish_file) | **POST** /api/v2/webpages/publishFile | Public URL for a library file
 [**publish_webpage**](WebpagesApi.md#publish_webpage) | **PUT** /api/v2/webpages/{uuid}/publish | Publish a webpage
 [**release_template_webpage_editing_session**](WebpagesApi.md#release_template_webpage_editing_session) | **DELETE** /api/v2/webpages/template/{objectName}/{environment}/editing-session | Release a template webpage editing session
 [**release_webpage_editing_session**](WebpagesApi.md#release_webpage_editing_session) | **DELETE** /api/v2/webpages/{uuid}/editing-session | Release a webpage editing session
 [**revoke_protection_grant**](WebpagesApi.md#revoke_protection_grant) | **DELETE** /api/v2/webpages/{uuid}/protection/grants/{grantUuid} | Revoke a signed URL grant
+[**template**](WebpagesApi.md#template) | **GET** /api/v2/webpages/template/{objectName}/{environment}/editor-defaults | Get authorized template editor defaults
 [**unlock_public_webpage**](WebpagesApi.md#unlock_public_webpage) | **POST** /api/v2/webpages/public/uuid/{uuid}/unlock | Unlock password-protected webpage
 [**unpublish_webpage**](WebpagesApi.md#unpublish_webpage) | **PUT** /api/v2/webpages/{uuid}/unpublish | Unpublish a webpage
 [**update_webpage**](WebpagesApi.md#update_webpage) | **PUT** /api/v2/webpages/{uuid} | Update a webpage
@@ -2401,6 +2403,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **page**
+> ShowResponseWebpageEditorDefaultsDTO page(uuid, environment=environment)
+
+Get authorized webpage editor defaults
+
+Returns only public component styling, color tokens and custom fonts for the selected company. Uses the same page, record and environment-property read checks as reading this webpage; company administration access is not required.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response_webpage_editor_defaults_dto import ShowResponseWebpageEditorDefaultsDTO
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.WebpagesApi(api_client)
+    uuid = 'uuid_example' # str | 
+    environment = 'staging' # str |  (optional) (default to 'staging')
+
+    try:
+        # Get authorized webpage editor defaults
+        api_response = api_instance.page(uuid, environment=environment)
+        print("The response of WebpagesApi->page:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WebpagesApi->page: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**|  | 
+ **environment** | **str**|  | [optional] [default to &#39;staging&#39;]
+
+### Return type
+
+[**ShowResponseWebpageEditorDefaultsDTO**](ShowResponseWebpageEditorDefaultsDTO.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **publish_file**
 > SuccessResponseString publish_file(key)
 
@@ -2798,6 +2884,90 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SuccessResponseString**](SuccessResponseString.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **template**
+> ShowResponseWebpageEditorDefaultsDTO template(object_name, environment)
+
+Get authorized template editor defaults
+
+Returns only public component styling, color tokens and custom fonts for the selected company after its ordinary template-read and tenant object/template resolution checks. No template, lease, company setting or publication is changed.
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response_webpage_editor_defaults_dto import ShowResponseWebpageEditorDefaultsDTO
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.WebpagesApi(api_client)
+    object_name = 'object_name_example' # str | 
+    environment = 'environment_example' # str | 
+
+    try:
+        # Get authorized template editor defaults
+        api_response = api_instance.template(object_name, environment)
+        print("The response of WebpagesApi->template:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WebpagesApi->template: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **object_name** | **str**|  | 
+ **environment** | **str**|  | 
+
+### Return type
+
+[**ShowResponseWebpageEditorDefaultsDTO**](ShowResponseWebpageEditorDefaultsDTO.md)
 
 ### Authorization
 
