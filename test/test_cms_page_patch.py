@@ -37,6 +37,7 @@ class TestCmsPagePatch(unittest.TestCase):
             return CmsPagePatch(
                 op = '',
                 module_id = '',
+                expected_module = '',
                 ref = '',
                 var_field = '',
                 value = None,

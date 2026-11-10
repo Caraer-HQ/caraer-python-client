@@ -44,8 +44,8 @@ class TestRecord(unittest.TestCase):
                 updated_by_uuid = '',
                 deleted_by_uuid = '',
                 index = 56,
-                complete = True,
                 deleted = True,
+                complete = True,
                 uuid = '0',
                 user = caraer_client.models.public_user_dto.PublicUserDTO(
                     uuid = '', 
@@ -77,8 +77,8 @@ class TestRecord(unittest.TestCase):
                         updated_by_uuid = '', 
                         deleted_by_uuid = '', 
                         index = 56, 
-                        complete = True, 
                         deleted = True, 
+                        complete = True, 
                         uuid = '0', 
                         properties = [
                             caraer_client.models.filled_property.FilledProperty(

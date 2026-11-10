@@ -96,6 +96,20 @@ class TestCMSV2PagesApi(unittest.TestCase):
         """
         pass
 
+    def test_module_replacement_action(self) -> None:
+        """Test case for module_replacement_action
+
+        Cancel or retry a module replacement
+        """
+        pass
+
+    def test_module_replacements(self) -> None:
+        """Test case for module_replacements
+
+        Check durable module replacements and apply ready builds to the draft
+        """
+        pass
+
     def test_patch(self) -> None:
         """Test case for patch
 
@@ -121,6 +135,13 @@ class TestCMSV2PagesApi(unittest.TestCase):
         """Test case for publish
 
         Publish one locale, or all of them
+        """
+        pass
+
+    def test_publish_template(self) -> None:
+        """Test case for publish_template
+
+        Publish a template draft and update linked live pages
         """
         pass
 

@@ -14,10 +14,13 @@ Method | HTTP request | Description
 [**history**](CMSV2PagesApi.md#history) | **GET** /api/v2/webpages/v2/pages/{recordUuid}/history | Draft snapshots for one locale
 [**host_on_environment**](CMSV2PagesApi.md#host_on_environment) | **POST** /api/v2/webpages/v2/pages/{recordUuid}/environments/{key}/host | Host this page on another environment
 [**library**](CMSV2PagesApi.md#library) | **GET** /api/v2/webpages/v2/pages/library/modules | Modules available to this company
+[**module_replacement_action**](CMSV2PagesApi.md#module_replacement_action) | **POST** /api/v2/webpages/v2/pages/{recordUuid}/module-replacements/{replacementId}/{action} | Cancel or retry a module replacement
+[**module_replacements**](CMSV2PagesApi.md#module_replacements) | **GET** /api/v2/webpages/v2/pages/{recordUuid}/module-replacements | Check durable module replacements and apply ready builds to the draft
 [**patch**](CMSV2PagesApi.md#patch) | **POST** /api/v2/webpages/v2/pages/{recordUuid}/patch | Apply patches to a page draft
 [**preview_link**](CMSV2PagesApi.md#preview_link) | **GET** /api/v2/webpages/v2/pages/{recordUuid}/preview-link | Signed preview URL for the builder iframe
 [**prompt_module_fork**](CMSV2PagesApi.md#prompt_module_fork) | **POST** /api/v2/webpages/v2/pages/{recordUuid}/ai/module-fork/sessions/{sessionId}/prompt | Rewrite forked module source from a prompt
 [**publish**](CMSV2PagesApi.md#publish) | **PUT** /api/v2/webpages/v2/pages/{recordUuid}/publish | Publish one locale, or all of them
+[**publish_template**](CMSV2PagesApi.md#publish_template) | **PUT** /api/v2/webpages/v2/pages/templates/{objectUuid}/publish | Publish a template draft and update linked live pages
 [**restore_history**](CMSV2PagesApi.md#restore_history) | **POST** /api/v2/webpages/v2/pages/{recordUuid}/history/{index}/restore | Restore a draft snapshot
 [**save**](CMSV2PagesApi.md#save) | **PUT** /api/v2/webpages/v2/pages/{recordUuid} | Replace a page draft
 [**save_meta**](CMSV2PagesApi.md#save_meta) | **PUT** /api/v2/webpages/v2/pages/{recordUuid}/meta | Update slug, title, excerpt, SEO and page scripts
@@ -844,6 +847,172 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **module_replacement_action**
+> ShowResponseMapStringObject module_replacement_action(record_uuid, replacement_id, action)
+
+Cancel or retry a module replacement
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response_map_string_object import ShowResponseMapStringObject
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.CMSV2PagesApi(api_client)
+    record_uuid = 'record_uuid_example' # str | 
+    replacement_id = 'replacement_id_example' # str | 
+    action = 'action_example' # str | 
+
+    try:
+        # Cancel or retry a module replacement
+        api_response = api_instance.module_replacement_action(record_uuid, replacement_id, action)
+        print("The response of CMSV2PagesApi->module_replacement_action:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CMSV2PagesApi->module_replacement_action: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **record_uuid** | **str**|  | 
+ **replacement_id** | **str**|  | 
+ **action** | **str**|  | 
+
+### Return type
+
+[**ShowResponseMapStringObject**](ShowResponseMapStringObject.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **module_replacements**
+> ShowResponseMapStringObject module_replacements(record_uuid, locale=locale)
+
+Check durable module replacements and apply ready builds to the draft
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response_map_string_object import ShowResponseMapStringObject
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.CMSV2PagesApi(api_client)
+    record_uuid = 'record_uuid_example' # str | 
+    locale = 'locale_example' # str |  (optional)
+
+    try:
+        # Check durable module replacements and apply ready builds to the draft
+        api_response = api_instance.module_replacements(record_uuid, locale=locale)
+        print("The response of CMSV2PagesApi->module_replacements:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CMSV2PagesApi->module_replacements: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **record_uuid** | **str**|  | 
+ **locale** | **str**|  | [optional] 
+
+### Return type
+
+[**ShowResponseMapStringObject**](ShowResponseMapStringObject.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **patch**
 > ShowResponseCmsPageDTO patch(record_uuid, cms_page_patch_request)
 
@@ -1171,6 +1340,90 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication is required or the token is invalid. |  -  |
+**403** | The caller is missing a required role or scope. |  -  |
+**404** | The requested resource was not found. |  -  |
+**500** | An internal server error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **publish_template**
+> ShowResponseCmsPageDTO publish_template(object_uuid, request_body, locale=locale)
+
+Publish a template draft and update linked live pages
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import caraer_client
+from caraer_client.models.show_response_cms_page_dto import ShowResponseCmsPageDTO
+from caraer_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://v2.api.caraer.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = caraer_client.Configuration(
+    host = "https://v2.api.caraer.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = caraer_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with caraer_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = caraer_client.CMSV2PagesApi(api_client)
+    object_uuid = 'object_uuid_example' # str | 
+    request_body = None # Dict[str, Optional[object]] | 
+    locale = 'locale_example' # str |  (optional)
+
+    try:
+        # Publish a template draft and update linked live pages
+        api_response = api_instance.publish_template(object_uuid, request_body, locale=locale)
+        print("The response of CMSV2PagesApi->publish_template:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CMSV2PagesApi->publish_template: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **object_uuid** | **str**|  | 
+ **request_body** | [**Dict[str, Optional[object]]**](object.md)|  | 
+ **locale** | **str**|  | [optional] 
+
+### Return type
+
+[**ShowResponseCmsPageDTO**](ShowResponseCmsPageDTO.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

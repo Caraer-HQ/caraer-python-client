@@ -40,6 +40,7 @@ class TestCmsPagePatchRequest(unittest.TestCase):
                     caraer_client.models.cms_page_patch.CmsPagePatch(
                         op = '', 
                         module_id = '', 
+                        expected_module = '', 
                         ref = '', 
                         field = '', 
                         value = null, 
