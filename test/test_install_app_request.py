@@ -156,8 +156,8 @@ class TestInstallAppRequest(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                action = True, 
                                 settings_group = True, 
+                                action = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -256,8 +256,8 @@ class TestInstallAppRequest(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                action = True, 
                                 settings_group = True, 
+                                action = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -296,8 +296,8 @@ class TestInstallAppRequest(unittest.TestCase):
                                 ], 
                             record_target = True, ), 
                         value_scope = '', 
-                        action = True, 
                         settings_group = True, 
+                        action = True, 
                         filter_property_types = [
                             ''
                             ], 
@@ -313,6 +313,9 @@ class TestInstallAppRequest(unittest.TestCase):
                         groups = [
                             caraer_client.models.filter_group.FilterGroup(
                                 items = null, )
+                            ], 
+                        event_participant_uuids = [
+                            ''
                             ], )
                     },
                 app_bar_visibility = {

@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **task_collapsed_group_keys** | **List[str]** |  | [optional] 
 **task_expanded_task_uuids** | **List[str]** |  | [optional] 
 **calendar_overlay** | **str** |  | [optional] 
+**event_user_uuids** | **List[str]** |  | [optional] 
 **visible_calendar_uuids** | **List[str]** |  | [optional] 
 **selected_calendar_uuid** | **str** |  | [optional] 
 **calendar_color_by** | **str** |  | [optional] 

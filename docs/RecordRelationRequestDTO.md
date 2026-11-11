@@ -6,6 +6,7 @@ Relation to create when saving a record
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**remove** | **bool** | When true, remove this existing UUID relation atomically with the record mutation. Nested records and property writes are not allowed. | [optional] 
 **relation_name** | **str** | Name of the relation type | 
 **uuid** | **str** | UUID of an existing record to link to | [optional] 
 **properties** | **Dict[str, Optional[object]]** | With uuid: patch the existing target before linking. Without uuid or record: create-or-update the target using its unique properties, then link. Use objectName when ambiguous. | [optional] 

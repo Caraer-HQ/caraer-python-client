@@ -36,7 +36,8 @@ class TestEventRsvpRequest(unittest.TestCase):
         if include_optional:
             return EventRsvpRequest(
                 partstat = 'accepted',
-                scope = 'this'
+                scope = 'this',
+                invitation_token = ''
             )
         else:
             return EventRsvpRequest(

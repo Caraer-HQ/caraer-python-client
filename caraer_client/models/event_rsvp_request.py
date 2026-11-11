@@ -29,7 +29,8 @@ class EventRsvpRequest(BaseModel):
     """ # noqa: E501
     partstat: StrictStr = Field(description="Participation status on the attendees edge", json_schema_extra={"examples": ["accepted"]})
     scope: Optional[StrictStr] = Field(default=None, description="Series scope for recurring events. Defaults to this.", json_schema_extra={"examples": ["this"]})
-    __properties: ClassVar[List[str]] = ["partstat", "scope"]
+    invitation_token: Optional[StrictStr] = Field(default=None, alias="invitationToken")
+    __properties: ClassVar[List[str]] = ["partstat", "scope", "invitationToken"]
 
     @field_validator('partstat')
     def partstat_validate_enum(cls, value):
@@ -100,7 +101,8 @@ class EventRsvpRequest(BaseModel):
 
         _obj = cls.model_validate({
             "partstat": obj.get("partstat"),
-            "scope": obj.get("scope")
+            "scope": obj.get("scope"),
+            "invitationToken": obj.get("invitationToken")
         })
         return _obj
 

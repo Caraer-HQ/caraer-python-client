@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rsvp_browser_get**
-> rsvp_browser_get(company_uuid, event_uuid, attendee_uuid, partstat=partstat, scope=scope, switch_account=switch_account)
+> rsvp_browser_get(company_uuid, event_uuid, attendee_uuid, partstat=partstat, scope=scope, switch_account=switch_account, token=token)
 
 Respond to an event invitation (email link)
 
@@ -393,10 +393,11 @@ with caraer_client.ApiClient(configuration) as api_client:
     partstat = 'partstat_example' # str |  (optional)
     scope = 'scope_example' # str |  (optional)
     switch_account = 'switch_account_example' # str |  (optional)
+    token = 'token_example' # str |  (optional)
 
     try:
         # Respond to an event invitation (email link)
-        api_instance.rsvp_browser_get(company_uuid, event_uuid, attendee_uuid, partstat=partstat, scope=scope, switch_account=switch_account)
+        api_instance.rsvp_browser_get(company_uuid, event_uuid, attendee_uuid, partstat=partstat, scope=scope, switch_account=switch_account, token=token)
     except Exception as e:
         print("Exception when calling TraitsApi->rsvp_browser_get: %s\n" % e)
 ```
@@ -414,6 +415,7 @@ Name | Type | Description  | Notes
  **partstat** | **str**|  | [optional] 
  **scope** | **str**|  | [optional] 
  **switch_account** | **str**|  | [optional] 
+ **token** | **str**|  | [optional] 
 
 ### Return type
 

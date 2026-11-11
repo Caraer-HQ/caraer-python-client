@@ -49,9 +49,20 @@ class TestBillingSettingsDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            icon = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -66,6 +77,9 @@ class TestBillingSettingsDTO(unittest.TestCase):
                                 groups = [
                                     caraer_client.models.filter_group.FilterGroup(
                                         items = null, )
+                                    ], 
+                                event_participant_uuids = [
+                                    ''
                                     ], )
                             }, 
                         role = '', 
@@ -82,31 +96,20 @@ class TestBillingSettingsDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
+                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, ),
+                                }, ), ), ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -118,9 +121,20 @@ class TestBillingSettingsDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            icon = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -135,6 +149,9 @@ class TestBillingSettingsDTO(unittest.TestCase):
                                 groups = [
                                     caraer_client.models.filter_group.FilterGroup(
                                         items = null, )
+                                    ], 
+                                event_participant_uuids = [
+                                    ''
                                     ], )
                             }, 
                         role = '', 
@@ -151,31 +168,20 @@ class TestBillingSettingsDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
+                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, ),
+                                }, ), ), ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -187,9 +193,20 @@ class TestBillingSettingsDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            icon = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -204,6 +221,9 @@ class TestBillingSettingsDTO(unittest.TestCase):
                                 groups = [
                                     caraer_client.models.filter_group.FilterGroup(
                                         items = null, )
+                                    ], 
+                                event_participant_uuids = [
+                                    ''
                                     ], )
                             }, 
                         role = '', 
@@ -220,31 +240,20 @@ class TestBillingSettingsDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
+                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, ),
+                                }, ), ), ),
                 index = 56,
                 billing_email = '',
                 address = '',

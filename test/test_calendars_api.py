@@ -29,7 +29,7 @@ class TestCalendarsApi(unittest.TestCase):
     def test_bootstrap(self) -> None:
         """Test case for bootstrap
 
-        Ensure calendar schema, default calendar, and event backfill
+        Ensure calendar schema and personal default; never assigns existing events
         """
         pass
 
@@ -44,13 +44,6 @@ class TestCalendarsApi(unittest.TestCase):
         """Test case for list3
 
         List calendars visible to the current company
-        """
-        pass
-
-    def test_list_teams(self) -> None:
-        """Test case for list_teams
-
-        List teams that can be linked to a calendar
         """
         pass
 

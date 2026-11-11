@@ -27,6 +27,7 @@ class RecordRelationRequestDTO(BaseModel):
     """
     Relation to create when saving a record
     """ # noqa: E501
+    remove: Optional[StrictBool] = Field(default=None, description="When true, remove this existing UUID relation atomically with the record mutation. Nested records and property writes are not allowed.")
     relation_name: StrictStr = Field(description="Name of the relation type", alias="relationName", json_schema_extra={"examples": ["works_at"]})
     uuid: Optional[StrictStr] = Field(default=None, description="UUID of an existing record to link to")
     properties: Optional[Dict[str, Any]] = Field(default=None, description="With uuid: patch the existing target before linking. Without uuid or record: create-or-update the target using its unique properties, then link. Use objectName when ambiguous.")
@@ -35,7 +36,7 @@ class RecordRelationRequestDTO(BaseModel):
     object_name: Optional[StrictStr] = Field(default=None, description="Object name for nested record create when relation allows multiple target types", alias="objectName")
     primary: Optional[StrictBool] = Field(default=None, description="When true, marks this relation edge as primary", json_schema_extra={"examples": [False]})
     merge: Optional[StrictBool] = Field(default=None, description="When true, MERGE relation edge instead of CREATE", json_schema_extra={"examples": [True]})
-    __properties: ClassVar[List[str]] = ["relationName", "uuid", "properties", "edgeProperties", "record", "objectName", "primary", "merge"]
+    __properties: ClassVar[List[str]] = ["remove", "relationName", "uuid", "properties", "edgeProperties", "record", "objectName", "primary", "merge"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -91,6 +92,7 @@ class RecordRelationRequestDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "remove": obj.get("remove"),
             "relationName": obj.get("relationName"),
             "uuid": obj.get("uuid"),
             "properties": obj.get("properties"),

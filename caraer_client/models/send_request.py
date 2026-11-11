@@ -17,21 +17,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from caraer_client.models.calendar_team_member_dto import CalendarTeamMemberDTO
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class CalendarTeamOptionDTO(BaseModel):
+class SendRequest(BaseModel):
     """
-    CalendarTeamOptionDTO
+    SendRequest
     """ # noqa: E501
-    uuid: Optional[StrictStr] = None
-    name: Optional[StrictStr] = None
-    members: Optional[List[CalendarTeamMemberDTO]] = None
-    __properties: ClassVar[List[str]] = ["uuid", "name", "members"]
+    request_id: Optional[StrictStr] = Field(default=None, alias="requestId")
+    scope: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["requestId", "scope"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -51,7 +49,7 @@ class CalendarTeamOptionDTO(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CalendarTeamOptionDTO from a JSON string"""
+        """Create an instance of SendRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,17 +70,11 @@ class CalendarTeamOptionDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in members (list)
-        _items = []
-        if self.members:
-            for _item_members in self.members:
-                _items.append(_item_members.to_dict() if _item_members is not None else None)
-            _dict['members'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CalendarTeamOptionDTO from a dict"""
+        """Create an instance of SendRequest from a dict"""
         if obj is None:
             return None
 
@@ -90,9 +82,8 @@ class CalendarTeamOptionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "uuid": obj.get("uuid"),
-            "name": obj.get("name"),
-            "members": [CalendarTeamMemberDTO.from_dict(_item) for _item in obj["members"]] if obj.get("members") is not None else None
+            "requestId": obj.get("requestId"),
+            "scope": obj.get("scope")
         })
         return _obj
 

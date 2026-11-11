@@ -47,6 +47,9 @@ class TestAdvancedRecordQueryRequest(unittest.TestCase):
                         groups = [
                             caraer_client.models.filter_group.FilterGroup(
                                 items = null, )
+                            ], 
+                        event_participant_uuids = [
+                            ''
                             ], ), 
                     sort = [
                         caraer_client.models.sort_item.SortItem(

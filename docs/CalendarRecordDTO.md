@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **owner_uuid** | **str** |  | [optional] 
 **owner_name** | **str** |  | [optional] 
 **owned_by_current_user** | **bool** |  | [optional] 
+**can_edit** | **bool** |  | [optional] 
+**shared** | **bool** |  | [optional] 
 **team_uuid** | **str** |  | [optional] 
 **team_name** | **str** |  | [optional] 
 **company_calendar** | **bool** |  | [optional] 

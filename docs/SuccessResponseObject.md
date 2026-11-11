@@ -1,13 +1,13 @@
 # SuccessResponseObject
 
-Success response (SuccessResponseObject).
+Represents a standard successful response with a message and optional data.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **str** |  | [optional] 
-**data** | **Dict[str, object]** |  | [optional] 
+**message** | **str** | A message detailing the result of the operation. | [optional] 
+**data** | **object** | The data payload of the response, if any. | [optional] 
 
 ## Example
 

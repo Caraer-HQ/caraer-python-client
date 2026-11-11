@@ -7,6 +7,7 @@ DTO representing a filter composed of filter groups for querying records. The fi
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **groups** | [**List[FilterGroup]**](FilterGroup.md) | A collection of filter groups. | [optional] 
+**event_participant_uuids** | **List[str]** | Optional participant UUIDs for event records, intersected with the ordinary filter before paging. Omit for all; an empty list matches none. Uses organiser plus the effective Event trait attendee relations. | [optional] 
 
 ## Example
 

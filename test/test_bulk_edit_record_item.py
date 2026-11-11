@@ -40,6 +40,7 @@ class TestBulkEditRecordItem(unittest.TestCase):
                 properties = {email=a@b.com},
                 relations = [
                     caraer_client.models.record_relation_request_dto.RecordRelationRequestDTO(
+                        remove = True, 
                         relation_name = 'works_at', 
                         uuid = '', 
                         properties = {

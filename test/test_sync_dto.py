@@ -49,9 +49,20 @@ class TestSyncDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            icon = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -66,6 +77,9 @@ class TestSyncDTO(unittest.TestCase):
                                 groups = [
                                     caraer_client.models.filter_group.FilterGroup(
                                         items = null, )
+                                    ], 
+                                event_participant_uuids = [
+                                    ''
                                     ], )
                             }, 
                         role = '', 
@@ -82,31 +96,20 @@ class TestSyncDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
+                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, ),
+                                }, ), ), ),
                 updated_at = 56,
                 updated_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -118,9 +121,20 @@ class TestSyncDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            icon = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -135,6 +149,9 @@ class TestSyncDTO(unittest.TestCase):
                                 groups = [
                                     caraer_client.models.filter_group.FilterGroup(
                                         items = null, )
+                                    ], 
+                                event_participant_uuids = [
+                                    ''
                                     ], )
                             }, 
                         role = '', 
@@ -151,31 +168,20 @@ class TestSyncDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
+                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, ),
+                                }, ), ), ),
                 deleted_at = 56,
                 deleted_by = caraer_client.models.record.Record(
                     name = '0', 
@@ -187,9 +193,20 @@ class TestSyncDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            icon = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -204,6 +221,9 @@ class TestSyncDTO(unittest.TestCase):
                                 groups = [
                                     caraer_client.models.filter_group.FilterGroup(
                                         items = null, )
+                                    ], 
+                                event_participant_uuids = [
+                                    ''
                                     ], )
                             }, 
                         role = '', 
@@ -220,31 +240,20 @@ class TestSyncDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            deleted = True, 
                             complete = True, 
+                            deleted = True, 
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
+                                    icon = '', 
                                     label = '', )
                                 ], 
                             objects = {
                                 'key' : null
-                                }, ), ), 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, ),
+                                }, ), ), ),
                 index = 56,
                 mappings = [
                     caraer_client.models.mapping_dto.MappingDTO(
@@ -316,6 +325,9 @@ class TestSyncDTO(unittest.TestCase):
                                                 groups = [
                                                     caraer_client.models.filter_group.FilterGroup(
                                                         items = null, )
+                                                    ], 
+                                                event_participant_uuids = [
+                                                    ''
                                                     ], ), 
                                             shows = [
                                                 caraer_client.models.show_item.ShowItem(
@@ -355,6 +367,9 @@ class TestSyncDTO(unittest.TestCase):
                                                 ''
                                                 ], 
                                             calendar_overlay = '', 
+                                            event_user_uuids = [
+                                                ''
+                                                ], 
                                             visible_calendar_uuids = [
                                                 ''
                                                 ], 
@@ -379,6 +394,9 @@ class TestSyncDTO(unittest.TestCase):
                                                             groups = [
                                                                 caraer_client.models.filter_group.FilterGroup(
                                                                     items = null, )
+                                                                ], 
+                                                            event_participant_uuids = [
+                                                                ''
                                                                 ], ), 
                                                         x_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                                             property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
@@ -416,6 +434,9 @@ class TestSyncDTO(unittest.TestCase):
                                                                     groups = [
                                                                         caraer_client.models.filter_group.FilterGroup(
                                                                             items = null, )
+                                                                        ], 
+                                                                    event_participant_uuids = [
+                                                                        ''
                                                                         ], ), 
                                                                 y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                                                     property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
@@ -562,6 +583,9 @@ class TestSyncDTO(unittest.TestCase):
                                                                 groups = [
                                                                     caraer_client.models.filter_group.FilterGroup(
                                                                         items = null, )
+                                                                    ], 
+                                                                event_participant_uuids = [
+                                                                    ''
                                                                     ], ), 
                                                             shows = [
                                                                 caraer_client.models.show_item.ShowItem(
@@ -601,6 +625,9 @@ class TestSyncDTO(unittest.TestCase):
                                                                 ''
                                                                 ], 
                                                             calendar_overlay = '', 
+                                                            event_user_uuids = [
+                                                                ''
+                                                                ], 
                                                             visible_calendar_uuids = [
                                                                 ''
                                                                 ], 
@@ -625,6 +652,9 @@ class TestSyncDTO(unittest.TestCase):
                                                                             groups = [
                                                                                 caraer_client.models.filter_group.FilterGroup(
                                                                                     items = null, )
+                                                                                ], 
+                                                                            event_participant_uuids = [
+                                                                                ''
                                                                                 ], ), 
                                                                         x_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                                                             property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
@@ -662,6 +692,9 @@ class TestSyncDTO(unittest.TestCase):
                                                                                     groups = [
                                                                                         caraer_client.models.filter_group.FilterGroup(
                                                                                             items = null, )
+                                                                                        ], 
+                                                                                    event_participant_uuids = [
+                                                                                        ''
                                                                                         ], ), 
                                                                                 y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                                                                     property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
@@ -811,6 +844,9 @@ class TestSyncDTO(unittest.TestCase):
                                                         groups = [
                                                             caraer_client.models.filter_group.FilterGroup(
                                                                 items = null, )
+                                                            ], 
+                                                        event_participant_uuids = [
+                                                            ''
                                                             ], ), 
                                                     shows = [
                                                         caraer_client.models.show_item.ShowItem(
@@ -850,6 +886,9 @@ class TestSyncDTO(unittest.TestCase):
                                                         ''
                                                         ], 
                                                     calendar_overlay = '', 
+                                                    event_user_uuids = [
+                                                        ''
+                                                        ], 
                                                     visible_calendar_uuids = [
                                                         ''
                                                         ], 
@@ -874,6 +913,9 @@ class TestSyncDTO(unittest.TestCase):
                                                                     groups = [
                                                                         caraer_client.models.filter_group.FilterGroup(
                                                                             items = null, )
+                                                                        ], 
+                                                                    event_participant_uuids = [
+                                                                        ''
                                                                         ], ), 
                                                                 x_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                                                     property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
@@ -911,6 +953,9 @@ class TestSyncDTO(unittest.TestCase):
                                                                             groups = [
                                                                                 caraer_client.models.filter_group.FilterGroup(
                                                                                     items = null, )
+                                                                                ], 
+                                                                            event_participant_uuids = [
+                                                                                ''
                                                                                 ], ), 
                                                                         y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                                                             property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
@@ -1123,6 +1168,9 @@ class TestSyncDTO(unittest.TestCase):
                                         groups = [
                                             caraer_client.models.filter_group.FilterGroup(
                                                 items = null, )
+                                            ], 
+                                        event_participant_uuids = [
+                                            ''
                                             ], ), 
                                     shows = [
                                         caraer_client.models.show_item.ShowItem(
@@ -1160,6 +1208,9 @@ class TestSyncDTO(unittest.TestCase):
                                         ''
                                         ], 
                                     calendar_overlay = '', 
+                                    event_user_uuids = [
+                                        ''
+                                        ], 
                                     visible_calendar_uuids = [
                                         ''
                                         ], 
@@ -1184,6 +1235,9 @@ class TestSyncDTO(unittest.TestCase):
                                                     groups = [
                                                         caraer_client.models.filter_group.FilterGroup(
                                                             items = null, )
+                                                        ], 
+                                                    event_participant_uuids = [
+                                                        ''
                                                         ], ), 
                                                 x_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                                     property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
@@ -1218,6 +1272,9 @@ class TestSyncDTO(unittest.TestCase):
                                                             groups = [
                                                                 caraer_client.models.filter_group.FilterGroup(
                                                                     items = null, )
+                                                                ], 
+                                                            event_participant_uuids = [
+                                                                ''
                                                                 ], ), 
                                                         y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                                             property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
@@ -1362,6 +1419,9 @@ class TestSyncDTO(unittest.TestCase):
                                                         groups = [
                                                             caraer_client.models.filter_group.FilterGroup(
                                                                 items = null, )
+                                                            ], 
+                                                        event_participant_uuids = [
+                                                            ''
                                                             ], ), 
                                                     shows = [
                                                         caraer_client.models.show_item.ShowItem(
@@ -1399,6 +1459,9 @@ class TestSyncDTO(unittest.TestCase):
                                                         ''
                                                         ], 
                                                     calendar_overlay = '', 
+                                                    event_user_uuids = [
+                                                        ''
+                                                        ], 
                                                     visible_calendar_uuids = [
                                                         ''
                                                         ], 
@@ -1423,6 +1486,9 @@ class TestSyncDTO(unittest.TestCase):
                                                                     groups = [
                                                                         caraer_client.models.filter_group.FilterGroup(
                                                                             items = null, )
+                                                                        ], 
+                                                                    event_participant_uuids = [
+                                                                        ''
                                                                         ], ), 
                                                                 x_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                                                     property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
@@ -1457,6 +1523,9 @@ class TestSyncDTO(unittest.TestCase):
                                                                             groups = [
                                                                                 caraer_client.models.filter_group.FilterGroup(
                                                                                     items = null, )
+                                                                                ], 
+                                                                            event_participant_uuids = [
+                                                                                ''
                                                                                 ], ), 
                                                                         y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                                                             property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
@@ -1604,6 +1673,9 @@ class TestSyncDTO(unittest.TestCase):
                                                 groups = [
                                                     caraer_client.models.filter_group.FilterGroup(
                                                         items = null, )
+                                                    ], 
+                                                event_participant_uuids = [
+                                                    ''
                                                     ], ), 
                                             shows = [
                                                 caraer_client.models.show_item.ShowItem(
@@ -1641,6 +1713,9 @@ class TestSyncDTO(unittest.TestCase):
                                                 ''
                                                 ], 
                                             calendar_overlay = '', 
+                                            event_user_uuids = [
+                                                ''
+                                                ], 
                                             visible_calendar_uuids = [
                                                 ''
                                                 ], 
@@ -1665,6 +1740,9 @@ class TestSyncDTO(unittest.TestCase):
                                                             groups = [
                                                                 caraer_client.models.filter_group.FilterGroup(
                                                                     items = null, )
+                                                                ], 
+                                                            event_participant_uuids = [
+                                                                ''
                                                                 ], ), 
                                                         x_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                                             property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
@@ -1699,6 +1777,9 @@ class TestSyncDTO(unittest.TestCase):
                                                                     groups = [
                                                                         caraer_client.models.filter_group.FilterGroup(
                                                                             items = null, )
+                                                                        ], 
+                                                                    event_participant_uuids = [
+                                                                        ''
                                                                         ], ), 
                                                                 y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                                                                     property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(

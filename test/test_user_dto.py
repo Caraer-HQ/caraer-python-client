@@ -73,6 +73,9 @@ class TestUserDTO(unittest.TestCase):
                         groups = [
                             caraer_client.models.filter_group.FilterGroup(
                                 items = null, )
+                            ], 
+                        event_participant_uuids = [
+                            ''
                             ], )
                     },
                 role = '',
@@ -91,9 +94,20 @@ class TestUserDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    deleted = True, 
                     complete = True, 
+                    deleted = True, 
                     uuid = '0', 
+                    properties = [
+                        caraer_client.models.filled_property.FilledProperty(
+                            name = '', 
+                            value = null, 
+                            type = '', 
+                            icon = '', 
+                            label = '', )
+                        ], 
+                    objects = {
+                        'key' : null
+                        }, 
                     user = caraer_client.models.public_user_dto.PublicUserDTO(
                         uuid = '', 
                         email = '', 
@@ -108,23 +122,15 @@ class TestUserDTO(unittest.TestCase):
                                 groups = [
                                     caraer_client.models.filter_group.FilterGroup(
                                         items = null, )
+                                    ], 
+                                event_participant_uuids = [
+                                    ''
                                     ], )
                             }, 
                         role = '', 
                         roles = [
                             ''
-                            ], ), 
-                    properties = [
-                        caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
-                            name = '', 
-                            value = null, 
-                            type = '', 
-                            label = '', )
-                        ], 
-                    objects = {
-                        'key' : null
-                        }, ),
+                            ], ), ),
                 easter_eggs = [
                     ''
                     ]

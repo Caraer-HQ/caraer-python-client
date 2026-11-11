@@ -4,16 +4,15 @@ All URIs are relative to *https://v2.api.caraer.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**bootstrap**](CalendarsApi.md#bootstrap) | **POST** /api/v2/calendars/bootstrap | Ensure calendar schema, default calendar, and event backfill
+[**bootstrap**](CalendarsApi.md#bootstrap) | **POST** /api/v2/calendars/bootstrap | Ensure calendar schema and personal default; never assigns existing events
 [**create4**](CalendarsApi.md#create4) | **POST** /api/v2/calendars | Create a calendar owned by the current user
 [**list3**](CalendarsApi.md#list3) | **GET** /api/v2/calendars | List calendars visible to the current company
-[**list_teams**](CalendarsApi.md#list_teams) | **GET** /api/v2/calendars/teams | List teams that can be linked to a calendar
 
 
 # **bootstrap**
 > SuccessResponseCalendarBootstrapDTO bootstrap()
 
-Ensure calendar schema, default calendar, and event backfill
+Ensure calendar schema and personal default; never assigns existing events
 
 ### Example
 
@@ -47,7 +46,7 @@ with caraer_client.ApiClient(configuration) as api_client:
     api_instance = caraer_client.CalendarsApi(api_client)
 
     try:
-        # Ensure calendar schema, default calendar, and event backfill
+        # Ensure calendar schema and personal default; never assigns existing events
         api_response = api_instance.bootstrap()
         print("The response of CalendarsApi->bootstrap:\n")
         pprint(api_response)
@@ -223,82 +222,6 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**SuccessResponseListCalendarRecordDTO**](SuccessResponseListCalendarRecordDTO.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**401** | Authentication is required or the token is invalid. |  -  |
-**403** | The caller is missing a required role or scope. |  -  |
-**404** | The requested resource was not found. |  -  |
-**500** | An internal server error occurred. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_teams**
-> SuccessResponseListCalendarTeamOptionDTO list_teams()
-
-List teams that can be linked to a calendar
-
-### Example
-
-* Bearer (Opaque) Authentication (bearerAuth):
-
-```python
-import caraer_client
-from caraer_client.models.success_response_list_calendar_team_option_dto import SuccessResponseListCalendarTeamOptionDTO
-from caraer_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://v2.api.caraer.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = caraer_client.Configuration(
-    host = "https://v2.api.caraer.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (Opaque): bearerAuth
-configuration = caraer_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with caraer_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = caraer_client.CalendarsApi(api_client)
-
-    try:
-        # List teams that can be linked to a calendar
-        api_response = api_instance.list_teams()
-        print("The response of CalendarsApi->list_teams:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling CalendarsApi->list_teams: %s\n" % e)
-```
-
-
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**SuccessResponseListCalendarTeamOptionDTO**](SuccessResponseListCalendarTeamOptionDTO.md)
 
 ### Authorization
 

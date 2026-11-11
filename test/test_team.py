@@ -54,11 +54,14 @@ class TestTeam(unittest.TestCase):
                         groups = [
                             caraer_client.models.filter_group.FilterGroup(
                                 items = null, )
+                            ], 
+                        event_participant_uuids = [
+                            ''
                             ], )
                     },
                 member_count = 56,
-                deleted = True,
                 complete = True,
+                deleted = True,
                 uuid = '0'
             )
         else:

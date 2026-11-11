@@ -65,6 +65,9 @@ class TestAggregateBatchRequest(unittest.TestCase):
                             groups = [
                                 caraer_client.models.filter_group.FilterGroup(
                                     items = null, )
+                                ], 
+                            event_participant_uuids = [
+                                ''
                                 ], ), 
                         query = '', 
                         x_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(

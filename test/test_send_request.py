@@ -14,10 +14,10 @@
 
 import unittest
 
-from caraer_client.models.calendar_team_option_dto import CalendarTeamOptionDTO
+from caraer_client.models.send_request import SendRequest
 
-class TestCalendarTeamOptionDTO(unittest.TestCase):
-    """CalendarTeamOptionDTO unit test stubs"""
+class TestSendRequest(unittest.TestCase):
+    """SendRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,33 +25,26 @@ class TestCalendarTeamOptionDTO(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> CalendarTeamOptionDTO:
-        """Test CalendarTeamOptionDTO
+    def make_instance(self, include_optional) -> SendRequest:
+        """Test SendRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `CalendarTeamOptionDTO`
+        # uncomment below to create an instance of `SendRequest`
         """
-        model = CalendarTeamOptionDTO()
+        model = SendRequest()
         if include_optional:
-            return CalendarTeamOptionDTO(
-                uuid = '',
-                name = '',
-                members = [
-                    caraer_client.models.calendar_team_member_dto.CalendarTeamMemberDTO(
-                        uuid = '', 
-                        label = '', 
-                        object_name = '', 
-                        has_user_trait = True, )
-                    ]
+            return SendRequest(
+                request_id = '',
+                scope = ''
             )
         else:
-            return CalendarTeamOptionDTO(
+            return SendRequest(
         )
         """
 
-    def testCalendarTeamOptionDTO(self):
-        """Test CalendarTeamOptionDTO"""
+    def testSendRequest(self):
+        """Test SendRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

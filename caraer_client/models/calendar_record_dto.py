@@ -37,12 +37,14 @@ class CalendarRecordDTO(BaseModel):
     owner_uuid: Optional[StrictStr] = Field(default=None, alias="ownerUuid")
     owner_name: Optional[StrictStr] = Field(default=None, alias="ownerName")
     owned_by_current_user: Optional[StrictBool] = Field(default=None, alias="ownedByCurrentUser")
+    can_edit: Optional[StrictBool] = Field(default=None, alias="canEdit")
+    shared: Optional[StrictBool] = None
     team_uuid: Optional[StrictStr] = Field(default=None, alias="teamUuid")
     team_name: Optional[StrictStr] = Field(default=None, alias="teamName")
     company_calendar: Optional[StrictBool] = Field(default=None, alias="companyCalendar")
     company_name: Optional[StrictStr] = Field(default=None, alias="companyName")
     members: Optional[List[CalendarTeamMemberDTO]] = None
-    __properties: ClassVar[List[str]] = ["default", "uuid", "title", "color", "colorHex", "isDefault", "ownerUuid", "ownerName", "ownedByCurrentUser", "teamUuid", "teamName", "companyCalendar", "companyName", "members"]
+    __properties: ClassVar[List[str]] = ["default", "uuid", "title", "color", "colorHex", "isDefault", "ownerUuid", "ownerName", "ownedByCurrentUser", "canEdit", "shared", "teamUuid", "teamName", "companyCalendar", "companyName", "members"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -110,6 +112,8 @@ class CalendarRecordDTO(BaseModel):
             "ownerUuid": obj.get("ownerUuid"),
             "ownerName": obj.get("ownerName"),
             "ownedByCurrentUser": obj.get("ownedByCurrentUser"),
+            "canEdit": obj.get("canEdit"),
+            "shared": obj.get("shared"),
             "teamUuid": obj.get("teamUuid"),
             "teamName": obj.get("teamName"),
             "companyCalendar": obj.get("companyCalendar"),

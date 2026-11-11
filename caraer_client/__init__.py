@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.703"
+__version__ = "2.0.705"
 
 # Define package exports
 __all__ = [
@@ -124,7 +124,6 @@ __all__ = [
     "CalendarCreateRequest",
     "CalendarRecordDTO",
     "CalendarTeamMemberDTO",
-    "CalendarTeamOptionDTO",
     "CaraerErrorType",
     "CaraerObjectDTO",
     "CmsEnvironmentDTO",
@@ -138,6 +137,7 @@ __all__ = [
     "CmsPublicMenuDTO",
     "CompanyDTO",
     "CompanyDetailsDTO",
+    "ConnectionState",
     "CopyPropertiesToObjectRequest",
     "CopyPropertyToEnvironmentsRequest",
     "CreateCompanyRequest",
@@ -232,6 +232,7 @@ __all__ = [
     "ObjectAccessGrantRequestDTO",
     "ObjectAccessGrantSectionDTO",
     "ObjectReferenceDTO",
+    "Outcome",
     "PageContentDTO",
     "PageContentSettingsDTO",
     "PageContentStylingDTO",
@@ -300,6 +301,7 @@ __all__ = [
     "RelationEdgeRequestDTO",
     "RelationPillSort",
     "ResetPasswordRequest",
+    "ResolveRequest",
     "RestoreResponse",
     "RestoreResponseCaraerObjectDTO",
     "RestoreResponseSavedFilterDTO",
@@ -312,6 +314,7 @@ __all__ = [
     "ScoreBreakdown",
     "SearchRequest",
     "SendNotificationRequest",
+    "SendRequest",
     "ServerlessFunctionDTO",
     "ServerlessFunctionRefDTO",
     "SettingField",
@@ -375,6 +378,7 @@ __all__ = [
     "ShowResponseSubscribeWebhookDTO",
     "ShowResponseTemplateWebpageDTO",
     "ShowResponseTraitDTO",
+    "ShowResponseUserRecordResponseDTO",
     "ShowResponseViewDTO",
     "ShowResponseWebMenuDTO",
     "ShowResponseWebpageEditorDefaultsDTO",
@@ -405,7 +409,6 @@ __all__ = [
     "SuccessResponseListAppScheduleDTO",
     "SuccessResponseListArchivedRecordObjectDTO",
     "SuccessResponseListCalendarRecordDTO",
-    "SuccessResponseListCalendarTeamOptionDTO",
     "SuccessResponseListCaraerObjectDTO",
     "SuccessResponseListDeveloperSandboxDTO",
     "SuccessResponseListFavoriteViewDTO",
@@ -583,7 +586,6 @@ from caraer_client.models.calendar_bootstrap_dto import CalendarBootstrapDTO as 
 from caraer_client.models.calendar_create_request import CalendarCreateRequest as CalendarCreateRequest
 from caraer_client.models.calendar_record_dto import CalendarRecordDTO as CalendarRecordDTO
 from caraer_client.models.calendar_team_member_dto import CalendarTeamMemberDTO as CalendarTeamMemberDTO
-from caraer_client.models.calendar_team_option_dto import CalendarTeamOptionDTO as CalendarTeamOptionDTO
 from caraer_client.models.caraer_error_type import CaraerErrorType as CaraerErrorType
 from caraer_client.models.caraer_object_dto import CaraerObjectDTO as CaraerObjectDTO
 from caraer_client.models.cms_environment_dto import CmsEnvironmentDTO as CmsEnvironmentDTO
@@ -597,6 +599,7 @@ from caraer_client.models.cms_page_seo_request import CmsPageSeoRequest as CmsPa
 from caraer_client.models.cms_public_menu_dto import CmsPublicMenuDTO as CmsPublicMenuDTO
 from caraer_client.models.company_dto import CompanyDTO as CompanyDTO
 from caraer_client.models.company_details_dto import CompanyDetailsDTO as CompanyDetailsDTO
+from caraer_client.models.connection_state import ConnectionState as ConnectionState
 from caraer_client.models.copy_properties_to_object_request import CopyPropertiesToObjectRequest as CopyPropertiesToObjectRequest
 from caraer_client.models.copy_property_to_environments_request import CopyPropertyToEnvironmentsRequest as CopyPropertyToEnvironmentsRequest
 from caraer_client.models.create_company_request import CreateCompanyRequest as CreateCompanyRequest
@@ -691,6 +694,7 @@ from caraer_client.models.object_access_grant_candidates_dto import ObjectAccess
 from caraer_client.models.object_access_grant_request_dto import ObjectAccessGrantRequestDTO as ObjectAccessGrantRequestDTO
 from caraer_client.models.object_access_grant_section_dto import ObjectAccessGrantSectionDTO as ObjectAccessGrantSectionDTO
 from caraer_client.models.object_reference_dto import ObjectReferenceDTO as ObjectReferenceDTO
+from caraer_client.models.outcome import Outcome as Outcome
 from caraer_client.models.page_content_dto import PageContentDTO as PageContentDTO
 from caraer_client.models.page_content_settings_dto import PageContentSettingsDTO as PageContentSettingsDTO
 from caraer_client.models.page_content_styling_dto import PageContentStylingDTO as PageContentStylingDTO
@@ -759,6 +763,7 @@ from caraer_client.models.relation_dto import RelationDTO as RelationDTO
 from caraer_client.models.relation_edge_request_dto import RelationEdgeRequestDTO as RelationEdgeRequestDTO
 from caraer_client.models.relation_pill_sort import RelationPillSort as RelationPillSort
 from caraer_client.models.reset_password_request import ResetPasswordRequest as ResetPasswordRequest
+from caraer_client.models.resolve_request import ResolveRequest as ResolveRequest
 from caraer_client.models.restore_response import RestoreResponse as RestoreResponse
 from caraer_client.models.restore_response_caraer_object_dto import RestoreResponseCaraerObjectDTO as RestoreResponseCaraerObjectDTO
 from caraer_client.models.restore_response_saved_filter_dto import RestoreResponseSavedFilterDTO as RestoreResponseSavedFilterDTO
@@ -771,6 +776,7 @@ from caraer_client.models.saved_filter_dto import SavedFilterDTO as SavedFilterD
 from caraer_client.models.score_breakdown import ScoreBreakdown as ScoreBreakdown
 from caraer_client.models.search_request import SearchRequest as SearchRequest
 from caraer_client.models.send_notification_request import SendNotificationRequest as SendNotificationRequest
+from caraer_client.models.send_request import SendRequest as SendRequest
 from caraer_client.models.serverless_function_dto import ServerlessFunctionDTO as ServerlessFunctionDTO
 from caraer_client.models.serverless_function_ref_dto import ServerlessFunctionRefDTO as ServerlessFunctionRefDTO
 from caraer_client.models.setting_field import SettingField as SettingField
@@ -834,6 +840,7 @@ from caraer_client.models.show_response_string import ShowResponseString as Show
 from caraer_client.models.show_response_subscribe_webhook_dto import ShowResponseSubscribeWebhookDTO as ShowResponseSubscribeWebhookDTO
 from caraer_client.models.show_response_template_webpage_dto import ShowResponseTemplateWebpageDTO as ShowResponseTemplateWebpageDTO
 from caraer_client.models.show_response_trait_dto import ShowResponseTraitDTO as ShowResponseTraitDTO
+from caraer_client.models.show_response_user_record_response_dto import ShowResponseUserRecordResponseDTO as ShowResponseUserRecordResponseDTO
 from caraer_client.models.show_response_view_dto import ShowResponseViewDTO as ShowResponseViewDTO
 from caraer_client.models.show_response_web_menu_dto import ShowResponseWebMenuDTO as ShowResponseWebMenuDTO
 from caraer_client.models.show_response_webpage_editor_defaults_dto import ShowResponseWebpageEditorDefaultsDTO as ShowResponseWebpageEditorDefaultsDTO
@@ -864,7 +871,6 @@ from caraer_client.models.success_response_list_app_inbound_route_dto import Suc
 from caraer_client.models.success_response_list_app_schedule_dto import SuccessResponseListAppScheduleDTO as SuccessResponseListAppScheduleDTO
 from caraer_client.models.success_response_list_archived_record_object_dto import SuccessResponseListArchivedRecordObjectDTO as SuccessResponseListArchivedRecordObjectDTO
 from caraer_client.models.success_response_list_calendar_record_dto import SuccessResponseListCalendarRecordDTO as SuccessResponseListCalendarRecordDTO
-from caraer_client.models.success_response_list_calendar_team_option_dto import SuccessResponseListCalendarTeamOptionDTO as SuccessResponseListCalendarTeamOptionDTO
 from caraer_client.models.success_response_list_caraer_object_dto import SuccessResponseListCaraerObjectDTO as SuccessResponseListCaraerObjectDTO
 from caraer_client.models.success_response_list_developer_sandbox_dto import SuccessResponseListDeveloperSandboxDTO as SuccessResponseListDeveloperSandboxDTO
 from caraer_client.models.success_response_list_favorite_view_dto import SuccessResponseListFavoriteViewDTO as SuccessResponseListFavoriteViewDTO

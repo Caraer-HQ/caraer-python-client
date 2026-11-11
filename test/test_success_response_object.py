@@ -36,7 +36,7 @@ class TestSuccessResponseObject(unittest.TestCase):
         if include_optional:
             return SuccessResponseObject(
                 message = 'Success',
-                data = { }
+                data = None
             )
         else:
             return SuccessResponseObject(

@@ -19,17 +19,17 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from caraer_client.models.calendar_team_option_dto import CalendarTeamOptionDTO
+from caraer_client.models.user_record_response_dto import UserRecordResponseDTO
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class SuccessResponseListCalendarTeamOptionDTO(BaseModel):
+class ShowResponseUserRecordResponseDTO(BaseModel):
     """
-    Represents a standard successful response with a message and optional data.
+    Represents the response for viewing or showing a specific resource.
     """ # noqa: E501
     message: Optional[StrictStr] = Field(default=None, description="A message detailing the result of the operation.", json_schema_extra={"examples": ["Success"]})
-    data: Optional[List[CalendarTeamOptionDTO]] = Field(default=None, description="The data payload of the response, if any.")
+    data: Optional[UserRecordResponseDTO] = Field(default=None, description="The data payload of the response, if any.")
     __properties: ClassVar[List[str]] = ["message", "data"]
 
     model_config = ConfigDict(
@@ -50,7 +50,7 @@ class SuccessResponseListCalendarTeamOptionDTO(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SuccessResponseListCalendarTeamOptionDTO from a JSON string"""
+        """Create an instance of ShowResponseUserRecordResponseDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,17 +71,14 @@ class SuccessResponseListCalendarTeamOptionDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of data
         if self.data:
-            for _item_data in self.data:
-                _items.append(_item_data.to_dict() if _item_data is not None else None)
-            _dict['data'] = _items
+            _dict['data'] = self.data.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SuccessResponseListCalendarTeamOptionDTO from a dict"""
+        """Create an instance of ShowResponseUserRecordResponseDTO from a dict"""
         if obj is None:
             return None
 
@@ -90,7 +87,7 @@ class SuccessResponseListCalendarTeamOptionDTO(BaseModel):
 
         _obj = cls.model_validate({
             "message": obj.get("message"),
-            "data": [CalendarTeamOptionDTO.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
+            "data": UserRecordResponseDTO.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 

@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from caraer_client.models.filter_group import FilterGroup
 from typing import Optional, Set
@@ -29,7 +29,8 @@ class Filter(BaseModel):
     DTO representing a filter composed of filter groups for querying records. The filter groups are combined using a logical OR operation. The filter items within each group are combined using a logical AND operation.
     """ # noqa: E501
     groups: Optional[List[FilterGroup]] = Field(default=None, description="A collection of filter groups.")
-    __properties: ClassVar[List[str]] = ["groups"]
+    event_participant_uuids: Optional[List[StrictStr]] = Field(default=None, description="Optional participant UUIDs for event records, intersected with the ordinary filter before paging. Omit for all; an empty list matches none. Uses organiser plus the effective Event trait attendee relations.", alias="eventParticipantUuids")
+    __properties: ClassVar[List[str]] = ["groups", "eventParticipantUuids"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -88,7 +89,8 @@ class Filter(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "groups": [FilterGroup.from_dict(_item) for _item in obj["groups"]] if obj.get("groups") is not None else None
+            "groups": [FilterGroup.from_dict(_item) for _item in obj["groups"]] if obj.get("groups") is not None else None,
+            "eventParticipantUuids": obj.get("eventParticipantUuids")
         })
         return _obj
 

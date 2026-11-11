@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **partstat** | **str** | Participation status on the attendees edge | 
 **scope** | **str** | Series scope for recurring events. Defaults to this. | [optional] 
+**invitation_token** | **str** |  | [optional] 
 
 ## Example
 

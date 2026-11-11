@@ -47,6 +47,9 @@ class TestAnalyticsWidgetConfig(unittest.TestCase):
                     groups = [
                         caraer_client.models.filter_group.FilterGroup(
                             items = null, )
+                        ], 
+                    event_participant_uuids = [
+                        ''
                         ], ),
                 x_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                     property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(
@@ -84,6 +87,9 @@ class TestAnalyticsWidgetConfig(unittest.TestCase):
                             groups = [
                                 caraer_client.models.filter_group.FilterGroup(
                                     items = null, )
+                                ], 
+                            event_participant_uuids = [
+                                ''
                                 ], ), 
                         y_axis = caraer_client.models.analytics_axis_config.AnalyticsAxisConfig(
                             property = caraer_client.models.analytics_property_ref.AnalyticsPropertyRef(

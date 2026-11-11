@@ -38,6 +38,9 @@ class TestFilter(unittest.TestCase):
                 groups = [
                     caraer_client.models.filter_group.FilterGroup(
                         items = null, )
+                    ],
+                event_participant_uuids = [
+                    ''
                     ]
             )
         else:

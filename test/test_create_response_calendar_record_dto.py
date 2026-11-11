@@ -46,6 +46,8 @@ class TestCreateResponseCalendarRecordDTO(unittest.TestCase):
                     owner_uuid = '', 
                     owner_name = '', 
                     owned_by_current_user = True, 
+                    can_edit = True, 
+                    shared = True, 
                     team_uuid = '', 
                     team_name = '', 
                     company_calendar = True, 
