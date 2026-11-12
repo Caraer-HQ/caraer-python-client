@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **properties** | [**List[PropertyDTO]**](PropertyDTO.md) | List of properties defined for this object | [optional] 
 **relations** | [**List[RelationDTO]**](RelationDTO.md) | List of relations this object has with other objects | [optional] 
 **suites** | **List[str]** | List of suite names this object belongs to | [optional] 
-**extends_to** | [**List[CaraerObjectDTO]**](CaraerObjectDTO.md) | List of objects this object extends to | [optional] 
+**extends_to** | [**List[CaraerObjectDTO]**](CaraerObjectDTO.md) | Parent objects identified by UUID or name in this workspace. Omit to preserve existing extensions; send an empty list to clear them. | [optional] 
 **editable** | **bool** | When false, the object schema cannot be updated or deleted via the API | [optional] 
 **number_id_enabled** | **bool** | Permanently enable company-wide Number ID generation for this object and its descendants | [optional] 
 **number_id_backfill_status** | **str** | Existing-record numbering status: PENDING, COMPLETE, or FAILED | [optional] [readonly] 

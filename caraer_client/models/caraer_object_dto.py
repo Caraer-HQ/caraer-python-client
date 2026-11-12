@@ -51,7 +51,7 @@ class CaraerObjectDTO(BaseModel):
     properties: Optional[List[PropertyDTO]] = Field(default=None, description="List of properties defined for this object")
     relations: Optional[List[RelationDTO]] = Field(default=None, description="List of relations this object has with other objects")
     suites: Optional[List[StrictStr]] = Field(default=None, description="List of suite names this object belongs to")
-    extends_to: Optional[List[CaraerObjectDTO]] = Field(default=None, description="List of objects this object extends to", alias="extendsTo")
+    extends_to: Optional[List[CaraerObjectDTO]] = Field(default=None, description="Parent objects identified by UUID or name in this workspace. Omit to preserve existing extensions; send an empty list to clear them.", alias="extendsTo")
     editable: Optional[StrictBool] = Field(default=None, description="When false, the object schema cannot be updated or deleted via the API")
     number_id_enabled: Optional[StrictBool] = Field(default=None, description="Permanently enable company-wide Number ID generation for this object and its descendants", alias="numberIdEnabled")
     number_id_backfill_status: Optional[StrictStr] = Field(default=None, description="Existing-record numbering status: PENDING, COMPLETE, or FAILED", alias="numberIdBackfillStatus")
