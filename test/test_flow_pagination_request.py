@@ -91,6 +91,7 @@ class TestFlowPaginationRequest(unittest.TestCase):
             )
         else:
             return FlowPaginationRequest(
+                main_object = 'user',
         )
         """
 

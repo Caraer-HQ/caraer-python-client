@@ -40,7 +40,7 @@ class FlowPaginationRequest(BaseModel):
     show: Optional[List[ShowItem]] = Field(default=None, description="Specifies what data to show in the response.")
     query: Optional[StrictStr] = Field(default=None, description="A free-text search query applied to the records.", json_schema_extra={"examples": ["keyword"]})
     preview: Optional[StrictStr] = Field(default=None, description="Preview information for the records, if supported.", json_schema_extra={"examples": ["summary preview"]})
-    main_object: Optional[StrictStr] = Field(default=None, description="The main object for categorization or context.", alias="mainObject", json_schema_extra={"examples": ["user"]})
+    main_object: StrictStr = Field(description="Required concrete object name or pipe-separated object names. Smart-content placeholders are not supported.", alias="mainObject", json_schema_extra={"examples": ["user"]})
     column: Optional[StrictStr] = Field(default=None, description="Column name for sorting or filtering data", json_schema_extra={"examples": ["status"]})
     var_property: Optional[StrictStr] = Field(default=None, description="UUID of the property used in the request", alias="property", json_schema_extra={"examples": ["123e4567-e89b-12d3-a456-426614174000"]})
     __properties: ClassVar[List[str]] = ["crud", "showItems", "page", "limit", "filter", "sort", "show", "query", "preview", "mainObject", "column", "property"]

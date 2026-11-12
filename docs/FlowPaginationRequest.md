@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **show** | [**List[ShowItem]**](ShowItem.md) | Specifies what data to show in the response. | [optional] 
 **query** | **str** | A free-text search query applied to the records. | [optional] 
 **preview** | **str** | Preview information for the records, if supported. | [optional] 
-**main_object** | **str** | The main object for categorization or context. | [optional] 
+**main_object** | **str** | Required concrete object name or pipe-separated object names. Smart-content placeholders are not supported. | 
 **column** | **str** | Column name for sorting or filtering data | [optional] 
 **var_property** | **str** | UUID of the property used in the request | [optional] 
 
