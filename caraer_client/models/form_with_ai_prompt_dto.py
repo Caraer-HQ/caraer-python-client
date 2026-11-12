@@ -43,7 +43,7 @@ class FormWithAiPromptDTO(BaseModel):
     deleted_at: Optional[StrictInt] = Field(default=None, description="Unix timestamp when the entity was deleted (null if not deleted)", alias="deletedAt")
     deleted_by: Optional[Record] = Field(default=None, description="Identifier of the user who deleted the entity", alias="deletedBy")
     index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
-    object: Optional[CaraerObjectDTO] = Field(default=None, description="The associated Caraer object that this form belongs to")
+    object: Optional[CaraerObjectDTO] = Field(default=None, description="The associated Caraer object that this form belongs to. Immutable after creation; create a new form to use a different object.")
     grids: Optional[List[FormItemDTO]] = Field(default=None, description="List of form items that make up the form's structure. Each grid represents a section or group of form elements")
     description: Optional[StrictStr] = Field(default=None, description="Descriptive text providing additional information about the form")
     styling: Optional[StrictStr] = Field(default=None, description="The styling of the form. Can be 'standard', 'underline' or 'plain'")

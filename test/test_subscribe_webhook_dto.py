@@ -109,8 +109,8 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    complete = True, 
                     deleted = True, 
+                    complete = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -156,8 +156,8 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            complete = True, 
                             deleted = True, 
+                            complete = True, 
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
@@ -181,8 +181,8 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    complete = True, 
                     deleted = True, 
+                    complete = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -228,8 +228,8 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            complete = True, 
                             deleted = True, 
+                            complete = True, 
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
@@ -253,8 +253,8 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                     updated_by_uuid = '', 
                     deleted_by_uuid = '', 
                     index = 56, 
-                    complete = True, 
                     deleted = True, 
+                    complete = True, 
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
@@ -300,8 +300,8 @@ class TestSubscribeWebhookDTO(unittest.TestCase):
                             updated_by_uuid = '', 
                             deleted_by_uuid = '', 
                             index = 56, 
-                            complete = True, 
                             deleted = True, 
+                            complete = True, 
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(

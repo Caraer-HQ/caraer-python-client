@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **deleted_at** | **int** | Unix timestamp when the entity was deleted (null if not deleted) | [optional] 
 **deleted_by** | [**Record**](Record.md) | Identifier of the user who deleted the entity | [optional] 
 **index** | **int** | Index number for ordering entities | [optional] 
-**object** | [**CaraerObjectDTO**](CaraerObjectDTO.md) | The associated Caraer object that this form belongs to | [optional] 
+**object** | [**CaraerObjectDTO**](CaraerObjectDTO.md) | The associated Caraer object that this form belongs to. Immutable after creation; create a new form to use a different object. | [optional] 
 **grids** | [**List[FormItemDTO]**](FormItemDTO.md) | List of form items that make up the form&#39;s structure. Each grid represents a section or group of form elements | [optional] 
 **description** | **str** | Descriptive text providing additional information about the form | [optional] 
 **styling** | **str** | The styling of the form. Can be &#39;standard&#39;, &#39;underline&#39; or &#39;plain&#39; | [optional] 
