@@ -37,9 +37,9 @@ class SettingField(BaseModel):
     hidden: Optional[StrictBool] = None
     disabled: Optional[StrictBool] = None
     options: Optional[List[SettingOption]] = None
-    value: Optional[Any] = None
     default_value: Optional[Any] = Field(default=None, alias="defaultValue")
-    __properties: ClassVar[List[str]] = ["name", "label", "helpText", "type", "required", "dynamic", "hidden", "disabled", "options", "value", "defaultValue"]
+    value: Optional[Any] = None
+    __properties: ClassVar[List[str]] = ["name", "label", "helpText", "type", "required", "dynamic", "hidden", "disabled", "options", "defaultValue", "value"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -96,15 +96,15 @@ class SettingField(BaseModel):
             for _item_options in self.options:
                 _items.append(_item_options.to_dict() if _item_options is not None else None)
             _dict['options'] = _items
-        # set to None if value (nullable) is None
-        # and model_fields_set contains the field
-        if self.value is None and "value" in self.model_fields_set:
-            _dict['value'] = None
-
         # set to None if default_value (nullable) is None
         # and model_fields_set contains the field
         if self.default_value is None and "default_value" in self.model_fields_set:
             _dict['defaultValue'] = None
+
+        # set to None if value (nullable) is None
+        # and model_fields_set contains the field
+        if self.value is None and "value" in self.model_fields_set:
+            _dict['value'] = None
 
         return _dict
 
@@ -127,8 +127,8 @@ class SettingField(BaseModel):
             "hidden": obj.get("hidden"),
             "disabled": obj.get("disabled"),
             "options": [SettingOption.from_dict(_item) for _item in obj["options"]] if obj.get("options") is not None else None,
-            "value": obj.get("value"),
-            "defaultValue": obj.get("defaultValue")
+            "defaultValue": obj.get("defaultValue"),
+            "value": obj.get("value")
         })
         return _obj
 
