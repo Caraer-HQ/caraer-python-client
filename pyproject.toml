@@ -1,6 +1,6 @@
 [project]
 name = "caraer-client"
-version = "2.0.722"
+version = "2.0.723"
 description = "Caraer API Documentation"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},

@@ -27,12 +27,12 @@ class FilledProperty(BaseModel):
     """
     FilledProperty
     """ # noqa: E501
-    icon: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     value: Optional[Any] = None
     type: Optional[StrictStr] = None
     label: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["icon", "name", "value", "type", "label"]
+    icon: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["name", "value", "type", "label", "icon"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -90,11 +90,11 @@ class FilledProperty(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "icon": obj.get("icon"),
             "name": obj.get("name"),
             "value": obj.get("value"),
             "type": obj.get("type"),
-            "label": obj.get("label")
+            "label": obj.get("label"),
+            "icon": obj.get("icon")
         })
         return _obj
 

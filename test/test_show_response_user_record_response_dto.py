@@ -50,11 +50,11 @@ class TestShowResponseUserRecordResponseDTO(unittest.TestCase):
                     deleted = True, 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null

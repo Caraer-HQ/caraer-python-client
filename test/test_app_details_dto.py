@@ -67,11 +67,11 @@ class TestAppDetailsDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -114,11 +114,11 @@ class TestAppDetailsDTO(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -139,11 +139,11 @@ class TestAppDetailsDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -186,11 +186,11 @@ class TestAppDetailsDTO(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -211,11 +211,11 @@ class TestAppDetailsDTO(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
-                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
-                            label = '', )
+                            label = '', 
+                            icon = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -258,11 +258,11 @@ class TestAppDetailsDTO(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
-                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    label = '', )
+                                    label = '', 
+                                    icon = '', )
                                 ], 
                             objects = {
                                 'key' : null

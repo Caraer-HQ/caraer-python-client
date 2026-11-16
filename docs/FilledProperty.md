@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**icon** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **value** | **object** |  | [optional] 
 **type** | **str** |  | [optional] 
 **label** | **str** |  | [optional] 
+**icon** | **str** |  | [optional] 
 
 ## Example
 
