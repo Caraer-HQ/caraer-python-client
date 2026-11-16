@@ -103,11 +103,11 @@ class TestBrowserAuthSessionResponse(unittest.TestCase):
                         uuid = '0', 
                         properties = [
                             caraer_client.models.filled_property.FilledProperty(
+                                icon = '', 
                                 name = '', 
                                 value = null, 
                                 type = '', 
-                                label = '', 
-                                icon = '', )
+                                label = '', )
                             ], 
                         objects = {
                             'key' : null

@@ -56,11 +56,11 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
-                            label = '', 
-                            icon = '', )
+                            label = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -103,11 +103,11 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    label = '', 
-                                    icon = '', )
+                                    label = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -128,11 +128,11 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
-                            label = '', 
-                            icon = '', )
+                            label = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -175,11 +175,11 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    label = '', 
-                                    icon = '', )
+                                    label = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -200,11 +200,11 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                     uuid = '0', 
                     properties = [
                         caraer_client.models.filled_property.FilledProperty(
+                            icon = '', 
                             name = '', 
                             value = null, 
                             type = '', 
-                            label = '', 
-                            icon = '', )
+                            label = '', )
                         ], 
                     objects = {
                         'key' : null
@@ -247,11 +247,11 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                             uuid = '0', 
                             properties = [
                                 caraer_client.models.filled_property.FilledProperty(
+                                    icon = '', 
                                     name = '', 
                                     value = null, 
                                     type = '', 
-                                    label = '', 
-                                    icon = '', )
+                                    label = '', )
                                 ], 
                             objects = {
                                 'key' : null
@@ -429,8 +429,8 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                                 ], 
                                             record_target = True, ), 
                                         value_scope = '', 
-                                        settings_group = True, 
                                         action = True, 
+                                        settings_group = True, 
                                         filter_property_types = [
                                             ''
                                             ], 
@@ -529,8 +529,8 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                                 ], 
                                             record_target = True, ), 
                                         value_scope = '', 
-                                        settings_group = True, 
                                         action = True, 
+                                        settings_group = True, 
                                         filter_property_types = [
                                             ''
                                             ], 
@@ -569,8 +569,8 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                settings_group = True, 
                                 action = True, 
+                                settings_group = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -912,8 +912,8 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                settings_group = True, 
                                 action = True, 
+                                settings_group = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -1012,8 +1012,8 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                         ], 
                                     record_target = True, ), 
                                 value_scope = '', 
-                                settings_group = True, 
                                 action = True, 
+                                settings_group = True, 
                                 filter_property_types = [
                                     ''
                                     ], 
@@ -1052,8 +1052,8 @@ class TestCreatePrivateAppRequest(unittest.TestCase):
                                 ], 
                             record_target = True, ), 
                         value_scope = '', 
-                        settings_group = True, 
                         action = True, 
+                        settings_group = True, 
                         filter_property_types = [
                             ''
                             ], 
