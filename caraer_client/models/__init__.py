@@ -125,6 +125,7 @@ from caraer_client.models.device_approve_request import DeviceApproveRequest
 from caraer_client.models.device_poll_request import DevicePollRequest
 from caraer_client.models.digital_identity_dto import DigitalIdentityDTO
 from caraer_client.models.duration import Duration
+from caraer_client.models.effective_appearance_dto import EffectiveAppearanceDTO
 from caraer_client.models.email import Email
 from caraer_client.models.engagement_batch_request import EngagementBatchRequest
 from caraer_client.models.ensure_relation_dto import EnsureRelationDTO
@@ -216,6 +217,7 @@ from caraer_client.models.pagination_response_webpage_access_grant_dto import Pa
 from caraer_client.models.palette import Palette
 from caraer_client.models.permissions import Permissions
 from caraer_client.models.phone import Phone
+from caraer_client.models.portal_appearance_dto import PortalAppearanceDTO
 from caraer_client.models.preview_dto import PreviewDTO
 from caraer_client.models.preview_item_dto import PreviewItemDTO
 from caraer_client.models.preview_item_settings_dto import PreviewItemSettingsDTO
@@ -352,6 +354,7 @@ from caraer_client.models.success_response_aggregate_response import SuccessResp
 from caraer_client.models.success_response_calendar_bootstrap_dto import SuccessResponseCalendarBootstrapDTO
 from caraer_client.models.success_response_collection_relation import SuccessResponseCollectionRelation
 from caraer_client.models.success_response_company_dto import SuccessResponseCompanyDTO
+from caraer_client.models.success_response_effective_appearance_dto import SuccessResponseEffectiveAppearanceDTO
 from caraer_client.models.success_response_ensure_relation_dto import SuccessResponseEnsureRelationDTO
 from caraer_client.models.success_response_feed_dto import SuccessResponseFeedDTO
 from caraer_client.models.success_response_flow import SuccessResponseFlow
@@ -375,6 +378,7 @@ from caraer_client.models.success_response_map_string_integer import SuccessResp
 from caraer_client.models.success_response_map_string_object import SuccessResponseMapStringObject
 from caraer_client.models.success_response_navigation_dto import SuccessResponseNavigationDTO
 from caraer_client.models.success_response_object import SuccessResponseObject
+from caraer_client.models.success_response_portal_appearance_dto import SuccessResponsePortalAppearanceDTO
 from caraer_client.models.success_response_string import SuccessResponseString
 from caraer_client.models.success_response_suggest_analytics_widgets_response import SuccessResponseSuggestAnalyticsWidgetsResponse
 from caraer_client.models.success_response_table import SuccessResponseTable

@@ -26,6 +26,7 @@ from caraer_client.api.module_api import ModuleApi
 from caraer_client.api.navigation_api import NavigationApi
 from caraer_client.api.notifications_api import NotificationsApi
 from caraer_client.api.objects_api import ObjectsApi
+from caraer_client.api.portal_appearance_api import PortalAppearanceApi
 from caraer_client.api.property_api import PropertyApi
 from caraer_client.api.records_api import RecordsApi
 from caraer_client.api.relations_api import RelationsApi
