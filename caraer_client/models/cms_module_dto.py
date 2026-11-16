@@ -20,6 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from caraer_client.models.app_setting_field_schema import AppSettingFieldSchema
+from caraer_client.models.cms_record_preview_presentation import CmsRecordPreviewPresentation
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -37,6 +38,7 @@ class CmsModuleDTO(BaseModel):
     category: Optional[StrictStr] = None
     icon: Optional[StrictStr] = None
     preview: Optional[StrictStr] = None
+    record_preview: Optional[CmsRecordPreviewPresentation] = Field(default=None, alias="recordPreview")
     app_uuid: Optional[StrictStr] = Field(default=None, alias="appUuid")
     app_name: Optional[StrictStr] = Field(default=None, alias="appName")
     app_label: Optional[StrictStr] = Field(default=None, alias="appLabel")
@@ -45,7 +47,7 @@ class CmsModuleDTO(BaseModel):
     retired: Optional[StrictBool] = None
     fields: Optional[List[AppSettingFieldSchema]] = None
     frameworks: Optional[Dict[str, StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "ref", "kind", "description", "category", "icon", "preview", "appUuid", "appName", "appLabel", "packageName", "version", "retired", "fields", "frameworks"]
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "ref", "kind", "description", "category", "icon", "preview", "recordPreview", "appUuid", "appName", "appLabel", "packageName", "version", "retired", "fields", "frameworks"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,6 +88,9 @@ class CmsModuleDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of record_preview
+        if self.record_preview:
+            _dict['recordPreview'] = self.record_preview.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in fields (list)
         _items = []
         if self.fields:
@@ -113,6 +118,7 @@ class CmsModuleDTO(BaseModel):
             "category": obj.get("category"),
             "icon": obj.get("icon"),
             "preview": obj.get("preview"),
+            "recordPreview": CmsRecordPreviewPresentation.from_dict(obj["recordPreview"]) if obj.get("recordPreview") is not None else None,
             "appUuid": obj.get("appUuid"),
             "appName": obj.get("appName"),
             "appLabel": obj.get("appLabel"),

@@ -44,6 +44,10 @@ class TestCmsModuleDTO(unittest.TestCase):
                 category = '',
                 icon = '',
                 preview = '',
+                record_preview = caraer_client.models.cms_record_preview_presentation.CmsRecordPreviewPresentation(
+                    title_field = '', 
+                    subtitle_field = '', 
+                    image_field = '', ),
                 app_uuid = '',
                 app_name = '',
                 app_label = '',

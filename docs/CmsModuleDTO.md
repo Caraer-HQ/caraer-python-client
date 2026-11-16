@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **category** | **str** |  | [optional] 
 **icon** | **str** |  | [optional] 
 **preview** | **str** |  | [optional] 
+**record_preview** | [**CmsRecordPreviewPresentation**](CmsRecordPreviewPresentation.md) |  | [optional] 
 **app_uuid** | **str** |  | [optional] 
 **app_name** | **str** |  | [optional] 
 **app_label** | **str** |  | [optional] 

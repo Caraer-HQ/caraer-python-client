@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.727"
+__version__ = "2.0.728"
 
 # Define package exports
 __all__ = [
@@ -135,7 +135,12 @@ __all__ = [
     "CmsPagePatch",
     "CmsPagePatchRequest",
     "CmsPageSeoRequest",
+    "CmsPreviewConfiguration",
+    "CmsPreviewPresentationDTO",
     "CmsPublicMenuDTO",
+    "CmsRecordModuleRenderContext",
+    "CmsRecordModuleSessionRequest",
+    "CmsRecordPreviewPresentation",
     "CompanyDTO",
     "CompanyDetailsDTO",
     "ConnectionState",
@@ -339,6 +344,7 @@ __all__ = [
     "ShowResponseCmsEnvironmentDTO",
     "ShowResponseCmsPageDTO",
     "ShowResponseCmsPageDocument",
+    "ShowResponseCmsRecordModuleRenderContext",
     "ShowResponseCompanyDTO",
     "ShowResponseDeveloperProjectDTO",
     "ShowResponseDigitalIdentityDTO",
@@ -602,7 +608,12 @@ from caraer_client.models.cms_page_module_instance import CmsPageModuleInstance 
 from caraer_client.models.cms_page_patch import CmsPagePatch as CmsPagePatch
 from caraer_client.models.cms_page_patch_request import CmsPagePatchRequest as CmsPagePatchRequest
 from caraer_client.models.cms_page_seo_request import CmsPageSeoRequest as CmsPageSeoRequest
+from caraer_client.models.cms_preview_configuration import CmsPreviewConfiguration as CmsPreviewConfiguration
+from caraer_client.models.cms_preview_presentation_dto import CmsPreviewPresentationDTO as CmsPreviewPresentationDTO
 from caraer_client.models.cms_public_menu_dto import CmsPublicMenuDTO as CmsPublicMenuDTO
+from caraer_client.models.cms_record_module_render_context import CmsRecordModuleRenderContext as CmsRecordModuleRenderContext
+from caraer_client.models.cms_record_module_session_request import CmsRecordModuleSessionRequest as CmsRecordModuleSessionRequest
+from caraer_client.models.cms_record_preview_presentation import CmsRecordPreviewPresentation as CmsRecordPreviewPresentation
 from caraer_client.models.company_dto import CompanyDTO as CompanyDTO
 from caraer_client.models.company_details_dto import CompanyDetailsDTO as CompanyDetailsDTO
 from caraer_client.models.connection_state import ConnectionState as ConnectionState
@@ -806,6 +817,7 @@ from caraer_client.models.show_response_caraer_object_dto import ShowResponseCar
 from caraer_client.models.show_response_cms_environment_dto import ShowResponseCmsEnvironmentDTO as ShowResponseCmsEnvironmentDTO
 from caraer_client.models.show_response_cms_page_dto import ShowResponseCmsPageDTO as ShowResponseCmsPageDTO
 from caraer_client.models.show_response_cms_page_document import ShowResponseCmsPageDocument as ShowResponseCmsPageDocument
+from caraer_client.models.show_response_cms_record_module_render_context import ShowResponseCmsRecordModuleRenderContext as ShowResponseCmsRecordModuleRenderContext
 from caraer_client.models.show_response_company_dto import ShowResponseCompanyDTO as ShowResponseCompanyDTO
 from caraer_client.models.show_response_developer_project_dto import ShowResponseDeveloperProjectDTO as ShowResponseDeveloperProjectDTO
 from caraer_client.models.show_response_digital_identity_dto import ShowResponseDigitalIdentityDTO as ShowResponseDigitalIdentityDTO

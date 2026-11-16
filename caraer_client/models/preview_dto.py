@@ -17,10 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from caraer_client.models.caraer_object_dto import CaraerObjectDTO
+from caraer_client.models.cms_preview_configuration import CmsPreviewConfiguration
+from caraer_client.models.cms_preview_presentation_dto import CmsPreviewPresentationDTO
 from caraer_client.models.page_content_styling_dto import PageContentStylingDTO
 from caraer_client.models.preview_item_dto import PreviewItemDTO
 from caraer_client.models.property_dto import PropertyDTO
@@ -40,6 +42,9 @@ class PreviewDTO(BaseModel):
     edge_properties: Optional[Dict[str, Any]] = Field(default=None, description="Values stored on the relation edge for properties declared on the relation schema. Only present when the preview was loaded through such a relation.", alias="edgeProperties", json_schema_extra={"examples": [{"partstat": "ACCEPTED"}]})
     grid: Optional[Annotated[List[List[PreviewItemDTO]], Field(max_length=2147483647)]] = Field(default=None, description="Rows of the preview grid")
     preview_type: Optional[StrictStr] = Field(default=None, description="Preview type", alias="previewType", json_schema_extra={"examples": ["detail"]})
+    renderer: Optional[StrictStr] = Field(default=None, description="Rendering mode. Omitted means the original grid renderer.")
+    cms_module: Optional[CmsPreviewConfiguration] = Field(default=None, alias="cmsModule")
+    cms_presentation: Optional[CmsPreviewPresentationDTO] = Field(default=None, alias="cmsPresentation")
     profile_image: Optional[PropertyDTO] = Field(default=None, description="Profile image property", alias="profileImage")
     profile_image_position: Optional[StrictStr] = Field(default=None, description="Profile image position (top, left, right, bottom, background)", alias="profileImagePosition", json_schema_extra={"examples": ["top"]})
     profile_image_styling: Optional[PageContentStylingDTO] = Field(default=None, description="Style set for the profile image", alias="profileImageStyling")
@@ -63,7 +68,17 @@ class PreviewDTO(BaseModel):
     deleted_at: Optional[StrictInt] = Field(default=None, description="Unix timestamp when the entity was deleted (null if not deleted)", alias="deletedAt")
     deleted_by: Optional[Record] = Field(default=None, description="Identifier of the user who deleted the entity", alias="deletedBy")
     index: Optional[StrictInt] = Field(default=None, description="Index number for ordering entities")
-    __properties: ClassVar[List[str]] = ["description", "object", "recordUuid", "primary", "edgeProperties", "grid", "previewType", "profileImage", "profileImagePosition", "profileImageStyling", "firstInitialProperty", "secondInitialProperty", "profileImageValue", "firstInitialPropertyValue", "secondInitialPropertyValue", "customCss", "url", "styling", "sortProperty", "sortValue", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index"]
+    __properties: ClassVar[List[str]] = ["description", "object", "recordUuid", "primary", "edgeProperties", "grid", "previewType", "renderer", "cmsModule", "cmsPresentation", "profileImage", "profileImagePosition", "profileImageStyling", "firstInitialProperty", "secondInitialProperty", "profileImageValue", "firstInitialPropertyValue", "secondInitialPropertyValue", "customCss", "url", "styling", "sortProperty", "sortValue", "uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index"]
+
+    @field_validator('renderer')
+    def renderer_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['legacy', 'cms-v2']):
+            raise ValueError("must be one of enum values ('legacy', 'cms-v2')")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -115,6 +130,12 @@ class PreviewDTO(BaseModel):
                      [_inner_item.to_dict() if _inner_item is not None else None for _inner_item in _item_grid] if _item_grid is not None else None
                 )
             _dict['grid'] = _items
+        # override the default output from pydantic by calling `to_dict()` of cms_module
+        if self.cms_module:
+            _dict['cmsModule'] = self.cms_module.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of cms_presentation
+        if self.cms_presentation:
+            _dict['cmsPresentation'] = self.cms_presentation.to_dict()
         # override the default output from pydantic by calling `to_dict()` of profile_image
         if self.profile_image:
             _dict['profileImage'] = self.profile_image.to_dict()
@@ -166,6 +187,9 @@ class PreviewDTO(BaseModel):
                     for _item in obj["grid"]
                 ] if obj.get("grid") is not None else None,
             "previewType": obj.get("previewType"),
+            "renderer": obj.get("renderer"),
+            "cmsModule": CmsPreviewConfiguration.from_dict(obj["cmsModule"]) if obj.get("cmsModule") is not None else None,
+            "cmsPresentation": CmsPreviewPresentationDTO.from_dict(obj["cmsPresentation"]) if obj.get("cmsPresentation") is not None else None,
             "profileImage": PropertyDTO.from_dict(obj["profileImage"]) if obj.get("profileImage") is not None else None,
             "profileImagePosition": obj.get("profileImagePosition"),
             "profileImageStyling": PageContentStylingDTO.from_dict(obj["profileImageStyling"]) if obj.get("profileImageStyling") is not None else None,

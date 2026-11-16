@@ -932,6 +932,17 @@ class TestPageContentSettingsDTO(unittest.TestCase):
                                 ]
                             ], 
                         preview_type = 'detail', 
+                        renderer = 'legacy', 
+                        cms_module = caraer_client.models.cms_preview_configuration.CmsPreviewConfiguration(
+                            module = '', 
+                            fields = {
+                                'key' : null
+                                }, 
+                            environment = '', ), 
+                        cms_presentation = caraer_client.models.cms_preview_presentation_dto.CmsPreviewPresentationDTO(
+                            title = '', 
+                            subtitle = '', 
+                            image = '', ), 
                         profile_image = null, 
                         profile_image_position = 'top', 
                         profile_image_styling = null, 

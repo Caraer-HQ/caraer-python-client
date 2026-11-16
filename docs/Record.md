@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **updated_by_uuid** | **str** |  | [optional] 
 **deleted_by_uuid** | **str** |  | [optional] 
 **index** | **int** |  | [optional] 
-**complete** | **bool** |  | [optional] 
 **deleted** | **bool** |  | [optional] 
+**complete** | **bool** |  | [optional] 
 **uuid** | **str** |  | 
 **properties** | [**List[FilledProperty]**](FilledProperty.md) |  | [optional] 
 **objects** | **Dict[str, Optional[object]]** |  | [optional] 

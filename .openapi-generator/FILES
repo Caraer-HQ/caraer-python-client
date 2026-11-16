@@ -118,7 +118,12 @@ caraer_client/models/cms_page_module_instance.py
 caraer_client/models/cms_page_patch.py
 caraer_client/models/cms_page_patch_request.py
 caraer_client/models/cms_page_seo_request.py
+caraer_client/models/cms_preview_configuration.py
+caraer_client/models/cms_preview_presentation_dto.py
 caraer_client/models/cms_public_menu_dto.py
+caraer_client/models/cms_record_module_render_context.py
+caraer_client/models/cms_record_module_session_request.py
+caraer_client/models/cms_record_preview_presentation.py
 caraer_client/models/company_details_dto.py
 caraer_client/models/company_dto.py
 caraer_client/models/connection_state.py
@@ -323,6 +328,7 @@ caraer_client/models/show_response_caraer_object_dto.py
 caraer_client/models/show_response_cms_environment_dto.py
 caraer_client/models/show_response_cms_page_document.py
 caraer_client/models/show_response_cms_page_dto.py
+caraer_client/models/show_response_cms_record_module_render_context.py
 caraer_client/models/show_response_company_dto.py
 caraer_client/models/show_response_developer_project_dto.py
 caraer_client/models/show_response_digital_identity_dto.py
@@ -540,7 +546,12 @@ docs/CmsPageModuleInstance.md
 docs/CmsPagePatch.md
 docs/CmsPagePatchRequest.md
 docs/CmsPageSeoRequest.md
+docs/CmsPreviewConfiguration.md
+docs/CmsPreviewPresentationDTO.md
 docs/CmsPublicMenuDTO.md
+docs/CmsRecordModuleRenderContext.md
+docs/CmsRecordModuleSessionRequest.md
+docs/CmsRecordPreviewPresentation.md
 docs/CompanyApi.md
 docs/CompanyDTO.md
 docs/CompanyDetailsDTO.md
@@ -760,6 +771,7 @@ docs/ShowResponseCaraerObjectDTO.md
 docs/ShowResponseCmsEnvironmentDTO.md
 docs/ShowResponseCmsPageDTO.md
 docs/ShowResponseCmsPageDocument.md
+docs/ShowResponseCmsRecordModuleRenderContext.md
 docs/ShowResponseCompanyDTO.md
 docs/ShowResponseDeveloperProjectDTO.md
 docs/ShowResponseDigitalIdentityDTO.md
@@ -981,7 +993,12 @@ test/test_cms_page_module_instance.py
 test/test_cms_page_patch.py
 test/test_cms_page_patch_request.py
 test/test_cms_page_seo_request.py
+test/test_cms_preview_configuration.py
+test/test_cms_preview_presentation_dto.py
 test/test_cms_public_menu_dto.py
+test/test_cms_record_module_render_context.py
+test/test_cms_record_module_session_request.py
+test/test_cms_record_preview_presentation.py
 test/test_cms_website_updates_api.py
 test/test_cmsv2_environments_api.py
 test/test_cmsv2_pages_api.py
@@ -1207,6 +1224,7 @@ test/test_show_response_caraer_object_dto.py
 test/test_show_response_cms_environment_dto.py
 test/test_show_response_cms_page_document.py
 test/test_show_response_cms_page_dto.py
+test/test_show_response_cms_record_module_render_context.py
 test/test_show_response_company_dto.py
 test/test_show_response_developer_project_dto.py
 test/test_show_response_digital_identity_dto.py
