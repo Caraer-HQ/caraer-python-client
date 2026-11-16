@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **icon** | **str** |  | [optional] 
 **flow_property** | **str** |  | [optional] 
 **flow_preview** | **str** |  | [optional] 
+**flow_show_unassigned** | **bool** | Show the Unassigned column for records without a Flow grouping value. Defaults to false. | [optional] [default to False]
 **task_progress_property** | **str** |  | [optional] 
 **task_group_property** | **str** |  | [optional] 
 **task_expand_subtasks** | **bool** |  | [optional] 

@@ -58,6 +58,7 @@ class ViewDTO(BaseModel):
     icon: Optional[StrictStr] = None
     flow_property: Optional[StrictStr] = Field(default=None, alias="flowProperty")
     flow_preview: Optional[StrictStr] = Field(default=None, alias="flowPreview")
+    flow_show_unassigned: Optional[StrictBool] = Field(default=False, description="Show the Unassigned column for records without a Flow grouping value. Defaults to false.", alias="flowShowUnassigned")
     task_progress_property: Optional[StrictStr] = Field(default=None, alias="taskProgressProperty")
     task_group_property: Optional[StrictStr] = Field(default=None, alias="taskGroupProperty")
     task_expand_subtasks: Optional[StrictBool] = Field(default=None, alias="taskExpandSubtasks")
@@ -71,7 +72,7 @@ class ViewDTO(BaseModel):
     default_view: Optional[StrictBool] = Field(default=None, alias="defaultView")
     is_internally_public: Optional[StrictBool] = Field(default=None, alias="isInternallyPublic")
     analytics: Optional[AnalyticsDashboardConfig] = None
-    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "favorite", "team", "shared", "personal", "trait", "filters", "shows", "sorts", "limit", "showIcons", "rowHeight", "query", "icon", "flowProperty", "flowPreview", "taskProgressProperty", "taskGroupProperty", "taskExpandSubtasks", "taskCollapsedGroupKeys", "taskExpandedTaskUuids", "calendarOverlay", "eventUserUuids", "visibleCalendarUuids", "selectedCalendarUuid", "calendarColorBy", "defaultView", "isInternallyPublic", "analytics"]
+    __properties: ClassVar[List[str]] = ["uuid", "name", "label", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy", "index", "favorite", "team", "shared", "personal", "trait", "filters", "shows", "sorts", "limit", "showIcons", "rowHeight", "query", "icon", "flowProperty", "flowPreview", "flowShowUnassigned", "taskProgressProperty", "taskGroupProperty", "taskExpandSubtasks", "taskCollapsedGroupKeys", "taskExpandedTaskUuids", "calendarOverlay", "eventUserUuids", "visibleCalendarUuids", "selectedCalendarUuid", "calendarColorBy", "defaultView", "isInternallyPublic", "analytics"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -176,6 +177,7 @@ class ViewDTO(BaseModel):
             "icon": obj.get("icon"),
             "flowProperty": obj.get("flowProperty"),
             "flowPreview": obj.get("flowPreview"),
+            "flowShowUnassigned": obj.get("flowShowUnassigned") if obj.get("flowShowUnassigned") is not None else False,
             "taskProgressProperty": obj.get("taskProgressProperty"),
             "taskGroupProperty": obj.get("taskGroupProperty"),
             "taskExpandSubtasks": obj.get("taskExpandSubtasks"),

@@ -296,6 +296,7 @@ class TestViewDTO(unittest.TestCase):
                 icon = '',
                 flow_property = '',
                 flow_preview = '',
+                flow_show_unassigned = True,
                 task_progress_property = '',
                 task_group_property = '',
                 task_expand_subtasks = True,
